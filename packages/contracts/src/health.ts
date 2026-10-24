@@ -24,3 +24,13 @@ export const ServiceHealth = contract(
   "Health of one service and each dependency it checked.",
 );
 export type ServiceHealth = z.infer<typeof ServiceHealth>;
+
+export const SystemStatus = contract(
+  "SystemStatus",
+  z.object({ ok: z.boolean(), services: z.array(ServiceHealth) }),
+  "Health of every service (API and AI engine), shown on the admin dashboard.",
+);
+export type SystemStatus = z.infer<typeof SystemStatus>;
+
+export const Liveness = contract("Liveness", z.object({ ok: z.boolean() }));
+export type Liveness = z.infer<typeof Liveness>;

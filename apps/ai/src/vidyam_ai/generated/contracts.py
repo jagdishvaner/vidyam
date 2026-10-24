@@ -6,7 +6,7 @@ from enum import StrEnum
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, Field, RootModel
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, RootModel
 
 
 class VidyamContracts(RootModel[Any]):
@@ -47,6 +47,30 @@ class Answer3(BaseModel):
 
 class Answer(RootModel[Answer1 | Answer2 | Answer3]):
     root: Answer1 | Answer2 | Answer3 = Field(..., title="Answer")
+
+
+class PlatformRole(StrEnum):
+    superadmin = "superadmin"
+
+
+class Organization(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    name: str
+    slug: str
+
+
+class DashboardSummary(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    sources: int = Field(..., ge=0, le=9007199254740991)
+    questions: int = Field(..., ge=0, le=9007199254740991)
+    documents: int = Field(..., ge=0, le=9007199254740991)
 
 
 class DependencyStatus(BaseModel):
@@ -93,6 +117,14 @@ class Licence(StrEnum):
     own = "own"
     third_party = "third_party"
     pyq = "pyq"
+
+
+class Liveness(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    ok: bool
 
 
 class OrgRole(StrEnum):
@@ -204,11 +236,21 @@ class ProgressEvent5(BaseModel):
 
 
 class ProgressEvent(
-    RootModel[ProgressEvent1 | ProgressEvent2 | ProgressEvent3 | ProgressEvent4 | ProgressEvent5]
+    RootModel[
+        ProgressEvent1
+        | ProgressEvent2
+        | ProgressEvent3
+        | ProgressEvent4
+        | ProgressEvent5
+    ]
 ):
-    root: ProgressEvent1 | ProgressEvent2 | ProgressEvent3 | ProgressEvent4 | ProgressEvent5 = Field(
-        ..., title="ProgressEvent"
-    )
+    root: (
+        ProgressEvent1
+        | ProgressEvent2
+        | ProgressEvent3
+        | ProgressEvent4
+        | ProgressEvent5
+    ) = Field(..., title="ProgressEvent")
 
 
 class Difficulty(RootModel[int]):
@@ -298,6 +340,31 @@ class SourceLanguage(StrEnum):
     mixed = "mixed"
 
 
+class SystemStatus(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    ok: bool
+    services: list[ServiceHealth]
+
+
+class CurrentUser(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    name: str
+    email: EmailStr = Field(
+        ...,
+        pattern="^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+    )
+    platform_role: PlatformRole | None = Field(..., alias="platformRole")
+    organization: Organization | None
+    org_role: OrgRole | None = Field(..., alias="orgRole")
+
+
 class Section1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -319,7 +386,9 @@ class PaperSpec(BaseModel):
     title: str
     languages: list[Language] = Field(..., min_length=1)
     layout: Layout
-    duration_minutes: int = Field(..., alias="durationMinutes", gt=0, le=9007199254740991)
+    duration_minutes: int = Field(
+        ..., alias="durationMinutes", gt=0, le=9007199254740991
+    )
     total_marks: float = Field(..., alias="totalMarks", gt=0.0)
     negative_marking: float = Field(..., alias="negativeMarking", ge=0.0)
     taxonomy_node_ids: list[UUID] = Field(..., alias="taxonomyNodeIds", min_length=1)

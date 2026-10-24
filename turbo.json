@@ -9,7 +9,7 @@
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "codegen": {
-      "dependsOn": ["^codegen"],
+      "dependsOn": ["^codegen", "^build"],
       "outputs": ["generated/**", "src/**/generated/**"]
     },
     "lint": {

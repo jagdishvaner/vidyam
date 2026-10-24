@@ -9,7 +9,7 @@ pre-commit:
       stage_fixed: true
     ruff:
       glob: "*.py"
-      run: uv run --frozen --package vidyam-ai ruff check --fix {staged_files} && uv run --frozen --package vidyam-ai ruff format {staged_files}
+      run: uv run --frozen --package vidyam-ai ruff check --force-exclude --fix {staged_files} && uv run --frozen --package vidyam-ai ruff format --force-exclude {staged_files}
       stage_fixed: true
 
 commit-msg:

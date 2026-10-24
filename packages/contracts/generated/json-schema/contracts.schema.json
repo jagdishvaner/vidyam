@@ -68,6 +68,111 @@
         }
       ]
     },
+    "CurrentUser": {
+      "title": "CurrentUser",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+        },
+        "platformRole": {
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "superadmin"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "organization": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "slug": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "slug"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "orgRole": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OrgRole"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "platformRole",
+        "organization",
+        "orgRole"
+      ],
+      "additionalProperties": false
+    },
+    "DashboardSummary": {
+      "title": "DashboardSummary",
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "questions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "documents": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "sources",
+        "questions",
+        "documents"
+      ],
+      "additionalProperties": false
+    },
     "DependencyStatus": {
       "title": "DependencyStatus",
       "type": "object",
@@ -200,6 +305,19 @@
         "third_party",
         "pyq"
       ]
+    },
+    "Liveness": {
+      "title": "Liveness",
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "ok"
+      ],
+      "additionalProperties": false
     },
     "OrgRole": {
       "title": "OrgRole",
@@ -869,6 +987,26 @@
         "en",
         "mixed"
       ]
+    },
+    "SystemStatus": {
+      "title": "SystemStatus",
+      "type": "object",
+      "properties": {
+        "ok": {
+          "type": "boolean"
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ServiceHealth"
+          }
+        }
+      },
+      "required": [
+        "ok",
+        "services"
+      ],
+      "additionalProperties": false
     }
   }
 }

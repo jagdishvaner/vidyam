@@ -1,0 +1,29 @@
+{
+  "name": "@vidyam/api-client",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Typed client for the Vidyam API, generated from its OpenAPI document (pnpm codegen).",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "codegen": "openapi-typescript openapi.json -o src/generated/schema.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "openapi-fetch": "0.17.0"
+  },
+  "devDependencies": {
+    "@vidyam/api": "workspace:*",
+    "@vidyam/config": "workspace:*",
+    "eslint": "10.13.0",
+    "openapi-typescript": "7.13.0",
+    "typescript": "6.0.3"
+  }
+}
