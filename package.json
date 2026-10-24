@@ -1,0 +1,44 @@
+{
+  "name": "vidyam",
+  "private": true,
+  "description": "Grounded AI content studio for a coaching center: question papers, worksheets and notes generated only from the center's own material.",
+  "packageManager": "pnpm@10.34.8",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.22.1",
+      "onFail": "download"
+    }
+  },
+  "scripts": {
+    "prepare": "lefthook install",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:integration": "turbo run test:integration",
+    "test:live": "turbo run test:live",
+    "codegen": "turbo run codegen",
+    "db:migrate": "turbo run db:migrate",
+    "db:seed": "turbo run db:seed",
+    "format": "prettier --write . && turbo run format --filter=@vidyam/ai",
+    "format:check": "prettier --check . && turbo run lint --filter=@vidyam/ai",
+    "infra:up": "docker compose -f infra/docker/compose.yml up -d --wait",
+    "infra:down": "docker compose -f infra/docker/compose.yml down",
+    "infra:ps": "docker compose -f infra/docker/compose.yml ps",
+    "infra:logs": "docker compose -f infra/docker/compose.yml logs -f --tail=100"
+  },
+  "prettier": "@vidyam/config/prettier",
+  "devDependencies": {
+    "@commitlint/cli": "21.2.4",
+    "@commitlint/config-conventional": "21.2.4",
+    "@vidyam/config": "workspace:*",
+    "lefthook": "2.2.2",
+    "prettier": "3.9.10",
+    "turbo": "2.11.10"
+  }
+}

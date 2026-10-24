@@ -1,0 +1,9 @@
+{
+  "identities": [
+    {
+      "name": "vidyam-local",
+      "credentials": [{ "accessKey": "vidyam", "secretKey": "vidyam-local-secret" }],
+      "actions": ["Admin", "Read", "List", "Tagging", "Write"]
+    }
+  ]
+}

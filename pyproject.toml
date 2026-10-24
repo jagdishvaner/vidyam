@@ -1,0 +1,14 @@
+# uv workspace root. Virtual: it groups the Python members and pins one shared uv.lock,
+# but is not itself an installable package. Turborepo runs the members through their
+# package.json scripts (see docs/adr/0001-monorepo-turborepo-uv.md).
+[tool.uv.workspace]
+members = ["apps/ai"]
+
+# Ruff reads this from every member (nearest pyproject upward), so all Python code shares one style.
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = ["**/generated/**"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "ASYNC", "RUF"]

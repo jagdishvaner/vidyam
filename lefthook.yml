@@ -1,0 +1,18 @@
+# Git hooks (installed by `pnpm install` via the root `prepare` script).
+# Full lint/typecheck/test runs in CI through turbo; hooks stay fast and only touch staged files.
+pre-commit:
+  parallel: true
+  commands:
+    prettier:
+      glob: "*.{js,mjs,cjs,ts,tsx,json,md,yml,yaml,css}"
+      run: pnpm exec prettier --write --ignore-unknown {staged_files}
+      stage_fixed: true
+    ruff:
+      glob: "*.py"
+      run: uv run --frozen --package vidyam-ai ruff check --fix {staged_files} && uv run --frozen --package vidyam-ai ruff format {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    commitlint:
+      run: pnpm exec commitlint --edit {1}

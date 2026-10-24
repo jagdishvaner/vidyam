@@ -1,0 +1,22 @@
+{
+	admin off
+	auto_https off
+}
+
+:80 {
+	handle /__caddy/health {
+		respond "ok" 200
+	}
+
+	# NestJS API, incl. SSE streams: flush immediately, never buffer.
+	handle /api/* {
+		reverse_proxy {$API_UPSTREAM} {
+			flush_interval -1
+		}
+	}
+
+	# Next.js web app (pages, assets, HMR websocket).
+	handle {
+		reverse_proxy {$WEB_UPSTREAM}
+	}
+}

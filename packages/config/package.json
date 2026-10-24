@@ -1,0 +1,39 @@
+{
+  "name": "@vidyam/config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared lint, format and TypeScript configuration for every Vidyam package.",
+  "exports": {
+    "./prettier": "./prettier/index.mjs",
+    "./eslint/base": "./eslint/base.mjs",
+    "./eslint/clean-architecture": "./eslint/clean-architecture.mjs",
+    "./eslint/no-llm-sdks": "./eslint/no-llm-sdks.mjs",
+    "./tsconfig/base.json": "./tsconfig/base.json",
+    "./tsconfig/library.json": "./tsconfig/library.json",
+    "./tsconfig/nestjs.json": "./tsconfig/nestjs.json",
+    "./tsconfig/nextjs.json": "./tsconfig/nextjs.json"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint-import-resolver-typescript": "4.4.5",
+    "eslint-plugin-boundaries": "7.3.0",
+    "globals": "17.13.0",
+    "typescript-eslint": "8.72.0"
+  },
+  "peerDependencies": {
+    "eslint": "^10.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^6.0.0"
+  },
+  "devDependencies": {
+    "eslint": "10.13.0",
+    "prettier": "3.9.10",
+    "typescript": "6.0.3",
+    "@types/node": "24.19.2"
+  }
+}

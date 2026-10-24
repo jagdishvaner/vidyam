@@ -1,0 +1,152 @@
+# Vidyam local infrastructure. Apps (web/api/ai/render) run on the host with `pnpm dev`.
+#
+# Port block 38000–38190, bound to 127.0.0.1 only (not reachable from the network):
+#   38000 app entry (Caddy)     38130 PostgreSQL      38140/38141 Qdrant HTTP/gRPC
+#   38150 Valkey (queues)       38151 Valkey (cache)  38160/38161 SeaweedFS S3/admin UI
+#   38180/38181 Mailpit SMTP/UI
+# Host apps: 38100 web, 38110 api, 38120 ai, 38170 render health, 38190 Drizzle Studio.
+#
+# Credentials below are local-development values only; .env.example documents the same ones.
+name: vidyam
+
+services:
+  postgres:
+    image: postgres:17.11-bookworm # match the RDS PostgreSQL major version
+    container_name: vidyam-postgres
+    environment:
+      POSTGRES_USER: vidyam
+      POSTGRES_PASSWORD: vidyam
+      POSTGRES_DB: vidyam
+    ports:
+      - "127.0.0.1:38130:5432"
+    volumes:
+      - pg:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vidyam -d vidyam"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  qdrant:
+    image: qdrant/qdrant:v1.20.0
+    container_name: vidyam-qdrant
+    environment:
+      QDRANT__SERVICE__API_KEY: vidyam-local-qdrant-key # same auth model as production
+    ports:
+      - "127.0.0.1:38140:6333"
+      - "127.0.0.1:38141:6334"
+    volumes:
+      - qdrant:/qdrant/storage
+    healthcheck:
+      # The image has no curl/wget; /readyz needs no API key.
+      test:
+        - CMD
+        - bash
+        - -c
+        - exec 3<>/dev/tcp/127.0.0.1/6333 && printf 'GET /readyz HTTP/1.0\r\n\r\n' >&3 && grep -q '200 OK' <&3
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  valkey-queue:
+    image: valkey/valkey:8.1.10-alpine
+    container_name: vidyam-valkey-queue
+    # BullMQ requires noeviction; AOF so queued jobs survive a restart.
+    command:
+      - "valkey-server"
+      - "--appendonly"
+      - "yes"
+      - "--appendfsync"
+      - "everysec"
+      - "--maxmemory-policy"
+      - "noeviction"
+    ports:
+      - "127.0.0.1:38150:6379"
+    volumes:
+      - valkey_queue:/data
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  valkey-cache:
+    image: valkey/valkey:8.1.10-alpine
+    container_name: vidyam-valkey-cache
+    # Caches, rate limits, resumable SSE streams: evict least-recently-used keys, no persistence.
+    command:
+      - "valkey-server"
+      - "--save"
+      - ""
+      - "--appendonly"
+      - "no"
+      - "--maxmemory"
+      - "512mb"
+      - "--maxmemory-policy"
+      - "allkeys-lru"
+    ports:
+      - "127.0.0.1:38151:6379"
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  seaweedfs:
+    image: chrislusf/seaweedfs:4.48
+    container_name: vidyam-seaweedfs
+    # All-in-one master + volume + filer + S3 gateway. Buckets are created by the S3 bootstrap (Phase 1).
+    command:
+      - server
+      - -dir=/data
+      - -ip=127.0.0.1
+      - -ip.bind=0.0.0.0
+      - -master.volumeSizeLimitMB=1024
+      - -s3
+      - -s3.port=8333
+      - -s3.config=/etc/seaweedfs/s3.json
+    ports:
+      - "127.0.0.1:38160:8333"
+      - "127.0.0.1:38161:9333"
+    volumes:
+      - s3:/data
+      - ./seaweedfs/s3.json:/etc/seaweedfs/s3.json:ro
+    healthcheck:
+      test: ["CMD-SHELL", "curl -s -o /dev/null http://127.0.0.1:8333/"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+
+  mailpit:
+    image: axllent/mailpit:v1.32.0
+    container_name: vidyam-mailpit
+    ports:
+      - "127.0.0.1:38180:1025"
+      - "127.0.0.1:38181:8025"
+    # Uses the image's built-in `mailpit readyz` healthcheck.
+
+  caddy:
+    image: caddy:2.11.7-alpine
+    container_name: vidyam-caddy
+    # Single origin, like CloudFront in production: /api/* → NestJS, everything else → Next.js.
+    environment:
+      WEB_UPSTREAM: host.docker.internal:38100
+      API_UPSTREAM: host.docker.internal:38110
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:38000:80"
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1/__caddy/health"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  pg:
+  qdrant:
+  valkey_queue:
+  s3:

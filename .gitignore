@@ -1,0 +1,31 @@
+# Dependencies & toolchains
+node_modules/
+.venv/
+.pnpm-store/
+
+# Build & tool output
+dist/
+.next/
+out/
+coverage/
+.turbo/
+cdk.out/
+*.tsbuildinfo
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+
+# Environment & secrets (only the example is committed)
+.env
+.env.*
+!.env.example
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Logs
+*.log

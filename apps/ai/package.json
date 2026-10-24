@@ -1,0 +1,14 @@
+{
+  "name": "@vidyam/ai",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turborepo wrapper for the Python AI engine; every script runs through uv.",
+  "scripts": {
+    "lint": "uv run --frozen ruff check . && uv run --frozen ruff format --check .",
+    "format": "uv run --frozen ruff format . && uv run --frozen ruff check --fix .",
+    "typecheck": "uv run --frozen pyright"
+  },
+  "devDependencies": {
+    "pyright": "1.1.414"
+  }
+}

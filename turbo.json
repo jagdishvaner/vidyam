@@ -1,0 +1,54 @@
+{
+  "$schema": "./node_modules/turbo/schema.json",
+  "ui": "stream",
+  "globalDependencies": [".nvmrc", ".python-version", "pyproject.toml", "uv.lock"],
+  "globalPassThroughEnv": ["CI", "UV_CACHE_DIR", "UV_PYTHON_INSTALL_DIR"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "codegen": {
+      "dependsOn": ["^codegen"],
+      "outputs": ["src/generated/**", "generated/**"]
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": []
+    },
+    "test:integration": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": ["VIDYAM_*"]
+    },
+    "test:live": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "passThroughEnv": ["VIDYAM_*", "ANTHROPIC_*", "OPENAI_*", "AWS_*"]
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true,
+      "passThroughEnv": ["VIDYAM_*", "ANTHROPIC_*", "OPENAI_*", "AWS_*", "NODE_ENV"]
+    },
+    "db:migrate": {
+      "cache": false,
+      "passThroughEnv": ["VIDYAM_*"]
+    },
+    "db:seed": {
+      "dependsOn": ["db:migrate"],
+      "cache": false,
+      "passThroughEnv": ["VIDYAM_*"]
+    },
+    "format": {
+      "cache": false
+    }
+  }
+}
