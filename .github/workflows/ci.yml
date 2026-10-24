@@ -59,10 +59,18 @@ jobs:
           enable-cache: true
       - run: pnpm install --frozen-lockfile
       - run: uv sync --all-packages --frozen
+      - run: cp .env.example .env
       - name: Start local infrastructure (same compose file as development)
         run: pnpm infra:up
-      - run: cp .env.example .env
+      - name: Build workspace packages
+        run: pnpm turbo run build
+      - name: Migrate the development and test databases
+        run: pnpm db:migrate
       - run: pnpm test:integration
+      - name: Python tables match the migrated schema (no TypeScript/Python drift)
+        run: |
+          pnpm --filter @vidyam/ai codegen:db
+          git diff --exit-code -- apps/ai/src/vidyam_ai/infrastructure/db/generated
       - name: Infrastructure logs on failure
         if: failure()
         run: pnpm infra:ps && docker compose -f infra/docker/compose.yml logs --tail=200

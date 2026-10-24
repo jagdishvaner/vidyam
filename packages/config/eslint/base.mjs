@@ -11,9 +11,13 @@ export default defineConfig([
   {
     languageOptions: { globals: { ...globals.node } },
     rules: {
-      "@typescript-eslint/consistent-type-imports": "error",
       "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
       eqeqeq: ["error", "smart"],
     },
+  },
+  {
+    // Needs the TypeScript parser; frameworks (e.g. Next.js) may parse plain JS files with their own.
+    files: ["**/*.ts", "**/*.tsx", "**/*.mts", "**/*.cts"],
+    rules: { "@typescript-eslint/consistent-type-imports": "error" },
   },
 ]);

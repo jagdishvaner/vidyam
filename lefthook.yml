@@ -1,5 +1,5 @@
 # Git hooks (installed by `pnpm install` via the root `prepare` script).
-# Full lint/typecheck/test runs in CI through turbo; hooks stay fast and only touch staged files.
+# Hooks only touch staged files and stay fast; full lint/typecheck/test runs in CI through turbo.
 pre-commit:
   parallel: true
   commands:
@@ -10,6 +10,11 @@ pre-commit:
     ruff:
       glob: "*.py"
       run: uv run --frozen --package vidyam-ai ruff check --force-exclude --fix {staged_files} && uv run --frozen --package vidyam-ai ruff format --force-exclude {staged_files}
+      stage_fixed: true
+    # Each file is linted with its own package's ESLint config (layer rules, Next.js rules, AI-SDK ban).
+    eslint:
+      glob: "{apps,packages}/**/*.{ts,tsx}"
+      run: pnpm exec node scripts/eslint-staged.mjs {staged_files}
       stage_fixed: true
 
 commit-msg:

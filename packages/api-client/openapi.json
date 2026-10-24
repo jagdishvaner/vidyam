@@ -29,7 +29,9 @@
                     "platformRole": {
                       "nullable": true,
                       "type": "string",
-                      "enum": ["superadmin"]
+                      "enum": [
+                        "superadmin"
+                      ]
                     },
                     "organization": {
                       "nullable": true,
@@ -47,23 +49,41 @@
                           "type": "string"
                         }
                       },
-                      "required": ["id", "name", "slug"],
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
                       "additionalProperties": false
                     },
                     "orgRole": {
                       "nullable": true,
                       "type": "string",
-                      "enum": ["admin", "reviewer", "teacher", "content_operator"]
+                      "enum": [
+                        "admin",
+                        "reviewer",
+                        "teacher",
+                        "content_operator"
+                      ]
                     }
                   },
-                  "required": ["id", "name", "email", "platformRole", "organization", "orgRole"],
+                  "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "platformRole",
+                    "organization",
+                    "orgRole"
+                  ],
                   "additionalProperties": false
                 }
               }
             }
           }
         },
-        "tags": ["identity"]
+        "tags": [
+          "identity"
+        ]
       }
     },
     "/api/health": {
@@ -82,14 +102,18 @@
                       "type": "boolean"
                     }
                   },
-                  "required": ["ok"],
+                  "required": [
+                    "ok"
+                  ],
                   "additionalProperties": false
                 }
               }
             }
           }
         },
-        "tags": ["system"]
+        "tags": [
+          "system"
+        ]
       }
     },
     "/api/system/status": {
@@ -114,7 +138,11 @@
                         "properties": {
                           "service": {
                             "type": "string",
-                            "enum": ["api", "ai", "render"]
+                            "enum": [
+                              "api",
+                              "ai",
+                              "render"
+                            ]
                           },
                           "version": {
                             "type": "string"
@@ -143,24 +171,39 @@
                                   "type": "string"
                                 }
                               },
-                              "required": ["name", "ok", "latencyMs", "detail"],
+                              "required": [
+                                "name",
+                                "ok",
+                                "latencyMs",
+                                "detail"
+                              ],
                               "additionalProperties": false
                             }
                           }
                         },
-                        "required": ["service", "version", "ok", "dependencies"],
+                        "required": [
+                          "service",
+                          "version",
+                          "ok",
+                          "dependencies"
+                        ],
                         "additionalProperties": false
                       }
                     }
                   },
-                  "required": ["ok", "services"],
+                  "required": [
+                    "ok",
+                    "services"
+                  ],
                   "additionalProperties": false
                 }
               }
             }
           }
         },
-        "tags": ["system"]
+        "tags": [
+          "system"
+        ]
       }
     },
     "/api/dashboard/summary": {
@@ -191,14 +234,20 @@
                       "maximum": 9007199254740991
                     }
                   },
-                  "required": ["sources", "questions", "documents"],
+                  "required": [
+                    "sources",
+                    "questions",
+                    "documents"
+                  ],
                   "additionalProperties": false
                 }
               }
             }
           }
         },
-        "tags": ["dashboard"]
+        "tags": [
+          "dashboard"
+        ]
       }
     }
   },

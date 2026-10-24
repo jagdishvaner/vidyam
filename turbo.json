@@ -49,6 +49,14 @@
     },
     "format": {
       "cache": false
+    },
+    "bootstrap": {
+      "cache": false,
+      "passThroughEnv": ["VIDYAM_*", "AWS_*"]
+    },
+    "test:e2e": {
+      "cache": false,
+      "passThroughEnv": ["VIDYAM_*"]
     }
   }
 }

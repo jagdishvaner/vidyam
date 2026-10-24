@@ -30,7 +30,10 @@
     "infra:up": "docker compose -f infra/docker/compose.yml up -d --wait",
     "infra:down": "docker compose -f infra/docker/compose.yml down",
     "infra:ps": "docker compose -f infra/docker/compose.yml ps",
-    "infra:logs": "docker compose -f infra/docker/compose.yml logs -f --tail=100"
+    "infra:logs": "docker compose -f infra/docker/compose.yml logs -f --tail=100",
+    "bootstrap": "turbo run bootstrap",
+    "local:init": "pnpm infra:up && pnpm db:seed && pnpm bootstrap",
+    "test:e2e": "turbo run test:e2e"
   },
   "prettier": "@vidyam/config/prettier",
   "devDependencies": {

@@ -3,3 +3,4 @@ uv.lock
 **/generated/**
 **/.turbo/**
 .venv/
+packages/api-client/openapi.json
