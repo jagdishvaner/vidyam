@@ -17,6 +17,19 @@ class VidyamContracts(RootModel[Any]):
     )
 
 
+class AiQueueName(StrEnum):
+    cpu_parse = "cpu-parse"
+    llm_batch = "llm-batch"
+    llm_live = "llm-live"
+    embed = "embed"
+    chem = "chem"
+    index = "index"
+    generate = "generate"
+    verify = "verify"
+    pool = "pool"
+    eval = "eval"
+
+
 class Answer1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -302,6 +315,24 @@ class QuestionType(StrEnum):
     passage = "passage"
     short_answer = "short_answer"
     long_answer = "long_answer"
+
+
+class QueueName(StrEnum):
+    cpu_parse = "cpu-parse"
+    llm_batch = "llm-batch"
+    llm_live = "llm-live"
+    embed = "embed"
+    chem = "chem"
+    index = "index"
+    generate = "generate"
+    verify = "verify"
+    pool = "pool"
+    eval = "eval"
+    render = "render"
+
+
+class QueuePrefix(RootModel[Literal["vidyam"]]):
+    root: Literal["vidyam"] = Field(..., title="QueuePrefix")
 
 
 class Service(StrEnum):

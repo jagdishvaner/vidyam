@@ -22,8 +22,25 @@ export const QUEUES = {
 } as const;
 export type QueueName = (typeof QUEUES)[keyof typeof QUEUES]["name"];
 
+/** Exported so the Python workers consume exactly the queues the API produces to. */
+export const QueueName = contract(
+  "QueueName",
+  z.enum(Object.values(QUEUES).map((q) => q.name) as [QueueName, ...QueueName[]]),
+);
+
+/** Queues processed by the Python AI engine (everything except rendering). */
+export const AiQueueName = contract(
+  "AiQueueName",
+  z.enum(
+    Object.values(QUEUES)
+      .filter((q) => q.consumer === "ai")
+      .map((q) => q.name) as [QueueName, ...QueueName[]],
+  ),
+);
+
 /** BullMQ key prefix shared by every producer and consumer. */
 export const QUEUE_PREFIX = "vidyam";
+export const QueuePrefix = contract("QueuePrefix", z.literal(QUEUE_PREFIX));
 
 /**
  * Common fields of every job payload. Payloads carry ids only (never content), a schema version so

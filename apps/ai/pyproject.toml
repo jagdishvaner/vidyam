@@ -3,13 +3,33 @@ name = "vidyam-ai"
 version = "0.1.0"
 description = "Vidyam AI engine: ingestion, retrieval, generation and verification. The only service that calls LLMs, embedding models and the vector database."
 requires-python = ">=3.12,<3.13"
-dependencies = []
+dependencies = [
+    "asyncpg==0.32.0",
+    "boto3==1.43.118",
+    "bullmq==3.4.3",
+    "fastapi==0.162.0",
+    "pydantic[email]==2.14.1",
+    "pydantic-settings==2.16.1",
+    "qdrant-client==1.20.0",
+    "redis==8.1.0",
+    "sqlalchemy[asyncio]==2.1.6",
+    "uvicorn[standard]==0.54.0",
+]
+
+[project.scripts]
+vidyam-ai = "vidyam_ai.interface.cli:main"
 
 [dependency-groups]
 dev = [
+    "boto3-stubs[s3]==1.43.118",
     "datamodel-code-generator==0.86.0",
+    "httpx2==2.16.0",
+    "import-linter==2.15",
+    "psycopg[binary]==3.3.6",
     "pytest==9.1.1",
+    "pytest-asyncio==1.4.0",
     "ruff==0.17.2",
+    "sqlacodegen==4.0.4",
 ]
 
 [build-system]
@@ -21,9 +41,56 @@ packages = ["src/vidyam_ai"]
 
 [tool.pyright]
 include = ["src"]
-exclude = ["src/vidyam_ai/generated"]
+exclude = ["src/vidyam_ai/generated", "src/vidyam_ai/infrastructure/db/generated"]
 pythonVersion = "3.12"
 typeCheckingMode = "strict"
+# bullmq and redis ship without type information; our own code stays fully strict.
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
 # The uv workspace keeps one virtualenv at the repo root.
 venvPath = "../.."
 venv = ".venv"
+
+# Clean architecture (ADR 0002): each layer may import only the layers below it. The interface layer is also the
+# composition root that wires infrastructure into use cases.
+[tool.importlinter]
+root_package = "vidyam_ai"
+# Needed so the "domain stays pure" contract can forbid third-party packages.
+include_external_packages = true
+
+[[tool.importlinter.contracts]]
+name = "Clean architecture layers"
+type = "layers"
+layers = [
+    "vidyam_ai.interface",
+    "vidyam_ai.infrastructure",
+    "vidyam_ai.application",
+    "vidyam_ai.domain",
+]
+
+[[tool.importlinter.contracts]]
+name = "Domain stays pure"
+type = "forbidden"
+source_modules = ["vidyam_ai.domain"]
+forbidden_modules = [
+    "anthropic",
+    "asyncpg",
+    "boto3",
+    "bullmq",
+    "fastapi",
+    "openai",
+    "pydantic",
+    "qdrant_client",
+    "redis",
+    "sqlalchemy",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+testpaths = ["tests"]
+filterwarnings = [
+    # Unit tests start the app without a Qdrant server; the client's version probe is expected to fail there.
+    "ignore:Failed to obtain server version:UserWarning",
+]

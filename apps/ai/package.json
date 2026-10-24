@@ -4,10 +4,17 @@
   "private": true,
   "description": "Turborepo wrapper for the Python AI engine; every script runs through uv.",
   "scripts": {
-    "lint": "uv run --frozen ruff check . && uv run --frozen ruff format --check .",
+    "dev": "uv run --frozen vidyam-ai dev",
+    "start": "uv run --frozen vidyam-ai serve",
+    "worker": "uv run --frozen vidyam-ai worker",
+    "bootstrap": "uv run --frozen vidyam-ai bootstrap",
+    "lint": "uv run --frozen ruff check . && uv run --frozen ruff format --check . && uv run --frozen lint-imports",
     "format": "uv run --frozen ruff format . && uv run --frozen ruff check --fix .",
     "typecheck": "uv run --frozen pyright",
-    "codegen": "uv run --frozen datamodel-codegen --input ../../packages/contracts/generated/json-schema/contracts.schema.json --input-file-type jsonschema --output src/vidyam_ai/generated/contracts.py --output-model-type pydantic_v2.BaseModel --target-python-version 3.12 --use-standard-collections --use-union-operator --use-double-quotes --field-constraints --snake-case-field --allow-population-by-field-name --use-schema-description --disable-timestamp --custom-file-header-path codegen-header.txt"
+    "test": "uv run --frozen pytest tests/unit",
+    "test:integration": "uv run --frozen pytest tests/integration",
+    "codegen": "uv run --frozen datamodel-codegen --input ../../packages/contracts/generated/json-schema/contracts.schema.json --input-file-type jsonschema --output src/vidyam_ai/generated/contracts.py --output-model-type pydantic_v2.BaseModel --target-python-version 3.12 --use-standard-collections --use-union-operator --use-double-quotes --field-constraints --snake-case-field --allow-population-by-field-name --use-schema-description --disable-timestamp --custom-file-header-path codegen-header.txt",
+    "codegen:db": "uv run --frozen python scripts/generate_tables.py"
   },
   "devDependencies": {
     "@vidyam/contracts": "workspace:*",

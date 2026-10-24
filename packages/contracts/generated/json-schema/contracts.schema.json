@@ -3,6 +3,22 @@
   "title": "VidyamContracts",
   "description": "Generated from @vidyam/contracts. Do not edit; run `pnpm codegen`.",
   "$defs": {
+    "AiQueueName": {
+      "title": "AiQueueName",
+      "type": "string",
+      "enum": [
+        "cpu-parse",
+        "llm-batch",
+        "llm-live",
+        "embed",
+        "chem",
+        "index",
+        "generate",
+        "verify",
+        "pool",
+        "eval"
+      ]
+    },
     "Answer": {
       "title": "Answer",
       "oneOf": [
@@ -906,6 +922,28 @@
         "short_answer",
         "long_answer"
       ]
+    },
+    "QueueName": {
+      "title": "QueueName",
+      "type": "string",
+      "enum": [
+        "cpu-parse",
+        "llm-batch",
+        "llm-live",
+        "embed",
+        "chem",
+        "index",
+        "generate",
+        "verify",
+        "pool",
+        "eval",
+        "render"
+      ]
+    },
+    "QueuePrefix": {
+      "title": "QueuePrefix",
+      "type": "string",
+      "const": "vidyam"
     },
     "ServiceHealth": {
       "title": "ServiceHealth",
