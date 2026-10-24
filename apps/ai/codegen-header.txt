@@ -1,0 +1,1 @@
+# Generated from packages/contracts by `pnpm codegen`. Do not edit by hand.

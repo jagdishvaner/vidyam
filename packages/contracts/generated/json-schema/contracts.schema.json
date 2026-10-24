@@ -1,0 +1,874 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "VidyamContracts",
+  "description": "Generated from @vidyam/contracts. Do not edit; run `pnpm codegen`.",
+  "$defs": {
+    "Answer": {
+      "title": "Answer",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "options"
+            },
+            "keys": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "keys"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "numeric"
+            },
+            "value": {
+              "type": "number"
+            },
+            "tolerance": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "tolerance"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "text"
+            },
+            "modelAnswer": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "modelAnswer"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "DependencyStatus": {
+      "title": "DependencyStatus",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "latencyMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "detail": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "ok",
+        "latencyMs",
+        "detail"
+      ],
+      "additionalProperties": false
+    },
+    "IngestSourceJob": {
+      "title": "IngestSourceJob",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "traceparent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "const": "ingest_source"
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "traceparent",
+        "kind",
+        "sourceId"
+      ],
+      "additionalProperties": false
+    },
+    "JobEnvelope": {
+      "title": "JobEnvelope",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "traceparent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "traceparent"
+      ],
+      "additionalProperties": false
+    },
+    "Language": {
+      "title": "Language",
+      "type": "string",
+      "enum": [
+        "hi",
+        "en"
+      ]
+    },
+    "Licence": {
+      "title": "Licence",
+      "type": "string",
+      "enum": [
+        "own",
+        "third_party",
+        "pyq"
+      ]
+    },
+    "OrgRole": {
+      "title": "OrgRole",
+      "type": "string",
+      "enum": [
+        "admin",
+        "reviewer",
+        "teacher",
+        "content_operator"
+      ]
+    },
+    "PaperDocument": {
+      "title": "PaperDocument",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/PaperSpec"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "instructions": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "itemId": {
+                      "type": "string"
+                    },
+                    "questionId": {
+                      "type": "string",
+                      "format": "uuid"
+                    },
+                    "slotId": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "marks": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "itemId",
+                    "questionId",
+                    "slotId",
+                    "marks"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            },
+            "required": [
+              "name",
+              "instructions",
+              "items"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "spec",
+        "sections"
+      ],
+      "additionalProperties": false
+    },
+    "PaperSpec": {
+      "title": "PaperSpec",
+      "type": "object",
+      "properties": {
+        "examCode": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "languages": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Language"
+          }
+        },
+        "layout": {
+          "type": "string",
+          "enum": [
+            "hindi_then_english",
+            "side_by_side",
+            "single_language"
+          ]
+        },
+        "durationMinutes": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "totalMarks": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "negativeMarking": {
+          "type": "number",
+          "minimum": 0
+        },
+        "taxonomyNodeIds": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "sections": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "qtype": {
+                "$ref": "#/$defs/QuestionType"
+              },
+              "count": {
+                "type": "integer",
+                "exclusiveMinimum": 0,
+                "maximum": 9007199254740991
+              },
+              "marksEach": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "difficultyMix": {
+                "type": "object",
+                "properties": {
+                  "easy": {
+                    "type": "number"
+                  },
+                  "medium": {
+                    "type": "number"
+                  },
+                  "hard": {
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "easy",
+                  "medium",
+                  "hard"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "name",
+              "qtype",
+              "count",
+              "marksEach",
+              "difficultyMix"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "allowPyqReuse": {
+          "type": "boolean"
+        },
+        "studentBatchId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "examCode",
+        "title",
+        "languages",
+        "layout",
+        "durationMinutes",
+        "totalMarks",
+        "negativeMarking",
+        "taxonomyNodeIds",
+        "sections",
+        "allowPyqReuse",
+        "studentBatchId"
+      ],
+      "additionalProperties": false
+    },
+    "PingJob": {
+      "title": "PingJob",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "traceparent": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "const": "ping"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "traceparent",
+        "kind",
+        "message"
+      ],
+      "additionalProperties": false
+    },
+    "ProgressEvent": {
+      "title": "ProgressEvent",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "stage"
+            },
+            "stage": {
+              "type": "string"
+            },
+            "done": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            "total": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "type",
+            "stage",
+            "done",
+            "total"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "item_ready"
+            },
+            "itemId": {
+              "type": "string"
+            },
+            "questionId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "type",
+            "itemId",
+            "questionId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "item_verified"
+            },
+            "itemId": {
+              "type": "string"
+            },
+            "check": {
+              "type": "string"
+            },
+            "passed": {
+              "type": "boolean"
+            },
+            "detail": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "itemId",
+            "check",
+            "passed",
+            "detail"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "error"
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "message",
+            "retryable"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "done"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Question": {
+      "title": "Question",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "origin": {
+          "$ref": "#/$defs/QuestionOrigin"
+        },
+        "status": {
+          "$ref": "#/$defs/QuestionStatus"
+        },
+        "content": {
+          "$ref": "#/$defs/QuestionContent"
+        },
+        "authoritativeLanguage": {
+          "$ref": "#/$defs/Language"
+        },
+        "answer": {
+          "$ref": "#/$defs/Answer"
+        },
+        "marks": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "negativeMarks": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "taxonomyNodeIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "figureAssetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "licence": {
+          "$ref": "#/$defs/Licence"
+        },
+        "sourceChunkIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "orgId",
+        "qtype",
+        "origin",
+        "status",
+        "content",
+        "authoritativeLanguage",
+        "answer",
+        "marks",
+        "negativeMarks",
+        "difficulty",
+        "taxonomyNodeIds",
+        "figureAssetIds",
+        "licence",
+        "sourceChunkIds"
+      ],
+      "additionalProperties": false
+    },
+    "QuestionContent": {
+      "title": "QuestionContent",
+      "type": "object",
+      "properties": {
+        "hi": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "en": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "hi",
+        "en"
+      ],
+      "additionalProperties": false
+    },
+    "QuestionOption": {
+      "title": "QuestionOption",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "QuestionOrigin": {
+      "title": "QuestionOrigin",
+      "type": "string",
+      "enum": [
+        "imported",
+        "generated",
+        "pool"
+      ]
+    },
+    "QuestionStatus": {
+      "title": "QuestionStatus",
+      "type": "string",
+      "enum": [
+        "draft",
+        "verified",
+        "flagged",
+        "approved",
+        "published",
+        "retired"
+      ]
+    },
+    "QuestionText": {
+      "title": "QuestionText",
+      "type": "object",
+      "properties": {
+        "stem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/QuestionOption"
+          }
+        },
+        "solution": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "stem",
+        "options",
+        "solution"
+      ],
+      "additionalProperties": false
+    },
+    "QuestionType": {
+      "title": "QuestionType",
+      "type": "string",
+      "enum": [
+        "mcq_single",
+        "mcq_multi",
+        "numerical",
+        "integer",
+        "assertion_reason",
+        "match_columns",
+        "statement",
+        "passage",
+        "short_answer",
+        "long_answer"
+      ]
+    },
+    "ServiceHealth": {
+      "title": "ServiceHealth",
+      "type": "object",
+      "properties": {
+        "service": {
+          "type": "string",
+          "enum": [
+            "api",
+            "ai",
+            "render"
+          ]
+        },
+        "version": {
+          "type": "string"
+        },
+        "ok": {
+          "type": "boolean"
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DependencyStatus"
+          }
+        }
+      },
+      "required": [
+        "service",
+        "version",
+        "ok",
+        "dependencies"
+      ],
+      "additionalProperties": false
+    },
+    "Slot": {
+      "title": "Slot",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "sectionIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "taxonomyNodeId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "marks": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "sectionIndex",
+        "qtype",
+        "taxonomyNodeId",
+        "difficulty",
+        "marks"
+      ],
+      "additionalProperties": false
+    },
+    "SourceLanguage": {
+      "title": "SourceLanguage",
+      "type": "string",
+      "enum": [
+        "hi",
+        "en",
+        "mixed"
+      ]
+    }
+  }
+}

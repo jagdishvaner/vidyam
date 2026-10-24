@@ -6,9 +6,11 @@
   "scripts": {
     "lint": "uv run --frozen ruff check . && uv run --frozen ruff format --check .",
     "format": "uv run --frozen ruff format . && uv run --frozen ruff check --fix .",
-    "typecheck": "uv run --frozen pyright"
+    "typecheck": "uv run --frozen pyright",
+    "codegen": "uv run --frozen datamodel-codegen --input ../../packages/contracts/generated/json-schema/contracts.schema.json --input-file-type jsonschema --output src/vidyam_ai/generated/contracts.py --output-model-type pydantic_v2.BaseModel --target-python-version 3.12 --use-standard-collections --use-union-operator --use-double-quotes --field-constraints --snake-case-field --allow-population-by-field-name --use-schema-description --disable-timestamp --custom-file-header-path codegen-header.txt"
   },
   "devDependencies": {
+    "@vidyam/contracts": "workspace:*",
     "pyright": "1.1.414"
   }
 }

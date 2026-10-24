@@ -10,7 +10,7 @@
     },
     "codegen": {
       "dependsOn": ["^codegen"],
-      "outputs": ["src/generated/**", "generated/**"]
+      "outputs": ["generated/**", "src/**/generated/**"]
     },
     "lint": {
       "dependsOn": ["^build"]
