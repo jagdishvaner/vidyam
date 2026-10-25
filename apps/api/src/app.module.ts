@@ -6,6 +6,7 @@ import { EnvModule } from "./config/env.module.js";
 import { DashboardModule } from "./modules/dashboard/dashboard.module.js";
 import { IdentityModule } from "./modules/identity/identity.module.js";
 import { SystemModule } from "./modules/system/system.module.js";
+import { CacheModule } from "./shared/cache/cache.module.js";
 import { DatabaseModule } from "./shared/database/database.module.js";
 import { DomainErrorFilter } from "./shared/kernel/domain-error.filter.js";
 import { QueueModule } from "./shared/queue/queue.module.js";
@@ -23,6 +24,7 @@ export class AppModule {
       imports: [
         EnvModule.forRoot(env),
         DatabaseModule,
+        CacheModule,
         IdentityModule,
         ...(queues ? [QueueModule] : []),
         SystemModule,

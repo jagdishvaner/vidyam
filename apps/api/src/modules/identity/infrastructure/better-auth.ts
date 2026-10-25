@@ -1,5 +1,6 @@
+import { Logger } from "@nestjs/common";
 import { schema, type Database } from "@vidyam/db";
-import { betterAuth } from "better-auth";
+import { betterAuth, type SecondaryStorage } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { admin, organization } from "better-auth/plugins";
 import { asc, eq } from "drizzle-orm";
@@ -9,11 +10,23 @@ import { PLATFORM_ADMIN } from "../domain/roles.js";
 import { accessControl, orgRoles, platformAccessControl, platformRoles } from "./access-control.js";
 import type { Mailer } from "./mailer.js";
 
+const logger = new Logger("Auth");
+
 /**
  * Runtime Better Auth config. Plugins and model names must match packages/db/scripts/better-auth.schema.ts,
  * which generates the tables; the integration tests exercise both against the migrated database.
  */
-export function createAuth({ env, db, mailer }: { env: Env; db: Database; mailer: Mailer }) {
+export function createAuth({
+  env,
+  db,
+  mailer,
+  cache,
+}: {
+  env: Env;
+  db: Database;
+  mailer: Mailer;
+  cache: SecondaryStorage;
+}) {
   return betterAuth({
     appName: "Vidyam",
     // The browser reaches the API through the app origin (Caddy locally, CloudFront on AWS).
@@ -34,19 +47,38 @@ export function createAuth({ env, db, mailer }: { env: Env; db: Database; mailer
       },
     }),
     advanced: { database: { generateId: "uuid" } },
+    secondaryStorage: cache,
     user: { modelName: "users" },
-    session: { modelName: "sessions" },
+    // Postgres stays the source of truth for sessions: the cache is LRU-evicting.
+    session: { modelName: "sessions", storeSessionInDatabase: true },
+    rateLimit: {
+      enabled: true, // also locally, so development behaves like production
+      storage: "secondary-storage",
+      window: 60,
+      max: 300,
+      customRules: {
+        // Limits are per client IP, and a center's staff usually share one internet connection:
+        // generous enough for everyone signing in at 9 am, still far too low for password guessing.
+        "/sign-in/email": { window: 60, max: 30 },
+        "/sign-up/email": { window: 60, max: 20 },
+        "/request-password-reset": { window: 600, max: 10 },
+        "/reset-password": { window: 600, max: 20 },
+      },
+    },
     account: { modelName: "accounts" },
     verification: { modelName: "verifications" },
     emailAndPassword: {
       enabled: true,
       minPasswordLength: 10,
+      // Not awaited: a response that waits on SMTP only for real accounts would reveal which emails exist.
       async sendResetPassword({ user, url }) {
-        await mailer.send({
-          to: user.email,
-          subject: "Reset your Vidyam password",
-          text: `Open this link to choose a new password:\n\n${url}\n\nIf you didn't ask for this, ignore this email.`,
-        });
+        mailer
+          .send({
+            to: user.email,
+            subject: "Reset your Vidyam password",
+            text: `Open this link to choose a new password:\n\n${url}\n\nIf you didn't ask for this, ignore this email.`,
+          })
+          .catch((error: unknown) => logger.error(`Password reset email failed: ${String(error)}`));
       },
     },
     databaseHooks: {

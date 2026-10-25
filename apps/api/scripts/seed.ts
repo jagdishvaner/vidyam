@@ -8,6 +8,7 @@ import { and, eq } from "drizzle-orm";
 import { loadEnv } from "../src/config/env.js";
 import { PLATFORM_ADMIN } from "../src/modules/identity/domain/roles.js";
 import { createAuth } from "../src/modules/identity/infrastructure/better-auth.js";
+import { memorySecondaryStorage } from "../src/modules/identity/infrastructure/valkey-secondary-storage.js";
 
 const env = loadEnv();
 const required = (name: string) => {
@@ -28,7 +29,7 @@ const orgSlug = orgName
 
 // Seeds run as the schema owner (row-level security does not apply) and send no email.
 const { db, pool } = createDatabase(required("VIDYAM_DATABASE_ADMIN_URL"), { max: 2 });
-const auth = createAuth({ env, db, mailer: { send: async () => {} } });
+const auth = createAuth({ env, db, mailer: { send: async () => {} }, cache: memorySecondaryStorage() });
 
 try {
   await seedLlmRegistry(db);

@@ -16,7 +16,7 @@ import {
 } from "@vidyam/db";
 import { eq as sqlEq, inArray as sqlIn } from "drizzle-orm";
 import request from "supertest";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";
 
 import { AppModule } from "../src/app.module.js";
 import { loadEnv } from "../src/config/env.js";
@@ -26,12 +26,14 @@ const testDbUrl = process.env.VIDYAM_TEST_DATABASE_URL!;
 const testAdminUrl = process.env.VIDYAM_TEST_DATABASE_ADMIN_URL!;
 const env = { ...base, VIDYAM_DATABASE_URL: testDbUrl };
 const ORIGIN = env.VIDYAM_APP_URL;
+const MAILPIT = "http://localhost:38181";
 
 let app: INestApplication;
 let owner: DatabaseHandle;
 const orgA = crypto.randomUUID();
 const orgB = crypto.randomUUID();
 const email = `teacher-${crypto.randomUUID()}@vidyam.test`;
+const forgetfulEmail = `forgetful-${crypto.randomUUID()}@vidyam.test`;
 const password = "a-long-test-password-1";
 
 async function signIn(): Promise<string[]> {
@@ -81,7 +83,7 @@ beforeAll(async () => {
 
 afterAll(async () => {
   await owner?.db.delete(schema.organizations).where(sqlIn(schema.organizations.id, [orgA, orgB]));
-  await owner?.db.delete(schema.users).where(sqlEq(schema.users.email, email));
+  await owner?.db.delete(schema.users).where(sqlIn(schema.users.email, [email, forgetfulEmail]));
   await app?.close();
   await owner?.pool.end();
 });
@@ -123,5 +125,49 @@ describe("API", () => {
     await request(app.getHttpServer()).get("/api/admin/queues").expect(401);
     const cookies = await signIn();
     await request(app.getHttpServer()).get("/api/admin/queues").set("Cookie", cookies).expect(403);
+  });
+
+  it("resets a forgotten password from the emailed link", async () => {
+    const server = app.getHttpServer();
+    const newPassword = "a-brand-new-password-2";
+    await request(server)
+      .post("/api/auth/sign-up/email")
+      .set("Origin", ORIGIN)
+      .send({ email: forgetfulEmail, password, name: "Forgetful Teacher" })
+      .expect(200);
+
+    await request(server)
+      .post("/api/auth/request-password-reset")
+      .set("Origin", ORIGIN)
+      .send({ email: forgetfulEmail, redirectTo: `${ORIGIN}/en/reset-password` })
+      .expect(200);
+
+    // The email is sent in the background (see better-auth.ts), so wait for it to land in Mailpit.
+    const token = await vi.waitFor(
+      async () => {
+        const search = await fetch(`${MAILPIT}/api/v1/search?query=to:"${forgetfulEmail}"`);
+        const id = ((await search.json()) as { messages: { ID: string }[] }).messages[0]?.ID;
+        if (!id) throw new Error("reset email not delivered yet");
+        const message = (await (await fetch(`${MAILPIT}/api/v1/message/${id}`)).json()) as { Text: string };
+        return message.Text.match(/\/reset-password\/([^?\s]+)/)![1]!;
+      },
+      { timeout: 10_000, interval: 200 },
+    );
+
+    await request(server)
+      .post("/api/auth/reset-password")
+      .set("Origin", ORIGIN)
+      .send({ newPassword, token })
+      .expect(200);
+    await request(server)
+      .post("/api/auth/sign-in/email")
+      .set("Origin", ORIGIN)
+      .send({ email: forgetfulEmail, password })
+      .expect(401);
+    await request(server)
+      .post("/api/auth/sign-in/email")
+      .set("Origin", ORIGIN)
+      .send({ email: forgetfulEmail, password: newPassword })
+      .expect(200);
   });
 });
