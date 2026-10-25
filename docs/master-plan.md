@@ -6,6 +6,9 @@
 >   Turborepo's experimental Python support has no `dev` task or JS→Python dependencies. See ADR 0001.
 > - Node **24** LTS instead of 22 (22 loses support in April 2027, around launch). TypeScript pinned to 6.0 because
 >   typescript-eslint does not yet support TypeScript 7. See ADR 0007.
+> - No email: center admins create logins and reset passwords; Mailpit is gone. See ADR 0011.
+> - Content is handed over directly and ingested from a folder; no upload screen yet (step 27 deferred). Videos
+>   arrive as text from the center (step 42 dropped). See ADR 0012.
 
 ## Context
 

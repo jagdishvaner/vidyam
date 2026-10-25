@@ -46,8 +46,16 @@ pnpm local:init         # start infrastructure, migrate, seed, create S3 buckets
 pnpm dev                # web + API + AI engine (with queue workers), hot reload
 ```
 
-Open **http://localhost:38000** and sign in with the seeded admin from `.env`
-(`VIDYAM_SEED_ADMIN_EMAIL` / `VIDYAM_SEED_ADMIN_PASSWORD`).
+Open **http://localhost:38000** and sign in. `pnpm db:seed` creates these local logins (values from `.env`):
+
+| Role                    | Email (login ID)        | Password                |
+| ----------------------- | ----------------------- | ----------------------- |
+| Platform + center admin | `admin@vidyam.local`    | `change-me-locally-123` |
+| Teacher                 | `teacher@vidyam.local`  | `demo-password-123`     |
+| Reviewer                | `reviewer@vidyam.local` | `demo-password-123`     |
+| Content operator        | `operator@vidyam.local` | `demo-password-123`     |
+
+There is no email: the admin adds people and resets passwords under **Members** (ADR 0011).
 
 Useful local tools:
 
@@ -56,10 +64,9 @@ Useful local tools:
 | The app                                                 | http://localhost:38000                  |
 | API docs (OpenAPI)                                      | http://localhost:38000/api/docs         |
 | Queue dashboard (platform admin)                        | http://localhost:38000/api/admin/queues |
-| Emails (invites, password resets)                       | http://localhost:38181                  |
 | Qdrant dashboard (API key in `.env`)                    | http://localhost:38140/dashboard        |
-| SeaweedFS (S3) admin                                    | http://localhost:38161                  |
-| Database browser (`pnpm --filter @vidyam/db db:studio`) | http://localhost:38190                  |
+| SeaweedFS (S3) status                                   | http://localhost:38161                  |
+| Database browser (`pnpm --filter @vidyam/db db:studio`) | https://local.drizzle.studio?port=38190 |
 
 ### Run everything in Docker
 
@@ -86,7 +93,6 @@ Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reac
 | 38151         | Valkey for caches (LRU)                          |
 | 38160 / 38161 | SeaweedFS S3 API / admin UI                      |
 | 38170         | render worker health                             |
-| 38180 / 38181 | Mailpit SMTP / web UI                            |
 | 38190         | Drizzle Studio                                   |
 
 ## Everyday commands
