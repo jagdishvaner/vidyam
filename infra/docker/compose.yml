@@ -3,7 +3,6 @@
 # Port block 38000–38190, bound to 127.0.0.1 only (not reachable from the network):
 #   38000 app entry (Caddy)     38130 PostgreSQL      38140/38141 Qdrant HTTP/gRPC
 #   38150 Valkey (queues)       38151 Valkey (cache)  38160/38161 SeaweedFS S3/admin UI
-#   38180/38181 Mailpit SMTP/UI
 # Host apps: 38100 web, 38110 api, 38120 ai, 38170 render health, 38190 Drizzle Studio.
 #
 # Credentials below are local-development values only; .env.example documents the same ones.
@@ -118,14 +117,6 @@ services:
       timeout: 3s
       retries: 40
 
-  mailpit:
-    image: axllent/mailpit:v1.32.0
-    container_name: vidyam-mailpit
-    ports:
-      - "127.0.0.1:38180:1025"
-      - "127.0.0.1:38181:8025"
-    # Uses the image's built-in `mailpit readyz` healthcheck.
-
   caddy:
     image: caddy:2.11.7-alpine
     container_name: vidyam-caddy
@@ -160,7 +151,6 @@ services:
       VIDYAM_CACHE_REDIS_URL: redis://valkey-cache:6379
       VIDYAM_QDRANT_URL: http://qdrant:6333
       VIDYAM_S3_ENDPOINT: http://seaweedfs:8333
-      VIDYAM_SMTP_URL: smtp://mailpit:1025
       VIDYAM_AI_INTERNAL_URL: http://ai:38120
       VIDYAM_API_INTERNAL_URL: http://api:38110
     depends_on: &app-depends
