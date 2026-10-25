@@ -3,16 +3,18 @@
 Each record captures one decision: the context, what we chose, and what it costs us. A new decision that
 changes an old one gets a new record that supersedes it; old records are not rewritten.
 
-| #                                               | Decision                                                       | Status   |
-| ----------------------------------------------- | -------------------------------------------------------------- | -------- |
-| [0001](0001-monorepo-turborepo-uv.md)           | Turborepo + pnpm monorepo, uv workspace for Python             | Accepted |
-| [0002](0002-clean-architecture.md)              | Clean (hexagonal) architecture in every service, lint-enforced | Accepted |
-| [0003](0003-service-boundaries.md)              | Service boundaries: web, api (NestJS), ai (Python), render     | Accepted |
-| [0004](0004-data-layer.md)                      | PostgreSQL + Qdrant + 2× Valkey + S3                           | Accepted |
-| [0005](0005-background-jobs-bullmq.md)          | BullMQ across Node and Python; Postgres as pipeline record     | Accepted |
-| [0006](0006-auth-better-auth.md)                | Better Auth inside NestJS (Express adapter)                    | Accepted |
-| [0007](0007-local-environment-and-toolchain.md) | Local ports 38000–38190, toolchain pins                        | Accepted |
-| [0008](0008-llm-ownership-and-gateway.md)       | Only the Python AI engine calls LLMs                           | Accepted |
+| #                                               | Decision                                                            | Status   |
+| ----------------------------------------------- | ------------------------------------------------------------------- | -------- |
+| [0001](0001-monorepo-turborepo-uv.md)           | Turborepo + pnpm monorepo, uv workspace for Python                  | Accepted |
+| [0002](0002-clean-architecture.md)              | Clean (hexagonal) architecture in every service, lint-enforced      | Accepted |
+| [0003](0003-service-boundaries.md)              | Service boundaries: web, api (NestJS), ai (Python), render          | Accepted |
+| [0004](0004-data-layer.md)                      | PostgreSQL + Qdrant + 2× Valkey + S3                                | Accepted |
+| [0005](0005-background-jobs-bullmq.md)          | BullMQ across Node and Python; Postgres as pipeline record          | Accepted |
+| [0006](0006-auth-better-auth.md)                | Better Auth inside NestJS (Express adapter)                         | Accepted |
+| [0007](0007-local-environment-and-toolchain.md) | Local ports 38000–38190, toolchain pins                             | Accepted |
+| [0008](0008-llm-ownership-and-gateway.md)       | Only the Python AI engine calls LLMs                                | Accepted |
+| [0009](0009-web-rendering-and-i18n.md)          | Static shells + streamed user data; locale in the URL               | Accepted |
+| [0010](0010-api-framework-choices.md)           | NestJS 12 (ESM), Standard Schema validation, OpenAPI from contracts | Accepted |
 
 The full plan these decisions come from: [`../master-plan.md`](../master-plan.md).
 
