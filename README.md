@@ -63,7 +63,7 @@ Useful local tools:
 | ------------------------------------------------------- | --------------------------------------- |
 | The app                                                 | http://localhost:38000                  |
 | API docs (OpenAPI)                                      | http://localhost:38000/api/docs         |
-| Queue dashboard (platform admin)                        | http://localhost:38000/api/admin/queues |
+| Workflows: background work, step by step (Temporal UI)  | http://localhost:38152                  |
 | Qdrant dashboard (API key in `.env`)                    | http://localhost:38140/dashboard        |
 | SeaweedFS (S3) status                                   | http://localhost:38161                  |
 | Database browser (`pnpm --filter @vidyam/db db:studio`) | https://local.drizzle.studio?port=38190 |
@@ -89,8 +89,9 @@ Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reac
 | 38120         | ai (Python, internal)                            |
 | 38130         | PostgreSQL 17 (`vidyam`, tests: `vidyam_test`)   |
 | 38140 / 38141 | Qdrant HTTP / gRPC (API key in `.env.example`)   |
-| 38150         | Valkey for queues (BullMQ, no eviction)          |
+| 38150         | Temporal (durable workflows, gRPC)               |
 | 38151         | Valkey for caches (LRU)                          |
+| 38152         | Temporal UI                                      |
 | 38160 / 38161 | SeaweedFS S3 API / admin UI                      |
 | 38170         | render worker health                             |
 | 38190         | Drizzle Studio                                   |

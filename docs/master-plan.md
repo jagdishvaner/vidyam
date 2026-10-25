@@ -9,6 +9,8 @@
 > - No email: center admins create logins and reset passwords; Mailpit is gone. See ADR 0011.
 > - Content is handed over directly and ingested from a folder; no upload screen yet (step 27 deferred). Videos
 >   arrive as text from the center (step 42 dropped). See ADR 0012.
+> - Temporal replaces BullMQ for background work (durable workflows, built-in waits for Batch API results); the
+>   reconciler and batch poller in steps 28 and 55 are no longer needed. See ADR 0013.
 
 ## Context
 

@@ -1,6 +1,6 @@
 # 0005. BullMQ across Node and Python; Postgres as the pipeline record
 
-- Status: Accepted
+- Status: Superseded by [0013](0013-temporal-for-durable-workflows.md)
 - Date: 2026-10-24
 
 ## Context
