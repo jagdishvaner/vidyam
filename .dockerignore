@@ -1,0 +1,16 @@
+# Keep build contexts small and secret-free.
+.git
+.env
+.env.*
+!.env.example
+**/node_modules
+**/.venv
+**/.next
+**/dist
+**/.turbo
+**/test-results
+**/playwright-report
+**/__pycache__
+**/.pytest_cache
+**/.ruff_cache
+**/*.log

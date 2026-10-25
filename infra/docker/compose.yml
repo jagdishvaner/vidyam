@@ -131,8 +131,9 @@ services:
     container_name: vidyam-caddy
     # Single origin, like CloudFront in production: /api/* → NestJS, everything else → Next.js.
     environment:
-      WEB_UPSTREAM: host.docker.internal:38100
-      API_UPSTREAM: host.docker.internal:38110
+      # Host apps (`pnpm dev`) by default; `pnpm stack:up` points these at the app containers.
+      WEB_UPSTREAM: ${VIDYAM_WEB_UPSTREAM:-host.docker.internal:38100}
+      API_UPSTREAM: ${VIDYAM_API_UPSTREAM:-host.docker.internal:38110}
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
@@ -142,6 +143,89 @@ services:
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1/__caddy/health"]
       interval: 2s
+      timeout: 3s
+      retries: 30
+
+  # ── Apps as containers (`pnpm stack:up`), the same images that run on AWS ────────────────────────────
+  # Not published on host ports: Caddy (:38000) is the only way in, exactly like CloudFront in production.
+  # Secrets come from the repo-root .env; service addresses use the compose network.
+  api:
+    profiles: [full]
+    build: { context: ../.., dockerfile: infra/docker/api.Dockerfile }
+    image: vidyam/api:local
+    env_file: ../../.env
+    environment: &app-network-env
+      VIDYAM_DATABASE_URL: postgresql://vidyam_app:vidyam_app_local@postgres:5432/vidyam
+      VIDYAM_QUEUE_REDIS_URL: redis://valkey-queue:6379
+      VIDYAM_CACHE_REDIS_URL: redis://valkey-cache:6379
+      VIDYAM_QDRANT_URL: http://qdrant:6333
+      VIDYAM_S3_ENDPOINT: http://seaweedfs:8333
+      VIDYAM_SMTP_URL: smtp://mailpit:1025
+      VIDYAM_AI_INTERNAL_URL: http://ai:38120
+      VIDYAM_API_INTERNAL_URL: http://api:38110
+    depends_on: &app-depends
+      postgres: { condition: service_healthy }
+      valkey-queue: { condition: service_healthy }
+      valkey-cache: { condition: service_healthy }
+      seaweedfs: { condition: service_healthy }
+      qdrant: { condition: service_healthy }
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:38110/api/health').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))",
+        ]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  ai:
+    profiles: [full]
+    build: { context: ../.., dockerfile: infra/docker/ai.Dockerfile }
+    image: vidyam/ai:local
+    env_file: ../../.env
+    environment: *app-network-env
+    depends_on: *app-depends
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:38120/livez')",
+        ]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+
+  ai-worker:
+    profiles: [full]
+    image: vidyam/ai:local
+    command: ["vidyam-ai", "worker"]
+    env_file: ../../.env
+    environment: *app-network-env
+    depends_on:
+      ai: { condition: service_healthy }
+
+  web:
+    profiles: [full]
+    build: { context: ../.., dockerfile: infra/docker/web.Dockerfile }
+    image: vidyam/web:local
+    environment:
+      VIDYAM_API_INTERNAL_URL: http://api:38110
+    depends_on:
+      api: { condition: service_healthy }
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:38100/en/login').then(r=>process.exit(r.ok?0:1),()=>process.exit(1))",
+        ]
+      interval: 3s
       timeout: 3s
       retries: 30
 

@@ -4,3 +4,7 @@ uv.lock
 **/.turbo/**
 .venv/
 packages/api-client/openapi.json
+**/.import_linter_cache/**
+apps/web/test-results/
+apps/web/playwright-report/
+apps/web/e2e/.auth/

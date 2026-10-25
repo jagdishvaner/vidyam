@@ -61,6 +61,15 @@ Useful local tools:
 | SeaweedFS (S3) admin                                    | http://localhost:38161                  |
 | Database browser (`pnpm --filter @vidyam/db db:studio`) | http://localhost:38190                  |
 
+### Run everything in Docker
+
+The same images that will run on AWS can run locally, behind the same Caddy entry point:
+
+```bash
+pnpm stack:up     # build and start api, ai (+ worker) and web containers; http://localhost:38000
+pnpm stack:down   # stop the app containers and point Caddy back at `pnpm dev`
+```
+
 ## Local ports
 
 Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reachable from your network).
