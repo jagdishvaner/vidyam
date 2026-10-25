@@ -29,7 +29,7 @@ export default defineConfig([
             {
               group: BANNED_AI_PACKAGES,
               message:
-                "LLM, embedding and vector calls belong to the Python AI engine (apps/ai). Call it via the internal API or a BullMQ job.",
+                "LLM, embedding and vector calls belong to the Python AI engine (apps/ai). Call it via the internal API or a Temporal workflow.",
             },
           ],
         },

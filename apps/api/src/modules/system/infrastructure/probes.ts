@@ -1,4 +1,5 @@
 import { HeadBucketCommand, S3Client } from "@aws-sdk/client-s3";
+import type { Client } from "@temporalio/client";
 import { ServiceHealth } from "@vidyam/contracts";
 import type { DatabaseHandle } from "@vidyam/db";
 import { Redis } from "ioredis";
@@ -40,6 +41,19 @@ export class ValkeyProbe implements DependencyProbe {
 
   async close(): Promise<void> {
     this.client.disconnect();
+  }
+}
+
+export class TemporalProbe implements DependencyProbe {
+  readonly name = "temporal";
+  constructor(private readonly client: Client) {}
+
+  async check(signal: AbortSignal): Promise<string | null> {
+    const namespace = this.client.options.namespace;
+    await this.client.connection.withAbortSignal(signal, () =>
+      this.client.workflowService.describeNamespace({ namespace }),
+    );
+    return `namespace ${namespace} ready`;
   }
 }
 

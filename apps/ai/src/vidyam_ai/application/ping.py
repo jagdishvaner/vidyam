@@ -1,6 +1,6 @@
-from vidyam_ai.generated.contracts import PingJob
+from vidyam_ai.generated.contracts import PingInput, PingResult
 
 
-def handle_ping(payload: PingJob) -> dict[str, str]:
-    """No-op job used by the cross-language queue contract test and smoke checks."""
-    return {"echo": payload.message, "orgId": str(payload.org_id)}
+def handle_ping(payload: PingInput) -> PingResult:
+    """A round trip through the AI engine, used by the cross-language contract test and smoke checks."""
+    return PingResult(echo=payload.message, orgId=payload.org_id)

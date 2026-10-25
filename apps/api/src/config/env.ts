@@ -9,8 +9,10 @@ const EnvSchema = z.object({
   VIDYAM_API_HOST: z.string().default("127.0.0.1"),
   VIDYAM_API_PORT: z.coerce.number().int().positive().default(38110),
   VIDYAM_DATABASE_URL: z.url(),
-  VIDYAM_QUEUE_REDIS_URL: z.url(),
   VIDYAM_CACHE_REDIS_URL: z.url(),
+  /** host:port of the Temporal frontend (durable workflows, ADR 0013). */
+  VIDYAM_TEMPORAL_ADDRESS: z.string().min(1),
+  VIDYAM_TEMPORAL_NAMESPACE: z.string().default("vidyam"),
   /** Unset on AWS, where the SDK talks to real S3 with the task's IAM role. */
   VIDYAM_S3_ENDPOINT: z.url().optional(),
   VIDYAM_S3_REGION: z.string().min(1),

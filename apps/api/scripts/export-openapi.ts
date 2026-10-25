@@ -18,7 +18,7 @@ const { loadEnv } = (await import(`${dist}/config/env.js`)) as typeof EnvFile;
 const { buildOpenApiDocument } = (await import(`${dist}/openapi.js`)) as typeof OpenApiFile;
 
 // Preview mode builds the module graph without instantiating providers: no database or Redis needed.
-const app = await NestFactory.create(AppModule.forRoot(loadEnv(), { queues: false }), {
+const app = await NestFactory.create(AppModule.forRoot(loadEnv()), {
   preview: true,
   logger: false,
   abortOnError: false,

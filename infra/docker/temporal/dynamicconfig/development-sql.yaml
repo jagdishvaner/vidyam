@@ -1,0 +1,7 @@
+# Runtime settings for the local Temporal server (same as Temporal's own Postgres sample).
+limit.maxIDLength:
+  - value: 255 # workflow ids are indexed in Postgres
+    constraints: {}
+system.forceSearchAttributesCacheRefreshOnRead:
+  - value: true # development only: new search attributes are usable immediately
+    constraints: {}

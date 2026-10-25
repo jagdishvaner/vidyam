@@ -48,20 +48,13 @@
       ],
       "additionalProperties": false
     },
-    "AiQueueName": {
-      "title": "AiQueueName",
+    "AiTaskQueue": {
+      "title": "AiTaskQueue",
       "type": "string",
       "enum": [
-        "cpu-parse",
-        "llm-batch",
-        "llm-live",
-        "embed",
-        "chem",
-        "index",
-        "generate",
-        "verify",
-        "pool",
-        "eval"
+        "ai",
+        "ai-cpu",
+        "ai-llm"
       ]
     },
     "Answer": {
@@ -264,8 +257,8 @@
       ],
       "additionalProperties": false
     },
-    "IngestSourceJob": {
-      "title": "IngestSourceJob",
+    "IngestSourceInput": {
+      "title": "IngestSourceInput",
       "type": "object",
       "properties": {
         "v": {
@@ -286,16 +279,6 @@
               "type": "null"
             }
           ]
-        },
-        "traceparent": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "kind": {
-          "type": "string",
-          "const": "ingest_source"
         },
         "sourceId": {
           "type": "string",
@@ -306,47 +289,7 @@
         "v",
         "orgId",
         "requestedBy",
-        "traceparent",
-        "kind",
         "sourceId"
-      ],
-      "additionalProperties": false
-    },
-    "JobEnvelope": {
-      "title": "JobEnvelope",
-      "type": "object",
-      "properties": {
-        "v": {
-          "type": "number",
-          "const": 1
-        },
-        "orgId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "requestedBy": {
-          "anyOf": [
-            {
-              "type": "string",
-              "format": "uuid"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "traceparent": {
-          "type": [
-            "string",
-            "null"
-          ]
-        }
-      },
-      "required": [
-        "v",
-        "orgId",
-        "requestedBy",
-        "traceparent"
       ],
       "additionalProperties": false
     },
@@ -586,8 +529,8 @@
       ],
       "additionalProperties": false
     },
-    "PingJob": {
-      "title": "PingJob",
+    "PingInput": {
+      "title": "PingInput",
       "type": "object",
       "properties": {
         "v": {
@@ -609,16 +552,6 @@
             }
           ]
         },
-        "traceparent": {
-          "type": [
-            "string",
-            "null"
-          ]
-        },
-        "kind": {
-          "type": "string",
-          "const": "ping"
-        },
         "message": {
           "type": "string"
         }
@@ -627,9 +560,25 @@
         "v",
         "orgId",
         "requestedBy",
-        "traceparent",
-        "kind",
         "message"
+      ],
+      "additionalProperties": false
+    },
+    "PingResult": {
+      "title": "PingResult",
+      "type": "object",
+      "properties": {
+        "echo": {
+          "type": "string"
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "echo",
+        "orgId"
       ],
       "additionalProperties": false
     },
@@ -968,28 +917,6 @@
         "long_answer"
       ]
     },
-    "QueueName": {
-      "title": "QueueName",
-      "type": "string",
-      "enum": [
-        "cpu-parse",
-        "llm-batch",
-        "llm-live",
-        "embed",
-        "chem",
-        "index",
-        "generate",
-        "verify",
-        "pool",
-        "eval",
-        "render"
-      ]
-    },
-    "QueuePrefix": {
-      "title": "QueuePrefix",
-      "type": "string",
-      "const": "vidyam"
-    },
     "ServiceHealth": {
       "title": "ServiceHealth",
       "type": "object",
@@ -1105,6 +1032,55 @@
         "services"
       ],
       "additionalProperties": false
+    },
+    "TaskQueue": {
+      "title": "TaskQueue",
+      "type": "string",
+      "enum": [
+        "ai",
+        "ai-cpu",
+        "ai-llm",
+        "render"
+      ]
+    },
+    "WorkflowEnvelope": {
+      "title": "WorkflowEnvelope",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy"
+      ],
+      "additionalProperties": false
+    },
+    "WorkflowType": {
+      "title": "WorkflowType",
+      "type": "string",
+      "enum": [
+        "Ping",
+        "IngestSource"
+      ]
     }
   }
 }

@@ -9,24 +9,19 @@ import { SystemModule } from "./modules/system/system.module.js";
 import { CacheModule } from "./shared/cache/cache.module.js";
 import { DatabaseModule } from "./shared/database/database.module.js";
 import { DomainErrorFilter } from "./shared/kernel/domain-error.filter.js";
-import { QueueModule } from "./shared/queue/queue.module.js";
+import { TemporalModule } from "./shared/temporal/temporal.module.js";
 
 @Module({})
 export class AppModule {
-  /**
-   * `queues: false` builds the app without BullMQ and Bull Board. The OpenAPI export uses it: Swagger only
-   * reads controllers, and Bull Board needs a live HTTP adapter that Nest's preview mode doesn't create.
-   */
-  static forRoot(env: Env, options: { queues?: boolean } = {}): DynamicModule {
-    const queues = options.queues ?? true;
+  static forRoot(env: Env): DynamicModule {
     return {
       module: AppModule,
       imports: [
         EnvModule.forRoot(env),
         DatabaseModule,
         CacheModule,
+        TemporalModule,
         IdentityModule,
-        ...(queues ? [QueueModule] : []),
         SystemModule,
         DashboardModule,
       ],

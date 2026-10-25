@@ -1,0 +1,80 @@
+import { z } from "zod";
+
+import { Uuid } from "./common.js";
+import { contract } from "./registry.js";
+
+/**
+ * Temporal task queues, split by the resource the work needs so heavy work never blocks interactive work
+ * (ADR 0013). `worker` is the only service that polls the queue.
+ */
+export const TASK_QUEUES = {
+  /** Workflow code (orchestration only, cheap) and light activities. */
+  ai: { name: "ai", worker: "ai" },
+  /** CPU-heavy activities: PDF parsing, image work, chemistry, sympy. */
+  aiCpu: { name: "ai-cpu", worker: "ai" },
+  /** Calls to LLM providers and embedding models, where provider rate limits apply. */
+  aiLlm: { name: "ai-llm", worker: "ai" },
+  /** PDF and DOCX exports (Node render worker, Phase 7). */
+  render: { name: "render", worker: "render" },
+} as const;
+export type TaskQueue = (typeof TASK_QUEUES)[keyof typeof TASK_QUEUES]["name"];
+
+export const TaskQueue = contract(
+  "TaskQueue",
+  z.enum(Object.values(TASK_QUEUES).map((q) => q.name) as [TaskQueue, ...TaskQueue[]]),
+);
+
+/** Task queues the Python AI engine polls (everything except rendering). */
+export const AiTaskQueue = contract(
+  "AiTaskQueue",
+  z.enum(
+    Object.values(TASK_QUEUES)
+      .filter((q) => q.worker === "ai")
+      .map((q) => q.name) as [TaskQueue, ...TaskQueue[]],
+  ),
+);
+
+/** Workflow type names: started from TypeScript (the API), implemented in Python (the AI engine). */
+export const WORKFLOWS = { ping: "Ping", ingestSource: "IngestSource" } as const;
+export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
+export const WorkflowType = contract(
+  "WorkflowType",
+  z.enum(Object.values(WORKFLOWS) as [WorkflowType, ...WorkflowType[]]),
+);
+
+/**
+ * Common fields of every workflow input. Inputs carry ids, never content (big payloads bloat workflow
+ * history), and a schema version so starters and workers can be deployed independently. Trace context
+ * travels in Temporal headers, not here.
+ */
+export const WorkflowEnvelope = contract(
+  "WorkflowEnvelope",
+  z.object({
+    v: z.literal(1),
+    orgId: Uuid,
+    requestedBy: Uuid.nullable(),
+  }),
+);
+export type WorkflowEnvelope = z.infer<typeof WorkflowEnvelope>;
+
+export const IngestSourceInput = contract(
+  "IngestSourceInput",
+  WorkflowEnvelope.extend({ sourceId: Uuid }),
+  "Ingest one file: parse, OCR, tag and index it (Phase 2).",
+);
+export type IngestSourceInput = z.infer<typeof IngestSourceInput>;
+
+export const PingInput = contract(
+  "PingInput",
+  WorkflowEnvelope.extend({ message: z.string() }),
+  "A round trip through the AI engine, used by the cross-language contract test and smoke checks.",
+);
+export type PingInput = z.infer<typeof PingInput>;
+
+export const PingResult = contract("PingResult", z.object({ echo: z.string(), orgId: Uuid }));
+export type PingResult = z.infer<typeof PingResult>;
+
+/** Deterministic workflow id: starting the same work twice finds the running workflow instead of a duplicate. */
+export function workflowId(type: WorkflowType, ...parts: string[]): string {
+  return [type, ...parts].join(":");
+}

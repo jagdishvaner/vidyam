@@ -1,8 +1,10 @@
 import { Inject, Module, type OnApplicationShutdown } from "@nestjs/common";
+import type { Client } from "@temporalio/client";
 import type { DatabaseHandle } from "@vidyam/db";
 
 import { ENV, type Env } from "../../config/env.js";
 import { DATABASE } from "../../shared/database/tokens.js";
+import { TEMPORAL_CLIENT } from "../../shared/temporal/temporal.module.js";
 import {
   AI_ENGINE_HEALTH,
   CheckSystemStatus,
@@ -14,6 +16,7 @@ import {
   HttpAiEngineHealthReader,
   PostgresProbe,
   S3Probe,
+  TemporalProbe,
   ValkeyProbe,
 } from "./infrastructure/probes.js";
 import { SystemController } from "./interface/system.controller.js";
@@ -25,10 +28,10 @@ import { SystemController } from "./interface/system.controller.js";
     CheckSystemStatus,
     {
       provide: DEPENDENCY_PROBES,
-      inject: [ENV, DATABASE],
-      useFactory: (env: Env, database: DatabaseHandle): DependencyProbe[] => [
+      inject: [ENV, DATABASE, TEMPORAL_CLIENT],
+      useFactory: (env: Env, database: DatabaseHandle, temporal: Client): DependencyProbe[] => [
         new PostgresProbe(database),
-        new ValkeyProbe("valkey-queue", env.VIDYAM_QUEUE_REDIS_URL),
+        new TemporalProbe(temporal),
         new ValkeyProbe("valkey-cache", env.VIDYAM_CACHE_REDIS_URL),
         new S3Probe(createS3Client(env), env),
       ],

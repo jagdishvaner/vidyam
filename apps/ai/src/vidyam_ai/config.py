@@ -21,8 +21,10 @@ class Settings(BaseSettings):
     database_url: str
     qdrant_url: str
     qdrant_api_key: SecretStr
-    queue_redis_url: str
     cache_redis_url: str
+    # Durable workflows (ADR 0013): host:port of the Temporal frontend, and Vidyam's namespace on it.
+    temporal_address: str
+    temporal_namespace: str = "vidyam"
 
     s3_endpoint: str | None = None  # unset on AWS: real S3 with the task's IAM role
     s3_region: str

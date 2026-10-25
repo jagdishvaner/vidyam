@@ -13,8 +13,8 @@ def settings() -> Settings:
         database_url="postgresql://u:p@localhost:1/db",
         qdrant_url="http://localhost:1",
         qdrant_api_key="k",  # type: ignore[arg-type]
-        queue_redis_url="redis://localhost:1",
         cache_redis_url="redis://localhost:1",
+        temporal_address="localhost:1",
         s3_region="ap-south-1",
         s3_bucket_prefix="test",
     )

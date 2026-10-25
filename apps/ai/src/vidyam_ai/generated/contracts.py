@@ -25,17 +25,10 @@ class AddedMember(BaseModel):
     user_id: UUID = Field(..., alias="userId")
 
 
-class AiQueueName(StrEnum):
-    cpu_parse = "cpu-parse"
-    llm_batch = "llm-batch"
-    llm_live = "llm-live"
-    embed = "embed"
-    chem = "chem"
-    index = "index"
-    generate = "generate"
-    verify = "verify"
-    pool = "pool"
-    eval = "eval"
+class AiTaskQueue(StrEnum):
+    ai = "ai"
+    ai_cpu = "ai-cpu"
+    ai_llm = "ai-llm"
 
 
 class Answer1(BaseModel):
@@ -105,7 +98,7 @@ class DependencyStatus(BaseModel):
     detail: str | None
 
 
-class IngestSourceJob(BaseModel):
+class IngestSourceInput(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -113,20 +106,7 @@ class IngestSourceJob(BaseModel):
     v: Literal[1]
     org_id: UUID = Field(..., alias="orgId")
     requested_by: UUID | None = Field(..., alias="requestedBy")
-    traceparent: str | None
-    kind: Literal["ingest_source"]
     source_id: UUID = Field(..., alias="sourceId")
-
-
-class JobEnvelope(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-        populate_by_name=True,
-    )
-    v: Literal[1]
-    org_id: UUID = Field(..., alias="orgId")
-    requested_by: UUID | None = Field(..., alias="requestedBy")
-    traceparent: str | None
 
 
 class Language(StrEnum):
@@ -192,7 +172,7 @@ class DifficultyMix(BaseModel):
     hard: float
 
 
-class PingJob(BaseModel):
+class PingInput(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -200,9 +180,16 @@ class PingJob(BaseModel):
     v: Literal[1]
     org_id: UUID = Field(..., alias="orgId")
     requested_by: UUID | None = Field(..., alias="requestedBy")
-    traceparent: str | None
-    kind: Literal["ping"]
     message: str
+
+
+class PingResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    echo: str
+    org_id: UUID = Field(..., alias="orgId")
 
 
 class ProgressEvent1(BaseModel):
@@ -325,24 +312,6 @@ class QuestionType(StrEnum):
     long_answer = "long_answer"
 
 
-class QueueName(StrEnum):
-    cpu_parse = "cpu-parse"
-    llm_batch = "llm-batch"
-    llm_live = "llm-live"
-    embed = "embed"
-    chem = "chem"
-    index = "index"
-    generate = "generate"
-    verify = "verify"
-    pool = "pool"
-    eval = "eval"
-    render = "render"
-
-
-class QueuePrefix(RootModel[Literal["vidyam"]]):
-    root: Literal["vidyam"] = Field(..., title="QueuePrefix")
-
-
 class Service(StrEnum):
     api = "api"
     ai = "ai"
@@ -394,6 +363,28 @@ class SystemStatus(BaseModel):
     )
     ok: bool
     services: list[ServiceHealth]
+
+
+class TaskQueue(StrEnum):
+    ai = "ai"
+    ai_cpu = "ai-cpu"
+    ai_llm = "ai-llm"
+    render = "render"
+
+
+class WorkflowEnvelope(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+
+
+class WorkflowType(StrEnum):
+    ping = "Ping"
+    ingest_source = "IngestSource"
 
 
 class AddMemberRequest(BaseModel):

@@ -19,7 +19,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
-        resources = Resources.open(settings)
+        resources = await Resources.open(settings)
         app.state.check_health = CheckHealth(resources.probes())
         try:
             yield

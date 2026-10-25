@@ -2,7 +2,8 @@
 #
 # Port block 38000–38190, bound to 127.0.0.1 only (not reachable from the network):
 #   38000 app entry (Caddy)     38130 PostgreSQL      38140/38141 Qdrant HTTP/gRPC
-#   38150 Valkey (queues)       38151 Valkey (cache)  38160/38161 SeaweedFS S3/admin UI
+#   38150 Temporal (gRPC)       38151 Valkey (cache)  38152 Temporal UI
+#   38160/38161 SeaweedFS S3/admin UI
 # Host apps: 38100 web, 38110 api, 38120 ai, 38170 render health, 38190 Drizzle Studio.
 #
 # Credentials below are local-development values only; .env.example documents the same ones.
@@ -48,27 +49,67 @@ services:
       timeout: 3s
       retries: 30
 
-  valkey-queue:
-    image: valkey/valkey:8.1.10-alpine
-    container_name: vidyam-valkey-queue
-    # BullMQ requires noeviction; AOF so queued jobs survive a restart.
-    command:
-      - "valkey-server"
-      - "--appendonly"
-      - "yes"
-      - "--appendfsync"
-      - "everysec"
-      - "--maxmemory-policy"
-      - "noeviction"
-    ports:
-      - "127.0.0.1:38150:6379"
+  # Temporal: durable workflows for long, multi-step work (ADR 0013). Stores everything in the Postgres above.
+  temporal-schema:
+    image: temporalio/admin-tools:1.32.1
+    container_name: vidyam-temporal-schema
+    depends_on:
+      postgres: { condition: service_healthy }
+    environment: &temporal-db
+      DB: postgres12
+      DB_PORT: 5432
+      POSTGRES_SEEDS: postgres
+      POSTGRES_USER: vidyam
+      POSTGRES_PWD: vidyam
+      SQL_PASSWORD: vidyam
     volumes:
-      - valkey_queue:/data
+      - ./temporal:/scripts:ro
+    entrypoint: ["/bin/sh", "/scripts/setup-schema.sh"]
+    restart: "no"
+
+  temporal:
+    image: temporalio/server:1.32.1
+    container_name: vidyam-temporal
+    depends_on:
+      temporal-schema: { condition: service_completed_successfully }
+    environment:
+      <<: *temporal-db
+      BIND_ON_IP: 0.0.0.0
+      DYNAMIC_CONFIG_FILE_PATH: config/dynamicconfig/development-sql.yaml
+    ports:
+      - "127.0.0.1:38150:7233"
+    volumes:
+      - ./temporal/dynamicconfig:/etc/temporal/config/dynamicconfig:ro
     healthcheck:
-      test: ["CMD", "valkey-cli", "ping"]
+      test: ["CMD", "nc", "-z", "localhost", "7233"]
       interval: 2s
       timeout: 3s
-      retries: 30
+      retries: 60
+
+  temporal-namespace:
+    image: temporalio/admin-tools:1.32.1
+    container_name: vidyam-temporal-namespace
+    depends_on:
+      temporal: { condition: service_healthy }
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      NAMESPACE: vidyam
+    volumes:
+      - ./temporal:/scripts:ro
+    entrypoint: ["/bin/sh", "/scripts/create-namespace.sh"]
+    restart: "no"
+
+  temporal-ui:
+    image: temporalio/ui:2.55.0
+    container_name: vidyam-temporal-ui
+    # Also tells `compose up --wait` that the namespace step is meant to exit.
+    depends_on:
+      temporal-namespace: { condition: service_completed_successfully }
+    environment:
+      TEMPORAL_ADDRESS: temporal:7233
+      TEMPORAL_DEFAULT_NAMESPACE: vidyam
+    ports:
+      - "127.0.0.1:38152:8080"
 
   valkey-cache:
     image: valkey/valkey:8.1.10-alpine
@@ -147,7 +188,7 @@ services:
     env_file: ../../.env
     environment: &app-network-env
       VIDYAM_DATABASE_URL: postgresql://vidyam_app:vidyam_app_local@postgres:5432/vidyam
-      VIDYAM_QUEUE_REDIS_URL: redis://valkey-queue:6379
+      VIDYAM_TEMPORAL_ADDRESS: temporal:7233
       VIDYAM_CACHE_REDIS_URL: redis://valkey-cache:6379
       VIDYAM_QDRANT_URL: http://qdrant:6333
       VIDYAM_S3_ENDPOINT: http://seaweedfs:8333
@@ -155,7 +196,7 @@ services:
       VIDYAM_API_INTERNAL_URL: http://api:38110
     depends_on: &app-depends
       postgres: { condition: service_healthy }
-      valkey-queue: { condition: service_healthy }
+      temporal-namespace: { condition: service_completed_successfully }
       valkey-cache: { condition: service_healthy }
       seaweedfs: { condition: service_healthy }
       qdrant: { condition: service_healthy }
@@ -222,5 +263,4 @@ services:
 volumes:
   pg:
   qdrant:
-  valkey_queue:
   s3:

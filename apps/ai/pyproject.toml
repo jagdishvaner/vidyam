@@ -6,13 +6,13 @@ requires-python = ">=3.12,<3.13"
 dependencies = [
     "asyncpg==0.32.0",
     "boto3==1.43.118",
-    "bullmq==3.4.3",
     "fastapi==0.162.0",
     "pydantic[email]==2.14.1",
     "pydantic-settings==2.16.1",
     "qdrant-client==1.20.0",
     "redis==8.1.0",
     "sqlalchemy[asyncio]==2.1.6",
+    "temporalio==1.34.0",
     "uvicorn[standard]==0.54.0",
 ]
 
@@ -44,7 +44,7 @@ include = ["src"]
 exclude = ["src/vidyam_ai/generated", "src/vidyam_ai/infrastructure/db/generated"]
 pythonVersion = "3.12"
 typeCheckingMode = "strict"
-# bullmq and redis ship without type information; our own code stays fully strict.
+# redis ships without complete type information; our own code stays fully strict.
 reportMissingTypeStubs = false
 reportUnknownMemberType = false
 # The uv workspace keeps one virtualenv at the repo root.
@@ -76,13 +76,13 @@ forbidden_modules = [
     "anthropic",
     "asyncpg",
     "boto3",
-    "bullmq",
     "fastapi",
     "openai",
     "pydantic",
     "qdrant_client",
     "redis",
     "sqlalchemy",
+    "temporalio",
 ]
 
 [tool.pytest.ini_options]

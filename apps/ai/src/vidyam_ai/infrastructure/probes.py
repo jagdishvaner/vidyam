@@ -7,8 +7,10 @@ from qdrant_client import AsyncQdrantClient
 from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncEngine
+from temporalio.client import Client
 
 from vidyam_ai.infrastructure.qdrant.collections import COLLECTIONS
+from vidyam_ai.infrastructure.temporal.client import describe_namespace
 
 if TYPE_CHECKING:
     from mypy_boto3_s3 import S3Client
@@ -49,6 +51,17 @@ class ValkeyProbe:
         await self._client.ping()
         policy = await self._client.config_get("maxmemory-policy")
         return f"maxmemory-policy={policy.get('maxmemory-policy')}"
+
+
+class TemporalProbe:
+    name = "temporal"
+
+    def __init__(self, client: Client) -> None:
+        self._client = client
+
+    async def check(self) -> str | None:
+        await describe_namespace(self._client)
+        return f"namespace {self._client.namespace} ready"
 
 
 class S3Probe:

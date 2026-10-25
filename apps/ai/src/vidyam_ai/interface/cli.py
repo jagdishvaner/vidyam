@@ -10,7 +10,7 @@ import uvicorn
 from vidyam_ai.config import get_settings
 from vidyam_ai.infrastructure.qdrant.collections import bootstrap
 from vidyam_ai.infrastructure.resources import create_qdrant
-from vidyam_ai.interface.workers.main import main as run_workers
+from vidyam_ai.interface.workflows.worker import main as run_workers
 
 APP = "vidyam_ai.interface.http.app:create_app"
 
@@ -29,7 +29,7 @@ def dev() -> None:
             "watchfiles",
             "--filter",
             "python",
-            "vidyam_ai.interface.workers.main.main",
+            "vidyam_ai.interface.workflows.worker.main",
             "src",
         ]
     )

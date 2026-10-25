@@ -130,10 +130,16 @@ describe("API", () => {
     expect(res.body).toEqual({ sources: 1, questions: 0, documents: 0 });
   });
 
-  it("keeps the queue dashboard for platform admins only", async () => {
-    await request(app.getHttpServer()).get("/api/admin/queues").expect(401);
+  it("reports Temporal, the workflow engine, among the API's healthy dependencies", async () => {
     const cookies = await signIn();
-    await request(app.getHttpServer()).get("/api/admin/queues").set("Cookie", cookies).expect(403);
+    const res = await request(app.getHttpServer())
+      .get("/api/system/status")
+      .set("Cookie", cookies)
+      .expect(200);
+    const api = res.body.services.find((s: { service: string }) => s.service === "api");
+    expect(api.dependencies).toContainEqual(
+      expect.objectContaining({ name: "temporal", ok: true, detail: "namespace vidyam ready" }),
+    );
   });
 
   it("has no public sign-up", async () => {

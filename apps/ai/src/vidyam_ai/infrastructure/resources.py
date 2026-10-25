@@ -10,11 +10,13 @@ from botocore.config import Config
 from qdrant_client import AsyncQdrantClient
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import AsyncEngine
+from temporalio.client import Client
 
 from vidyam_ai.application.health import DependencyProbe
 from vidyam_ai.config import Settings
 from vidyam_ai.infrastructure.db.engine import create_engine
-from vidyam_ai.infrastructure.probes import PostgresProbe, QdrantProbe, S3Probe, ValkeyProbe
+from vidyam_ai.infrastructure.probes import PostgresProbe, QdrantProbe, S3Probe, TemporalProbe, ValkeyProbe
+from vidyam_ai.infrastructure.temporal.client import connect
 
 if TYPE_CHECKING:
     from mypy_boto3_s3 import S3Client
@@ -44,17 +46,17 @@ def create_s3(settings: Settings) -> "S3Client":
 class Resources:
     engine: AsyncEngine
     qdrant: AsyncQdrantClient
-    queue_redis: Redis
+    temporal: Client
     cache_redis: Redis
     s3: "S3Client"
     settings: Settings
 
     @classmethod
-    def open(cls, settings: Settings) -> "Resources":
+    async def open(cls, settings: Settings) -> "Resources":
         return cls(
             engine=create_engine(settings.async_database_url),
             qdrant=create_qdrant(settings),
-            queue_redis=Redis.from_url(settings.queue_redis_url),
+            temporal=await connect(settings, lazy=True),
             cache_redis=Redis.from_url(settings.cache_redis_url),
             s3=create_s3(settings),
             settings=settings,
@@ -64,7 +66,7 @@ class Resources:
         return [
             PostgresProbe(self.engine),
             QdrantProbe(self.qdrant),
-            ValkeyProbe("valkey-queue", self.queue_redis),
+            TemporalProbe(self.temporal),
             ValkeyProbe("valkey-cache", self.cache_redis),
             S3Probe(self.s3, self.settings.bucket("raw")),
         ]
@@ -72,5 +74,4 @@ class Resources:
     async def close(self) -> None:
         await self.engine.dispose()
         await self.qdrant.close()
-        await self.queue_redis.aclose()
         await self.cache_redis.aclose()
