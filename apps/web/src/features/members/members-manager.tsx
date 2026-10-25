@@ -1,183 +1,421 @@
 "use client";
 
+import type { OrgRole } from "@vidyam/contracts";
 import { Badge } from "@vidyam/ui/components/badge";
 import { Button } from "@vidyam/ui/components/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vidyam/ui/components/card";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@vidyam/ui/components/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@vidyam/ui/components/dialog";
 import { Input } from "@vidyam/ui/components/input";
 import { Label } from "@vidyam/ui/components/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@vidyam/ui/components/select";
 import { Skeleton } from "@vidyam/ui/components/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@vidyam/ui/components/table";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useFormatter, useTranslations } from "next-intl";
+import { Ellipsis, KeyRound, UserMinus } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
+import { api } from "@/lib/client/api";
 import { authClient } from "@/lib/client/auth";
 
-const INVITABLE_ROLES = ["teacher", "reviewer", "content_operator", "admin"] as const;
-type InvitableRole = (typeof INVITABLE_ROLES)[number];
-// The client is not typed with our custom access-control roles; the server validates them.
-type RoleArg = Parameters<typeof authClient.organization.inviteMember>[0]["role"];
+const ROLES = ["teacher", "reviewer", "content_operator", "admin"] as const satisfies readonly OrgRole[];
 
-export function MembersManager() {
+/** No look-alike characters (0/O, 1/l/I), so a password read out over the phone survives. */
+const ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
+function generatePassword(length = 12): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(length));
+  return Array.from(bytes, (b) => ALPHABET[b % ALPHABET.length]).join("");
+}
+
+/** NestJS error bodies carry a readable `message`; validation errors may carry a list. */
+function errorMessage(error: unknown, fallback: string): string {
+  const message = (error as { message?: unknown } | undefined)?.message;
+  return typeof message === "string" ? message : fallback;
+}
+
+interface Login {
+  name: string;
+  email: string;
+  password: string;
+}
+
+interface Target {
+  userId: string;
+  name: string;
+  email: string;
+}
+
+export function MembersManager({ currentUserId }: { currentUserId: string }) {
   const t = useTranslations();
-  const format = useFormatter();
   const queryClient = useQueryClient();
-  const [role, setRole] = useState<InvitableRole>("teacher");
+  const [role, setRole] = useState<OrgRole>("teacher");
+  const [password, setPassword] = useState("");
+  const [shared, setShared] = useState<Login | null>(null);
+  const [resetting, setResetting] = useState<Target | null>(null);
+  const [removing, setRemoving] = useState<Target | null>(null);
 
   const organization = useQuery({
     queryKey: ["organization", "full"],
     queryFn: async () => (await authClient.organization.getFullOrganization()).data ?? null,
   });
 
-  const invite = useMutation({
-    mutationFn: async (email: string) => {
-      const { error } = await authClient.organization.inviteMember({
-        email,
-        role: role as unknown as RoleArg,
-      });
-      if (error) throw new Error(error.message ?? t("common.somethingWentWrong"));
-      return email;
+  const add = useMutation({
+    mutationFn: async (login: Login) => {
+      const { error } = await api.POST("/api/members", { body: { ...login, role } });
+      if (error) throw new Error(errorMessage(error, t("common.somethingWentWrong")));
+      return login;
     },
-    onSuccess: (email) => {
-      toast.success(t("members.inviteSent", { email }));
+    onSuccess: (login) => {
+      toast.success(t("members.added", { name: login.name }));
+      setShared(login);
+      setPassword("");
       void queryClient.invalidateQueries({ queryKey: ["organization", "full"] });
     },
     onError: (error) => toast.error(error.message),
   });
 
-  const cancel = useMutation({
-    mutationFn: async (invitationId: string) => {
-      const { error } = await authClient.organization.cancelInvitation({ invitationId });
-      if (error) throw new Error(error.message ?? t("common.somethingWentWrong"));
-    },
-    onSuccess: () => {
-      toast.success(t("members.cancelled"));
-      void queryClient.invalidateQueries({ queryKey: ["organization", "full"] });
-    },
-    onError: (error) => toast.error(error.message),
-  });
-
-  function onInvite(event: FormEvent<HTMLFormElement>) {
+  function onAdd(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
-    invite.mutate(String(new FormData(form).get("email")), { onSuccess: () => form.reset() });
+    const data = new FormData(form);
+    add.mutate(
+      {
+        name: String(data.get("name")),
+        email: String(data.get("email")),
+        password: password || generatePassword(),
+      },
+      { onSuccess: () => form.reset() },
+    );
   }
-
-  const pending = organization.data?.invitations.filter((i) => i.status === "pending") ?? [];
 
   return (
     <div className="grid gap-6 lg:grid-cols-3">
-      <Card className="lg:col-span-1">
-        <CardHeader>
-          <CardTitle>{t("members.inviteTitle")}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={onInvite} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="invite-email">{t("members.emailLabel")}</Label>
-              <Input id="invite-email" name="email" type="email" required />
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="invite-role">{t("members.roleLabel")}</Label>
-              <Select value={role} onValueChange={(value) => setRole(value as InvitableRole)}>
-                <SelectTrigger id="invite-role" className="w-full">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {INVITABLE_ROLES.map((r) => (
-                    <SelectItem key={r} value={r}>
-                      {t(`roles.${r}`)}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            <Button type="submit" className="w-full" disabled={invite.isPending}>
-              {invite.isPending ? t("members.sending") : t("members.sendInvite")}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-
-      <div className="space-y-6 lg:col-span-2">
+      <div className="space-y-6 lg:col-span-1">
         <Card>
           <CardHeader>
-            <CardTitle>{t("members.people")}</CardTitle>
+            <CardTitle>{t("members.addTitle")}</CardTitle>
           </CardHeader>
           <CardContent>
-            {organization.isPending ? (
-              <Skeleton className="h-32 w-full" />
-            ) : (
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("members.nameColumn")}</TableHead>
-                    <TableHead>{t("members.emailColumn")}</TableHead>
-                    <TableHead>{t("members.roleColumn")}</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {organization.data?.members.map((member) => (
+            <form onSubmit={onAdd} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="member-name">{t("members.nameLabel")}</Label>
+                <Input id="member-name" name="name" autoComplete="off" required maxLength={120} />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="member-email">{t("members.emailLabel")}</Label>
+                <Input id="member-email" name="email" type="email" autoComplete="off" required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="member-role">{t("members.roleLabel")}</Label>
+                <Select value={role} onValueChange={(value) => setRole(value as OrgRole)}>
+                  <SelectTrigger id="member-role" className="w-full">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {ROLES.map((r) => (
+                      <SelectItem key={r} value={r}>
+                        {t(`roles.${r}`)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+              <PasswordField id="member-password" value={password} onChange={setPassword} />
+              <Button type="submit" className="w-full" disabled={add.isPending}>
+                {add.isPending ? t("members.adding") : t("members.add")}
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+        {shared && <LoginDetails login={shared} onDismiss={() => setShared(null)} />}
+      </div>
+
+      <Card className="lg:col-span-2">
+        <CardHeader>
+          <CardTitle>{t("members.people")}</CardTitle>
+        </CardHeader>
+        <CardContent>
+          {organization.isPending ? (
+            <Skeleton className="h-32 w-full" />
+          ) : (
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>{t("members.nameColumn")}</TableHead>
+                  <TableHead>{t("members.emailColumn")}</TableHead>
+                  <TableHead>{t("members.roleColumn")}</TableHead>
+                  <TableHead className="w-10" />
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {organization.data?.members.map((member) => {
+                  const target = { userId: member.userId, name: member.user.name, email: member.user.email };
+                  return (
                     <TableRow key={member.id}>
-                      <TableCell className="font-medium">{member.user.name}</TableCell>
-                      <TableCell>{member.user.email}</TableCell>
+                      <TableCell className="font-medium whitespace-normal">{member.user.name}</TableCell>
+                      <TableCell className="break-all whitespace-normal">{member.user.email}</TableCell>
                       <TableCell>
                         <Badge variant="secondary">
                           {t.has(`roles.${member.role}`) ? t(`roles.${member.role}`) : member.role}
                         </Badge>
                       </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            )}
-          </CardContent>
-        </Card>
-
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("members.pendingInvitations")}</CardTitle>
-            {pending.length === 0 && <CardDescription>{t("members.noInvitations")}</CardDescription>}
-          </CardHeader>
-          {pending.length > 0 && (
-            <CardContent>
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>{t("members.emailColumn")}</TableHead>
-                    <TableHead>{t("members.roleColumn")}</TableHead>
-                    <TableHead>{t("members.expiresColumn")}</TableHead>
-                    <TableHead />
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {pending.map((invitation) => (
-                    <TableRow key={invitation.id}>
-                      <TableCell>{invitation.email}</TableCell>
-                      <TableCell>{invitation.role ? t(`roles.${invitation.role}`) : ""}</TableCell>
-                      <TableCell>
-                        {format.dateTime(new Date(invitation.expiresAt), { dateStyle: "medium" })}
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          disabled={cancel.isPending}
-                          onClick={() => cancel.mutate(invitation.id)}
-                        >
-                          {t("members.cancel")}
-                        </Button>
+                      <TableCell className="w-10 text-right">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              aria-label={t("members.actionsFor", { name: member.user.name })}
+                            >
+                              <Ellipsis />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end" className="min-w-44">
+                            <DropdownMenuItem onClick={() => setResetting(target)}>
+                              <KeyRound /> {t("members.resetPassword")}
+                            </DropdownMenuItem>
+                            {/* Admins can't remove themselves (the API refuses too), so a center keeps its admin. */}
+                            {member.userId !== currentUserId && (
+                              <DropdownMenuItem variant="destructive" onClick={() => setRemoving(target)}>
+                                <UserMinus /> {t("members.remove")}
+                              </DropdownMenuItem>
+                            )}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
                       </TableCell>
                     </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </CardContent>
+                  );
+                })}
+              </TableBody>
+            </Table>
           )}
-        </Card>
-      </div>
+        </CardContent>
+      </Card>
+
+      <ResetPasswordDialog
+        member={resetting}
+        onClose={() => setResetting(null)}
+        onDone={(login) => {
+          setResetting(null);
+          setShared(login);
+        }}
+      />
+      <RemoveMemberDialog
+        member={removing}
+        onClose={() => setRemoving(null)}
+        onDone={() => {
+          setRemoving(null);
+          void queryClient.invalidateQueries({ queryKey: ["organization", "full"] });
+        }}
+      />
     </div>
+  );
+}
+
+function PasswordField({
+  id,
+  value,
+  onChange,
+}: {
+  id: string;
+  value: string;
+  onChange: (value: string) => void;
+}) {
+  const t = useTranslations("members");
+  return (
+    <div className="space-y-2">
+      <Label htmlFor={id}>{t("passwordLabel")}</Label>
+      <div className="flex gap-2">
+        {/* Plain text on purpose: the admin reads it out or copies it to the member. */}
+        <Input
+          id={id}
+          value={value}
+          onChange={(event) => onChange(event.target.value)}
+          autoComplete="off"
+          spellCheck={false}
+          minLength={10}
+          maxLength={128}
+          className="font-mono"
+        />
+        <Button type="button" variant="outline" onClick={() => onChange(generatePassword())}>
+          {t("generate")}
+        </Button>
+      </div>
+      <p className="text-xs text-muted-foreground">{t("passwordHint")}</p>
+    </div>
+  );
+}
+
+/** Shown once after a login is created or its password changes, so the admin can pass it on. */
+function LoginDetails({ login, onDismiss }: { login: Login; onDismiss: () => void }) {
+  const t = useTranslations();
+  const locale = useLocale();
+  const text = [
+    `${t("members.signInPage")}: ${window.location.origin}/${locale}/login`,
+    `${t("auth.email")}: ${login.email}`,
+    `${t("auth.password")}: ${login.password}`,
+  ].join("\n");
+
+  return (
+    <Card className="border-primary/40">
+      <CardHeader>
+        <CardTitle>{t("members.credentialsTitle", { name: login.name })}</CardTitle>
+        <CardDescription>{t("members.credentialsBody")}</CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <pre className="rounded-md bg-muted p-3 text-sm break-all whitespace-pre-wrap">{text}</pre>
+        <div className="flex gap-2">
+          <Button
+            type="button"
+            onClick={() =>
+              void navigator.clipboard.writeText(text).then(() => toast.success(t("members.copied")))
+            }
+          >
+            {t("members.copy")}
+          </Button>
+          <Button type="button" variant="ghost" onClick={onDismiss}>
+            {t("members.dismiss")}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
+function ResetPasswordDialog({
+  member,
+  onClose,
+  onDone,
+}: {
+  member: Target | null;
+  onClose: () => void;
+  onDone: (login: Login) => void;
+}) {
+  const t = useTranslations();
+  const [password, setPassword] = useState("");
+
+  const reset = useMutation({
+    mutationFn: async (target: Target) => {
+      const newPassword = password || generatePassword();
+      const { error } = await api.PUT("/api/members/{userId}/password", {
+        params: { path: { userId: target.userId } },
+        body: { password: newPassword },
+      });
+      if (error) throw new Error(errorMessage(error, t("common.somethingWentWrong")));
+      return { name: target.name, email: target.email, password: newPassword };
+    },
+    onSuccess: (login) => {
+      toast.success(t("members.passwordSet", { name: login.name }));
+      setPassword("");
+      onDone(login);
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (member) reset.mutate(member);
+  }
+
+  return (
+    <Dialog
+      open={member !== null}
+      onOpenChange={(open) => {
+        if (!open) {
+          setPassword("");
+          onClose();
+        }
+      }}
+    >
+      <DialogContent>
+        <form onSubmit={onSubmit} className="space-y-4">
+          <DialogHeader>
+            <DialogTitle>{t("members.resetTitle", { name: member?.name ?? "" })}</DialogTitle>
+            <DialogDescription>{t("members.resetBody")}</DialogDescription>
+          </DialogHeader>
+          <PasswordField id="reset-password" value={password} onChange={setPassword} />
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => {
+                setPassword("");
+                onClose();
+              }}
+            >
+              {t("members.cancel")}
+            </Button>
+            <Button type="submit" disabled={reset.isPending}>
+              {reset.isPending ? t("members.saving") : t("members.setPassword")}
+            </Button>
+          </DialogFooter>
+        </form>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function RemoveMemberDialog({
+  member,
+  onClose,
+  onDone,
+}: {
+  member: Target | null;
+  onClose: () => void;
+  onDone: () => void;
+}) {
+  const t = useTranslations();
+
+  const remove = useMutation({
+    mutationFn: async (target: Target) => {
+      const { error } = await api.DELETE("/api/members/{userId}", {
+        params: { path: { userId: target.userId } },
+      });
+      if (error) throw new Error(errorMessage(error, t("common.somethingWentWrong")));
+      return target;
+    },
+    onSuccess: (target) => {
+      toast.success(t("members.removed", { name: target.name }));
+      onDone();
+    },
+    onError: (error) => toast.error(error.message),
+  });
+
+  return (
+    <Dialog open={member !== null} onOpenChange={(open) => !open && onClose()}>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>{t("members.removeTitle", { name: member?.name ?? "" })}</DialogTitle>
+          <DialogDescription>{t("members.removeBody")}</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button type="button" variant="ghost" onClick={onClose}>
+            {t("members.cancel")}
+          </Button>
+          <Button
+            type="button"
+            variant="destructive"
+            disabled={remove.isPending}
+            onClick={() => member && remove.mutate(member)}
+          >
+            {remove.isPending ? t("members.removing") : t("members.remove")}
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }

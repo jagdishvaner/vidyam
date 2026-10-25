@@ -21,7 +21,7 @@ async function MembersGate() {
       </Alert>
     );
   }
-  return <MembersManager />;
+  return <MembersManager currentUserId={user.id} />;
 }
 
 export default function MembersPage() {

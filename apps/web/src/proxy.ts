@@ -6,7 +6,7 @@ import { routing } from "./i18n/routing";
 const intl = createIntlProxy(routing);
 
 /** Pages reachable without a session (prefix match after the locale segment). */
-const PUBLIC_PATHS = ["/login", "/forgot-password", "/reset-password", "/invite"];
+const PUBLIC_PATHS = ["/login"];
 const SESSION_COOKIES = ["better-auth.session_token", "__Secure-better-auth.session_token"];
 
 /**

@@ -8,7 +8,7 @@ import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { useState, type FormEvent } from "react";
 
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { authClient } from "@/lib/client/auth";
 
 /** Only same-app paths are honoured as a post-login destination (no open redirects). */
@@ -56,13 +56,9 @@ export function LoginForm() {
             <Input id="email" name="email" type="email" autoComplete="email" required />
           </div>
           <div className="space-y-2">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">{t("password")}</Label>
-              <Link href="/forgot-password" className="text-xs text-muted-foreground hover:underline">
-                {t("forgotPassword")}
-              </Link>
-            </div>
+            <Label htmlFor="password">{t("password")}</Label>
             <Input id="password" name="password" type="password" autoComplete="current-password" required />
+            <p className="text-xs text-muted-foreground">{t("forgotPassword")}</p>
           </div>
           {error && (
             <p role="alert" className="text-sm text-destructive">

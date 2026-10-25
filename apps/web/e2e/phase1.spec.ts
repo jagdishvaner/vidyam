@@ -6,7 +6,6 @@ const ADMIN = {
   name: process.env.VIDYAM_SEED_ADMIN_NAME ?? "Vidyam Admin",
 };
 const ORG = process.env.VIDYAM_SEED_ORG_NAME ?? "Vidyam Demo Coaching";
-const MAILPIT = "http://localhost:38181";
 
 async function signIn(page: Page, email: string, password: string) {
   await page.goto("/en/login");
@@ -41,46 +40,59 @@ test("admin sees a live dashboard, in English and Hindi", async ({ page }) => {
   await page.screenshot({ path: "test-results/dashboard-hi.png", fullPage: true });
 });
 
-test("admin invites a teacher, who joins from the emailed link", async ({ page, browser, request }) => {
-  const teacher = {
-    email: `teacher-${Date.now()}@vidyam.test`,
-    name: "Asha Sharma",
-    password: "teacher-password-1",
-  };
+test("admin adds a teacher, resets their password, then removes them", async ({ page, browser }) => {
+  const teacher = { email: `teacher-${Date.now()}@vidyam.test`, name: "Asha Sharma" };
 
   await page.goto("/en/settings/members");
-  await page.getByLabel("Email address").fill(teacher.email);
-  await page.getByRole("button", { name: "Send invitation" }).click();
-  await expect(page.getByText(`Invitation sent to ${teacher.email}`)).toBeVisible();
-  await expect(page.getByRole("cell", { name: teacher.email })).toBeVisible();
+  await page.getByLabel("Full name").fill(teacher.name);
+  await page.getByLabel("Email (their login ID)").fill(teacher.email);
+  // Password left empty: the app generates one and shows it once.
+  await page.getByRole("button", { name: "Add member" }).click();
+  const details = page.getByText(/^Sign-in page: /);
+  await expect(details).toBeVisible();
+  const password = (await details.textContent())!.match(/Password: (\S+)/)![1]!;
+  const row = page.getByRole("row").filter({ hasText: teacher.email });
+  await expect(row).toBeVisible();
   await page.screenshot({ path: "test-results/members.png", fullPage: true });
-
-  // The invitation email lands in Mailpit locally.
-  let inviteUrl: string | undefined;
-  await expect
-    .poll(async () => {
-      const search = await (await request.get(`${MAILPIT}/api/v1/search?query=to:"${teacher.email}"`)).json();
-      const id = search.messages?.[0]?.ID;
-      if (!id) return undefined;
-      const message = await (await request.get(`${MAILPIT}/api/v1/message/${id}`)).json();
-      inviteUrl = String(message.Text).match(/https?:\/\/\S+\/invite\/[0-9a-f-]+/)?.[0];
-      return inviteUrl;
-    })
-    .toBeTruthy();
 
   const teacherContext = await browser.newContext({ storageState: { cookies: [], origins: [] } });
   const teacherPage = await teacherContext.newPage();
-  await teacherPage.goto(inviteUrl!);
-  await expect(teacherPage.getByText("Join your coaching center")).toBeVisible();
-  await teacherPage.getByLabel("Your name").fill(teacher.name);
-  await teacherPage.getByLabel("Email").fill(teacher.email);
-  await teacherPage.getByLabel("Password").fill(teacher.password);
-  await teacherPage.getByRole("button", { name: "Create account" }).last().click();
+  await signIn(teacherPage, teacher.email, password);
   await expect(teacherPage.getByRole("heading", { name: `Welcome, ${teacher.name}` })).toBeVisible();
   await expect(teacherPage.getByText(`Teacher at ${ORG}`)).toBeVisible();
-
   // Teachers can't manage members.
   await teacherPage.goto("/en/settings/members");
   await expect(teacherPage.getByText("Only center admins can manage members.")).toBeVisible();
   await teacherContext.close();
+
+  // The admin sets a new password; only the new one works afterwards.
+  await row.getByRole("button", { name: `Actions for ${teacher.name}` }).click();
+  await page.screenshot({ path: "test-results/members-actions.png" });
+  await page.getByRole("menuitem", { name: "Reset password" }).click();
+  await page
+    .getByRole("dialog")
+    .getByLabel("Password (at least 10 characters)")
+    .fill("a-new-teacher-password");
+  await page.getByRole("button", { name: "Set password" }).click();
+  await expect(page.getByText(`Password changed for ${teacher.name}`)).toBeVisible();
+
+  const again = await browser.newContext({ storageState: { cookies: [], origins: [] } });
+  const againPage = await again.newPage();
+  await signIn(againPage, teacher.email, password);
+  await expect(againPage.getByRole("alert").filter({ hasText: "don't match" })).toBeVisible();
+  await signIn(againPage, teacher.email, "a-new-teacher-password");
+  await expect(againPage.getByRole("heading", { name: `Welcome, ${teacher.name}` })).toBeVisible();
+  await again.close();
+
+  // The teacher leaves: removing them ends their access (and keeps test runs from piling up members).
+  await row.getByRole("button", { name: `Actions for ${teacher.name}` }).click();
+  await page.getByRole("menuitem", { name: "Remove" }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Remove" }).click();
+  await expect(page.getByText(`${teacher.name} was removed`)).toBeVisible();
+  await expect(row).toHaveCount(0);
+  const gone = await browser.newContext({ storageState: { cookies: [], origins: [] } });
+  const gonePage = await gone.newPage();
+  await signIn(gonePage, teacher.email, "a-new-teacher-password");
+  await expect(gonePage.getByRole("alert").filter({ hasText: "don't match" })).toBeVisible();
+  await gone.close();
 });
