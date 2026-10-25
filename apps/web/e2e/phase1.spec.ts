@@ -15,15 +15,19 @@ async function signIn(page: Page, email: string, password: string) {
   await page.getByRole("button", { name: "Sign in" }).click();
 }
 
-test("unauthenticated visitors are sent to sign-in, and a wrong password is refused", async ({ page }) => {
-  await page.goto("/");
-  await expect(page).toHaveURL(/\/en\/login/);
-  await signIn(page, ADMIN.email, "definitely-not-it");
-  await expect(page.getByRole("alert").filter({ hasText: "don't match" })).toBeVisible();
+test.describe("signed out", () => {
+  test.use({ storageState: { cookies: [], origins: [] } });
+
+  test("visitors are sent to sign-in, and a wrong password is refused", async ({ page }) => {
+    await page.goto("/");
+    await expect(page).toHaveURL(/\/en\/login/);
+    await signIn(page, ADMIN.email, "definitely-not-it");
+    await expect(page.getByRole("alert").filter({ hasText: "don't match" })).toBeVisible();
+  });
 });
 
-test("admin signs in to a live dashboard, in English and Hindi", async ({ page }) => {
-  await signIn(page, ADMIN.email, ADMIN.password);
+test("admin sees a live dashboard, in English and Hindi", async ({ page }) => {
+  await page.goto("/en");
   await expect(page.getByRole("heading", { name: `Welcome, ${ADMIN.name}` })).toBeVisible();
   await expect(page.getByText(`Platform admin at ${ORG}`)).toBeVisible();
   await expect(page.getByText("All systems operational")).toBeVisible({ timeout: 20_000 });
@@ -44,8 +48,6 @@ test("admin invites a teacher, who joins from the emailed link", async ({ page, 
     password: "teacher-password-1",
   };
 
-  await signIn(page, ADMIN.email, ADMIN.password);
-  await expect(page.getByRole("heading", { name: `Welcome, ${ADMIN.name}` })).toBeVisible();
   await page.goto("/en/settings/members");
   await page.getByLabel("Email address").fill(teacher.email);
   await page.getByRole("button", { name: "Send invitation" }).click();
@@ -66,7 +68,7 @@ test("admin invites a teacher, who joins from the emailed link", async ({ page, 
     })
     .toBeTruthy();
 
-  const teacherContext = await browser.newContext();
+  const teacherContext = await browser.newContext({ storageState: { cookies: [], origins: [] } });
   const teacherPage = await teacherContext.newPage();
   await teacherPage.goto(inviteUrl!);
   await expect(teacherPage.getByText("Join your coaching center")).toBeVisible();

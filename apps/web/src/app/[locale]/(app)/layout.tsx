@@ -17,13 +17,18 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <p className="text-lg font-semibold tracking-tight">{t("appName")}</p>
           <p className="text-xs text-muted-foreground">{t("tagline")}</p>
         </div>
-        <NavLinks />
+        {/* Active-link highlighting reads the URL: stream it in so dynamic routes keep a static shell. */}
+        <Suspense fallback={<Skeleton className="h-64 w-full" />}>
+          <NavLinks />
+        </Suspense>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">
         <header className="flex h-14 items-center justify-between gap-2 border-b px-4 md:px-8">
           <span className="font-semibold md:hidden">{t("appName")}</span>
           <div className="ml-auto flex items-center gap-1">
-            <LanguageSwitcher />
+            <Suspense fallback={<Skeleton className="h-8 w-20" />}>
+              <LanguageSwitcher />
+            </Suspense>
             <ThemeToggle />
             <Suspense fallback={<Skeleton className="h-9 w-32 rounded-md" />}>
               <UserMenu />

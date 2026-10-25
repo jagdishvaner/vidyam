@@ -1,3 +1,5 @@
+import path from "node:path";
+
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
@@ -8,6 +10,10 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   transpilePackages: ["@vidyam/ui"],
+  // Container image: a minimal server.js with only the files it needs. Trace from the monorepo root so the
+  // workspace packages (@vidyam/ui, api-client, contracts) are included. Builds run with cwd = apps/web.
+  output: "standalone",
+  outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   experimental: {
     // Dev-time instant-navigation validation fails inside Next 16.4.3 itself ("Could not find
     // PlaceValidationBoundaryBelowThisLevel in the React Client Manifest"). Validate only segments that opt in
