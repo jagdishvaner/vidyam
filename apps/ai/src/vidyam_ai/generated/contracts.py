@@ -17,6 +17,14 @@ class VidyamContracts(RootModel[Any]):
     )
 
 
+class AddedMember(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    user_id: UUID = Field(..., alias="userId")
+
+
 class AiQueueName(StrEnum):
     cpu_parse = "cpu-parse"
     llm_batch = "llm-batch"
@@ -352,6 +360,14 @@ class ServiceHealth(BaseModel):
     dependencies: list[DependencyStatus]
 
 
+class SetMemberPasswordRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    password: str = Field(..., max_length=128, min_length=10)
+
+
 class Slot(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -378,6 +394,20 @@ class SystemStatus(BaseModel):
     )
     ok: bool
     services: list[ServiceHealth]
+
+
+class AddMemberRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    name: str = Field(..., max_length=120, min_length=1)
+    email: EmailStr = Field(
+        ...,
+        pattern="^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+    )
+    role: OrgRole
+    password: str = Field(..., max_length=128, min_length=10)
 
 
 class CurrentUser(BaseModel):

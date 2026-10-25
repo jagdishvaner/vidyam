@@ -82,7 +82,7 @@ importers:
         version: link:../../packages/db
       better-auth:
         specifier: 1.7.12
-        version: 1.7.12(drizzle-kit@0.31.11)(drizzle-orm@0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1))(next@16.4.3(@babel/core@7.29.7)(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(pg@8.23.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(solid-js@1.9.17)(vitest@5.0.5(@types/node@24.19.2)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)))
+        version: 1.7.12(drizzle-kit@0.31.11)(drizzle-orm@0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1))(next@16.4.3(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(pg@8.23.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(solid-js@1.9.17)(vitest@5.0.5(@types/node@24.19.2)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)))
       bullmq:
         specifier: 6.4.1
         version: 6.4.1(ioredis@6.0.0)(pg@8.23.1)
@@ -95,9 +95,6 @@ importers:
       ioredis:
         specifier: 6.0.0
         version: 6.0.0
-      nodemailer:
-        specifier: 10.2.1
-        version: 10.2.1
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
@@ -123,9 +120,6 @@ importers:
       '@types/node':
         specifier: 24.19.2
         version: 24.19.2
-      '@types/nodemailer':
-        specifier: 8.0.2
-        version: 8.0.2
       '@types/supertest':
         specifier: 7.2.1
         version: 7.2.1
@@ -3445,9 +3439,6 @@ packages:
   '@types/node@24.19.2':
     resolution: {integrity: sha512-93d49wCWJkCyN87MxLpNN6KXPCwFw7bVUg79mGUV1OS40JGWwVCr8n61DXCSqz7CV6/VfPkb7xec7uP2M+QHWQ==}
 
-  '@types/nodemailer@8.0.2':
-    resolution: {integrity: sha512-c7M5ox8p0nEOfbJ2E9Qcmt8/QCu/VzsiAhzBiZbvky2PhKZDHpKB3sQHBM5MEZNkCfBOaS6S9//AGPRTNB7IaA==}
-
   '@types/pg@8.23.1':
     resolution: {integrity: sha512-fKVHpikPdg4GKks3JuLEhvwSyvwzF23hnabPy6DD8ljVbC7+6J5dQzdv4arV6jqq57djnMgs1HKBxX4P8aBI3A==}
 
@@ -5890,10 +5881,6 @@ packages:
     version: 24.22.1
     hasBin: true
 
-  nodemailer@10.2.1:
-    resolution: {integrity: sha512-ZrDNsPFoDMwefNs7sJwrYiEJ/CG4ClJWDZv05iNJsEBWa8GRDry1QJHTJxsuTAY9eDDKjX4k+q3SxslXJOao7w==}
-    engines: {node: '>=20.0.0'}
-
   npm-run-path@4.0.1:
     resolution: {integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==}
     engines: {node: '>=8'}
@@ -8072,7 +8059,7 @@ snapshots:
   '@eslint/config-array@0.23.5':
     dependencies:
       '@eslint/object-schema': 3.0.5
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       minimatch: 10.2.6
     transitivePeerDependencies:
       - supports-color
@@ -9886,7 +9873,7 @@ snapshots:
     dependencies:
       '@nestjs/common': 12.2.0(reflect-metadata@0.2.2)(rxjs@7.8.2)
       '@nestjs/core': 12.2.0(@nestjs/common@12.2.0(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@12.2.0)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      better-auth: 1.7.12(drizzle-kit@0.31.11)(drizzle-orm@0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1))(next@16.4.3(@babel/core@7.29.7)(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(pg@8.23.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(solid-js@1.9.17)(vitest@5.0.5(@types/node@24.19.2)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)))
+      better-auth: 1.7.12(drizzle-kit@0.31.11)(drizzle-orm@0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1))(next@16.4.3(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(pg@8.23.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(solid-js@1.9.17)(vitest@5.0.5(@types/node@24.19.2)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15)))
       typescript: 6.0.3
     optionalDependencies:
       express: 5.3.0
@@ -9894,7 +9881,7 @@ snapshots:
 
   '@tokenizer/inflate@0.4.1':
     dependencies:
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       token-types: 6.1.2
     transitivePeerDependencies:
       - supports-color
@@ -9976,10 +9963,6 @@ snapshots:
   '@types/node@24.19.2':
     dependencies:
       undici-types: 7.24.6
-
-  '@types/nodemailer@8.0.2':
-    dependencies:
-      '@types/node': 24.19.2
 
   '@types/pg@8.23.1':
     dependencies:
@@ -10439,6 +10422,37 @@ snapshots:
     transitivePeerDependencies:
       - '@opentelemetry/api'
 
+  better-auth@1.7.12(drizzle-kit@0.31.11)(drizzle-orm@0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1))(next@16.4.3(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(pg@8.23.1)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(solid-js@1.9.17)(vitest@5.0.5(@types/node@24.19.2)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))):
+    dependencies:
+      '@better-auth/core': 1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5)
+      '@better-auth/drizzle-adapter': 1.7.12(@better-auth/core@1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5))(@better-auth/utils@0.5.0)(drizzle-orm@0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1))
+      '@better-auth/kysely-adapter': 1.7.12(@better-auth/core@1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5))(@better-auth/utils@0.5.0)(kysely@0.29.7)
+      '@better-auth/memory-adapter': 1.7.12(@better-auth/core@1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5))(@better-auth/utils@0.5.0)
+      '@better-auth/mongo-adapter': 1.7.12(@better-auth/core@1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5))(@better-auth/utils@0.5.0)
+      '@better-auth/prisma-adapter': 1.7.12(@better-auth/core@1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5))(@better-auth/utils@0.5.0)
+      '@better-auth/telemetry': 1.7.12(@better-auth/core@1.7.12(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)(better-call@1.4.4(zod@4.6.7))(jose@6.2.13)(kysely@0.29.7)(nanostores@1.5.5))(@better-auth/utils@0.5.0)(@better-fetch/fetch@1.3.2)
+      '@better-auth/utils': 0.5.0
+      '@better-fetch/fetch': 1.3.2
+      '@noble/ciphers': 2.4.0
+      '@noble/hashes': 2.4.0
+      better-call: 1.4.4(zod@4.6.7)
+      defu: 6.1.7
+      jose: 6.2.13
+      kysely: 0.29.7
+      nanostores: 1.5.5
+      zod: 4.6.7
+    optionalDependencies:
+      drizzle-kit: 0.31.11
+      drizzle-orm: 0.45.4(@types/pg@8.23.1)(kysely@0.29.7)(pg@8.23.1)
+      next: 16.4.3(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
+      pg: 8.23.1
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      solid-js: 1.9.17
+      vitest: 5.0.5(@types/node@24.19.2)(vite@8.3.5(@types/node@24.19.2)(esbuild@0.28.2)(jiti@2.7.0)(tsx@4.23.15))
+    transitivePeerDependencies:
+      - '@opentelemetry/api'
+
   better-call@1.4.4(zod@4.6.7):
     dependencies:
       '@better-auth/utils': 0.5.0
@@ -10452,7 +10466,7 @@ snapshots:
     dependencies:
       bytes: 3.1.2
       content-type: 2.1.0
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       http-errors: 2.0.1
       iconv-lite: 0.7.3
       on-finished: 2.4.2
@@ -10742,6 +10756,10 @@ snapshots:
       mimic-fn: 3.1.0
 
   debug@3.2.7:
+    dependencies:
+      ms: 2.1.3
+
+  debug@4.4.3:
     dependencies:
       ms: 2.1.3
 
@@ -11300,7 +11318,7 @@ snapshots:
       '@types/estree': 1.0.9
       ajv: 6.15.0
       cross-spawn: 7.0.6
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       escape-string-regexp: 4.0.0
       eslint-scope: 9.1.2
       eslint-visitor-keys: 5.0.1
@@ -11400,7 +11418,7 @@ snapshots:
       content-type: 2.1.0
       cookie: 0.7.2
       cookie-signature: 1.2.2
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       depd: 2.0.0
       encodeurl: 2.0.0
       escape-html: 1.0.3
@@ -11494,7 +11512,7 @@ snapshots:
 
   finalhandler@2.1.1:
     dependencies:
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       encodeurl: 2.0.0
       escape-html: 1.0.3
       on-finished: 2.4.2
@@ -11753,7 +11771,7 @@ snapshots:
     dependencies:
       '@ioredis/commands': 2.0.0
       cluster-key-slot: 1.1.1
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       denque: 2.1.0
       redis-errors: 1.2.0
       standard-as-callback: 2.1.0
@@ -12356,6 +12374,33 @@ snapshots:
       - '@types/node'
       - babel-plugin-macros
 
+  next@16.4.3(@playwright/test@1.64.1)(@types/node@24.19.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1):
+    dependencies:
+      '@next/env': 16.4.3
+      '@swc/helpers': 0.5.23
+      baseline-browser-mapping: 2.11.32
+      caniuse-lite: 1.0.30001819
+      postcss: 8.5.23
+      react: 19.3.1
+      react-dom: 19.3.1(react@19.3.1)
+      styled-jsx: 5.1.6(react@19.3.1)
+    optionalDependencies:
+      '@next/swc-darwin-arm64': 16.4.3
+      '@next/swc-darwin-x64': 16.4.3
+      '@next/swc-linux-arm64-gnu': 16.4.3
+      '@next/swc-linux-arm64-musl': 16.4.3
+      '@next/swc-linux-x64-gnu': 16.4.3
+      '@next/swc-linux-x64-musl': 16.4.3
+      '@next/swc-win32-arm64-msvc': 16.4.3
+      '@next/swc-win32-x64-msvc': 16.4.3
+      '@playwright/test': 1.64.1
+      sharp: 0.35.5(@types/node@24.19.2)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@types/node'
+      - babel-plugin-macros
+    optional: true
+
   node-abort-controller@3.1.1: {}
 
   node-addon-api@7.1.1: {}
@@ -12382,8 +12427,6 @@ snapshots:
   node-releases@2.0.60: {}
 
   node@runtime:24.22.1: {}
-
-  nodemailer@10.2.1: {}
 
   npm-run-path@4.0.1:
     dependencies:
@@ -12925,7 +12968,7 @@ snapshots:
 
   router@2.2.0:
     dependencies:
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       depd: 2.0.0
       is-promise: 4.0.0
       parseurl: 1.3.3
@@ -12972,7 +13015,7 @@ snapshots:
 
   send@1.2.1:
     dependencies:
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       encodeurl: 2.0.0
       escape-html: 1.0.3
       etag: 1.8.1
@@ -13315,11 +13358,17 @@ snapshots:
     optionalDependencies:
       '@babel/core': 7.29.7
 
+  styled-jsx@5.1.6(react@19.3.1):
+    dependencies:
+      client-only: 0.0.1
+      react: 19.3.1
+    optional: true
+
   superagent@10.4.1:
     dependencies:
       component-emitter: 1.3.1
       cookiejar: 2.1.4
-      debug: 4.4.3(supports-color@10.2.2)
+      debug: 4.4.3
       fast-safe-stringify: 2.1.1
       form-data: 4.0.6
       formidable: 3.5.4

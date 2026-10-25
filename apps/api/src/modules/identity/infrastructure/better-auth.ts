@@ -1,4 +1,3 @@
-import { Logger } from "@nestjs/common";
 import { schema, type Database } from "@vidyam/db";
 import { betterAuth, type SecondaryStorage } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
@@ -8,25 +7,12 @@ import { asc, eq } from "drizzle-orm";
 import type { Env } from "../../../config/env.js";
 import { PLATFORM_ADMIN } from "../domain/roles.js";
 import { accessControl, orgRoles, platformAccessControl, platformRoles } from "./access-control.js";
-import type { Mailer } from "./mailer.js";
-
-const logger = new Logger("Auth");
 
 /**
  * Runtime Better Auth config. Plugins and model names must match packages/db/scripts/better-auth.schema.ts,
  * which generates the tables; the integration tests exercise both against the migrated database.
  */
-export function createAuth({
-  env,
-  db,
-  mailer,
-  cache,
-}: {
-  env: Env;
-  db: Database;
-  mailer: Mailer;
-  cache: SecondaryStorage;
-}) {
+export function createAuth({ env, db, cache }: { env: Env; db: Database; cache: SecondaryStorage }) {
   return betterAuth({
     appName: "Vidyam",
     // The browser reaches the API through the app origin (Caddy locally, CloudFront on AWS).
@@ -60,9 +46,6 @@ export function createAuth({
         // Limits are per client IP, and a center's staff usually share one internet connection:
         // generous enough for everyone signing in at 9 am, still far too low for password guessing.
         "/sign-in/email": { window: 60, max: 30 },
-        "/sign-up/email": { window: 60, max: 20 },
-        "/request-password-reset": { window: 600, max: 10 },
-        "/reset-password": { window: 600, max: 20 },
       },
     },
     account: { modelName: "accounts" },
@@ -70,16 +53,8 @@ export function createAuth({
     emailAndPassword: {
       enabled: true,
       minPasswordLength: 10,
-      // Not awaited: a response that waits on SMTP only for real accounts would reveal which emails exist.
-      async sendResetPassword({ user, url }) {
-        mailer
-          .send({
-            to: user.email,
-            subject: "Reset your Vidyam password",
-            text: `Open this link to choose a new password:\n\n${url}\n\nIf you didn't ask for this, ignore this email.`,
-          })
-          .catch((error: unknown) => logger.error(`Password reset email failed: ${String(error)}`));
-      },
+      // Center admins create every login and set passwords (ADR 0011); there is no email.
+      disableSignUp: true,
     },
     databaseHooks: {
       session: {
@@ -109,15 +84,8 @@ export function createAuth({
         roles: orgRoles,
         creatorRole: "admin",
         allowUserToCreateOrganization: async (user) => (user as { role?: string }).role === PLATFORM_ADMIN,
-        async sendInvitationEmail({ email, organization: org, inviter, id, role }) {
-          await mailer.send({
-            to: email,
-            subject: `You're invited to ${org.name} on Vidyam`,
-            text:
-              `${inviter.user.name} invited you to join ${org.name} as ${role}.\n\n` +
-              `Accept the invitation: ${env.VIDYAM_APP_URL}/invite/${id}\n`,
-          });
-        },
+        // Staff, not students, are members; the default cap of 100 is too low for a large center.
+        membershipLimit: 1000,
         schema: {
           organization: { modelName: "organizations" },
           member: { modelName: "members" },

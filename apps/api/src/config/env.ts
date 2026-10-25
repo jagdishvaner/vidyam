@@ -17,8 +17,6 @@ const EnvSchema = z.object({
   VIDYAM_S3_ACCESS_KEY_ID: z.string().optional(),
   VIDYAM_S3_SECRET_ACCESS_KEY: z.string().optional(),
   VIDYAM_S3_BUCKET_PREFIX: z.string().min(1),
-  VIDYAM_SMTP_URL: z.string().min(1),
-  VIDYAM_MAIL_FROM: z.string().default("Vidyam <noreply@vidyam.local>"),
   VIDYAM_AUTH_SECRET: z.string().min(32, "VIDYAM_AUTH_SECRET must be at least 32 characters"),
   VIDYAM_AI_INTERNAL_URL: z.url(),
   VIDYAM_AI_INTERNAL_TOKEN: z.string().min(16),

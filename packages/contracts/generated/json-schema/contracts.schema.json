@@ -3,6 +3,51 @@
   "title": "VidyamContracts",
   "description": "Generated from @vidyam/contracts. Do not edit; run `pnpm codegen`.",
   "$defs": {
+    "AddedMember": {
+      "title": "AddedMember",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "userId"
+      ],
+      "additionalProperties": false
+    },
+    "AddMemberRequest": {
+      "title": "AddMemberRequest",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+        },
+        "role": {
+          "$ref": "#/$defs/OrgRole"
+        },
+        "password": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "name",
+        "email",
+        "role",
+        "password"
+      ],
+      "additionalProperties": false
+    },
     "AiQueueName": {
       "title": "AiQueueName",
       "type": "string",
@@ -975,6 +1020,21 @@
         "version",
         "ok",
         "dependencies"
+      ],
+      "additionalProperties": false
+    },
+    "SetMemberPasswordRequest": {
+      "title": "SetMemberPasswordRequest",
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "password"
       ],
       "additionalProperties": false
     },
