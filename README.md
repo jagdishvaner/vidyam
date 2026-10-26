@@ -68,6 +68,21 @@ Useful local tools:
 | SeaweedFS (S3) status                                   | http://localhost:38161                  |
 | Database browser (`pnpm --filter @vidyam/db db:studio`) | https://local.drizzle.studio?port=38190 |
 
+### Adding content
+
+Files go into the library with one command, run from the repository root while the app is running
+(`pnpm dev` or `pnpm stack:up`). Folders are searched recursively.
+
+```bash
+pnpm ingest ~/Desktop/rpsc-polity --kind notes --licence own --meta exam=rpsc --meta subject=polity --wait
+```
+
+- `--kind`: `book`, `notes`, `question_paper`, `answer_key`, `booklet`, `image` or `other`
+- `--licence`: `own` (the center's material), `third_party` (published books) or `pyq` (past papers)
+- Reads PDF, Word (.docx), text/Markdown and images. Kruti Dev text is converted to Unicode Hindi. Scanned
+  pages wait for OCR, which needs the AI keys.
+- Running it again skips files already imported. Progress is visible in the Temporal UI.
+
 ### Run everything in Docker
 
 The same images that will run on AWS can run locally, behind the same Caddy entry point:

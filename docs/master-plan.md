@@ -11,6 +11,8 @@
 >   arrive as text from the center (step 42 dropped). See ADR 0012.
 > - Temporal replaces BullMQ for background work (durable workflows, built-in waits for Batch API results); the
 >   reconciler and batch poller in steps 28 and 55 are no longer needed. See ADR 0013.
+> - Content is read with PDFium (not the AGPL PyMuPDF) and our own Kruti Dev converter; `pnpm ingest` is the
+>   intake. See ADR 0014.
 
 ## Context
 
