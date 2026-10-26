@@ -96,5 +96,89 @@
     "removing": "Removing…",
     "removed": "{name} was removed",
     "adminOnly": "Only center admins can manage members."
+  },
+  "library": {
+    "title": "Library",
+    "subtitle": "Your books, notes and past papers, and how far each one has been read.",
+    "files": "Files",
+    "sections": "Searchable sections",
+    "ocrPages": "Pages waiting for OCR",
+    "failed": "Failed",
+    "filters": {
+      "all": "All",
+      "ready": "Ready",
+      "in_progress": "In progress",
+      "needs_ocr": "Waiting for OCR",
+      "failed": "Failed"
+    },
+    "search": "Search by file name",
+    "columns": {
+      "file": "File",
+      "language": "Language",
+      "pages": "Pages",
+      "sections": "Sections",
+      "status": "Status",
+      "added": "Added"
+    },
+    "states": {
+      "queued": "Queued",
+      "reading": "Reading…",
+      "ready": "Ready",
+      "waiting_for_ocr": "Waiting for OCR",
+      "failed": "Failed"
+    },
+    "kinds": {
+      "book": "Book",
+      "notes": "Notes",
+      "question_paper": "Question paper",
+      "answer_key": "Answer key",
+      "booklet": "Booklet",
+      "video": "Video",
+      "image": "Image",
+      "other": "Other"
+    },
+    "licences": {
+      "own": "Own material",
+      "third_party": "Published book",
+      "pyq": "Past paper"
+    },
+    "languages": {
+      "hi": "Hindi",
+      "en": "English",
+      "mixed": "Hindi + English"
+    },
+    "ocrSome": "{count, plural, one {# page waits} other {# pages wait}} for OCR",
+    "empty": "No files yet",
+    "emptyBody": "For now, the Vidyam team adds files with the import command. Share your books, notes and past papers with them.",
+    "noMatches": "No files match.",
+    "pageOf": "Page {page} of {pages}",
+    "previous": "Previous",
+    "next": "Next",
+    "back": "Back to library",
+    "notFound": "This file isn't in your center's library.",
+    "howRead": "How each page was read",
+    "pageStates": {
+      "text": "Text",
+      "converted": "Converted from Kruti Dev",
+      "waiting_for_ocr": "Waiting for OCR",
+      "blank": "Blank"
+    },
+    "pageColumn": "Page",
+    "readColumn": "Read as",
+    "qualityColumn": "Quality",
+    "noteColumn": "Note",
+    "wholeFile": "Whole file",
+    "preview": "Text preview",
+    "previewBody": "The first sections, exactly as search will see them. Check that the Hindi reads correctly.",
+    "pageRange": "Pages {start}–{end}",
+    "singlePage": "Page {page}",
+    "noSections": "No readable text yet.",
+    "error": "What went wrong",
+    "remove": "Remove",
+    "removeTitle": "Remove {name} from the library?",
+    "removeBody": "Its text leaves search and the stored file is deleted. It can be imported again later.",
+    "removing": "Removing…",
+    "removed": "{name} was removed",
+    "cancel": "Cancel"
   }
 }

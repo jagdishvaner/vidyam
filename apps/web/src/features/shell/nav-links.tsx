@@ -10,7 +10,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 const ITEMS = [
   { key: "dashboard", href: "/", icon: LayoutDashboard },
   { key: "studio", href: null, icon: Sparkles },
-  { key: "library", href: null, icon: BookOpenText },
+  { key: "library", href: "/library", icon: BookOpenText },
   { key: "questionBank", href: null, icon: FileQuestion },
   { key: "review", href: null, icon: ClipboardCheck },
   { key: "members", href: "/settings/members", icon: Users },
@@ -29,7 +29,8 @@ export function NavLinks() {
             href={href}
             className={cn(
               "flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-sidebar-accent",
-              pathname === href && "bg-sidebar-accent font-medium text-sidebar-primary",
+              (href === "/" ? pathname === href : pathname.startsWith(href)) &&
+                "bg-sidebar-accent font-medium text-sidebar-primary",
             )}
           >
             <Icon className="size-4" />
