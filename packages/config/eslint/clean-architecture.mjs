@@ -65,4 +65,9 @@ export default defineConfig([
       ],
     },
   },
+  {
+    // Tests belong to no layer: they use the test runner and may wire layers together.
+    files: ["**/*.spec.ts", "**/*.test.ts"],
+    rules: { "boundaries/dependencies": "off" },
+  },
 ]);
