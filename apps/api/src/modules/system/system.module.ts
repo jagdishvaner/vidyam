@@ -4,6 +4,7 @@ import type { DatabaseHandle } from "@vidyam/db";
 
 import { ENV, type Env } from "../../config/env.js";
 import { DATABASE } from "../../shared/database/tokens.js";
+import { createS3Client } from "../../shared/storage/s3.js";
 import { TEMPORAL_CLIENT } from "../../shared/temporal/temporal.module.js";
 import {
   AI_ENGINE_HEALTH,
@@ -12,7 +13,6 @@ import {
   type DependencyProbe,
 } from "./application/check-system-status.js";
 import {
-  createS3Client,
   HttpAiEngineHealthReader,
   PostgresProbe,
   S3Probe,

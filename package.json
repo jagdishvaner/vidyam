@@ -32,6 +32,7 @@
     "infra:ps": "docker compose -f infra/docker/compose.yml ps",
     "infra:logs": "docker compose -f infra/docker/compose.yml logs -f --tail=100",
     "bootstrap": "turbo run bootstrap",
+    "ingest": "pnpm --silent --filter @vidyam/api ingest",
     "local:init": "pnpm infra:up && pnpm db:seed && pnpm bootstrap",
     "test:e2e": "turbo run test:e2e",
     "stack:up": "VIDYAM_WEB_UPSTREAM=web:38100 VIDYAM_API_UPSTREAM=api:38110 docker compose -f infra/docker/compose.yml --profile full up -d --build --wait",

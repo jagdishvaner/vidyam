@@ -1,4 +1,4 @@
-import { HeadBucketCommand, S3Client } from "@aws-sdk/client-s3";
+import { HeadBucketCommand, type S3Client } from "@aws-sdk/client-s3";
 import type { Client } from "@temporalio/client";
 import { ServiceHealth } from "@vidyam/contracts";
 import type { DatabaseHandle } from "@vidyam/db";
@@ -82,16 +82,4 @@ export class HttpAiEngineHealthReader implements AiEngineHealthReader {
     if (!response.ok) throw new Error(`AI engine answered ${response.status}`);
     return ServiceHealth.parse(await response.json());
   }
-}
-
-export function createS3Client(env: Env): S3Client {
-  return new S3Client({
-    region: env.VIDYAM_S3_REGION,
-    endpoint: env.VIDYAM_S3_ENDPOINT,
-    forcePathStyle: Boolean(env.VIDYAM_S3_ENDPOINT),
-    credentials:
-      env.VIDYAM_S3_ACCESS_KEY_ID && env.VIDYAM_S3_SECRET_ACCESS_KEY
-        ? { accessKeyId: env.VIDYAM_S3_ACCESS_KEY_ID, secretAccessKey: env.VIDYAM_S3_SECRET_ACCESS_KEY }
-        : undefined,
-  });
 }

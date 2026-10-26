@@ -7,7 +7,7 @@ import {
 } from "@aws-sdk/client-s3";
 
 import { bucketName, loadEnv } from "../src/config/env.js";
-import { createS3Client } from "../src/modules/system/infrastructure/probes.js";
+import { createS3Client } from "../src/shared/storage/s3.js";
 
 const env = loadEnv();
 const s3 = createS3Client(env);
