@@ -58,13 +58,14 @@ class SqlSources:
             {
                 "org_id": org_id,
                 "source_id": source_id,
+                "position": position,
                 "page_start": chunk.page_start,
                 "page_end": chunk.page_end,
                 "text": chunk.text,
                 "language": chunk.language,
                 "token_count": chunk.token_count,
             }
-            for chunk in chunks
+            for position, chunk in enumerate(chunks)
         ]
         async with org_transaction(self._engine, org_id) as conn:
             await conn.execute(delete(t_chunks).where(t_chunks.c.source_id == source_id))

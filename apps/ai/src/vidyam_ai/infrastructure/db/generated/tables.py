@@ -505,6 +505,7 @@ t_chunks = Table(
     Column("language", Text, nullable=False),
     Column("token_count", Integer, nullable=False),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("position", Integer, nullable=False),
     ForeignKeyConstraint(
         ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="chunks_org_id_organizations_id_fk"
     ),
@@ -515,7 +516,7 @@ t_chunks = Table(
         ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="chunks_source_id_sources_id_fk"
     ),
     PrimaryKeyConstraint("id", name="chunks_pkey"),
-    Index("chunks_source_id_index", "source_id"),
+    UniqueConstraint("source_id", "position", name="chunks_sourceId_position_unique"),
     schema="public",
 )
 

@@ -113,6 +113,8 @@ export const chunks = pgTable(
     sourceId: uuid()
       .notNull()
       .references(() => sources.id, { onDelete: "cascade" }),
+    /** Reading order within the source, from 0: previews and neighbouring-passage expansion need it. */
+    position: integer().notNull(),
     parentId: uuid().references((): AnyPgColumn => chunks.id, { onDelete: "cascade" }),
     pageStart: integer(),
     pageEnd: integer(),
@@ -124,7 +126,7 @@ export const chunks = pgTable(
     tokenCount: integer().notNull(),
     createdAt: createdAt(),
   },
-  (t) => [index().on(t.sourceId), orgIsolation("chunks")],
+  (t) => [unique().on(t.sourceId, t.position), orgIsolation("chunks")],
 ).enableRLS();
 
 export const chunkTags = pgTable(
