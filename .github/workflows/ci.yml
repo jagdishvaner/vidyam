@@ -66,6 +66,8 @@ jobs:
         run: pnpm turbo run build
       - name: Migrate the development and test databases
         run: pnpm db:migrate
+      - name: Create S3 buckets and Qdrant collections
+        run: pnpm bootstrap
       - run: pnpm test:integration
       - name: Python tables match the migrated schema (no TypeScript/Python drift)
         run: |
