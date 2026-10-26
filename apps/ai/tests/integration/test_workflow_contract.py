@@ -11,9 +11,7 @@ from uuid import uuid4
 
 from vidyam_ai.config import get_settings
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
-from vidyam_ai.infrastructure.temporal.cpu import CpuPool
-from vidyam_ai.interface.workflows.activities import Activities
-from vidyam_ai.interface.workflows.worker import create_workers
+from vidyam_ai.interface.workflows.worker import create_workers, open_activities
 
 REPO = Path(__file__).resolve().parents[4]
 
@@ -22,27 +20,23 @@ async def test_typescript_started_workflows_run_on_the_python_worker() -> None:
     settings = get_settings()
     client = await connect(settings)
     await wait_for_namespace(client)
-    task_queue = f"contract-test-{uuid4().hex[:8]}"  # isolated from any worker started by `pnpm dev`
-    cpu = CpuPool(processes=1)
-    try:
-        async with AsyncExitStack() as running:
-            for worker in create_workers(client, Activities(cpu=cpu), task_queue=task_queue):
-                await running.enter_async_context(worker)
-            starter = await asyncio.create_subprocess_exec(
-                *("pnpm", "--silent", "--filter", "@vidyam/api", "exec", "tsx"),
-                *("scripts/workflow-contract-client.ts", task_queue),
-                cwd=REPO,
-                env={
-                    **os.environ,
-                    "VIDYAM_TEMPORAL_ADDRESS": settings.temporal_address,
-                    "VIDYAM_TEMPORAL_NAMESPACE": settings.temporal_namespace,
-                },
-                stdout=asyncio.subprocess.PIPE,
-                stderr=asyncio.subprocess.PIPE,
-            )
-            stdout, stderr = await asyncio.wait_for(starter.communicate(), timeout=90)
-    finally:
-        cpu.close()
+    prefix = f"contract-test-{uuid4().hex[:8]}-"  # isolated from any worker started by `pnpm dev`
+    async with open_activities(settings) as activities, AsyncExitStack() as running:
+        for worker in create_workers(client, activities, task_queue_prefix=prefix):
+            await running.enter_async_context(worker)
+        starter = await asyncio.create_subprocess_exec(
+            *("pnpm", "--silent", "--filter", "@vidyam/api", "exec", "tsx"),
+            *("scripts/workflow-contract-client.ts", f"{prefix}ai"),
+            cwd=REPO,
+            env={
+                **os.environ,
+                "VIDYAM_TEMPORAL_ADDRESS": settings.temporal_address,
+                "VIDYAM_TEMPORAL_NAMESPACE": settings.temporal_namespace,
+            },
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+        )
+        stdout, stderr = await asyncio.wait_for(starter.communicate(), timeout=90)
 
     assert starter.returncode == 0, stderr.decode()
     outcome = json.loads(stdout.decode().strip().splitlines()[-1])

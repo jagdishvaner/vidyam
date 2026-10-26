@@ -109,6 +109,21 @@ class IngestSourceInput(BaseModel):
     source_id: UUID = Field(..., alias="sourceId")
 
 
+class IngestSourceResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    source_id: UUID = Field(..., alias="sourceId")
+    pages: int = Field(..., ge=0, le=9007199254740991)
+    text_pages: int = Field(..., alias="textPages", ge=0, le=9007199254740991)
+    legacy_font_pages: int = Field(
+        ..., alias="legacyFontPages", ge=0, le=9007199254740991
+    )
+    ocr_pages: int = Field(..., alias="ocrPages", ge=0, le=9007199254740991)
+    chunks: int = Field(..., ge=0, le=9007199254740991)
+
+
 class Language(StrEnum):
     hi = "hi"
     en = "en"
@@ -348,6 +363,17 @@ class Slot(BaseModel):
     taxonomy_node_id: UUID = Field(..., alias="taxonomyNodeId")
     difficulty: int = Field(..., ge=1, le=5)
     marks: float = Field(..., gt=0.0)
+
+
+class SourceKind(StrEnum):
+    book = "book"
+    notes = "notes"
+    question_paper = "question_paper"
+    answer_key = "answer_key"
+    booklet = "booklet"
+    video = "video"
+    image = "image"
+    other = "other"
 
 
 class SourceLanguage(StrEnum):

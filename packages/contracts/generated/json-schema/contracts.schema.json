@@ -293,6 +293,50 @@
       ],
       "additionalProperties": false
     },
+    "IngestSourceResult": {
+      "title": "IngestSourceResult",
+      "type": "object",
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "pages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "textPages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "legacyFontPages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ocrPages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "chunks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "sourceId",
+        "pages",
+        "textPages",
+        "legacyFontPages",
+        "ocrPages",
+        "chunks"
+      ],
+      "additionalProperties": false
+    },
     "Language": {
       "title": "Language",
       "type": "string",
@@ -1003,6 +1047,20 @@
         "marks"
       ],
       "additionalProperties": false
+    },
+    "SourceKind": {
+      "title": "SourceKind",
+      "type": "string",
+      "enum": [
+        "book",
+        "notes",
+        "question_paper",
+        "answer_key",
+        "booklet",
+        "video",
+        "image",
+        "other"
+      ]
     },
     "SourceLanguage": {
       "title": "SourceLanguage",

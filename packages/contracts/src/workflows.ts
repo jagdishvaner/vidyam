@@ -64,6 +64,25 @@ export const IngestSourceInput = contract(
 );
 export type IngestSourceInput = z.infer<typeof IngestSourceInput>;
 
+const count = z.number().int().nonnegative();
+
+export const IngestSourceResult = contract(
+  "IngestSourceResult",
+  z.object({
+    sourceId: Uuid,
+    pages: count,
+    /** Read from the PDF's own text. */
+    textPages: count,
+    /** Converted from a legacy Hindi font such as Kruti Dev. */
+    legacyFontPages: count,
+    /** Scans, damaged text or unconvertible fonts: these wait for vision OCR. */
+    ocrPages: count,
+    chunks: count,
+  }),
+  "What ingesting one file produced.",
+);
+export type IngestSourceResult = z.infer<typeof IngestSourceResult>;
+
 export const PingInput = contract(
   "PingInput",
   WorkflowEnvelope.extend({ message: z.string() }),
