@@ -25,6 +25,7 @@ function setup(existing: { id: string; stage: string; status: string } | null, r
     put: async (key) => {
       calls.stored.push(key);
     },
+    delete: async () => {},
   };
   const starter: IngestionStarter = {
     start: async (input) => {

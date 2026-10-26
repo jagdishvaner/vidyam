@@ -16,6 +16,7 @@ import {
   type DatabaseHandle,
 } from "@vidyam/db";
 import { eq as sqlEq, inArray as sqlIn } from "drizzle-orm";
+import { Redis } from "ioredis";
 import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
@@ -49,7 +50,16 @@ async function signIn(as = email, withPassword = password): Promise<string[]> {
   return res.get("Set-Cookie") ?? [];
 }
 
+/** The suite signs in ~20 times; counters left by a run a minute ago would trip the real sign-in limit. */
+async function resetSignInRateLimits() {
+  const redis = new Redis(env.VIDYAM_CACHE_REDIS_URL);
+  const keys = await redis.keys("auth:*|/sign-in/email");
+  if (keys.length) await redis.del(...keys);
+  redis.disconnect();
+}
+
 beforeAll(async () => {
+  await resetSignInRateLimits();
   await runMigrations(testAdminUrl);
   await syncLocalAppRolePassword(testAdminUrl, testDbUrl);
   owner = createDatabase(testAdminUrl, { max: 2 });
@@ -249,5 +259,106 @@ describe("API", () => {
       .expect(401);
     // In no other center, so the login itself is gone and the email can be used again.
     expect(await owner.db.$count(schema.users, sqlEq(schema.users.id, added.userId))).toBe(0);
+  });
+
+  it("shows a center's library with each file's reading state, and only its own files", async () => {
+    const server = app.getHttpServer();
+    const file = (filename: string, progress: Partial<typeof schema.sources.$inferInsert>) => ({
+      orgId: orgA,
+      sha256: crypto.randomUUID(),
+      filename,
+      s3Key: `org/${orgA}/originals/${filename}`,
+      mimeType: "application/pdf",
+      sizeBytes: 1,
+      kind: "notes" as const,
+      licence: "own" as const,
+      ...progress,
+    });
+    const [ready, scan, , busy] = await owner.db
+      .insert(schema.sources)
+      .values([
+        file("a-book.pdf", { stage: "chunked", status: "done", pageCount: 2, meta: { exam: "rpsc" } }),
+        file("b-scan.pdf", { stage: "chunked", status: "pending", pageCount: 1 }),
+        file("c-broken.pdf", { stage: "parsed", status: "failed", error: "PDF can't be opened" }),
+        file("d-busy.pdf", { stage: "parsed", status: "running" }),
+      ])
+      .returning({ id: schema.sources.id });
+    await owner.db.insert(schema.pages).values([
+      {
+        orgId: orgA,
+        sourceId: ready!.id,
+        pageNo: 1,
+        method: "legacy_font",
+        contentMd: "भारत",
+        confidence: 1,
+      },
+      { orgId: orgA, sourceId: ready!.id, pageNo: 2, method: "vision_ocr", meta: { awaitingOcr: true } },
+      { orgId: orgA, sourceId: scan!.id, pageNo: 1, method: "vision_ocr", meta: { awaitingOcr: true } },
+    ]);
+    const section = (position: number, text: string) => ({
+      orgId: orgA,
+      sourceId: ready!.id,
+      position,
+      text,
+      language: "hi" as const,
+      tokenCount: 3,
+      pageStart: 1,
+      pageEnd: 1,
+    });
+    await owner.db.insert(schema.chunks).values([section(1, "दूसरा भाग"), section(0, "भारत का संविधान")]);
+
+    const teacher = await signIn();
+    const get = (path: string, cookies = teacher) => request(server).get(path).set("Cookie", cookies);
+    // The source added in beforeAll is still waiting to be picked up.
+    expect((await get("/api/library/summary").expect(200)).body).toEqual({
+      files: 5,
+      sections: 2,
+      ocrPages: 2,
+      failed: 1,
+      inProgress: 2,
+    });
+    const all = (await get("/api/library").expect(200)).body;
+    expect(all.total).toBe(5);
+    expect(all.items.map((s: { filename: string; state: string }) => [s.filename, s.state])).toEqual([
+      ["a-book.pdf", "ready"],
+      ["b-scan.pdf", "waiting_for_ocr"],
+      ["c-broken.pdf", "failed"],
+      ["d-busy.pdf", "reading"],
+      ["book.pdf", "queued"],
+    ]);
+    expect(all.items[0]).toMatchObject({ sections: 2, ocrPages: 1, pages: 2, meta: { exam: "rpsc" } });
+    const names = async (query: string) =>
+      (await get(`/api/library?${query}`).expect(200)).body.items.map(
+        (s: { filename: string }) => s.filename,
+      );
+    expect(await names("show=ready")).toEqual(["a-book.pdf"]);
+    expect(await names("show=needs_ocr")).toEqual(["a-book.pdf", "b-scan.pdf"]);
+    expect(await names("show=in_progress")).toEqual(["d-busy.pdf", "book.pdf"]);
+    expect(await names("show=failed")).toEqual(["c-broken.pdf"]);
+    expect(await names("search=SCAN")).toEqual(["b-scan.pdf"]);
+    await get("/api/library?show=everything").expect(400);
+
+    const detail = (await get(`/api/library/${ready!.id}`).expect(200)).body;
+    expect(detail.pageReadings).toEqual([
+      { pageNo: 1, state: "converted", confidence: 1, note: null },
+      { pageNo: 2, state: "waiting_for_ocr", confidence: null, note: null },
+    ]);
+    expect(detail.sectionPreview.map((s: { text: string }) => s.text)).toEqual([
+      "भारत का संविधान",
+      "दूसरा भाग",
+    ]);
+
+    // Another center sees none of it.
+    const outsider = await signIn(outsiderEmail);
+    await get(`/api/library/${ready!.id}`, outsider).expect(404);
+    expect((await get("/api/library/summary", outsider).expect(200)).body.files).toBe(2);
+
+    // Removing: not for teachers, not while a file is being read.
+    const admin = await signIn(adminEmail);
+    await request(server).delete(`/api/library/${scan!.id}`).set("Cookie", teacher).expect(403);
+    await request(server).delete(`/api/library/${busy!.id}`).set("Cookie", admin).expect(409);
+    await request(server).delete(`/api/library/${scan!.id}`).set("Cookie", admin).expect(204);
+    await get(`/api/library/${scan!.id}`).expect(404);
+    expect(await owner.db.$count(schema.pages, sqlEq(schema.pages.sourceId, scan!.id))).toBe(0);
   });
 });

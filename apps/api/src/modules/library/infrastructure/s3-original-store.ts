@@ -1,6 +1,6 @@
 import { createReadStream } from "node:fs";
 
-import { PutObjectCommand, type S3Client } from "@aws-sdk/client-s3";
+import { DeleteObjectCommand, PutObjectCommand, type S3Client } from "@aws-sdk/client-s3";
 
 import type { OriginalStore } from "../application/import-source.js";
 
@@ -20,5 +20,9 @@ export class S3OriginalStore implements OriginalStore {
         ContentLength: file.sizeBytes,
       }),
     );
+  }
+
+  async delete(key: string): Promise<void> {
+    await this.s3.send(new DeleteObjectCommand({ Bucket: this.bucket, Key: key }));
   }
 }

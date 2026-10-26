@@ -6,7 +6,7 @@ from enum import StrEnum
 from typing import Any, Literal
 from uuid import UUID
 
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, RootModel
+from pydantic import AwareDatetime, BaseModel, ConfigDict, EmailStr, Field, RootModel
 
 
 class VidyamContracts(RootModel[Any]):
@@ -129,6 +129,56 @@ class Language(StrEnum):
     en = "en"
 
 
+class LibraryFilter(StrEnum):
+    all = "all"
+    ready = "ready"
+    in_progress = "in_progress"
+    needs_ocr = "needs_ocr"
+    failed = "failed"
+
+
+class LibraryQuery(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    show: LibraryFilter
+    search: str | None = Field(None, max_length=200)
+    page: int = Field(..., ge=1, le=9007199254740991)
+
+
+class Pages(RootModel[int]):
+    root: int = Field(..., ge=0, le=9007199254740991)
+
+
+class PageNo(RootModel[int]):
+    root: int = Field(..., gt=0, le=9007199254740991)
+
+
+class Confidence(RootModel[float]):
+    root: float = Field(..., ge=0.0, le=1.0)
+
+
+class PageStart(RootModel[int]):
+    root: int = Field(..., ge=-9007199254740991, le=9007199254740991)
+
+
+class PageEnd(RootModel[int]):
+    root: int = Field(..., ge=-9007199254740991, le=9007199254740991)
+
+
+class LibrarySummary(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    files: int = Field(..., ge=0, le=9007199254740991)
+    sections: int = Field(..., ge=0, le=9007199254740991)
+    ocr_pages: int = Field(..., alias="ocrPages", ge=0, le=9007199254740991)
+    failed: int = Field(..., ge=0, le=9007199254740991)
+    in_progress: int = Field(..., alias="inProgress", ge=0, le=9007199254740991)
+
+
 class Licence(StrEnum):
     own = "own"
     third_party = "third_party"
@@ -148,6 +198,13 @@ class OrgRole(StrEnum):
     reviewer = "reviewer"
     teacher = "teacher"
     content_operator = "content_operator"
+
+
+class PageReadingState(StrEnum):
+    text = "text"
+    converted = "converted"
+    waiting_for_ocr = "waiting_for_ocr"
+    blank = "blank"
 
 
 class Item(BaseModel):
@@ -382,6 +439,14 @@ class SourceLanguage(StrEnum):
     mixed = "mixed"
 
 
+class SourceState(StrEnum):
+    queued = "queued"
+    reading = "reading"
+    ready = "ready"
+    waiting_for_ocr = "waiting_for_ocr"
+    failed = "failed"
+
+
 class SystemStatus(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -443,6 +508,61 @@ class CurrentUser(BaseModel):
     org_role: OrgRole | None = Field(..., alias="orgRole")
 
 
+class LibrarySource(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    filename: str
+    kind: SourceKind
+    licence: Licence
+    language: SourceLanguage | None
+    state: SourceState
+    pages: Pages | None
+    sections: int = Field(..., ge=0, le=9007199254740991)
+    ocr_pages: int = Field(..., alias="ocrPages", ge=0, le=9007199254740991)
+    meta: dict[str, str]
+    error: str | None
+    added_at: AwareDatetime = Field(
+        ...,
+        alias="addedAt",
+        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+    )
+
+
+class PageReading(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    page_no: PageNo | None = Field(..., alias="pageNo")
+    state: PageReadingState
+    confidence: Confidence | None
+    note: str | None
+
+
+class SectionPreviewItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    text: str
+    page_start: PageStart | None = Field(..., alias="pageStart")
+    page_end: PageEnd | None = Field(..., alias="pageEnd")
+    language: SourceLanguage
+
+
+class LibrarySourceDetail(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    source: LibrarySource
+    page_readings: list[PageReading] = Field(..., alias="pageReadings")
+    section_preview: list[SectionPreviewItem] = Field(..., alias="sectionPreview")
+
+
 class Section1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -482,6 +602,16 @@ class QuestionContent(BaseModel):
     )
     hi: QuestionText | None
     en: QuestionText | None
+
+
+class LibraryPage(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    items: list[LibrarySource]
+    total: int = Field(..., ge=0, le=9007199254740991)
+    page_size: int = Field(..., alias="pageSize", ge=0, le=9007199254740991)
 
 
 class PaperDocument(BaseModel):

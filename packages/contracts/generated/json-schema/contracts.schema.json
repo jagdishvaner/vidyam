@@ -345,6 +345,306 @@
         "en"
       ]
     },
+    "LibraryFilter": {
+      "title": "LibraryFilter",
+      "type": "string",
+      "enum": [
+        "all",
+        "ready",
+        "in_progress",
+        "needs_ocr",
+        "failed"
+      ]
+    },
+    "LibraryPage": {
+      "title": "LibraryPage",
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/LibrarySource"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "pageSize": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "items",
+        "total",
+        "pageSize"
+      ],
+      "additionalProperties": false
+    },
+    "LibraryQuery": {
+      "title": "LibraryQuery",
+      "type": "object",
+      "properties": {
+        "show": {
+          "default": "all",
+          "$ref": "#/$defs/LibraryFilter"
+        },
+        "search": {
+          "type": "string",
+          "maxLength": 200
+        },
+        "page": {
+          "default": 1,
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "show",
+        "page"
+      ],
+      "additionalProperties": false
+    },
+    "LibrarySource": {
+      "title": "LibrarySource",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "kind": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "licence": {
+          "$ref": "#/$defs/Licence"
+        },
+        "language": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SourceLanguage"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "state": {
+          "$ref": "#/$defs/SourceState"
+        },
+        "pages": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sections": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ocrPages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "meta": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "addedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        }
+      },
+      "required": [
+        "id",
+        "filename",
+        "kind",
+        "licence",
+        "language",
+        "state",
+        "pages",
+        "sections",
+        "ocrPages",
+        "meta",
+        "error",
+        "addedAt"
+      ],
+      "additionalProperties": false
+    },
+    "LibrarySourceDetail": {
+      "title": "LibrarySourceDetail",
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/$defs/LibrarySource"
+        },
+        "pageReadings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "pageNo": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "exclusiveMinimum": 0,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "state": {
+                "$ref": "#/$defs/PageReadingState"
+              },
+              "confidence": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "pageNo",
+              "state",
+              "confidence",
+              "note"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "sectionPreview": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "pageStart": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": -9007199254740991,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "pageEnd": {
+                "anyOf": [
+                  {
+                    "type": "integer",
+                    "minimum": -9007199254740991,
+                    "maximum": 9007199254740991
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "language": {
+                "$ref": "#/$defs/SourceLanguage"
+              }
+            },
+            "required": [
+              "text",
+              "pageStart",
+              "pageEnd",
+              "language"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "source",
+        "pageReadings",
+        "sectionPreview"
+      ],
+      "additionalProperties": false
+    },
+    "LibrarySummary": {
+      "title": "LibrarySummary",
+      "type": "object",
+      "properties": {
+        "files": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "sections": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ocrPages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "inProgress": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "files",
+        "sections",
+        "ocrPages",
+        "failed",
+        "inProgress"
+      ],
+      "additionalProperties": false
+    },
     "Licence": {
       "title": "Licence",
       "type": "string",
@@ -375,6 +675,16 @@
         "reviewer",
         "teacher",
         "content_operator"
+      ]
+    },
+    "PageReadingState": {
+      "title": "PageReadingState",
+      "type": "string",
+      "enum": [
+        "text",
+        "converted",
+        "waiting_for_ocr",
+        "blank"
       ]
     },
     "PaperDocument": {
@@ -1069,6 +1379,17 @@
         "hi",
         "en",
         "mixed"
+      ]
+    },
+    "SourceState": {
+      "title": "SourceState",
+      "type": "string",
+      "enum": [
+        "queued",
+        "reading",
+        "ready",
+        "waiting_for_ocr",
+        "failed"
       ]
     },
     "SystemStatus": {

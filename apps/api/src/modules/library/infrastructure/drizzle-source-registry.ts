@@ -2,9 +2,10 @@ import { schema, withOrgContext, type DatabaseHandle } from "@vidyam/db";
 import { eq } from "drizzle-orm";
 
 import type { SourceRecord, SourceRegistry } from "../application/import-source.js";
+import type { SourceRemover } from "../application/remove-source.js";
 
 /** No explicit org filter on reads: row-level security scopes them to the organization. */
-export class DrizzleSourceRegistry implements SourceRegistry {
+export class DrizzleSourceRegistry implements SourceRegistry, SourceRemover {
   constructor(private readonly database: DatabaseHandle) {}
 
   findBySha256(orgId: string, sha256: string) {
@@ -25,5 +26,12 @@ export class DrizzleSourceRegistry implements SourceRegistry {
         .returning({ id: schema.sources.id });
       return row!.id;
     });
+  }
+
+  /** Pages, sections and pipeline runs go with it (foreign keys cascade). */
+  async remove(orgId: string, sourceId: string): Promise<void> {
+    await withOrgContext(this.database.db, orgId, (tx) =>
+      tx.delete(schema.sources).where(eq(schema.sources.id, sourceId)),
+    );
   }
 }

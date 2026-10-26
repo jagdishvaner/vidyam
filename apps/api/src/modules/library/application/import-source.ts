@@ -26,6 +26,7 @@ export const SOURCE_REGISTRY = Symbol("SOURCE_REGISTRY");
 /** Port: where uploaded originals are kept (S3). */
 export interface OriginalStore {
   put(key: string, file: { path: string; mimeType: string; sizeBytes: number }): Promise<void>;
+  delete(key: string): Promise<void>;
 }
 export const ORIGINAL_STORE = Symbol("ORIGINAL_STORE");
 
