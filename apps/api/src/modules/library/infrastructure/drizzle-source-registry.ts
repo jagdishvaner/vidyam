@@ -28,10 +28,16 @@ export class DrizzleSourceRegistry implements SourceRegistry, SourceRemover {
     });
   }
 
-  /** Pages, sections and pipeline runs go with it (foreign keys cascade). */
+  /**
+   * Pages, sections and pipeline runs go with it (foreign keys cascade). In the same transaction, the outbox
+   * tells the AI engine to drop the file's vectors, so its text leaves search too (the API never calls Qdrant).
+   */
   async remove(orgId: string, sourceId: string): Promise<void> {
-    await withOrgContext(this.database.db, orgId, (tx) =>
-      tx.delete(schema.sources).where(eq(schema.sources.id, sourceId)),
-    );
+    await withOrgContext(this.database.db, orgId, async (tx) => {
+      await tx.delete(schema.sources).where(eq(schema.sources.id, sourceId));
+      await tx
+        .insert(schema.indexOutbox)
+        .values({ orgId, entity: "source", entityId: sourceId, op: "delete" });
+    });
   }
 }

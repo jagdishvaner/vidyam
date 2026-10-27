@@ -360,5 +360,12 @@ describe("API", () => {
     await request(server).delete(`/api/library/${scan!.id}`).set("Cookie", admin).expect(204);
     await get(`/api/library/${scan!.id}`).expect(404);
     expect(await owner.db.$count(schema.pages, sqlEq(schema.pages.sourceId, scan!.id))).toBe(0);
+    // Its vectors are queued for deletion, in the same transaction (the API never calls Qdrant).
+    expect(
+      await owner.db
+        .select({ entity: schema.indexOutbox.entity, op: schema.indexOutbox.op })
+        .from(schema.indexOutbox)
+        .where(sqlEq(schema.indexOutbox.entityId, scan!.id)),
+    ).toEqual([{ entity: "source", op: "delete" }]);
   });
 });
