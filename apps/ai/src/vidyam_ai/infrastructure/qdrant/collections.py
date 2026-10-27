@@ -1,16 +1,32 @@
-"""Qdrant collection layout (plan §4) and an idempotent bootstrap.
+"""Qdrant collection layout (plan v3 §5) and an idempotent bootstrap.
 
-Each logical collection (`chunks`, `questions`, `figures`) is an alias pointing at a versioned physical
-collection (`chunks_v1`, ...). Changing the layout or re-embedding creates the next version and flips the
-alias, so search never goes down.
+Each logical collection (`chunks`, `questions`, `figures`) is an alias pointing at a physical collection named
+after the layout version and the embedding model (`chunks_v2_qwen3_embedding_4b_2560`). Changing the layout or
+the embedding model creates a new physical collection and flips the alias, so search never goes down and
+re-embedding never needs a re-upload.
 """
+
+import re
+from dataclasses import dataclass
 
 from qdrant_client import AsyncQdrantClient, models
 
-SCHEMA_VERSION = 1
-# Both embedding finalists in the plan's bake-off (Voyage current generation, BGE-M3) produce 1024 dimensions.
-DENSE_DIMS = 1024
+SCHEMA_VERSION = 2  # v2: one dense vector from the configured embedding model; keywords via BM25 indexes
 COLLECTIONS = ("chunks", "questions", "figures")
+DENSE = "dense"
+
+
+@dataclass(frozen=True)
+class EmbeddingProfile:
+    """The model whose vectors a collection holds (Qwen3-Embedding-4B at 2560 locally and on AWS)."""
+
+    model: str
+    dims: int
+
+    @property
+    def slug(self) -> str:
+        return re.sub(r"[^a-z0-9]+", "_", f"{self.model}_{self.dims}".lower()).strip("_")
+
 
 # Conservative Hindi function words. The Phase 3 keyword bake-off tunes this list; it must stay in the same
 # normalized form the Devanagari normalizer writes into `lex`.
@@ -26,14 +42,14 @@ _KEYWORD_FIELDS = [
 _INTEGER_FIELDS = ["difficulty", "year"]
 
 
-def physical_name(name: str, version: int = SCHEMA_VERSION) -> str:
-    return f"{name}_v{version}"
+def physical_name(name: str, profile: EmbeddingProfile) -> str:
+    return f"{name}_v{SCHEMA_VERSION}_{profile.slug}"
 
 
-def _vectors() -> dict[str, models.VectorParams]:
+def _vectors(profile: EmbeddingProfile) -> dict[str, models.VectorParams]:
     return {
-        "dense": models.VectorParams(
-            size=DENSE_DIMS,
+        DENSE: models.VectorParams(
+            size=profile.dims,
             distance=models.Distance.COSINE,
             on_disk=True,
             # int8 copies in RAM for search, full vectors on disk for rescoring: ~4x less RAM, same accuracy.
@@ -57,18 +73,22 @@ def _text_index(stopwords: models.StopwordsSet, ascii_folding: bool) -> models.T
     )
 
 
-async def bootstrap(client: AsyncQdrantClient) -> list[str]:
-    """Create missing collections, indexes and aliases. Safe to run on every deploy."""
+async def bootstrap(client: AsyncQdrantClient, profile: EmbeddingProfile) -> list[str]:
+    """Create missing collections, indexes and aliases for the configured embedding model. Safe to run on
+    every deploy; after a model change the alias moves to the new, empty collection, ready for re-indexing."""
     report: list[str] = []
     existing_aliases = {a.alias_name: a.collection_name for a in (await client.get_aliases()).aliases}
     for name in COLLECTIONS:
-        physical = physical_name(name)
+        physical = physical_name(name, profile)
         if not await client.collection_exists(physical):
             await client.create_collection(
                 physical,
-                vectors_config=_vectors(),
-                sparse_vectors_config={"sparse": models.SparseVectorParams(modifier=models.Modifier.IDF)},
-                metadata={"schema_version": SCHEMA_VERSION, "dense_dims": DENSE_DIMS},
+                vectors_config=_vectors(profile),
+                metadata={
+                    "schema_version": SCHEMA_VERSION,
+                    "embedding_model": profile.model,
+                    "dims": profile.dims,
+                },
             )
             report.append(f"created {physical}")
 

@@ -32,6 +32,14 @@ class Settings(BaseSettings):
     s3_secret_access_key: SecretStr | None = None
     s3_bucket_prefix: str
 
+    # Self-hosted Qwen3 model server (plan v3 §8): OpenAI-compatible /v1/embeddings, Cohere/Jina-style
+    # /v1/rerank. llama.cpp on the Mac's GPU locally, vLLM on an L4 GPU on AWS, the 0.6B models in CI.
+    embedding_url: str = "http://127.0.0.1:38180"
+    embedding_model: str = "qwen3-embedding-4b"
+    embedding_dims: int = Field(default=2560, ge=32)
+    rerank_url: str = "http://127.0.0.1:38181"
+    rerank_model: str = "qwen3-reranker-4b"
+
     worker_cpu_processes: int = Field(default=2, ge=1)
 
     @property

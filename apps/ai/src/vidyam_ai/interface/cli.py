@@ -8,7 +8,7 @@ import sys
 import uvicorn
 
 from vidyam_ai.config import get_settings
-from vidyam_ai.infrastructure.qdrant.collections import bootstrap
+from vidyam_ai.infrastructure.qdrant.collections import EmbeddingProfile, bootstrap
 from vidyam_ai.infrastructure.resources import create_qdrant
 from vidyam_ai.interface.workflows.worker import main as run_workers
 
@@ -41,9 +41,11 @@ def dev() -> None:
 
 
 async def _bootstrap_qdrant() -> None:
-    client = create_qdrant(get_settings())
+    settings = get_settings()
+    client = create_qdrant(settings)
     try:
-        for line in await bootstrap(client):
+        profile = EmbeddingProfile(settings.embedding_model, settings.embedding_dims)
+        for line in await bootstrap(client, profile):
             print(f"qdrant: {line}")
     finally:
         await client.close()
