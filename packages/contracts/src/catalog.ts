@@ -199,3 +199,32 @@ export const ImportExamPapersRequest = contract(
   z.object({ exams: z.array(ExamPaperImport).min(1).max(200) }),
 );
 export type ImportExamPapersRequest = z.infer<typeof ImportExamPapersRequest>;
+
+/** A paper pattern as admins and the chat's cards see it, with its totals worked out. */
+export const PaperPattern = contract(
+  "PaperPattern",
+  z.object({
+    id: Uuid,
+    examId: Uuid,
+    examCode: z.string(),
+    name: z.string(),
+    /** Editing saves a new version; papers made earlier keep pointing at the version they used. */
+    version: z.number().int().positive(),
+    blueprint: Blueprint,
+    totalQuestions: z.number().int().nonnegative(),
+    totalMarks: z.number().nonnegative(),
+  }),
+);
+export type PaperPattern = z.infer<typeof PaperPattern>;
+
+export const SavePaperPatternRequest = contract(
+  "SavePaperPatternRequest",
+  z.object({ examId: Uuid, name: z.string().trim().min(1).max(120), blueprint: Blueprint }),
+);
+export type SavePaperPatternRequest = z.infer<typeof SavePaperPatternRequest>;
+
+export const ImportPaperPatternsRequest = contract(
+  "ImportPaperPatternsRequest",
+  z.object({ blueprints: z.array(BlueprintImport).min(1).max(500) }),
+);
+export type ImportPaperPatternsRequest = z.infer<typeof ImportPaperPatternsRequest>;

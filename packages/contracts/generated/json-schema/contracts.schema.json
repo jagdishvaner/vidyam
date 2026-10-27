@@ -1677,6 +1677,24 @@
       ],
       "additionalProperties": false
     },
+    "ImportPaperPatternsRequest": {
+      "title": "ImportPaperPatternsRequest",
+      "type": "object",
+      "properties": {
+        "blueprints": {
+          "minItems": 1,
+          "maxItems": 500,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BlueprintImport"
+          }
+        }
+      },
+      "required": [
+        "blueprints"
+      ],
+      "additionalProperties": false
+    },
     "ImportSummary": {
       "title": "ImportSummary",
       "type": "object",
@@ -2429,6 +2447,54 @@
         "single_language"
       ]
     },
+    "PaperPattern": {
+      "title": "PaperPattern",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "examId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "examCode": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "blueprint": {
+          "$ref": "#/$defs/Blueprint"
+        },
+        "totalQuestions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "totalMarks": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "id",
+        "examId",
+        "examCode",
+        "name",
+        "version",
+        "blueprint",
+        "totalQuestions",
+        "totalMarks"
+      ],
+      "additionalProperties": false
+    },
     "PaperSection": {
       "title": "PaperSection",
       "type": "object",
@@ -2468,6 +2534,14 @@
         },
         "difficultyMix": {
           "$ref": "#/$defs/DifficultyMix"
+        },
+        "scope": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+          }
         }
       },
       "required": [
@@ -2477,7 +2551,8 @@
         "marksEach",
         "negativeMarks",
         "attemptAny",
-        "difficultyMix"
+        "difficultyMix",
+        "scope"
       ],
       "additionalProperties": false
     },
@@ -3146,6 +3221,30 @@
         "short_answer",
         "long_answer"
       ]
+    },
+    "SavePaperPatternRequest": {
+      "title": "SavePaperPatternRequest",
+      "type": "object",
+      "properties": {
+        "examId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "blueprint": {
+          "$ref": "#/$defs/Blueprint"
+        }
+      },
+      "required": [
+        "examId",
+        "name",
+        "blueprint"
+      ],
+      "additionalProperties": false
     },
     "ServiceHealth": {
       "title": "ServiceHealth",

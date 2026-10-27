@@ -324,6 +324,54 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/patterns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["PatternsController_list"];
+        put?: never;
+        post: operations["PatternsController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/patterns/{patternId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["PatternsController_update"];
+        post?: never;
+        delete: operations["PatternsController_retire"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/patterns/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["PatternsController_import"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -1078,6 +1126,362 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    PatternsController_list: {
+        parameters: {
+            query?: {
+                examId?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** Format: uuid */
+                        examId: string;
+                        examCode: string;
+                        name: string;
+                        version: number;
+                        blueprint: {
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                count: number;
+                                marksEach: number;
+                                /** @default 0 */
+                                negativeMarks: number;
+                                /** @default null */
+                                attemptAny: number | null;
+                                difficultyMix: {
+                                    easy: number;
+                                    medium: number;
+                                    hard: number;
+                                };
+                                /** @default [] */
+                                scope: string[];
+                            }[];
+                            durationMinutes: number;
+                            instructions: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            defaultDifficultyMix: {
+                                easy: number;
+                                medium: number;
+                                hard: number;
+                            };
+                        };
+                        totalQuestions: number;
+                        totalMarks: number;
+                    }[];
+                };
+            };
+        };
+    };
+    PatternsController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: uuid */
+                    examId: string;
+                    name: string;
+                    blueprint: {
+                        sections: {
+                            name: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            /** @enum {string} */
+                            qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                            count: number;
+                            marksEach: number;
+                            /** @default 0 */
+                            negativeMarks?: number;
+                            /** @default null */
+                            attemptAny?: number | null;
+                            difficultyMix: {
+                                easy: number;
+                                medium: number;
+                                hard: number;
+                            };
+                            /** @default [] */
+                            scope?: string[];
+                        }[];
+                        durationMinutes: number;
+                        instructions: {
+                            en?: string;
+                            hi?: string;
+                        };
+                        defaultDifficultyMix: {
+                            easy: number;
+                            medium: number;
+                            hard: number;
+                        };
+                    };
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** Format: uuid */
+                        examId: string;
+                        examCode: string;
+                        name: string;
+                        version: number;
+                        blueprint: {
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                count: number;
+                                marksEach: number;
+                                /** @default 0 */
+                                negativeMarks: number;
+                                /** @default null */
+                                attemptAny: number | null;
+                                difficultyMix: {
+                                    easy: number;
+                                    medium: number;
+                                    hard: number;
+                                };
+                                /** @default [] */
+                                scope: string[];
+                            }[];
+                            durationMinutes: number;
+                            instructions: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            defaultDifficultyMix: {
+                                easy: number;
+                                medium: number;
+                                hard: number;
+                            };
+                        };
+                        totalQuestions: number;
+                        totalMarks: number;
+                    };
+                };
+            };
+        };
+    };
+    PatternsController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                patternId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** Format: uuid */
+                    examId: string;
+                    name: string;
+                    blueprint: {
+                        sections: {
+                            name: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            /** @enum {string} */
+                            qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                            count: number;
+                            marksEach: number;
+                            /** @default 0 */
+                            negativeMarks?: number;
+                            /** @default null */
+                            attemptAny?: number | null;
+                            difficultyMix: {
+                                easy: number;
+                                medium: number;
+                                hard: number;
+                            };
+                            /** @default [] */
+                            scope?: string[];
+                        }[];
+                        durationMinutes: number;
+                        instructions: {
+                            en?: string;
+                            hi?: string;
+                        };
+                        defaultDifficultyMix: {
+                            easy: number;
+                            medium: number;
+                            hard: number;
+                        };
+                    };
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** Format: uuid */
+                        examId: string;
+                        examCode: string;
+                        name: string;
+                        version: number;
+                        blueprint: {
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                count: number;
+                                marksEach: number;
+                                /** @default 0 */
+                                negativeMarks: number;
+                                /** @default null */
+                                attemptAny: number | null;
+                                difficultyMix: {
+                                    easy: number;
+                                    medium: number;
+                                    hard: number;
+                                };
+                                /** @default [] */
+                                scope: string[];
+                            }[];
+                            durationMinutes: number;
+                            instructions: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            defaultDifficultyMix: {
+                                easy: number;
+                                medium: number;
+                                hard: number;
+                            };
+                        };
+                        totalQuestions: number;
+                        totalMarks: number;
+                    };
+                };
+            };
+        };
+    };
+    PatternsController_retire: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                patternId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PatternsController_import: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    blueprints: {
+                        exam: string;
+                        name: string;
+                        blueprint: {
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                count: number;
+                                marksEach: number;
+                                /** @default 0 */
+                                negativeMarks?: number;
+                                /** @default null */
+                                attemptAny?: number | null;
+                                difficultyMix: {
+                                    easy: number;
+                                    medium: number;
+                                    hard: number;
+                                };
+                                /** @default [] */
+                                scope?: string[];
+                            }[];
+                            durationMinutes: number;
+                            instructions: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            defaultDifficultyMix: {
+                                easy: number;
+                                medium: number;
+                                hard: number;
+                            };
+                        };
+                    }[];
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        created: number;
+                        updated: number;
+                        unchanged: number;
+                    };
+                };
             };
         };
     };

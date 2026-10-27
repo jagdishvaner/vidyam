@@ -50,6 +50,11 @@ export const PaperSection = contract(
     /** "Attempt any N of these" sections. */
     attemptAny: z.number().int().positive().nullable().default(null),
     difficultyMix: DifficultyMix,
+    /**
+     * Syllabus code paths this section draws from ("physics" for JEE's Physics section); empty means the whole
+     * paper's syllabus.
+     */
+    scope: z.array(z.string().regex(/^[a-z0-9_]+(\/[a-z0-9_]+)*$/)).default([]),
   }),
 );
 export type PaperSection = z.infer<typeof PaperSection>;

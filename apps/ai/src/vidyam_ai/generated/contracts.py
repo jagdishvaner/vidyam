@@ -680,6 +680,10 @@ class AttemptAny(RootModel[int]):
     root: int = Field(None, gt=0, le=9007199254740991)
 
 
+class ScopeItem(RootModel[str]):
+    root: str = Field(..., pattern="^[a-z0-9_]+(\\/[a-z0-9_]+)*$")
+
+
 class PaperSet(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1386,6 +1390,7 @@ class PaperSection(BaseModel):
     negative_marks: float = Field(..., alias="negativeMarks", ge=0.0)
     attempt_any: AttemptAny | None = Field(..., alias="attemptAny")
     difficulty_mix: DifficultyMix = Field(..., alias="difficultyMix")
+    scope: list[ScopeItem]
 
 
 class PaperSlot(BaseModel):
@@ -1559,6 +1564,14 @@ class EditOp(
     )
 
 
+class ImportPaperPatternsRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    blueprints: list[BlueprintImport] = Field(..., max_length=500, min_length=1)
+
+
 class LibraryPage(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1578,6 +1591,21 @@ class PaperDocument(BaseModel):
     sections: list[Section]
     slots: list[PaperSlot]
     sets: list[PaperSet]
+
+
+class PaperPattern(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    exam_id: UUID = Field(..., alias="examId")
+    exam_code: str = Field(..., alias="examCode")
+    name: str
+    version: int = Field(..., gt=0, le=9007199254740991)
+    blueprint: Blueprint
+    total_questions: int = Field(..., alias="totalQuestions", ge=0, le=9007199254740991)
+    total_marks: float = Field(..., alias="totalMarks", ge=0.0)
 
 
 class Question(BaseModel):
@@ -1600,6 +1628,16 @@ class Question(BaseModel):
     figure_asset_ids: list[UUID] = Field(..., alias="figureAssetIds")
     licence: Licence
     source_chunk_ids: list[UUID] = Field(..., alias="sourceChunkIds")
+
+
+class SavePaperPatternRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    exam_id: UUID = Field(..., alias="examId")
+    name: str = Field(..., max_length=120, min_length=1)
+    blueprint: Blueprint
 
 
 class StaffDirectory(BaseModel):

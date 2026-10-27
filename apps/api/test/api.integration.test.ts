@@ -522,4 +522,76 @@ describe("API", () => {
     await request(server).delete(`/api/exams/${papers[0].id}`).set("Cookie", teacher).expect(403);
     await request(server).delete(`/api/exams/${papers[0].id}`).set("Cookie", admin).expect(204);
   });
+
+  it("keeps versioned paper patterns for an exam paper, checked against its syllabus", async () => {
+    const server = app.getHttpServer();
+    const pack = path.join(import.meta.dirname, "..", "..", "..", "fixtures", "demo-pack", "catalog");
+    const read = (file: string) => JSON.parse(readFileSync(path.join(pack, file), "utf8"));
+    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const send = (method: "post" | "put" | "delete", url: string, body?: object, cookies = admin) =>
+      request(server)[method](url).set("Cookie", cookies).send(body);
+    // The syllabus test imported the demo tree; the exam paper was deleted there, so bring it back.
+    await send("post", "/api/exams/import", { exams: read("exams.json") }).expect(200);
+
+    const blueprints = read("blueprints.json");
+    await send("post", "/api/patterns/import", { blueprints }, teacher).expect(403);
+    expect((await send("post", "/api/patterns/import", { blueprints }).expect(200)).body).toEqual({
+      created: 3,
+      updated: 0,
+      unchanged: 0,
+    });
+    expect((await send("post", "/api/patterns/import", { blueprints }).expect(200)).body).toMatchObject({
+      unchanged: 3,
+    });
+
+    const list = (await request(server).get("/api/patterns").set("Cookie", teacher).expect(200)).body;
+    const full = list.find((p: { name: string }) => p.name === "Full paper");
+    expect(full).toMatchObject({
+      examCode: "rpsc_2g_p2_science",
+      version: 1,
+      totalQuestions: 150,
+      totalMarks: 300,
+    });
+
+    // Editing makes version 2; papers made from version 1 keep it, but it leaves the list.
+    const chapterTest = list.find((p: { name: string }) => p.name === "Chapter test");
+    const shorter = { ...chapterTest.blueprint, durationMinutes: 25 };
+    const edited = (
+      await send("put", `/api/patterns/${chapterTest.id}`, {
+        examId: chapterTest.examId,
+        name: "Chapter test",
+        blueprint: shorter,
+      }).expect(200)
+    ).body;
+    expect(edited).toMatchObject({ version: 2, blueprint: { durationMinutes: 25 } });
+    const after = (
+      await request(server).get(`/api/patterns?examId=${chapterTest.examId}`).set("Cookie", admin)
+    ).body;
+    expect(after.map((p: { id: string }) => p.id)).not.toContain(chapterTest.id);
+    expect(after).toHaveLength(3);
+
+    // A section may only draw from the paper's own syllabus.
+    const physicsOnly = {
+      ...shorter,
+      sections: [{ ...shorter.sections[0], scope: ["science/physics/motion"] }],
+    };
+    await send("post", "/api/patterns", {
+      examId: full.examId,
+      name: "Motion test",
+      blueprint: physicsOnly,
+    }).expect(201);
+    const outside = { ...physicsOnly, sections: [{ ...shorter.sections[0], scope: ["science/astronomy"] }] };
+    await send("post", "/api/patterns", { examId: full.examId, name: "Stars", blueprint: outside }).expect(
+      422,
+    );
+    await send("post", "/api/patterns", {
+      examId: full.examId,
+      name: "Full paper",
+      blueprint: shorter,
+    }).expect(409);
+
+    await send("delete", `/api/patterns/${edited.id}`, undefined, teacher).expect(403);
+    await send("delete", `/api/patterns/${edited.id}`).expect(204);
+    await send("delete", `/api/patterns/${edited.id}`).expect(404);
+  });
 });

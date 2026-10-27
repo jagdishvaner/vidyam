@@ -28,7 +28,7 @@ const objectivesOf = (row: NodeRow) => {
  * The whole tree of a center is a few thousand rows at most, so paths are worked out in memory from one read
  * instead of a recursive query per request.
  */
-async function loadTree(tx: Transaction): Promise<{ rows: NodeRow[]; paths: Map<string, string> }> {
+export async function loadTree(tx: Transaction): Promise<{ rows: NodeRow[]; paths: Map<string, string> }> {
   const rows = await tx
     .select()
     .from(taxonomyNodes)

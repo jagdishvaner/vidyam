@@ -2007,6 +2007,1318 @@
           "syllabus"
         ]
       }
+    },
+    "/api/patterns": {
+      "get": {
+        "operationId": "PatternsController_list",
+        "parameters": [
+          {
+            "name": "examId",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "format": "uuid",
+                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                      },
+                      "examId": {
+                        "type": "string",
+                        "format": "uuid",
+                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                      },
+                      "examCode": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "exclusiveMinimum": true,
+                        "maximum": 9007199254740991
+                      },
+                      "blueprint": {
+                        "type": "object",
+                        "properties": {
+                          "sections": {
+                            "minItems": 1,
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "object",
+                                  "properties": {
+                                    "en": {
+                                      "type": "string"
+                                    },
+                                    "hi": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "qtype": {
+                                  "type": "string",
+                                  "enum": [
+                                    "mcq_single",
+                                    "mcq_multi",
+                                    "numerical",
+                                    "integer",
+                                    "assertion_reason",
+                                    "match_columns",
+                                    "statement",
+                                    "passage",
+                                    "short_answer",
+                                    "long_answer"
+                                  ]
+                                },
+                                "count": {
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "exclusiveMinimum": true,
+                                  "maximum": 9007199254740991
+                                },
+                                "marksEach": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "exclusiveMinimum": true
+                                },
+                                "negativeMarks": {
+                                  "default": 0,
+                                  "type": "number",
+                                  "minimum": 0
+                                },
+                                "attemptAny": {
+                                  "default": null,
+                                  "nullable": true,
+                                  "type": "integer",
+                                  "minimum": 0,
+                                  "exclusiveMinimum": true,
+                                  "maximum": 9007199254740991
+                                },
+                                "difficultyMix": {
+                                  "type": "object",
+                                  "properties": {
+                                    "easy": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "medium": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    },
+                                    "hard": {
+                                      "type": "number",
+                                      "minimum": 0,
+                                      "maximum": 1
+                                    }
+                                  },
+                                  "required": [
+                                    "easy",
+                                    "medium",
+                                    "hard"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                "scope": {
+                                  "default": [],
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "qtype",
+                                "count",
+                                "marksEach",
+                                "negativeMarks",
+                                "attemptAny",
+                                "difficultyMix",
+                                "scope"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "durationMinutes": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": true,
+                            "maximum": 9007199254740991
+                          },
+                          "instructions": {
+                            "type": "object",
+                            "properties": {
+                              "en": {
+                                "type": "string"
+                              },
+                              "hi": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "defaultDifficultyMix": {
+                            "type": "object",
+                            "properties": {
+                              "easy": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "medium": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              },
+                              "hard": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 1
+                              }
+                            },
+                            "required": [
+                              "easy",
+                              "medium",
+                              "hard"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "required": [
+                          "sections",
+                          "durationMinutes",
+                          "instructions",
+                          "defaultDifficultyMix"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "totalQuestions": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "maximum": 9007199254740991
+                      },
+                      "totalMarks": {
+                        "type": "number",
+                        "minimum": 0
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "examId",
+                      "examCode",
+                      "name",
+                      "version",
+                      "blueprint",
+                      "totalQuestions",
+                      "totalMarks"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "syllabus"
+        ]
+      },
+      "post": {
+        "operationId": "PatternsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "examId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "blueprint": {
+                    "type": "object",
+                    "properties": {
+                      "sections": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "object",
+                              "properties": {
+                                "en": {
+                                  "type": "string"
+                                },
+                                "hi": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "qtype": {
+                              "type": "string",
+                              "enum": [
+                                "mcq_single",
+                                "mcq_multi",
+                                "numerical",
+                                "integer",
+                                "assertion_reason",
+                                "match_columns",
+                                "statement",
+                                "passage",
+                                "short_answer",
+                                "long_answer"
+                              ]
+                            },
+                            "count": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": true,
+                              "maximum": 9007199254740991
+                            },
+                            "marksEach": {
+                              "type": "number",
+                              "minimum": 0,
+                              "exclusiveMinimum": true
+                            },
+                            "negativeMarks": {
+                              "default": 0,
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "attemptAny": {
+                              "default": null,
+                              "nullable": true,
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": true,
+                              "maximum": 9007199254740991
+                            },
+                            "difficultyMix": {
+                              "type": "object",
+                              "properties": {
+                                "easy": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "medium": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "hard": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "required": [
+                                "easy",
+                                "medium",
+                                "hard"
+                              ]
+                            },
+                            "scope": {
+                              "default": [],
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                              }
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "qtype",
+                            "count",
+                            "marksEach",
+                            "difficultyMix"
+                          ]
+                        }
+                      },
+                      "durationMinutes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "exclusiveMinimum": true,
+                        "maximum": 9007199254740991
+                      },
+                      "instructions": {
+                        "type": "object",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "hi": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "defaultDifficultyMix": {
+                        "type": "object",
+                        "properties": {
+                          "easy": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "medium": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "hard": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          }
+                        },
+                        "required": [
+                          "easy",
+                          "medium",
+                          "hard"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "sections",
+                      "durationMinutes",
+                      "instructions",
+                      "defaultDifficultyMix"
+                    ]
+                  }
+                },
+                "required": [
+                  "examId",
+                  "name",
+                  "blueprint"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "examId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "examCode": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "exclusiveMinimum": true,
+                      "maximum": 9007199254740991
+                    },
+                    "blueprint": {
+                      "type": "object",
+                      "properties": {
+                        "sections": {
+                          "minItems": 1,
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "object",
+                                "properties": {
+                                  "en": {
+                                    "type": "string"
+                                  },
+                                  "hi": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "qtype": {
+                                "type": "string",
+                                "enum": [
+                                  "mcq_single",
+                                  "mcq_multi",
+                                  "numerical",
+                                  "integer",
+                                  "assertion_reason",
+                                  "match_columns",
+                                  "statement",
+                                  "passage",
+                                  "short_answer",
+                                  "long_answer"
+                                ]
+                              },
+                              "count": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "exclusiveMinimum": true,
+                                "maximum": 9007199254740991
+                              },
+                              "marksEach": {
+                                "type": "number",
+                                "minimum": 0,
+                                "exclusiveMinimum": true
+                              },
+                              "negativeMarks": {
+                                "default": 0,
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "attemptAny": {
+                                "default": null,
+                                "nullable": true,
+                                "type": "integer",
+                                "minimum": 0,
+                                "exclusiveMinimum": true,
+                                "maximum": 9007199254740991
+                              },
+                              "difficultyMix": {
+                                "type": "object",
+                                "properties": {
+                                  "easy": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "medium": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "hard": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "easy",
+                                  "medium",
+                                  "hard"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "scope": {
+                                "default": [],
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                                }
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "qtype",
+                              "count",
+                              "marksEach",
+                              "negativeMarks",
+                              "attemptAny",
+                              "difficultyMix",
+                              "scope"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "durationMinutes": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 9007199254740991
+                        },
+                        "instructions": {
+                          "type": "object",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "defaultDifficultyMix": {
+                          "type": "object",
+                          "properties": {
+                            "easy": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            "medium": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            "hard": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            }
+                          },
+                          "required": [
+                            "easy",
+                            "medium",
+                            "hard"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "sections",
+                        "durationMinutes",
+                        "instructions",
+                        "defaultDifficultyMix"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "totalQuestions": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "totalMarks": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "examId",
+                    "examCode",
+                    "name",
+                    "version",
+                    "blueprint",
+                    "totalQuestions",
+                    "totalMarks"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "syllabus"
+        ]
+      }
+    },
+    "/api/patterns/{patternId}": {
+      "put": {
+        "operationId": "PatternsController_update",
+        "parameters": [
+          {
+            "name": "patternId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "examId": {
+                    "type": "string",
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "blueprint": {
+                    "type": "object",
+                    "properties": {
+                      "sections": {
+                        "minItems": 1,
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "object",
+                              "properties": {
+                                "en": {
+                                  "type": "string"
+                                },
+                                "hi": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "qtype": {
+                              "type": "string",
+                              "enum": [
+                                "mcq_single",
+                                "mcq_multi",
+                                "numerical",
+                                "integer",
+                                "assertion_reason",
+                                "match_columns",
+                                "statement",
+                                "passage",
+                                "short_answer",
+                                "long_answer"
+                              ]
+                            },
+                            "count": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": true,
+                              "maximum": 9007199254740991
+                            },
+                            "marksEach": {
+                              "type": "number",
+                              "minimum": 0,
+                              "exclusiveMinimum": true
+                            },
+                            "negativeMarks": {
+                              "default": 0,
+                              "type": "number",
+                              "minimum": 0
+                            },
+                            "attemptAny": {
+                              "default": null,
+                              "nullable": true,
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": true,
+                              "maximum": 9007199254740991
+                            },
+                            "difficultyMix": {
+                              "type": "object",
+                              "properties": {
+                                "easy": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "medium": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "hard": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "required": [
+                                "easy",
+                                "medium",
+                                "hard"
+                              ]
+                            },
+                            "scope": {
+                              "default": [],
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                              }
+                            }
+                          },
+                          "required": [
+                            "name",
+                            "qtype",
+                            "count",
+                            "marksEach",
+                            "difficultyMix"
+                          ]
+                        }
+                      },
+                      "durationMinutes": {
+                        "type": "integer",
+                        "minimum": 0,
+                        "exclusiveMinimum": true,
+                        "maximum": 9007199254740991
+                      },
+                      "instructions": {
+                        "type": "object",
+                        "properties": {
+                          "en": {
+                            "type": "string"
+                          },
+                          "hi": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "defaultDifficultyMix": {
+                        "type": "object",
+                        "properties": {
+                          "easy": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "medium": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          },
+                          "hard": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 1
+                          }
+                        },
+                        "required": [
+                          "easy",
+                          "medium",
+                          "hard"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "sections",
+                      "durationMinutes",
+                      "instructions",
+                      "defaultDifficultyMix"
+                    ]
+                  }
+                },
+                "required": [
+                  "examId",
+                  "name",
+                  "blueprint"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "examId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "examCode": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "exclusiveMinimum": true,
+                      "maximum": 9007199254740991
+                    },
+                    "blueprint": {
+                      "type": "object",
+                      "properties": {
+                        "sections": {
+                          "minItems": 1,
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "object",
+                                "properties": {
+                                  "en": {
+                                    "type": "string"
+                                  },
+                                  "hi": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "qtype": {
+                                "type": "string",
+                                "enum": [
+                                  "mcq_single",
+                                  "mcq_multi",
+                                  "numerical",
+                                  "integer",
+                                  "assertion_reason",
+                                  "match_columns",
+                                  "statement",
+                                  "passage",
+                                  "short_answer",
+                                  "long_answer"
+                                ]
+                              },
+                              "count": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "exclusiveMinimum": true,
+                                "maximum": 9007199254740991
+                              },
+                              "marksEach": {
+                                "type": "number",
+                                "minimum": 0,
+                                "exclusiveMinimum": true
+                              },
+                              "negativeMarks": {
+                                "default": 0,
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "attemptAny": {
+                                "default": null,
+                                "nullable": true,
+                                "type": "integer",
+                                "minimum": 0,
+                                "exclusiveMinimum": true,
+                                "maximum": 9007199254740991
+                              },
+                              "difficultyMix": {
+                                "type": "object",
+                                "properties": {
+                                  "easy": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "medium": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "hard": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "easy",
+                                  "medium",
+                                  "hard"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "scope": {
+                                "default": [],
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                                }
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "qtype",
+                              "count",
+                              "marksEach",
+                              "negativeMarks",
+                              "attemptAny",
+                              "difficultyMix",
+                              "scope"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "durationMinutes": {
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 9007199254740991
+                        },
+                        "instructions": {
+                          "type": "object",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "defaultDifficultyMix": {
+                          "type": "object",
+                          "properties": {
+                            "easy": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            "medium": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            },
+                            "hard": {
+                              "type": "number",
+                              "minimum": 0,
+                              "maximum": 1
+                            }
+                          },
+                          "required": [
+                            "easy",
+                            "medium",
+                            "hard"
+                          ],
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "sections",
+                        "durationMinutes",
+                        "instructions",
+                        "defaultDifficultyMix"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "totalQuestions": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "totalMarks": {
+                      "type": "number",
+                      "minimum": 0
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "examId",
+                    "examCode",
+                    "name",
+                    "version",
+                    "blueprint",
+                    "totalQuestions",
+                    "totalMarks"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "syllabus"
+        ]
+      },
+      "delete": {
+        "operationId": "PatternsController_retire",
+        "parameters": [
+          {
+            "name": "patternId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "syllabus"
+        ]
+      }
+    },
+    "/api/patterns/import": {
+      "post": {
+        "operationId": "PatternsController_import",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "blueprints": {
+                    "minItems": 1,
+                    "maxItems": 500,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "exam": {
+                          "type": "string",
+                          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+                        },
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "blueprint": {
+                          "type": "object",
+                          "properties": {
+                            "sections": {
+                              "minItems": 1,
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "name": {
+                                    "type": "object",
+                                    "properties": {
+                                      "en": {
+                                        "type": "string"
+                                      },
+                                      "hi": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  },
+                                  "qtype": {
+                                    "type": "string",
+                                    "enum": [
+                                      "mcq_single",
+                                      "mcq_multi",
+                                      "numerical",
+                                      "integer",
+                                      "assertion_reason",
+                                      "match_columns",
+                                      "statement",
+                                      "passage",
+                                      "short_answer",
+                                      "long_answer"
+                                    ]
+                                  },
+                                  "count": {
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "exclusiveMinimum": true,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "marksEach": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "exclusiveMinimum": true
+                                  },
+                                  "negativeMarks": {
+                                    "default": 0,
+                                    "type": "number",
+                                    "minimum": 0
+                                  },
+                                  "attemptAny": {
+                                    "default": null,
+                                    "nullable": true,
+                                    "type": "integer",
+                                    "minimum": 0,
+                                    "exclusiveMinimum": true,
+                                    "maximum": 9007199254740991
+                                  },
+                                  "difficultyMix": {
+                                    "type": "object",
+                                    "properties": {
+                                      "easy": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      "medium": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      },
+                                      "hard": {
+                                        "type": "number",
+                                        "minimum": 0,
+                                        "maximum": 1
+                                      }
+                                    },
+                                    "required": [
+                                      "easy",
+                                      "medium",
+                                      "hard"
+                                    ]
+                                  },
+                                  "scope": {
+                                    "default": [],
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string",
+                                      "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "name",
+                                  "qtype",
+                                  "count",
+                                  "marksEach",
+                                  "difficultyMix"
+                                ]
+                              }
+                            },
+                            "durationMinutes": {
+                              "type": "integer",
+                              "minimum": 0,
+                              "exclusiveMinimum": true,
+                              "maximum": 9007199254740991
+                            },
+                            "instructions": {
+                              "type": "object",
+                              "properties": {
+                                "en": {
+                                  "type": "string"
+                                },
+                                "hi": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "defaultDifficultyMix": {
+                              "type": "object",
+                              "properties": {
+                                "easy": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "medium": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                },
+                                "hard": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 1
+                                }
+                              },
+                              "required": [
+                                "easy",
+                                "medium",
+                                "hard"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "sections",
+                            "durationMinutes",
+                            "instructions",
+                            "defaultDifficultyMix"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "exam",
+                        "name",
+                        "blueprint"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "blueprints"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "created": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "updated": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    },
+                    "unchanged": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "created",
+                    "updated",
+                    "unchanged"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "syllabus"
+        ]
+      }
     }
   },
   "info": {
