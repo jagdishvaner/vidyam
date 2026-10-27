@@ -1,3 +1,4 @@
+import { roleCan } from "@vidyam/contracts";
 import { Skeleton } from "@vidyam/ui/components/skeleton";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -10,9 +11,7 @@ export const metadata: Metadata = { title: "Library" };
 /** The Remove button is a UI hint only; the API enforces who may remove files. */
 async function Detail({ params }: { params: Promise<{ id: string }> }) {
   const [{ id }, user] = await Promise.all([params, getCurrentUser()]);
-  const canRemove =
-    user.platformRole === "superadmin" || user.orgRole === "admin" || user.orgRole === "content_operator";
-  return <SourceDetail sourceId={id} canRemove={canRemove} />;
+  return <SourceDetail sourceId={id} canRemove={roleCan(user.orgRole, "library", "remove")} />;
 }
 
 export default function LibrarySourcePage({ params }: PageProps<"/[locale]/library/[id]">) {

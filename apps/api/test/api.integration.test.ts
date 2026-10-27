@@ -38,7 +38,8 @@ const testEmail = (who: string) => `${who}-${crypto.randomUUID()}@vidyam.test`;
 const email = testEmail("teacher");
 const adminEmail = testEmail("admin");
 const outsiderEmail = testEmail("outsider");
-const createdEmails = [email, adminEmail, outsiderEmail];
+const operatorEmail = testEmail("operator");
+const createdEmails = [email, adminEmail, outsiderEmail, operatorEmail];
 const password = "a-long-test-password-1";
 
 async function signIn(as = email, withPassword = password): Promise<string[]> {
@@ -72,10 +73,11 @@ beforeAll(async () => {
   const auth = app.get<AuthService<Auth>>(AuthService);
   const createUser = async (userEmail: string, name: string) =>
     (await auth.api.createUser({ body: { email: userEmail, password, name } })).user.id;
-  const [teacherId, adminId, outsiderId] = [
+  const [teacherId, adminId, outsiderId, operatorId] = [
     await createUser(email, "Test Teacher"),
     await createUser(adminEmail, "Test Admin"),
     await createUser(outsiderEmail, "Other Center Teacher"),
+    await createUser(operatorEmail, "Test Content Operator"),
   ];
 
   await owner.db.insert(schema.organizations).values([
@@ -86,6 +88,7 @@ beforeAll(async () => {
     { organizationId: orgA, userId: teacherId, role: "teacher", createdAt: new Date() },
     { organizationId: orgA, userId: adminId, role: "admin", createdAt: new Date() },
     { organizationId: orgB, userId: outsiderId, role: "teacher", createdAt: new Date() },
+    { organizationId: orgA, userId: operatorId, role: "content_operator", createdAt: new Date() },
   ]);
   const source = (orgId: string) => ({
     orgId,
@@ -274,7 +277,7 @@ describe("API", () => {
       licence: "own" as const,
       ...progress,
     });
-    const [ready, scan, , busy] = await owner.db
+    const [ready, scan, broken, busy] = await owner.db
       .insert(schema.sources)
       .values([
         file("a-book.pdf", { stage: "chunked", status: "done", pageCount: 2, meta: { exam: "rpsc" } }),
@@ -353,11 +356,13 @@ describe("API", () => {
     await get(`/api/library/${ready!.id}`, outsider).expect(404);
     expect((await get("/api/library/summary", outsider).expect(200)).body.files).toBe(2);
 
-    // Removing: not for teachers, not while a file is being read.
+    // Removing (library:remove): admins and content operators, not teachers, and not while a file is being read.
     const admin = await signIn(adminEmail);
+    const operator = await signIn(operatorEmail);
     await request(server).delete(`/api/library/${scan!.id}`).set("Cookie", teacher).expect(403);
     await request(server).delete(`/api/library/${busy!.id}`).set("Cookie", admin).expect(409);
     await request(server).delete(`/api/library/${scan!.id}`).set("Cookie", admin).expect(204);
+    await request(server).delete(`/api/library/${broken!.id}`).set("Cookie", operator).expect(204);
     await get(`/api/library/${scan!.id}`).expect(404);
     expect(await owner.db.$count(schema.pages, sqlEq(schema.pages.sourceId, scan!.id))).toBe(0);
     // Its vectors are queued for deletion, in the same transaction (the API never calls Qdrant).

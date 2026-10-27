@@ -1,3 +1,4 @@
+import { PERMISSIONS, ROLE_PERMISSIONS } from "@vidyam/contracts";
 import { createAccessControl } from "better-auth/plugins/access";
 import {
   adminAc as platformAdminAc,
@@ -16,28 +17,16 @@ export const platformRoles = {
   user: platformAccessControl.newRole(platformUserAc.statements),
 };
 
-/** What each organization role may do. Checked with @MemberHasPermission / Better Auth's hasPermission. */
-const statements = {
-  ...defaultStatements,
-  library: ["upload", "review"],
-  paper: ["create", "edit", "approve", "publish"],
-  settings: ["manage"],
-} as const;
-
-export const accessControl = createAccessControl(statements);
+/**
+ * What each organization role may do: the fixed matrix in @vidyam/contracts (which the web app also reads), plus
+ * Better Auth's own organization statements (members, invitations), which only admins hold. Checked with
+ * @MemberHasPermission.
+ */
+export const accessControl = createAccessControl({ ...defaultStatements, ...PERMISSIONS });
 
 export const orgRoles: Record<OrgRoleName, ReturnType<typeof accessControl.newRole>> = {
-  // Center admin: manages members and settings, and can do everything a reviewer and operator can.
-  admin: accessControl.newRole({
-    ...adminAc.statements,
-    library: ["upload", "review"],
-    paper: ["create", "edit", "approve", "publish"],
-    settings: ["manage"],
-  }),
-  // Head of department: approves and publishes papers, reviews OCR output.
-  reviewer: accessControl.newRole({ library: ["review"], paper: ["create", "edit", "approve", "publish"] }),
-  // Generates and edits papers; publishing needs a reviewer.
-  teacher: accessControl.newRole({ paper: ["create", "edit"] }),
-  // Uploads content and corrects OCR output.
-  content_operator: accessControl.newRole({ library: ["upload", "review"] }),
+  admin: accessControl.newRole({ ...adminAc.statements, ...ROLE_PERMISSIONS.admin }),
+  reviewer: accessControl.newRole(ROLE_PERMISSIONS.reviewer),
+  teacher: accessControl.newRole(ROLE_PERMISSIONS.teacher),
+  content_operator: accessControl.newRole(ROLE_PERMISSIONS.content_operator),
 };

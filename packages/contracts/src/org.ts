@@ -36,6 +36,17 @@ export const ROLE_PERMISSIONS: Record<OrgRole, Permissions> = {
   content_operator: { chat: ["use"], library: ["upload", "review", "remove"] },
 };
 
+/** Whether a center role may do something. The API enforces this; the web app uses it to hide what would be refused. */
+export function roleCan<R extends PermissionResource>(
+  role: OrgRole | null,
+  resource: R,
+  action: (typeof PERMISSIONS)[R][number],
+): boolean {
+  if (!role) return false;
+  const allowed: readonly string[] | undefined = ROLE_PERMISSIONS[role][resource];
+  return allowed?.includes(action) ?? false;
+}
+
 /** How exported papers look: the center's name, logo and standing lines (org_settings.branding). */
 export const OrgBranding = contract(
   "OrgBranding",

@@ -1,6 +1,11 @@
 import { Controller, Delete, Get, HttpCode, Param, ParseUUIDPipe, Query } from "@nestjs/common";
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
-import { OrgRoles, RequireActiveOrg, Session, type UserSession } from "@thallesp/nestjs-better-auth";
+import {
+  MemberHasPermission,
+  RequireActiveOrg,
+  Session,
+  type UserSession,
+} from "@thallesp/nestjs-better-auth";
 import {
   LIBRARY_PAGE_SIZE,
   LibraryPage,
@@ -15,7 +20,7 @@ import { RemoveSource } from "../application/remove-source.js";
 const activeOrg = (session: UserSession) =>
   (session.session as { activeOrganizationId: string }).activeOrganizationId;
 
-/** Everyone in a center can browse its library; admins and content operators can remove files. */
+/** Everyone in a center can browse its library; removing a file needs library:remove. */
 @ApiTags("library")
 @Controller("library")
 @RequireActiveOrg()
@@ -51,7 +56,7 @@ export class LibraryController {
 
   @Delete(":sourceId")
   @HttpCode(204)
-  @OrgRoles(["admin", "content_operator"])
+  @MemberHasPermission({ permissions: { library: ["remove"] } })
   async remove(
     @Session() session: UserSession,
     @Param("sourceId", new ParseUUIDPipe()) sourceId: string,
