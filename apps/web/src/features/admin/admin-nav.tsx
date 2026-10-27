@@ -16,7 +16,7 @@ const SECTIONS = [
   { key: "models", href: null },
   { key: "prompts", href: null },
   { key: "usage", href: null },
-  { key: "center", href: null },
+  { key: "center", href: "/admin/center" },
   { key: "audit", href: null },
   { key: "health", href: null },
 ] as const;

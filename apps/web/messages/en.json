@@ -374,5 +374,50 @@
       "short_answer": "Short answer",
       "long_answer": "Long answer"
     }
+  },
+  "center": {
+    "title": "Center profile",
+    "subtitle": "How your center appears on exported papers, and the AI rules for your teachers.",
+    "branding": "Name and lines on exports",
+    "nameEn": "Center name (English)",
+    "nameHi": "Center name (Hindi)",
+    "headerEn": "Header lines (English)",
+    "headerHi": "Header lines (Hindi)",
+    "headerHint": "Address, phone, tagline. One per line.",
+    "footerEn": "Footer (English)",
+    "footerHi": "Footer (Hindi)",
+    "instructionsEn": "Standard instructions (English)",
+    "instructionsHi": "Standard instructions (Hindi)",
+    "instructionsHint": "Added to every paper unless the paper pattern has its own.",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "logo": "Logo",
+    "logoHint": "PNG, JPEG or WebP, up to 1 MB. Printed at the top of every export.",
+    "uploadLogo": "Upload logo",
+    "replaceLogo": "Replace logo",
+    "removeLogo": "Remove logo",
+    "uploading": "Uploading…",
+    "logoSaved": "Logo updated",
+    "logoRemoved": "Logo removed",
+    "noLogo": "No logo yet",
+    "preview": "Export header preview",
+    "aiPolicy": "AI rules",
+    "models": "Models teachers can choose in the chat",
+    "modelsHint": "None ticked means every model the platform allows. Admins can always use all of them.",
+    "noModels": "No models are available yet.",
+    "crossCheck": "Check answers with the other AI provider",
+    "crossCheckHint": "Before a question counts as verified, the other provider solves it without seeing the answer.",
+    "sourcing": "Where questions come from by default",
+    "sourcingOptions": {
+      "bank_first": "Question bank first, then generate the rest",
+      "fresh_only": "Always generate fresh questions",
+      "bank_only": "Only from the question bank"
+    },
+    "providers": {
+      "anthropic": "Anthropic",
+      "openai": "OpenAI",
+      "stub": "Built-in test model"
+    }
   }
 }
