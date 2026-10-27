@@ -180,6 +180,29 @@
       ],
       "additionalProperties": false
     },
+    "BlueprintImport": {
+      "title": "BlueprintImport",
+      "type": "object",
+      "properties": {
+        "exam": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blueprint": {
+          "$ref": "#/$defs/Blueprint"
+        }
+      },
+      "required": [
+        "exam",
+        "name",
+        "blueprint"
+      ],
+      "additionalProperties": false
+    },
     "CardField": {
       "title": "CardField",
       "type": "object",
@@ -907,6 +930,11 @@
       ],
       "additionalProperties": false
     },
+    "CodePath": {
+      "title": "CodePath",
+      "type": "string",
+      "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+    },
     "ContentLanguage": {
       "title": "ContentLanguage",
       "type": "string",
@@ -1388,6 +1416,94 @@
         }
       ]
     },
+    "ExamPaperImport": {
+      "title": "ExamPaperImport",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "family": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "paperCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nameEn": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nameHi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authoritativeLanguage": {
+          "$ref": "#/$defs/Language"
+        },
+        "syllabus": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "node": {
+                "$ref": "#/$defs/CodePath"
+              },
+              "weightage": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              }
+            },
+            "required": [
+              "node"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "code",
+        "family",
+        "paperCode",
+        "nameEn",
+        "nameHi",
+        "authoritativeLanguage",
+        "syllabus"
+      ],
+      "additionalProperties": false
+    },
+    "GlossaryTermImport": {
+      "title": "GlossaryTermImport",
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hi": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        }
+      },
+      "required": [
+        "en",
+        "hi",
+        "subject"
+      ],
+      "additionalProperties": false
+    },
     "IngestSourceInput": {
       "title": "IngestSourceInput",
       "type": "object",
@@ -1851,8 +1967,7 @@
           "pattern": "^\\d+(-\\d+)?$"
         },
         "chapter": {
-          "type": "string",
-          "minLength": 1
+          "$ref": "#/$defs/CodePath"
         },
         "title": {
           "type": "string"
@@ -2676,6 +2791,78 @@
       ],
       "additionalProperties": false
     },
+    "QuestionImport": {
+      "title": "QuestionImport",
+      "type": "object",
+      "properties": {
+        "ref": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "content": {
+          "$ref": "#/$defs/QuestionContent"
+        },
+        "answer": {
+          "$ref": "#/$defs/Answer"
+        },
+        "authoritativeLanguage": {
+          "$ref": "#/$defs/Language"
+        },
+        "difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "marks": {
+          "anyOf": [
+            {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "negativeMarks": {
+          "anyOf": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "taxonomy": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CodePath"
+          }
+        },
+        "licence": {
+          "$ref": "#/$defs/Licence"
+        }
+      },
+      "required": [
+        "ref",
+        "qtype",
+        "content",
+        "answer",
+        "authoritativeLanguage",
+        "difficulty",
+        "marks",
+        "negativeMarks",
+        "taxonomy",
+        "licence"
+      ],
+      "additionalProperties": false
+    },
     "QuestionOption": {
       "title": "QuestionOption",
       "type": "object",
@@ -2909,7 +3096,7 @@
           ]
         },
         "chapter": {
-          "type": "string"
+          "$ref": "#/$defs/CodePath"
         },
         "sections": {
           "type": "array",
@@ -2976,6 +3163,91 @@
         "fresh_only",
         "bank_only"
       ]
+    },
+    "SyllabusImport": {
+      "title": "SyllabusImport",
+      "type": "object",
+      "properties": {
+        "subject": {
+          "$ref": "#/$defs/SyllabusNodeImport"
+        }
+      },
+      "required": [
+        "subject"
+      ],
+      "additionalProperties": false
+    },
+    "SyllabusLevel": {
+      "title": "SyllabusLevel",
+      "type": "string",
+      "enum": [
+        "subject",
+        "unit",
+        "chapter",
+        "topic",
+        "subtopic"
+      ]
+    },
+    "SyllabusNodeImport": {
+      "title": "SyllabusNodeImport",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "level": {
+          "$ref": "#/$defs/SyllabusLevel"
+        },
+        "nameEn": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nameHi": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "aliases": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "objectives": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "children": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SyllabusNodeImport"
+          }
+        }
+      },
+      "required": [
+        "code",
+        "level",
+        "nameEn",
+        "nameHi",
+        "aliases",
+        "objectives",
+        "children"
+      ],
+      "additionalProperties": false
     },
     "SystemStatus": {
       "title": "SystemStatus",

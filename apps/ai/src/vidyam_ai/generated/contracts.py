@@ -292,6 +292,10 @@ class CitationRef(BaseModel):
     quote: str
 
 
+class CodePath(RootModel[str]):
+    root: str = Field(..., pattern="^[a-z0-9_]+(\\/[a-z0-9_]+)*$", title="CodePath")
+
+
 class ContentLanguage(StrEnum):
     hi = "hi"
     en = "en"
@@ -408,6 +412,25 @@ class EditOp7(BaseModel):
     )
     op: Literal["set_title"]
     title: str = Field(..., min_length=1)
+
+
+class Syllabu(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node: CodePath
+    weightage: float | None = Field(None, ge=0.0, le=1.0)
+
+
+class GlossaryTermImport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    en: str = Field(..., min_length=1)
+    hi: str = Field(..., min_length=1)
+    subject: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
 
 
 class IngestSourceInput(BaseModel):
@@ -537,7 +560,7 @@ class ManifestSection(BaseModel):
         populate_by_name=True,
     )
     pages: str = Field(..., pattern="^\\d+(-\\d+)?$")
-    chapter: str = Field(..., min_length=1)
+    chapter: CodePath
     title: str | None = None
 
 
@@ -735,6 +758,14 @@ class Difficulty(RootModel[int]):
     root: int = Field(..., ge=1, le=5)
 
 
+class Marks(RootModel[float]):
+    root: float = Field(..., gt=0.0)
+
+
+class NegativeMarks(RootModel[float]):
+    root: float = Field(..., ge=0.0)
+
+
 class QuestionOption(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -874,7 +905,7 @@ class SourceManifestRow(BaseModel):
     date_shift: str | None = Field(None, alias="dateShift")
     answer_key_for: str | None = Field(None, alias="answerKeyFor")
     answer_key_status: AnswerKeyStatus | None = Field(None, alias="answerKeyStatus")
-    chapter: str | None = None
+    chapter: CodePath | None = None
     sections: list[ManifestSection] | None = None
     parallel_of: str | None = Field(None, alias="parallelOf")
     page_offset: int | None = Field(
@@ -898,6 +929,40 @@ class Sourcing(StrEnum):
     bank_first = "bank_first"
     fresh_only = "fresh_only"
     bank_only = "bank_only"
+
+
+class SyllabusLevel(StrEnum):
+    subject = "subject"
+    unit = "unit"
+    chapter = "chapter"
+    topic = "topic"
+    subtopic = "subtopic"
+
+
+class NameHi(RootModel[str]):
+    root: str = Field(..., min_length=1)
+
+
+class Alias(RootModel[str]):
+    root: str = Field(..., min_length=1)
+
+
+class Objective(RootModel[str]):
+    root: str = Field(..., min_length=1)
+
+
+class SyllabusNodeImport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    code: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    level: SyllabusLevel
+    name_en: str = Field(..., alias="nameEn", min_length=1)
+    name_hi: NameHi | None = Field(..., alias="nameHi")
+    aliases: list[Alias]
+    objectives: list[Objective]
+    children: list[SyllabusNodeImport]
 
 
 class SystemStatus(BaseModel):
@@ -1041,6 +1106,20 @@ class EditOp6(BaseModel):
     instructions: LocalizedText
 
 
+class ExamPaperImport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    code: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    family: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    paper_code: str | None = Field(..., alias="paperCode")
+    name_en: str = Field(..., alias="nameEn", min_length=1)
+    name_hi: str | None = Field(..., alias="nameHi")
+    authoritative_language: Language = Field(..., alias="authoritativeLanguage")
+    syllabus: list[Syllabu] = Field(..., min_length=1)
+
+
 class LibrarySource(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1154,6 +1233,31 @@ class QuestionContent(BaseModel):
     en: QuestionText | None
 
 
+class QuestionImport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    ref: str = Field(..., pattern="^[a-z0-9]+(-[a-z0-9]+)*$")
+    qtype: QuestionType
+    content: QuestionContent
+    answer: Answer
+    authoritative_language: Language = Field(..., alias="authoritativeLanguage")
+    difficulty: int = Field(..., ge=1, le=5)
+    marks: Marks | None
+    negative_marks: NegativeMarks | None = Field(..., alias="negativeMarks")
+    taxonomy: list[CodePath] = Field(..., min_length=1)
+    licence: Licence
+
+
+class SyllabusImport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    subject: SyllabusNodeImport
+
+
 class TaskSpec(RootModel[PaperSpec | NotesSpec]):
     root: PaperSpec | NotesSpec = Field(..., title="TaskSpec")
 
@@ -1169,6 +1273,16 @@ class Blueprint(BaseModel):
     )
     instructions: LocalizedText
     default_difficulty_mix: DifficultyMix = Field(..., alias="defaultDifficultyMix")
+
+
+class BlueprintImport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    exam: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    name: str = Field(..., min_length=1)
+    blueprint: Blueprint
 
 
 class ChatBlock5(BaseModel):
@@ -1370,3 +1484,6 @@ class DocumentEdit(BaseModel):
     document_id: UUID = Field(..., alias="documentId")
     base_version: int = Field(..., alias="baseVersion", ge=0, le=9007199254740991)
     ops: list[EditOp] = Field(..., min_length=1)
+
+
+SyllabusNodeImport.model_rebuild()
