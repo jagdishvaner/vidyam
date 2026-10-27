@@ -25,6 +25,7 @@ import {
 } from "@vidyam/contracts";
 import { z } from "zod";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg } from "../../../shared/auth/session.js";
 import {
   ImportPaperPatterns,
@@ -58,6 +59,11 @@ export class PatternsController {
   }
 
   @Post()
+  @Audit({
+    action: "pattern.create",
+    entityType: "pattern",
+    entityId: ({ result }) => (result as PaperPattern).id,
+  })
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 201, standardSchema: PaperPattern })
   create(
@@ -68,6 +74,11 @@ export class PatternsController {
   }
 
   @Put(":patternId")
+  @Audit({
+    action: "pattern.update",
+    entityType: "pattern",
+    entityId: ({ result }) => (result as PaperPattern).id,
+  })
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 200, standardSchema: PaperPattern })
   update(
@@ -79,6 +90,12 @@ export class PatternsController {
   }
 
   @Post("import")
+  @Audit({
+    action: "pattern.import",
+    entityType: "pattern",
+    entityId: ({ body }) => `${(body as ImportPaperPatternsRequest).blueprints.length} patterns`,
+    data: ({ result }) => ({ ...(result as ImportSummary) }),
+  })
   @HttpCode(200)
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 200, standardSchema: ImportSummary })
@@ -90,6 +107,7 @@ export class PatternsController {
   }
 
   @Delete(":patternId")
+  @Audit({ action: "pattern.retire", entityType: "pattern" })
   @HttpCode(204)
   @MemberHasPermission(MANAGE)
   async retire(

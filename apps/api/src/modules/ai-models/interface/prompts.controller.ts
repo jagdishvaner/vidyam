@@ -8,6 +8,7 @@ import {
 } from "@thallesp/nestjs-better-auth";
 import { CreatePromptVersionRequest, PromptsOverview, PromptVersion } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { isPlatformAdmin } from "../../../shared/auth/session.js";
 import { PromptAdmin } from "../application/manage-prompts.js";
 
@@ -26,6 +27,15 @@ export class PromptsController {
   }
 
   @Post()
+  @Audit({
+    action: "prompt.create",
+    entityType: "prompt",
+    entityId: ({ result }) => (result as PromptVersion).id,
+    data: ({ result }) => {
+      const { name, modelFamily, version } = result as PromptVersion;
+      return { name, modelFamily, version };
+    },
+  })
   @ApiResponse({ status: 201, standardSchema: PromptVersion })
   create(
     @Session() session: UserSession,
@@ -35,6 +45,7 @@ export class PromptsController {
   }
 
   @Post(":promptId/activate")
+  @Audit({ action: "prompt.activate", entityType: "prompt" })
   @HttpCode(204)
   async activate(
     @Session() session: UserSession,

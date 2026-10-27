@@ -372,6 +372,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/audit": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["AuditController_page"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/syllabus": {
         parameters: {
             query?: never;
@@ -1500,6 +1516,49 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    AuditController_page: {
+        parameters: {
+            query?: {
+                action?: string;
+                userId?: string;
+                cursor?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        entries: {
+                            /** Format: uuid */
+                            id: string;
+                            /** Format: date-time */
+                            at: string;
+                            actor: {
+                                /** Format: uuid */
+                                id: string;
+                                name: string;
+                                email: string;
+                            } | null;
+                            action: string;
+                            entityType: string;
+                            entityId: string;
+                            data: {
+                                [key: string]: unknown;
+                            };
+                        }[];
+                        nextCursor: string | null;
+                    };
+                };
             };
         };
     };

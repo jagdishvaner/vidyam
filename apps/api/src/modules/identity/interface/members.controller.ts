@@ -3,6 +3,7 @@ import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { OrgRoles, Session, type UserSession } from "@thallesp/nestjs-better-auth";
 import { AddedMember, AddMemberRequest, SetMemberPasswordRequest } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg, isPlatformAdmin } from "../../../shared/auth/session.js";
 import { AddMember, RemoveMember, SetMemberPassword } from "../application/manage-members.js";
 
@@ -18,6 +19,11 @@ export class MembersController {
   ) {}
 
   @Post()
+  @Audit({
+    action: "member.create",
+    entityType: "member",
+    entityId: ({ result }) => (result as AddedMember).userId,
+  })
   @ApiResponse({ status: 201, standardSchema: AddedMember })
   add(
     @Session() session: UserSession,
@@ -27,6 +33,7 @@ export class MembersController {
   }
 
   @Put(":userId/password")
+  @Audit({ action: "member.password_reset", entityType: "member", data: () => ({}) })
   @HttpCode(204)
   async setPassword(
     @Session() session: UserSession,
@@ -42,6 +49,7 @@ export class MembersController {
   }
 
   @Delete(":userId")
+  @Audit({ action: "member.remove", entityType: "member" })
   @HttpCode(204)
   async remove(
     @Session() session: UserSession,

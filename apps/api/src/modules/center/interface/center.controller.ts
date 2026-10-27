@@ -21,6 +21,7 @@ import {
 } from "@thallesp/nestjs-better-auth";
 import { AiPolicy, CenterProfile, LOGO_MAX_BYTES, UpdateBrandingRequest } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg } from "../../../shared/auth/session.js";
 import { DomainError } from "../../../shared/kernel/errors.js";
 import { CenterSettings } from "../application/manage-center.js";
@@ -39,6 +40,7 @@ export class CenterController {
   }
 
   @Put("branding")
+  @Audit({ action: "center.branding", entityType: "center", entityId: () => "branding" })
   @HttpCode(204)
   @MemberHasPermission({ permissions: { settings: ["manage"] } })
   async branding(
@@ -49,6 +51,7 @@ export class CenterController {
   }
 
   @Put("ai-policy")
+  @Audit({ action: "center.ai_policy", entityType: "center", entityId: () => "ai_policy" })
   @HttpCode(204)
   @MemberHasPermission({ permissions: { ai: ["manage"] } })
   async aiPolicy(@Session() session: UserSession, @Body({ schema: AiPolicy }) body: AiPolicy): Promise<void> {
@@ -56,6 +59,12 @@ export class CenterController {
   }
 
   @Post("logo")
+  @Audit({
+    action: "center.logo_set",
+    entityType: "center",
+    entityId: () => "logo",
+    data: ({ result }) => ({ ...(result as object) }),
+  })
   @HttpCode(200)
   @MemberHasPermission({ permissions: { settings: ["manage"] } })
   @UseInterceptors(FileInterceptor("logo", { limits: { fileSize: LOGO_MAX_BYTES, files: 1 } }))
@@ -70,6 +79,7 @@ export class CenterController {
   }
 
   @Delete("logo")
+  @Audit({ action: "center.logo_remove", entityType: "center", entityId: () => "logo" })
   @HttpCode(204)
   @MemberHasPermission({ permissions: { settings: ["manage"] } })
   async removeLogo(@Session() session: UserSession): Promise<void> {

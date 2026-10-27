@@ -262,6 +262,146 @@
         }
       ]
     },
+    "AuditAction": {
+      "title": "AuditAction",
+      "type": "string",
+      "enum": [
+        "member.create",
+        "member.password_reset",
+        "member.remove",
+        "staff.update",
+        "library.remove",
+        "syllabus.import",
+        "syllabus.node_create",
+        "syllabus.node_update",
+        "exam.import",
+        "exam.delete",
+        "pattern.create",
+        "pattern.update",
+        "pattern.import",
+        "pattern.retire",
+        "center.branding",
+        "center.ai_policy",
+        "center.logo_set",
+        "center.logo_remove",
+        "ai.model_update",
+        "ai.route_set",
+        "ai.route_clear",
+        "prompt.create",
+        "prompt.activate",
+        "budget.set"
+      ]
+    },
+    "AuditEntry": {
+      "title": "AuditEntry",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        },
+        "actor": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "email"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "action": {
+          "type": "string"
+        },
+        "entityType": {
+          "type": "string"
+        },
+        "entityId": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        }
+      },
+      "required": [
+        "id",
+        "at",
+        "actor",
+        "action",
+        "entityType",
+        "entityId",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    "AuditPage": {
+      "title": "AuditPage",
+      "type": "object",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AuditEntry"
+          }
+        },
+        "nextCursor": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "entries",
+        "nextCursor"
+      ],
+      "additionalProperties": false
+    },
+    "AuditQuery": {
+      "title": "AuditQuery",
+      "type": "object",
+      "properties": {
+        "action": {
+          "type": "string",
+          "pattern": "^[a-z_]+(\\.[a-z_]+)?$"
+        },
+        "userId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "cursor": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
     "Blueprint": {
       "title": "Blueprint",
       "type": "object",

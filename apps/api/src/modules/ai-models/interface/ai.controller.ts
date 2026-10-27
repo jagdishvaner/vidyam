@@ -8,6 +8,7 @@ import {
 } from "@thallesp/nestjs-better-auth";
 import { AiOverview, LlmTask, SetTaskRouteRequest, UpdateAiModelRequest } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg, isPlatformAdmin } from "../../../shared/auth/session.js";
 import { AiSettings } from "../application/manage-ai.js";
 
@@ -28,6 +29,7 @@ export class AiController {
   }
 
   @Put("models/:modelId")
+  @Audit({ action: "ai.model_update", entityType: "model" })
   @HttpCode(204)
   async updateModel(
     @Session() session: UserSession,
@@ -38,6 +40,7 @@ export class AiController {
   }
 
   @Put("routes/:task")
+  @Audit({ action: "ai.route_set", entityType: "task_route" })
   @HttpCode(204)
   async setRoute(
     @Session() session: UserSession,
@@ -48,6 +51,7 @@ export class AiController {
   }
 
   @Delete("routes/:task")
+  @Audit({ action: "ai.route_clear", entityType: "task_route" })
   @HttpCode(204)
   async clearRoute(@Session() session: UserSession, @Param("task") task: string): Promise<void> {
     await this.ai.clearRoute(activeOrg(session), LlmTask.parse(task));

@@ -14,6 +14,7 @@ import {
   LibrarySummary,
 } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg } from "../../../shared/auth/session.js";
 import { BrowseLibrary } from "../application/browse-library.js";
 import { RemoveSource } from "../application/remove-source.js";
@@ -53,6 +54,7 @@ export class LibraryController {
   }
 
   @Delete(":sourceId")
+  @Audit({ action: "library.remove", entityType: "source" })
   @HttpCode(204)
   @MemberHasPermission({ permissions: { library: ["remove"] } })
   async remove(

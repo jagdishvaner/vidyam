@@ -64,6 +64,79 @@ class Answer(RootModel[Answer1 | Answer2 | Answer3]):
     root: Answer1 | Answer2 | Answer3 = Field(..., title="Answer")
 
 
+class AuditAction(StrEnum):
+    member_create = "member.create"
+    member_password_reset = "member.password_reset"
+    member_remove = "member.remove"
+    staff_update = "staff.update"
+    library_remove = "library.remove"
+    syllabus_import = "syllabus.import"
+    syllabus_node_create = "syllabus.node_create"
+    syllabus_node_update = "syllabus.node_update"
+    exam_import = "exam.import"
+    exam_delete = "exam.delete"
+    pattern_create = "pattern.create"
+    pattern_update = "pattern.update"
+    pattern_import = "pattern.import"
+    pattern_retire = "pattern.retire"
+    center_branding = "center.branding"
+    center_ai_policy = "center.ai_policy"
+    center_logo_set = "center.logo_set"
+    center_logo_remove = "center.logo_remove"
+    ai_model_update = "ai.model_update"
+    ai_route_set = "ai.route_set"
+    ai_route_clear = "ai.route_clear"
+    prompt_create = "prompt.create"
+    prompt_activate = "prompt.activate"
+    budget_set = "budget.set"
+
+
+class Actor(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    name: str
+    email: str
+
+
+class AuditEntry(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    at: AwareDatetime = Field(
+        ...,
+        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+    )
+    actor: Actor | None
+    action: str
+    entity_type: str = Field(..., alias="entityType")
+    entity_id: str = Field(..., alias="entityId")
+    data: dict[str, Any]
+
+
+class AuditPage(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    entries: list[AuditEntry]
+    next_cursor: str | None = Field(..., alias="nextCursor")
+
+
+class AuditQuery(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    action: str | None = Field(None, pattern="^[a-z_]+(\\.[a-z_]+)?$")
+    user_id: UUID | None = Field(None, alias="userId")
+    cursor: str | None = None
+
+
 class CardFieldKey(StrEnum):
     kind = "kind"
     exam = "exam"

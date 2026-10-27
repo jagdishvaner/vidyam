@@ -18,6 +18,7 @@ import {
   UpdateSyllabusNodeRequest,
 } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg } from "../../../shared/auth/session.js";
 import {
   BrowseSyllabus,
@@ -58,6 +59,12 @@ export class SyllabusController {
   }
 
   @Post("syllabus/import")
+  @Audit({
+    action: "syllabus.import",
+    entityType: "subject",
+    entityId: ({ body }) => (body as SyllabusImport).subject.code,
+    data: ({ result }) => ({ ...(result as ImportSummary) }),
+  })
   @HttpCode(200)
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 200, standardSchema: ImportSummary })
@@ -69,6 +76,11 @@ export class SyllabusController {
   }
 
   @Post("syllabus/nodes")
+  @Audit({
+    action: "syllabus.node_create",
+    entityType: "syllabus_node",
+    entityId: ({ result }) => (result as SyllabusNode).id,
+  })
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 201, standardSchema: SyllabusNode })
   createNode(
@@ -79,6 +91,7 @@ export class SyllabusController {
   }
 
   @Put("syllabus/nodes/:nodeId")
+  @Audit({ action: "syllabus.node_update", entityType: "syllabus_node" })
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 200, standardSchema: SyllabusNode })
   updateNode(
@@ -96,6 +109,12 @@ export class SyllabusController {
   }
 
   @Post("exams/import")
+  @Audit({
+    action: "exam.import",
+    entityType: "exam",
+    entityId: ({ body }) => (body as ImportExamPapersRequest).exams.map((e) => e.code).join(","),
+    data: ({ result }) => ({ ...(result as ImportSummary) }),
+  })
   @HttpCode(200)
   @MemberHasPermission(MANAGE)
   @ApiResponse({ status: 200, standardSchema: ImportSummary })
@@ -107,6 +126,7 @@ export class SyllabusController {
   }
 
   @Delete("exams/:examId")
+  @Audit({ action: "exam.delete", entityType: "exam" })
   @HttpCode(204)
   @MemberHasPermission(MANAGE)
   async removeExam(

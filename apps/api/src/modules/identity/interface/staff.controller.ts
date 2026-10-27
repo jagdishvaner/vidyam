@@ -3,6 +3,7 @@ import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { OrgRoles, Session, type UserSession } from "@thallesp/nestjs-better-auth";
 import { StaffDirectory, UpdateStaffMemberRequest } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg, isPlatformAdmin } from "../../../shared/auth/session.js";
 import { ListStaff, UpdateStaffMember } from "../application/manage-staff.js";
 
@@ -23,6 +24,7 @@ export class StaffController {
   }
 
   @Put(":userId")
+  @Audit({ action: "staff.update", entityType: "member" })
   @HttpCode(204)
   async update(
     @Session() session: UserSession,

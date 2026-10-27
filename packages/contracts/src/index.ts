@@ -1,3 +1,4 @@
+export * from "./audit.js";
 export * from "./catalog.js";
 export * from "./chat.js";
 export * from "./common.js";

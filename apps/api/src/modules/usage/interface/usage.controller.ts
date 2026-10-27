@@ -8,6 +8,7 @@ import {
 } from "@thallesp/nestjs-better-auth";
 import { SetCenterBudgetRequest, UsageQuery, UsageReport } from "@vidyam/contracts";
 
+import { Audit } from "../../../shared/audit/audit.js";
 import { activeOrg } from "../../../shared/auth/session.js";
 import { UsageReports } from "../application/usage-reports.js";
 
@@ -29,6 +30,7 @@ export class UsageController {
   }
 
   @Put("budget")
+  @Audit({ action: "budget.set", entityType: "center", entityId: () => "budget" })
   @HttpCode(204)
   async setBudget(
     @Session() session: UserSession,

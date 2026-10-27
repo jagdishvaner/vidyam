@@ -6,6 +6,7 @@ import { EnvModule } from "./config/env.module.js";
 import { DashboardModule } from "./modules/dashboard/dashboard.module.js";
 import { IdentityModule } from "./modules/identity/identity.module.js";
 import { AiModelsModule } from "./modules/ai-models/ai-models.module.js";
+import { AuditModule } from "./modules/audit/audit.module.js";
 import { CenterModule } from "./modules/center/center.module.js";
 import { LibraryModule } from "./modules/library/library.module.js";
 import { SyllabusModule } from "./modules/syllabus/syllabus.module.js";
@@ -33,6 +34,7 @@ export class AppModule {
         CenterModule,
         AiModelsModule,
         UsageModule,
+        AuditModule,
         SyllabusModule,
       ],
       providers: [

@@ -782,4 +782,42 @@ describe("API", () => {
       .expect(204);
     await request(server).get("/api/usage?month=2026-13").set("Cookie", admin).expect(400);
   });
+
+  // Runs last: the admin actions of the tests above are what it reads back.
+  it("records every admin change in the audit log, without secrets, for admins to read", async () => {
+    const server = app.getHttpServer();
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
+    await request(server).get("/api/audit").set("Cookie", teacher).expect(403);
+    const { entries, nextCursor } = (await request(server).get("/api/audit").set("Cookie", admin).expect(200))
+      .body;
+    const actions = new Set(entries.map((e: { action: string }) => e.action));
+    for (const action of [
+      "member.create",
+      "member.password_reset",
+      "member.remove",
+      "staff.update",
+      "library.remove",
+      "syllabus.import",
+      "exam.import",
+      "pattern.import",
+      "center.branding",
+      "center.logo_set",
+      "ai.route_set",
+      "budget.set",
+    ]) {
+      expect(actions, action).toContain(action);
+    }
+    const created = entries.find((e: { action: string }) => e.action === "member.create");
+    expect(created.data.password).toBe("[removed]");
+    expect(created.actor).toMatchObject({ email: adminEmail });
+    // Newest first: the first import (which created the tree) is the oldest entry.
+    const imported = entries.filter((e: { action: string }) => e.action === "syllabus.import").at(-1);
+    expect(imported).toMatchObject({ entityType: "subject", entityId: "science", data: { created: 54 } });
+    expect(nextCursor).toBeNull();
+
+    const center = (await request(server).get("/api/audit?action=center").set("Cookie", admin)).body.entries;
+    expect(center.length).toBeGreaterThan(0);
+    expect(center.every((e: { action: string }) => e.action.startsWith("center."))).toBe(true);
+    await request(server).get("/api/audit?cursor=not-a-cursor").set("Cookie", admin).expect(422);
+  });
 });
