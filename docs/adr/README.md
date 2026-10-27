@@ -19,8 +19,13 @@ changes an old one gets a new record that supersedes it; old records are not rew
 | [0012](0012-content-intake-without-upload-screen.md) | Content handed over directly; no upload screen yet; videos as text    | Accepted           |
 | [0013](0013-temporal-for-durable-workflows.md)       | Temporal for long-running work (replaces BullMQ)                      | Accepted           |
 | [0014](0014-reading-content-into-the-library.md)     | Reading content: PDFium, Kruti Dev conversion, structure-aware chunks | Accepted           |
+| [0015](0015-chat-turns-and-clarification-cards.md)   | Chat turns stream through the API; cards are built by code            | Accepted           |
+| [0016](0016-qwen3-embeddings-and-reranker.md)        | Qwen3-Embedding-4B and Qwen3-Reranker-4B, self-hosted                 | Accepted           |
+| [0017](0017-api-temporal-worker-single-writer.md)    | API Temporal worker; single writer of chat and documents              | Accepted           |
+| [0018](0018-outbox-for-vector-index-changes.md)      | Index changes reach Qdrant through an outbox                          | Accepted           |
 
-The full plan these decisions come from: [`../master-plan.md`](../master-plan.md).
+The plan these decisions come from: [`../master-plan.md`](../master-plan.md) (v3; v2 is kept as
+[`../master-plan-v2.md`](../master-plan-v2.md)).
 
 Template for new records:
 

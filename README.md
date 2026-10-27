@@ -4,7 +4,7 @@ Grounded AI content studio for a coaching center. Teachers chat to generate new 
 and notes from the center's **own** books, PDFs, videos and past papers (Hindi + English), edit them by chat,
 and export print-ready PDF/DOCX. Claude and GPT are both supported and switchable.
 
-The full plan (all 100 steps) is in [`docs/master-plan.md`](docs/master-plan.md); the reasoning behind each
+The plan (v3) is in [`docs/master-plan.md`](docs/master-plan.md); the reasoning behind each
 decision is in [`docs/adr`](docs/adr).
 
 ## Repository layout
