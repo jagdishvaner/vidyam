@@ -1,0 +1,1319 @@
+[
+  {
+    "ref": "demo-motion-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "विस्थापन किस प्रकार की भौतिक राशि है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "अदिश राशि"
+          },
+          {
+            "key": "B",
+            "text": "विमाहीन राशि"
+          },
+          {
+            "key": "C",
+            "text": "न अदिश, न सदिश"
+          },
+          {
+            "key": "D",
+            "text": "सदिश राशि"
+          }
+        ],
+        "solution": "विस्थापन में परिमाण और दिशा दोनों होते हैं, इसलिए यह सदिश राशि है।"
+      },
+      "en": {
+        "stem": "What kind of physical quantity is displacement?",
+        "options": [
+          {
+            "key": "A",
+            "text": "A scalar quantity"
+          },
+          {
+            "key": "B",
+            "text": "A dimensionless quantity"
+          },
+          {
+            "key": "C",
+            "text": "Neither scalar nor vector"
+          },
+          {
+            "key": "D",
+            "text": "A vector quantity"
+          }
+        ],
+        "solution": "Displacement has both magnitude and direction, so it is a vector quantity."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/distance_and_displacement"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक धावक 7 m त्रिज्या वाले वृत्ताकार पथ पर आधा चक्कर पूरा करता है। उसके विस्थापन का परिमाण कितना है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "22 m"
+          },
+          {
+            "key": "B",
+            "text": "44 m"
+          },
+          {
+            "key": "C",
+            "text": "14 m"
+          },
+          {
+            "key": "D",
+            "text": "शून्य"
+          }
+        ],
+        "solution": "आधे चक्कर के बाद धावक व्यास के दूसरे सिरे पर होता है, अतः विस्थापन = व्यास = 2 × 7 = 14 m। (22 m तय की गई दूरी है।)"
+      },
+      "en": {
+        "stem": "A runner completes half a round of a circular track of radius 7 m. What is the magnitude of the runner's displacement?",
+        "options": [
+          {
+            "key": "A",
+            "text": "22 m"
+          },
+          {
+            "key": "B",
+            "text": "44 m"
+          },
+          {
+            "key": "C",
+            "text": "14 m"
+          },
+          {
+            "key": "D",
+            "text": "Zero"
+          }
+        ],
+        "solution": "After half a round the runner is at the other end of a diameter, so displacement = diameter = 2 × 7 = 14 m. (22 m is the distance covered.)"
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/distance_and_displacement"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-003",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक व्यक्ति 8 m पूर्व की ओर और फिर 6 m उत्तर की ओर चलता है। उसके द्वारा तय की गई दूरी और उसके विस्थापन का परिमाण क्रमशः हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "14 m और 10 m"
+          },
+          {
+            "key": "B",
+            "text": "10 m और 14 m"
+          },
+          {
+            "key": "C",
+            "text": "14 m और 14 m"
+          },
+          {
+            "key": "D",
+            "text": "2 m और 10 m"
+          }
+        ],
+        "solution": "दूरी = 8 + 6 = 14 m। विस्थापन = (8² + 6²) का वर्गमूल = 100 का वर्गमूल = 10 m।"
+      },
+      "en": {
+        "stem": "A person walks 8 m towards the east and then 6 m towards the north. The distance covered and the magnitude of the displacement are, respectively:",
+        "options": [
+          {
+            "key": "A",
+            "text": "14 m and 10 m"
+          },
+          {
+            "key": "B",
+            "text": "10 m and 14 m"
+          },
+          {
+            "key": "C",
+            "text": "14 m and 14 m"
+          },
+          {
+            "key": "D",
+            "text": "2 m and 10 m"
+          }
+        ],
+        "solution": "Distance = 8 + 6 = 14 m. Displacement = square root of (8² + 6²) = square root of 100 = 10 m."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/distance_and_displacement"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-004",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. तय की गई दूरी शून्य न होने पर भी विस्थापन शून्य हो सकता है। 2. दूरी कभी भी ऋणात्मक नहीं होती। 3. विस्थापन का परिमाण तय की गई दूरी से अधिक हो सकता है। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 1 सत्य है (जैसे बंद पथ का पूरा चक्कर) और कथन 2 सत्य है। कथन 3 असत्य है, क्योंकि विस्थापन का परिमाण सदैव दूरी से कम या उसके बराबर होता है।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Displacement can be zero even when the distance covered is not zero. 2. Distance is never negative. 3. The magnitude of displacement can be greater than the distance covered. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "B",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statement 1 is true (for example, one full round of a closed path) and statement 2 is true. Statement 3 is false, because the magnitude of displacement is always less than or equal to the distance."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/distance_and_displacement"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-005",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "72 km/h की चाल m/s में कितनी है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "72 m/s"
+          },
+          {
+            "key": "B",
+            "text": "20 m/s"
+          },
+          {
+            "key": "C",
+            "text": "36 m/s"
+          },
+          {
+            "key": "D",
+            "text": "7.2 m/s"
+          }
+        ],
+        "solution": "1 km/h = 5/18 m/s, अतः 72 × 5/18 = 20 m/s।"
+      },
+      "en": {
+        "stem": "What is a speed of 72 km/h in m/s?",
+        "options": [
+          {
+            "key": "A",
+            "text": "72 m/s"
+          },
+          {
+            "key": "B",
+            "text": "20 m/s"
+          },
+          {
+            "key": "C",
+            "text": "36 m/s"
+          },
+          {
+            "key": "D",
+            "text": "7.2 m/s"
+          }
+        ],
+        "solution": "1 km/h = 5/18 m/s, so 72 × 5/18 = 20 m/s."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/speed_and_velocity"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक कार 120 km दूर स्थित शहर तक 40 km/h की चाल से जाती है और उसी मार्ग से 60 km/h की चाल से वापस लौटती है। पूरी यात्रा में कार की औसत चाल कितनी है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "50 km/h"
+          },
+          {
+            "key": "B",
+            "text": "45 km/h"
+          },
+          {
+            "key": "C",
+            "text": "शून्य"
+          },
+          {
+            "key": "D",
+            "text": "48 km/h"
+          }
+        ],
+        "solution": "जाने में 120 ÷ 40 = 3 h तथा लौटने में 120 ÷ 60 = 2 h लगे। औसत चाल = कुल दूरी ÷ कुल समय = 240 ÷ 5 = 48 km/h। (शून्य औसत वेग है, औसत चाल नहीं।)"
+      },
+      "en": {
+        "stem": "A car travels to a town 120 km away at a speed of 40 km/h and returns along the same route at 60 km/h. What is the average speed of the car for the whole journey?",
+        "options": [
+          {
+            "key": "A",
+            "text": "50 km/h"
+          },
+          {
+            "key": "B",
+            "text": "45 km/h"
+          },
+          {
+            "key": "C",
+            "text": "Zero"
+          },
+          {
+            "key": "D",
+            "text": "48 km/h"
+          }
+        ],
+        "solution": "Going takes 120 ÷ 40 = 3 h and returning takes 120 ÷ 60 = 2 h. Average speed = total distance ÷ total time = 240 ÷ 5 = 48 km/h. (Zero is the average velocity, not the average speed.)"
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/speed_and_velocity"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी वाहन का स्पीडोमीटर क्या मापता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "औसत चाल"
+          },
+          {
+            "key": "B",
+            "text": "कुल तय दूरी"
+          },
+          {
+            "key": "C",
+            "text": "तात्क्षणिक चाल"
+          },
+          {
+            "key": "D",
+            "text": "औसत वेग"
+          }
+        ],
+        "solution": "स्पीडोमीटर किसी क्षण की चाल, अर्थात् तात्क्षणिक चाल दिखाता है; कुल तय दूरी ओडोमीटर मापता है।"
+      },
+      "en": {
+        "stem": "What does the speedometer of a vehicle measure?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Average speed"
+          },
+          {
+            "key": "B",
+            "text": "Total distance travelled"
+          },
+          {
+            "key": "C",
+            "text": "Instantaneous speed"
+          },
+          {
+            "key": "D",
+            "text": "Average velocity"
+          }
+        ],
+        "solution": "A speedometer shows the speed at a given instant, i.e. the instantaneous speed; the total distance is measured by the odometer."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/speed_and_velocity"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-008",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): वृत्ताकार पथ का एक पूरा चक्कर लगाकर प्रारंभिक बिंदु पर लौटे धावक का औसत वेग शून्य होता है। कारण (R): औसत वेग कुल विस्थापन और कुल समय का अनुपात है तथा पूरा चक्कर लगाने पर विस्थापन शून्य होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है।"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है।"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है।"
+          }
+        ],
+        "solution": "पूरे चक्कर में विस्थापन शून्य है, इसलिए औसत वेग = 0 ÷ समय = 0। R ही A का सही कारण बताता है।"
+      },
+      "en": {
+        "stem": "Assertion (A): A runner who completes one full round of a circular track and returns to the starting point has zero average velocity. Reason (R): Average velocity is the ratio of total displacement to total time, and the displacement for a full round is zero.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true, and R is the correct explanation of A."
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true, but R is not the correct explanation of A."
+          },
+          {
+            "key": "C",
+            "text": "A is true, but R is false."
+          },
+          {
+            "key": "D",
+            "text": "A is false, but R is true."
+          }
+        ],
+        "solution": "The displacement for a full round is zero, so average velocity = 0 ÷ time = 0. R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/speed_and_velocity"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-009",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "एक साइकिल सवार 15 मिनट में 4.5 km की दूरी तय करता है। उसकी औसत चाल m/s में ज्ञात कीजिए।",
+        "options": [],
+        "solution": "दूरी = 4500 m, समय = 15 × 60 = 900 s। औसत चाल = 4500 ÷ 900 = 5 m/s।"
+      },
+      "en": {
+        "stem": "A cyclist covers 4.5 km in 15 minutes. Find the cyclist's average speed in m/s.",
+        "options": [],
+        "solution": "Distance = 4500 m, time = 15 × 60 = 900 s. Average speed = 4500 ÷ 900 = 5 m/s."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 5,
+      "tolerance": 0.01
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/motion/speed_and_velocity"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "त्वरण का SI मात्रक क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "m/s"
+          },
+          {
+            "key": "B",
+            "text": "m²/s"
+          },
+          {
+            "key": "C",
+            "text": "kg m/s"
+          },
+          {
+            "key": "D",
+            "text": "m/s²"
+          }
+        ],
+        "solution": "त्वरण = वेग में परिवर्तन ÷ समय, अतः मात्रक (m/s) ÷ s = m/s²।"
+      },
+      "en": {
+        "stem": "What is the SI unit of acceleration?",
+        "options": [
+          {
+            "key": "A",
+            "text": "m/s"
+          },
+          {
+            "key": "B",
+            "text": "m²/s"
+          },
+          {
+            "key": "C",
+            "text": "kg m/s"
+          },
+          {
+            "key": "D",
+            "text": "m/s²"
+          }
+        ],
+        "solution": "Acceleration = change in velocity ÷ time, so the unit is (m/s) ÷ s = m/s²."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/acceleration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक कार विराम से चलकर 5 s में 20 m/s का वेग प्राप्त करती है। कार का त्वरण कितना है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "4 m/s²"
+          },
+          {
+            "key": "B",
+            "text": "100 m/s²"
+          },
+          {
+            "key": "C",
+            "text": "0.25 m/s²"
+          },
+          {
+            "key": "D",
+            "text": "25 m/s²"
+          }
+        ],
+        "solution": "a = (v − u) ÷ t = (20 − 0) ÷ 5 = 4 m/s²।"
+      },
+      "en": {
+        "stem": "A car starts from rest and reaches a velocity of 20 m/s in 5 s. What is its acceleration?",
+        "options": [
+          {
+            "key": "A",
+            "text": "4 m/s²"
+          },
+          {
+            "key": "B",
+            "text": "100 m/s²"
+          },
+          {
+            "key": "C",
+            "text": "0.25 m/s²"
+          },
+          {
+            "key": "D",
+            "text": "25 m/s²"
+          }
+        ],
+        "solution": "a = (v − u) ÷ t = (20 − 0) ÷ 5 = 4 m/s²."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/acceleration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-012",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. वायु प्रतिरोध की उपेक्षा करने पर स्वतंत्र रूप से गिरती वस्तु की गति एकसमान त्वरित गति है। 2. जब त्वरण वेग की दिशा के विपरीत होता है, तो वस्तु की चाल घटती है, जिसे मंदन कहते हैं। 3. त्वरण एक अदिश राशि है। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "C",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 1 और 2 सत्य हैं। कथन 3 असत्य है, क्योंकि त्वरण में परिमाण और दिशा दोनों होते हैं, अतः यह सदिश राशि है।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Neglecting air resistance, the motion of a freely falling body is uniformly accelerated motion. 2. When the acceleration is opposite to the direction of velocity, the speed of the body decreases; this is called retardation. 3. Acceleration is a scalar quantity. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 only"
+          },
+          {
+            "key": "B",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "C",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statements 1 and 2 are true. Statement 3 is false, because acceleration has both magnitude and direction, so it is a vector quantity."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/acceleration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-013",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): यदि किसी क्षण किसी वस्तु का वेग शून्य है, तो उस क्षण उसका त्वरण भी अवश्य शून्य होगा। कारण (R): ऊर्ध्वाधर ऊपर फेंकी गई गेंद के उच्चतम बिंदु पर उसका वेग शून्य होता है, परंतु त्वरण g (नीचे की ओर) होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है।"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है।"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है।"
+          }
+        ],
+        "solution": "R सत्य है और वही A को गलत सिद्ध करता है: उच्चतम बिंदु पर वेग शून्य होने पर भी त्वरण g होता है। अतः A असत्य है और R सत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): If the velocity of a body is zero at some instant, its acceleration at that instant must also be zero. Reason (R): At the highest point of a ball thrown vertically upward, its velocity is zero but its acceleration is g (downward).",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true, and R is the correct explanation of A."
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true, but R is not the correct explanation of A."
+          },
+          {
+            "key": "C",
+            "text": "A is true, but R is false."
+          },
+          {
+            "key": "D",
+            "text": "A is false, but R is true."
+          }
+        ],
+        "solution": "R is true and is itself a counter-example to A: at the highest point the velocity is zero but the acceleration is g. So A is false and R is true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/acceleration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एकसमान त्वरण से सरल रेखा में चलती वस्तु के लिए निम्न में से कौन-सा समीकरण सही है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "v = u − at²"
+          },
+          {
+            "key": "B",
+            "text": "s = ut + at²"
+          },
+          {
+            "key": "C",
+            "text": "v = u + at"
+          },
+          {
+            "key": "D",
+            "text": "v² = u² + as"
+          }
+        ],
+        "solution": "गति का पहला समीकरण v = u + at है। अन्य दो के सही रूप s = ut + (1/2)at² तथा v² = u² + 2as हैं।"
+      },
+      "en": {
+        "stem": "Which of the following equations is correct for a body moving in a straight line with uniform acceleration?",
+        "options": [
+          {
+            "key": "A",
+            "text": "v = u − at²"
+          },
+          {
+            "key": "B",
+            "text": "s = ut + at²"
+          },
+          {
+            "key": "C",
+            "text": "v = u + at"
+          },
+          {
+            "key": "D",
+            "text": "v² = u² + as"
+          }
+        ],
+        "solution": "The first equation of motion is v = u + at. The correct forms of the other two are s = ut + (1/2)at² and v² = u² + 2as."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/equations_of_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-015",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "20 m/s के वेग से चल रही एक बस में ब्रेक लगाने पर 5 m/s² का एकसमान मंदन उत्पन्न होता है। रुकने से पहले बस कितनी दूरी तय करेगी?",
+        "options": [
+          {
+            "key": "A",
+            "text": "20 m"
+          },
+          {
+            "key": "B",
+            "text": "40 m"
+          },
+          {
+            "key": "C",
+            "text": "80 m"
+          },
+          {
+            "key": "D",
+            "text": "4 m"
+          }
+        ],
+        "solution": "v² = u² + 2as में v = 0, u = 20 m/s, a = −5 m/s² रखने पर 0 = 400 − 10s, अतः s = 40 m।"
+      },
+      "en": {
+        "stem": "A bus moving at 20 m/s gets a uniform retardation of 5 m/s² when the brakes are applied. How far will it travel before stopping?",
+        "options": [
+          {
+            "key": "A",
+            "text": "20 m"
+          },
+          {
+            "key": "B",
+            "text": "40 m"
+          },
+          {
+            "key": "C",
+            "text": "80 m"
+          },
+          {
+            "key": "D",
+            "text": "4 m"
+          }
+        ],
+        "solution": "Using v² = u² + 2as with v = 0, u = 20 m/s and a = −5 m/s²: 0 = 400 − 10s, so s = 40 m."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/equations_of_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-016",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी वाहन की प्रारंभिक चाल दोगुनी कर दी जाए, तो समान मंदन के लिए उसकी रुकने की दूरी (Stopping distance) पर क्या प्रभाव पड़ेगा?",
+        "options": [
+          {
+            "key": "A",
+            "text": "दोगुनी हो जाएगी"
+          },
+          {
+            "key": "B",
+            "text": "आधी हो जाएगी"
+          },
+          {
+            "key": "C",
+            "text": "अपरिवर्तित रहेगी"
+          },
+          {
+            "key": "D",
+            "text": "चार गुनी हो जाएगी"
+          }
+        ],
+        "solution": "v² = u² + 2as में v = 0 रखने पर रुकने की दूरी s = u² ÷ 2a, अर्थात् s, u² के समानुपाती है। u दोगुना करने पर s चार गुना हो जाता है।"
+      },
+      "en": {
+        "stem": "If the initial speed of a vehicle is doubled, what happens to its stopping distance for the same retardation?",
+        "options": [
+          {
+            "key": "A",
+            "text": "It doubles"
+          },
+          {
+            "key": "B",
+            "text": "It halves"
+          },
+          {
+            "key": "C",
+            "text": "It remains unchanged"
+          },
+          {
+            "key": "D",
+            "text": "It becomes four times"
+          }
+        ],
+        "solution": "Putting v = 0 in v² = u² + 2as gives the stopping distance s = u² ÷ 2a, so s is proportional to u². Doubling u makes s four times."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/equations_of_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-017",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "एक पत्थर को 15 m/s के वेग से ऊर्ध्वाधर ऊपर की ओर फेंका जाता है। पत्थर द्वारा प्राप्त अधिकतम ऊँचाई m में ज्ञात कीजिए। (g = 10 m/s² लें तथा वायु प्रतिरोध नगण्य मानें)",
+        "options": [],
+        "solution": "उच्चतम बिंदु पर v = 0। v² = u² − 2gh से h = u² ÷ 2g = 225 ÷ 20 = 11.25 m।"
+      },
+      "en": {
+        "stem": "A stone is thrown vertically upward with a velocity of 15 m/s. Find the maximum height reached by the stone in m. (Take g = 10 m/s² and neglect air resistance.)",
+        "options": [],
+        "solution": "At the highest point v = 0. From v² = u² − 2gh, h = u² ÷ 2g = 225 ÷ 20 = 11.25 m."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 11.25,
+      "tolerance": 0.01
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/motion/equations_of_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "विराम से एकसमान त्वरण से चलती एक वस्तु पहले 2 s में 10 m की दूरी तय करती है। अगले 2 s में (अर्थात् t = 2 s से t = 4 s तक) वह कितनी दूरी तय करेगी?",
+        "options": [
+          {
+            "key": "A",
+            "text": "20 m"
+          },
+          {
+            "key": "B",
+            "text": "30 m"
+          },
+          {
+            "key": "C",
+            "text": "40 m"
+          },
+          {
+            "key": "D",
+            "text": "10 m"
+          }
+        ],
+        "solution": "s = (1/2)at² से 10 = (1/2) × a × 4, अतः a = 5 m/s²। 4 s में कुल दूरी = (1/2) × 5 × 16 = 40 m। अगले 2 s में दूरी = 40 − 10 = 30 m।"
+      },
+      "en": {
+        "stem": "A body starting from rest with uniform acceleration covers 10 m in the first 2 s. How much distance will it cover in the next 2 s (i.e. from t = 2 s to t = 4 s)?",
+        "options": [
+          {
+            "key": "A",
+            "text": "20 m"
+          },
+          {
+            "key": "B",
+            "text": "30 m"
+          },
+          {
+            "key": "C",
+            "text": "40 m"
+          },
+          {
+            "key": "D",
+            "text": "10 m"
+          }
+        ],
+        "solution": "From s = (1/2)at², 10 = (1/2) × a × 4, so a = 5 m/s². Distance in 4 s = (1/2) × 5 × 16 = 40 m. Distance in the next 2 s = 40 − 10 = 30 m."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/equations_of_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-019",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I को सूची-II से सुमेलित कीजिए। सूची-I: P. वेग-समय ग्राफ का ढाल, Q. वेग-समय ग्राफ के नीचे का क्षेत्रफल, R. दूरी-समय ग्राफ का ढाल, S. त्वरण का SI मात्रक। सूची-II: 1. चाल, 2. विस्थापन, 3. m/s², 4. त्वरण। सही कूट चुनिए:",
+        "options": [
+          {
+            "key": "A",
+            "text": "P-4, Q-2, R-1, S-3"
+          },
+          {
+            "key": "B",
+            "text": "P-2, Q-4, R-1, S-3"
+          },
+          {
+            "key": "C",
+            "text": "P-4, Q-1, R-2, S-3"
+          },
+          {
+            "key": "D",
+            "text": "P-1, Q-2, R-4, S-3"
+          }
+        ],
+        "solution": "वेग-समय ग्राफ का ढाल त्वरण (P-4) और उसके नीचे का क्षेत्रफल विस्थापन (Q-2) देता है; दूरी-समय ग्राफ का ढाल चाल (R-1) है; त्वरण का मात्रक m/s² (S-3) है।"
+      },
+      "en": {
+        "stem": "Match List-I with List-II. List-I: P. Slope of a velocity-time graph, Q. Area under a velocity-time graph, R. Slope of a distance-time graph, S. SI unit of acceleration. List-II: 1. Speed, 2. Displacement, 3. m/s², 4. Acceleration. Choose the correct code:",
+        "options": [
+          {
+            "key": "A",
+            "text": "P-4, Q-2, R-1, S-3"
+          },
+          {
+            "key": "B",
+            "text": "P-2, Q-4, R-1, S-3"
+          },
+          {
+            "key": "C",
+            "text": "P-4, Q-1, R-2, S-3"
+          },
+          {
+            "key": "D",
+            "text": "P-1, Q-2, R-4, S-3"
+          }
+        ],
+        "solution": "The slope of a velocity-time graph gives acceleration (P-4) and the area under it gives displacement (Q-2); the slope of a distance-time graph is speed (R-1); the unit of acceleration is m/s² (S-3)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/acceleration", "science/physics/motion/equations_of_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एकसमान वृत्तीय गति करती वस्तु की कौन-सी राशि नियत रहती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "चाल"
+          },
+          {
+            "key": "B",
+            "text": "वेग"
+          },
+          {
+            "key": "C",
+            "text": "वेग की दिशा"
+          },
+          {
+            "key": "D",
+            "text": "त्वरण की दिशा"
+          }
+        ],
+        "solution": "एकसमान वृत्तीय गति में चाल नियत रहती है, परंतु वेग की दिशा और अभिकेंद्र त्वरण की दिशा लगातार बदलती रहती हैं।"
+      },
+      "en": {
+        "stem": "Which quantity remains constant for a body in uniform circular motion?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Speed"
+          },
+          {
+            "key": "B",
+            "text": "Velocity"
+          },
+          {
+            "key": "C",
+            "text": "Direction of velocity"
+          },
+          {
+            "key": "D",
+            "text": "Direction of acceleration"
+          }
+        ],
+        "solution": "In uniform circular motion the speed stays constant, but the direction of velocity and the direction of the centripetal acceleration keep changing."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/uniform_circular_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-021",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "घूमते हुए ग्राइंडिंग पहिए (सान) से निकलने वाली चिंगारियाँ किस दिशा में उड़ती हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "पहिए के केंद्र की ओर"
+          },
+          {
+            "key": "B",
+            "text": "त्रिज्या के अनुदिश बाहर की ओर"
+          },
+          {
+            "key": "C",
+            "text": "पहिए की स्पर्श रेखा के अनुदिश"
+          },
+          {
+            "key": "D",
+            "text": "ऊर्ध्वाधर नीचे की ओर"
+          }
+        ],
+        "solution": "वृत्तीय गति में किसी बिंदु पर वेग की दिशा स्पर्श रेखा के अनुदिश होती है; पहिए से अलग होते ही कण उसी दिशा में चल पड़ते हैं।"
+      },
+      "en": {
+        "stem": "In which direction do the sparks fly off a rotating grinding wheel?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Towards the centre of the wheel"
+          },
+          {
+            "key": "B",
+            "text": "Outward along the radius"
+          },
+          {
+            "key": "C",
+            "text": "Along the tangent to the wheel"
+          },
+          {
+            "key": "D",
+            "text": "Vertically downward"
+          }
+        ],
+        "solution": "In circular motion the velocity at any point is along the tangent; as soon as the particles leave the wheel they move in that direction."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": [
+      "science/physics/motion/uniform_circular_motion",
+      "science/physics/force_and_laws_of_motion/first_law_inertia"
+    ],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-022",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): एकसमान वृत्तीय गति एक त्वरित गति है। कारण (R): एकसमान वृत्तीय गति में वस्तु की चाल नियत रहती है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है।"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है।"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है।"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं, परंतु गति त्वरित इसलिए है कि वेग की दिशा लगातार बदलती है; चाल का नियत रहना इसका कारण नहीं है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Uniform circular motion is an accelerated motion. Reason (R): In uniform circular motion the speed of the body remains constant.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true, and R is the correct explanation of A."
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true, but R is not the correct explanation of A."
+          },
+          {
+            "key": "C",
+            "text": "A is true, but R is false."
+          },
+          {
+            "key": "D",
+            "text": "A is false, but R is true."
+          }
+        ],
+        "solution": "Both statements are true, but the motion is accelerated because the direction of velocity keeps changing; a constant speed does not explain it."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/uniform_circular_motion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-motion-023",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक धावक 70 m त्रिज्या वाले वृत्ताकार पथ का एक चक्कर 44 s में एकसमान चाल से पूरा करता है। प्रारंभ से 22 s बाद उसकी चाल और उसके विस्थापन का परिमाण क्रमशः क्या होंगे? (π = 22/7 लें)",
+        "options": [
+          {
+            "key": "A",
+            "text": "10 m/s और शून्य"
+          },
+          {
+            "key": "B",
+            "text": "5 m/s और 140 m"
+          },
+          {
+            "key": "C",
+            "text": "10 m/s और 140 m"
+          },
+          {
+            "key": "D",
+            "text": "10 m/s और 220 m"
+          }
+        ],
+        "solution": "परिधि = 2 × (22/7) × 70 = 440 m, अतः चाल = 440 ÷ 44 = 10 m/s। 22 s में आधा चक्कर पूरा होता है, इसलिए विस्थापन = व्यास = 140 m।"
+      },
+      "en": {
+        "stem": "A runner completes one round of a circular track of radius 70 m in 44 s at uniform speed. What are the runner's speed and the magnitude of the runner's displacement 22 s after the start, respectively? (Take π = 22/7)",
+        "options": [
+          {
+            "key": "A",
+            "text": "10 m/s and zero"
+          },
+          {
+            "key": "B",
+            "text": "5 m/s and 140 m"
+          },
+          {
+            "key": "C",
+            "text": "10 m/s and 140 m"
+          },
+          {
+            "key": "D",
+            "text": "10 m/s and 220 m"
+          }
+        ],
+        "solution": "Circumference = 2 × (22/7) × 70 = 440 m, so speed = 440 ÷ 44 = 10 m/s. In 22 s the runner completes half a round, so displacement = diameter = 140 m."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/motion/uniform_circular_motion"],
+    "licence": "own"
+  }
+]

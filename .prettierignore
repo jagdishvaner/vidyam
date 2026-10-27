@@ -8,3 +8,6 @@ packages/api-client/openapi.json
 apps/web/test-results/
 apps/web/playwright-report/
 apps/web/e2e/.auth/
+
+# Ground truth for extraction tests: byte-exact
+fixtures/demo-pack/texts/

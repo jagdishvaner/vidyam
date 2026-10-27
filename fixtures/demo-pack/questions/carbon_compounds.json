@@ -1,0 +1,1259 @@
+[
+  {
+    "ref": "demo-carbon-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कार्बन परमाणु की संयोजकता कितनी है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "4"
+          }
+        ],
+        "solution": "कार्बन का इलेक्ट्रॉनिक विन्यास 2, 4 है; यह चार इलेक्ट्रॉनों की साझेदारी करता है, अतः इसकी संयोजकता 4 (चतुःसंयोजकता) है।"
+      },
+      "en": {
+        "stem": "What is the valency of a carbon atom?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1"
+          },
+          {
+            "key": "B",
+            "text": "2"
+          },
+          {
+            "key": "C",
+            "text": "3"
+          },
+          {
+            "key": "D",
+            "text": "4"
+          }
+        ],
+        "solution": "Carbon has the configuration 2, 4 and shares four electrons, so its valency is 4 (tetravalency)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/covalent_bonding"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "नाइट्रोजन अणु (N₂) में दोनों नाइट्रोजन परमाणुओं के बीच कौन-सा आबंध होता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "एकल सहसंयोजी आबंध"
+          },
+          {
+            "key": "B",
+            "text": "द्वि-सहसंयोजी आबंध"
+          },
+          {
+            "key": "C",
+            "text": "त्रि-सहसंयोजी आबंध"
+          },
+          {
+            "key": "D",
+            "text": "आयनिक आबंध"
+          }
+        ],
+        "solution": "प्रत्येक नाइट्रोजन परमाणु (विन्यास 2, 5) तीन इलेक्ट्रॉन साझा करता है, जिससे तीन इलेक्ट्रॉन-युग्मों वाला त्रि-आबंध बनता है।"
+      },
+      "en": {
+        "stem": "Which bond is present between the two nitrogen atoms in a nitrogen molecule (N₂)?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Single covalent bond"
+          },
+          {
+            "key": "B",
+            "text": "Double covalent bond"
+          },
+          {
+            "key": "C",
+            "text": "Triple covalent bond"
+          },
+          {
+            "key": "D",
+            "text": "Ionic bond"
+          }
+        ],
+        "solution": "Each nitrogen atom (configuration 2, 5) shares three electrons, giving a triple bond of three electron pairs."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/covalent_bonding"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-003",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "प्रोपेन (C₃H₈) के एक अणु में कुल कितने सहसंयोजी आबंध होते हैं? (उत्तर संख्या में दीजिए)",
+        "options": [],
+        "solution": "प्रोपेन में 8 C-H आबंध और 2 C-C आबंध हैं, कुल 10। ऐल्केन CₙH₂ₙ₊₂ में आबंधों की संख्या 3n + 1 = 3 × 3 + 1 = 10।"
+      },
+      "en": {
+        "stem": "How many covalent bonds are there in one molecule of propane (C₃H₈)? (Give the answer as a number.)",
+        "options": [],
+        "solution": "Propane has 8 C-H bonds and 2 C-C bonds, 10 in all. For an alkane CₙH₂ₙ₊₂ the number of bonds is 3n + 1 = 3 × 3 + 1 = 10."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 10,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/chemistry/carbon_compounds/covalent_bonding"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-004",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): एथेनॉल विद्युत का चालन नहीं करता। कारण (R): सहसंयोजी यौगिकों में आबंध इलेक्ट्रॉनों की साझेदारी से बनते हैं, इसलिए इनमें आयन नहीं बनते।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं। विद्युत चालन के लिए आयन आवश्यक हैं; सहसंयोजी यौगिक एथेनॉल में आयन नहीं होते, इसलिए R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Ethanol does not conduct electricity. Reason (R): In covalent compounds the bonds are formed by sharing electrons, so no ions are formed.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both statements are true. Conduction needs ions; ethanol, a covalent compound, has none, so R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/covalent_bonding"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-005",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कार्बन का कौन-सा अपररूप विद्युत का सुचालक है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "हीरा"
+          },
+          {
+            "key": "B",
+            "text": "ग्रेफाइट"
+          },
+          {
+            "key": "C",
+            "text": "फुलेरीन (C₆₀)"
+          },
+          {
+            "key": "D",
+            "text": "इनमें से कोई नहीं"
+          }
+        ],
+        "solution": "ग्रेफाइट में प्रत्येक कार्बन परमाणु केवल तीन अन्य कार्बन परमाणुओं से जुड़ा होता है, इसलिए यह विद्युत का सुचालक है; हीरा कुचालक है।"
+      },
+      "en": {
+        "stem": "Which allotrope of carbon is a good conductor of electricity?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Diamond"
+          },
+          {
+            "key": "B",
+            "text": "Graphite"
+          },
+          {
+            "key": "C",
+            "text": "Fullerene (C₆₀)"
+          },
+          {
+            "key": "D",
+            "text": "None of these"
+          }
+        ],
+        "solution": "In graphite each carbon atom is bonded to only three other carbon atoms, so it conducts electricity; diamond is a non-conductor."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/allotropes_catenation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कार्बन परमाणुओं के आपस में जुड़कर लंबी श्रृंखलाएँ, शाखित श्रृंखलाएँ और वलय बनाने के गुण को क्या कहते हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "चतुःसंयोजकता"
+          },
+          {
+            "key": "B",
+            "text": "श्रृंखलन"
+          },
+          {
+            "key": "C",
+            "text": "अपररूपता"
+          },
+          {
+            "key": "D",
+            "text": "समावयवता"
+          }
+        ],
+        "solution": "कार्बन परमाणुओं के परस्पर आबंध बनाकर श्रृंखलाएँ और वलय बनाने का गुण श्रृंखलन कहलाता है।"
+      },
+      "en": {
+        "stem": "What is the property of carbon atoms to link with one another to form long chains, branched chains and rings called?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tetravalency"
+          },
+          {
+            "key": "B",
+            "text": "Catenation"
+          },
+          {
+            "key": "C",
+            "text": "Allotropy"
+          },
+          {
+            "key": "D",
+            "text": "Isomerism"
+          }
+        ],
+        "solution": "The ability of carbon atoms to bond with one another to form chains and rings is called catenation."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/allotropes_catenation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "फुलेरीन (C₆₀) अणु की आकृति किसके समान होती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "फुटबॉल"
+          },
+          {
+            "key": "B",
+            "text": "षट्कोणीय परतें"
+          },
+          {
+            "key": "C",
+            "text": "दृढ़ त्रिविमीय जालक"
+          },
+          {
+            "key": "D",
+            "text": "सीधी श्रृंखला"
+          }
+        ],
+        "solution": "C₆₀ में 60 कार्बन परमाणु फुटबॉल जैसी गोलाकार आकृति में व्यवस्थित होते हैं। षट्कोणीय परतें ग्रेफाइट और त्रिविमीय जालक हीरे की संरचना है।"
+      },
+      "en": {
+        "stem": "The shape of a fullerene (C₆₀) molecule resembles a:",
+        "options": [
+          {
+            "key": "A",
+            "text": "football"
+          },
+          {
+            "key": "B",
+            "text": "set of hexagonal layers"
+          },
+          {
+            "key": "C",
+            "text": "rigid three-dimensional network"
+          },
+          {
+            "key": "D",
+            "text": "straight chain"
+          }
+        ],
+        "solution": "In C₆₀, sixty carbon atoms are arranged in a football-like shape. Hexagonal layers describe graphite and a rigid 3D network describes diamond."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/allotropes_catenation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-008",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): हीरा सबसे कठोर प्राकृतिक पदार्थ है। कारण (R): हीरे में प्रत्येक कार्बन परमाणु तीन अन्य कार्बन परमाणुओं से जुड़कर षट्कोणीय परतें बनाता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A सत्य है। R असत्य है: हीरे में प्रत्येक कार्बन परमाणु चार अन्य कार्बन परमाणुओं से जुड़कर दृढ़ त्रिविमीय संरचना बनाता है; षट्कोणीय परतें ग्रेफाइट में होती हैं।"
+      },
+      "en": {
+        "stem": "Assertion (A): Diamond is the hardest natural substance. Reason (R): In diamond each carbon atom is bonded to three other carbon atoms, forming hexagonal layers.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is true. R is false: in diamond each carbon atom is bonded to four other carbon atoms in a rigid three-dimensional structure; hexagonal layers are found in graphite."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/allotropes_catenation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-009",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "ऐल्केन श्रेणी का सामान्य सूत्र है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "CₙH₂ₙ"
+          },
+          {
+            "key": "B",
+            "text": "CₙH₂ₙ₊₂"
+          },
+          {
+            "key": "C",
+            "text": "CₙH₂ₙ₋₂"
+          },
+          {
+            "key": "D",
+            "text": "CₙHₙ"
+          }
+        ],
+        "solution": "संतृप्त हाइड्रोकार्बन (ऐल्केन) का सामान्य सूत्र CₙH₂ₙ₊₂ है; ऐल्कीन CₙH₂ₙ और ऐल्काइन CₙH₂ₙ₋₂।"
+      },
+      "en": {
+        "stem": "The general formula of the alkane series is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "CₙH₂ₙ"
+          },
+          {
+            "key": "B",
+            "text": "CₙH₂ₙ₊₂"
+          },
+          {
+            "key": "C",
+            "text": "CₙH₂ₙ₋₂"
+          },
+          {
+            "key": "D",
+            "text": "CₙHₙ"
+          }
+        ],
+        "solution": "Saturated hydrocarbons (alkanes) have the general formula CₙH₂ₙ₊₂; alkenes are CₙH₂ₙ and alkynes CₙH₂ₙ₋₂."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/hydrocarbons_homologous_series"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी समजातीय श्रेणी के दो क्रमागत सदस्यों के आणविक द्रव्यमान में कितना अंतर होता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "14 u"
+          },
+          {
+            "key": "B",
+            "text": "12 u"
+          },
+          {
+            "key": "C",
+            "text": "16 u"
+          },
+          {
+            "key": "D",
+            "text": "2 u"
+          }
+        ],
+        "solution": "क्रमागत सदस्यों में CH₂ इकाई का अंतर होता है: 12 + 2 × 1 = 14 u।"
+      },
+      "en": {
+        "stem": "By how much do the molecular masses of two successive members of a homologous series differ?",
+        "options": [
+          {
+            "key": "A",
+            "text": "14 u"
+          },
+          {
+            "key": "B",
+            "text": "12 u"
+          },
+          {
+            "key": "C",
+            "text": "16 u"
+          },
+          {
+            "key": "D",
+            "text": "2 u"
+          }
+        ],
+        "solution": "Successive members differ by a CH₂ unit: 12 + 2 × 1 = 14 u."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/hydrocarbons_homologous_series"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से कौन-सा असंतृप्त हाइड्रोकार्बन है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "C₂H₆"
+          },
+          {
+            "key": "B",
+            "text": "C₃H₈"
+          },
+          {
+            "key": "C",
+            "text": "CH₄"
+          },
+          {
+            "key": "D",
+            "text": "C₂H₂"
+          }
+        ],
+        "solution": "C₂H₂ (एथाइन) CₙH₂ₙ₋₂ सूत्र का ऐल्काइन है, जिसमें त्रि-आबंध है। शेष तीनों CₙH₂ₙ₊₂ सूत्र के संतृप्त ऐल्केन हैं।"
+      },
+      "en": {
+        "stem": "Which of the following is an unsaturated hydrocarbon?",
+        "options": [
+          {
+            "key": "A",
+            "text": "C₂H₆"
+          },
+          {
+            "key": "B",
+            "text": "C₃H₈"
+          },
+          {
+            "key": "C",
+            "text": "CH₄"
+          },
+          {
+            "key": "D",
+            "text": "C₂H₂"
+          }
+        ],
+        "solution": "C₂H₂ (ethyne) is an alkyne of formula CₙH₂ₙ₋₂ with a triple bond. The other three are saturated alkanes of formula CₙH₂ₙ₊₂."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/hydrocarbons_homologous_series"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-012",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "किसी ऐल्केन का आणविक द्रव्यमान 72 u है। इसके एक अणु में कार्बन परमाणुओं की संख्या ज्ञात कीजिए। (C = 12 u, H = 1 u)",
+        "options": [],
+        "solution": "ऐल्केन CₙH₂ₙ₊₂ का आणविक द्रव्यमान = 12n + 2n + 2 = 14n + 2 = 72, अतः n = 5 (पेंटेन, C₅H₁₂)।"
+      },
+      "en": {
+        "stem": "The molecular mass of an alkane is 72 u. Find the number of carbon atoms in one molecule. (C = 12 u, H = 1 u)",
+        "options": [],
+        "solution": "For an alkane CₙH₂ₙ₊₂, molecular mass = 12n + 2n + 2 = 14n + 2 = 72, so n = 5 (pentane, C₅H₁₂)."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 5,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/chemistry/carbon_compounds/hydrocarbons_homologous_series"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-013",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "समजातीय श्रेणी के संबंध में निम्नलिखित कथनों पर विचार कीजिए: 1. श्रेणी के सभी सदस्यों के रासायनिक गुण समान होते हैं। 2. क्रमागत सदस्यों के अणुसूत्र में CH₂ इकाई का अंतर होता है। 3. आणविक द्रव्यमान बढ़ने पर सदस्यों के क्वथनांक घटते जाते हैं। सही कथन हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 3 असत्य है: आणविक द्रव्यमान बढ़ने पर गलनांक और क्वथनांक क्रमशः बढ़ते हैं। कथन 1 और 2 सत्य हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements about a homologous series: 1. All members of the series show similar chemical properties. 2. Successive members differ in molecular formula by a CH₂ unit. 3. The boiling points of the members decrease as the molecular mass increases. The correct statements are:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statement 3 is false: melting and boiling points rise gradually with molecular mass. Statements 1 and 2 are true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/hydrocarbons_homologous_series"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "ऐल्डिहाइड प्रकार्यात्मक समूह है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "-OH"
+          },
+          {
+            "key": "B",
+            "text": "-CHO"
+          },
+          {
+            "key": "C",
+            "text": "-COOH"
+          },
+          {
+            "key": "D",
+            "text": "-CO-"
+          }
+        ],
+        "solution": "-CHO ऐल्डिहाइड समूह है; -OH ऐल्कोहॉल, -COOH कार्बोक्सिलिक अम्ल और -CO- कीटोन समूह है।"
+      },
+      "en": {
+        "stem": "The aldehyde functional group is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "-OH"
+          },
+          {
+            "key": "B",
+            "text": "-CHO"
+          },
+          {
+            "key": "C",
+            "text": "-COOH"
+          },
+          {
+            "key": "D",
+            "text": "-CO-"
+          }
+        ],
+        "solution": "-CHO is the aldehyde group; -OH is alcohol, -COOH is carboxylic acid and -CO- is ketone."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/functional_groups_nomenclature"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-015",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "CH₃CH₂CH₂OH का IUPAC नाम है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "प्रोपेनैल"
+          },
+          {
+            "key": "B",
+            "text": "प्रोपेनोन"
+          },
+          {
+            "key": "C",
+            "text": "प्रोपेनॉल"
+          },
+          {
+            "key": "D",
+            "text": "प्रोपेनॉइक अम्ल"
+          }
+        ],
+        "solution": "तीन कार्बन परमाणु होने से मूल नाम प्रोपेन है और -OH (ऐल्कोहॉल) समूह के लिए अनुलग्न -ऑल जुड़ता है: प्रोपेनॉल।"
+      },
+      "en": {
+        "stem": "The IUPAC name of CH₃CH₂CH₂OH is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "propanal"
+          },
+          {
+            "key": "B",
+            "text": "propanone"
+          },
+          {
+            "key": "C",
+            "text": "propanol"
+          },
+          {
+            "key": "D",
+            "text": "propanoic acid"
+          }
+        ],
+        "solution": "Three carbon atoms give the stem propane, and the -OH (alcohol) group adds the suffix -ol: propanol."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/functional_groups_nomenclature"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-016",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. CH₃COCH₃ का IUPAC नाम प्रोपेनोन है। 2. HCHO का IUPAC नाम मेथेनॉल है। 3. CH₃Cl का IUPAC नाम क्लोरोमेथेन है। सही कथन हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "1, 2 और 3"
+          },
+          {
+            "key": "D",
+            "text": "केवल 1 और 3"
+          }
+        ],
+        "solution": "कथन 2 असत्य है: HCHO ऐल्डिहाइड है, इसका नाम मेथेनैल है; मेथेनॉल CH₃OH है। कथन 1 और 3 सत्य हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. The IUPAC name of CH₃COCH₃ is propanone. 2. The IUPAC name of HCHO is methanol. 3. The IUPAC name of CH₃Cl is chloromethane. The correct statements are:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1, 2 and 3"
+          },
+          {
+            "key": "D",
+            "text": "1 and 3 only"
+          }
+        ],
+        "solution": "Statement 2 is false: HCHO is an aldehyde named methanal; methanol is CH₃OH. Statements 1 and 3 are true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/functional_groups_nomenclature"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-017",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I (प्रकार्यात्मक समूह) को सूची-II (IUPAC नाम में अनुलग्न) से सुमेलित कीजिए। सूची-I: (a) -OH (b) -CHO (c) -COOH (d) -CO- (कीटोन)। सूची-II: 1. -ऐल (-al) 2. -ऑल (-ol) 3. -ओन (-one) 4. -ऑइक अम्ल (-oic acid)",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-1, b-2, c-4, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-2, b-1, c-3, d-4"
+          },
+          {
+            "key": "C",
+            "text": "a-2, b-4, c-1, d-3"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-1, c-4, d-3"
+          }
+        ],
+        "solution": "ऐल्कोहॉल -ऑल (एथेनॉल), ऐल्डिहाइड -ऐल (मेथेनैल), कार्बोक्सिलिक अम्ल -ऑइक अम्ल (एथेनॉइक अम्ल) और कीटोन -ओन (प्रोपेनोन)।"
+      },
+      "en": {
+        "stem": "Match List-I (functional group) with List-II (suffix in the IUPAC name). List-I: (a) -OH (b) -CHO (c) -COOH (d) -CO- (ketone). List-II: 1. -al 2. -ol 3. -one 4. -oic acid",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-1, b-2, c-4, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-2, b-1, c-3, d-4"
+          },
+          {
+            "key": "C",
+            "text": "a-2, b-4, c-1, d-3"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-1, c-4, d-3"
+          }
+        ],
+        "solution": "Alcohol takes -ol (ethanol), aldehyde -al (methanal), carboxylic acid -oic acid (ethanoic acid) and ketone -one (propanone)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/functional_groups_nomenclature"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "सिरका किसका तनु जलीय विलयन है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "एथेनॉल"
+          },
+          {
+            "key": "B",
+            "text": "एथेनॉइक अम्ल"
+          },
+          {
+            "key": "C",
+            "text": "मेथेनॉइक अम्ल"
+          },
+          {
+            "key": "D",
+            "text": "सिट्रिक अम्ल"
+          }
+        ],
+        "solution": "एथेनॉइक अम्ल (ऐसीटिक अम्ल) का 5-8% जलीय विलयन सिरका कहलाता है।"
+      },
+      "en": {
+        "stem": "Vinegar is a dilute aqueous solution of:",
+        "options": [
+          {
+            "key": "A",
+            "text": "ethanol"
+          },
+          {
+            "key": "B",
+            "text": "ethanoic acid"
+          },
+          {
+            "key": "C",
+            "text": "methanoic acid"
+          },
+          {
+            "key": "D",
+            "text": "citric acid"
+          }
+        ],
+        "solution": "A 5-8% solution of ethanoic acid (acetic acid) in water is called vinegar."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/ethanol_ethanoic_acid"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-019",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एथेनॉल की सोडियम धातु से अभिक्रिया पर कौन-सी गैस निकलती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "ऑक्सीजन"
+          },
+          {
+            "key": "B",
+            "text": "कार्बन डाइऑक्साइड"
+          },
+          {
+            "key": "C",
+            "text": "हाइड्रोजन"
+          },
+          {
+            "key": "D",
+            "text": "मेथेन"
+          }
+        ],
+        "solution": "2Na + 2CH₃CH₂OH → 2CH₃CH₂ONa + H₂; हाइड्रोजन गैस निकलती है।"
+      },
+      "en": {
+        "stem": "Which gas is evolved when ethanol reacts with sodium metal?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Oxygen"
+          },
+          {
+            "key": "B",
+            "text": "Carbon dioxide"
+          },
+          {
+            "key": "C",
+            "text": "Hydrogen"
+          },
+          {
+            "key": "D",
+            "text": "Methane"
+          }
+        ],
+        "solution": "2Na + 2CH₃CH₂OH → 2CH₃CH₂ONa + H₂; hydrogen gas is evolved."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/ethanol_ethanoic_acid"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "अम्ल उत्प्रेरक की उपस्थिति में एथेनॉइक अम्ल और एथेनॉल की अभिक्रिया से बनने वाला मीठी गंध वाला यौगिक है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "एथिल एथेनोएट"
+          },
+          {
+            "key": "B",
+            "text": "सोडियम एथेनोएट"
+          },
+          {
+            "key": "C",
+            "text": "एथीन"
+          },
+          {
+            "key": "D",
+            "text": "एथेनैल"
+          }
+        ],
+        "solution": "CH₃COOH + CH₃CH₂OH ⇌ CH₃COOCH₂CH₃ + H₂O; बनने वाला एस्टर एथिल एथेनोएट है। इस अभिक्रिया को एस्टरीकरण कहते हैं।"
+      },
+      "en": {
+        "stem": "The sweet-smelling compound formed when ethanoic acid reacts with ethanol in the presence of an acid catalyst is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "ethyl ethanoate"
+          },
+          {
+            "key": "B",
+            "text": "sodium ethanoate"
+          },
+          {
+            "key": "C",
+            "text": "ethene"
+          },
+          {
+            "key": "D",
+            "text": "ethanal"
+          }
+        ],
+        "solution": "CH₃COOH + CH₃CH₂OH ⇌ CH₃COOCH₂CH₃ + H₂O; the ester formed is ethyl ethanoate. The reaction is called esterification."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/ethanol_ethanoic_acid"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-021",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "अणुसूत्र C₂H₆O वाला यौगिक X सोडियम से अभिक्रिया करके हाइड्रोजन गैस देता है तथा सांद्र H₂SO₄ के आधिक्य के साथ 443 K पर गर्म करने पर असंतृप्त हाइड्रोकार्बन Y देता है। X और Y क्रमशः हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "मेथॉक्सीमेथेन और एथेन"
+          },
+          {
+            "key": "B",
+            "text": "एथेनॉल और एथेन"
+          },
+          {
+            "key": "C",
+            "text": "एथेनॉइक अम्ल और एथीन"
+          },
+          {
+            "key": "D",
+            "text": "एथेनॉल और एथीन"
+          }
+        ],
+        "solution": "C₂H₆O सूत्र वाला और सोडियम से H₂ देने वाला यौगिक एथेनॉल (CH₃CH₂OH) है। 443 K पर सांद्र H₂SO₄ से इसका निर्जलीकरण होकर असंतृप्त एथीन (CH₂=CH₂) बनती है। एथेन संतृप्त है और एथेनॉइक अम्ल का सूत्र C₂H₄O₂ है।"
+      },
+      "en": {
+        "stem": "A compound X with molecular formula C₂H₆O reacts with sodium to give hydrogen gas, and on heating at 443 K with excess concentrated H₂SO₄ gives an unsaturated hydrocarbon Y. X and Y are respectively:",
+        "options": [
+          {
+            "key": "A",
+            "text": "methoxymethane and ethane"
+          },
+          {
+            "key": "B",
+            "text": "ethanol and ethane"
+          },
+          {
+            "key": "C",
+            "text": "ethanoic acid and ethene"
+          },
+          {
+            "key": "D",
+            "text": "ethanol and ethene"
+          }
+        ],
+        "solution": "The compound of formula C₂H₆O that gives H₂ with sodium is ethanol (CH₃CH₂OH). Concentrated H₂SO₄ at 443 K dehydrates it to unsaturated ethene (CH₂=CH₂). Ethane is saturated and ethanoic acid is C₂H₄O₂."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": [
+      "science/chemistry/carbon_compounds/ethanol_ethanoic_acid",
+      "science/chemistry/carbon_compounds/hydrocarbons_homologous_series"
+    ],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-carbon-022",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): एथेनॉइक अम्ल सोडियम हाइड्रोजनकार्बोनेट से अभिक्रिया करके CO₂ गैस देता है। कारण (R): एथेनॉइक अम्ल एक प्रबल अम्ल है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A सत्य है: CH₃COOH + NaHCO₃ → CH₃COONa + H₂O + CO₂। R असत्य है: एथेनॉइक अम्ल दुर्बल अम्ल है, फिर भी कार्बोनेट और हाइड्रोजनकार्बोनेट से CO₂ देता है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Ethanoic acid reacts with sodium hydrogencarbonate to give CO₂ gas. Reason (R): Ethanoic acid is a strong acid.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is true: CH₃COOH + NaHCO₃ → CH₃COONa + H₂O + CO₂. R is false: ethanoic acid is a weak acid, yet it gives CO₂ with carbonates and hydrogencarbonates."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/carbon_compounds/ethanol_ethanoic_acid"],
+    "licence": "own"
+  }
+]

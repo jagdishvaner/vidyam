@@ -1,0 +1,1259 @@
+[
+  {
+    "ref": "demo-acids-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "नीला लिटमस पत्र किस विलयन में डुबोने पर लाल हो जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "सोडियम हाइड्रॉक्साइड विलयन"
+          },
+          {
+            "key": "B",
+            "text": "चूने का पानी"
+          },
+          {
+            "key": "C",
+            "text": "तनु हाइड्रोक्लोरिक अम्ल"
+          },
+          {
+            "key": "D",
+            "text": "साबुन का विलयन"
+          }
+        ],
+        "solution": "अम्ल नीले लिटमस को लाल कर देते हैं। तनु HCl अम्ल है, जबकि शेष तीनों क्षारकीय विलयन हैं।"
+      },
+      "en": {
+        "stem": "Blue litmus paper turns red when dipped in which solution?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Sodium hydroxide solution"
+          },
+          {
+            "key": "B",
+            "text": "Lime water"
+          },
+          {
+            "key": "C",
+            "text": "Dilute hydrochloric acid"
+          },
+          {
+            "key": "D",
+            "text": "Soap solution"
+          }
+        ],
+        "solution": "Acids turn blue litmus red. Dilute HCl is an acid, while the other three are basic solutions."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/indicators"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "फिनॉल्फ्थेलिन क्षारकीय विलयन में कौन-सा रंग देता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "गुलाबी"
+          },
+          {
+            "key": "B",
+            "text": "पीला"
+          },
+          {
+            "key": "C",
+            "text": "नीला"
+          },
+          {
+            "key": "D",
+            "text": "रंगहीन"
+          }
+        ],
+        "solution": "फिनॉल्फ्थेलिन अम्लीय और उदासीन विलयन में रंगहीन रहता है तथा क्षारकीय विलयन में गुलाबी हो जाता है।"
+      },
+      "en": {
+        "stem": "What colour does phenolphthalein give in a basic solution?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Pink"
+          },
+          {
+            "key": "B",
+            "text": "Yellow"
+          },
+          {
+            "key": "C",
+            "text": "Blue"
+          },
+          {
+            "key": "D",
+            "text": "Colourless"
+          }
+        ],
+        "solution": "Phenolphthalein stays colourless in acidic and neutral solutions and turns pink in a basic solution."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/indicators"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-003",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से कौन-सा गंधीय सूचक है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "लिटमस"
+          },
+          {
+            "key": "B",
+            "text": "वनीला सत"
+          },
+          {
+            "key": "C",
+            "text": "मेथिल ऑरेंज"
+          },
+          {
+            "key": "D",
+            "text": "हल्दी"
+          }
+        ],
+        "solution": "वनीला सत, प्याज और लौंग का तेल गंधीय सूचक हैं; क्षारकीय विलयन में इनकी गंध समाप्त हो जाती है। शेष तीनों रंग बदलने वाले सूचक हैं।"
+      },
+      "en": {
+        "stem": "Which of the following is an olfactory indicator?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Litmus"
+          },
+          {
+            "key": "B",
+            "text": "Vanilla essence"
+          },
+          {
+            "key": "C",
+            "text": "Methyl orange"
+          },
+          {
+            "key": "D",
+            "text": "Turmeric"
+          }
+        ],
+        "solution": "Vanilla essence, onion and clove oil are olfactory indicators; their smell disappears in a basic solution. The other three change colour."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/indicators"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-004",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कपड़े पर लगा हल्दी का पीला दाग साबुन से धोने पर लाल-भूरा हो जाता है, क्योंकि:",
+        "options": [
+          {
+            "key": "A",
+            "text": "साबुन का विलयन अम्लीय होता है"
+          },
+          {
+            "key": "B",
+            "text": "साबुन का विलयन उदासीन होता है"
+          },
+          {
+            "key": "C",
+            "text": "हल्दी जल में घुल जाती है"
+          },
+          {
+            "key": "D",
+            "text": "साबुन का विलयन क्षारकीय होता है"
+          }
+        ],
+        "solution": "हल्दी एक प्राकृतिक सूचक है जो क्षारकीय माध्यम में लाल-भूरी हो जाती है। साबुन का विलयन क्षारकीय होता है।"
+      },
+      "en": {
+        "stem": "A yellow turmeric stain on a cloth turns reddish-brown when washed with soap, because:",
+        "options": [
+          {
+            "key": "A",
+            "text": "soap solution is acidic"
+          },
+          {
+            "key": "B",
+            "text": "soap solution is neutral"
+          },
+          {
+            "key": "C",
+            "text": "turmeric dissolves in water"
+          },
+          {
+            "key": "D",
+            "text": "soap solution is basic"
+          }
+        ],
+        "solution": "Turmeric is a natural indicator that turns reddish-brown in a basic medium. Soap solution is basic."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/indicators"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-005",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): नींबू के रस में फिनॉल्फ्थेलिन की कुछ बूँदें मिलाने पर वह गुलाबी हो जाता है। कारण (R): फिनॉल्फ्थेलिन क्षारकीय विलयन में गुलाबी रंग देता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A असत्य है: नींबू का रस अम्लीय है, इसलिए फिनॉल्फ्थेलिन उसमें रंगहीन रहता है। R सत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Lemon juice turns pink when a few drops of phenolphthalein are added to it. Reason (R): Phenolphthalein gives a pink colour in a basic solution.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is false: lemon juice is acidic, so phenolphthalein stays colourless in it. R is true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/indicators"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "अम्ल और क्षारक की परस्पर अभिक्रिया से लवण और जल बनने की प्रक्रिया क्या कहलाती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "उदासीनीकरण"
+          },
+          {
+            "key": "B",
+            "text": "ऑक्सीकरण"
+          },
+          {
+            "key": "C",
+            "text": "विस्थापन"
+          },
+          {
+            "key": "D",
+            "text": "अपघटन"
+          }
+        ],
+        "solution": "अम्ल + क्षारक → लवण + जल को उदासीनीकरण कहते हैं, जैसे NaOH + HCl → NaCl + H₂O।"
+      },
+      "en": {
+        "stem": "What is the reaction of an acid with a base to form a salt and water called?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Neutralisation"
+          },
+          {
+            "key": "B",
+            "text": "Oxidation"
+          },
+          {
+            "key": "C",
+            "text": "Displacement"
+          },
+          {
+            "key": "D",
+            "text": "Decomposition"
+          }
+        ],
+        "solution": "Acid + base → salt + water is called neutralisation, for example NaOH + HCl → NaCl + H₂O."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/reactions_of_acids_bases"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "जिंक के दानों पर तनु सल्फ्यूरिक अम्ल डालने पर कौन-सी गैस निकलती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "ऑक्सीजन"
+          },
+          {
+            "key": "B",
+            "text": "कार्बन डाइऑक्साइड"
+          },
+          {
+            "key": "C",
+            "text": "हाइड्रोजन"
+          },
+          {
+            "key": "D",
+            "text": "सल्फर डाइऑक्साइड"
+          }
+        ],
+        "solution": "Zn + H₂SO₄ → ZnSO₄ + H₂। हाइड्रोजन गैस जलती तीली के पास पॉप ध्वनि के साथ जलती है।"
+      },
+      "en": {
+        "stem": "Which gas is evolved when dilute sulphuric acid is poured on zinc granules?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Oxygen"
+          },
+          {
+            "key": "B",
+            "text": "Carbon dioxide"
+          },
+          {
+            "key": "C",
+            "text": "Hydrogen"
+          },
+          {
+            "key": "D",
+            "text": "Sulphur dioxide"
+          }
+        ],
+        "solution": "Zn + H₂SO₄ → ZnSO₄ + H₂. Hydrogen burns with a pop sound near a burning splinter."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/reactions_of_acids_bases"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-008",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "चूने के पानी में CO₂ गैस अधिक मात्रा में प्रवाहित करने पर उसका दूधियापन समाप्त हो जाता है, क्योंकि बनता है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "CaCO₃"
+          },
+          {
+            "key": "B",
+            "text": "Ca(HCO₃)₂"
+          },
+          {
+            "key": "C",
+            "text": "CaO"
+          },
+          {
+            "key": "D",
+            "text": "Ca(OH)₂"
+          }
+        ],
+        "solution": "पहले अविलेय CaCO₃ से दूधियापन आता है; अधिक CO₂ से CaCO₃ + H₂O + CO₂ → Ca(HCO₃)₂ बनता है, जो जल में विलेय है।"
+      },
+      "en": {
+        "stem": "When excess CO₂ is passed through lime water, the milkiness disappears because the following is formed:",
+        "options": [
+          {
+            "key": "A",
+            "text": "CaCO₃"
+          },
+          {
+            "key": "B",
+            "text": "Ca(HCO₃)₂"
+          },
+          {
+            "key": "C",
+            "text": "CaO"
+          },
+          {
+            "key": "D",
+            "text": "Ca(OH)₂"
+          }
+        ],
+        "solution": "Insoluble CaCO₃ first causes milkiness; excess CO₂ gives CaCO₃ + H₂O + CO₂ → Ca(HCO₃)₂, which is soluble in water."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/reactions_of_acids_bases"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-009",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "सांद्र सल्फ्यूरिक अम्ल को तनु करते समय अम्ल को जल में धीरे-धीरे मिलाया जाता है, न कि जल को अम्ल में, क्योंकि:",
+        "options": [
+          {
+            "key": "A",
+            "text": "यह प्रक्रम अत्यधिक ऊष्माक्षेपी है और जल को अम्ल में डालने पर मिश्रण उबलकर छिटक सकता है"
+          },
+          {
+            "key": "B",
+            "text": "यह प्रक्रम ऊष्माशोषी है"
+          },
+          {
+            "key": "C",
+            "text": "अम्ल जल से हल्का होता है"
+          },
+          {
+            "key": "D",
+            "text": "जल डालने पर अम्ल का उदासीनीकरण हो जाता है"
+          }
+        ],
+        "solution": "अम्ल को जल में घोलना अत्यधिक ऊष्माक्षेपी है। जल को अम्ल में डालने पर उत्पन्न ऊष्मा से मिश्रण छिटक सकता है और काँच का पात्र टूट सकता है।"
+      },
+      "en": {
+        "stem": "While diluting concentrated sulphuric acid, the acid is added slowly to water and not water to the acid, because:",
+        "options": [
+          {
+            "key": "A",
+            "text": "the process is highly exothermic and adding water to the acid can make the mixture boil and splash"
+          },
+          {
+            "key": "B",
+            "text": "the process is endothermic"
+          },
+          {
+            "key": "C",
+            "text": "the acid is lighter than water"
+          },
+          {
+            "key": "D",
+            "text": "adding water neutralises the acid"
+          }
+        ],
+        "solution": "Dissolving an acid in water is highly exothermic. If water is added to the acid, the heat produced can make the mixture splash out and the glass container may break."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/reactions_of_acids_bases"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से कौन-सा रासायनिक समीकरण सही तथा संतुलित है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Zn + 2NaOH → Na₂ZnO₂ + H₂"
+          },
+          {
+            "key": "B",
+            "text": "Na₂CO₃ + HCl → NaCl + H₂O + CO₂"
+          },
+          {
+            "key": "C",
+            "text": "CuO + HCl → CuCl₂ + H₂O"
+          },
+          {
+            "key": "D",
+            "text": "NaHCO₃ + HCl → NaCl + H₂ + CO₂"
+          }
+        ],
+        "solution": "विकल्प A में दोनों ओर Zn 1, Na 2, O 2 और H 2 हैं। B में 2HCl और 2NaCl तथा C में 2HCl होना चाहिए; D में H₂ के स्थान पर H₂O बनता है।"
+      },
+      "en": {
+        "stem": "Which of the following chemical equations is correct and balanced?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Zn + 2NaOH → Na₂ZnO₂ + H₂"
+          },
+          {
+            "key": "B",
+            "text": "Na₂CO₃ + HCl → NaCl + H₂O + CO₂"
+          },
+          {
+            "key": "C",
+            "text": "CuO + HCl → CuCl₂ + H₂O"
+          },
+          {
+            "key": "D",
+            "text": "NaHCO₃ + HCl → NaCl + H₂ + CO₂"
+          }
+        ],
+        "solution": "Option A has Zn 1, Na 2, O 2 and H 2 on both sides. B needs 2HCl and 2NaCl, C needs 2HCl, and D forms H₂O, not H₂."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/reactions_of_acids_bases"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-011",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. अम्ल सक्रिय धातुओं से अभिक्रिया करके हाइड्रोजन गैस देते हैं। 2. शुष्क HCl गैस शुष्क नीले लिटमस पत्र को लाल कर देती है। 3. धातु कार्बोनेट अम्लों से अभिक्रिया करके CO₂ गैस देते हैं। सही कथन हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 2 असत्य है: जल की अनुपस्थिति में HCl से H+ आयन नहीं बनते, इसलिए शुष्क HCl गैस शुष्क नीले लिटमस का रंग नहीं बदलती। कथन 1 और 3 सत्य हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Acids react with active metals to give hydrogen gas. 2. Dry HCl gas turns dry blue litmus paper red. 3. Metal carbonates react with acids to give CO₂ gas. The correct statements are:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statement 2 is false: without water HCl does not form H+ ions, so dry HCl gas does not change the colour of dry blue litmus. Statements 1 and 3 are true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": [
+      "science/chemistry/acids_bases_salts/reactions_of_acids_bases",
+      "science/chemistry/acids_bases_salts/indicators"
+    ],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-012",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "उदासीन विलयन का pH मान होता है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "14"
+          }
+        ],
+        "solution": "pH = 7 उदासीन, 7 से कम अम्लीय तथा 7 से अधिक क्षारकीय विलयन दर्शाता है।"
+      },
+      "en": {
+        "stem": "The pH of a neutral solution is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "0"
+          },
+          {
+            "key": "B",
+            "text": "1"
+          },
+          {
+            "key": "C",
+            "text": "7"
+          },
+          {
+            "key": "D",
+            "text": "14"
+          }
+        ],
+        "solution": "pH 7 means neutral, below 7 acidic and above 7 basic."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/ph_scale"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-013",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से किसका pH मान सबसे कम है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "शुद्ध जल"
+          },
+          {
+            "key": "B",
+            "text": "रक्त"
+          },
+          {
+            "key": "C",
+            "text": "मिल्क ऑफ मैग्नीशिया"
+          },
+          {
+            "key": "D",
+            "text": "आमाशयी रस"
+          }
+        ],
+        "solution": "आमाशयी रस (लगभग 1.2) सबसे अधिक अम्लीय है; शुद्ध जल 7, रक्त लगभग 7.4 और मिल्क ऑफ मैग्नीशिया लगभग 10।"
+      },
+      "en": {
+        "stem": "Which of the following has the lowest pH?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Pure water"
+          },
+          {
+            "key": "B",
+            "text": "Blood"
+          },
+          {
+            "key": "C",
+            "text": "Milk of magnesia"
+          },
+          {
+            "key": "D",
+            "text": "Gastric juice"
+          }
+        ],
+        "solution": "Gastric juice (about 1.2) is the most acidic; pure water is 7, blood about 7.4 and milk of magnesia about 10."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/ph_scale"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-014",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "किसी विलयन में हाइड्रोजन आयनों की सांद्रता [H⁺] = 10⁻⁴ mol/L है। इस विलयन का pH मान ज्ञात कीजिए (pH का कोई मात्रक नहीं होता)।",
+        "options": [],
+        "solution": "pH = −log[H⁺] = −log(10⁻⁴) = 4।"
+      },
+      "en": {
+        "stem": "The hydrogen ion concentration of a solution is [H⁺] = 10⁻⁴ mol/L. Find the pH of the solution (pH has no unit).",
+        "options": [],
+        "solution": "pH = −log[H⁺] = −log(10⁻⁴) = 4."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 4,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/chemistry/acids_bases_salts/ph_scale"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-015",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): मुँह में pH 5.5 से कम होने पर दंत-क्षय आरंभ हो जाता है। कारण (R): दाँतों का इनेमल शरीर का सबसे कठोर पदार्थ है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं, परंतु दंत-क्षय का कारण यह है कि इनेमल (कैल्सियम हाइड्रॉक्सीएपेटाइट) pH 5.5 से कम होने पर संक्षारित होने लगता है; उसकी कठोरता इसकी व्याख्या नहीं करती।"
+      },
+      "en": {
+        "stem": "Assertion (A): Tooth decay starts when the pH in the mouth falls below 5.5. Reason (R): Tooth enamel is the hardest substance in the body.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both statements are true, but decay starts because enamel (calcium hydroxyapatite) begins to corrode below pH 5.5; its hardness does not explain this."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/ph_scale"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-016",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "विलयन X का pH 2 तथा विलयन Y का pH 4 है। X में हाइड्रोजन आयनों की सांद्रता Y की तुलना में:",
+        "options": [
+          {
+            "key": "A",
+            "text": "2 गुना अधिक है"
+          },
+          {
+            "key": "B",
+            "text": "100 गुना अधिक है"
+          },
+          {
+            "key": "C",
+            "text": "100 गुना कम है"
+          },
+          {
+            "key": "D",
+            "text": "2 गुना कम है"
+          }
+        ],
+        "solution": "pH में 1 की कमी से [H⁺] 10 गुना बढ़ता है। X का pH, Y से 2 कम है, अतः [H⁺] 10 × 10 = 100 गुना अधिक है।"
+      },
+      "en": {
+        "stem": "Solution X has pH 2 and solution Y has pH 4. Compared with Y, the hydrogen ion concentration in X is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "2 times more"
+          },
+          {
+            "key": "B",
+            "text": "100 times more"
+          },
+          {
+            "key": "C",
+            "text": "100 times less"
+          },
+          {
+            "key": "D",
+            "text": "2 times less"
+          }
+        ],
+        "solution": "A fall of 1 in pH means a 10-fold rise in [H⁺]. X is 2 pH units lower than Y, so its [H⁺] is 10 × 10 = 100 times more."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/ph_scale"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-017",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "बेकिंग सोडा का रासायनिक सूत्र है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Na₂CO₃"
+          },
+          {
+            "key": "B",
+            "text": "NaHCO₃"
+          },
+          {
+            "key": "C",
+            "text": "NaOH"
+          },
+          {
+            "key": "D",
+            "text": "Na₂CO₃·10H₂O"
+          }
+        ],
+        "solution": "बेकिंग सोडा सोडियम हाइड्रोजनकार्बोनेट (NaHCO₃) है; Na₂CO₃·10H₂O धोने का सोडा है।"
+      },
+      "en": {
+        "stem": "The chemical formula of baking soda is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Na₂CO₃"
+          },
+          {
+            "key": "B",
+            "text": "NaHCO₃"
+          },
+          {
+            "key": "C",
+            "text": "NaOH"
+          },
+          {
+            "key": "D",
+            "text": "Na₂CO₃·10H₂O"
+          }
+        ],
+        "solution": "Baking soda is sodium hydrogencarbonate (NaHCO₃); Na₂CO₃·10H₂O is washing soda."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/important_salts"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "प्लास्टर ऑफ पेरिस बनाने के लिए जिप्सम (CaSO₄·2H₂O) को किस ताप पर गर्म किया जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "273 K"
+          },
+          {
+            "key": "B",
+            "text": "300 K"
+          },
+          {
+            "key": "C",
+            "text": "373 K"
+          },
+          {
+            "key": "D",
+            "text": "1073 K"
+          }
+        ],
+        "solution": "जिप्सम को 373 K पर गर्म करने पर वह जल का कुछ भाग खोकर CaSO₄·½H₂O (प्लास्टर ऑफ पेरिस) बनाता है।"
+      },
+      "en": {
+        "stem": "At what temperature is gypsum (CaSO₄·2H₂O) heated to make Plaster of Paris?",
+        "options": [
+          {
+            "key": "A",
+            "text": "273 K"
+          },
+          {
+            "key": "B",
+            "text": "300 K"
+          },
+          {
+            "key": "C",
+            "text": "373 K"
+          },
+          {
+            "key": "D",
+            "text": "1073 K"
+          }
+        ],
+        "solution": "Heated at 373 K, gypsum loses part of its water and forms CaSO₄·½H₂O (Plaster of Paris)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/important_salts"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-019",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "धोने के सोडा (Na₂CO₃·10H₂O) का सूत्र इकाई द्रव्यमान u में ज्ञात कीजिए। (Na = 23 u, C = 12 u, O = 16 u, H = 1 u)",
+        "options": [],
+        "solution": "2 × 23 + 12 + 3 × 16 + 10 × 18 = 46 + 12 + 48 + 180 = 286 u।"
+      },
+      "en": {
+        "stem": "Find the formula unit mass of washing soda (Na₂CO₃·10H₂O) in u. (Na = 23 u, C = 12 u, O = 16 u, H = 1 u)",
+        "options": [],
+        "solution": "2 × 23 + 12 + 3 × 16 + 10 × 18 = 46 + 12 + 48 + 180 = 286 u."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 286,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/chemistry/acids_bases_salts/important_salts"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-020",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. विरंजक चूर्ण का उपयोग पीने के पानी को रोगाणुमुक्त करने में होता है। 2. धोने के सोडा का उपयोग जल की स्थायी कठोरता दूर करने में होता है। 3. बेकिंग सोडा को गर्म करने पर सोडियम हाइड्रॉक्साइड बनता है। सही कथन हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "D",
+            "text": "केवल 1 और 2"
+          }
+        ],
+        "solution": "कथन 3 असत्य है: गर्म करने पर 2NaHCO₃ → Na₂CO₃ + H₂O + CO₂, अर्थात सोडियम कार्बोनेट बनता है। कथन 1 और 2 सत्य हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Bleaching powder is used to disinfect drinking water. 2. Washing soda is used to remove permanent hardness of water. 3. Baking soda gives sodium hydroxide on heating. The correct statements are:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1 and 2 only"
+          }
+        ],
+        "solution": "Statement 3 is false: on heating, 2NaHCO₃ → Na₂CO₃ + H₂O + CO₂, so sodium carbonate is formed. Statements 1 and 2 are true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/important_salts"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-021",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I (लवण) को सूची-II (रासायनिक सूत्र) से सुमेलित कीजिए। सूची-I: (a) बेकिंग सोडा (b) धोने का सोडा (c) विरंजक चूर्ण (d) प्लास्टर ऑफ पेरिस। सूची-II: 1. CaOCl₂ 2. NaHCO₃ 3. CaSO₄·½H₂O 4. Na₂CO₃·10H₂O",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-2, b-1, c-4, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-4, b-2, c-1, d-3"
+          },
+          {
+            "key": "C",
+            "text": "a-2, b-4, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-4, c-1, d-3"
+          }
+        ],
+        "solution": "बेकिंग सोडा NaHCO₃, धोने का सोडा Na₂CO₃·10H₂O, विरंजक चूर्ण CaOCl₂ और प्लास्टर ऑफ पेरिस CaSO₄·½H₂O है।"
+      },
+      "en": {
+        "stem": "Match List-I (salt) with List-II (chemical formula). List-I: (a) Baking soda (b) Washing soda (c) Bleaching powder (d) Plaster of Paris. List-II: 1. CaOCl₂ 2. NaHCO₃ 3. CaSO₄·½H₂O 4. Na₂CO₃·10H₂O",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-2, b-1, c-4, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-4, b-2, c-1, d-3"
+          },
+          {
+            "key": "C",
+            "text": "a-2, b-4, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-4, c-1, d-3"
+          }
+        ],
+        "solution": "Baking soda is NaHCO₃, washing soda Na₂CO₃·10H₂O, bleaching powder CaOCl₂ and Plaster of Paris CaSO₄·½H₂O."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/important_salts"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-acids-022",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): प्लास्टर ऑफ पेरिस को नमीरोधी पात्र में रखना चाहिए। कारण (R): जल के संपर्क में आने पर प्लास्टर ऑफ पेरिस पुनः जिप्सम बनकर कठोर ठोस में बदल जाता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं। नमी से प्लास्टर ऑफ पेरिस जम कर जिप्सम बन जाता है और उपयोग योग्य नहीं रहता, इसलिए R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Plaster of Paris should be stored in a moisture-proof container. Reason (R): On contact with water, Plaster of Paris changes back into gypsum and sets as a hard solid.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both statements are true. Moisture makes Plaster of Paris set into gypsum and it becomes useless, so R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/chemistry/acids_bases_salts/important_salts"],
+    "licence": "own"
+  }
+]

@@ -1,0 +1,1259 @@
+[
+  {
+    "ref": "demo-electricity-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "विद्युत धारा का SI मात्रक क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "वोल्ट"
+          },
+          {
+            "key": "B",
+            "text": "ओम"
+          },
+          {
+            "key": "C",
+            "text": "ऐम्पियर"
+          },
+          {
+            "key": "D",
+            "text": "कूलॉम"
+          }
+        ],
+        "solution": "विद्युत धारा का SI मात्रक ऐम्पियर (A) है; 1 A = 1 C/s।"
+      },
+      "en": {
+        "stem": "What is the SI unit of electric current?",
+        "options": [
+          {
+            "key": "A",
+            "text": "volt"
+          },
+          {
+            "key": "B",
+            "text": "ohm"
+          },
+          {
+            "key": "C",
+            "text": "ampere"
+          },
+          {
+            "key": "D",
+            "text": "coulomb"
+          }
+        ],
+        "solution": "The SI unit of electric current is the ampere (A); 1 A = 1 C/s."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/electric_current_and_charge"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "1 कूलॉम आवेश में लगभग कितने इलेक्ट्रॉन होते हैं? (एक इलेक्ट्रॉन का आवेश = 1.6 × 10⁻¹⁹ C)",
+        "options": [
+          {
+            "key": "A",
+            "text": "1.6 × 10¹⁹"
+          },
+          {
+            "key": "B",
+            "text": "6.25 × 10¹⁸"
+          },
+          {
+            "key": "C",
+            "text": "6.25 × 10¹⁹"
+          },
+          {
+            "key": "D",
+            "text": "1.6 × 10⁻¹⁹"
+          }
+        ],
+        "solution": "n = Q/e = 1 ÷ (1.6 × 10⁻¹⁹) = 6.25 × 10¹⁸।"
+      },
+      "en": {
+        "stem": "About how many electrons make up a charge of 1 coulomb? (charge on one electron = 1.6 × 10⁻¹⁹ C)",
+        "options": [
+          {
+            "key": "A",
+            "text": "1.6 × 10¹⁹"
+          },
+          {
+            "key": "B",
+            "text": "6.25 × 10¹⁸"
+          },
+          {
+            "key": "C",
+            "text": "6.25 × 10¹⁹"
+          },
+          {
+            "key": "D",
+            "text": "1.6 × 10⁻¹⁹"
+          }
+        ],
+        "solution": "n = Q/e = 1 ÷ (1.6 × 10⁻¹⁹) = 6.25 × 10¹⁸."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/electric_current_and_charge"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-003",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "किसी तार में 0.4 A की विद्युत धारा 5 मिनट तक प्रवाहित होती है। तार से प्रवाहित कुल आवेश कूलॉम (C) में ज्ञात कीजिए।",
+        "options": [],
+        "solution": "Q = I × t = 0.4 A × 300 s = 120 C।"
+      },
+      "en": {
+        "stem": "A current of 0.4 A flows through a wire for 5 minutes. Find the total charge that flows through the wire, in coulomb (C).",
+        "options": [],
+        "solution": "Q = I × t = 0.4 A × 300 s = 120 C."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 120,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/electricity/electric_current_and_charge"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-004",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): धातु के तार में परंपरागत विद्युत धारा की दिशा इलेक्ट्रॉनों के प्रवाह की दिशा के विपरीत ली जाती है। कारण (R): परंपरागत धारा की दिशा धनावेश के प्रवाह की दिशा मानी गई है, जबकि इलेक्ट्रॉन ऋणावेशित होते हैं।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं। धनावेश के प्रवाह की दिशा को धारा की दिशा माना गया है और ऋणावेशित इलेक्ट्रॉन उसके विपरीत चलते हैं, इसलिए R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): In a metal wire, the direction of conventional current is taken opposite to the direction of flow of electrons. Reason (R): The direction of conventional current is defined as the direction of flow of positive charge, while electrons are negatively charged.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both statements are true. Current direction is defined as the flow of positive charge, and negatively charged electrons move the opposite way, so R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/electric_current_and_charge"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-005",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "विभवांतर मापने वाला यंत्र कौन-सा है और उसे परिपथ में कैसे जोड़ा जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "ऐमीटर, श्रेणीक्रम में"
+          },
+          {
+            "key": "B",
+            "text": "वोल्टमीटर, पार्श्वक्रम में"
+          },
+          {
+            "key": "C",
+            "text": "वोल्टमीटर, श्रेणीक्रम में"
+          },
+          {
+            "key": "D",
+            "text": "ऐमीटर, पार्श्वक्रम में"
+          }
+        ],
+        "solution": "विभवांतर वोल्टमीटर से मापा जाता है, जिसे उन दो बिंदुओं के बीच पार्श्वक्रम में जोड़ा जाता है।"
+      },
+      "en": {
+        "stem": "Which instrument measures potential difference, and how is it connected in a circuit?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ammeter, in series"
+          },
+          {
+            "key": "B",
+            "text": "Voltmeter, in parallel"
+          },
+          {
+            "key": "C",
+            "text": "Voltmeter, in series"
+          },
+          {
+            "key": "D",
+            "text": "Ammeter, in parallel"
+          }
+        ],
+        "solution": "Potential difference is measured with a voltmeter, connected in parallel across the two points."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/potential_difference"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "1 वोल्ट किसके बराबर है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 जूल प्रति कूलॉम"
+          },
+          {
+            "key": "B",
+            "text": "1 कूलॉम प्रति जूल"
+          },
+          {
+            "key": "C",
+            "text": "1 कूलॉम प्रति सेकंड"
+          },
+          {
+            "key": "D",
+            "text": "1 जूल प्रति सेकंड"
+          }
+        ],
+        "solution": "V = W/Q, अतः 1 V = 1 J/C।"
+      },
+      "en": {
+        "stem": "One volt is equal to:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 joule per coulomb"
+          },
+          {
+            "key": "B",
+            "text": "1 coulomb per joule"
+          },
+          {
+            "key": "C",
+            "text": "1 coulomb per second"
+          },
+          {
+            "key": "D",
+            "text": "1 joule per second"
+          }
+        ],
+        "solution": "V = W/Q, so 1 V = 1 J/C."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/potential_difference"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "12 V विभवांतर वाले दो बिंदुओं के बीच 5 C आवेश को ले जाने में कितना कार्य करना होगा?",
+        "options": [
+          {
+            "key": "A",
+            "text": "2.4 J"
+          },
+          {
+            "key": "B",
+            "text": "17 J"
+          },
+          {
+            "key": "C",
+            "text": "7 J"
+          },
+          {
+            "key": "D",
+            "text": "60 J"
+          }
+        ],
+        "solution": "W = VQ = 12 × 5 = 60 J।"
+      },
+      "en": {
+        "stem": "How much work is done in moving a charge of 5 C between two points that have a potential difference of 12 V?",
+        "options": [
+          {
+            "key": "A",
+            "text": "2.4 J"
+          },
+          {
+            "key": "B",
+            "text": "17 J"
+          },
+          {
+            "key": "C",
+            "text": "7 J"
+          },
+          {
+            "key": "D",
+            "text": "60 J"
+          }
+        ],
+        "solution": "W = VQ = 12 × 5 = 60 J."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/potential_difference"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-008",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. सेल अपने भीतर संचित रासायनिक ऊर्जा से अपने टर्मिनलों के बीच विभवांतर बनाए रखता है। 2. वोल्टमीटर का प्रतिरोध बहुत कम होना चाहिए। 3. किसी चालक में परंपरागत धारा उच्च विभव वाले सिरे से निम्न विभव वाले सिरे की ओर बहती है। सही कथन हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 2 असत्य है: वोल्टमीटर का प्रतिरोध बहुत अधिक होता है ताकि वह परिपथ से नगण्य धारा ले। कथन 1 और 3 सत्य हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. A cell maintains a potential difference across its terminals using the chemical energy stored in it. 2. A voltmeter should have a very low resistance. 3. In a conductor, conventional current flows from the end at higher potential to the end at lower potential. The correct statements are:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statement 2 is false: a voltmeter has a very high resistance so that it draws negligible current. Statements 1 and 3 are true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/potential_difference"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-009",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "प्रतिरोधकता का SI मात्रक है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "ओम मीटर"
+          },
+          {
+            "key": "B",
+            "text": "ओम"
+          },
+          {
+            "key": "C",
+            "text": "ओम प्रति मीटर"
+          },
+          {
+            "key": "D",
+            "text": "ओम प्रति वर्ग मीटर"
+          }
+        ],
+        "solution": "R = ρL/A से ρ = RA/L, अतः मात्रक Ω × m²/m = Ω m (ओम मीटर)।"
+      },
+      "en": {
+        "stem": "The SI unit of resistivity is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "ohm metre"
+          },
+          {
+            "key": "B",
+            "text": "ohm"
+          },
+          {
+            "key": "C",
+            "text": "ohm per metre"
+          },
+          {
+            "key": "D",
+            "text": "ohm per square metre"
+          }
+        ],
+        "solution": "From R = ρL/A, ρ = RA/L, so the unit is Ω × m²/m = Ω m (ohm metre)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/ohms_law_resistance"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "R प्रतिरोध वाले एक तार को खींचकर उसकी लंबाई दोगुनी कर दी जाती है, जबकि उसका आयतन अपरिवर्तित रहता है। तार का नया प्रतिरोध होगा:",
+        "options": [
+          {
+            "key": "A",
+            "text": "R/2"
+          },
+          {
+            "key": "B",
+            "text": "R"
+          },
+          {
+            "key": "C",
+            "text": "2R"
+          },
+          {
+            "key": "D",
+            "text": "4R"
+          }
+        ],
+        "solution": "आयतन स्थिर रहने पर लंबाई दोगुनी होने से अनुप्रस्थ काट क्षेत्रफल आधा हो जाता है। R = ρL/A के अनुसार प्रतिरोध 2 × 2 = 4 गुना, अर्थात 4R हो जाता है।"
+      },
+      "en": {
+        "stem": "A wire of resistance R is stretched to twice its length while its volume stays the same. The new resistance of the wire is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "R/2"
+          },
+          {
+            "key": "B",
+            "text": "R"
+          },
+          {
+            "key": "C",
+            "text": "2R"
+          },
+          {
+            "key": "D",
+            "text": "4R"
+          }
+        ],
+        "solution": "With volume constant, doubling the length halves the area of cross-section. From R = ρL/A the resistance becomes 2 × 2 = 4 times, that is 4R."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/ohms_law_resistance"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-011",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): तांबे के तार की लंबाई दोगुनी करने पर उसकी प्रतिरोधकता भी दोगुनी हो जाती है। कारण (R): किसी तार का प्रतिरोध उसकी लंबाई के अनुक्रमानुपाती होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A असत्य है: प्रतिरोधकता केवल पदार्थ और ताप पर निर्भर करती है, लंबाई पर नहीं। R सत्य है: लंबाई दोगुनी करने पर प्रतिरोध दोगुना होता है।"
+      },
+      "en": {
+        "stem": "Assertion (A): When the length of a copper wire is doubled, its resistivity also doubles. Reason (R): The resistance of a wire is directly proportional to its length.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is false: resistivity depends only on the material and temperature, not on length. R is true: doubling the length doubles the resistance."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/ohms_law_resistance"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-012",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "1 m लंबे तथा 1 × 10⁻⁶ m² अनुप्रस्थ काट क्षेत्रफल वाले एक तार का प्रतिरोध 0.5 Ω है। तार के पदार्थ की प्रतिरोधकता है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "5 × 10⁻⁶ Ω m"
+          },
+          {
+            "key": "B",
+            "text": "5 × 10⁻⁷ Ω m"
+          },
+          {
+            "key": "C",
+            "text": "5 × 10⁻⁸ Ω m"
+          },
+          {
+            "key": "D",
+            "text": "2 × 10⁻⁶ Ω m"
+          }
+        ],
+        "solution": "ρ = RA/L = 0.5 × 1 × 10⁻⁶ ÷ 1 = 5 × 10⁻⁷ Ω m।"
+      },
+      "en": {
+        "stem": "A wire 1 m long with an area of cross-section of 1 × 10⁻⁶ m² has a resistance of 0.5 Ω. The resistivity of its material is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "5 × 10⁻⁶ Ω m"
+          },
+          {
+            "key": "B",
+            "text": "5 × 10⁻⁷ Ω m"
+          },
+          {
+            "key": "C",
+            "text": "5 × 10⁻⁸ Ω m"
+          },
+          {
+            "key": "D",
+            "text": "2 × 10⁻⁶ Ω m"
+          }
+        ],
+        "solution": "ρ = RA/L = 0.5 × 1 × 10⁻⁶ ÷ 1 = 5 × 10⁻⁷ Ω m."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/ohms_law_resistance"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-013",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "घरों में विद्युत उपकरणों को पार्श्वक्रम में जोड़ने का मुख्य कारण क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "इससे परिपथ का कुल प्रतिरोध बढ़ जाता है"
+          },
+          {
+            "key": "B",
+            "text": "प्रत्येक उपकरण को पूरा सप्लाई वोल्टेज मिलता है और उसे अलग से चालू या बंद किया जा सकता है"
+          },
+          {
+            "key": "C",
+            "text": "प्रत्येक उपकरण से समान धारा प्रवाहित होती है"
+          },
+          {
+            "key": "D",
+            "text": "इससे विद्युत ऊर्जा की खपत शून्य हो जाती है"
+          }
+        ],
+        "solution": "पार्श्वक्रम में प्रत्येक उपकरण के सिरों पर पूरा सप्लाई वोल्टेज रहता है, हर उपकरण का अपना स्विच हो सकता है और एक के खराब होने पर बाकी चलते रहते हैं।"
+      },
+      "en": {
+        "stem": "What is the main reason for connecting household appliances in parallel?",
+        "options": [
+          {
+            "key": "A",
+            "text": "It increases the total resistance of the circuit"
+          },
+          {
+            "key": "B",
+            "text": "Each appliance gets the full supply voltage and can be switched on or off separately"
+          },
+          {
+            "key": "C",
+            "text": "The same current flows through every appliance"
+          },
+          {
+            "key": "D",
+            "text": "It makes the consumption of electrical energy zero"
+          }
+        ],
+        "solution": "In parallel each appliance has the full supply voltage across it, can have its own switch, and the others keep working if one fails."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/resistors_series_parallel"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "2 Ω, 3 Ω और 6 Ω के तीन प्रतिरोधक पार्श्वक्रम में जोड़े गए हैं। संयोजन का तुल्य प्रतिरोध है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "11 Ω"
+          },
+          {
+            "key": "B",
+            "text": "1 Ω"
+          },
+          {
+            "key": "C",
+            "text": "2 Ω"
+          },
+          {
+            "key": "D",
+            "text": "0.5 Ω"
+          }
+        ],
+        "solution": "1/Rp = 1/2 + 1/3 + 1/6 = (3 + 2 + 1)/6 = 1, अतः Rp = 1 Ω।"
+      },
+      "en": {
+        "stem": "Three resistors of 2 Ω, 3 Ω and 6 Ω are connected in parallel. The equivalent resistance of the combination is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "11 Ω"
+          },
+          {
+            "key": "B",
+            "text": "1 Ω"
+          },
+          {
+            "key": "C",
+            "text": "2 Ω"
+          },
+          {
+            "key": "D",
+            "text": "0.5 Ω"
+          }
+        ],
+        "solution": "1/Rp = 1/2 + 1/3 + 1/6 = (3 + 2 + 1)/6 = 1, so Rp = 1 Ω."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/resistors_series_parallel"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-015",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "प्रत्येक R प्रतिरोध वाले पाँच समान प्रतिरोधकों से प्राप्त किए जा सकने वाले अधिकतम और न्यूनतम तुल्य प्रतिरोध का अनुपात है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "10"
+          },
+          {
+            "key": "C",
+            "text": "25"
+          },
+          {
+            "key": "D",
+            "text": "1/25"
+          }
+        ],
+        "solution": "अधिकतम (श्रेणीक्रम) = 5R, न्यूनतम (पार्श्वक्रम) = R/5; अनुपात = 5R ÷ (R/5) = 25।"
+      },
+      "en": {
+        "stem": "Five identical resistors each of resistance R are available. The ratio of the maximum to the minimum equivalent resistance that can be obtained with them is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "5"
+          },
+          {
+            "key": "B",
+            "text": "10"
+          },
+          {
+            "key": "C",
+            "text": "25"
+          },
+          {
+            "key": "D",
+            "text": "1/25"
+          }
+        ],
+        "solution": "Maximum (series) = 5R, minimum (parallel) = R/5; ratio = 5R ÷ (R/5) = 25."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/resistors_series_parallel"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-016",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I (प्रतिरोधकों का संयोजन) को सूची-II (तुल्य प्रतिरोध) से सुमेलित कीजिए। सूची-I: (a) 4 Ω और 4 Ω श्रेणीक्रम में (b) 4 Ω और 4 Ω पार्श्वक्रम में (c) 6 Ω और 12 Ω पार्श्वक्रम में (d) 3 Ω के तीन प्रतिरोधक पार्श्वक्रम में। सूची-II: 1. 1 Ω 2. 2 Ω 3. 4 Ω 4. 8 Ω",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-2, c-3, d-1"
+          },
+          {
+            "key": "B",
+            "text": "a-4, b-3, c-2, d-1"
+          },
+          {
+            "key": "C",
+            "text": "a-2, b-4, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-4, b-2, c-1, d-3"
+          }
+        ],
+        "solution": "(a) 4 + 4 = 8 Ω; (b) 4 × 4 ÷ (4 + 4) = 2 Ω; (c) 6 × 12 ÷ (6 + 12) = 4 Ω; (d) 3 ÷ 3 = 1 Ω।"
+      },
+      "en": {
+        "stem": "Match List-I (combination of resistors) with List-II (equivalent resistance). List-I: (a) 4 Ω and 4 Ω in series (b) 4 Ω and 4 Ω in parallel (c) 6 Ω and 12 Ω in parallel (d) three 3 Ω resistors in parallel. List-II: 1. 1 Ω 2. 2 Ω 3. 4 Ω 4. 8 Ω",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-2, c-3, d-1"
+          },
+          {
+            "key": "B",
+            "text": "a-4, b-3, c-2, d-1"
+          },
+          {
+            "key": "C",
+            "text": "a-2, b-4, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-4, b-2, c-1, d-3"
+          }
+        ],
+        "solution": "(a) 4 + 4 = 8 Ω; (b) 4 × 4 ÷ (4 + 4) = 2 Ω; (c) 6 × 12 ÷ (6 + 12) = 4 Ω; (d) 3 ÷ 3 = 1 Ω."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/resistors_series_parallel"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-017",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): पार्श्वक्रम में जुड़े प्रतिरोधकों का तुल्य प्रतिरोध सबसे छोटे प्रतिरोध से भी कम होता है। कारण (R): पार्श्वक्रम में प्रत्येक प्रतिरोधक से समान धारा प्रवाहित होती है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A सत्य है। R असत्य है: पार्श्वक्रम में प्रत्येक प्रतिरोधक के सिरों पर विभवांतर समान होता है, धारा नहीं; धारा प्रतिरोध के अनुसार बँटती है।"
+      },
+      "en": {
+        "stem": "Assertion (A): The equivalent resistance of resistors connected in parallel is less than the smallest individual resistance. Reason (R): In a parallel combination, the same current flows through each resistor.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is true. R is false: in parallel the potential difference across each resistor is the same, not the current; the current divides according to the resistances."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/resistors_series_parallel"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "विद्युत ऊर्जा का व्यापारिक मात्रक है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "जूल"
+          },
+          {
+            "key": "B",
+            "text": "वाट"
+          },
+          {
+            "key": "C",
+            "text": "किलोवाट घंटा"
+          },
+          {
+            "key": "D",
+            "text": "किलोवाट"
+          }
+        ],
+        "solution": "विद्युत ऊर्जा का व्यापारिक मात्रक किलोवाट घंटा (kWh) है, जिसे एक यूनिट कहते हैं।"
+      },
+      "en": {
+        "stem": "The commercial unit of electrical energy is the:",
+        "options": [
+          {
+            "key": "A",
+            "text": "joule"
+          },
+          {
+            "key": "B",
+            "text": "watt"
+          },
+          {
+            "key": "C",
+            "text": "kilowatt hour"
+          },
+          {
+            "key": "D",
+            "text": "kilowatt"
+          }
+        ],
+        "solution": "The commercial unit of electrical energy is the kilowatt hour (kWh), called one unit."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/heating_effect_power"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-019",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "2 kW का एक रूम हीटर प्रतिदिन 3 घंटे चलाया जाता है। 30 दिनों में खर्च हुई विद्युत ऊर्जा किलोवाट घंटा (kWh) में ज्ञात कीजिए।",
+        "options": [],
+        "solution": "ऊर्जा = शक्ति × समय = 2 kW × (3 × 30) h = 180 kWh।"
+      },
+      "en": {
+        "stem": "A 2 kW room heater is used for 3 hours every day. Find the electrical energy used in 30 days, in kilowatt hour (kWh).",
+        "options": [],
+        "solution": "Energy = power × time = 2 kW × (3 × 30) h = 180 kWh."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 180,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/electricity/heating_effect_power"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-020",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. विद्युत फ्यूज का तार कम गलनांक वाली धातु या मिश्रातु का बना होता है। 2. फ्यूज को उपकरण के साथ पार्श्वक्रम में जोड़ा जाता है। 3. बल्ब का तंतु टंगस्टन से बनाया जाता है, क्योंकि इसका गलनांक बहुत उच्च होता है। सही कथन हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1"
+          },
+          {
+            "key": "D",
+            "text": "केवल 1 और 3"
+          }
+        ],
+        "solution": "कथन 2 असत्य है: फ्यूज उपकरण के साथ श्रेणीक्रम में जोड़ा जाता है, ताकि अधिक धारा बहने पर वह पिघलकर परिपथ तोड़ दे। कथन 1 और 3 सत्य हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. The wire of an electric fuse is made of a metal or alloy with a low melting point. 2. A fuse is connected in parallel with the appliance. 3. The filament of a bulb is made of tungsten because its melting point is very high. The correct statements are:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 only"
+          },
+          {
+            "key": "D",
+            "text": "1 and 3 only"
+          }
+        ],
+        "solution": "Statement 2 is false: a fuse is connected in series with the appliance so that it melts and breaks the circuit when excess current flows. Statements 1 and 3 are true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/heating_effect_power"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-021",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "220 V, 100 W अंकित एक बल्ब के तंतु का प्रतिरोध (प्रचालन अवस्था में) है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "484 Ω"
+          },
+          {
+            "key": "B",
+            "text": "2.2 Ω"
+          },
+          {
+            "key": "C",
+            "text": "48.4 Ω"
+          },
+          {
+            "key": "D",
+            "text": "4840 Ω"
+          }
+        ],
+        "solution": "R = V²/P = 220 × 220 ÷ 100 = 484 Ω।"
+      },
+      "en": {
+        "stem": "The resistance of the filament of a bulb rated 220 V, 100 W (when it is operating) is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "484 Ω"
+          },
+          {
+            "key": "B",
+            "text": "2.2 Ω"
+          },
+          {
+            "key": "C",
+            "text": "48.4 Ω"
+          },
+          {
+            "key": "D",
+            "text": "4840 Ω"
+          }
+        ],
+        "solution": "R = V²/P = 220 × 220 ÷ 100 = 484 Ω."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/electricity/heating_effect_power"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-electricity-022",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "R प्रतिरोध की एक हीटर कुंडली को V वोल्ट के स्रोत से जोड़ने पर t समय में H ऊष्मा उत्पन्न होती है। यदि कुंडली को दो बराबर भागों में काटकर दोनों भागों को पार्श्वक्रम में उसी स्रोत से जोड़ा जाए, तो उतने ही समय में उत्पन्न ऊष्मा होगी:",
+        "options": [
+          {
+            "key": "A",
+            "text": "H/4"
+          },
+          {
+            "key": "B",
+            "text": "H/2"
+          },
+          {
+            "key": "C",
+            "text": "2H"
+          },
+          {
+            "key": "D",
+            "text": "4H"
+          }
+        ],
+        "solution": "प्रत्येक भाग का प्रतिरोध R/2 है; पार्श्वक्रम में तुल्य प्रतिरोध R/4 होगा। H = V²t/R से, प्रतिरोध एक-चौथाई होने पर ऊष्मा 4 गुना अर्थात 4H होगी।"
+      },
+      "en": {
+        "stem": "A heater coil of resistance R produces heat H in time t when connected to a source of V volt. If the coil is cut into two equal halves and both halves are connected in parallel to the same source, the heat produced in the same time will be:",
+        "options": [
+          {
+            "key": "A",
+            "text": "H/4"
+          },
+          {
+            "key": "B",
+            "text": "H/2"
+          },
+          {
+            "key": "C",
+            "text": "2H"
+          },
+          {
+            "key": "D",
+            "text": "4H"
+          }
+        ],
+        "solution": "Each half has resistance R/2; in parallel the equivalent resistance is R/4. From H = V²t/R, a quarter of the resistance gives 4 times the heat, that is 4H."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": [
+      "science/physics/electricity/heating_effect_power",
+      "science/physics/electricity/resistors_series_parallel"
+    ],
+    "licence": "own"
+  }
+]

@@ -1,0 +1,1322 @@
+[
+  {
+    "ref": "demo-life-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "प्रकाश संश्लेषण के समग्र समीकरण 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ में C₆H₁₂O₆ किस पदार्थ को दर्शाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "सुक्रोस"
+          },
+          {
+            "key": "B",
+            "text": "मंड"
+          },
+          {
+            "key": "C",
+            "text": "ग्लूकोस"
+          },
+          {
+            "key": "D",
+            "text": "सेलुलोस"
+          }
+        ],
+        "solution": "C₆H₁₂O₆ ग्लूकोस का सूत्र है, जो प्रकाश संश्लेषण में बनने वाला कार्बोहाइड्रेट है। बाद में यह मंड के रूप में संचित होता है।"
+      },
+      "en": {
+        "stem": "In the overall equation of photosynthesis, 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂, what does C₆H₁₂O₆ stand for?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Sucrose"
+          },
+          {
+            "key": "B",
+            "text": "Starch"
+          },
+          {
+            "key": "C",
+            "text": "Glucose"
+          },
+          {
+            "key": "D",
+            "text": "Cellulose"
+          }
+        ],
+        "solution": "C₆H₁₂O₆ is the formula of glucose, the carbohydrate made in photosynthesis. It is later stored as starch."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/nutrition"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "अमरबेल (Cuscuta) में किस प्रकार का पोषण पाया जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "स्वपोषी"
+          },
+          {
+            "key": "B",
+            "text": "मृतजीवी"
+          },
+          {
+            "key": "C",
+            "text": "प्राणिसमभोजी"
+          },
+          {
+            "key": "D",
+            "text": "परजीवी"
+          }
+        ],
+        "solution": "अमरबेल पोषी पौधे से भोजन लेती है और उसे हानि पहुँचाती है, इसलिए इसका पोषण परजीवी है।"
+      },
+      "en": {
+        "stem": "What type of nutrition is found in Cuscuta (amarbel)?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Autotrophic"
+          },
+          {
+            "key": "B",
+            "text": "Saprophytic"
+          },
+          {
+            "key": "C",
+            "text": "Holozoic"
+          },
+          {
+            "key": "D",
+            "text": "Parasitic"
+          }
+        ],
+        "solution": "Cuscuta takes its food from a host plant and harms it, so its nutrition is parasitic."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/nutrition"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-003",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "पत्ती में मंड (Starch) की उपस्थिति की जाँच के लिए किसका प्रयोग किया जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "आयोडीन विलयन"
+          },
+          {
+            "key": "B",
+            "text": "चूने का पानी"
+          },
+          {
+            "key": "C",
+            "text": "फिनॉल्फ्थेलिन"
+          },
+          {
+            "key": "D",
+            "text": "लिटमस विलयन"
+          }
+        ],
+        "solution": "आयोडीन विलयन मंड के साथ नीला-काला रंग देता है, इसलिए पत्ती में मंड की जाँच इसी से की जाती है।"
+      },
+      "en": {
+        "stem": "Which of these is used to test a leaf for the presence of starch?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Iodine solution"
+          },
+          {
+            "key": "B",
+            "text": "Lime water"
+          },
+          {
+            "key": "C",
+            "text": "Phenolphthalein"
+          },
+          {
+            "key": "D",
+            "text": "Litmus solution"
+          }
+        ],
+        "solution": "Iodine solution turns blue-black with starch, so it is used to test a leaf for starch."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/nutrition"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-004",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "मनुष्य की क्षुद्रांत्र में वसा का इमल्सीकरण किसके द्वारा होता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "लार एमिलेस"
+          },
+          {
+            "key": "B",
+            "text": "पेप्सिन"
+          },
+          {
+            "key": "C",
+            "text": "ट्रिप्सिन"
+          },
+          {
+            "key": "D",
+            "text": "पित्त रस"
+          }
+        ],
+        "solution": "यकृत से आया पित्त रस वसा की बड़ी गोलिकाओं को छोटी गोलिकाओं में तोड़ता है (इमल्सीकरण) और माध्यम को क्षारीय बनाता है।"
+      },
+      "en": {
+        "stem": "In the human small intestine, fats are emulsified by:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Salivary amylase"
+          },
+          {
+            "key": "B",
+            "text": "Pepsin"
+          },
+          {
+            "key": "C",
+            "text": "Trypsin"
+          },
+          {
+            "key": "D",
+            "text": "Bile"
+          }
+        ],
+        "solution": "Bile from the liver breaks large fat globules into smaller ones (emulsification) and makes the medium alkaline."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/nutrition"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-005",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): प्रकाश संश्लेषण में मुक्त होने वाली ऑक्सीजन कार्बन डाइऑक्साइड के अणुओं से आती है। कारण (R): प्रकाश संश्लेषण के दौरान जल के अणु हाइड्रोजन और ऑक्सीजन में अपघटित होते हैं।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "मुक्त ऑक्सीजन जल के अणुओं के अपघटन से आती है, CO₂ से नहीं; इसलिए A असत्य है और R सत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): The oxygen released in photosynthesis comes from carbon dioxide molecules. Reason (R): During photosynthesis, water molecules are split into hydrogen and oxygen.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "The oxygen released comes from the splitting of water molecules, not from CO₂; so A is false and R is true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/nutrition"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-006",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. प्रकाश संश्लेषण हरितलवक में होता है। 2. रंध्रों का खुलना और बंद होना द्वार कोशिकाएँ नियंत्रित करती हैं। 3. मरुस्थलीय पौधे दिन में रंध्र खोलकर CO₂ ग्रहण करते हैं। उपर्युक्त में से कौन-से कथन सही हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "C",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 1 और 2 सही हैं। मरुस्थलीय पौधे जल की हानि कम करने के लिए रात में रंध्र खोलकर CO₂ लेते हैं, दिन में नहीं; इसलिए कथन 3 गलत है।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Photosynthesis takes place in the chloroplast. 2. The opening and closing of stomata is controlled by guard cells. 3. Desert plants open their stomata during the day to take in CO₂. Which of the statements given above are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 only"
+          },
+          {
+            "key": "B",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "C",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statements 1 and 2 are correct. Desert plants open their stomata at night, not during the day, to take in CO₂ and reduce water loss; so statement 3 is wrong."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/nutrition"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "श्वसन का पहला चरण ग्लाइकोलिसिस कोशिका के किस भाग में होता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "माइटोकॉन्ड्रिया"
+          },
+          {
+            "key": "B",
+            "text": "कोशिकाद्रव्य"
+          },
+          {
+            "key": "C",
+            "text": "केंद्रक"
+          },
+          {
+            "key": "D",
+            "text": "हरितलवक"
+          }
+        ],
+        "solution": "ग्लाइकोलिसिस कोशिकाद्रव्य में होता है, जहाँ ग्लूकोस का एक अणु टूटकर पायरुवेट के दो अणु बनाता है।"
+      },
+      "en": {
+        "stem": "In which part of the cell does glycolysis, the first step of respiration, take place?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mitochondrion"
+          },
+          {
+            "key": "B",
+            "text": "Cytoplasm"
+          },
+          {
+            "key": "C",
+            "text": "Nucleus"
+          },
+          {
+            "key": "D",
+            "text": "Chloroplast"
+          }
+        ],
+        "solution": "Glycolysis takes place in the cytoplasm, where one glucose molecule is broken into two molecules of pyruvate."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/respiration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-008",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "यीस्ट में अवायवीय श्वसन (किण्वन) के उत्पाद क्या हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "लैक्टिक अम्ल और ऊर्जा"
+          },
+          {
+            "key": "B",
+            "text": "CO₂, जल और ऊर्जा"
+          },
+          {
+            "key": "C",
+            "text": "एथेनॉल, CO₂ और ऊर्जा"
+          },
+          {
+            "key": "D",
+            "text": "ग्लूकोस और ऑक्सीजन"
+          }
+        ],
+        "solution": "यीस्ट में ऑक्सीजन की अनुपस्थिति में पायरुवेट से एथेनॉल और CO₂ बनते हैं तथा थोड़ी ऊर्जा मुक्त होती है।"
+      },
+      "en": {
+        "stem": "What are the products of anaerobic respiration (fermentation) in yeast?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Lactic acid and energy"
+          },
+          {
+            "key": "B",
+            "text": "CO₂, water and energy"
+          },
+          {
+            "key": "C",
+            "text": "Ethanol, CO₂ and energy"
+          },
+          {
+            "key": "D",
+            "text": "Glucose and oxygen"
+          }
+        ],
+        "solution": "In yeast, without oxygen, pyruvate is converted to ethanol and CO₂ and a small amount of energy is released."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/respiration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-009",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "भारी व्यायाम के समय पेशी कोशिकाओं में ऑक्सीजन की कमी होने पर पायरुवेट किसमें बदल जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "लैक्टिक अम्ल"
+          },
+          {
+            "key": "B",
+            "text": "एथेनॉल"
+          },
+          {
+            "key": "C",
+            "text": "CO₂ और जल"
+          },
+          {
+            "key": "D",
+            "text": "ग्लूकोस"
+          }
+        ],
+        "solution": "ऑक्सीजन की कमी में पेशी कोशिकाओं में पायरुवेट लैक्टिक अम्ल में बदलता है। एथेनॉल यीस्ट में बनता है और CO₂ व जल वायवीय श्वसन के उत्पाद हैं।"
+      },
+      "en": {
+        "stem": "During heavy exercise, when muscle cells run short of oxygen, pyruvate is converted into:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Lactic acid"
+          },
+          {
+            "key": "B",
+            "text": "Ethanol"
+          },
+          {
+            "key": "C",
+            "text": "CO₂ and water"
+          },
+          {
+            "key": "D",
+            "text": "Glucose"
+          }
+        ],
+        "solution": "When oxygen is short, pyruvate in muscle cells is converted to lactic acid. Ethanol is made in yeast, and CO₂ and water are products of aerobic respiration."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/respiration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-010",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): जलीय जीवों की श्वास दर स्थलीय जीवों की तुलना में अधिक होती है। कारण (R): जल में घुली ऑक्सीजन की मात्रा वायु में उपस्थित ऑक्सीजन की तुलना में बहुत कम होती है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "जल में ऑक्सीजन बहुत कम होने के कारण पर्याप्त ऑक्सीजन पाने के लिए जलीय जीवों को तेजी से श्वास लेनी पड़ती है। अतः R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Aquatic organisms breathe at a faster rate than terrestrial organisms. Reason (R): The amount of oxygen dissolved in water is much lower than the amount of oxygen in air.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Because water holds very little oxygen, aquatic organisms must breathe faster to get enough of it. So R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/respiration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "वायवीय और अवायवीय श्वसन के संबंध में कौन-सा कथन सही है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "दोनों में ग्लाइकोलिसिस कोशिकाद्रव्य में होता है"
+          },
+          {
+            "key": "B",
+            "text": "अवायवीय श्वसन माइटोकॉन्ड्रिया में होता है"
+          },
+          {
+            "key": "C",
+            "text": "अवायवीय श्वसन में वायवीय श्वसन से अधिक ATP बनते हैं"
+          },
+          {
+            "key": "D",
+            "text": "वायवीय श्वसन का अंतिम उत्पाद लैक्टिक अम्ल है"
+          }
+        ],
+        "solution": "दोनों प्रकार के श्वसन का पहला चरण ग्लाइकोलिसिस कोशिकाद्रव्य में होता है। अवायवीय श्वसन कोशिकाद्रव्य में होता है और कम ATP देता है; वायवीय श्वसन के अंतिम उत्पाद CO₂ और जल हैं।"
+      },
+      "en": {
+        "stem": "Which statement about aerobic and anaerobic respiration is correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "In both, glycolysis takes place in the cytoplasm"
+          },
+          {
+            "key": "B",
+            "text": "Anaerobic respiration takes place in the mitochondria"
+          },
+          {
+            "key": "C",
+            "text": "Anaerobic respiration produces more ATP than aerobic respiration"
+          },
+          {
+            "key": "D",
+            "text": "The end product of aerobic respiration is lactic acid"
+          }
+        ],
+        "solution": "Glycolysis, the first step of both kinds of respiration, takes place in the cytoplasm. Anaerobic respiration happens in the cytoplasm and yields less ATP; the end products of aerobic respiration are CO₂ and water."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/respiration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-012",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "मानव हृदय में कितने कक्ष होते हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "दो"
+          },
+          {
+            "key": "B",
+            "text": "तीन"
+          },
+          {
+            "key": "C",
+            "text": "चार"
+          },
+          {
+            "key": "D",
+            "text": "पाँच"
+          }
+        ],
+        "solution": "मानव हृदय में चार कक्ष होते हैं: दो अलिंद और दो निलय।"
+      },
+      "en": {
+        "stem": "How many chambers does the human heart have?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Two"
+          },
+          {
+            "key": "B",
+            "text": "Three"
+          },
+          {
+            "key": "C",
+            "text": "Four"
+          },
+          {
+            "key": "D",
+            "text": "Five"
+          }
+        ],
+        "solution": "The human heart has four chambers: two atria and two ventricles."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/transportation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-013",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "फुफ्फुस धमनी (Pulmonary Artery) कौन-सा रुधिर कहाँ ले जाती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "हृदय से फुफ्फुस तक विऑक्सीजनित रुधिर"
+          },
+          {
+            "key": "B",
+            "text": "फुफ्फुस से हृदय तक ऑक्सीजनित रुधिर"
+          },
+          {
+            "key": "C",
+            "text": "हृदय से शरीर तक ऑक्सीजनित रुधिर"
+          },
+          {
+            "key": "D",
+            "text": "शरीर से हृदय तक विऑक्सीजनित रुधिर"
+          }
+        ],
+        "solution": "फुफ्फुस धमनी दाएँ निलय से विऑक्सीजनित रुधिर फुफ्फुस तक ले जाती है। यह उस सामान्य नियम का अपवाद है कि धमनियाँ ऑक्सीजनित रुधिर ले जाती हैं।"
+      },
+      "en": {
+        "stem": "What kind of blood does the pulmonary artery carry, and where?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Deoxygenated blood from the heart to the lungs"
+          },
+          {
+            "key": "B",
+            "text": "Oxygenated blood from the lungs to the heart"
+          },
+          {
+            "key": "C",
+            "text": "Oxygenated blood from the heart to the body"
+          },
+          {
+            "key": "D",
+            "text": "Deoxygenated blood from the body to the heart"
+          }
+        ],
+        "solution": "The pulmonary artery carries deoxygenated blood from the right ventricle to the lungs. It is an exception to the general rule that arteries carry oxygenated blood."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/transportation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-014",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I को सूची-II से सुमेलित कीजिए। सूची-I: (a) जाइलम (b) फ्लोएम (c) प्लेटलेट्स (d) लसीका। सूची-II: 1. रुधिर का थक्का बनाना 2. भोजन का स्थानांतरण 3. आँत से पची हुई वसा का वहन 4. जल और खनिज लवणों का परिवहन। सही कूट चुनिए।",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-2, c-1, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-2, b-4, c-1, d-3"
+          },
+          {
+            "key": "C",
+            "text": "a-4, b-2, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-3, b-1, c-2, d-4"
+          }
+        ],
+        "solution": "जाइलम जल और खनिज लवणों का परिवहन करता है (a-4); फ्लोएम भोजन का स्थानांतरण करता है (b-2); प्लेटलेट्स थक्का बनाते हैं (c-1); लसीका आँत से पची वसा का वहन करती है (d-3)।"
+      },
+      "en": {
+        "stem": "Match List-I with List-II. List-I: (a) Xylem (b) Phloem (c) Platelets (d) Lymph. List-II: 1. Clotting of blood 2. Translocation of food 3. Carrying digested fat from the intestine 4. Transport of water and minerals. Choose the correct code.",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-2, c-1, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-2, b-4, c-1, d-3"
+          },
+          {
+            "key": "C",
+            "text": "a-4, b-2, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-3, b-1, c-2, d-4"
+          }
+        ],
+        "solution": "Xylem transports water and minerals (a-4); phloem translocates food (b-2); platelets form clots (c-1); lymph carries digested fat from the intestine (d-3)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/transportation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-015",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "पौधों में परिवहन के संबंध में निम्नलिखित कथनों पर विचार कीजिए: 1. जाइलम में परिवहन केवल ऊपर की ओर होता है, जबकि फ्लोएम में ऊपर और नीचे दोनों दिशाओं में होता है। 2. जाइलम की वाहिकाएँ और वाहिनिकाएँ जीवित कोशिकाएँ हैं। 3. फ्लोएम द्वारा स्थानांतरण में ATP की ऊर्जा का उपयोग होता है। 4. रात में जल को ऊपर चढ़ाने में मूल दाब अधिक महत्वपूर्ण होता है। उपर्युक्त में से कौन-से कथन सही हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1, 3 और 4"
+          },
+          {
+            "key": "C",
+            "text": "केवल 2, 3 और 4"
+          },
+          {
+            "key": "D",
+            "text": "केवल 3 और 4"
+          }
+        ],
+        "solution": "जाइलम की वाहिकाएँ और वाहिनिकाएँ मृत कोशिकाएँ हैं, इसलिए कथन 2 गलत है। कथन 1, 3 और 4 सही हैं; दिन में वाष्पोत्सर्जन खिंचाव और रात में मूल दाब मुख्य बल होता है।"
+      },
+      "en": {
+        "stem": "Consider the following statements about transport in plants: 1. Transport in xylem is only upward, while in phloem it is both upward and downward. 2. The vessels and tracheids of xylem are living cells. 3. Translocation through phloem uses energy from ATP. 4. Root pressure is more important for raising water at night. Which of the statements given above are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "1, 3 and 4 only"
+          },
+          {
+            "key": "C",
+            "text": "2, 3 and 4 only"
+          },
+          {
+            "key": "D",
+            "text": "3 and 4 only"
+          }
+        ],
+        "solution": "Xylem vessels and tracheids are dead cells, so statement 2 is wrong. Statements 1, 3 and 4 are correct; transpiration pull is the main force by day and root pressure at night."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/transportation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-016",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "दोहरे परिसंचरण में एक पूर्ण चक्र के दौरान रुधिर हृदय से कितनी बार गुजरता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "एक बार"
+          },
+          {
+            "key": "B",
+            "text": "दो बार"
+          },
+          {
+            "key": "C",
+            "text": "तीन बार"
+          },
+          {
+            "key": "D",
+            "text": "चार बार"
+          }
+        ],
+        "solution": "दोहरे परिसंचरण में रुधिर एक बार फुफ्फुसीय परिसंचरण में और एक बार दैहिक परिसंचरण में, अर्थात कुल दो बार हृदय से गुजरता है।"
+      },
+      "en": {
+        "stem": "In double circulation, how many times does blood pass through the heart in one complete cycle?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Once"
+          },
+          {
+            "key": "B",
+            "text": "Twice"
+          },
+          {
+            "key": "C",
+            "text": "Three times"
+          },
+          {
+            "key": "D",
+            "text": "Four times"
+          }
+        ],
+        "solution": "In double circulation blood passes through the heart once in the pulmonary circuit and once in the systemic circuit, that is, twice in all."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/transportation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-017",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "मानव हृदय के किस कक्ष की पेशीय भित्ति सबसे मोटी होती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "दायाँ अलिंद"
+          },
+          {
+            "key": "B",
+            "text": "बायाँ अलिंद"
+          },
+          {
+            "key": "C",
+            "text": "दायाँ निलय"
+          },
+          {
+            "key": "D",
+            "text": "बायाँ निलय"
+          }
+        ],
+        "solution": "बायाँ निलय ऑक्सीजनित रुधिर को महाधमनी द्वारा पूरे शरीर में पंप करता है, इसलिए इसकी पेशीय भित्ति सबसे मोटी होती है।"
+      },
+      "en": {
+        "stem": "Which chamber of the human heart has the thickest muscular wall?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Right atrium"
+          },
+          {
+            "key": "B",
+            "text": "Left atrium"
+          },
+          {
+            "key": "C",
+            "text": "Right ventricle"
+          },
+          {
+            "key": "D",
+            "text": "Left ventricle"
+          }
+        ],
+        "solution": "The left ventricle pumps oxygenated blood through the aorta to the whole body, so its muscular wall is the thickest."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/transportation"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "वृक्क की संरचनात्मक और क्रियात्मक इकाई क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "न्यूरॉन"
+          },
+          {
+            "key": "B",
+            "text": "नेफ्रॉन"
+          },
+          {
+            "key": "C",
+            "text": "कूपिका"
+          },
+          {
+            "key": "D",
+            "text": "दीर्घरोम"
+          }
+        ],
+        "solution": "नेफ्रॉन वृक्क की संरचनात्मक और क्रियात्मक इकाई है; प्रत्येक वृक्क में लगभग दस लाख नेफ्रॉन होते हैं।"
+      },
+      "en": {
+        "stem": "What is the structural and functional unit of the kidney?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Neuron"
+          },
+          {
+            "key": "B",
+            "text": "Nephron"
+          },
+          {
+            "key": "C",
+            "text": "Alveolus"
+          },
+          {
+            "key": "D",
+            "text": "Villus"
+          }
+        ],
+        "solution": "The nephron is the structural and functional unit of the kidney; each kidney has about one million nephrons."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/excretion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-019",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "मनुष्य का मुख्य नाइट्रोजनी अपशिष्ट यूरिया किस अंग में बनता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "वृक्क"
+          },
+          {
+            "key": "B",
+            "text": "मूत्राशय"
+          },
+          {
+            "key": "C",
+            "text": "फुफ्फुस"
+          },
+          {
+            "key": "D",
+            "text": "यकृत"
+          }
+        ],
+        "solution": "यूरिया यकृत में बनता है। वृक्क इसे रुधिर से छानकर मूत्र के रूप में बाहर निकालते हैं।"
+      },
+      "en": {
+        "stem": "In which organ is urea, the main nitrogenous waste of humans, formed?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Kidney"
+          },
+          {
+            "key": "B",
+            "text": "Urinary bladder"
+          },
+          {
+            "key": "C",
+            "text": "Lung"
+          },
+          {
+            "key": "D",
+            "text": "Liver"
+          }
+        ],
+        "solution": "Urea is formed in the liver. The kidneys filter it out of the blood and remove it in urine."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/excretion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "नेफ्रॉन में केशिकागुच्छ (Glomerulus) किस संरचना के भीतर स्थित होता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "हेनले का लूप"
+          },
+          {
+            "key": "B",
+            "text": "संग्राहक वाहिनी"
+          },
+          {
+            "key": "C",
+            "text": "बोमन संपुट"
+          },
+          {
+            "key": "D",
+            "text": "दूरस्थ कुंडलित नलिका"
+          }
+        ],
+        "solution": "केशिकागुच्छ केशिकाओं का गुच्छा है जो प्याले जैसे बोमन संपुट के भीतर रहता है; यहीं रुधिर का निस्यंदन होता है।"
+      },
+      "en": {
+        "stem": "Inside which structure of the nephron does the glomerulus lie?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Loop of Henle"
+          },
+          {
+            "key": "B",
+            "text": "Collecting duct"
+          },
+          {
+            "key": "C",
+            "text": "Bowman's capsule"
+          },
+          {
+            "key": "D",
+            "text": "Distal convoluted tubule"
+          }
+        ],
+        "solution": "The glomerulus is a cluster of capillaries lying inside the cup-shaped Bowman's capsule; blood is filtered here."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/excretion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-021",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): नेफ्रॉन वृक्क की संरचनात्मक और क्रियात्मक इकाई है। कारण (R): नेफ्रॉन में ग्लूकोस का पुनरवशोषण मुख्यतः संग्राहक वाहिनी में होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A सत्य है। ग्लूकोस का पुनरवशोषण नेफ्रॉन की नलिका के प्रारंभिक भाग (समीपस्थ कुंडलित नलिका) में होता है, संग्राहक वाहिनी में नहीं; इसलिए R असत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): The nephron is the structural and functional unit of the kidney. Reason (R): In the nephron, glucose is reabsorbed mainly in the collecting duct.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is true. Glucose is reabsorbed in the first part of the nephron tubule (the proximal convoluted tubule), not in the collecting duct; so R is false."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/excretion"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-life-022",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "वृक्कों में प्रतिदिन लगभग 180 लीटर प्रारंभिक निस्यंद बनता है, फिर भी केवल एक-दो लीटर मूत्र उत्सर्जित होता है। इसका मुख्य कारण क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "नलिका स्रावण"
+          },
+          {
+            "key": "B",
+            "text": "केशिकागुच्छ में निस्यंदन का रुक जाना"
+          },
+          {
+            "key": "C",
+            "text": "वृक्क नलिका में अधिकांश जल का पुनरवशोषण"
+          },
+          {
+            "key": "D",
+            "text": "मूत्राशय में जल का वाष्पन"
+          }
+        ],
+        "solution": "निस्यंद जब नेफ्रॉन की नलिका से गुजरता है, तब उसका अधिकांश जल (ग्लूकोस, अमीनो अम्ल और लवणों के साथ) वापस रुधिर में पुनरवशोषित हो जाता है।"
+      },
+      "en": {
+        "stem": "The kidneys form about 180 litres of initial filtrate every day, yet only one or two litres of urine are excreted. What is the main reason?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Tubular secretion"
+          },
+          {
+            "key": "B",
+            "text": "Filtration stopping in the glomerulus"
+          },
+          {
+            "key": "C",
+            "text": "Reabsorption of most of the water in the kidney tubule"
+          },
+          {
+            "key": "D",
+            "text": "Evaporation of water in the urinary bladder"
+          }
+        ],
+        "solution": "As the filtrate passes through the nephron tubule, most of its water (along with glucose, amino acids and salts) is reabsorbed into the blood."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/life_processes/excretion"],
+    "licence": "own"
+  }
+]

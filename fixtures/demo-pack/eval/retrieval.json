@@ -1,0 +1,630 @@
+[
+  {
+    "id": "motion-force-01",
+    "query": "दूरी और विस्थापन में अंतर",
+    "lang": "hi",
+    "node": "science/physics/motion/distance_and_displacement",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "दूरी चले गए पथ पर निर्भर करती है, जबकि विस्थापन केवल प्रारंभिक और अंतिम स्थितियों पर निर्भर करता है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-02",
+    "query": "average speed numerical car jaane aur lautne ka",
+    "lang": "hinglish",
+    "node": "science/physics/motion/speed_and_velocity",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "कुल दूरी = 120 km, कुल समय = 3 h, अतः औसत चाल = 120 ÷ 3 = 40 km/h"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-03",
+    "query": "what does the slope of a velocity-time graph represent",
+    "lang": "en",
+    "node": "science/physics/motion/acceleration",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "वेग-समय ग्राफ का ढाल त्वरण बताता है और वेग-समय ग्राफ के नीचे का क्षेत्रफल विस्थापन के बराबर होता है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-04",
+    "query": "derivation of second equation of motion by graphical method",
+    "lang": "en",
+    "node": "science/physics/motion/equations_of_motion",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "यह क्षेत्रफल एक आयत (u × t) और एक त्रिभुज ((1/2) × t × (v − u)) का योग है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-05",
+    "query": "stopping distance speed double karne par kitni ho jati hai",
+    "lang": "hinglish",
+    "node": "science/physics/motion/equations_of_motion",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "वेग दोगुना करने पर समान मंदन के लिए रुकने की दूरी चार गुनी हो जाती है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-06",
+    "query": "एकसमान वृत्तीय गति त्वरित गति क्यों है",
+    "lang": "hi",
+    "node": "science/physics/motion/uniform_circular_motion",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "वेग में दिशा भी सम्मिलित होती है, इसलिए वेग लगातार बदलता है और यह गति त्वरित गति (Accelerated motion) है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-07",
+    "query": "संतुलित बल के दैनिक जीवन के उदाहरण",
+    "lang": "hi",
+    "node": "science/physics/force_and_laws_of_motion/balanced_unbalanced_forces",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "रस्साकशी में दोनों दल बराबर बल से खींचें, तो बल संतुलित रहते हैं और रस्सी नहीं खिसकती"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-08",
+    "query": "जड़त्व के प्रकार उदाहरण सहित",
+    "lang": "hi",
+    "node": "science/physics/force_and_laws_of_motion/first_law_inertia",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "विराम का जड़त्व (Inertia of rest): बस के अचानक चलने पर यात्री पीछे की ओर झुक जाते हैं"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-09",
+    "query": "why does a fielder pull his hands back while catching a ball",
+    "lang": "en",
+    "node": "science/physics/force_and_laws_of_motion/second_law_momentum",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "क्रिकेट में कैच लेते समय क्षेत्ररक्षक हाथ पीछे खींचता है; गेंद को रोकने का समय बढ़ता है और हाथों पर बल कम लगता है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-10",
+    "query": "newton ka teesra niyam rocket example",
+    "lang": "hinglish",
+    "node": "science/physics/force_and_laws_of_motion/third_law",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "रॉकेट गर्म गैसों को तेज़ी से पीछे की ओर निकालता है और गैसें रॉकेट को आगे की ओर धकेलती हैं"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-11",
+    "query": "bandook ka pratikshep veg numerical",
+    "lang": "hinglish",
+    "node": "science/physics/force_and_laws_of_motion/conservation_of_momentum",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "ऋण चिह्न बताता है कि बंदूक गोली के विपरीत दिशा में 2 m/s से पीछे हटती है"
+      }
+    ]
+  },
+  {
+    "id": "motion-force-12",
+    "query": "क्रिया और प्रतिक्रिया बल एक-दूसरे को निरस्त क्यों नहीं करते",
+    "lang": "hi",
+    "node": "science/physics/force_and_laws_of_motion/third_law",
+    "expect": [
+      {
+        "file": "physics-motion-force-hi.pdf",
+        "phrase": "ये दो भिन्न वस्तुओं पर कार्य करते हैं, इसलिए एक-दूसरे को कभी निरस्त नहीं करते"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-01",
+    "query": "1 kilowatt hour kitne joule hota hai",
+    "lang": "hinglish",
+    "node": "science/physics/work_and_energy/power",
+    "expect": [
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "1 kWh = 1000 W × 3600 s = 3600000 J = 3.6 × 10^6 J"
+      },
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "1 kWh वह ऊर्जा है जो 1 kW की दर से एक घंटे में व्यय होती है"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-02",
+    "query": "statement of the work-energy theorem",
+    "lang": "en",
+    "node": "science/physics/work_and_energy/kinetic_energy",
+    "expect": [
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "the work done by the net force on an object equals the change in its kinetic energy"
+      },
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "किसी वस्तु पर नेट बल द्वारा किया गया कार्य उसकी गतिज ऊर्जा में परिवर्तन के बराबर होता है"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-03",
+    "query": "क्या गुरुत्वीय स्थितिज ऊर्जा अपनाए गए पथ पर निर्भर करती है",
+    "lang": "hi",
+    "node": "science/physics/work_and_energy/potential_energy",
+    "expect": [
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "गुरुत्वीय स्थितिज ऊर्जा केवल प्राप्त ऊर्ध्वाधर ऊँचाई पर निर्भर करती है, अपनाए गए पथ पर नहीं"
+      },
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "Gravitational potential energy depends only on the vertical height gained, not on the path followed"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-04",
+    "query": "free fall me KE aur PE ka total constant kyu rehta hai",
+    "lang": "hinglish",
+    "node": "science/physics/work_and_energy/conservation_of_energy",
+    "expect": [
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "the sum KE + PE, the total mechanical energy, stays constant at every point"
+      },
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "योग KE + PE, अर्थात् कुल यांत्रिक ऊर्जा, हर बिंदु पर नियत रहता है"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-05",
+    "query": "शून्य कार्य कब होता है उदाहरण सहित",
+    "lang": "hi",
+    "node": "science/physics/work_and_energy/work",
+    "expect": [
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "बल विस्थापन के लंबवत् होता है, जैसे कुली सिर पर बोझ लेकर समतल सड़क पर चले"
+      },
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "force is perpendicular to the displacement, as when a porter carries a load on his head along a level road"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-06",
+    "query": "1 अश्वशक्ति कितने वाट के बराबर होती है",
+    "lang": "hi",
+    "node": "science/physics/work_and_energy/power",
+    "expect": [
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "एक पुराना व्यावहारिक मात्रक अश्वशक्ति है: 1 hp = 746 W"
+      },
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "An older practical unit is the horsepower: 1 hp = 746 W"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-07",
+    "query": "speed double karne par gatij urja kitni ho jati hai",
+    "lang": "hinglish",
+    "node": "science/physics/work_and_energy/kinetic_energy",
+    "expect": [
+      {
+        "file": "physics-work-energy-hi.pdf",
+        "phrase": "चाल दोगुनी करने पर गतिज ऊर्जा चार गुनी हो जाती है"
+      },
+      {
+        "file": "physics-work-energy-en.pdf",
+        "phrase": "If the speed is doubled, kinetic energy becomes four times"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-08",
+    "query": "उत्तल लेंस द्वारा प्रतिबिंब निर्माण",
+    "lang": "hi",
+    "node": "science/physics/light_reflection_refraction/lenses",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "उत्तल लेंस द्वारा वस्तु की विभिन्न स्थितियों में प्रतिबिंब निर्माण इस प्रकार होता है"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-09",
+    "query": "sign convention for spherical mirrors",
+    "lang": "en",
+    "node": "science/physics/light_reflection_refraction/spherical_mirrors",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "नई कार्तीय चिह्न परिपाटी: ध्रुव को मूल बिंदु और मुख्य अक्ष को x-अक्ष माना जाता है"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-10",
+    "query": "refractive index of diamond",
+    "lang": "en",
+    "node": "science/physics/light_reflection_refraction/refractive_index",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "कुछ अपवर्तनांक: वायु 1.0003, जल 1.33, मिट्टी का तेल 1.44, क्राउन काँच 1.52, हीरा 2.42"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-11",
+    "query": "snell ka niyam kya hai",
+    "lang": "hinglish",
+    "node": "science/physics/light_reflection_refraction/refraction_laws",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "आपतन कोण की ज्या और अपवर्तन कोण की ज्या का अनुपात नियत रहता है, अर्थात् sin i / sin r = नियतांक"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-12",
+    "query": "परावर्तन के नियम लिखिए",
+    "lang": "hi",
+    "node": "science/physics/light_reflection_refraction/reflection_laws",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "आपतन कोण सदैव परावर्तन कोण के बराबर होता है, अर्थात् i = r"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-13",
+    "query": "SI unit of power of a lens and definition of one dioptre",
+    "lang": "en",
+    "node": "science/physics/light_reflection_refraction/lenses",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "क्षमता का SI मात्रक डायॉप्टर (D) है; 1 D उस लेंस की क्षमता है जिसकी फोकस दूरी 1 m हो"
+      }
+    ]
+  },
+  {
+    "id": "work-energy-light-14",
+    "query": "rear view mirror me convex mirror kyu lagate hai",
+    "lang": "hinglish",
+    "node": "science/physics/light_reflection_refraction/spherical_mirrors",
+    "expect": [
+      {
+        "file": "physics-light-krutidev.pdf",
+        "phrase": "उत्तल दर्पण वाहनों में पश्च-दृश्य दर्पण के रूप में लगाया जाता है, क्योंकि यह सदैव सीधा प्रतिबिंब बनाता है"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-01",
+    "query": "parallel me resistance kaise jodte hain",
+    "lang": "hinglish",
+    "node": "science/physics/electricity/resistors_series_parallel",
+    "expect": [
+      {
+        "file": "physics-electricity-en.docx",
+        "phrase": "In parallel, resistors are connected between the same two points."
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-02",
+    "query": "what is the commercial unit of electrical energy",
+    "lang": "en",
+    "node": "science/physics/electricity/heating_effect_power",
+    "expect": [
+      {
+        "file": "physics-electricity-en.docx",
+        "phrase": "The commercial unit of electrical energy is the kilowatt hour (kWh), called one unit"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-03",
+    "query": "1 ऐम्पियर धारा की परिभाषा क्या है",
+    "lang": "hi",
+    "node": "science/physics/electricity/electric_current_and_charge",
+    "expect": [
+      {
+        "file": "physics-electricity-en.docx",
+        "phrase": "One ampere is one coulomb of charge flowing per second"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-04",
+    "query": "voltmeter circuit me kaise lagate hain",
+    "lang": "hinglish",
+    "node": "science/physics/electricity/potential_difference",
+    "expect": [
+      {
+        "file": "physics-electricity-en.docx",
+        "phrase": "which has very high resistance and is always connected in parallel across the two points"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-05",
+    "query": "हीटर और इस्त्री के तापन अवयव में नाइक्रोम का उपयोग क्यों होता है",
+    "lang": "hi",
+    "node": "science/physics/electricity/ohms_law_resistance",
+    "expect": [
+      {
+        "file": "physics-electricity-en.docx",
+        "phrase": "Nichrome, an alloy, has higher resistivity than its constituent metals and does not oxidise (burn)"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-06",
+    "query": "बेकिंग सोडा बनाने की विधि",
+    "lang": "hi",
+    "node": "science/chemistry/acids_bases_salts/important_salts",
+    "expect": [
+      {
+        "file": "chemistry-acids-bases-salts-scan.pdf",
+        "phrase": "बनाने की विधि: NaCl + H₂O + CO₂ + NH₃ → NH₄Cl + NaHCO₃"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-07",
+    "query": "what colour does phenolphthalein give in a basic solution",
+    "lang": "en",
+    "node": "science/chemistry/acids_bases_salts/indicators",
+    "expect": [
+      {
+        "file": "chemistry-acids-bases-salts-scan.pdf",
+        "phrase": "उदासीन विलयन में रंगहीन रहता है और क्षारकीय विलयन में गुलाबी हो जाता है"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-08",
+    "query": "muh ka pH kitna kam hone par daant kharab hone lagte hain",
+    "lang": "hinglish",
+    "node": "science/chemistry/acids_bases_salts/ph_scale",
+    "expect": [
+      {
+        "file": "chemistry-acids-bases-salts-scan.pdf",
+        "phrase": "pH 5.5 से कम होने पर दाँतों का इनेमल (कैल्सियम हाइड्रॉक्सीएपेटाइट) संक्षारित होने लगता है"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-09",
+    "query": "why should acid be added to water and not water to acid while diluting",
+    "lang": "en",
+    "node": "science/chemistry/acids_bases_salts/reactions_of_acids_bases",
+    "expect": [
+      {
+        "file": "chemistry-acids-bases-salts-scan.pdf",
+        "phrase": "जल को अम्ल में कभी नहीं, क्योंकि यह प्रक्रम अत्यधिक ऊष्माक्षेपी है"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-10",
+    "query": "plaster of paris kaise banta hai aur ise kahan rakhte hain",
+    "lang": "hinglish",
+    "node": "science/chemistry/acids_bases_salts/important_salts",
+    "expect": [
+      {
+        "file": "chemistry-acids-bases-salts-scan.pdf",
+        "phrase": "जिप्सम (CaSO₄.2H₂O) को 373 K पर गर्म करने से बनता है"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-11",
+    "query": "why does ethanol not conduct electricity",
+    "lang": "en",
+    "node": "science/chemistry/carbon_compounds/covalent_bonding",
+    "expect": [
+      {
+        "file": "chemistry-carbon-compounds-bilingual.pdf",
+        "phrase": "are poor conductors of electricity, because no ions are formed in them."
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-12",
+    "query": "समजातीय श्रेणी के क्रमागत सदस्यों में कितना अंतर होता है",
+    "lang": "hi",
+    "node": "science/chemistry/carbon_compounds/hydrocarbons_homologous_series",
+    "expect": [
+      {
+        "file": "chemistry-carbon-compounds-bilingual.pdf",
+        "phrase": "क्रमागत सदस्यों के आणविक द्रव्यमान में 14 u का अंतर होता है"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-13",
+    "query": "esterification reaction kya hota hai ethanoic acid aur ethanol ka",
+    "lang": "hinglish",
+    "node": "science/chemistry/carbon_compounds/ethanol_ethanoic_acid",
+    "expect": [
+      {
+        "file": "chemistry-carbon-compounds-bilingual.pdf",
+        "phrase": "With ethanol, in the presence of an acid catalyst, it forms a sweet-smelling ester (esterification)"
+      }
+    ]
+  },
+  {
+    "id": "electricity-chemistry-14",
+    "query": "ग्रेफाइट विद्युत का सुचालक क्यों है",
+    "lang": "hi",
+    "node": "science/chemistry/carbon_compounds/allotropes_catenation",
+    "expect": [
+      {
+        "file": "chemistry-carbon-compounds-bilingual.pdf",
+        "phrase": "जुड़कर षट्कोणीय परतें बनाता है; यह चिकना है और विद्युत का सुचालक है"
+      }
+    ]
+  },
+  {
+    "id": "biology-01",
+    "query": "माइटोकॉन्ड्रिया को कोशिका का बिजलीघर क्यों कहते हैं",
+    "lang": "hi",
+    "node": "science/biology/cell/cell_organelles",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "वायवीय श्वसन से ATP के रूप में ऊर्जा बनती है, इसलिए इसे कोशिका का बिजलीघर (Powerhouse) कहते हैं।"
+      }
+    ]
+  },
+  {
+    "id": "biology-02",
+    "query": "difference between mitosis and meiosis",
+    "lang": "en",
+    "node": "science/biology/cell/cell_division",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "समसूत्री: दो संतति कोशिकाएँ, गुणसूत्र संख्या समान, जीन विनिमय नहीं; वृद्धि और मरम्मत के लिए।"
+      }
+    ]
+  },
+  {
+    "id": "biology-03",
+    "query": "plasmolysis kya hota hai paudh koshika mein",
+    "lang": "hinglish",
+    "node": "science/biology/cell/plasma_membrane_cell_wall",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "अतिपरासरी विलयन में पादप कोशिका का जीवद्रव्य सिकुड़कर कोशिका भित्ति से अलग हो जाता है।"
+      }
+    ]
+  },
+  {
+    "id": "biology-04",
+    "query": "features of a prokaryotic cell",
+    "lang": "en",
+    "node": "science/biology/cell/cell_theory_types",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "असीमकेन्द्रकी (Prokaryotic) कोशिका में केंद्रक झिल्ली नहीं होती। इसका आनुवंशिक पदार्थ (DNA)"
+      }
+    ]
+  },
+  {
+    "id": "biology-05",
+    "query": "कोशिका सिद्धांत किसने प्रस्तुत किया",
+    "lang": "hi",
+    "node": "science/biology/cell/cell_theory_types",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "कोशिका सिद्धांत (Cell Theory) वनस्पतिशास्त्री श्लाइडेन (1838) और प्राणिशास्त्री श्वान (1839) ने प्रस्तुत किया।"
+      }
+    ]
+  },
+  {
+    "id": "biology-06",
+    "query": "nephron ki sanrachna",
+    "lang": "hinglish",
+    "node": "science/biology/life_processes/excretion",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "नेफ्रॉन के भाग हैं: 1. बोमन संपुट (Bowman's Capsule), एक प्याले जैसी रचना।"
+      }
+    ]
+  },
+  {
+    "id": "biology-07",
+    "query": "प्रकाश संश्लेषण का रासायनिक समीकरण",
+    "lang": "hi",
+    "node": "science/biology/life_processes/nutrition",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "समग्र समीकरण: 6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (सूर्य का प्रकाश और क्लोरोफिल आवश्यक)।"
+      }
+    ]
+  },
+  {
+    "id": "biology-08",
+    "query": "why do birds and mammals need double circulation",
+    "lang": "en",
+    "node": "science/biology/life_processes/transportation",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "यह पक्षियों और स्तनधारियों के लिए आवश्यक है, क्योंकि शरीर का ताप स्थिर रखने में उन्हें लगातार अधिक ऊर्जा चाहिए।"
+      }
+    ]
+  },
+  {
+    "id": "biology-09",
+    "query": "yeast mein anaerobic respiration se kya banta hai",
+    "lang": "hinglish",
+    "node": "science/biology/life_processes/respiration",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "यीस्ट में पायरुवेट से एथेनॉल और CO₂ बनते हैं, जिसे किण्वन (Fermentation) कहते हैं।"
+      }
+    ]
+  },
+  {
+    "id": "biology-10",
+    "query": "फ्लोएम में भोजन का परिवहन किस दिशा में होता है",
+    "lang": "hi",
+    "node": "science/biology/life_processes/transportation",
+    "expect": [
+      {
+        "file": "biology-cell-life-processes-hi.pdf",
+        "phrase": "फ्लोएम में परिवहन ऊपर और नीचे दोनों दिशाओं में होता है।"
+      }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "code": "rpsc_2g_p2_science",
+    "family": "rpsc_2nd_grade",
+    "paperCode": "paper_2_science",
+    "nameEn": "RPSC Senior Teacher (2nd Grade), Paper II: Science",
+    "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), द्वितीय प्रश्न-पत्र: विज्ञान",
+    "authoritativeLanguage": "hi",
+    "syllabus": [
+      {
+        "node": "science/physics",
+        "weightage": 0.4
+      },
+      {
+        "node": "science/chemistry",
+        "weightage": 0.3
+      },
+      {
+        "node": "science/biology",
+        "weightage": 0.3
+      }
+    ]
+  }
+]

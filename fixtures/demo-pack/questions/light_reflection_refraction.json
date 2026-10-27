@@ -1,0 +1,1256 @@
+[
+  {
+    "ref": "demo-light-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "परावर्तन के नियम के अनुसार आपतन कोण (i) और परावर्तन कोण (r) में क्या संबंध है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "i > r"
+          },
+          {
+            "key": "B",
+            "text": "i < r"
+          },
+          {
+            "key": "C",
+            "text": "i = r"
+          },
+          {
+            "key": "D",
+            "text": "i + r = 90°"
+          }
+        ],
+        "solution": "परावर्तन के पहले नियम के अनुसार आपतन कोण सदैव परावर्तन कोण के बराबर होता है।"
+      },
+      "en": {
+        "stem": "According to the laws of reflection, what is the relation between the angle of incidence (i) and the angle of reflection (r)?",
+        "options": [
+          {
+            "key": "A",
+            "text": "i > r"
+          },
+          {
+            "key": "B",
+            "text": "i < r"
+          },
+          {
+            "key": "C",
+            "text": "i = r"
+          },
+          {
+            "key": "D",
+            "text": "i + r = 90°"
+          }
+        ],
+        "solution": "By the first law of reflection, the angle of incidence is always equal to the angle of reflection."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/reflection_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक प्रकाश किरण समतल दर्पण के पृष्ठ से 30° का कोण बनाते हुए उस पर पड़ती है। परावर्तन कोण कितना होगा?",
+        "options": [
+          {
+            "key": "A",
+            "text": "30°"
+          },
+          {
+            "key": "B",
+            "text": "60°"
+          },
+          {
+            "key": "C",
+            "text": "120°"
+          },
+          {
+            "key": "D",
+            "text": "90°"
+          }
+        ],
+        "solution": "कोण अभिलंब से मापे जाते हैं: i = 90° − 30° = 60°, और r = i = 60°।"
+      },
+      "en": {
+        "stem": "A ray of light strikes a plane mirror making an angle of 30° with the mirror surface. What is the angle of reflection?",
+        "options": [
+          {
+            "key": "A",
+            "text": "30°"
+          },
+          {
+            "key": "B",
+            "text": "60°"
+          },
+          {
+            "key": "C",
+            "text": "120°"
+          },
+          {
+            "key": "D",
+            "text": "90°"
+          }
+        ],
+        "solution": "Angles are measured from the normal: i = 90° − 30° = 60°, and r = i = 60°."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/reflection_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-003",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "समतल दर्पण द्वारा बने प्रतिबिंब के बारे में कौन-सा कथन सही है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "आभासी, सीधा, वस्तु के समान आकार का और पार्श्व उलटा"
+          },
+          {
+            "key": "B",
+            "text": "वास्तविक, उलटा और वस्तु के समान आकार का"
+          },
+          {
+            "key": "C",
+            "text": "आभासी, सीधा और वस्तु से छोटा"
+          },
+          {
+            "key": "D",
+            "text": "वास्तविक, सीधा और वस्तु से बड़ा"
+          }
+        ],
+        "solution": "समतल दर्पण का प्रतिबिंब आभासी, सीधा, वस्तु के समान आकार का और पार्श्व उलटा होता है, तथा दर्पण के पीछे उतनी ही दूरी पर बनता है जितनी दूरी पर वस्तु दर्पण के आगे है।"
+      },
+      "en": {
+        "stem": "Which statement about the image formed by a plane mirror is correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Virtual, erect, the same size as the object and laterally inverted"
+          },
+          {
+            "key": "B",
+            "text": "Real, inverted and the same size as the object"
+          },
+          {
+            "key": "C",
+            "text": "Virtual, erect and smaller than the object"
+          },
+          {
+            "key": "D",
+            "text": "Real, erect and larger than the object"
+          }
+        ],
+        "solution": "A plane mirror forms a virtual, erect, laterally inverted image of the same size as the object, as far behind the mirror as the object is in front of it."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/reflection_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-004",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. परावर्तन के नियम समतल और गोलीय, दोनों प्रकार के दर्पणों पर लागू होते हैं। 2. विसरित परावर्तन में परावर्तन के नियमों का पालन नहीं होता। 3. अभिलंब के अनुदिश पड़ने वाली किरण उसी पथ पर लौट आती है। 4. अपना पूरा प्रतिबिंब देखने के लिए समतल दर्पण की लंबाई कम से कम व्यक्ति की ऊँचाई की आधी होनी चाहिए। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 4"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1, 2 और 3"
+          },
+          {
+            "key": "D",
+            "text": "केवल 1, 3 और 4"
+          }
+        ],
+        "solution": "कथन 2 गलत है: विसरित परावर्तन में भी प्रत्येक किरण परावर्तन के नियमों का पालन करती है; खुरदरे पृष्ठ के अलग-अलग बिंदुओं पर अभिलंब अलग-अलग दिशाओं में होने से किरणें बिखर जाती हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. The laws of reflection apply to both plane and spherical mirrors. 2. The laws of reflection are not obeyed in diffuse reflection. 3. A ray falling along the normal returns along the same path. 4. To see one's full image, a plane mirror must be at least half as long as the person's height. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Only 1 and 3"
+          },
+          {
+            "key": "B",
+            "text": "Only 2 and 4"
+          },
+          {
+            "key": "C",
+            "text": "Only 1, 2 and 3"
+          },
+          {
+            "key": "D",
+            "text": "Only 1, 3 and 4"
+          }
+        ],
+        "solution": "Statement 2 is wrong: in diffuse reflection every ray still obeys the laws of reflection; the rays scatter because the normals at different points of a rough surface point in different directions."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/reflection_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-005",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी गोलीय दर्पण की वक्रता त्रिज्या 30 cm है। उसकी फोकस दूरी कितनी है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "60 cm"
+          },
+          {
+            "key": "B",
+            "text": "30 cm"
+          },
+          {
+            "key": "C",
+            "text": "15 cm"
+          },
+          {
+            "key": "D",
+            "text": "7.5 cm"
+          }
+        ],
+        "solution": "छोटे द्वारक वाले गोलीय दर्पण के लिए R = 2f, अतः f = R/2 = 30/2 = 15 cm।"
+      },
+      "en": {
+        "stem": "The radius of curvature of a spherical mirror is 30 cm. What is its focal length?",
+        "options": [
+          {
+            "key": "A",
+            "text": "60 cm"
+          },
+          {
+            "key": "B",
+            "text": "30 cm"
+          },
+          {
+            "key": "C",
+            "text": "15 cm"
+          },
+          {
+            "key": "D",
+            "text": "7.5 cm"
+          }
+        ],
+        "solution": "For a spherical mirror of small aperture R = 2f, so f = R/2 = 30/2 = 15 cm."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/spherical_mirrors"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "नई कार्तीय चिह्न परिपाटी के अनुसार निम्नलिखित में से कौन-सा कथन सही है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "अवतल दर्पण की फोकस दूरी ऋणात्मक और उत्तल दर्पण की फोकस दूरी धनात्मक होती है"
+          },
+          {
+            "key": "B",
+            "text": "वस्तु दूरी u सदैव धनात्मक होती है"
+          },
+          {
+            "key": "C",
+            "text": "मुख्य अक्ष से नीचे की ऊँचाई धनात्मक मानी जाती है"
+          },
+          {
+            "key": "D",
+            "text": "आपतित प्रकाश की दिशा में मापी गई दूरियाँ ऋणात्मक होती हैं"
+          }
+        ],
+        "solution": "ध्रुव मूल बिंदु है और वस्तु बाईं ओर रखी जाती है; आपतित प्रकाश की दिशा में मापी गई दूरियाँ धनात्मक होती हैं। अवतल दर्पण का फोकस दर्पण के सामने होता है, अतः f ऋणात्मक है; उत्तल दर्पण का फोकस दर्पण के पीछे होता है, अतः f धनात्मक है।"
+      },
+      "en": {
+        "stem": "According to the New Cartesian sign convention, which of the following statements is correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "The focal length of a concave mirror is negative and that of a convex mirror is positive"
+          },
+          {
+            "key": "B",
+            "text": "The object distance u is always positive"
+          },
+          {
+            "key": "C",
+            "text": "Heights below the principal axis are taken as positive"
+          },
+          {
+            "key": "D",
+            "text": "Distances measured in the direction of the incident light are negative"
+          }
+        ],
+        "solution": "The pole is the origin and the object is placed on the left; distances measured in the direction of the incident light are positive. The focus of a concave mirror lies in front of the mirror, so f is negative; that of a convex mirror lies behind it, so f is positive."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/spherical_mirrors"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-007",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "अवतल दर्पण के लिए सूची-I (वस्तु की स्थिति) को सूची-II (प्रतिबिंब की स्थिति) से सुमेलित कीजिए। सूची-I: (a) अनंत पर, (b) C पर, (c) C और F के बीच, (d) P और F के बीच। सूची-II: 1. C से परे, 2. दर्पण के पीछे, 3. F पर, 4. C पर।",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-3, c-1, d-2"
+          },
+          {
+            "key": "B",
+            "text": "a-3, b-4, c-1, d-2"
+          },
+          {
+            "key": "C",
+            "text": "a-3, b-4, c-2, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-1, b-4, c-3, d-2"
+          }
+        ],
+        "solution": "अनंत पर रखी वस्तु का प्रतिबिंब F पर, C पर रखी वस्तु का C पर, C और F के बीच रखी वस्तु का C से परे, और P तथा F के बीच रखी वस्तु का आभासी प्रतिबिंब दर्पण के पीछे बनता है।"
+      },
+      "en": {
+        "stem": "For a concave mirror, match List-I (position of the object) with List-II (position of the image). List-I: (a) At infinity, (b) At C, (c) Between C and F, (d) Between P and F. List-II: 1. Beyond C, 2. Behind the mirror, 3. At F, 4. At C.",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-3, c-1, d-2"
+          },
+          {
+            "key": "B",
+            "text": "a-3, b-4, c-1, d-2"
+          },
+          {
+            "key": "C",
+            "text": "a-3, b-4, c-2, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-1, b-4, c-3, d-2"
+          }
+        ],
+        "solution": "An object at infinity forms its image at F; at C, at C; between C and F, beyond C; and between P and F, a virtual image behind the mirror."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/spherical_mirrors"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-008",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "10 cm फोकस दूरी वाले अवतल दर्पण के सामने 15 cm की दूरी पर एक वस्तु रखी है। नई कार्तीय चिह्न परिपाटी के अनुसार प्रतिबिंब दूरी v ज्ञात कीजिए। उत्तर cm में, चिह्न सहित दीजिए।",
+        "options": [],
+        "solution": "u = −15 cm, f = −10 cm। 1/v = 1/f − 1/u = −1/10 + 1/15 = −1/30, अतः v = −30 cm (दर्पण के सामने वास्तविक प्रतिबिंब)।"
+      },
+      "en": {
+        "stem": "An object is placed 15 cm in front of a concave mirror of focal length 10 cm. Using the New Cartesian sign convention, find the image distance v. Give the answer in cm, with its sign.",
+        "options": [],
+        "solution": "u = −15 cm, f = −10 cm. 1/v = 1/f − 1/u = −1/10 + 1/15 = −1/30, so v = −30 cm (a real image in front of the mirror)."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": -30,
+      "tolerance": 0.5
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/light_reflection_refraction/spherical_mirrors"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-009",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): वाहनों में पश्च-दृश्य दर्पण के रूप में उत्तल दर्पण लगाया जाता है। कारण (R): उत्तल दर्पण सदैव सीधा और छोटा प्रतिबिंब बनाता है तथा इसका दृष्टि-क्षेत्र बड़ा होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं। सीधा प्रतिबिंब और बड़ा दृष्टि-क्षेत्र ही उत्तल दर्पण को पश्च-दृश्य दर्पण के लिए उपयुक्त बनाते हैं, अतः R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): A convex mirror is used as the rear-view mirror in vehicles. Reason (R): A convex mirror always forms an erect, diminished image and has a wider field of view.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both are true. The erect image and the wider field of view are exactly what make a convex mirror suitable as a rear-view mirror, so R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/spherical_mirrors"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "जब प्रकाश की किरण वायु से काँच में तिरछी प्रवेश करती है, तो वह —",
+        "options": [
+          {
+            "key": "A",
+            "text": "अभिलंब से दूर मुड़ जाती है"
+          },
+          {
+            "key": "B",
+            "text": "बिना मुड़े सीधी निकल जाती है"
+          },
+          {
+            "key": "C",
+            "text": "पूरी तरह परावर्तित हो जाती है"
+          },
+          {
+            "key": "D",
+            "text": "अभिलंब की ओर मुड़ जाती है"
+          }
+        ],
+        "solution": "काँच वायु की तुलना में प्रकाशतः सघन है; विरल से सघन माध्यम में जाने पर प्रकाश की चाल घटती है और किरण अभिलंब की ओर मुड़ती है।"
+      },
+      "en": {
+        "stem": "When a ray of light enters glass obliquely from air, it —",
+        "options": [
+          {
+            "key": "A",
+            "text": "bends away from the normal"
+          },
+          {
+            "key": "B",
+            "text": "passes straight without bending"
+          },
+          {
+            "key": "C",
+            "text": "is completely reflected"
+          },
+          {
+            "key": "D",
+            "text": "bends towards the normal"
+          }
+        ],
+        "solution": "Glass is optically denser than air; going from a rarer to a denser medium the light slows down and the ray bends towards the normal."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refraction_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "स्नेल के अपवर्तन नियम का सही रूप कौन-सा है? (i = आपतन कोण, r = अपवर्तन कोण)",
+        "options": [
+          {
+            "key": "A",
+            "text": "i / r = नियतांक"
+          },
+          {
+            "key": "B",
+            "text": "sin i / sin r = नियतांक"
+          },
+          {
+            "key": "C",
+            "text": "sin i × sin r = नियतांक"
+          },
+          {
+            "key": "D",
+            "text": "cos i / cos r = नियतांक"
+          }
+        ],
+        "solution": "दिए गए रंग के प्रकाश और दिए गए माध्यम-युग्म के लिए sin i / sin r नियत रहता है; यह नियतांक पहले माध्यम के सापेक्ष दूसरे माध्यम का अपवर्तनांक है।"
+      },
+      "en": {
+        "stem": "Which is the correct form of Snell's law of refraction? (i = angle of incidence, r = angle of refraction)",
+        "options": [
+          {
+            "key": "A",
+            "text": "i / r = constant"
+          },
+          {
+            "key": "B",
+            "text": "sin i / sin r = constant"
+          },
+          {
+            "key": "C",
+            "text": "sin i × sin r = constant"
+          },
+          {
+            "key": "D",
+            "text": "cos i / cos r = constant"
+          }
+        ],
+        "solution": "For light of a given colour and a given pair of media, sin i / sin r is constant; this constant is the refractive index of the second medium with respect to the first."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refraction_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-012",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): वायु से काँच में प्रवेश करने पर प्रकाश की आवृत्ति बदल जाती है। कारण (R): वायु से काँच में प्रवेश करने पर प्रकाश की चाल घट जाती है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "अपवर्तन में प्रकाश की चाल और तरंगदैर्ध्य बदलते हैं, आवृत्ति नहीं; अतः A असत्य है। काँच प्रकाशतः सघन है, इसलिए उसमें प्रकाश की चाल घटती है; अतः R सत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): The frequency of light changes when it enters glass from air. Reason (R): The speed of light decreases when it enters glass from air.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "In refraction the speed and wavelength of light change but the frequency does not, so A is false. Glass is optically denser, so light slows down in it; R is true."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refraction_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-013",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "काँच के आयताकार गुटके से अपवर्तन के संबंध में निम्नलिखित कथनों पर विचार कीजिए: 1. निर्गत किरण आपतित किरण के समांतर होती है। 2. निर्गत किरण आपतित किरण से पार्श्व विस्थापित होती है। 3. गुटके के पृष्ठ पर अभिलंब के अनुदिश पड़ने वाली किरण बिना मुड़े निकल जाती है। 4. गुटके के भीतर प्रकाश की तरंगदैर्ध्य वायु के समान रहती है। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 3 और 4"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1, 2 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 और 4"
+          }
+        ],
+        "solution": "कथन 4 गलत है: काँच में प्रकाश की चाल घटती है और आवृत्ति अपरिवर्तित रहती है, इसलिए तरंगदैर्ध्य घट जाती है। शेष तीनों कथन सही हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements about refraction through a rectangular glass slab: 1. The emergent ray is parallel to the incident ray. 2. The emergent ray is laterally displaced from the incident ray. 3. A ray falling along the normal to the surface of the slab passes through without bending. 4. The wavelength of light inside the slab is the same as in air. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Only 1 and 2"
+          },
+          {
+            "key": "B",
+            "text": "Only 3 and 4"
+          },
+          {
+            "key": "C",
+            "text": "Only 1, 2 and 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 and 4"
+          }
+        ],
+        "solution": "Statement 4 is wrong: in glass the speed of light falls while the frequency stays the same, so the wavelength decreases. The other three statements are correct."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refraction_laws"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "अपवर्तनांक का मात्रक क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "m/s"
+          },
+          {
+            "key": "B",
+            "text": "डायॉप्टर"
+          },
+          {
+            "key": "C",
+            "text": "इसका कोई मात्रक नहीं होता"
+          },
+          {
+            "key": "D",
+            "text": "मीटर"
+          }
+        ],
+        "solution": "n = c/v दो चालों का अनुपात है, इसलिए अपवर्तनांक मात्रकहीन है।"
+      },
+      "en": {
+        "stem": "What is the unit of refractive index?",
+        "options": [
+          {
+            "key": "A",
+            "text": "m/s"
+          },
+          {
+            "key": "B",
+            "text": "Dioptre"
+          },
+          {
+            "key": "C",
+            "text": "It has no unit"
+          },
+          {
+            "key": "D",
+            "text": "Metre"
+          }
+        ],
+        "solution": "n = c/v is a ratio of two speeds, so refractive index has no unit."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refractive_index"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-015",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से किस माध्यम का अपवर्तनांक सबसे अधिक है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "जल"
+          },
+          {
+            "key": "B",
+            "text": "मिट्टी का तेल"
+          },
+          {
+            "key": "C",
+            "text": "क्राउन काँच"
+          },
+          {
+            "key": "D",
+            "text": "हीरा"
+          }
+        ],
+        "solution": "जल 1.33, मिट्टी का तेल 1.44, क्राउन काँच 1.52 और हीरा 2.42; अतः हीरे का अपवर्तनांक सबसे अधिक है।"
+      },
+      "en": {
+        "stem": "Which of the following media has the highest refractive index?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Water"
+          },
+          {
+            "key": "B",
+            "text": "Kerosene"
+          },
+          {
+            "key": "C",
+            "text": "Crown glass"
+          },
+          {
+            "key": "D",
+            "text": "Diamond"
+          }
+        ],
+        "solution": "Water 1.33, kerosene 1.44, crown glass 1.52 and diamond 2.42; so diamond has the highest refractive index."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refractive_index"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-016",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "किसी द्रव का निरपेक्ष अपवर्तनांक 1.25 है। उस द्रव में प्रकाश की चाल 10⁸ m/s के मात्रक में ज्ञात कीजिए। (निर्वात में प्रकाश की चाल c = 3 × 10⁸ m/s)",
+        "options": [],
+        "solution": "v = c/n = 3 × 10⁸ / 1.25 = 2.4 × 10⁸ m/s, अतः उत्तर 2.4 है।"
+      },
+      "en": {
+        "stem": "The absolute refractive index of a liquid is 1.25. Find the speed of light in the liquid in units of 10⁸ m/s. (Speed of light in vacuum c = 3 × 10⁸ m/s)",
+        "options": [],
+        "solution": "v = c/n = 3 × 10⁸ / 1.25 = 2.4 × 10⁸ m/s, so the answer is 2.4."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 2.4,
+      "tolerance": 0.01
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/light_reflection_refraction/refractive_index"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-017",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): मिट्टी का तेल जल की तुलना में प्रकाशतः सघन माध्यम है। कारण (R): मिट्टी के तेल का द्रव्यमान घनत्व जल से अधिक होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "मिट्टी के तेल का अपवर्तनांक (1.44) जल (1.33) से अधिक है, अतः A सत्य है। परंतु मिट्टी का तेल जल से हल्का है, अर्थात् उसका द्रव्यमान घनत्व कम है, अतः R असत्य है; प्रकाशिक घनत्व द्रव्यमान घनत्व से भिन्न है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Kerosene is optically denser than water. Reason (R): Kerosene has a greater mass density than water.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Kerosene's refractive index (1.44) is greater than water's (1.33), so A is true. But kerosene is lighter than water, i.e. its mass density is lower, so R is false; optical density is different from mass density."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/refractive_index"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "लेंस की क्षमता का SI मात्रक क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "डायॉप्टर"
+          },
+          {
+            "key": "B",
+            "text": "वाट"
+          },
+          {
+            "key": "C",
+            "text": "जूल"
+          },
+          {
+            "key": "D",
+            "text": "मीटर"
+          }
+        ],
+        "solution": "P = 1/f (f मीटर में); क्षमता का मात्रक डायॉप्टर (D) है, जहाँ 1 D = 1 m⁻¹।"
+      },
+      "en": {
+        "stem": "What is the SI unit of the power of a lens?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Dioptre"
+          },
+          {
+            "key": "B",
+            "text": "Watt"
+          },
+          {
+            "key": "C",
+            "text": "Joule"
+          },
+          {
+            "key": "D",
+            "text": "Metre"
+          }
+        ],
+        "solution": "P = 1/f (f in metres); the unit of power is the dioptre (D), where 1 D = 1 m⁻¹."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/lenses"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-019",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी लेंस की क्षमता −2 D है। उसकी फोकस दूरी और प्रकृति क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "+50 cm, उत्तल लेंस"
+          },
+          {
+            "key": "B",
+            "text": "−50 cm, अवतल लेंस"
+          },
+          {
+            "key": "C",
+            "text": "−2 m, अवतल लेंस"
+          },
+          {
+            "key": "D",
+            "text": "+0.5 cm, उत्तल लेंस"
+          }
+        ],
+        "solution": "f = 1/P = 1/(−2) m = −0.5 m = −50 cm; ऋणात्मक फोकस दूरी अवतल लेंस की होती है।"
+      },
+      "en": {
+        "stem": "The power of a lens is −2 D. What are its focal length and nature?",
+        "options": [
+          {
+            "key": "A",
+            "text": "+50 cm, convex lens"
+          },
+          {
+            "key": "B",
+            "text": "−50 cm, concave lens"
+          },
+          {
+            "key": "C",
+            "text": "−2 m, concave lens"
+          },
+          {
+            "key": "D",
+            "text": "+0.5 cm, convex lens"
+          }
+        ],
+        "solution": "f = 1/P = 1/(−2) m = −0.5 m = −50 cm; a negative focal length belongs to a concave lens."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/lenses"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक उत्तल लेंस किसी वस्तु का वास्तविक, उलटा और तीन गुना बड़ा प्रतिबिंब लेंस से 60 cm दूर रखे पर्दे पर बनाता है। लेंस की फोकस दूरी कितनी है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "15 cm"
+          },
+          {
+            "key": "B",
+            "text": "20 cm"
+          },
+          {
+            "key": "C",
+            "text": "30 cm"
+          },
+          {
+            "key": "D",
+            "text": "45 cm"
+          }
+        ],
+        "solution": "वास्तविक, उलटे प्रतिबिंब के लिए m = v/u = −3; v = +60 cm से u = −20 cm। लेंस सूत्र 1/f = 1/v − 1/u = 1/60 + 1/20 = 4/60, अतः f = +15 cm।"
+      },
+      "en": {
+        "stem": "A convex lens forms a real, inverted image three times the size of an object on a screen placed 60 cm from the lens. What is the focal length of the lens?",
+        "options": [
+          {
+            "key": "A",
+            "text": "15 cm"
+          },
+          {
+            "key": "B",
+            "text": "20 cm"
+          },
+          {
+            "key": "C",
+            "text": "30 cm"
+          },
+          {
+            "key": "D",
+            "text": "45 cm"
+          }
+        ],
+        "solution": "For a real, inverted image m = v/u = −3; with v = +60 cm, u = −20 cm. Lens formula: 1/f = 1/v − 1/u = 1/60 + 1/20 = 4/60, so f = +15 cm."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/lenses"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-021",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "उत्तल लेंस का उपयोग आवर्धक लेंस के रूप में करने के लिए वस्तु को कहाँ रखना चाहिए?",
+        "options": [
+          {
+            "key": "A",
+            "text": "2F1 से परे"
+          },
+          {
+            "key": "B",
+            "text": "2F1 पर"
+          },
+          {
+            "key": "C",
+            "text": "F1 और 2F1 के बीच"
+          },
+          {
+            "key": "D",
+            "text": "F1 और प्रकाशिक केंद्र O के बीच"
+          }
+        ],
+        "solution": "वस्तु F1 और O के बीच हो तो उत्तल लेंस वस्तु की ओर ही आभासी, सीधा और बड़ा प्रतिबिंब बनाता है; यही आवर्धक लेंस है।"
+      },
+      "en": {
+        "stem": "Where should an object be placed to use a convex lens as a magnifying glass?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Beyond 2F1"
+          },
+          {
+            "key": "B",
+            "text": "At 2F1"
+          },
+          {
+            "key": "C",
+            "text": "Between F1 and 2F1"
+          },
+          {
+            "key": "D",
+            "text": "Between F1 and the optical centre O"
+          }
+        ],
+        "solution": "With the object between F1 and O, a convex lens forms a virtual, erect, enlarged image on the same side as the object; this is a magnifying glass."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/lenses"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-light-022",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "+5 D और −3 D क्षमता वाले दो पतले लेंस संपर्क में रखे गए हैं। संयोजन की फोकस दूरी कितनी है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "+20 cm"
+          },
+          {
+            "key": "B",
+            "text": "+50 cm"
+          },
+          {
+            "key": "C",
+            "text": "−50 cm"
+          },
+          {
+            "key": "D",
+            "text": "+12.5 cm"
+          }
+        ],
+        "solution": "P = P1 + P2 = +5 − 3 = +2 D; f = 1/P = 0.5 m = +50 cm (संयोजन अभिसारी लेंस की तरह कार्य करता है)।"
+      },
+      "en": {
+        "stem": "Two thin lenses of powers +5 D and −3 D are placed in contact. What is the focal length of the combination?",
+        "options": [
+          {
+            "key": "A",
+            "text": "+20 cm"
+          },
+          {
+            "key": "B",
+            "text": "+50 cm"
+          },
+          {
+            "key": "C",
+            "text": "−50 cm"
+          },
+          {
+            "key": "D",
+            "text": "+12.5 cm"
+          }
+        ],
+        "solution": "P = P1 + P2 = +5 − 3 = +2 D; f = 1/P = 0.5 m = +50 cm (the combination acts as a converging lens)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/light_reflection_refraction/lenses"],
+    "licence": "own"
+  }
+]

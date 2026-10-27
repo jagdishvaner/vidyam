@@ -1,0 +1,97 @@
+en,hi,subject
+Motion,गति,science
+Distance,दूरी,science
+Displacement,विस्थापन,science
+Speed,चाल,science
+Velocity,वेग,science
+Acceleration,त्वरण,science
+Retardation,मंदन,science
+Uniform motion,एकसमान गति,science
+Uniform circular motion,एकसमान वृत्तीय गति,science
+Force,बल,science
+Balanced forces,संतुलित बल,science
+Inertia,जड़त्व,science
+Momentum,संवेग,science
+Mass,द्रव्यमान,science
+Weight,भार,science
+Friction,घर्षण,science
+Impulse,आवेग,science
+Work,कार्य,science
+Energy,ऊर्जा,science
+Kinetic energy,गतिज ऊर्जा,science
+Potential energy,स्थितिज ऊर्जा,science
+Conservation of energy,ऊर्जा संरक्षण,science
+Power,शक्ति,science
+Light,प्रकाश,science
+Reflection,परावर्तन,science
+Refraction,अपवर्तन,science
+Refractive index,अपवर्तनांक,science
+Concave mirror,अवतल दर्पण,science
+Convex mirror,उत्तल दर्पण,science
+Convex lens,उत्तल लेंस,science
+Concave lens,अवतल लेंस,science
+Focal length,फोकस दूरी,science
+Principal focus,मुख्य फोकस,science
+Centre of curvature,वक्रता केंद्र,science
+Magnification,आवर्धन,science
+Real image,वास्तविक प्रतिबिंब,science
+Virtual image,आभासी प्रतिबिंब,science
+Angle of incidence,आपतन कोण,science
+Angle of reflection,परावर्तन कोण,science
+Electric current,विद्युत धारा,science
+Electric charge,विद्युत आवेश,science
+Potential difference,विभवांतर,science
+Resistance,प्रतिरोध,science
+Resistivity,प्रतिरोधकता,science
+Resistor,प्रतिरोधक,science
+Series combination,श्रेणीक्रम संयोजन,science
+Parallel combination,पार्श्वक्रम संयोजन,science
+Electric power,विद्युत शक्ति,science
+Heating effect of current,विद्युत धारा का तापीय प्रभाव,science
+Electric circuit,विद्युत परिपथ,science
+Acid,अम्ल,science
+Base,क्षारक,science
+Alkali,क्षार,science
+Salt,लवण,science
+Indicator,सूचक,science
+Neutralisation,उदासीनीकरण,science
+Baking soda,बेकिंग सोडा,science
+Washing soda,धावन सोडा,science
+Bleaching powder,विरंजक चूर्ण,science
+Water of crystallisation,क्रिस्टलन का जल,science
+Covalent bond,सहसंयोजी आबंध,science
+Allotrope,अपररूप,science
+Catenation,श्रृंखलन,science
+Hydrocarbon,हाइड्रोकार्बन,science
+Saturated compound,संतृप्त यौगिक,science
+Unsaturated compound,असंतृप्त यौगिक,science
+Homologous series,समजातीय श्रेणी,science
+Functional group,प्रकार्यात्मक समूह,science
+Esterification,एस्टरीकरण,science
+Saponification,साबुनीकरण,science
+Combustion,दहन,science
+Cell,कोशिका,science
+Plasma membrane,प्लाज्मा झिल्ली,science
+Cell wall,कोशिका भित्ति,science
+Nucleus,केंद्रक,science
+Cytoplasm,कोशिकाद्रव्य,science
+Chloroplast,हरितलवक,science
+Vacuole,रिक्तिका,science
+Osmosis,परासरण,science
+Diffusion,विसरण,science
+Prokaryotic cell,असीमकेंद्रकी कोशिका,science
+Eukaryotic cell,ससीमकेंद्रकी कोशिका,science
+Mitosis,समसूत्री विभाजन,science
+Meiosis,अर्धसूत्री विभाजन,science
+Nutrition,पोषण,science
+Photosynthesis,प्रकाश संश्लेषण,science
+Respiration,श्वसन,science
+Aerobic respiration,वायवीय श्वसन,science
+Anaerobic respiration,अवायवीय श्वसन,science
+Transportation,परिवहन,science
+Excretion,उत्सर्जन,science
+Kidney,वृक्क,science
+Artery,धमनी,science
+Vein,शिरा,science
+Stomata,रंध्र,science
+Enzyme,एंजाइम,science

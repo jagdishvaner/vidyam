@@ -1,0 +1,53 @@
+{
+  "title": {
+    "hi": "विज्ञान मॉक टेस्ट 1 (2025)",
+    "en": "Science Mock Test 1 (2025)"
+  },
+  "setCode": "A",
+  "durationMinutes": 45,
+  "maxMarks": 60,
+  "instructions": {
+    "hi": [
+      "इस पुस्तिका में 30 प्रश्न हैं। सभी प्रश्न अनिवार्य हैं तथा प्रत्येक प्रश्न 2 अंक का है।",
+      "प्रत्येक गलत उत्तर के लिए उस प्रश्न के अंकों का एक-तिहाई काटा जाएगा।",
+      "प्रत्येक प्रश्न के चार विकल्पों में से केवल एक सही है।"
+    ],
+    "en": [
+      "This booklet has 30 questions. All questions are compulsory and each carries 2 marks.",
+      "One-third of the marks of a question will be deducted for each wrong answer.",
+      "Only one of the four options of each question is correct."
+    ]
+  },
+  "questions": [
+    "demo-motion-004",
+    "demo-motion-006",
+    "demo-motion-011",
+    "demo-motion-015",
+    "demo-force-004",
+    "demo-force-007",
+    "demo-force-011",
+    "demo-force-016",
+    "demo-work-energy-004",
+    "demo-work-energy-006",
+    "demo-work-energy-015",
+    "demo-light-017",
+    "demo-light-002",
+    "demo-light-006",
+    "demo-electricity-005",
+    "demo-electricity-010",
+    "demo-electricity-001",
+    "demo-acids-020",
+    "demo-acids-003",
+    "demo-acids-016",
+    "demo-carbon-007",
+    "demo-carbon-001",
+    "demo-carbon-015",
+    "demo-cell-010",
+    "demo-cell-012",
+    "demo-cell-004",
+    "demo-cell-018",
+    "demo-life-010",
+    "demo-life-022",
+    "demo-life-002"
+  ]
+}

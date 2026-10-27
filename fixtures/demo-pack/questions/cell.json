@@ -1,0 +1,1322 @@
+[
+  {
+    "ref": "demo-cell-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कॉर्क की पतली काट में सबसे पहले कोशिकाएँ देखकर उन्हें \"सेल\" नाम किसने दिया?",
+        "options": [
+          {
+            "key": "A",
+            "text": "ल्यूवेनहॉक"
+          },
+          {
+            "key": "B",
+            "text": "रॉबर्ट ब्राउन"
+          },
+          {
+            "key": "C",
+            "text": "रॉबर्ट हुक"
+          },
+          {
+            "key": "D",
+            "text": "श्लाइडेन"
+          }
+        ],
+        "solution": "रॉबर्ट हुक ने 1665 में कॉर्क की काट में मधुमक्खी के छत्ते जैसे खाने देखे और उन्हें सेल नाम दिया। ये मृत कोशिकाओं की भित्तियाँ थीं।"
+      },
+      "en": {
+        "stem": "Who first saw cells in a thin slice of cork and named them \"cells\"?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Leeuwenhoek"
+          },
+          {
+            "key": "B",
+            "text": "Robert Brown"
+          },
+          {
+            "key": "C",
+            "text": "Robert Hooke"
+          },
+          {
+            "key": "D",
+            "text": "Schleiden"
+          }
+        ],
+        "solution": "Robert Hooke in 1665 saw honeycomb-like compartments in a cork slice and called them cells. They were the walls of dead cells."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_theory_types"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किस वैज्ञानिक ने 1855 में बताया कि नई कोशिकाएँ पहले से उपस्थित कोशिकाओं से ही बनती हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "श्वान"
+          },
+          {
+            "key": "B",
+            "text": "विरचो"
+          },
+          {
+            "key": "C",
+            "text": "पुरकिंजे"
+          },
+          {
+            "key": "D",
+            "text": "श्लाइडेन"
+          }
+        ],
+        "solution": "विरचो (1855) ने कोशिका सिद्धांत में जोड़ा कि प्रत्येक नई कोशिका पहले से उपस्थित कोशिका से बनती है (Omnis cellula e cellula)।"
+      },
+      "en": {
+        "stem": "Which scientist stated in 1855 that new cells arise only from pre-existing cells?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Schwann"
+          },
+          {
+            "key": "B",
+            "text": "Virchow"
+          },
+          {
+            "key": "C",
+            "text": "Purkinje"
+          },
+          {
+            "key": "D",
+            "text": "Schleiden"
+          }
+        ],
+        "solution": "Virchow (1855) added to the cell theory that every new cell arises from a pre-existing cell (Omnis cellula e cellula)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_theory_types"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-003",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "असीमकेन्द्रकी (Prokaryotic) कोशिका में निम्नलिखित में से कौन-सा पाया जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "माइटोकॉन्ड्रिया"
+          },
+          {
+            "key": "B",
+            "text": "गॉल्जी उपकरण"
+          },
+          {
+            "key": "C",
+            "text": "70S राइबोसोम"
+          },
+          {
+            "key": "D",
+            "text": "केंद्रक झिल्ली"
+          }
+        ],
+        "solution": "असीमकेन्द्रकी कोशिका में केंद्रक झिल्ली और झिल्ली से घिरे कोशिकांग नहीं होते, परंतु 70S प्रकार के राइबोसोम होते हैं।"
+      },
+      "en": {
+        "stem": "Which of the following is found in a prokaryotic cell?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Mitochondria"
+          },
+          {
+            "key": "B",
+            "text": "Golgi apparatus"
+          },
+          {
+            "key": "C",
+            "text": "70S ribosomes"
+          },
+          {
+            "key": "D",
+            "text": "Nuclear membrane"
+          }
+        ],
+        "solution": "A prokaryotic cell has no nuclear membrane and no membrane-bound organelles, but it does have 70S ribosomes."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_theory_types"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-004",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से कौन-सा असीमकेन्द्रकी जीव है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "यीस्ट"
+          },
+          {
+            "key": "B",
+            "text": "अमीबा"
+          },
+          {
+            "key": "C",
+            "text": "क्लैमाइडोमोनास"
+          },
+          {
+            "key": "D",
+            "text": "नील-हरित शैवाल (सायनोबैक्टीरिया)"
+          }
+        ],
+        "solution": "नील-हरित शैवाल (सायनोबैक्टीरिया) जीवाणुओं की तरह असीमकेन्द्रकी हैं। यीस्ट, अमीबा और क्लैमाइडोमोनास एककोशिकीय परंतु ससीमकेन्द्रकी हैं।"
+      },
+      "en": {
+        "stem": "Which of the following is a prokaryotic organism?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Yeast"
+          },
+          {
+            "key": "B",
+            "text": "Amoeba"
+          },
+          {
+            "key": "C",
+            "text": "Chlamydomonas"
+          },
+          {
+            "key": "D",
+            "text": "Blue-green algae (cyanobacteria)"
+          }
+        ],
+        "solution": "Blue-green algae (cyanobacteria) are prokaryotes like bacteria. Yeast, Amoeba and Chlamydomonas are unicellular but eukaryotic."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_theory_types"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-005",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. विषाणु कोशिका सिद्धांत के अपवाद हैं, क्योंकि उनमें कोशिकीय संरचना नहीं होती। 2. माइकोप्लाज्मा (PPLO) सबसे छोटी ज्ञात कोशिका है। 3. जंतु कोशिका में एक बड़ी केंद्रीय रिक्तिका होती है। उपर्युक्त में से कौन-से कथन सही हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 1 और 2 सही हैं। बड़ी केंद्रीय रिक्तिका पादप कोशिका की विशेषता है; जंतु कोशिका में रिक्तिकाएँ छोटी होती हैं, इसलिए कथन 3 गलत है।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Viruses are an exception to the cell theory because they have no cellular structure. 2. Mycoplasma (PPLO) is the smallest known cell. 3. An animal cell has one large central vacuole. Which of the statements given above are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statements 1 and 2 are correct. A large central vacuole is a feature of plant cells; animal cells have small vacuoles, so statement 3 is wrong."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_theory_types"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "प्लाज्मा झिल्ली को वरणात्मक पारगम्य क्यों कहा जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "यह सभी पदार्थों को आने-जाने देती है"
+          },
+          {
+            "key": "B",
+            "text": "यह किसी भी पदार्थ को आने-जाने नहीं देती"
+          },
+          {
+            "key": "C",
+            "text": "यह कुछ पदार्थों को आने-जाने देती है और कुछ को रोक देती है"
+          },
+          {
+            "key": "D",
+            "text": "यह केवल जल को आने-जाने देती है"
+          }
+        ],
+        "solution": "वरणात्मक पारगम्य झिल्ली कुछ पदार्थों को अंदर-बाहर जाने देती है और कुछ को रोकती है; इसी से कोशिका अपने भीतर के पदार्थों को नियंत्रित रखती है।"
+      },
+      "en": {
+        "stem": "Why is the plasma membrane called selectively permeable?",
+        "options": [
+          {
+            "key": "A",
+            "text": "It lets all substances pass"
+          },
+          {
+            "key": "B",
+            "text": "It lets no substance pass"
+          },
+          {
+            "key": "C",
+            "text": "It lets some substances pass and stops others"
+          },
+          {
+            "key": "D",
+            "text": "It lets only water pass"
+          }
+        ],
+        "solution": "A selectively permeable membrane lets some substances in and out and stops others; this is how the cell controls what it contains."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/plasma_membrane_cell_wall"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "पादप कोशिका भित्ति मुख्यतः किससे बनी होती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "काइटिन"
+          },
+          {
+            "key": "B",
+            "text": "सेलुलोस"
+          },
+          {
+            "key": "C",
+            "text": "पेप्टिडोग्लाइकन"
+          },
+          {
+            "key": "D",
+            "text": "लिपिड"
+          }
+        ],
+        "solution": "पादप कोशिका भित्ति मुख्यतः सेलुलोस की बनी होती है। काइटिन कवक की और पेप्टिडोग्लाइकन जीवाणु की कोशिका भित्ति में होता है।"
+      },
+      "en": {
+        "stem": "The plant cell wall is made mainly of:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Chitin"
+          },
+          {
+            "key": "B",
+            "text": "Cellulose"
+          },
+          {
+            "key": "C",
+            "text": "Peptidoglycan"
+          },
+          {
+            "key": "D",
+            "text": "Lipid"
+          }
+        ],
+        "solution": "The plant cell wall is made mainly of cellulose. Chitin is found in the fungal cell wall and peptidoglycan in the bacterial cell wall."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/plasma_membrane_cell_wall"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-008",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी पादप कोशिका को अतिपरासरी विलयन में रखने पर उसका जीवद्रव्य सिकुड़कर कोशिका भित्ति से अलग हो जाता है। इस घटना को क्या कहते हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "जीवद्रव्यकुंचन"
+          },
+          {
+            "key": "B",
+            "text": "अंतःपरासरण"
+          },
+          {
+            "key": "C",
+            "text": "स्फीति"
+          },
+          {
+            "key": "D",
+            "text": "विसरण"
+          }
+        ],
+        "solution": "अतिपरासरी विलयन में बहिःपरासरण से कोशिका जल खोती है और जीवद्रव्य भित्ति से अलग होकर सिकुड़ जाता है; इसे जीवद्रव्यकुंचन (Plasmolysis) कहते हैं।"
+      },
+      "en": {
+        "stem": "When a plant cell is placed in a hypertonic solution, its protoplasm shrinks away from the cell wall. What is this called?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Plasmolysis"
+          },
+          {
+            "key": "B",
+            "text": "Endosmosis"
+          },
+          {
+            "key": "C",
+            "text": "Turgidity"
+          },
+          {
+            "key": "D",
+            "text": "Diffusion"
+          }
+        ],
+        "solution": "In a hypertonic solution the cell loses water by exosmosis and the protoplasm shrinks away from the wall; this is plasmolysis."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/plasma_membrane_cell_wall"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-009",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): लाल रुधिर कोशिकाओं को आसुत जल में रखने पर वे फूलकर फट जाती हैं। कारण (R): आसुत जल लाल रुधिर कोशिकाओं के लिए अल्पपरासरी होता है और उनमें कोशिका भित्ति नहीं होती।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "अल्पपरासरी आसुत जल से परासरण द्वारा जल कोशिका में प्रवेश करता है। कोशिका भित्ति न होने से कोशिका का फूलना रुकता नहीं और वह फट जाती है। अतः R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Red blood cells placed in distilled water swell and burst. Reason (R): Distilled water is hypotonic to red blood cells, and these cells have no cell wall.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Water enters the cells from the hypotonic distilled water by osmosis. With no cell wall to stop the swelling, the cell bursts. So R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/plasma_membrane_cell_wall"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "पादप कोशिका भित्ति के संबंध में कौन-सा कथन सही नहीं है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "यह पूर्णतः पारगम्य होती है"
+          },
+          {
+            "key": "B",
+            "text": "यह तनु माध्यम में कोशिका को फटने से बचाती है"
+          },
+          {
+            "key": "C",
+            "text": "यह वरणात्मक पारगम्य होती है और पदार्थों के प्रवेश को नियंत्रित करती है"
+          },
+          {
+            "key": "D",
+            "text": "दो पड़ोसी कोशिकाओं को मध्य पटलिका जोड़ती है"
+          }
+        ],
+        "solution": "कोशिका भित्ति पूर्णतः पारगम्य होती है; पदार्थों के प्रवेश का नियंत्रण वरणात्मक पारगम्य प्लाज्मा झिल्ली करती है। अतः विकल्प C गलत कथन है।"
+      },
+      "en": {
+        "stem": "Which statement about the plant cell wall is NOT correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "It is freely permeable"
+          },
+          {
+            "key": "B",
+            "text": "It protects the cell from bursting in a dilute medium"
+          },
+          {
+            "key": "C",
+            "text": "It is selectively permeable and controls the entry of substances"
+          },
+          {
+            "key": "D",
+            "text": "The middle lamella joins two neighbouring cells"
+          }
+        ],
+        "solution": "The cell wall is freely permeable; entry of substances is controlled by the selectively permeable plasma membrane. So option C is the incorrect statement."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/plasma_membrane_cell_wall"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किस कोशिकांग को \"कोशिका का बिजलीघर\" कहा जाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "राइबोसोम"
+          },
+          {
+            "key": "B",
+            "text": "गॉल्जी उपकरण"
+          },
+          {
+            "key": "C",
+            "text": "लयनकाय"
+          },
+          {
+            "key": "D",
+            "text": "माइटोकॉन्ड्रिया"
+          }
+        ],
+        "solution": "माइटोकॉन्ड्रिया में वायवीय श्वसन से ATP के रूप में ऊर्जा बनती है, इसलिए इसे कोशिका का बिजलीघर कहते हैं।"
+      },
+      "en": {
+        "stem": "Which cell organelle is called the \"powerhouse of the cell\"?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Ribosome"
+          },
+          {
+            "key": "B",
+            "text": "Golgi apparatus"
+          },
+          {
+            "key": "C",
+            "text": "Lysosome"
+          },
+          {
+            "key": "D",
+            "text": "Mitochondrion"
+          }
+        ],
+        "solution": "Mitochondria release energy as ATP through aerobic respiration, so they are called the powerhouse of the cell."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles", "science/biology/life_processes/respiration"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-012",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कोशिका की \"आत्मघाती थैली\" किसे कहते हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "लयनकाय"
+          },
+          {
+            "key": "B",
+            "text": "रिक्तिका"
+          },
+          {
+            "key": "C",
+            "text": "हरितलवक"
+          },
+          {
+            "key": "D",
+            "text": "केंद्रिक"
+          }
+        ],
+        "solution": "लयनकाय पाचक एंजाइमों से भरी थैलियाँ हैं। कोशिका क्षतिग्रस्त होने पर ये फटकर अपनी ही कोशिका को पचा देते हैं, इसलिए इन्हें आत्मघाती थैली कहते हैं।"
+      },
+      "en": {
+        "stem": "Which organelle is called the \"suicide bag\" of the cell?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Lysosome"
+          },
+          {
+            "key": "B",
+            "text": "Vacuole"
+          },
+          {
+            "key": "C",
+            "text": "Chloroplast"
+          },
+          {
+            "key": "D",
+            "text": "Nucleolus"
+          }
+        ],
+        "solution": "Lysosomes are sacs full of digestive enzymes. When the cell is damaged they burst and digest their own cell, hence the name suicide bags."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-013",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कोशिका में प्रोटीन संश्लेषण का स्थल कौन-सा है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "लयनकाय"
+          },
+          {
+            "key": "B",
+            "text": "राइबोसोम"
+          },
+          {
+            "key": "C",
+            "text": "तारककाय"
+          },
+          {
+            "key": "D",
+            "text": "रिक्तिका"
+          }
+        ],
+        "solution": "राइबोसोम झिल्ली रहित कण हैं जिन पर प्रोटीन का संश्लेषण होता है।"
+      },
+      "en": {
+        "stem": "Which is the site of protein synthesis in a cell?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Lysosome"
+          },
+          {
+            "key": "B",
+            "text": "Ribosome"
+          },
+          {
+            "key": "C",
+            "text": "Centrosome"
+          },
+          {
+            "key": "D",
+            "text": "Vacuole"
+          }
+        ],
+        "solution": "Ribosomes are membrane-less particles on which proteins are synthesised."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "यकृत कोशिकाओं में विषों और औषधियों के विषहरण में कौन-सा कोशिकांग मुख्य भूमिका निभाता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "खुरदरी अंतर्द्रव्यी जालिका"
+          },
+          {
+            "key": "B",
+            "text": "गॉल्जी उपकरण"
+          },
+          {
+            "key": "C",
+            "text": "चिकनी अंतर्द्रव्यी जालिका"
+          },
+          {
+            "key": "D",
+            "text": "केंद्रिक"
+          }
+        ],
+        "solution": "चिकनी अंतर्द्रव्यी जालिका (SER) लिपिड बनाती है और यकृत कोशिकाओं में विषों तथा औषधियों का विषहरण करती है। खुरदरी ER प्रोटीन बनाने में सहायक है।"
+      },
+      "en": {
+        "stem": "Which organelle plays the main role in detoxifying poisons and drugs in liver cells?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Rough endoplasmic reticulum"
+          },
+          {
+            "key": "B",
+            "text": "Golgi apparatus"
+          },
+          {
+            "key": "C",
+            "text": "Smooth endoplasmic reticulum"
+          },
+          {
+            "key": "D",
+            "text": "Nucleolus"
+          }
+        ],
+        "solution": "The smooth endoplasmic reticulum (SER) makes lipids and detoxifies poisons and drugs in liver cells. The rough ER helps make proteins."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-015",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से किस कोशिकांग युग्म में अपना DNA और राइबोसोम पाए जाते हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "गॉल्जी उपकरण और लयनकाय"
+          },
+          {
+            "key": "B",
+            "text": "लयनकाय और रिक्तिका"
+          },
+          {
+            "key": "C",
+            "text": "अंतर्द्रव्यी जालिका और तारककाय"
+          },
+          {
+            "key": "D",
+            "text": "माइटोकॉन्ड्रिया और हरितलवक"
+          }
+        ],
+        "solution": "माइटोकॉन्ड्रिया और लवक (जैसे हरितलवक) में अपना DNA और राइबोसोम होते हैं, इसलिए इन्हें अर्ध-स्वायत्त कोशिकांग कहते हैं।"
+      },
+      "en": {
+        "stem": "Which pair of organelles has its own DNA and ribosomes?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Golgi apparatus and lysosome"
+          },
+          {
+            "key": "B",
+            "text": "Lysosome and vacuole"
+          },
+          {
+            "key": "C",
+            "text": "Endoplasmic reticulum and centrosome"
+          },
+          {
+            "key": "D",
+            "text": "Mitochondrion and chloroplast"
+          }
+        ],
+        "solution": "Mitochondria and plastids (such as chloroplasts) have their own DNA and ribosomes, so they are called semi-autonomous organelles."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-016",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I (कोशिकांग) को सूची-II (कार्य) से सुमेलित कीजिए। सूची-I: (a) गॉल्जी उपकरण (b) अवर्णीलवक (c) तारककाय (d) केंद्रिक। सूची-II: 1. तर्कु निर्माण 2. पदार्थों का संशोधन, पैकेजिंग और प्रेषण 3. राइबोसोम निर्माण 4. मंड का संचय। सही कूट चुनिए।",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-2, b-1, c-4, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-3, b-4, c-1, d-2"
+          },
+          {
+            "key": "C",
+            "text": "a-4, b-2, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-4, c-1, d-3"
+          }
+        ],
+        "solution": "गॉल्जी उपकरण पदार्थों का संशोधन, पैकेजिंग और प्रेषण करता है (a-2); अवर्णीलवक मंड का संचय करते हैं (b-4); तारककाय तर्कु बनाता है (c-1); केंद्रिक में राइबोसोम बनते हैं (d-3)।"
+      },
+      "en": {
+        "stem": "Match List-I (organelle) with List-II (function). List-I: (a) Golgi apparatus (b) Leucoplast (c) Centrosome (d) Nucleolus. List-II: 1. Spindle formation 2. Modification, packaging and dispatch of materials 3. Formation of ribosomes 4. Storage of starch. Choose the correct code.",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-2, b-1, c-4, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-3, b-4, c-1, d-2"
+          },
+          {
+            "key": "C",
+            "text": "a-4, b-2, c-3, d-1"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-4, c-1, d-3"
+          }
+        ],
+        "solution": "The Golgi apparatus modifies, packages and dispatches materials (a-2); leucoplasts store starch (b-4); the centrosome forms the spindle (c-1); ribosomes are made in the nucleolus (d-3)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-017",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): माइटोकॉन्ड्रिया को कोशिका का बिजलीघर कहा जाता है। कारण (R): माइटोकॉन्ड्रिया में अपना DNA और राइबोसोम होते हैं।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं। बिजलीघर नाम का कारण वायवीय श्वसन से ATP का निर्माण है, अपना DNA होना नहीं। अतः R, A की सही व्याख्या नहीं है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Mitochondria are called the powerhouse of the cell. Reason (R): Mitochondria have their own DNA and ribosomes.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both statements are true. The name powerhouse comes from ATP production by aerobic respiration, not from having their own DNA. So R does not explain A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_organelles"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-018",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "अर्धसूत्री विभाजन पूरा होने पर एक जनक कोशिका से कितनी संतति कोशिकाएँ बनती हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "दो"
+          },
+          {
+            "key": "B",
+            "text": "चार"
+          },
+          {
+            "key": "C",
+            "text": "छह"
+          },
+          {
+            "key": "D",
+            "text": "आठ"
+          }
+        ],
+        "solution": "अर्धसूत्री विभाजन में लगातार दो विभाजन होते हैं, इसलिए एक कोशिका से चार संतति कोशिकाएँ बनती हैं।"
+      },
+      "en": {
+        "stem": "How many daughter cells does one parent cell produce at the end of meiosis?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Two"
+          },
+          {
+            "key": "B",
+            "text": "Four"
+          },
+          {
+            "key": "C",
+            "text": "Six"
+          },
+          {
+            "key": "D",
+            "text": "Eight"
+          }
+        ],
+        "solution": "Meiosis has two successive divisions, so one cell gives rise to four daughter cells."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_division"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-019",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "समसूत्री विभाजन की किस अवस्था में गुणसूत्र विषुवतीय पट्टिका पर पंक्तिबद्ध होते हैं और उन्हें गिनना सबसे आसान होता है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "प्रोफेज"
+          },
+          {
+            "key": "B",
+            "text": "एनाफेज"
+          },
+          {
+            "key": "C",
+            "text": "टीलोफेज"
+          },
+          {
+            "key": "D",
+            "text": "मेटाफेज"
+          }
+        ],
+        "solution": "मेटाफेज में संघनित गुणसूत्र विषुवतीय पट्टिका पर पंक्तिबद्ध होते हैं, इसलिए गुणसूत्रों को गिनने और उनकी आकृति देखने के लिए यह सबसे उपयुक्त अवस्था है।"
+      },
+      "en": {
+        "stem": "In which stage of mitosis do the chromosomes line up at the equatorial plate, making them easiest to count?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Prophase"
+          },
+          {
+            "key": "B",
+            "text": "Anaphase"
+          },
+          {
+            "key": "C",
+            "text": "Telophase"
+          },
+          {
+            "key": "D",
+            "text": "Metaphase"
+          }
+        ],
+        "solution": "In metaphase the condensed chromosomes line up at the equatorial plate, so it is the best stage for counting chromosomes and studying their shape."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_division"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "मनुष्य की कायिक कोशिका में 46 गुणसूत्र होते हैं। समसूत्री विभाजन से बनी प्रत्येक संतति कोशिका और अर्धसूत्री विभाजन से बने प्रत्येक युग्मक में क्रमशः कितने गुणसूत्र होंगे?",
+        "options": [
+          {
+            "key": "A",
+            "text": "46 और 23"
+          },
+          {
+            "key": "B",
+            "text": "23 और 46"
+          },
+          {
+            "key": "C",
+            "text": "46 और 46"
+          },
+          {
+            "key": "D",
+            "text": "23 और 23"
+          }
+        ],
+        "solution": "समसूत्री विभाजन में गुणसूत्र संख्या समान रहती है (46), जबकि अर्धसूत्री विभाजन में आधी हो जाती है (23)।"
+      },
+      "en": {
+        "stem": "A human somatic cell has 46 chromosomes. How many chromosomes will each daughter cell formed by mitosis and each gamete formed by meiosis have, respectively?",
+        "options": [
+          {
+            "key": "A",
+            "text": "46 and 23"
+          },
+          {
+            "key": "B",
+            "text": "23 and 46"
+          },
+          {
+            "key": "C",
+            "text": "46 and 46"
+          },
+          {
+            "key": "D",
+            "text": "23 and 23"
+          }
+        ],
+        "solution": "Mitosis keeps the chromosome number the same (46), while meiosis halves it (23)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_division"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-021",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): अर्धसूत्री विभाजन को न्यूनकारी विभाजन कहते हैं। कारण (R): अर्धसूत्री विभाजन केवल कायिक कोशिकाओं में होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "अर्धसूत्री विभाजन में गुणसूत्र संख्या आधी हो जाती है, इसलिए A सत्य है। यह जनन अंगों की जनन कोशिकाओं में होता है, कायिक कोशिकाओं में समसूत्री विभाजन होता है, इसलिए R असत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): Meiosis is called reduction division. Reason (R): Meiosis takes place only in somatic cells.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Meiosis halves the chromosome number, so A is true. It takes place in the reproductive cells of reproductive organs; somatic cells divide by mitosis, so R is false."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_division"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-cell-022",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. समसूत्री विभाजन में जीन विनिमय (क्रॉसिंग ओवर) होता है। 2. समसूत्री विभाजन की एनाफेज में अर्धगुणसूत्र अलग होकर विपरीत ध्रुवों की ओर जाते हैं। 3. अर्धसूत्री विभाजन में लगातार दो विभाजन होते हैं। 4. विभाजन से पहले की अंतरावस्था में DNA की प्रतिकृति बनती है। उपर्युक्त में से कौन-से कथन सही हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2, 3 और 4"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1, 3 और 4"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 और 4"
+          }
+        ],
+        "solution": "जीन विनिमय अर्धसूत्री विभाजन की प्रथम प्रोफेज में होता है, समसूत्री में नहीं; इसलिए कथन 1 गलत है। कथन 2, 3 और 4 सही हैं।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Crossing over takes place in mitosis. 2. In anaphase of mitosis the chromatids separate and move to opposite poles. 3. Meiosis consists of two successive divisions. 4. DNA is replicated in the interphase before division. Which of the statements given above are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "2, 3 and 4 only"
+          },
+          {
+            "key": "C",
+            "text": "1, 3 and 4 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 and 4"
+          }
+        ],
+        "solution": "Crossing over takes place in prophase I of meiosis, not in mitosis, so statement 1 is wrong. Statements 2, 3 and 4 are correct."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/biology/cell/cell_division"],
+    "licence": "own"
+  }
+]

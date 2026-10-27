@@ -1,0 +1,1320 @@
+[
+  {
+    "ref": "demo-force-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "जब किसी वस्तु पर लगने वाले सभी बलों का परिणामी बल शून्य होता है, तो वे बल कहलाते हैं:",
+        "options": [
+          {
+            "key": "A",
+            "text": "असंतुलित बल"
+          },
+          {
+            "key": "B",
+            "text": "संतुलित बल"
+          },
+          {
+            "key": "C",
+            "text": "घर्षण बल"
+          },
+          {
+            "key": "D",
+            "text": "आवेगी बल"
+          }
+        ],
+        "solution": "परिणामी बल शून्य होने पर बल संतुलित कहलाते हैं; वे वस्तु की विराम या एकसमान गति की अवस्था नहीं बदलते।"
+      },
+      "en": {
+        "stem": "When the resultant of all the forces acting on a body is zero, the forces are called:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Unbalanced forces"
+          },
+          {
+            "key": "B",
+            "text": "Balanced forces"
+          },
+          {
+            "key": "C",
+            "text": "Frictional forces"
+          },
+          {
+            "key": "D",
+            "text": "Impulsive forces"
+          }
+        ],
+        "solution": "Forces whose resultant is zero are called balanced forces; they do not change the state of rest or of uniform motion of the body."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/balanced_unbalanced_forces"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी वस्तु पर पूर्व की ओर 12 N तथा पश्चिम की ओर 5 N के बल एक साथ लगते हैं। वस्तु पर परिणामी बल है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "17 N पूर्व की ओर"
+          },
+          {
+            "key": "B",
+            "text": "7 N पश्चिम की ओर"
+          },
+          {
+            "key": "C",
+            "text": "7 N पूर्व की ओर"
+          },
+          {
+            "key": "D",
+            "text": "शून्य"
+          }
+        ],
+        "solution": "विपरीत दिशाओं के बलों का अंतर लिया जाता है: 12 − 5 = 7 N, बड़े बल की दिशा में अर्थात् पूर्व की ओर।"
+      },
+      "en": {
+        "stem": "Forces of 12 N towards the east and 5 N towards the west act on a body at the same time. The resultant force on the body is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "17 N towards the east"
+          },
+          {
+            "key": "B",
+            "text": "7 N towards the west"
+          },
+          {
+            "key": "C",
+            "text": "7 N towards the east"
+          },
+          {
+            "key": "D",
+            "text": "Zero"
+          }
+        ],
+        "solution": "For opposite forces we take the difference: 12 − 5 = 7 N, in the direction of the larger force, i.e. towards the east."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/balanced_unbalanced_forces"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-003",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. संतुलित बल वस्तु की विराम अवस्था या एकसमान गति की अवस्था में परिवर्तन नहीं करते। 2. संतुलित बल वस्तु की आकृति में परिवर्तन कर सकते हैं। 3. सीधी सड़क पर एकसमान वेग से चलती कार पर लगने वाला नेट बल शून्य नहीं होता। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1"
+          },
+          {
+            "key": "B",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "D",
+            "text": "केवल 1 और 2"
+          }
+        ],
+        "solution": "कथन 1 और 2 सत्य हैं (जैसे रबर की गेंद को दोनों ओर से बराबर दबाना)। कथन 3 असत्य है, क्योंकि एकसमान वेग पर त्वरण शून्य है, अतः नेट बल भी शून्य है।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Balanced forces do not change the state of rest or of uniform motion of a body. 2. Balanced forces can change the shape of a body. 3. The net force on a car moving with uniform velocity on a straight road is not zero. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 only"
+          },
+          {
+            "key": "B",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1 and 2 only"
+          }
+        ],
+        "solution": "Statements 1 and 2 are true (for example, squeezing a rubber ball equally from both sides). Statement 3 is false: at uniform velocity the acceleration is zero, so the net force is also zero."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/balanced_unbalanced_forces"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-004",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): रस्साकशी में जब दोनों दल बराबर बल से रस्सी खींचते हैं, तो रस्सी किसी भी ओर नहीं खिसकती। कारण (R): ऐसी स्थिति में रस्सी पर लगने वाले बल संतुलित होते हैं, अतः परिणामी बल शून्य होता है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है।"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है।"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है।"
+          }
+        ],
+        "solution": "बराबर और विपरीत खिंचाव से परिणामी बल शून्य होता है, इसलिए रस्सी में त्वरण नहीं होता। R, A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): In a tug of war, when both teams pull the rope with equal force, the rope does not move to either side. Reason (R): In this situation the forces on the rope are balanced, so the resultant force is zero.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true, and R is the correct explanation of A."
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true, but R is not the correct explanation of A."
+          },
+          {
+            "key": "C",
+            "text": "A is true, but R is false."
+          },
+          {
+            "key": "D",
+            "text": "A is false, but R is true."
+          }
+        ],
+        "solution": "Equal and opposite pulls give zero resultant force, so the rope does not accelerate. R correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/balanced_unbalanced_forces"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-005",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से कौन किसी वस्तु के जड़त्व की माप है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "उसका वेग"
+          },
+          {
+            "key": "B",
+            "text": "उसका द्रव्यमान"
+          },
+          {
+            "key": "C",
+            "text": "उसका आयतन"
+          },
+          {
+            "key": "D",
+            "text": "उस पर लगने वाला घर्षण बल"
+          }
+        ],
+        "solution": "जड़त्व की माप द्रव्यमान है; अधिक द्रव्यमान वाली वस्तु का जड़त्व अधिक होता है।"
+      },
+      "en": {
+        "stem": "Which of the following is a measure of the inertia of a body?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Its velocity"
+          },
+          {
+            "key": "B",
+            "text": "Its mass"
+          },
+          {
+            "key": "C",
+            "text": "Its volume"
+          },
+          {
+            "key": "D",
+            "text": "The frictional force acting on it"
+          }
+        ],
+        "solution": "Mass is the measure of inertia; a body with more mass has more inertia."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/first_law_inertia"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "चलती बस के अचानक रुकने पर उसमें खड़े यात्री आगे की ओर झुक जाते हैं। इसका कारण है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "गति का जड़त्व"
+          },
+          {
+            "key": "B",
+            "text": "विराम का जड़त्व"
+          },
+          {
+            "key": "C",
+            "text": "दिशा का जड़त्व"
+          },
+          {
+            "key": "D",
+            "text": "संवेग संरक्षण"
+          }
+        ],
+        "solution": "बस रुक जाती है, पर यात्री का ऊपरी शरीर गति के जड़त्व के कारण आगे चलते रहना चाहता है, इसलिए वह आगे झुक जाता है।"
+      },
+      "en": {
+        "stem": "When a moving bus stops suddenly, the standing passengers lean forward. This is due to:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Inertia of motion"
+          },
+          {
+            "key": "B",
+            "text": "Inertia of rest"
+          },
+          {
+            "key": "C",
+            "text": "Inertia of direction"
+          },
+          {
+            "key": "D",
+            "text": "Conservation of momentum"
+          }
+        ],
+        "solution": "The bus stops, but the upper body of the passenger tends to keep moving because of inertia of motion, so the passenger leans forward."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/first_law_inertia"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कालीन को छड़ी से पीटने पर उससे धूल के कण झड़ जाते हैं। यह किसका उदाहरण है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "गति का जड़त्व"
+          },
+          {
+            "key": "B",
+            "text": "दिशा का जड़त्व"
+          },
+          {
+            "key": "C",
+            "text": "विराम का जड़त्व"
+          },
+          {
+            "key": "D",
+            "text": "गति का तृतीय नियम"
+          }
+        ],
+        "solution": "छड़ी लगने से कालीन अचानक गति में आ जाता है, पर धूल के कण विराम के जड़त्व के कारण अपनी जगह रहना चाहते हैं और अलग हो जाते हैं।"
+      },
+      "en": {
+        "stem": "When a carpet is beaten with a stick, dust particles come out of it. This is an example of:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Inertia of motion"
+          },
+          {
+            "key": "B",
+            "text": "Inertia of direction"
+          },
+          {
+            "key": "C",
+            "text": "Inertia of rest"
+          },
+          {
+            "key": "D",
+            "text": "The third law of motion"
+          }
+        ],
+        "solution": "The carpet is suddenly set in motion by the stick, but the dust particles tend to stay at rest because of inertia of rest, so they separate from it."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/first_law_inertia"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-008",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "न्यूटन के गति के प्रथम नियम से किसकी परिभाषा प्राप्त होती है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "संवेग और आवेग"
+          },
+          {
+            "key": "B",
+            "text": "कार्य और ऊर्जा"
+          },
+          {
+            "key": "C",
+            "text": "क्रिया और प्रतिक्रिया"
+          },
+          {
+            "key": "D",
+            "text": "बल और जड़त्व"
+          }
+        ],
+        "solution": "प्रथम नियम बताता है कि अवस्था बदलने के लिए असंतुलित बल चाहिए (बल की परिभाषा) और वस्तु अवस्था-परिवर्तन का विरोध करती है (जड़त्व)। इसलिए इसे जड़त्व का नियम भी कहते हैं।"
+      },
+      "en": {
+        "stem": "Newton's first law of motion gives the definition of:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Momentum and impulse"
+          },
+          {
+            "key": "B",
+            "text": "Work and energy"
+          },
+          {
+            "key": "C",
+            "text": "Action and reaction"
+          },
+          {
+            "key": "D",
+            "text": "Force and inertia"
+          }
+        ],
+        "solution": "The first law says that an unbalanced force is needed to change the state of a body (definition of force) and that a body resists such a change (inertia). That is why it is also called the law of inertia."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/first_law_inertia"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-009",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): भरे हुए ट्रक को धक्का देकर चलाना, साइकिल को धक्का देकर चलाने की तुलना में अधिक कठिन होता है। कारण (R): किसी वस्तु का जड़त्व उसके वेग पर निर्भर करता है, द्रव्यमान पर नहीं।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है।"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है।"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है।"
+          }
+        ],
+        "solution": "A सत्य है, क्योंकि ट्रक का द्रव्यमान और इसलिए जड़त्व अधिक है। R असत्य है, क्योंकि जड़त्व की माप द्रव्यमान है, वेग नहीं।"
+      },
+      "en": {
+        "stem": "Assertion (A): It is harder to set a loaded truck in motion by pushing it than to set a bicycle in motion. Reason (R): The inertia of a body depends on its velocity, not on its mass.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true, and R is the correct explanation of A."
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true, but R is not the correct explanation of A."
+          },
+          {
+            "key": "C",
+            "text": "A is true, but R is false."
+          },
+          {
+            "key": "D",
+            "text": "A is false, but R is true."
+          }
+        ],
+        "solution": "A is true because the truck has more mass and hence more inertia. R is false, because inertia is measured by mass, not by velocity."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/first_law_inertia"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "संवेग का SI मात्रक है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "kg m/s"
+          },
+          {
+            "key": "B",
+            "text": "kg m/s²"
+          },
+          {
+            "key": "C",
+            "text": "N/s"
+          },
+          {
+            "key": "D",
+            "text": "kg m²/s"
+          }
+        ],
+        "solution": "संवेग p = m × v, अतः मात्रक kg × m/s = kg m/s (जो N s के बराबर है)।"
+      },
+      "en": {
+        "stem": "The SI unit of momentum is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "kg m/s"
+          },
+          {
+            "key": "B",
+            "text": "kg m/s²"
+          },
+          {
+            "key": "C",
+            "text": "N/s"
+          },
+          {
+            "key": "D",
+            "text": "kg m²/s"
+          }
+        ],
+        "solution": "Momentum p = m × v, so the unit is kg × m/s = kg m/s (which equals N s)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/second_law_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "2 kg द्रव्यमान की एक वस्तु पर 10 N का असंतुलित बल लगाया जाता है। वस्तु में उत्पन्न त्वरण है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "20 m/s²"
+          },
+          {
+            "key": "B",
+            "text": "5 m/s²"
+          },
+          {
+            "key": "C",
+            "text": "0.2 m/s²"
+          },
+          {
+            "key": "D",
+            "text": "12 m/s²"
+          }
+        ],
+        "solution": "F = ma से a = F ÷ m = 10 ÷ 2 = 5 m/s²।"
+      },
+      "en": {
+        "stem": "An unbalanced force of 10 N acts on a body of mass 2 kg. The acceleration produced in the body is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "20 m/s²"
+          },
+          {
+            "key": "B",
+            "text": "5 m/s²"
+          },
+          {
+            "key": "C",
+            "text": "0.2 m/s²"
+          },
+          {
+            "key": "D",
+            "text": "12 m/s²"
+          }
+        ],
+        "solution": "From F = ma, a = F ÷ m = 10 ÷ 2 = 5 m/s²."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/second_law_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-012",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "क्रिकेट में कैच लेते समय क्षेत्ररक्षक अपने हाथ पीछे की ओर खींचता है, ताकि:",
+        "options": [
+          {
+            "key": "A",
+            "text": "गेंद का संवेग बढ़ जाए"
+          },
+          {
+            "key": "B",
+            "text": "गेंद पर लगने वाला आवेग बढ़ जाए"
+          },
+          {
+            "key": "C",
+            "text": "गेंद का द्रव्यमान घट जाए"
+          },
+          {
+            "key": "D",
+            "text": "संवेग परिवर्तन का समय बढ़े और हाथों पर कम बल लगे"
+          }
+        ],
+        "solution": "गेंद के संवेग में परिवर्तन निश्चित है; बल = संवेग परिवर्तन ÷ समय होने से समय बढ़ाने पर बल कम हो जाता है।"
+      },
+      "en": {
+        "stem": "While catching a ball in cricket, a fielder pulls the hands backward so that:",
+        "options": [
+          {
+            "key": "A",
+            "text": "the momentum of the ball increases"
+          },
+          {
+            "key": "B",
+            "text": "the impulse on the ball increases"
+          },
+          {
+            "key": "C",
+            "text": "the mass of the ball decreases"
+          },
+          {
+            "key": "D",
+            "text": "the time for the change in momentum increases and a smaller force acts on the hands"
+          }
+        ],
+        "solution": "The change in the ball's momentum is fixed; since force = change in momentum ÷ time, increasing the time reduces the force."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/second_law_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-013",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "1500 kg द्रव्यमान की एक कार 72 km/h के वेग से चल रही है। ब्रेक लगाने पर वह एकसमान मंदन से 5 s में रुक जाती है। कार को रोकने के लिए आवश्यक बल का परिमाण N में ज्ञात कीजिए।",
+        "options": [],
+        "solution": "u = 72 km/h = 20 m/s, v = 0, t = 5 s। a = (0 − 20) ÷ 5 = −4 m/s²। बल का परिमाण = m × a = 1500 × 4 = 6000 N।"
+      },
+      "en": {
+        "stem": "A car of mass 1500 kg is moving at 72 km/h. When the brakes are applied it stops in 5 s with uniform retardation. Find the magnitude of the force needed to stop the car in N.",
+        "options": [],
+        "solution": "u = 72 km/h = 20 m/s, v = 0, t = 5 s. a = (0 − 20) ÷ 5 = −4 m/s². Magnitude of force = m × a = 1500 × 4 = 6000 N."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 6000,
+      "tolerance": 0
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/second_law_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "0.5 kg द्रव्यमान की एक गेंद 10 m/s के वेग से एक दीवार से लंबवत टकराती है और उतनी ही चाल से विपरीत दिशा में लौट आती है। गेंद के संवेग में परिवर्तन का परिमाण है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "शून्य"
+          },
+          {
+            "key": "B",
+            "text": "5 kg m/s"
+          },
+          {
+            "key": "C",
+            "text": "10 kg m/s"
+          },
+          {
+            "key": "D",
+            "text": "2.5 kg m/s"
+          }
+        ],
+        "solution": "प्रारंभिक संवेग = 0.5 × 10 = +5 kg m/s, अंतिम संवेग = 0.5 × (−10) = −5 kg m/s। परिवर्तन = −5 − 5 = −10 kg m/s, अर्थात् परिमाण 10 kg m/s। दिशा उलटने के कारण संवेग परिवर्तन शून्य नहीं है।"
+      },
+      "en": {
+        "stem": "A ball of mass 0.5 kg hits a wall perpendicularly at 10 m/s and bounces back in the opposite direction with the same speed. The magnitude of the change in the ball's momentum is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Zero"
+          },
+          {
+            "key": "B",
+            "text": "5 kg m/s"
+          },
+          {
+            "key": "C",
+            "text": "10 kg m/s"
+          },
+          {
+            "key": "D",
+            "text": "2.5 kg m/s"
+          }
+        ],
+        "solution": "Initial momentum = 0.5 × 10 = +5 kg m/s, final momentum = 0.5 × (−10) = −5 kg m/s. Change = −5 − 5 = −10 kg m/s, i.e. a magnitude of 10 kg m/s. Because the direction reverses, the change is not zero."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/second_law_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-015",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. क्रिया और प्रतिक्रिया बल परिमाण में बराबर और दिशा में विपरीत होते हैं। 2. क्रिया और प्रतिक्रिया बल एक ही वस्तु पर लगते हैं और एक-दूसरे को निरस्त कर देते हैं। 3. क्रिया और प्रतिक्रिया बल एक साथ उत्पन्न होते हैं। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 2 और 3"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 और 3"
+          }
+        ],
+        "solution": "कथन 1 और 3 सत्य हैं। कथन 2 असत्य है, क्योंकि क्रिया और प्रतिक्रिया दो भिन्न वस्तुओं पर लगते हैं, इसलिए एक-दूसरे को निरस्त नहीं करते।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. Action and reaction forces are equal in magnitude and opposite in direction. 2. Action and reaction forces act on the same body and cancel each other. 3. Action and reaction forces arise simultaneously. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 and 2 only"
+          },
+          {
+            "key": "B",
+            "text": "1 and 3 only"
+          },
+          {
+            "key": "C",
+            "text": "2 and 3 only"
+          },
+          {
+            "key": "D",
+            "text": "1, 2 and 3"
+          }
+        ],
+        "solution": "Statements 1 and 3 are true. Statement 2 is false: action and reaction act on two different bodies, so they do not cancel each other."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/third_law"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-016",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "रॉकेट का ऊपर की ओर उठना मुख्य रूप से किस नियम पर आधारित है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "न्यूटन का गति का तृतीय नियम"
+          },
+          {
+            "key": "B",
+            "text": "न्यूटन का गति का प्रथम नियम"
+          },
+          {
+            "key": "C",
+            "text": "हुक का नियम"
+          },
+          {
+            "key": "D",
+            "text": "आर्किमिडीज़ का सिद्धांत"
+          }
+        ],
+        "solution": "रॉकेट गैसों को तेज़ी से पीछे (नीचे) धकेलता है और गैसें प्रतिक्रिया में रॉकेट को आगे (ऊपर) धकेलती हैं; यह गति का तृतीय नियम है।"
+      },
+      "en": {
+        "stem": "The upward motion of a rocket is mainly based on:",
+        "options": [
+          {
+            "key": "A",
+            "text": "Newton's third law of motion"
+          },
+          {
+            "key": "B",
+            "text": "Newton's first law of motion"
+          },
+          {
+            "key": "C",
+            "text": "Hooke's law"
+          },
+          {
+            "key": "D",
+            "text": "Archimedes' principle"
+          }
+        ],
+        "solution": "The rocket pushes gases backward (downward) at high speed and the gases push the rocket forward (upward) in reaction; this is the third law of motion."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/third_law"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-017",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): मेज पर रखी पुस्तक का भार तथा मेज द्वारा पुस्तक पर लगाया गया अभिलंब बल एक क्रिया-प्रतिक्रिया युग्म बनाते हैं। कारण (R): क्रिया और प्रतिक्रिया बल सदैव दो भिन्न वस्तुओं पर कार्य करते हैं।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है।"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है।"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है।"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है।"
+          }
+        ],
+        "solution": "R सत्य है। A असत्य है, क्योंकि भार और अभिलंब बल दोनों एक ही वस्तु (पुस्तक) पर लगते हैं; वे संतुलित बल हैं। भार की प्रतिक्रिया वह बल है जिससे पुस्तक पृथ्वी को खींचती है।"
+      },
+      "en": {
+        "stem": "Assertion (A): The weight of a book lying on a table and the normal force exerted by the table on the book form an action-reaction pair. Reason (R): Action and reaction forces always act on two different bodies.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true, and R is the correct explanation of A."
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true, but R is not the correct explanation of A."
+          },
+          {
+            "key": "C",
+            "text": "A is true, but R is false."
+          },
+          {
+            "key": "D",
+            "text": "A is false, but R is true."
+          }
+        ],
+        "solution": "R is true. A is false, because the weight and the normal force both act on the same body (the book); they are balanced forces. The reaction to the weight is the force with which the book pulls the Earth."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/third_law"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-018",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I (घटना) को सूची-II (कारण) से सुमेलित कीजिए। सूची-I: P. बस के अचानक चलने पर यात्रियों का पीछे की ओर झुकना, Q. तैराक का पानी को पीछे धकेलकर आगे बढ़ना, R. ऊँची कूद में खिलाड़ी का गद्दे पर गिरना, S. घूमते पहिए से कीचड़ का स्पर्श रेखा के अनुदिश उछलना। सूची-II: 1. गति का द्वितीय नियम, 2. दिशा का जड़त्व, 3. विराम का जड़त्व, 4. गति का तृतीय नियम। सही कूट चुनिए:",
+        "options": [
+          {
+            "key": "A",
+            "text": "P-3, Q-1, R-4, S-2"
+          },
+          {
+            "key": "B",
+            "text": "P-2, Q-4, R-1, S-3"
+          },
+          {
+            "key": "C",
+            "text": "P-1, Q-4, R-3, S-2"
+          },
+          {
+            "key": "D",
+            "text": "P-3, Q-4, R-1, S-2"
+          }
+        ],
+        "solution": "बस के चलने पर पीछे झुकना विराम का जड़त्व (P-3), तैराक का आगे बढ़ना तृतीय नियम (Q-4), गद्दे पर गिरकर रुकने का समय बढ़ाना और बल घटाना द्वितीय नियम (R-1), तथा कीचड़ का स्पर्श रेखा के अनुदिश उछलना दिशा का जड़त्व (S-2) है।"
+      },
+      "en": {
+        "stem": "Match List-I (event) with List-II (reason). List-I: P. Passengers leaning backward when a bus starts suddenly, Q. A swimmer moving forward by pushing water backward, R. A high jumper landing on a cushioned bed, S. Mud flying off a rotating wheel along the tangent. List-II: 1. Second law of motion, 2. Inertia of direction, 3. Inertia of rest, 4. Third law of motion. Choose the correct code:",
+        "options": [
+          {
+            "key": "A",
+            "text": "P-3, Q-1, R-4, S-2"
+          },
+          {
+            "key": "B",
+            "text": "P-2, Q-4, R-1, S-3"
+          },
+          {
+            "key": "C",
+            "text": "P-1, Q-4, R-3, S-2"
+          },
+          {
+            "key": "D",
+            "text": "P-3, Q-4, R-1, S-2"
+          }
+        ],
+        "solution": "Leaning back when the bus starts is inertia of rest (P-3); the swimmer moving forward is the third law (Q-4); landing on a cushion increases the stopping time and reduces the force, which is the second law (R-1); mud flying along the tangent is inertia of direction (S-2)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": [
+      "science/physics/force_and_laws_of_motion/third_law",
+      "science/physics/force_and_laws_of_motion/first_law_inertia",
+      "science/physics/force_and_laws_of_motion/second_law_momentum"
+    ],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-019",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी निकाय पर कोई बाह्य असंतुलित बल न लगे, तो निकाय का कुल संवेग:",
+        "options": [
+          {
+            "key": "A",
+            "text": "बढ़ता है"
+          },
+          {
+            "key": "B",
+            "text": "घटता है"
+          },
+          {
+            "key": "C",
+            "text": "नियत रहता है"
+          },
+          {
+            "key": "D",
+            "text": "सदैव शून्य होता है"
+          }
+        ],
+        "solution": "संवेग संरक्षण के नियम के अनुसार बाह्य असंतुलित बल की अनुपस्थिति में कुल संवेग नियत रहता है; यह आवश्यक नहीं कि वह शून्य हो।"
+      },
+      "en": {
+        "stem": "If no external unbalanced force acts on a system, the total momentum of the system:",
+        "options": [
+          {
+            "key": "A",
+            "text": "increases"
+          },
+          {
+            "key": "B",
+            "text": "decreases"
+          },
+          {
+            "key": "C",
+            "text": "remains constant"
+          },
+          {
+            "key": "D",
+            "text": "is always zero"
+          }
+        ],
+        "solution": "By the law of conservation of momentum, the total momentum stays constant when no external unbalanced force acts; it need not be zero."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/conservation_of_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "3 kg द्रव्यमान की एक बंदूक से 20 g द्रव्यमान की गोली 150 m/s के वेग से छोड़ी जाती है। बंदूक के प्रतिक्षेप वेग (Recoil velocity) का परिमाण है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 m/s"
+          },
+          {
+            "key": "B",
+            "text": "10 m/s"
+          },
+          {
+            "key": "C",
+            "text": "0.1 m/s"
+          },
+          {
+            "key": "D",
+            "text": "2 m/s"
+          }
+        ],
+        "solution": "प्रारंभिक कुल संवेग शून्य है। 0.02 × 150 + 3 × V = 0, अतः V = −1 m/s, अर्थात् बंदूक 1 m/s से पीछे हटती है।"
+      },
+      "en": {
+        "stem": "A bullet of mass 20 g is fired from a gun of mass 3 kg with a velocity of 150 m/s. The magnitude of the recoil velocity of the gun is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 m/s"
+          },
+          {
+            "key": "B",
+            "text": "10 m/s"
+          },
+          {
+            "key": "C",
+            "text": "0.1 m/s"
+          },
+          {
+            "key": "D",
+            "text": "2 m/s"
+          }
+        ],
+        "solution": "The initial total momentum is zero. 0.02 × 150 + 3 × V = 0, so V = −1 m/s, i.e. the gun moves back at 1 m/s."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/conservation_of_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-021",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "2 kg द्रव्यमान की एक गेंद 3 m/s के वेग से चलते हुए विराम में रखी 1 kg की गेंद से टकराती है। टक्कर के बाद दोनों गेंदें आपस में चिपककर साथ-साथ चलती हैं। उनका संयुक्त वेग m/s में ज्ञात कीजिए।",
+        "options": [],
+        "solution": "टक्कर से पहले कुल संवेग = 2 × 3 + 1 × 0 = 6 kg m/s। टक्कर के बाद (2 + 1) × v = 6, अतः v = 2 m/s।"
+      },
+      "en": {
+        "stem": "A ball of mass 2 kg moving at 3 m/s collides with a ball of mass 1 kg at rest. After the collision the two balls stick together and move as one. Find their common velocity in m/s.",
+        "options": [],
+        "solution": "Total momentum before the collision = 2 × 3 + 1 × 0 = 6 kg m/s. After the collision (2 + 1) × v = 6, so v = 2 m/s."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 2,
+      "tolerance": 0.01
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/conservation_of_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-022",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "50 kg का एक व्यक्ति विराम में स्थित 150 kg की नाव से 3 m/s के क्षैतिज वेग से किनारे की ओर कूदता है। नाव किस चाल से पीछे हटेगी? (जल का प्रतिरोध नगण्य मानें)",
+        "options": [
+          {
+            "key": "A",
+            "text": "3 m/s"
+          },
+          {
+            "key": "B",
+            "text": "1 m/s"
+          },
+          {
+            "key": "C",
+            "text": "0.5 m/s"
+          },
+          {
+            "key": "D",
+            "text": "9 m/s"
+          }
+        ],
+        "solution": "प्रारंभिक कुल संवेग शून्य है। 50 × 3 + 150 × V = 0, अतः V = −1 m/s, अर्थात् नाव 1 m/s से विपरीत दिशा में हटती है।"
+      },
+      "en": {
+        "stem": "A man of mass 50 kg jumps towards the shore from a boat of mass 150 kg at rest, with a horizontal velocity of 3 m/s. With what speed will the boat move back? (Neglect water resistance.)",
+        "options": [
+          {
+            "key": "A",
+            "text": "3 m/s"
+          },
+          {
+            "key": "B",
+            "text": "1 m/s"
+          },
+          {
+            "key": "C",
+            "text": "0.5 m/s"
+          },
+          {
+            "key": "D",
+            "text": "9 m/s"
+          }
+        ],
+        "solution": "The initial total momentum is zero. 50 × 3 + 150 × V = 0, so V = −1 m/s, i.e. the boat moves in the opposite direction at 1 m/s."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/conservation_of_momentum"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-force-023",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "2 kg द्रव्यमान की एक वस्तु 5 m/s के वेग से पूर्व की ओर तथा 3 kg द्रव्यमान की दूसरी वस्तु 2 m/s के वेग से पश्चिम की ओर चलते हुए आमने-सामने टकराती हैं और आपस में चिपक जाती हैं। संयुक्त वस्तु का वेग है:",
+        "options": [
+          {
+            "key": "A",
+            "text": "3.2 m/s पूर्व की ओर"
+          },
+          {
+            "key": "B",
+            "text": "0.8 m/s पश्चिम की ओर"
+          },
+          {
+            "key": "C",
+            "text": "0.8 m/s पूर्व की ओर"
+          },
+          {
+            "key": "D",
+            "text": "शून्य"
+          }
+        ],
+        "solution": "पूर्व को धनात्मक लेने पर कुल संवेग = 2 × 5 + 3 × (−2) = 10 − 6 = 4 kg m/s। संयुक्त द्रव्यमान 5 kg है, अतः v = 4 ÷ 5 = +0.8 m/s, अर्थात् पूर्व की ओर।"
+      },
+      "en": {
+        "stem": "A body of mass 2 kg moving east at 5 m/s and another body of mass 3 kg moving west at 2 m/s collide head-on and stick together. The velocity of the combined body is:",
+        "options": [
+          {
+            "key": "A",
+            "text": "3.2 m/s towards the east"
+          },
+          {
+            "key": "B",
+            "text": "0.8 m/s towards the west"
+          },
+          {
+            "key": "C",
+            "text": "0.8 m/s towards the east"
+          },
+          {
+            "key": "D",
+            "text": "Zero"
+          }
+        ],
+        "solution": "Taking east as positive, total momentum = 2 × 5 + 3 × (−2) = 10 − 6 = 4 kg m/s. The combined mass is 5 kg, so v = 4 ÷ 5 = +0.8 m/s, i.e. towards the east."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/force_and_laws_of_motion/conservation_of_momentum"],
+    "licence": "own"
+  }
+]

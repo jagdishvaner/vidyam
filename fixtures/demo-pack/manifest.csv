@@ -1,0 +1,12 @@
+file,kind,licence,subject,language,exams,title,classLevel,paperCode,year,setCode,answerKeyFor,answerKeyStatus,chapter,sections,parallelOf,pageOffset,fontHint,author,tags
+files/,notes,own,science,hi,rpsc_2g_p2_science,,10,,,,,,,,,,unicode,Vidyam demo,demo
+files/physics-motion-force-hi.pdf,,,,,,गति तथा बल एवं गति के नियम — नोट्स,9,,,,,,,1-4=science/physics/motion; 5-8=science/physics/force_and_laws_of_motion,,,,,
+files/physics-work-energy-en.pdf,,,,en,,Work and Energy — Notes,9,,,,,,science/physics/work_and_energy,,,,,,
+files/physics-work-energy-hi.pdf,,,,,,कार्य और ऊर्जा — नोट्स,9,,,,,,science/physics/work_and_energy,,files/physics-work-energy-en.pdf,,,,
+files/physics-light-krutidev.pdf,,,,,,प्रकाश — परावर्तन तथा अपवर्तन — नोट्स,10,,,,,,science/physics/light_reflection_refraction,,,,krutidev,,
+files/physics-electricity-en.docx,,,,en,,Electricity — Notes,10,,,,,,science/physics/electricity,,,,,,
+files/chemistry-acids-bases-salts-scan.pdf,,,,,,"अम्ल, क्षारक एवं लवण — नोट्स (स्कैन)",10,,,,,,science/chemistry/acids_bases_salts,,,,,,demo; scan
+files/chemistry-carbon-compounds-bilingual.pdf,,,,bilingual,,कार्बन एवं उसके यौगिक / Carbon and its Compounds,10,,,,,,science/chemistry/carbon_compounds,,,,,,
+files/biology-cell-life-processes-hi.pdf,book,,,,,जीव विज्ञान: कोशिका तथा जैव प्रक्रम (अंश),9,,,,,,,1-3=science/biology/cell; 4-6=science/biology/life_processes,,40,,,
+files/science-test-2025-set-a.pdf,question_paper,,,bilingual,,विज्ञान मॉक टेस्ट 1 / Science Mock Test 1,,rpsc_2g_p2_science,2025,A,,,,,,,,,demo; mock test
+files/science-test-2025-set-a-key.pdf,answer_key,,,bilingual,,उत्तर कुंजी — विज्ञान मॉक टेस्ट 1 / Answer key — Science Mock Test 1,,rpsc_2g_p2_science,2025,A,files/science-test-2025-set-a.pdf,final,,,,,,,demo; answer key

@@ -1,0 +1,152 @@
+[
+  {
+    "exam": "rpsc_2g_p2_science",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "विज्ञान",
+            "en": "Science"
+          },
+          "qtype": "mcq_single",
+          "count": 150,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          }
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "सभी प्रश्न अनिवार्य हैं। प्रत्येक प्रश्न 2 अंक का है। प्रत्येक गलत उत्तर के लिए उस प्रश्न के अंकों का एक-तिहाई काटा जाएगा। प्रत्येक प्रश्न का केवल एक विकल्प सही है।",
+        "en": "All questions are compulsory. Each question carries 2 marks. One-third of the marks of a question will be deducted for each wrong answer. Each question has exactly one correct option."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_science",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          }
+        },
+        {
+          "name": {
+            "hi": "कथन एवं कारण",
+            "en": "Assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 5,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          }
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "सभी प्रश्न अनिवार्य हैं। प्रत्येक प्रश्न 2 अंक का है। गलत उत्तर पर एक-तिहाई अंक काटे जाएँगे।",
+        "en": "All questions are compulsory. Each question carries 2 marks. One-third of the marks will be deducted for a wrong answer."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_science",
+    "name": "Practice worksheet",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.4,
+            "medium": 0.4,
+            "hard": 0.2
+          }
+        },
+        {
+          "name": {
+            "hi": "कथन आधारित प्रश्न",
+            "en": "Statement based"
+          },
+          "qtype": "statement",
+          "count": 3,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.4,
+            "medium": 0.4,
+            "hard": 0.2
+          }
+        },
+        {
+          "name": {
+            "hi": "आंकिक प्रश्न",
+            "en": "Numerical"
+          },
+          "qtype": "numerical",
+          "count": 2,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.6,
+            "hard": 0.2
+          }
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अभ्यास के लिए। कोई ऋणात्मक अंकन नहीं है। आंकिक प्रश्नों में इकाई सहित उत्तर लिखिए।",
+        "en": "For practice. There is no negative marking. Write numerical answers with units."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.4,
+        "medium": 0.4,
+        "hard": 0.2
+      }
+    }
+  }
+]

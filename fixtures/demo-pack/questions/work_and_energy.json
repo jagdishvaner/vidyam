@@ -1,0 +1,1260 @@
+[
+  {
+    "ref": "demo-work-energy-001",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "कार्य का SI मात्रक क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "वाट"
+          },
+          {
+            "key": "B",
+            "text": "जूल"
+          },
+          {
+            "key": "C",
+            "text": "न्यूटन"
+          },
+          {
+            "key": "D",
+            "text": "पास्कल"
+          }
+        ],
+        "solution": "कार्य = बल × विस्थापन, अतः इसका मात्रक N m अर्थात् जूल (J) है।"
+      },
+      "en": {
+        "stem": "What is the SI unit of work?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Watt"
+          },
+          {
+            "key": "B",
+            "text": "Joule"
+          },
+          {
+            "key": "C",
+            "text": "Newton"
+          },
+          {
+            "key": "D",
+            "text": "Pascal"
+          }
+        ],
+        "solution": "Work = force × displacement, so its unit is N m, i.e. the joule (J)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/work"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-002",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "20 N का एक नियत बल किसी वस्तु को बल की दिशा में 4 m विस्थापित करता है। बल द्वारा किया गया कार्य कितना है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "5 J"
+          },
+          {
+            "key": "B",
+            "text": "24 J"
+          },
+          {
+            "key": "C",
+            "text": "80 J"
+          },
+          {
+            "key": "D",
+            "text": "16 J"
+          }
+        ],
+        "solution": "W = F × s = 20 × 4 = 80 J।"
+      },
+      "en": {
+        "stem": "A constant force of 20 N displaces an object by 4 m in the direction of the force. How much work is done by the force?",
+        "options": [
+          {
+            "key": "A",
+            "text": "5 J"
+          },
+          {
+            "key": "B",
+            "text": "24 J"
+          },
+          {
+            "key": "C",
+            "text": "80 J"
+          },
+          {
+            "key": "D",
+            "text": "16 J"
+          }
+        ],
+        "solution": "W = F × s = 20 × 4 = 80 J."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/work"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-003",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से किस स्थिति में गुरुत्व बल द्वारा किया गया कार्य शून्य है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "सिर पर बोझ लेकर समतल सड़क पर चलता कुली (बोझ पर गुरुत्व द्वारा किया गया कार्य)"
+          },
+          {
+            "key": "B",
+            "text": "छत से नीचे गिरता हुआ पत्थर"
+          },
+          {
+            "key": "C",
+            "text": "ऊर्ध्वाधर ऊपर की ओर फेंकी गई गेंद"
+          },
+          {
+            "key": "D",
+            "text": "ढलान से नीचे लुढ़कती हुई गेंद"
+          }
+        ],
+        "solution": "समतल सड़क पर बोझ का विस्थापन क्षैतिज है और गुरुत्व बल ऊर्ध्वाधर नीचे की ओर लगता है; θ = 90° होने से W = F s cos 90° = 0।"
+      },
+      "en": {
+        "stem": "In which of the following cases is the work done by the force of gravity zero?",
+        "options": [
+          {
+            "key": "A",
+            "text": "A porter walking on a level road with a load on his head (work done by gravity on the load)"
+          },
+          {
+            "key": "B",
+            "text": "A stone falling from a roof"
+          },
+          {
+            "key": "C",
+            "text": "A ball thrown vertically upward"
+          },
+          {
+            "key": "D",
+            "text": "A ball rolling down a slope"
+          }
+        ],
+        "solution": "On a level road the load moves horizontally while gravity acts vertically downward; θ = 90°, so W = F s cos 90° = 0."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/work"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-004",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "50 N का एक बल किसी वस्तु पर उसके विस्थापन की दिशा से 60° के कोण पर लगता है और वस्तु 10 m विस्थापित होती है। किया गया कार्य कितना है? (cos 60° = 0.5)",
+        "options": [
+          {
+            "key": "A",
+            "text": "500 J"
+          },
+          {
+            "key": "B",
+            "text": "433 J"
+          },
+          {
+            "key": "C",
+            "text": "0 J"
+          },
+          {
+            "key": "D",
+            "text": "250 J"
+          }
+        ],
+        "solution": "W = F s cos θ = 50 × 10 × 0.5 = 250 J।"
+      },
+      "en": {
+        "stem": "A force of 50 N acts on an object at an angle of 60° to its displacement, and the object is displaced by 10 m. How much work is done? (cos 60° = 0.5)",
+        "options": [
+          {
+            "key": "A",
+            "text": "500 J"
+          },
+          {
+            "key": "B",
+            "text": "433 J"
+          },
+          {
+            "key": "C",
+            "text": "0 J"
+          },
+          {
+            "key": "D",
+            "text": "250 J"
+          }
+        ],
+        "solution": "W = F s cos θ = 50 × 10 × 0.5 = 250 J."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/work"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-005",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): पृथ्वी के चारों ओर वृत्ताकार कक्षा में घूमते उपग्रह पर पृथ्वी के गुरुत्व बल द्वारा किया गया कार्य शून्य होता है। कारण (R): कार्य एक अदिश राशि है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "A सत्य है, क्योंकि वृत्ताकार कक्षा में गुरुत्व बल (केंद्र की ओर) हर क्षण विस्थापन के लंबवत् होता है (θ = 90°)। R भी सत्य है, परंतु कार्य का अदिश होना A की व्याख्या नहीं करता।"
+      },
+      "en": {
+        "stem": "Assertion (A): The work done by the earth's gravitational force on a satellite moving in a circular orbit around the earth is zero. Reason (R): Work is a scalar quantity.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "A is true because in a circular orbit the gravitational force (towards the centre) is perpendicular to the displacement at every instant (θ = 90°). R is also true, but work being a scalar does not explain A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/work"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-006",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "किसी वस्तु में उसकी गति के कारण होने वाली ऊर्जा को क्या कहते हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "स्थितिज ऊर्जा"
+          },
+          {
+            "key": "B",
+            "text": "रासायनिक ऊर्जा"
+          },
+          {
+            "key": "C",
+            "text": "गतिज ऊर्जा"
+          },
+          {
+            "key": "D",
+            "text": "नाभिकीय ऊर्जा"
+          }
+        ],
+        "solution": "गति के कारण वस्तु में होने वाली ऊर्जा गतिज ऊर्जा है, KE = ½ m v²।"
+      },
+      "en": {
+        "stem": "What is the energy possessed by an object because of its motion called?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Potential energy"
+          },
+          {
+            "key": "B",
+            "text": "Chemical energy"
+          },
+          {
+            "key": "C",
+            "text": "Kinetic energy"
+          },
+          {
+            "key": "D",
+            "text": "Nuclear energy"
+          }
+        ],
+        "solution": "The energy an object has because of its motion is kinetic energy, KE = ½ m v²."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/kinetic_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-007",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "यदि किसी वस्तु की चाल दोगुनी कर दी जाए, तो उसकी गतिज ऊर्जा —",
+        "options": [
+          {
+            "key": "A",
+            "text": "चार गुनी हो जाएगी"
+          },
+          {
+            "key": "B",
+            "text": "दोगुनी हो जाएगी"
+          },
+          {
+            "key": "C",
+            "text": "आधी हो जाएगी"
+          },
+          {
+            "key": "D",
+            "text": "अपरिवर्तित रहेगी"
+          }
+        ],
+        "solution": "KE ∝ v²; चाल 2 गुनी करने पर KE 2² = 4 गुनी हो जाती है।"
+      },
+      "en": {
+        "stem": "If the speed of an object is doubled, its kinetic energy —",
+        "options": [
+          {
+            "key": "A",
+            "text": "becomes four times"
+          },
+          {
+            "key": "B",
+            "text": "becomes two times"
+          },
+          {
+            "key": "C",
+            "text": "becomes half"
+          },
+          {
+            "key": "D",
+            "text": "remains unchanged"
+          }
+        ],
+        "solution": "KE ∝ v²; doubling the speed makes KE 2² = 4 times."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/kinetic_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-008",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "50 kg द्रव्यमान की एक वस्तु की चाल 2 m/s से बढ़ाकर 6 m/s करने के लिए कितना कार्य करना होगा? उत्तर जूल (J) में दीजिए।",
+        "options": [],
+        "solution": "कार्य-ऊर्जा प्रमेय से W = ½ m (v² − u²) = ½ × 50 × (36 − 4) = 25 × 32 = 800 J।"
+      },
+      "en": {
+        "stem": "How much work must be done to increase the speed of an object of mass 50 kg from 2 m/s to 6 m/s? Give the answer in joules (J).",
+        "options": [],
+        "solution": "By the work-energy theorem, W = ½ m (v² − u²) = ½ × 50 × (36 − 4) = 25 × 32 = 800 J."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 800,
+      "tolerance": 1
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/work_and_energy/kinetic_energy", "science/physics/work_and_energy/work"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-009",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): किसी वस्तु की गतिज ऊर्जा कभी ऋणात्मक नहीं हो सकती। कारण (R): किसी वस्तु की गतिज ऊर्जा उसके वेग की दिशा पर निर्भर करती है।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "KE = ½ m v² में m धनात्मक है और v² ऋणात्मक नहीं हो सकता, अतः A सत्य है। गतिज ऊर्जा एक अदिश राशि है जो केवल चाल पर निर्भर करती है, वेग की दिशा पर नहीं, अतः R असत्य है।"
+      },
+      "en": {
+        "stem": "Assertion (A): The kinetic energy of an object can never be negative. Reason (R): The kinetic energy of an object depends on the direction of its velocity.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "In KE = ½ m v², m is positive and v² cannot be negative, so A is true. Kinetic energy is a scalar that depends only on speed, not on the direction of velocity, so R is false."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/kinetic_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-010",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "m और 4m द्रव्यमान की दो वस्तुओं की गतिज ऊर्जाएँ बराबर हैं। उनके संवेगों का अनुपात कितना है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 : 4"
+          },
+          {
+            "key": "B",
+            "text": "1 : 2"
+          },
+          {
+            "key": "C",
+            "text": "2 : 1"
+          },
+          {
+            "key": "D",
+            "text": "4 : 1"
+          }
+        ],
+        "solution": "KE = p²/2m से p = √(2m × KE)। समान गतिज ऊर्जा के लिए p ∝ √m, अतः p1 : p2 = √m : √(4m) = 1 : 2।"
+      },
+      "en": {
+        "stem": "Two objects of masses m and 4m have equal kinetic energies. What is the ratio of their momenta?",
+        "options": [
+          {
+            "key": "A",
+            "text": "1 : 4"
+          },
+          {
+            "key": "B",
+            "text": "1 : 2"
+          },
+          {
+            "key": "C",
+            "text": "2 : 1"
+          },
+          {
+            "key": "D",
+            "text": "4 : 1"
+          }
+        ],
+        "solution": "From KE = p²/2m, p = √(2m × KE). For equal kinetic energy p ∝ √m, so p1 : p2 = √m : √(4m) = 1 : 2."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/kinetic_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-011",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित में से किसमें आकृति (विन्यास) में परिवर्तन के कारण स्थितिज ऊर्जा संचित है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "चलती हुई गोली"
+          },
+          {
+            "key": "B",
+            "text": "बहता हुआ नदी का पानी"
+          },
+          {
+            "key": "C",
+            "text": "लुढ़कती हुई गेंद"
+          },
+          {
+            "key": "D",
+            "text": "खिंचा हुआ रबर बैंड"
+          }
+        ],
+        "solution": "खिंचे हुए रबर बैंड की आकृति बदली गई है, इसलिए उसमें प्रत्यास्थ स्थितिज ऊर्जा संचित है; शेष तीनों में गति के कारण गतिज ऊर्जा है।"
+      },
+      "en": {
+        "stem": "Which of the following stores potential energy because of a change in its shape (configuration)?",
+        "options": [
+          {
+            "key": "A",
+            "text": "A moving bullet"
+          },
+          {
+            "key": "B",
+            "text": "Flowing river water"
+          },
+          {
+            "key": "C",
+            "text": "A rolling ball"
+          },
+          {
+            "key": "D",
+            "text": "A stretched rubber band"
+          }
+        ],
+        "solution": "The stretched rubber band has had its shape changed, so it stores elastic potential energy; the other three have kinetic energy because of their motion."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/potential_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-012",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "10 kg द्रव्यमान की एक वस्तु को धरातल से 5 m ऊँचाई तक उठाया जाता है। उसकी स्थितिज ऊर्जा में कितनी वृद्धि होगी? (g = 10 m/s²)",
+        "options": [
+          {
+            "key": "A",
+            "text": "500 J"
+          },
+          {
+            "key": "B",
+            "text": "50 J"
+          },
+          {
+            "key": "C",
+            "text": "5000 J"
+          },
+          {
+            "key": "D",
+            "text": "250 J"
+          }
+        ],
+        "solution": "PE = mgh = 10 × 10 × 5 = 500 J।"
+      },
+      "en": {
+        "stem": "An object of mass 10 kg is lifted from the ground to a height of 5 m. By how much does its potential energy increase? (g = 10 m/s²)",
+        "options": [
+          {
+            "key": "A",
+            "text": "500 J"
+          },
+          {
+            "key": "B",
+            "text": "50 J"
+          },
+          {
+            "key": "C",
+            "text": "5000 J"
+          },
+          {
+            "key": "D",
+            "text": "250 J"
+          }
+        ],
+        "solution": "PE = mgh = 10 × 10 × 5 = 500 J."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/potential_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-013",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "स्थितिज ऊर्जा के संबंध में निम्नलिखित कथनों पर विचार कीजिए: 1. गुरुत्वीय स्थितिज ऊर्जा केवल ऊर्ध्वाधर ऊँचाई पर निर्भर करती है, अपनाए गए पथ पर नहीं। 2. ऊँचाई दोगुनी करने पर गुरुत्वीय स्थितिज ऊर्जा दोगुनी हो जाती है। 3. दबी हुई स्प्रिंग में प्रत्यास्थ स्थितिज ऊर्जा संचित होती है। 4. किसी वस्तु की गुरुत्वीय स्थितिज ऊर्जा का मान शून्य तल के चुनाव पर निर्भर नहीं करता। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1, 2 और 3"
+          },
+          {
+            "key": "C",
+            "text": "केवल 3 और 4"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 और 4"
+          }
+        ],
+        "solution": "कथन 1, 2 और 3 सही हैं। कथन 4 गलत है, क्योंकि ऊँचाई h चुने हुए शून्य तल से मापी जाती है, इसलिए mgh का मान उसी पर निर्भर करता है।"
+      },
+      "en": {
+        "stem": "Consider the following statements about potential energy: 1. Gravitational potential energy depends only on the vertical height, not on the path followed. 2. Doubling the height doubles the gravitational potential energy. 3. A compressed spring stores elastic potential energy. 4. The value of an object's gravitational potential energy does not depend on the choice of the zero level. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Only 1 and 2"
+          },
+          {
+            "key": "B",
+            "text": "Only 1, 2 and 3"
+          },
+          {
+            "key": "C",
+            "text": "Only 3 and 4"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 and 4"
+          }
+        ],
+        "solution": "Statements 1, 2 and 3 are correct. Statement 4 is wrong: the height h is measured from the chosen zero level, so the value of mgh depends on it."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/potential_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-014",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "एक बक्से को धरातल से 2 m ऊँचे चबूतरे पर दो प्रकार से रखा जाता है: (i) सीधे ऊर्ध्वाधर उठाकर, (ii) एक लंबे चिकने ढलान पर धकेलकर। पहली स्थिति की तुलना में दूसरी स्थिति में बक्से की स्थितिज ऊर्जा में वृद्धि —",
+        "options": [
+          {
+            "key": "A",
+            "text": "अधिक होगी"
+          },
+          {
+            "key": "B",
+            "text": "कम होगी"
+          },
+          {
+            "key": "C",
+            "text": "समान होगी"
+          },
+          {
+            "key": "D",
+            "text": "शून्य होगी"
+          }
+        ],
+        "solution": "गुरुत्वीय स्थितिज ऊर्जा mgh केवल ऊर्ध्वाधर ऊँचाई पर निर्भर करती है, पथ पर नहीं; दोनों स्थितियों में h = 2 m है।"
+      },
+      "en": {
+        "stem": "A box is placed on a platform 2 m above the ground in two ways: (i) by lifting it straight up, (ii) by pushing it up a long smooth ramp. Compared with the first case, the increase in the box's potential energy in the second case is —",
+        "options": [
+          {
+            "key": "A",
+            "text": "greater"
+          },
+          {
+            "key": "B",
+            "text": "less"
+          },
+          {
+            "key": "C",
+            "text": "the same"
+          },
+          {
+            "key": "D",
+            "text": "zero"
+          }
+        ],
+        "solution": "Gravitational potential energy, mgh, depends only on the vertical height, not on the path; h = 2 m in both cases."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/potential_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-015",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "ऊर्जा संरक्षण के नियम के अनुसार —",
+        "options": [
+          {
+            "key": "A",
+            "text": "ऊर्जा उत्पन्न की जा सकती है, परंतु नष्ट नहीं की जा सकती"
+          },
+          {
+            "key": "B",
+            "text": "ऊर्जा नष्ट की जा सकती है, परंतु उत्पन्न नहीं की जा सकती"
+          },
+          {
+            "key": "C",
+            "text": "किसी भी रूपांतरण में कुल ऊर्जा सदैव बढ़ती है"
+          },
+          {
+            "key": "D",
+            "text": "ऊर्जा न तो उत्पन्न की जा सकती है और न ही नष्ट; इसे केवल एक रूप से दूसरे रूप में बदला जा सकता है"
+          }
+        ],
+        "solution": "ऊर्जा का केवल रूपांतरण होता है; किसी भी रूपांतरण से पहले और बाद में कुल ऊर्जा समान रहती है।"
+      },
+      "en": {
+        "stem": "According to the law of conservation of energy —",
+        "options": [
+          {
+            "key": "A",
+            "text": "energy can be created but cannot be destroyed"
+          },
+          {
+            "key": "B",
+            "text": "energy can be destroyed but cannot be created"
+          },
+          {
+            "key": "C",
+            "text": "the total energy always increases in any transformation"
+          },
+          {
+            "key": "D",
+            "text": "energy can neither be created nor destroyed; it can only be changed from one form to another"
+          }
+        ],
+        "solution": "Energy is only transformed; the total energy before and after any transformation stays the same."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/conservation_of_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-016",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "h ऊँचाई से एक गेंद को विराम से स्वतंत्र रूप से गिराया जाता है। वायु प्रतिरोध की उपेक्षा करते हुए, धरातल से कितनी ऊँचाई पर उसकी गतिज ऊर्जा उसकी स्थितिज ऊर्जा की दोगुनी होगी? (धरातल को शून्य तल मानें)",
+        "options": [
+          {
+            "key": "A",
+            "text": "h/2"
+          },
+          {
+            "key": "B",
+            "text": "h/3"
+          },
+          {
+            "key": "C",
+            "text": "2h/3"
+          },
+          {
+            "key": "D",
+            "text": "h/4"
+          }
+        ],
+        "solution": "कुल यांत्रिक ऊर्जा mgh नियत रहती है। x ऊँचाई पर PE = mgx और KE = 2mgx, अतः mgh = 3mgx, जिससे x = h/3।"
+      },
+      "en": {
+        "stem": "A ball is dropped from rest from a height h. Neglecting air resistance, at what height above the ground will its kinetic energy be twice its potential energy? (Take the ground as the zero level.)",
+        "options": [
+          {
+            "key": "A",
+            "text": "h/2"
+          },
+          {
+            "key": "B",
+            "text": "h/3"
+          },
+          {
+            "key": "C",
+            "text": "2h/3"
+          },
+          {
+            "key": "D",
+            "text": "h/4"
+          }
+        ],
+        "solution": "Total mechanical energy mgh stays constant. At height x, PE = mgx and KE = 2mgx, so mgh = 3mgx, giving x = h/3."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["B"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 5,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": [
+      "science/physics/work_and_energy/conservation_of_energy",
+      "science/physics/work_and_energy/kinetic_energy",
+      "science/physics/work_and_energy/potential_energy"
+    ],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-017",
+    "qtype": "match_columns",
+    "content": {
+      "hi": {
+        "stem": "सूची-I (युक्ति) को सूची-II (ऊर्जा रूपांतरण) से सुमेलित कीजिए। सूची-I: (a) सौर सेल, (b) विद्युत सेल, (c) विद्युत मोटर, (d) विद्युत बल्ब। सूची-II: 1. विद्युत ऊर्जा → यांत्रिक ऊर्जा, 2. प्रकाश ऊर्जा → विद्युत ऊर्जा, 3. विद्युत ऊर्जा → प्रकाश और ऊष्मा, 4. रासायनिक ऊर्जा → विद्युत ऊर्जा।",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-2, c-1, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-2, b-4, c-3, d-1"
+          },
+          {
+            "key": "C",
+            "text": "a-1, b-3, c-2, d-4"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-4, c-1, d-3"
+          }
+        ],
+        "solution": "सौर सेल प्रकाश ऊर्जा को और विद्युत सेल रासायनिक ऊर्जा को विद्युत ऊर्जा में बदलता है; विद्युत मोटर विद्युत ऊर्जा को यांत्रिक ऊर्जा में और बल्ब विद्युत ऊर्जा को प्रकाश व ऊष्मा में बदलता है।"
+      },
+      "en": {
+        "stem": "Match List-I (device) with List-II (energy transformation). List-I: (a) Solar cell, (b) Electric cell, (c) Electric motor, (d) Electric bulb. List-II: 1. Electrical energy → mechanical energy, 2. Light energy → electrical energy, 3. Electrical energy → light and heat, 4. Chemical energy → electrical energy.",
+        "options": [
+          {
+            "key": "A",
+            "text": "a-4, b-2, c-1, d-3"
+          },
+          {
+            "key": "B",
+            "text": "a-2, b-4, c-3, d-1"
+          },
+          {
+            "key": "C",
+            "text": "a-1, b-3, c-2, d-4"
+          },
+          {
+            "key": "D",
+            "text": "a-2, b-4, c-1, d-3"
+          }
+        ],
+        "solution": "A solar cell turns light energy, and an electric cell turns chemical energy, into electrical energy; an electric motor turns electrical energy into mechanical energy, and a bulb turns it into light and heat."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 3,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/conservation_of_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-018",
+    "qtype": "assertion_reason",
+    "content": {
+      "hi": {
+        "stem": "कथन (A): वायु में दोलन करता सरल लोलक अंततः रुक जाता है, फिर भी ऊर्जा संरक्षण के नियम का उल्लंघन नहीं होता। कारण (R): वायु प्रतिरोध और घर्षण लोलक की यांत्रिक ऊर्जा को ऊष्मा में बदल देते हैं।",
+        "options": [
+          {
+            "key": "A",
+            "text": "A और R दोनों सत्य हैं तथा R, A की सही व्याख्या है"
+          },
+          {
+            "key": "B",
+            "text": "A और R दोनों सत्य हैं, परंतु R, A की सही व्याख्या नहीं है"
+          },
+          {
+            "key": "C",
+            "text": "A सत्य है, परंतु R असत्य है"
+          },
+          {
+            "key": "D",
+            "text": "A असत्य है, परंतु R सत्य है"
+          }
+        ],
+        "solution": "दोनों कथन सत्य हैं। लोलक की यांत्रिक ऊर्जा नष्ट नहीं होती, बल्कि ऊष्मा में बदल जाती है; यही A की सही व्याख्या है।"
+      },
+      "en": {
+        "stem": "Assertion (A): A simple pendulum oscillating in air eventually comes to rest, yet the law of conservation of energy is not violated. Reason (R): Air resistance and friction convert the mechanical energy of the pendulum into heat.",
+        "options": [
+          {
+            "key": "A",
+            "text": "Both A and R are true and R is the correct explanation of A"
+          },
+          {
+            "key": "B",
+            "text": "Both A and R are true but R is not the correct explanation of A"
+          },
+          {
+            "key": "C",
+            "text": "A is true but R is false"
+          },
+          {
+            "key": "D",
+            "text": "A is false but R is true"
+          }
+        ],
+        "solution": "Both are true. The pendulum's mechanical energy is not destroyed but changed into heat, which correctly explains A."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/conservation_of_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-019",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "शक्ति का SI मात्रक क्या है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "जूल"
+          },
+          {
+            "key": "B",
+            "text": "न्यूटन"
+          },
+          {
+            "key": "C",
+            "text": "किलोवाट घंटा"
+          },
+          {
+            "key": "D",
+            "text": "वाट"
+          }
+        ],
+        "solution": "शक्ति = कार्य / समय, अतः इसका मात्रक J/s अर्थात् वाट (W) है।"
+      },
+      "en": {
+        "stem": "What is the SI unit of power?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Joule"
+          },
+          {
+            "key": "B",
+            "text": "Newton"
+          },
+          {
+            "key": "C",
+            "text": "Kilowatt hour"
+          },
+          {
+            "key": "D",
+            "text": "Watt"
+          }
+        ],
+        "solution": "Power = work / time, so its unit is J/s, i.e. the watt (W)."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["D"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 1,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/power"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-020",
+    "qtype": "mcq_single",
+    "content": {
+      "hi": {
+        "stem": "1 किलोवाट घंटा (kWh) कितने जूल के बराबर है?",
+        "options": [
+          {
+            "key": "A",
+            "text": "3.6 × 10³ J"
+          },
+          {
+            "key": "B",
+            "text": "3.6 × 10⁵ J"
+          },
+          {
+            "key": "C",
+            "text": "3.6 × 10⁶ J"
+          },
+          {
+            "key": "D",
+            "text": "3.6 × 10⁹ J"
+          }
+        ],
+        "solution": "1 kWh = 1000 W × 3600 s = 3600000 J = 3.6 × 10⁶ J।"
+      },
+      "en": {
+        "stem": "One kilowatt hour (kWh) is equal to how many joules?",
+        "options": [
+          {
+            "key": "A",
+            "text": "3.6 × 10³ J"
+          },
+          {
+            "key": "B",
+            "text": "3.6 × 10⁵ J"
+          },
+          {
+            "key": "C",
+            "text": "3.6 × 10⁶ J"
+          },
+          {
+            "key": "D",
+            "text": "3.6 × 10⁹ J"
+          }
+        ],
+        "solution": "1 kWh = 1000 W × 3600 s = 3600000 J = 3.6 × 10⁶ J."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["C"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 2,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/power"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-021",
+    "qtype": "numerical",
+    "content": {
+      "hi": {
+        "stem": "एक मोटर 600 kg पानी को 4 मिनट में 20 m ऊँची टंकी तक पहुँचाती है। मोटर की औसत शक्ति वाट (W) में ज्ञात कीजिए। (g = 10 m/s², हानियों की उपेक्षा करें)",
+        "options": [],
+        "solution": "W = mgh = 600 × 10 × 20 = 120000 J; t = 4 × 60 = 240 s; P = W / t = 120000 / 240 = 500 W।"
+      },
+      "en": {
+        "stem": "A motor lifts 600 kg of water into a tank 20 m high in 4 minutes. Find the average power of the motor in watts (W). (g = 10 m/s², neglect losses)",
+        "options": [],
+        "solution": "W = mgh = 600 × 10 × 20 = 120000 J; t = 4 × 60 = 240 s; P = W / t = 120000 / 240 = 500 W."
+      }
+    },
+    "answer": {
+      "kind": "numeric",
+      "value": 500,
+      "tolerance": 1
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0,
+    "taxonomy": ["science/physics/work_and_energy/power", "science/physics/work_and_energy/potential_energy"],
+    "licence": "own"
+  },
+  {
+    "ref": "demo-work-energy-022",
+    "qtype": "statement",
+    "content": {
+      "hi": {
+        "stem": "निम्नलिखित कथनों पर विचार कीजिए: 1. 1 kWh = 3.6 × 10⁶ J। 2. 1 hp = 746 W। 3. किलोवाट घंटा शक्ति का मात्रक है। 4. 2 kW का हीटर 3 घंटे चलने पर 6 यूनिट विद्युत ऊर्जा व्यय करता है। सही कथन कौन-से हैं?",
+        "options": [
+          {
+            "key": "A",
+            "text": "केवल 1, 2 और 4"
+          },
+          {
+            "key": "B",
+            "text": "केवल 1 और 2"
+          },
+          {
+            "key": "C",
+            "text": "केवल 2, 3 और 4"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 और 4"
+          }
+        ],
+        "solution": "कथन 3 गलत है: किलोवाट घंटा (शक्ति × समय) ऊर्जा का मात्रक है। कथन 4 सही है: 2 kW × 3 h = 6 kWh = 6 यूनिट।"
+      },
+      "en": {
+        "stem": "Consider the following statements: 1. 1 kWh = 3.6 × 10⁶ J. 2. 1 hp = 746 W. 3. The kilowatt hour is a unit of power. 4. A 2 kW heater running for 3 hours uses 6 units of electrical energy. Which of the statements are correct?",
+        "options": [
+          {
+            "key": "A",
+            "text": "Only 1, 2 and 4"
+          },
+          {
+            "key": "B",
+            "text": "Only 1 and 2"
+          },
+          {
+            "key": "C",
+            "text": "Only 2, 3 and 4"
+          },
+          {
+            "key": "D",
+            "text": "1, 2, 3 and 4"
+          }
+        ],
+        "solution": "Statement 3 is wrong: the kilowatt hour (power × time) is a unit of energy. Statement 4 is correct: 2 kW × 3 h = 6 kWh = 6 units."
+      }
+    },
+    "answer": {
+      "kind": "options",
+      "keys": ["A"]
+    },
+    "authoritativeLanguage": "hi",
+    "difficulty": 4,
+    "marks": 2,
+    "negativeMarks": 0.67,
+    "taxonomy": ["science/physics/work_and_energy/power"],
+    "licence": "own"
+  }
+]

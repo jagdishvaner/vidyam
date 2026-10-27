@@ -1,0 +1,548 @@
+{
+  "subject": {
+    "code": "science",
+    "level": "subject",
+    "nameEn": "Science",
+    "nameHi": "विज्ञान",
+    "aliases": ["vigyan", "general science", "samanya vigyan"],
+    "objectives": [],
+    "children": [
+      {
+        "code": "physics",
+        "level": "unit",
+        "nameEn": "Physics",
+        "nameHi": "भौतिक विज्ञान",
+        "aliases": ["bhautiki", "bhautik vigyan", "भौतिकी"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "motion",
+            "level": "chapter",
+            "nameEn": "Motion",
+            "nameHi": "गति",
+            "aliases": ["gati", "motion in a straight line", "सरल रेखा में गति"],
+            "objectives": [
+              "Describe motion using distance, displacement, speed, velocity and acceleration",
+              "Use the equations of uniformly accelerated motion"
+            ],
+            "children": [
+              {
+                "code": "distance_and_displacement",
+                "level": "topic",
+                "nameEn": "Distance and Displacement",
+                "nameHi": "दूरी और विस्थापन",
+                "aliases": ["doori aur visthapan", "visthapan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "speed_and_velocity",
+                "level": "topic",
+                "nameEn": "Speed and Velocity",
+                "nameHi": "चाल और वेग",
+                "aliases": ["chal aur veg", "veg", "average speed"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acceleration",
+                "level": "topic",
+                "nameEn": "Acceleration",
+                "nameHi": "त्वरण",
+                "aliases": ["tvaran", "retardation", "मंदन"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "equations_of_motion",
+                "level": "topic",
+                "nameEn": "Equations of Motion",
+                "nameHi": "गति के समीकरण",
+                "aliases": ["gati ke samikaran", "v = u + at", "kinematic equations"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uniform_circular_motion",
+                "level": "topic",
+                "nameEn": "Uniform Circular Motion",
+                "nameHi": "एकसमान वृत्तीय गति",
+                "aliases": ["vrittiya gati", "circular motion"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "force_and_laws_of_motion",
+            "level": "chapter",
+            "nameEn": "Force and Laws of Motion",
+            "nameHi": "बल तथा गति के नियम",
+            "aliases": ["bal tatha gati ke niyam", "newton ke niyam", "newton's laws", "न्यूटन के नियम"],
+            "objectives": [
+              "State Newton's three laws of motion and apply them",
+              "Use momentum and its conservation"
+            ],
+            "children": [
+              {
+                "code": "balanced_unbalanced_forces",
+                "level": "topic",
+                "nameEn": "Balanced and Unbalanced Forces",
+                "nameHi": "संतुलित और असंतुलित बल",
+                "aliases": ["santulit bal", "asantulit bal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "first_law_inertia",
+                "level": "topic",
+                "nameEn": "First Law of Motion and Inertia",
+                "nameHi": "गति का प्रथम नियम और जड़त्व",
+                "aliases": ["jadatva", "inertia", "pratham niyam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "second_law_momentum",
+                "level": "topic",
+                "nameEn": "Second Law of Motion and Momentum",
+                "nameHi": "गति का द्वितीय नियम और संवेग",
+                "aliases": ["samveg", "momentum", "F = ma", "dwitiya niyam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "third_law",
+                "level": "topic",
+                "nameEn": "Third Law of Motion",
+                "nameHi": "गति का तृतीय नियम",
+                "aliases": ["kriya pratikriya", "action reaction", "tritiya niyam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conservation_of_momentum",
+                "level": "topic",
+                "nameEn": "Conservation of Momentum",
+                "nameHi": "संवेग संरक्षण",
+                "aliases": ["samveg sanrakshan", "recoil of gun"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "work_and_energy",
+            "level": "chapter",
+            "nameEn": "Work and Energy",
+            "nameHi": "कार्य और ऊर्जा",
+            "aliases": ["karya aur urja", "urja", "work energy power"],
+            "objectives": [
+              "Calculate work done by a constant force",
+              "Relate kinetic and potential energy and apply conservation of energy"
+            ],
+            "children": [
+              {
+                "code": "work",
+                "level": "topic",
+                "nameEn": "Work",
+                "nameHi": "कार्य",
+                "aliases": ["karya", "work done"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kinetic_energy",
+                "level": "topic",
+                "nameEn": "Kinetic Energy",
+                "nameHi": "गतिज ऊर्जा",
+                "aliases": ["gatij urja", "KE"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "potential_energy",
+                "level": "topic",
+                "nameEn": "Potential Energy",
+                "nameHi": "स्थितिज ऊर्जा",
+                "aliases": ["sthitij urja", "PE", "mgh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conservation_of_energy",
+                "level": "topic",
+                "nameEn": "Conservation of Energy",
+                "nameHi": "ऊर्जा संरक्षण",
+                "aliases": ["urja sanrakshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "power",
+                "level": "topic",
+                "nameEn": "Power",
+                "nameHi": "शक्ति",
+                "aliases": ["shakti", "watt", "kilowatt hour"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "light_reflection_refraction",
+            "level": "chapter",
+            "nameEn": "Light: Reflection and Refraction",
+            "nameHi": "प्रकाश – परावर्तन तथा अपवर्तन",
+            "aliases": ["prakash", "light", "paravartan apvartan", "mirrors and lenses"],
+            "objectives": [
+              "Apply the laws of reflection and refraction",
+              "Use the mirror and lens formulae and magnification"
+            ],
+            "children": [
+              {
+                "code": "reflection_laws",
+                "level": "topic",
+                "nameEn": "Laws of Reflection",
+                "nameHi": "परावर्तन के नियम",
+                "aliases": ["paravartan ke niyam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "spherical_mirrors",
+                "level": "topic",
+                "nameEn": "Spherical Mirrors",
+                "nameHi": "गोलीय दर्पण",
+                "aliases": [
+                  "goliya darpan",
+                  "concave mirror",
+                  "convex mirror",
+                  "avtal darpan",
+                  "uttal darpan"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "refraction_laws",
+                "level": "topic",
+                "nameEn": "Laws of Refraction",
+                "nameHi": "अपवर्तन के नियम",
+                "aliases": ["apvartan ke niyam", "snell's law", "स्नेल का नियम"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "refractive_index",
+                "level": "topic",
+                "nameEn": "Refractive Index",
+                "nameHi": "अपवर्तनांक",
+                "aliases": ["apvartanank"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lenses",
+                "level": "topic",
+                "nameEn": "Lenses",
+                "nameHi": "लेंस",
+                "aliases": ["lens", "convex lens", "concave lens", "lens formula", "power of lens"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "electricity",
+            "level": "chapter",
+            "nameEn": "Electricity",
+            "nameHi": "विद्युत",
+            "aliases": ["vidyut", "bijli", "current electricity", "विद्युत धारा"],
+            "objectives": [
+              "Apply Ohm's law and combine resistors in series and parallel",
+              "Calculate electrical power and the heating effect of current"
+            ],
+            "children": [
+              {
+                "code": "electric_current_and_charge",
+                "level": "topic",
+                "nameEn": "Electric Current and Charge",
+                "nameHi": "विद्युत धारा और आवेश",
+                "aliases": ["vidyut dhara", "aavesh", "ampere"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "potential_difference",
+                "level": "topic",
+                "nameEn": "Potential Difference",
+                "nameHi": "विभवांतर",
+                "aliases": ["vibhavantar", "volt", "voltage"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ohms_law_resistance",
+                "level": "topic",
+                "nameEn": "Ohm's Law and Resistance",
+                "nameHi": "ओम का नियम और प्रतिरोध",
+                "aliases": ["om ka niyam", "pratirodh", "resistivity", "प्रतिरोधकता"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "resistors_series_parallel",
+                "level": "topic",
+                "nameEn": "Resistors in Series and Parallel",
+                "nameHi": "प्रतिरोधकों का श्रेणी और पार्श्व संयोजन",
+                "aliases": ["shreni kram", "parshva kram", "series parallel"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "heating_effect_power",
+                "level": "topic",
+                "nameEn": "Heating Effect of Current and Electric Power",
+                "nameHi": "विद्युत धारा का तापीय प्रभाव और विद्युत शक्ति",
+                "aliases": ["tapiya prabhav", "joule heating", "electric power", "vidyut shakti"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "chemistry",
+        "level": "unit",
+        "nameEn": "Chemistry",
+        "nameHi": "रसायन विज्ञान",
+        "aliases": ["rasayan", "rasayan vigyan"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "acids_bases_salts",
+            "level": "chapter",
+            "nameEn": "Acids, Bases and Salts",
+            "nameHi": "अम्ल, क्षारक एवं लवण",
+            "aliases": ["amla kshar lavan", "amla ksharak", "acid base salt"],
+            "objectives": [
+              "Identify acids and bases with indicators and the pH scale",
+              "Describe the preparation and uses of common salts"
+            ],
+            "children": [
+              {
+                "code": "indicators",
+                "level": "topic",
+                "nameEn": "Indicators",
+                "nameHi": "सूचक",
+                "aliases": ["suchak", "litmus", "phenolphthalein", "फिनॉल्फ्थेलिन"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_acids_bases",
+                "level": "topic",
+                "nameEn": "Reactions of Acids and Bases",
+                "nameHi": "अम्लों और क्षारकों की अभिक्रियाएँ",
+                "aliases": ["neutralisation", "उदासीनीकरण", "udasinikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ph_scale",
+                "level": "topic",
+                "nameEn": "pH Scale",
+                "nameHi": "pH स्केल",
+                "aliases": ["ph scale", "pH paimana", "pH पैमाना"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "important_salts",
+                "level": "topic",
+                "nameEn": "Important Salts",
+                "nameHi": "महत्वपूर्ण लवण",
+                "aliases": [
+                  "baking soda",
+                  "washing soda",
+                  "bleaching powder",
+                  "plaster of paris",
+                  "khane ka soda"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "carbon_compounds",
+            "level": "chapter",
+            "nameEn": "Carbon and its Compounds",
+            "nameHi": "कार्बन एवं उसके यौगिक",
+            "aliases": ["carbon ke yogik", "organic chemistry basics", "carbon yaugik"],
+            "objectives": [
+              "Explain covalent bonding and catenation in carbon",
+              "Name simple carbon compounds and describe ethanol and ethanoic acid"
+            ],
+            "children": [
+              {
+                "code": "covalent_bonding",
+                "level": "topic",
+                "nameEn": "Covalent Bonding",
+                "nameHi": "सहसंयोजी आबंध",
+                "aliases": ["sahsanyoji abandh", "covalent bond"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "allotropes_catenation",
+                "level": "topic",
+                "nameEn": "Allotropes and Catenation",
+                "nameHi": "अपररूप और श्रृंखलन",
+                "aliases": ["apararup", "shrinkhalan", "diamond graphite"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hydrocarbons_homologous_series",
+                "level": "topic",
+                "nameEn": "Hydrocarbons and Homologous Series",
+                "nameHi": "हाइड्रोकार्बन और समजातीय श्रेणी",
+                "aliases": ["samjatiya shreni", "alkane alkene alkyne"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "functional_groups_nomenclature",
+                "level": "topic",
+                "nameEn": "Functional Groups and Nomenclature",
+                "nameHi": "प्रकार्यात्मक समूह और नामकरण",
+                "aliases": ["prakaryatmak samooh", "IUPAC naming"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ethanol_ethanoic_acid",
+                "level": "topic",
+                "nameEn": "Ethanol and Ethanoic Acid",
+                "nameHi": "एथेनॉल और एथेनॉइक अम्ल",
+                "aliases": ["ethanol", "acetic acid", "esterification", "एस्टरीकरण"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "biology",
+        "level": "unit",
+        "nameEn": "Biology",
+        "nameHi": "जीव विज्ञान",
+        "aliases": ["jeev vigyan", "jiv vigyan"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "cell",
+            "level": "chapter",
+            "nameEn": "The Cell",
+            "nameHi": "कोशिका",
+            "aliases": ["koshika", "cell structure", "कोशिका संरचना"],
+            "objectives": [
+              "Describe the structure of prokaryotic and eukaryotic cells",
+              "State the functions of cell organelles and the stages of cell division"
+            ],
+            "children": [
+              {
+                "code": "cell_theory_types",
+                "level": "topic",
+                "nameEn": "Cell Theory and Types of Cells",
+                "nameHi": "कोशिका सिद्धांत और कोशिकाओं के प्रकार",
+                "aliases": ["koshika siddhant", "prokaryotic eukaryotic", "असीमकेन्द्रकी", "ससीमकेन्द्रकी"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "plasma_membrane_cell_wall",
+                "level": "topic",
+                "nameEn": "Plasma Membrane and Cell Wall",
+                "nameHi": "प्लाज्मा झिल्ली और कोशिका भित्ति",
+                "aliases": ["koshika bhitti", "osmosis", "परासरण"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cell_organelles",
+                "level": "topic",
+                "nameEn": "Cell Organelles",
+                "nameHi": "कोशिकांग",
+                "aliases": ["koshikang", "mitochondria", "माइटोकॉन्ड्रिया", "golgi", "ribosome"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cell_division",
+                "level": "topic",
+                "nameEn": "Cell Division",
+                "nameHi": "कोशिका विभाजन",
+                "aliases": ["koshika vibhajan", "mitosis", "meiosis", "समसूत्री", "अर्धसूत्री"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "life_processes",
+            "level": "chapter",
+            "nameEn": "Life Processes",
+            "nameHi": "जैव प्रक्रम",
+            "aliases": ["jaiv prakram", "life process"],
+            "objectives": [
+              "Explain nutrition, respiration, transportation and excretion in plants and animals"
+            ],
+            "children": [
+              {
+                "code": "nutrition",
+                "level": "topic",
+                "nameEn": "Nutrition",
+                "nameHi": "पोषण",
+                "aliases": ["poshan", "photosynthesis", "प्रकाश संश्लेषण"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "respiration",
+                "level": "topic",
+                "nameEn": "Respiration",
+                "nameHi": "श्वसन",
+                "aliases": ["shwasan", "aerobic anaerobic", "वायवीय", "अवायवीय"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "transportation",
+                "level": "topic",
+                "nameEn": "Transportation",
+                "nameHi": "परिवहन",
+                "aliases": ["parivahan", "heart", "हृदय", "xylem phloem", "जाइलम फ्लोएम"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "excretion",
+                "level": "topic",
+                "nameEn": "Excretion",
+                "nameHi": "उत्सर्जन",
+                "aliases": ["utsarjan", "kidney", "वृक्क", "nephron", "नेफ्रॉन"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
