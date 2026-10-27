@@ -550,5 +550,79 @@
     "personalBudget": "Own budget",
     "system": "Background work",
     "none": "No AI use in this month yet."
+  },
+  "audit": {
+    "title": "Audit log",
+    "subtitle": "Every change an admin made in this center, newest first.",
+    "area": "Area",
+    "person": "Person",
+    "everything": "Everything",
+    "everyone": "Everyone",
+    "areas": {
+      "member": "Logins",
+      "staff": "Staff",
+      "library": "Library",
+      "syllabus": "Syllabus",
+      "exam": "Exam papers",
+      "pattern": "Paper patterns",
+      "center": "Center profile",
+      "ai": "AI models",
+      "prompt": "Prompts",
+      "budget": "Budgets"
+    },
+    "when": "When",
+    "who": "Who",
+    "what": "What",
+    "target": "Record",
+    "details": "Details",
+    "nobody": "Someone since removed",
+    "loadMore": "Show older",
+    "none": "Nothing recorded yet.",
+    "actions": {
+      "member": {
+        "create": "Added a login",
+        "password_reset": "Set a new password",
+        "remove": "Removed a person"
+      },
+      "staff": {
+        "update": "Changed role, subjects or budget"
+      },
+      "library": {
+        "remove": "Removed a library file"
+      },
+      "syllabus": {
+        "import": "Imported a syllabus",
+        "node_create": "Added to the syllabus",
+        "node_update": "Edited the syllabus"
+      },
+      "exam": {
+        "import": "Imported exam papers",
+        "delete": "Deleted an exam paper"
+      },
+      "pattern": {
+        "create": "Created a paper pattern",
+        "update": "Edited a paper pattern",
+        "import": "Imported paper patterns",
+        "retire": "Retired a paper pattern"
+      },
+      "center": {
+        "branding": "Changed export branding",
+        "ai_policy": "Changed the AI rules",
+        "logo_set": "Uploaded a logo",
+        "logo_remove": "Removed the logo"
+      },
+      "ai": {
+        "model_update": "Changed a model",
+        "route_set": "Chose a model for a job",
+        "route_clear": "Reset a job to the default model"
+      },
+      "prompt": {
+        "create": "Wrote a prompt version",
+        "activate": "Made a prompt version live"
+      },
+      "budget": {
+        "set": "Changed the center budget"
+      }
+    }
   }
 }

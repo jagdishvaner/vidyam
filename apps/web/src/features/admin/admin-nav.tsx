@@ -17,8 +17,8 @@ const SECTIONS = [
   { key: "prompts", href: "/admin/prompts" },
   { key: "usage", href: "/admin/usage" },
   { key: "center", href: "/admin/center" },
-  { key: "audit", href: null },
-  { key: "health", href: null },
+  { key: "audit", href: "/admin/audit" },
+  { key: "health", href: "/admin/health" },
 ] as const;
 
 export function AdminNav() {
