@@ -11,7 +11,7 @@ const SECTIONS = [
   { key: "staff", href: "/admin/staff" },
   { key: "roles", href: "/admin/roles" },
   { key: "exams", href: "/admin/exams" },
-  { key: "blueprints", href: null },
+  { key: "blueprints", href: "/admin/patterns" },
   { key: "content", href: null },
   { key: "models", href: null },
   { key: "prompts", href: null },
