@@ -196,6 +196,70 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/center": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["CenterController_profile"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/center/branding": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["CenterController_branding"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/center/ai-policy": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["CenterController_aiPolicy"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/center/logo": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["CenterController_logo"];
+        put?: never;
+        post: operations["CenterController_uploadLogo"];
+        delete: operations["CenterController_removeLogo"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/syllabus": {
         parameters: {
             query?: never;
@@ -806,6 +870,203 @@ export interface operations {
             path: {
                 sourceId: string;
             };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CenterController_profile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        organization: {
+                            /** Format: uuid */
+                            id: string;
+                            name: string;
+                            slug: string;
+                        };
+                        branding: {
+                            name: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            /** @default null */
+                            logoKey: string | null;
+                            /** @default null */
+                            headerLines: {
+                                en?: string;
+                                hi?: string;
+                            } | null;
+                            /** @default null */
+                            footer: {
+                                en?: string;
+                                hi?: string;
+                            } | null;
+                            /** @default null */
+                            defaultInstructions: {
+                                en?: string;
+                                hi?: string;
+                            } | null;
+                        };
+                        logoUrl: string | null;
+                        aiPolicy: {
+                            /** @default [] */
+                            allowedModelIds: string[];
+                            /** @default true */
+                            requireCrossProviderCheck: boolean;
+                            /**
+                             * @default bank_first
+                             * @enum {string}
+                             */
+                            defaultSourcing: "bank_first" | "fresh_only" | "bank_only";
+                        };
+                        selectableModels: {
+                            id: string;
+                            displayName: string;
+                            /** @enum {string} */
+                            provider: "anthropic" | "openai" | "stub";
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    CenterController_branding: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: {
+                        en?: string;
+                        hi?: string;
+                    };
+                    /** @default null */
+                    headerLines?: {
+                        en?: string;
+                        hi?: string;
+                    } | null;
+                    /** @default null */
+                    footer?: {
+                        en?: string;
+                        hi?: string;
+                    } | null;
+                    /** @default null */
+                    defaultInstructions?: {
+                        en?: string;
+                        hi?: string;
+                    } | null;
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CenterController_aiPolicy: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default [] */
+                    allowedModelIds?: string[];
+                    /** @default true */
+                    requireCrossProviderCheck?: boolean;
+                    /**
+                     * @default bank_first
+                     * @enum {string}
+                     */
+                    defaultSourcing?: "bank_first" | "fresh_only" | "bank_only";
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CenterController_logo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CenterController_uploadLogo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": {
+                    /** Format: binary */
+                    logo?: string;
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    CenterController_removeLogo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
             cookie?: never;
         };
         requestBody?: never;

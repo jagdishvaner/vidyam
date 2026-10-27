@@ -243,6 +243,59 @@
         "title"
       ]
     },
+    "CenterProfile": {
+      "title": "CenterProfile",
+      "type": "object",
+      "properties": {
+        "organization": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "name": {
+              "type": "string"
+            },
+            "slug": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "name",
+            "slug"
+          ],
+          "additionalProperties": false
+        },
+        "branding": {
+          "$ref": "#/$defs/OrgBranding"
+        },
+        "logoUrl": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "aiPolicy": {
+          "$ref": "#/$defs/AiPolicy"
+        },
+        "selectableModels": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SelectableModel"
+          }
+        }
+      },
+      "required": [
+        "organization",
+        "branding",
+        "logoUrl",
+        "aiPolicy",
+        "selectableModels"
+      ],
+      "additionalProperties": false
+    },
     "ChatBlock": {
       "title": "ChatBlock",
       "oneOf": [
@@ -3246,6 +3299,32 @@
       ],
       "additionalProperties": false
     },
+    "SelectableModel": {
+      "title": "SelectableModel",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string",
+          "enum": [
+            "anthropic",
+            "openai",
+            "stub"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "displayName",
+        "provider"
+      ],
+      "additionalProperties": false
+    },
     "ServiceHealth": {
       "title": "ServiceHealth",
       "type": "object",
@@ -3951,6 +4030,55 @@
         "name",
         "fromBank",
         "toGenerate"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateBrandingRequest": {
+      "title": "UpdateBrandingRequest",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "headerLines": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "footer": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "defaultInstructions": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "headerLines",
+        "footer",
+        "defaultInstructions"
       ],
       "additionalProperties": false
     },

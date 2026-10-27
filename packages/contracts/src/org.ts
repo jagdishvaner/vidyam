@@ -88,3 +88,31 @@ export const MemberSettings = contract(
   }),
 );
 export type MemberSettings = z.infer<typeof MemberSettings>;
+
+/** A model teachers may be allowed to pick in the chat (from the platform's model registry). */
+export const SelectableModel = contract(
+  "SelectableModel",
+  z.object({ id: z.string(), displayName: z.string(), provider: z.enum(["anthropic", "openai", "stub"]) }),
+);
+export type SelectableModel = z.infer<typeof SelectableModel>;
+
+/** Admin → Center profile: how exports look and the center's AI rules. */
+export const CenterProfile = contract(
+  "CenterProfile",
+  z.object({
+    organization: z.object({ id: Uuid, name: z.string(), slug: z.string() }),
+    branding: OrgBranding,
+    /** Where the logo is served from, with a version so browsers refetch after a change; null if none. */
+    logoUrl: z.string().nullable(),
+    aiPolicy: AiPolicy,
+    selectableModels: z.array(SelectableModel),
+  }),
+);
+export type CenterProfile = z.infer<typeof CenterProfile>;
+
+/** Everything about branding except the logo, which is uploaded on its own. */
+export const UpdateBrandingRequest = contract("UpdateBrandingRequest", OrgBranding.omit({ logoKey: true }));
+export type UpdateBrandingRequest = z.infer<typeof UpdateBrandingRequest>;
+
+export const LOGO_TYPES = ["image/png", "image/jpeg", "image/webp"] as const;
+export const LOGO_MAX_BYTES = 1_000_000;

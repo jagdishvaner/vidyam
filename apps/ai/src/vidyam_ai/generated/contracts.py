@@ -82,6 +82,16 @@ class CardFieldKey(StrEnum):
     title = "title"
 
 
+class Organization(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    name: str
+    slug: str
+
+
 class ChatBlock1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -326,16 +336,6 @@ class Objective(RootModel[str]):
 
 class PlatformRole(StrEnum):
     superadmin = "superadmin"
-
-
-class Organization(BaseModel):
-    model_config = ConfigDict(
-        extra="forbid",
-        populate_by_name=True,
-    )
-    id: UUID
-    name: str
-    slug: str
 
 
 class DashboardSummary(BaseModel):
@@ -851,6 +851,22 @@ class QuestionType(StrEnum):
     long_answer = "long_answer"
 
 
+class Provider(StrEnum):
+    anthropic = "anthropic"
+    openai = "openai"
+    stub = "stub"
+
+
+class SelectableModel(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: str
+    display_name: str = Field(..., alias="displayName")
+    provider: Provider
+
+
 class Service(StrEnum):
     api = "api"
     ai = "ai"
@@ -1118,6 +1134,17 @@ class TopicAvailability(BaseModel):
     to_generate: int = Field(..., alias="toGenerate", ge=0, le=9007199254740991)
 
 
+class UpdateBrandingRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    name: LocalizedText
+    header_lines: LocalizedText | None = Field(..., alias="headerLines")
+    footer: LocalizedText | None
+    default_instructions: LocalizedText | None = Field(..., alias="defaultInstructions")
+
+
 class Subject1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1212,6 +1239,18 @@ class CardField(BaseModel):
     key: CardFieldKey
     required: bool
     suggested: Any | None = None
+
+
+class CenterProfile(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    organization: Organization
+    branding: OrgBranding
+    logo_url: str | None = Field(..., alias="logoUrl")
+    ai_policy: AiPolicy = Field(..., alias="aiPolicy")
+    selectable_models: list[SelectableModel] = Field(..., alias="selectableModels")
 
 
 class ChatBlock2(BaseModel):

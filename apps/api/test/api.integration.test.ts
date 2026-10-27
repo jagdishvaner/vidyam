@@ -594,4 +594,51 @@ describe("API", () => {
     await send("delete", `/api/patterns/${edited.id}`).expect(204);
     await send("delete", `/api/patterns/${edited.id}`).expect(404);
   });
+
+  it("keeps the center's branding, AI policy and logo, editable only by admins", async () => {
+    const server = app.getHttpServer();
+    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const get = (url: string, cookies = teacher) => request(server).get(url).set("Cookie", cookies);
+    const put = (url: string, body: object, cookies = admin) =>
+      request(server).put(url).set("Cookie", cookies).send(body);
+
+    // Until an admin saves anything, exports would use the center's name.
+    expect((await get("/api/center").expect(200)).body).toMatchObject({
+      organization: { id: orgA, name: "Center A" },
+      branding: { name: { en: "Center A" }, logoKey: null },
+      logoUrl: null,
+      aiPolicy: { allowedModelIds: [], requireCrossProviderCheck: true, defaultSourcing: "bank_first" },
+    });
+    const branding = {
+      name: { en: "Center A Coaching", hi: "सेंटर ए कोचिंग" },
+      headerLines: { hi: "जयपुर", en: "Jaipur" },
+      footer: null,
+      defaultInstructions: null,
+    };
+    await put("/api/center/branding", branding, teacher).expect(403);
+    await put("/api/center/branding", branding).expect(204);
+    expect((await get("/api/center").expect(200)).body.branding).toMatchObject(branding);
+
+    await put("/api/center/ai-policy", { allowedModelIds: ["not-a-model"] }).expect(422);
+    await put("/api/center/ai-policy", { allowedModelIds: [], defaultSourcing: "fresh_only" }).expect(204);
+    expect((await get("/api/center").expect(200)).body.aiPolicy.defaultSourcing).toBe("fresh_only");
+
+    // The logo's type comes from its bytes; an HTML file renamed .png is refused.
+    const png = Buffer.from(
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+      "base64",
+    );
+    const upload = (bytes: Buffer, name: string) =>
+      request(server).post("/api/center/logo").set("Cookie", admin).attach("logo", bytes, name);
+    await upload(Buffer.from("<html><script>alert(1)</script></html>"), "logo.png").expect(422);
+    const { logoUrl } = (await upload(png, "logo.png").expect(200)).body;
+    expect(logoUrl).toMatch(/^\/api\/center\/logo\?v=[0-9a-f]{16}$/);
+    const served = await get("/api/center/logo").expect(200);
+    expect(served.headers["content-type"]).toBe("image/png");
+    expect(Buffer.compare(served.body as Buffer, png)).toBe(0);
+
+    await request(server).delete("/api/center/logo").set("Cookie", teacher).expect(403);
+    await request(server).delete("/api/center/logo").set("Cookie", admin).expect(204);
+    await get("/api/center/logo").expect(404);
+  });
 });

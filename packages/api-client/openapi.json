@@ -1086,6 +1086,373 @@
         ]
       }
     },
+    "/api/center": {
+      "get": {
+        "operationId": "CenterController_profile",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "organization": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "slug": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "name",
+                        "slug"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "branding": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "object",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "logoKey": {
+                          "default": null,
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "headerLines": {
+                          "default": null,
+                          "nullable": true,
+                          "type": "object",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "footer": {
+                          "default": null,
+                          "nullable": true,
+                          "type": "object",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "defaultInstructions": {
+                          "default": null,
+                          "nullable": true,
+                          "type": "object",
+                          "properties": {
+                            "en": {
+                              "type": "string"
+                            },
+                            "hi": {
+                              "type": "string"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "name",
+                        "logoKey",
+                        "headerLines",
+                        "footer",
+                        "defaultInstructions"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "logoUrl": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "aiPolicy": {
+                      "type": "object",
+                      "properties": {
+                        "allowedModelIds": {
+                          "default": [],
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "requireCrossProviderCheck": {
+                          "default": true,
+                          "type": "boolean"
+                        },
+                        "defaultSourcing": {
+                          "default": "bank_first",
+                          "type": "string",
+                          "enum": [
+                            "bank_first",
+                            "fresh_only",
+                            "bank_only"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "allowedModelIds",
+                        "requireCrossProviderCheck",
+                        "defaultSourcing"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "selectableModels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "provider": {
+                            "type": "string",
+                            "enum": [
+                              "anthropic",
+                              "openai",
+                              "stub"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "displayName",
+                          "provider"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "organization",
+                    "branding",
+                    "logoUrl",
+                    "aiPolicy",
+                    "selectableModels"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "center"
+        ]
+      }
+    },
+    "/api/center/branding": {
+      "put": {
+        "operationId": "CenterController_branding",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "object",
+                    "properties": {
+                      "en": {
+                        "type": "string"
+                      },
+                      "hi": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "headerLines": {
+                    "default": null,
+                    "nullable": true,
+                    "type": "object",
+                    "properties": {
+                      "en": {
+                        "type": "string"
+                      },
+                      "hi": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "footer": {
+                    "default": null,
+                    "nullable": true,
+                    "type": "object",
+                    "properties": {
+                      "en": {
+                        "type": "string"
+                      },
+                      "hi": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "defaultInstructions": {
+                    "default": null,
+                    "nullable": true,
+                    "type": "object",
+                    "properties": {
+                      "en": {
+                        "type": "string"
+                      },
+                      "hi": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "center"
+        ]
+      }
+    },
+    "/api/center/ai-policy": {
+      "put": {
+        "operationId": "CenterController_aiPolicy",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "allowedModelIds": {
+                    "default": [],
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "requireCrossProviderCheck": {
+                    "default": true,
+                    "type": "boolean"
+                  },
+                  "defaultSourcing": {
+                    "default": "bank_first",
+                    "type": "string",
+                    "enum": [
+                      "bank_first",
+                      "fresh_only",
+                      "bank_only"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "center"
+        ]
+      }
+    },
+    "/api/center/logo": {
+      "post": {
+        "operationId": "CenterController_uploadLogo",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "logo": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "center"
+        ]
+      },
+      "delete": {
+        "operationId": "CenterController_removeLogo",
+        "parameters": [],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "center"
+        ]
+      },
+      "get": {
+        "operationId": "CenterController_logo",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "center"
+        ]
+      }
+    },
     "/api/syllabus": {
       "get": {
         "operationId": "SyllabusController_overview",

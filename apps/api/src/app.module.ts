@@ -5,6 +5,7 @@ import type { Env } from "./config/env.js";
 import { EnvModule } from "./config/env.module.js";
 import { DashboardModule } from "./modules/dashboard/dashboard.module.js";
 import { IdentityModule } from "./modules/identity/identity.module.js";
+import { CenterModule } from "./modules/center/center.module.js";
 import { LibraryModule } from "./modules/library/library.module.js";
 import { SyllabusModule } from "./modules/syllabus/syllabus.module.js";
 import { SystemModule } from "./modules/system/system.module.js";
@@ -27,6 +28,7 @@ export class AppModule {
         SystemModule,
         DashboardModule,
         LibraryModule,
+        CenterModule,
         SyllabusModule,
       ],
       providers: [
