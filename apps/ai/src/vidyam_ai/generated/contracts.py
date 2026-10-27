@@ -312,6 +312,18 @@ class CostEstimate(BaseModel):
     minutes: float = Field(..., ge=0.0)
 
 
+class NameHi(RootModel[str]):
+    root: str = Field(..., max_length=200, min_length=1)
+
+
+class Alias(RootModel[str]):
+    root: str = Field(..., max_length=120, min_length=1)
+
+
+class Objective(RootModel[str]):
+    root: str = Field(..., max_length=500, min_length=1)
+
+
 class PlatformRole(StrEnum):
     superadmin = "superadmin"
 
@@ -419,6 +431,18 @@ class Syllabu(BaseModel):
         extra="forbid",
         populate_by_name=True,
     )
+    node_id: UUID = Field(..., alias="nodeId")
+    path: str
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+    weightage: float | None
+
+
+class Syllabu1(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
     node: CodePath
     weightage: float | None = Field(None, ge=0.0, le=1.0)
 
@@ -431,6 +455,16 @@ class GlossaryTermImport(BaseModel):
     en: str = Field(..., min_length=1)
     hi: str = Field(..., min_length=1)
     subject: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+
+
+class ImportSummary(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    created: int = Field(..., ge=0, le=9007199254740991)
+    updated: int = Field(..., ge=0, le=9007199254740991)
+    unchanged: int = Field(..., ge=0, le=9007199254740991)
 
 
 class IngestSourceInput(BaseModel):
@@ -962,15 +996,35 @@ class SyllabusLevel(StrEnum):
     subtopic = "subtopic"
 
 
-class NameHi(RootModel[str]):
+class SyllabusNode(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    parent_id: UUID | None = Field(..., alias="parentId")
+    code: str
+    path: str
+    level: SyllabusLevel
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+    aliases: list[str]
+    objectives: list[str]
+    is_active: bool = Field(..., alias="isActive")
+    sort_order: int = Field(
+        ..., alias="sortOrder", ge=-9007199254740991, le=9007199254740991
+    )
+
+
+class NameHi1(RootModel[str]):
     root: str = Field(..., min_length=1)
 
 
-class Alias(RootModel[str]):
+class Alias1(RootModel[str]):
     root: str = Field(..., min_length=1)
 
 
-class Objective(RootModel[str]):
+class Objective1(RootModel[str]):
     root: str = Field(..., min_length=1)
 
 
@@ -982,10 +1036,48 @@ class SyllabusNodeImport(BaseModel):
     code: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
     level: SyllabusLevel
     name_en: str = Field(..., alias="nameEn", min_length=1)
-    name_hi: NameHi | None = Field(..., alias="nameHi")
-    aliases: list[Alias]
-    objectives: list[Objective]
+    name_hi: NameHi1 | None = Field(..., alias="nameHi")
+    aliases: list[Alias1]
+    objectives: list[Objective1]
     children: list[SyllabusNodeImport]
+
+
+class Subject(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    parent_id: UUID | None = Field(..., alias="parentId")
+    code: str
+    path: str
+    level: SyllabusLevel
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+    aliases: list[str]
+    objectives: list[str]
+    is_active: bool = Field(..., alias="isActive")
+    sort_order: int = Field(
+        ..., alias="sortOrder", ge=-9007199254740991, le=9007199254740991
+    )
+    descendants: int = Field(..., ge=0, le=9007199254740991)
+
+
+class SyllabusOverview(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    subjects: list[Subject]
+
+
+class SyllabusSubject(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    subject: SyllabusNode
+    nodes: list[SyllabusNode]
 
 
 class SystemStatus(BaseModel):
@@ -1022,7 +1114,7 @@ class TopicAvailability(BaseModel):
     to_generate: int = Field(..., alias="toGenerate", ge=0, le=9007199254740991)
 
 
-class Subject(BaseModel):
+class Subject1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -1041,8 +1133,32 @@ class UpdateStaffMemberRequest(BaseModel):
         populate_by_name=True,
     )
     role: OrgRole
-    subjects: list[Subject] = Field(..., max_length=30)
+    subjects: list[Subject1] = Field(..., max_length=30)
     monthly_budget_usd: MonthlyBudgetUsd | None = Field(..., alias="monthlyBudgetUsd")
+
+
+class NameHi2(RootModel[str]):
+    root: str = Field(..., max_length=200, min_length=1)
+
+
+class Alias2(RootModel[str]):
+    root: str = Field(..., max_length=120, min_length=1)
+
+
+class Objective2(RootModel[str]):
+    root: str = Field(..., max_length=500, min_length=1)
+
+
+class UpdateSyllabusNodeRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    name_en: str = Field(..., alias="nameEn", max_length=200, min_length=1)
+    name_hi: NameHi2 | None = Field(..., alias="nameHi")
+    aliases: list[Alias2] = Field(..., max_length=50)
+    objectives: list[Objective2] = Field(..., max_length=30)
+    is_active: bool = Field(..., alias="isActive")
 
 
 class WorkflowEnvelope(BaseModel):
@@ -1126,6 +1242,20 @@ class ChatBlock7(BaseModel):
     version: int = Field(..., ge=0, le=9007199254740991)
 
 
+class CreateSyllabusNodeRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    name_en: str = Field(..., alias="nameEn", max_length=200, min_length=1)
+    name_hi: NameHi | None = Field(..., alias="nameHi")
+    aliases: list[Alias] = Field(..., max_length=50)
+    objectives: list[Objective] = Field(..., max_length=30)
+    parent_id: UUID | None = Field(..., alias="parentId")
+    code: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    level: SyllabusLevel
+
+
 class CurrentUser(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1152,6 +1282,21 @@ class EditOp6(BaseModel):
     instructions: LocalizedText
 
 
+class ExamPaper(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    code: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    family: str = Field(..., pattern="^[a-z0-9]+(_[a-z0-9]+)*$")
+    paper_code: str | None = Field(..., alias="paperCode")
+    name_en: str = Field(..., alias="nameEn", min_length=1)
+    name_hi: str | None = Field(..., alias="nameHi")
+    authoritative_language: Language = Field(..., alias="authoritativeLanguage")
+    id: UUID
+    syllabus: list[Syllabu]
+
+
 class ExamPaperImport(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1163,7 +1308,15 @@ class ExamPaperImport(BaseModel):
     name_en: str = Field(..., alias="nameEn", min_length=1)
     name_hi: str | None = Field(..., alias="nameHi")
     authoritative_language: Language = Field(..., alias="authoritativeLanguage")
-    syllabus: list[Syllabu] = Field(..., min_length=1)
+    syllabus: list[Syllabu1] = Field(..., min_length=1)
+
+
+class ImportExamPapersRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    exams: list[ExamPaperImport] = Field(..., max_length=200, min_length=1)
 
 
 class LibrarySource(BaseModel):

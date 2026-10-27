@@ -196,10 +196,152 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/syllabus": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["SyllabusController_overview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/syllabus/subjects/{subjectId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["SyllabusController_subject"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/syllabus/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["SyllabusController_import"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/syllabus/nodes": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["SyllabusController_createNode"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/syllabus/nodes/{nodeId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["SyllabusController_updateNode"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/exams": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["SyllabusController_exams"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/exams/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["SyllabusController_importExamPapers"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/exams/{examId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete: operations["SyllabusController_removeExam"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
-    schemas: never;
+    schemas: {
+        __schema0: {
+            code: string;
+            /** @enum {string} */
+            level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+            nameEn: string;
+            nameHi: string | null;
+            /** @default [] */
+            aliases: string[];
+            /** @default [] */
+            objectives: string[];
+            /** @default [] */
+            children: components["schemas"]["__schema0"][];
+        };
+    };
     responses: never;
     parameters: never;
     requestBodies: never;
@@ -615,6 +757,317 @@ export interface operations {
             header?: never;
             path: {
                 sourceId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    SyllabusController_overview: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        subjects: {
+                            /** Format: uuid */
+                            id: string;
+                            /** Format: uuid */
+                            parentId: string | null;
+                            code: string;
+                            path: string;
+                            /** @enum {string} */
+                            level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+                            nameEn: string;
+                            nameHi: string | null;
+                            aliases: string[];
+                            objectives: string[];
+                            isActive: boolean;
+                            sortOrder: number;
+                            descendants: number;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    SyllabusController_subject: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                subjectId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        subject: {
+                            /** Format: uuid */
+                            id: string;
+                            /** Format: uuid */
+                            parentId: string | null;
+                            code: string;
+                            path: string;
+                            /** @enum {string} */
+                            level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+                            nameEn: string;
+                            nameHi: string | null;
+                            aliases: string[];
+                            objectives: string[];
+                            isActive: boolean;
+                            sortOrder: number;
+                        };
+                        nodes: {
+                            /** Format: uuid */
+                            id: string;
+                            /** Format: uuid */
+                            parentId: string | null;
+                            code: string;
+                            path: string;
+                            /** @enum {string} */
+                            level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+                            nameEn: string;
+                            nameHi: string | null;
+                            aliases: string[];
+                            objectives: string[];
+                            isActive: boolean;
+                            sortOrder: number;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    SyllabusController_import: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    subject: components["schemas"]["__schema0"];
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        created: number;
+                        updated: number;
+                        unchanged: number;
+                    };
+                };
+            };
+        };
+    };
+    SyllabusController_createNode: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    nameEn: string;
+                    nameHi: string | null;
+                    aliases: string[];
+                    objectives: string[];
+                    /** Format: uuid */
+                    parentId: string | null;
+                    code: string;
+                    /** @enum {string} */
+                    level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** Format: uuid */
+                        parentId: string | null;
+                        code: string;
+                        path: string;
+                        /** @enum {string} */
+                        level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+                        nameEn: string;
+                        nameHi: string | null;
+                        aliases: string[];
+                        objectives: string[];
+                        isActive: boolean;
+                        sortOrder: number;
+                    };
+                };
+            };
+        };
+    };
+    SyllabusController_updateNode: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                nodeId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    nameEn: string;
+                    nameHi: string | null;
+                    aliases: string[];
+                    objectives: string[];
+                    isActive: boolean;
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** Format: uuid */
+                        parentId: string | null;
+                        code: string;
+                        path: string;
+                        /** @enum {string} */
+                        level: "subject" | "unit" | "chapter" | "topic" | "subtopic";
+                        nameEn: string;
+                        nameHi: string | null;
+                        aliases: string[];
+                        objectives: string[];
+                        isActive: boolean;
+                        sortOrder: number;
+                    };
+                };
+            };
+        };
+    };
+    SyllabusController_exams: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        code: string;
+                        family: string;
+                        paperCode: string | null;
+                        nameEn: string;
+                        nameHi: string | null;
+                        /** @enum {string} */
+                        authoritativeLanguage: "hi" | "en";
+                        /** Format: uuid */
+                        id: string;
+                        syllabus: {
+                            /** Format: uuid */
+                            nodeId: string;
+                            path: string;
+                            nameEn: string;
+                            nameHi: string | null;
+                            weightage: number | null;
+                        }[];
+                    }[];
+                };
+            };
+        };
+    };
+    SyllabusController_importExamPapers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    exams: {
+                        code: string;
+                        family: string;
+                        paperCode: string | null;
+                        nameEn: string;
+                        nameHi: string | null;
+                        /** @enum {string} */
+                        authoritativeLanguage: "hi" | "en";
+                        syllabus: {
+                            node: string;
+                            weightage?: number;
+                        }[];
+                    }[];
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        created: number;
+                        updated: number;
+                        unchanged: number;
+                    };
+                };
+            };
+        };
+    };
+    SyllabusController_removeExam: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                examId: string;
             };
             cookie?: never;
         };

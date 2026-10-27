@@ -6,6 +6,7 @@ import { EnvModule } from "./config/env.module.js";
 import { DashboardModule } from "./modules/dashboard/dashboard.module.js";
 import { IdentityModule } from "./modules/identity/identity.module.js";
 import { LibraryModule } from "./modules/library/library.module.js";
+import { SyllabusModule } from "./modules/syllabus/syllabus.module.js";
 import { SystemModule } from "./modules/system/system.module.js";
 import { CacheModule } from "./shared/cache/cache.module.js";
 import { DatabaseModule } from "./shared/database/database.module.js";
@@ -26,6 +27,7 @@ export class AppModule {
         SystemModule,
         DashboardModule,
         LibraryModule,
+        SyllabusModule,
       ],
       providers: [
         // Request bodies/queries are validated against the zod schema given in @Body({ schema }) etc.

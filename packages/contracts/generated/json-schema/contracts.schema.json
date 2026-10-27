@@ -968,6 +968,75 @@
       ],
       "additionalProperties": false
     },
+    "CreateSyllabusNodeRequest": {
+      "title": "CreateSyllabusNodeRequest",
+      "type": "object",
+      "properties": {
+        "nameEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "nameHi": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "aliases": {
+          "maxItems": 50,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "objectives": {
+          "maxItems": 30,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "parentId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "level": {
+          "$ref": "#/$defs/SyllabusLevel"
+        }
+      },
+      "required": [
+        "nameEn",
+        "nameHi",
+        "aliases",
+        "objectives",
+        "parentId",
+        "code",
+        "level"
+      ],
+      "additionalProperties": false
+    },
     "CurrentUser": {
       "title": "CurrentUser",
       "type": "object",
@@ -1416,6 +1485,92 @@
         }
       ]
     },
+    "ExamPaper": {
+      "title": "ExamPaper",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "family": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "paperCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "nameEn": {
+          "type": "string",
+          "minLength": 1
+        },
+        "nameHi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "authoritativeLanguage": {
+          "$ref": "#/$defs/Language"
+        },
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "syllabus": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nodeId": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "path": {
+                "type": "string"
+              },
+              "nameEn": {
+                "type": "string"
+              },
+              "nameHi": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "weightage": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "nodeId",
+              "path",
+              "nameEn",
+              "nameHi",
+              "weightage"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "code",
+        "family",
+        "paperCode",
+        "nameEn",
+        "nameHi",
+        "authoritativeLanguage",
+        "id",
+        "syllabus"
+      ],
+      "additionalProperties": false
+    },
     "ExamPaperImport": {
       "title": "ExamPaperImport",
       "type": "object",
@@ -1501,6 +1656,51 @@
         "en",
         "hi",
         "subject"
+      ],
+      "additionalProperties": false
+    },
+    "ImportExamPapersRequest": {
+      "title": "ImportExamPapersRequest",
+      "type": "object",
+      "properties": {
+        "exams": {
+          "minItems": 1,
+          "maxItems": 200,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExamPaperImport"
+          }
+        }
+      },
+      "required": [
+        "exams"
+      ],
+      "additionalProperties": false
+    },
+    "ImportSummary": {
+      "title": "ImportSummary",
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "updated": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "unchanged": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "created",
+        "updated",
+        "unchanged"
       ],
       "additionalProperties": false
     },
@@ -3329,6 +3529,79 @@
         "subtopic"
       ]
     },
+    "SyllabusNode": {
+      "title": "SyllabusNode",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "parentId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "code": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "level": {
+          "$ref": "#/$defs/SyllabusLevel"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameHi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "objectives": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "sortOrder": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "id",
+        "parentId",
+        "code",
+        "path",
+        "level",
+        "nameEn",
+        "nameHi",
+        "aliases",
+        "objectives",
+        "isActive",
+        "sortOrder"
+      ],
+      "additionalProperties": false
+    },
     "SyllabusNodeImport": {
       "title": "SyllabusNodeImport",
       "type": "object",
@@ -3387,6 +3660,117 @@
         "aliases",
         "objectives",
         "children"
+      ],
+      "additionalProperties": false
+    },
+    "SyllabusOverview": {
+      "title": "SyllabusOverview",
+      "type": "object",
+      "properties": {
+        "subjects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "parentId": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "code": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "level": {
+                "$ref": "#/$defs/SyllabusLevel"
+              },
+              "nameEn": {
+                "type": "string"
+              },
+              "nameHi": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "aliases": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "objectives": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "isActive": {
+                "type": "boolean"
+              },
+              "sortOrder": {
+                "type": "integer",
+                "minimum": -9007199254740991,
+                "maximum": 9007199254740991
+              },
+              "descendants": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "id",
+              "parentId",
+              "code",
+              "path",
+              "level",
+              "nameEn",
+              "nameHi",
+              "aliases",
+              "objectives",
+              "isActive",
+              "sortOrder",
+              "descendants"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "subjects"
+      ],
+      "additionalProperties": false
+    },
+    "SyllabusSubject": {
+      "title": "SyllabusSubject",
+      "type": "object",
+      "properties": {
+        "subject": {
+          "$ref": "#/$defs/SyllabusNode"
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SyllabusNode"
+          }
+        }
+      },
+      "required": [
+        "subject",
+        "nodes"
       ],
       "additionalProperties": false
     },
@@ -3516,6 +3900,58 @@
         "role",
         "subjects",
         "monthlyBudgetUsd"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateSyllabusNodeRequest": {
+      "title": "UpdateSyllabusNodeRequest",
+      "type": "object",
+      "properties": {
+        "nameEn": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "nameHi": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "aliases": {
+          "maxItems": 50,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
+        },
+        "objectives": {
+          "maxItems": 30,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
+        },
+        "isActive": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "nameEn",
+        "nameHi",
+        "aliases",
+        "objectives",
+        "isActive"
       ],
       "additionalProperties": false
     },

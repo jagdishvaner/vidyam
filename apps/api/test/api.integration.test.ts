@@ -5,6 +5,9 @@
  */
 import "reflect-metadata";
 
+import { readFileSync } from "node:fs";
+import path from "node:path";
+
 import type { INestApplication } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { AuthService } from "@thallesp/nestjs-better-auth";
@@ -445,5 +448,78 @@ describe("API", () => {
     // Back to a plain teacher with no personal budget, as the other tests expect.
     await put(asha.userId, { role: "teacher", subjects: [], monthlyBudgetUsd: null }).expect(204);
     expect(await owner.db.$count(schema.quotas, sqlEq(schema.quotas.userId, asha.userId))).toBe(0);
+  });
+
+  it("imports a syllabus and exam papers by code path, and lets admins edit the tree", async () => {
+    const server = app.getHttpServer();
+    const pack = path.join(import.meta.dirname, "..", "..", "..", "fixtures", "demo-pack", "catalog");
+    const syllabus = JSON.parse(readFileSync(path.join(pack, "syllabus-science.json"), "utf8"));
+    const examPapers = JSON.parse(readFileSync(path.join(pack, "exams.json"), "utf8"));
+    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const post = (url: string, body: object, cookies = admin) =>
+      request(server).post(url).set("Cookie", cookies).send(body);
+
+    await post("/api/syllabus/import", syllabus, teacher).expect(403);
+    // An earlier test made a bare "science" subject: the import adds its aliases and fills in the tree.
+    expect((await post("/api/syllabus/import", syllabus).expect(200)).body).toEqual({
+      created: 54,
+      updated: 1,
+      unchanged: 0,
+    });
+    expect((await post("/api/syllabus/import", syllabus).expect(200)).body).toEqual({
+      created: 0,
+      updated: 0,
+      unchanged: 55,
+    });
+
+    // Exam papers name nodes by path; unknown paths are refused with the path in the message.
+    const exam = examPapers[0];
+    const missing = { ...exam, syllabus: [{ node: "science/astronomy" }] };
+    const refused = await post("/api/exams/import", { exams: [missing] }).expect(422);
+    expect(refused.body.message).toContain("science/astronomy");
+    expect((await post("/api/exams/import", { exams: examPapers }).expect(200)).body).toMatchObject({
+      created: 1,
+    });
+    const papers = (await request(server).get("/api/exams").set("Cookie", teacher).expect(200)).body;
+    expect(papers).toEqual([
+      expect.objectContaining({
+        code: "rpsc_2g_p2_science",
+        family: "rpsc_2nd_grade",
+        syllabus: [
+          expect.objectContaining({ path: "science/biology", weightage: expect.closeTo(0.3, 5) }),
+          expect.objectContaining({ path: "science/chemistry" }),
+          expect.objectContaining({ path: "science/physics", weightage: expect.closeTo(0.4, 5) }),
+        ],
+      }),
+    ]);
+
+    // Teachers read the tree (the chat's pickers need it); admins edit it.
+    const overview = (await request(server).get("/api/syllabus").set("Cookie", teacher).expect(200)).body;
+    const science = overview.subjects.find((s: { code: string }) => s.code === "science");
+    expect(science.descendants).toBe(55); // the pack's 54, plus the chapter the staff test made
+    const tree = (
+      await request(server).get(`/api/syllabus/subjects/${science.id}`).set("Cookie", teacher).expect(200)
+    ).body;
+    const motion = tree.nodes.find((n: { path: string }) => n.path === "science/physics/motion");
+    expect(motion).toMatchObject({ level: "chapter", nameHi: "गति" });
+    const child = { parentId: motion.id, code: "relative_motion", level: "topic", nameEn: "Relative Motion" };
+    const fields = { nameHi: "सापेक्ष गति", aliases: ["sapeksh gati"], objectives: [] };
+    const created = (await post("/api/syllabus/nodes", { ...child, ...fields }).expect(201)).body;
+    expect(created.path).toBe("science/physics/motion/relative_motion");
+    await post("/api/syllabus/nodes", { ...child, ...fields }).expect(409);
+    await post("/api/syllabus/nodes", { ...child, ...fields, code: "units", level: "unit" }).expect(422);
+    const retired = await request(server)
+      .put(`/api/syllabus/nodes/${created.id}`)
+      .set("Cookie", admin)
+      .send({ ...fields, nameEn: "Relative motion", isActive: false })
+      .expect(200);
+    expect(retired.body).toMatchObject({
+      nameEn: "Relative motion",
+      isActive: false,
+      code: "relative_motion",
+    });
+
+    await request(server).delete(`/api/exams/${papers[0].id}`).set("Cookie", teacher).expect(403);
+    await request(server).delete(`/api/exams/${papers[0].id}`).set("Cookie", admin).expect(204);
   });
 });

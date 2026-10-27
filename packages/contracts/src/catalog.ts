@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Language, Licence } from "./common.js";
+import { Language, Licence, Uuid } from "./common.js";
 import { contract } from "./registry.js";
 import { Blueprint } from "./paper.js";
 import { Answer, QuestionContent, QuestionType } from "./question.js";
@@ -110,3 +110,92 @@ export const QuestionImport = contract(
   }),
 );
 export type QuestionImport = z.infer<typeof QuestionImport>;
+
+/** One syllabus node as the admin editor and the chat's pickers see it. */
+export const SyllabusNode = contract(
+  "SyllabusNode",
+  z.object({
+    id: Uuid,
+    parentId: Uuid.nullable(),
+    code: z.string(),
+    /** Codes from the subject down, e.g. "science/physics/motion". */
+    path: z.string(),
+    level: SyllabusLevel,
+    nameEn: z.string(),
+    nameHi: z.string().nullable(),
+    aliases: z.array(z.string()),
+    objectives: z.array(z.string()),
+    isActive: z.boolean(),
+    sortOrder: z.number().int(),
+  }),
+);
+export type SyllabusNode = z.infer<typeof SyllabusNode>;
+
+/** A subject with its whole tree, flat and in reading order (parents before children). */
+export const SyllabusSubject = contract(
+  "SyllabusSubject",
+  z.object({ subject: SyllabusNode, nodes: z.array(SyllabusNode) }),
+);
+export type SyllabusSubject = z.infer<typeof SyllabusSubject>;
+
+export const SyllabusOverview = contract(
+  "SyllabusOverview",
+  z.object({
+    subjects: z.array(SyllabusNode.extend({ descendants: z.number().int().nonnegative() })),
+  }),
+);
+export type SyllabusOverview = z.infer<typeof SyllabusOverview>;
+
+export const ImportSummary = contract(
+  "ImportSummary",
+  z.object({
+    created: z.number().int().nonnegative(),
+    updated: z.number().int().nonnegative(),
+    unchanged: z.number().int().nonnegative(),
+  }),
+);
+export type ImportSummary = z.infer<typeof ImportSummary>;
+
+const NodeEdit = z.object({
+  nameEn: z.string().trim().min(1).max(200),
+  nameHi: z.string().trim().min(1).max(200).nullable(),
+  aliases: z.array(z.string().trim().min(1).max(120)).max(50),
+  objectives: z.array(z.string().trim().min(1).max(500)).max(30),
+});
+
+export const CreateSyllabusNodeRequest = contract(
+  "CreateSyllabusNodeRequest",
+  NodeEdit.extend({ parentId: Uuid.nullable(), code: NodeCode, level: SyllabusLevel }),
+);
+export type CreateSyllabusNodeRequest = z.infer<typeof CreateSyllabusNodeRequest>;
+
+/** Codes never change once content is tagged with them; a node is retired by switching it off. */
+export const UpdateSyllabusNodeRequest = contract(
+  "UpdateSyllabusNodeRequest",
+  NodeEdit.extend({ isActive: z.boolean() }),
+);
+export type UpdateSyllabusNodeRequest = z.infer<typeof UpdateSyllabusNodeRequest>;
+
+/** An exam paper with the syllabus it covers, resolved to nodes. */
+export const ExamPaper = contract(
+  "ExamPaper",
+  ExamPaperImport.omit({ syllabus: true }).extend({
+    id: Uuid,
+    syllabus: z.array(
+      z.object({
+        nodeId: Uuid,
+        path: z.string(),
+        nameEn: z.string(),
+        nameHi: z.string().nullable(),
+        weightage: z.number().nullable(),
+      }),
+    ),
+  }),
+);
+export type ExamPaper = z.infer<typeof ExamPaper>;
+
+export const ImportExamPapersRequest = contract(
+  "ImportExamPapersRequest",
+  z.object({ exams: z.array(ExamPaperImport).min(1).max(200) }),
+);
+export type ImportExamPapersRequest = z.infer<typeof ImportExamPapersRequest>;
