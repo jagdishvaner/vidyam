@@ -48,6 +48,33 @@
       ],
       "additionalProperties": false
     },
+    "AiPolicy": {
+      "title": "AiPolicy",
+      "type": "object",
+      "properties": {
+        "allowedModelIds": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "requireCrossProviderCheck": {
+          "default": true,
+          "type": "boolean"
+        },
+        "defaultSourcing": {
+          "default": "bank_first",
+          "$ref": "#/$defs/Sourcing"
+        }
+      },
+      "required": [
+        "allowedModelIds",
+        "requireCrossProviderCheck",
+        "defaultSourcing"
+      ],
+      "additionalProperties": false
+    },
     "AiTaskQueue": {
       "title": "AiTaskQueue",
       "type": "string",
@@ -121,6 +148,797 @@
           "additionalProperties": false
         }
       ]
+    },
+    "Blueprint": {
+      "title": "Blueprint",
+      "type": "object",
+      "properties": {
+        "sections": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaperSection"
+          }
+        },
+        "durationMinutes": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "instructions": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "defaultDifficultyMix": {
+          "$ref": "#/$defs/DifficultyMix"
+        }
+      },
+      "required": [
+        "sections",
+        "durationMinutes",
+        "instructions",
+        "defaultDifficultyMix"
+      ],
+      "additionalProperties": false
+    },
+    "CardField": {
+      "title": "CardField",
+      "type": "object",
+      "properties": {
+        "key": {
+          "$ref": "#/$defs/CardFieldKey"
+        },
+        "required": {
+          "type": "boolean"
+        },
+        "suggested": {}
+      },
+      "required": [
+        "key",
+        "required"
+      ],
+      "additionalProperties": false
+    },
+    "CardFieldKey": {
+      "title": "CardFieldKey",
+      "type": "string",
+      "enum": [
+        "kind",
+        "exam",
+        "blueprint",
+        "taxonomy_nodes",
+        "sections",
+        "difficulty_mix",
+        "languages",
+        "layout",
+        "duration",
+        "sourcing",
+        "student_batch",
+        "set_codes",
+        "depth",
+        "include_examples",
+        "include_practice",
+        "title"
+      ]
+    },
+    "ChatBlock": {
+      "title": "ChatBlock",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "text"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "citations"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CitationRef"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "items"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "clarification"
+            },
+            "cardId": {
+              "type": "string"
+            },
+            "purpose": {
+              "type": "string",
+              "enum": [
+                "scope",
+                "shape"
+              ]
+            },
+            "fields": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/CardField"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "cardId",
+            "purpose",
+            "fields"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "card_response"
+            },
+            "cardId": {
+              "type": "string"
+            },
+            "values": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {}
+            },
+            "summary": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "cardId",
+            "values",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "spec_review"
+            },
+            "spec": {
+              "$ref": "#/$defs/TaskSpec"
+            },
+            "availability": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/TopicAvailability"
+              }
+            },
+            "estimate": {
+              "$ref": "#/$defs/CostEstimate"
+            },
+            "confirmedAt": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date-time",
+                  "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "spec",
+            "availability",
+            "estimate",
+            "confirmedAt"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "progress"
+            },
+            "runId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "stage": {
+              "type": "string"
+            },
+            "done": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "total": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "type",
+            "runId",
+            "stage",
+            "done",
+            "total"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "document_ref"
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "title": {
+              "type": "string"
+            },
+            "kind": {
+              "$ref": "#/$defs/TaskKind"
+            },
+            "version": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "type",
+            "documentId",
+            "title",
+            "kind",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "edit_summary"
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "fromVersion": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "toVersion": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "summary": {
+              "type": "string"
+            },
+            "ops": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/EditOp"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "documentId",
+            "fromVersion",
+            "toVersion",
+            "summary",
+            "ops"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "notice"
+            },
+            "level": {
+              "type": "string",
+              "enum": [
+                "info",
+                "warning"
+              ]
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "level",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "error"
+            },
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "seq": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "user",
+            "assistant"
+          ]
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChatBlock"
+          }
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        }
+      },
+      "required": [
+        "id",
+        "seq",
+        "role",
+        "blocks",
+        "modelId",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    },
+    "ChatSessionStatus": {
+      "title": "ChatSessionStatus",
+      "type": "string",
+      "enum": [
+        "idle",
+        "awaiting_input",
+        "generating"
+      ]
+    },
+    "ChatSessionSummary": {
+      "title": "ChatSessionSummary",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/ChatSessionStatus"
+        },
+        "pinned": {
+          "type": "boolean"
+        },
+        "archived": {
+          "type": "boolean"
+        },
+        "documentId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "status",
+        "pinned",
+        "archived",
+        "documentId",
+        "modelId",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "ChatStreamEvent": {
+      "title": "ChatStreamEvent",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "turn_started"
+            },
+            "turnId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "messageId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "event",
+            "turnId",
+            "messageId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "text_delta"
+            },
+            "text": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "block"
+            },
+            "block": {
+              "$ref": "#/$defs/ChatBlock"
+            }
+          },
+          "required": [
+            "event",
+            "block"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "draft_spec"
+            },
+            "draftSpec": {
+              "$ref": "#/$defs/DraftSpec"
+            }
+          },
+          "required": [
+            "event",
+            "draftSpec"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "message_complete"
+            },
+            "messageId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "event",
+            "messageId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "error"
+            },
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event",
+            "code",
+            "message"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ChatTurnInput": {
+      "title": "ChatTurnInput",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "text"
+            },
+            "text": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 8000
+            }
+          },
+          "required": [
+            "kind",
+            "text"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "card_submit"
+            },
+            "cardId": {
+              "type": "string"
+            },
+            "values": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string"
+              },
+              "additionalProperties": {}
+            }
+          },
+          "required": [
+            "kind",
+            "cardId",
+            "values"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "action"
+            },
+            "action": {
+              "type": "string",
+              "enum": [
+                "confirm_spec",
+                "cancel",
+                "undo"
+              ]
+            },
+            "targetId": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "action"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ChatTurnRequest": {
+      "title": "ChatTurnRequest",
+      "type": "object",
+      "properties": {
+        "clientTurnId": {
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 64
+        },
+        "input": {
+          "$ref": "#/$defs/ChatTurnInput"
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "clientTurnId",
+        "input"
+      ],
+      "additionalProperties": false
+    },
+    "CitationRef": {
+      "title": "CitationRef",
+      "type": "object",
+      "properties": {
+        "chunkId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "pageStart": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pageEnd": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pageLabel": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "quote": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "chunkId",
+        "sourceId",
+        "filename",
+        "pageStart",
+        "pageEnd",
+        "pageLabel",
+        "quote"
+      ],
+      "additionalProperties": false
+    },
+    "ContentLanguage": {
+      "title": "ContentLanguage",
+      "type": "string",
+      "enum": [
+        "hi",
+        "en",
+        "bilingual"
+      ]
+    },
+    "CostEstimate": {
+      "title": "CostEstimate",
+      "type": "object",
+      "properties": {
+        "usdLow": {
+          "type": "number",
+          "minimum": 0
+        },
+        "usdHigh": {
+          "type": "number",
+          "minimum": 0
+        },
+        "minutes": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "usdLow",
+        "usdHigh",
+        "minutes"
+      ],
+      "additionalProperties": false
     },
     "CurrentUser": {
       "title": "CurrentUser",
@@ -256,6 +1074,319 @@
         "detail"
       ],
       "additionalProperties": false
+    },
+    "DifficultyMix": {
+      "title": "DifficultyMix",
+      "type": "object",
+      "properties": {
+        "easy": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "medium": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "hard": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "easy",
+        "medium",
+        "hard"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentEdit": {
+      "title": "DocumentEdit",
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "baseVersion": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ops": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EditOp"
+          }
+        }
+      },
+      "required": [
+        "documentId",
+        "baseVersion",
+        "ops"
+      ],
+      "additionalProperties": false
+    },
+    "DraftSpec": {
+      "title": "DraftSpec",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/TaskKind"
+        },
+        "title": {
+          "type": "string"
+        },
+        "examCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "blueprintId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "taxonomyNodeIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaperSection"
+          }
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Language"
+          }
+        },
+        "layout": {
+          "$ref": "#/$defs/PaperLayout"
+        },
+        "durationMinutes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourcing": {
+          "$ref": "#/$defs/Sourcing"
+        },
+        "studentBatchId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "setCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "depth": {
+          "type": "string",
+          "enum": [
+            "brief",
+            "standard",
+            "detailed"
+          ]
+        },
+        "includeExamples": {
+          "type": "boolean"
+        },
+        "includePractice": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "EditOp": {
+      "title": "EditOp",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "replace_item"
+            },
+            "slotId": {
+              "type": "string"
+            },
+            "questionId": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "op",
+            "slotId",
+            "questionId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "delete_items"
+            },
+            "slotIds": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "op",
+            "slotIds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "add_items"
+            },
+            "afterSlotId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "slots": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/PaperSlot"
+              }
+            }
+          },
+          "required": [
+            "op",
+            "afterSlotId",
+            "slots"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "reorder"
+            },
+            "slotIds": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "op",
+            "slotIds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "set_marks"
+            },
+            "slotId": {
+              "type": "string"
+            },
+            "marks": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "op",
+            "slotId",
+            "marks"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "set_instructions"
+            },
+            "sectionIndex": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "instructions": {
+              "$ref": "#/$defs/LocalizedText"
+            }
+          },
+          "required": [
+            "op",
+            "sectionIndex",
+            "instructions"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "set_title"
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "op",
+            "title"
+          ],
+          "additionalProperties": false
+        }
+      ]
     },
     "IngestSourceInput": {
       "title": "IngestSourceInput",
@@ -667,6 +1798,232 @@
       ],
       "additionalProperties": false
     },
+    "LlmProvider": {
+      "title": "LlmProvider",
+      "type": "string",
+      "enum": [
+        "anthropic",
+        "openai",
+        "stub"
+      ]
+    },
+    "LlmTask": {
+      "title": "LlmTask",
+      "type": "string",
+      "enum": [
+        "ocr_text",
+        "ocr_math",
+        "segment",
+        "tag",
+        "context_header",
+        "query_understanding",
+        "spec",
+        "chat_title",
+        "chat_qa",
+        "generate",
+        "notes_write",
+        "edit_agent",
+        "verify_grounding",
+        "verify_solve",
+        "lint",
+        "bilingual_check"
+      ]
+    },
+    "LocalizedText": {
+      "title": "LocalizedText",
+      "type": "object",
+      "properties": {
+        "en": {
+          "type": "string"
+        },
+        "hi": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ManifestSection": {
+      "title": "ManifestSection",
+      "type": "object",
+      "properties": {
+        "pages": {
+          "type": "string",
+          "pattern": "^\\d+(-\\d+)?$"
+        },
+        "chapter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "pages",
+        "chapter"
+      ],
+      "additionalProperties": false
+    },
+    "MemberSettings": {
+      "title": "MemberSettings",
+      "type": "object",
+      "properties": {
+        "uiLocale": {
+          "type": "string",
+          "enum": [
+            "en",
+            "hi"
+          ]
+        },
+        "contentLanguage": {
+          "$ref": "#/$defs/ContentLanguage"
+        },
+        "defaultModelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "defaultExamId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "uiLocale",
+        "contentLanguage",
+        "defaultModelId",
+        "defaultExamId"
+      ],
+      "additionalProperties": false
+    },
+    "NotesSpec": {
+      "title": "NotesSpec",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "notes",
+            "revision_sheet"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "examCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "taxonomyNodeIds": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "languages": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Language"
+          }
+        },
+        "depth": {
+          "type": "string",
+          "enum": [
+            "brief",
+            "standard",
+            "detailed"
+          ]
+        },
+        "includeExamples": {
+          "type": "boolean"
+        },
+        "includePractice": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "title",
+        "examCode",
+        "taxonomyNodeIds",
+        "languages",
+        "depth",
+        "includeExamples",
+        "includePractice"
+      ],
+      "additionalProperties": false
+    },
+    "OrgBranding": {
+      "title": "OrgBranding",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "logoKey": {
+          "default": null,
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "headerLines": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "footer": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "defaultInstructions": {
+          "default": null,
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LocalizedText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "logoKey",
+        "headerLines",
+        "footer",
+        "defaultInstructions"
+      ],
+      "additionalProperties": false
+    },
     "OrgRole": {
       "title": "OrgRole",
       "type": "string",
@@ -700,58 +2057,209 @@
             "type": "object",
             "properties": {
               "name": {
-                "type": "string"
+                "$ref": "#/$defs/LocalizedText"
               },
               "instructions": {
-                "type": [
-                  "string",
-                  "null"
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/LocalizedText"
+                  },
+                  {
+                    "type": "null"
+                  }
                 ]
               },
-              "items": {
+              "slotIds": {
                 "type": "array",
                 "items": {
-                  "type": "object",
-                  "properties": {
-                    "itemId": {
-                      "type": "string"
-                    },
-                    "questionId": {
-                      "type": "string",
-                      "format": "uuid"
-                    },
-                    "slotId": {
-                      "type": [
-                        "string",
-                        "null"
-                      ]
-                    },
-                    "marks": {
-                      "type": "number"
-                    }
-                  },
-                  "required": [
-                    "itemId",
-                    "questionId",
-                    "slotId",
-                    "marks"
-                  ],
-                  "additionalProperties": false
+                  "type": "string"
                 }
               }
             },
             "required": [
               "name",
               "instructions",
-              "items"
+              "slotIds"
             ],
             "additionalProperties": false
+          }
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaperSlot"
+          }
+        },
+        "sets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PaperSet"
           }
         }
       },
       "required": [
         "spec",
-        "sections"
+        "sections",
+        "slots",
+        "sets"
+      ],
+      "additionalProperties": false
+    },
+    "PaperLayout": {
+      "title": "PaperLayout",
+      "type": "string",
+      "enum": [
+        "hindi_then_english",
+        "side_by_side",
+        "single_language"
+      ]
+    },
+    "PaperSection": {
+      "title": "PaperSection",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "count": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "marksEach": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "negativeMarks": {
+          "default": 0,
+          "type": "number",
+          "minimum": 0
+        },
+        "attemptAny": {
+          "default": null,
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "difficultyMix": {
+          "$ref": "#/$defs/DifficultyMix"
+        }
+      },
+      "required": [
+        "name",
+        "qtype",
+        "count",
+        "marksEach",
+        "negativeMarks",
+        "attemptAny",
+        "difficultyMix"
+      ],
+      "additionalProperties": false
+    },
+    "PaperSet": {
+      "title": "PaperSet",
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z]$"
+        },
+        "slotOrder": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optionOrder": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "required": [
+        "code",
+        "slotOrder",
+        "optionOrder"
+      ],
+      "additionalProperties": false
+    },
+    "PaperSlot": {
+      "title": "PaperSlot",
+      "type": "object",
+      "properties": {
+        "slotId": {
+          "type": "string"
+        },
+        "sectionIndex": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "taxonomyNodeId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "difficulty": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "marks": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "state": {
+          "$ref": "#/$defs/SlotState"
+        },
+        "questionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "flags": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "slotId",
+        "sectionIndex",
+        "qtype",
+        "taxonomyNodeId",
+        "difficulty",
+        "marks",
+        "state",
+        "questionId",
+        "flags"
       ],
       "additionalProperties": false
     },
@@ -759,39 +2267,33 @@
       "title": "PaperSpec",
       "type": "object",
       "properties": {
-        "examCode": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "languages": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/Language"
-          }
-        },
-        "layout": {
+        "kind": {
           "type": "string",
           "enum": [
-            "hindi_then_english",
-            "side_by_side",
-            "single_language"
+            "question_paper",
+            "worksheet"
           ]
         },
-        "durationMinutes": {
-          "type": "integer",
-          "exclusiveMinimum": 0,
-          "maximum": 9007199254740991
+        "title": {
+          "type": "string",
+          "minLength": 1
         },
-        "totalMarks": {
-          "type": "number",
-          "exclusiveMinimum": 0
+        "examCode": {
+          "type": [
+            "string",
+            "null"
+          ]
         },
-        "negativeMarking": {
-          "type": "number",
-          "minimum": 0
+        "blueprintId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "taxonomyNodeIds": {
           "minItems": 1,
@@ -805,56 +2307,33 @@
           "minItems": 1,
           "type": "array",
           "items": {
-            "type": "object",
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "qtype": {
-                "$ref": "#/$defs/QuestionType"
-              },
-              "count": {
-                "type": "integer",
-                "exclusiveMinimum": 0,
-                "maximum": 9007199254740991
-              },
-              "marksEach": {
-                "type": "number",
-                "exclusiveMinimum": 0
-              },
-              "difficultyMix": {
-                "type": "object",
-                "properties": {
-                  "easy": {
-                    "type": "number"
-                  },
-                  "medium": {
-                    "type": "number"
-                  },
-                  "hard": {
-                    "type": "number"
-                  }
-                },
-                "required": [
-                  "easy",
-                  "medium",
-                  "hard"
-                ],
-                "additionalProperties": false
-              }
-            },
-            "required": [
-              "name",
-              "qtype",
-              "count",
-              "marksEach",
-              "difficultyMix"
-            ],
-            "additionalProperties": false
+            "$ref": "#/$defs/PaperSection"
           }
         },
-        "allowPyqReuse": {
-          "type": "boolean"
+        "languages": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Language"
+          }
+        },
+        "layout": {
+          "$ref": "#/$defs/PaperLayout"
+        },
+        "durationMinutes": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourcing": {
+          "$ref": "#/$defs/Sourcing"
         },
         "studentBatchId": {
           "anyOf": [
@@ -866,20 +2345,30 @@
               "type": "null"
             }
           ]
+        },
+        "setCodes": {
+          "default": [],
+          "maxItems": 8,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Z]$"
+          }
         }
       },
       "required": [
-        "examCode",
+        "kind",
         "title",
+        "examCode",
+        "blueprintId",
+        "taxonomyNodeIds",
+        "sections",
         "languages",
         "layout",
         "durationMinutes",
-        "totalMarks",
-        "negativeMarking",
-        "taxonomyNodeIds",
-        "sections",
-        "allowPyqReuse",
-        "studentBatchId"
+        "sourcing",
+        "studentBatchId",
+        "setCodes"
       ],
       "additionalProperties": false
     },
@@ -1319,44 +2808,17 @@
       ],
       "additionalProperties": false
     },
-    "Slot": {
-      "title": "Slot",
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "sectionIndex": {
-          "type": "integer",
-          "minimum": 0,
-          "maximum": 9007199254740991
-        },
-        "qtype": {
-          "$ref": "#/$defs/QuestionType"
-        },
-        "taxonomyNodeId": {
-          "type": "string",
-          "format": "uuid"
-        },
-        "difficulty": {
-          "type": "integer",
-          "minimum": 1,
-          "maximum": 5
-        },
-        "marks": {
-          "type": "number",
-          "exclusiveMinimum": 0
-        }
-      },
-      "required": [
-        "id",
-        "sectionIndex",
-        "qtype",
-        "taxonomyNodeId",
-        "difficulty",
-        "marks"
-      ],
-      "additionalProperties": false
+    "SlotState": {
+      "title": "SlotState",
+      "type": "string",
+      "enum": [
+        "pending",
+        "bank",
+        "generated",
+        "verified",
+        "flagged",
+        "insufficient_evidence"
+      ]
     },
     "SourceKind": {
       "title": "SourceKind",
@@ -1381,6 +2843,120 @@
         "mixed"
       ]
     },
+    "SourceManifestRow": {
+      "title": "SourceManifestRow",
+      "type": "object",
+      "properties": {
+        "file": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "$ref": "#/$defs/SourceKind"
+        },
+        "licence": {
+          "$ref": "#/$defs/Licence"
+        },
+        "subject": {
+          "type": "string",
+          "minLength": 1
+        },
+        "language": {
+          "type": "string",
+          "enum": [
+            "hi",
+            "en",
+            "bilingual"
+          ]
+        },
+        "exams": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "title": {
+          "type": "string"
+        },
+        "classLevel": {
+          "type": "string"
+        },
+        "paperCode": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1950,
+          "maximum": 2100
+        },
+        "setCode": {
+          "type": "string",
+          "pattern": "^[A-Z]$"
+        },
+        "dateShift": {
+          "type": "string"
+        },
+        "answerKeyFor": {
+          "type": "string"
+        },
+        "answerKeyStatus": {
+          "type": "string",
+          "enum": [
+            "provisional",
+            "final"
+          ]
+        },
+        "chapter": {
+          "type": "string"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ManifestSection"
+          }
+        },
+        "parallelOf": {
+          "type": "string"
+        },
+        "pageOffset": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "fontHint": {
+          "type": "string",
+          "enum": [
+            "unicode",
+            "krutidev",
+            "chanakya",
+            "other"
+          ]
+        },
+        "author": {
+          "type": "string"
+        },
+        "edition": {
+          "type": "string"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "file",
+        "kind",
+        "licence",
+        "subject",
+        "language",
+        "exams"
+      ],
+      "additionalProperties": false
+    },
     "SourceState": {
       "title": "SourceState",
       "type": "string",
@@ -1390,6 +2966,15 @@
         "ready",
         "waiting_for_ocr",
         "failed"
+      ]
+    },
+    "Sourcing": {
+      "title": "Sourcing",
+      "type": "string",
+      "enum": [
+        "bank_first",
+        "fresh_only",
+        "bank_only"
       ]
     },
     "SystemStatus": {
@@ -1412,6 +2997,16 @@
       ],
       "additionalProperties": false
     },
+    "TaskKind": {
+      "title": "TaskKind",
+      "type": "string",
+      "enum": [
+        "question_paper",
+        "worksheet",
+        "notes",
+        "revision_sheet"
+      ]
+    },
     "TaskQueue": {
       "title": "TaskQueue",
       "type": "string",
@@ -1421,6 +3016,47 @@
         "ai-llm",
         "render"
       ]
+    },
+    "TaskSpec": {
+      "title": "TaskSpec",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PaperSpec"
+        },
+        {
+          "$ref": "#/$defs/NotesSpec"
+        }
+      ]
+    },
+    "TopicAvailability": {
+      "title": "TopicAvailability",
+      "type": "object",
+      "properties": {
+        "nodeId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "fromBank": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "toGenerate": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "nodeId",
+        "name",
+        "fromBank",
+        "toGenerate"
+      ],
+      "additionalProperties": false
     },
     "WorkflowEnvelope": {
       "title": "WorkflowEnvelope",

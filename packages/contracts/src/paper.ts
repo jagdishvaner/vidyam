@@ -1,72 +1,102 @@
 import { z } from "zod";
 
-import { Language, Uuid } from "./common.js";
+import { Uuid } from "./common.js";
 import { QuestionType } from "./question.js";
 import { contract } from "./registry.js";
+import { DifficultyMix, LocalizedText, PaperSection, PaperSpec } from "./tasks.js";
 
-/** What a teacher asked for, after the spec card is confirmed. */
-export const PaperSpec = contract(
-  "PaperSpec",
+/** An exam paper's pattern (exam_blueprints.spec): what a paper for it must look like. */
+export const Blueprint = contract(
+  "Blueprint",
   z.object({
-    examCode: z.string(),
-    title: z.string(),
-    languages: z.array(Language).min(1),
-    layout: z.enum(["hindi_then_english", "side_by_side", "single_language"]),
+    sections: z.array(PaperSection).min(1),
     durationMinutes: z.number().int().positive(),
-    totalMarks: z.number().positive(),
-    negativeMarking: z.number().nonnegative(),
-    taxonomyNodeIds: z.array(Uuid).min(1),
-    sections: z
-      .array(
-        z.object({
-          name: z.string(),
-          qtype: QuestionType,
-          count: z.number().int().positive(),
-          marksEach: z.number().positive(),
-          /** Share of easy / medium / hard items; must add up to 1. */
-          difficultyMix: z.object({ easy: z.number(), medium: z.number(), hard: z.number() }),
-        }),
-      )
-      .min(1),
-    allowPyqReuse: z.boolean(),
-    studentBatchId: Uuid.nullable(),
+    instructions: LocalizedText,
+    defaultDifficultyMix: DifficultyMix,
   }),
 );
-export type PaperSpec = z.infer<typeof PaperSpec>;
+export type Blueprint = z.infer<typeof Blueprint>;
 
-/** One position in a paper that generation or the pool must fill. */
-export const Slot = contract(
-  "Slot",
+/** Where one position in a paper stands while it is being filled. */
+export const SlotState = contract(
+  "SlotState",
+  z.enum(["pending", "bank", "generated", "verified", "flagged", "insufficient_evidence"]),
+);
+export type SlotState = z.infer<typeof SlotState>;
+
+/** One position in a paper: what it needs, and the question that fills it once there is one. */
+export const PaperSlot = contract(
+  "PaperSlot",
   z.object({
-    id: z.string(),
+    slotId: z.string(),
     sectionIndex: z.number().int().nonnegative(),
     qtype: QuestionType,
     taxonomyNodeId: Uuid,
     difficulty: z.number().int().min(1).max(5),
     marks: z.number().positive(),
+    state: SlotState,
+    questionId: Uuid.nullable(),
+    /** Why a check failed or evidence was missing, shown on the item's badge. */
+    flags: z.array(z.string()).default([]),
   }),
 );
-export type Slot = z.infer<typeof Slot>;
+export type PaperSlot = z.infer<typeof PaperSlot>;
 
-/** The paper itself: sections of items with stable ids, each pointing at an item-bank question. */
+/** A booklet set: the same questions in a different order, with shuffled options and its own key. */
+export const PaperSet = contract(
+  "PaperSet",
+  z.object({
+    code: z.string().regex(/^[A-Z]$/),
+    slotOrder: z.array(z.string()),
+    /** Per slot: option keys in the order printed in this set. */
+    optionOrder: z.record(z.string(), z.array(z.string())),
+  }),
+);
+export type PaperSet = z.infer<typeof PaperSet>;
+
+/** The paper itself (documents.content for papers and worksheets). Questions live in the item bank. */
 export const PaperDocument = contract(
   "PaperDocument",
   z.object({
     spec: PaperSpec,
     sections: z.array(
-      z.object({
-        name: z.string(),
-        instructions: z.string().nullable(),
-        items: z.array(
-          z.object({
-            itemId: z.string(),
-            questionId: Uuid,
-            slotId: z.string().nullable(),
-            marks: z.number(),
-          }),
-        ),
-      }),
+      z.object({ name: LocalizedText, instructions: LocalizedText.nullable(), slotIds: z.array(z.string()) }),
     ),
+    slots: z.array(PaperSlot),
+    sets: z.array(PaperSet),
   }),
 );
 export type PaperDocument = z.infer<typeof PaperDocument>;
+
+/** One change to a paper, from the edit-by-chat agent or the teacher's own hands on the canvas. */
+export const EditOp = contract(
+  "EditOp",
+  z.discriminatedUnion("op", [
+    z.object({ op: z.literal("replace_item"), slotId: z.string(), questionId: Uuid }),
+    z.object({ op: z.literal("delete_items"), slotIds: z.array(z.string()).min(1) }),
+    z.object({
+      op: z.literal("add_items"),
+      afterSlotId: z.string().nullable(),
+      slots: z.array(PaperSlot).min(1),
+    }),
+    z.object({ op: z.literal("reorder"), slotIds: z.array(z.string()).min(1) }),
+    z.object({ op: z.literal("set_marks"), slotId: z.string(), marks: z.number().positive() }),
+    z.object({
+      op: z.literal("set_instructions"),
+      sectionIndex: z.number().int().nonnegative(),
+      instructions: LocalizedText,
+    }),
+    z.object({ op: z.literal("set_title"), title: z.string().min(1) }),
+  ]),
+);
+export type EditOp = z.infer<typeof EditOp>;
+
+/**
+ * A batch of changes made against one version. The API applies it only if that is still the current
+ * version, so an edit never silently overwrites someone else's.
+ */
+export const DocumentEdit = contract(
+  "DocumentEdit",
+  z.object({ documentId: Uuid, baseVersion: z.number().int().nonnegative(), ops: z.array(EditOp).min(1) }),
+);
+export type DocumentEdit = z.infer<typeof DocumentEdit>;
