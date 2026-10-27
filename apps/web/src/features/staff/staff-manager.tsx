@@ -30,9 +30,10 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
 import { api } from "@/lib/client/api";
+import { errorMessage } from "@/lib/client/errors";
 
 import { EditStaffDialog } from "./edit-staff-dialog";
-import { errorMessage, ROLES } from "./shared";
+import { ROLES } from "./shared";
 
 /** No look-alike characters (0/O, 1/l/I), so a password read out over the phone survives. */
 const ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";

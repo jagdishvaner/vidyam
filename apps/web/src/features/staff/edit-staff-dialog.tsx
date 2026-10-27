@@ -21,8 +21,9 @@ import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
 import { api } from "@/lib/client/api";
+import { errorMessage } from "@/lib/client/errors";
 
-import { errorMessage, ROLES } from "./shared";
+import { ROLES } from "./shared";
 
 interface Props {
   member: StaffMember | null;

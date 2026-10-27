@@ -10,7 +10,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 const SECTIONS = [
   { key: "staff", href: "/admin/staff" },
   { key: "roles", href: "/admin/roles" },
-  { key: "exams", href: null },
+  { key: "exams", href: "/admin/exams" },
   { key: "blueprints", href: null },
   { key: "content", href: null },
   { key: "models", href: null },
