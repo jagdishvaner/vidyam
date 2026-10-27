@@ -226,6 +226,231 @@
         ]
       }
     },
+    "/api/staff": {
+      "get": {
+        "operationId": "StaffController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "userId": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string",
+                            "format": "email",
+                            "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "admin",
+                              "reviewer",
+                              "teacher",
+                              "content_operator"
+                            ]
+                          },
+                          "platformAdmin": {
+                            "type": "boolean"
+                          },
+                          "subjects": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "nodeId": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                },
+                                "code": {
+                                  "type": "string"
+                                },
+                                "nameEn": {
+                                  "type": "string"
+                                },
+                                "nameHi": {
+                                  "nullable": true,
+                                  "type": "string"
+                                },
+                                "isHead": {
+                                  "type": "boolean"
+                                }
+                              },
+                              "required": [
+                                "nodeId",
+                                "code",
+                                "nameEn",
+                                "nameHi",
+                                "isHead"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "monthlyBudgetUsd": {
+                            "nullable": true,
+                            "type": "number"
+                          },
+                          "spentThisMonthUsd": {
+                            "type": "number"
+                          },
+                          "joinedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                          }
+                        },
+                        "required": [
+                          "userId",
+                          "name",
+                          "email",
+                          "role",
+                          "platformAdmin",
+                          "subjects",
+                          "monthlyBudgetUsd",
+                          "spentThisMonthUsd",
+                          "joinedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nodeId": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "nameEn": {
+                            "type": "string"
+                          },
+                          "nameHi": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "nodeId",
+                          "code",
+                          "nameEn",
+                          "nameHi"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "members",
+                    "subjects"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "identity"
+        ]
+      }
+    },
+    "/api/staff/{userId}": {
+      "put": {
+        "operationId": "StaffController_update",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "role": {
+                    "type": "string",
+                    "enum": [
+                      "admin",
+                      "reviewer",
+                      "teacher",
+                      "content_operator"
+                    ]
+                  },
+                  "subjects": {
+                    "maxItems": 30,
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "nodeId": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "isHead": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "nodeId",
+                        "isHead"
+                      ]
+                    }
+                  },
+                  "monthlyBudgetUsd": {
+                    "nullable": true,
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 100000
+                  }
+                },
+                "required": [
+                  "role",
+                  "subjects",
+                  "monthlyBudgetUsd"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identity"
+        ]
+      }
+    },
     "/api/health": {
       "get": {
         "operationId": "SystemController_health",

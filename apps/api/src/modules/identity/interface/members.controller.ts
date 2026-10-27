@@ -3,15 +3,8 @@ import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import { OrgRoles, Session, type UserSession } from "@thallesp/nestjs-better-auth";
 import { AddedMember, AddMemberRequest, SetMemberPasswordRequest } from "@vidyam/contracts";
 
+import { activeOrg, isPlatformAdmin } from "../../../shared/auth/session.js";
 import { AddMember, RemoveMember, SetMemberPassword } from "../application/manage-members.js";
-import { PLATFORM_ADMIN } from "../domain/roles.js";
-
-const activeOrg = (session: UserSession) =>
-  (session.session as { activeOrganizationId: string }).activeOrganizationId;
-const isPlatformAdmin = (session: UserSession) =>
-  String((session.user as { role?: string | null }).role ?? "")
-    .split(",")
-    .includes(PLATFORM_ADMIN);
 
 /** Center admins manage logins for their own center. */
 @ApiTags("identity")

@@ -12,5 +12,6 @@ export * from "./org.js";
 export * from "./workflows.js";
 export * from "./paper.js";
 export * from "./question.js";
+export * from "./staff.js";
 export * from "./tasks.js";
 export { contract, contracts } from "./registry.js";

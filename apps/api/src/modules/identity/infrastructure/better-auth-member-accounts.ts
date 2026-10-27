@@ -5,7 +5,7 @@ import { and, eq } from "drizzle-orm";
 
 import { DATABASE } from "../../../shared/database/tokens.js";
 import type { MemberAccounts } from "../application/manage-members.js";
-import { PLATFORM_ADMIN, type OrgRoleName } from "../domain/roles.js";
+import { isPlatformAdminRole, type OrgRoleName } from "../domain/roles.js";
 import type { Auth } from "./better-auth.js";
 
 /**
@@ -54,7 +54,7 @@ export class BetterAuthMemberAccounts implements MemberAccounts {
       .where(and(eq(schema.members.organizationId, organizationId), eq(schema.members.userId, userId)))
       .limit(1);
     if (!row) return null;
-    return { isPlatformAdmin: (row.platformRole ?? "").split(",").includes(PLATFORM_ADMIN) };
+    return { isPlatformAdmin: isPlatformAdminRole(row.platformRole) };
   }
 
   async setPassword(userId: string, password: string): Promise<void> {

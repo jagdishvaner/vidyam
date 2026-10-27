@@ -931,6 +931,29 @@ class Sourcing(StrEnum):
     bank_only = "bank_only"
 
 
+class StaffSubject(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node_id: UUID = Field(..., alias="nodeId")
+    code: str
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+    is_head: bool = Field(..., alias="isHead")
+
+
+class SubjectRef(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node_id: UUID = Field(..., alias="nodeId")
+    code: str
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+
+
 class SyllabusLevel(StrEnum):
     subject = "subject"
     unit = "unit"
@@ -997,6 +1020,29 @@ class TopicAvailability(BaseModel):
     name: str
     from_bank: int = Field(..., alias="fromBank", ge=0, le=9007199254740991)
     to_generate: int = Field(..., alias="toGenerate", ge=0, le=9007199254740991)
+
+
+class Subject(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node_id: UUID = Field(..., alias="nodeId")
+    is_head: bool = Field(..., alias="isHead")
+
+
+class MonthlyBudgetUsd(RootModel[float]):
+    root: float = Field(..., ge=0.0, le=100000.0)
+
+
+class UpdateStaffMemberRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    role: OrgRole
+    subjects: list[Subject] = Field(..., max_length=30)
+    monthly_budget_usd: MonthlyBudgetUsd | None = Field(..., alias="monthlyBudgetUsd")
 
 
 class WorkflowEnvelope(BaseModel):
@@ -1250,6 +1296,29 @@ class QuestionImport(BaseModel):
     licence: Licence
 
 
+class StaffMember(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    user_id: UUID = Field(..., alias="userId")
+    name: str
+    email: EmailStr = Field(
+        ...,
+        pattern="^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$",
+    )
+    role: OrgRole
+    platform_admin: bool = Field(..., alias="platformAdmin")
+    subjects: list[StaffSubject]
+    monthly_budget_usd: float | None = Field(..., alias="monthlyBudgetUsd")
+    spent_this_month_usd: float = Field(..., alias="spentThisMonthUsd")
+    joined_at: AwareDatetime = Field(
+        ...,
+        alias="joinedAt",
+        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+    )
+
+
 class SyllabusImport(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1378,6 +1447,15 @@ class Question(BaseModel):
     figure_asset_ids: list[UUID] = Field(..., alias="figureAssetIds")
     licence: Licence
     source_chunk_ids: list[UUID] = Field(..., alias="sourceChunkIds")
+
+
+class StaffDirectory(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    members: list[StaffMember]
+    subjects: list[SubjectRef]
 
 
 class ChatBlock8(BaseModel):

@@ -373,4 +373,77 @@ describe("API", () => {
         .where(sqlEq(schema.indexOutbox.entityId, scan!.id)),
     ).toEqual([{ entity: "source", op: "delete" }]);
   });
+
+  it("lets a center admin set a member's role, subjects and AI budget", async () => {
+    const server = app.getHttpServer();
+    const [science, motion, otherScience] = await owner.db
+      .insert(schema.taxonomyNodes)
+      .values([
+        { orgId: orgA, level: "subject" as const, code: "science", nameEn: "Science", nameHi: "विज्ञान" },
+        { orgId: orgA, level: "subject" as const, code: "motion_chapter", nameEn: "Motion", nameHi: "गति" },
+        { orgId: orgB, level: "subject" as const, code: "science", nameEn: "Science", nameHi: "विज्ञान" },
+      ])
+      .returning({ id: schema.taxonomyNodes.id });
+    // A chapter, not a subject: re-parent the second node under the first.
+    await owner.db
+      .update(schema.taxonomyNodes)
+      .set({ level: "chapter", parentId: science!.id })
+      .where(sqlEq(schema.taxonomyNodes.id, motion!.id));
+
+    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    await request(server).get("/api/staff").set("Cookie", teacher).expect(403);
+    const before = (await request(server).get("/api/staff").set("Cookie", admin).expect(200)).body;
+    expect(before.subjects).toEqual([
+      { nodeId: science!.id, code: "science", nameEn: "Science", nameHi: "विज्ञान" },
+    ]);
+    const asha = before.members.find((m: { email: string }) => m.email === email);
+    const self = before.members.find((m: { email: string }) => m.email === adminEmail);
+    expect(asha).toMatchObject({
+      role: "teacher",
+      subjects: [],
+      monthlyBudgetUsd: null,
+      spentThisMonthUsd: 0,
+    });
+    await owner.db.insert(schema.llmCalls).values({
+      orgId: orgA,
+      userId: asha.userId,
+      task: "chat_qa",
+      provider: "stub",
+      modelId: "stub",
+      inputTokens: 10,
+      cacheWriteTokens: 0,
+      cacheReadTokens: 0,
+      outputTokens: 10,
+      costUsd: "0.250000",
+      latencyMs: 5,
+    });
+
+    const put = (userId: string, body: object, cookies = admin) =>
+      request(server).put(`/api/staff/${userId}`).set("Cookie", cookies).send(body);
+    const change = {
+      role: "reviewer",
+      subjects: [{ nodeId: science!.id, isHead: true }],
+      monthlyBudgetUsd: 25,
+    };
+    await put(asha.userId, change).expect(204);
+    const after = (await request(server).get("/api/staff").set("Cookie", admin).expect(200)).body;
+    expect(after.members.find((m: { email: string }) => m.email === email)).toMatchObject({
+      role: "reviewer",
+      subjects: [{ nodeId: science!.id, code: "science", isHead: true }],
+      monthlyBudgetUsd: 25,
+      spentThisMonthUsd: 0.25,
+    });
+
+    // Chapters and another center's subjects can't be assigned; an admin can't demote themselves.
+    await put(asha.userId, { ...change, subjects: [{ nodeId: motion!.id, isHead: false }] }).expect(422);
+    await put(asha.userId, { ...change, subjects: [{ nodeId: otherScience!.id, isHead: false }] }).expect(
+      422,
+    );
+    await put(self.userId, { role: "teacher", subjects: [], monthlyBudgetUsd: null }).expect(422);
+    await put(asha.userId, { ...change, monthlyBudgetUsd: -1 }).expect(400);
+
+    // Back to a plain teacher with no personal budget, as the other tests expect.
+    await put(asha.userId, { role: "teacher", subjects: [], monthlyBudgetUsd: null }).expect(204);
+    expect(await owner.db.$count(schema.quotas, sqlEq(schema.quotas.userId, asha.userId))).toBe(0);
+  });
 });

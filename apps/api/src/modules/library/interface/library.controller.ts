@@ -14,11 +14,9 @@ import {
   LibrarySummary,
 } from "@vidyam/contracts";
 
+import { activeOrg } from "../../../shared/auth/session.js";
 import { BrowseLibrary } from "../application/browse-library.js";
 import { RemoveSource } from "../application/remove-source.js";
-
-const activeOrg = (session: UserSession) =>
-  (session.session as { activeOrganizationId: string }).activeOrganizationId;
 
 /** Everyone in a center can browse its library; removing a file needs library:remove. */
 @ApiTags("library")

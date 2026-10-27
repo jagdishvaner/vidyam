@@ -68,6 +68,38 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/staff": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["StaffController_list"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/staff/{userId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["StaffController_update"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/health": {
         parameters: {
             query?: never;
@@ -279,6 +311,87 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    StaffController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        members: {
+                            /** Format: uuid */
+                            userId: string;
+                            name: string;
+                            /** Format: email */
+                            email: string;
+                            /** @enum {string} */
+                            role: "admin" | "reviewer" | "teacher" | "content_operator";
+                            platformAdmin: boolean;
+                            subjects: {
+                                /** Format: uuid */
+                                nodeId: string;
+                                code: string;
+                                nameEn: string;
+                                nameHi: string | null;
+                                isHead: boolean;
+                            }[];
+                            monthlyBudgetUsd: number | null;
+                            spentThisMonthUsd: number;
+                            /** Format: date-time */
+                            joinedAt: string;
+                        }[];
+                        subjects: {
+                            /** Format: uuid */
+                            nodeId: string;
+                            code: string;
+                            nameEn: string;
+                            nameHi: string | null;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    StaffController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                userId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    role: "admin" | "reviewer" | "teacher" | "content_operator";
+                    subjects: {
+                        /** Format: uuid */
+                        nodeId: string;
+                        isHead: boolean;
+                    }[];
+                    monthlyBudgetUsd: number | null;
+                };
+            };
+        };
         responses: {
             204: {
                 headers: {
