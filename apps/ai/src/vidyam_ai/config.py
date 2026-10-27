@@ -2,8 +2,9 @@
 
 from functools import lru_cache
 from pathlib import Path
+from typing import Literal
 
-from pydantic import Field, SecretStr
+from pydantic import AliasChoices, Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -41,6 +42,18 @@ class Settings(BaseSettings):
     rerank_model: str = "qwen3-reranker-4b"
 
     worker_cpu_processes: int = Field(default=2, ge=1)
+
+    # LLM providers (plan v3 §8). Keys are read only here, never by the API or the browser. Without a key, or
+    # with VIDYAM_AI_STUB=1, calls go to the built-in stub model.
+    claude_endpoint: Literal["anthropic", "aws"] = "anthropic"
+    anthropic_api_key: SecretStr | None = Field(
+        default=None, validation_alias=AliasChoices("ANTHROPIC_API_KEY")
+    )
+    anthropic_aws_workspace_id: str | None = Field(
+        default=None, validation_alias=AliasChoices("ANTHROPIC_AWS_WORKSPACE_ID")
+    )
+    openai_api_key: SecretStr | None = Field(default=None, validation_alias=AliasChoices("OPENAI_API_KEY"))
+    ai_stub: bool = False
 
     @property
     def async_database_url(self) -> str:

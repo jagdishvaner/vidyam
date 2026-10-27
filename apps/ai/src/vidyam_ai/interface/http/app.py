@@ -8,8 +8,9 @@ from typing import Annotated
 from fastapi import Depends, FastAPI, Header, HTTPException, Request, status
 
 from vidyam_ai.application.health import CheckHealth
+from vidyam_ai.application.providers import provider_status
 from vidyam_ai.config import Settings, get_settings
-from vidyam_ai.generated.contracts import Liveness, ServiceHealth
+from vidyam_ai.generated.contracts import AiEngineStatus, Liveness, ServiceHealth
 from vidyam_ai.infrastructure.resources import Resources
 
 
@@ -42,5 +43,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def health(request: Request) -> ServiceHealth:
         check: CheckHealth = request.app.state.check_health
         return await check.execute()
+
+    @app.get("/providers", dependencies=[Depends(require_service_token)])
+    async def providers() -> AiEngineStatus:
+        return provider_status(settings)
 
     return app

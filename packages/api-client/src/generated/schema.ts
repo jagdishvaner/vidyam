@@ -260,6 +260,54 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/ai": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["AiController_overview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/ai/models/{modelId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["AiController_updateModel"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/ai/routes/{task}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["AiController_setRoute"];
+        post?: never;
+        delete: operations["AiController_clearRoute"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/syllabus": {
         parameters: {
             query?: never;
@@ -1067,6 +1115,135 @@ export interface operations {
             query?: never;
             header?: never;
             path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AiController_overview: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        models: {
+                            id: string;
+                            /** @enum {string} */
+                            provider: "anthropic" | "openai" | "stub";
+                            apiModel: string;
+                            displayName: string;
+                            contextWindow: number;
+                            maxOutputTokens: number;
+                            prices: {
+                                [key: string]: number;
+                            };
+                            enabled: boolean;
+                            teacherSelectable: boolean;
+                        }[];
+                        routes: {
+                            /** @enum {string} */
+                            task: "ocr_text" | "ocr_math" | "segment" | "tag" | "context_header" | "query_understanding" | "spec" | "chat_title" | "chat_qa" | "generate" | "notes_write" | "edit_agent" | "verify_grounding" | "verify_solve" | "lint" | "bilingual_check";
+                            modelId: string | null;
+                            /** @enum {string|null} */
+                            effort: "low" | "medium" | "high" | "xhigh" | "max" | null;
+                            maxTokens: number | null;
+                            fallbackModelId: string | null;
+                            /** @enum {string} */
+                            source: "default" | "center" | "none";
+                        }[];
+                        engine: {
+                            providers: {
+                                /** @enum {string} */
+                                provider: "anthropic" | "openai";
+                                configured: boolean;
+                                endpoint: string | null;
+                            }[];
+                            stubActive: boolean;
+                        } | null;
+                        canEditModels: boolean;
+                    };
+                };
+            };
+        };
+    };
+    AiController_updateModel: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                modelId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    enabled: boolean;
+                    teacherSelectable: boolean;
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AiController_setRoute: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                task: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    modelId: string;
+                    /** @enum {string|null} */
+                    effort: "low" | "medium" | "high" | "xhigh" | "max" | null;
+                    maxTokens: number;
+                    fallbackModelId: string | null;
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    AiController_clearRoute: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                task: string;
+            };
             cookie?: never;
         };
         requestBody?: never;

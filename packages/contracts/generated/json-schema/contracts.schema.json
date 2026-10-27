@@ -48,6 +48,119 @@
       ],
       "additionalProperties": false
     },
+    "AiEngineStatus": {
+      "title": "AiEngineStatus",
+      "type": "object",
+      "properties": {
+        "providers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ProviderStatus"
+          }
+        },
+        "stubActive": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "providers",
+        "stubActive"
+      ],
+      "additionalProperties": false
+    },
+    "AiModel": {
+      "title": "AiModel",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "provider": {
+          "$ref": "#/$defs/LlmProvider"
+        },
+        "apiModel": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "contextWindow": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "maxOutputTokens": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "prices": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "enabled": {
+          "type": "boolean"
+        },
+        "teacherSelectable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "provider",
+        "apiModel",
+        "displayName",
+        "contextWindow",
+        "maxOutputTokens",
+        "prices",
+        "enabled",
+        "teacherSelectable"
+      ],
+      "additionalProperties": false
+    },
+    "AiOverview": {
+      "title": "AiOverview",
+      "type": "object",
+      "properties": {
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AiModel"
+          }
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TaskRoute"
+          }
+        },
+        "engine": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AiEngineStatus"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "canEditModels": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "models",
+        "routes",
+        "engine",
+        "canEditModels"
+      ],
+      "additionalProperties": false
+    },
     "AiPolicy": {
       "title": "AiPolicy",
       "type": "object",
@@ -1538,6 +1651,17 @@
         }
       ]
     },
+    "Effort": {
+      "title": "Effort",
+      "type": "string",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "xhigh",
+        "max"
+      ]
+    },
     "ExamPaper": {
       "title": "ExamPaper",
       "type": "object",
@@ -2990,6 +3114,34 @@
         }
       ]
     },
+    "ProviderStatus": {
+      "title": "ProviderStatus",
+      "type": "object",
+      "properties": {
+        "provider": {
+          "type": "string",
+          "enum": [
+            "anthropic",
+            "openai"
+          ]
+        },
+        "configured": {
+          "type": "boolean"
+        },
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "provider",
+        "configured",
+        "endpoint"
+      ],
+      "additionalProperties": false
+    },
     "Question": {
       "title": "Question",
       "type": "object",
@@ -3370,6 +3522,49 @@
       },
       "required": [
         "password"
+      ],
+      "additionalProperties": false
+    },
+    "SetTaskRouteRequest": {
+      "title": "SetTaskRouteRequest",
+      "type": "object",
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "effort": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Effort"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxTokens": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 200000
+        },
+        "fallbackModelId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "modelId",
+        "effort",
+        "maxTokens",
+        "fallbackModelId"
       ],
       "additionalProperties": false
     },
@@ -3992,6 +4187,66 @@
         "render"
       ]
     },
+    "TaskRoute": {
+      "title": "TaskRoute",
+      "type": "object",
+      "properties": {
+        "task": {
+          "$ref": "#/$defs/LlmTask"
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effort": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Effort"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "maxTokens": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "fallbackModelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "default",
+            "center",
+            "none"
+          ]
+        }
+      },
+      "required": [
+        "task",
+        "modelId",
+        "effort",
+        "maxTokens",
+        "fallbackModelId",
+        "source"
+      ],
+      "additionalProperties": false
+    },
     "TaskSpec": {
       "title": "TaskSpec",
       "anyOf": [
@@ -4030,6 +4285,23 @@
         "name",
         "fromBank",
         "toGenerate"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateAiModelRequest": {
+      "title": "UpdateAiModelRequest",
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "teacherSelectable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "enabled",
+        "teacherSelectable"
       ],
       "additionalProperties": false
     },

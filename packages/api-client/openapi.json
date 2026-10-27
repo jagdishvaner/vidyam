@@ -1453,6 +1453,344 @@
         ]
       }
     },
+    "/api/ai": {
+      "get": {
+        "operationId": "AiController_overview",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "provider": {
+                            "type": "string",
+                            "enum": [
+                              "anthropic",
+                              "openai",
+                              "stub"
+                            ]
+                          },
+                          "apiModel": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "contextWindow": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "maxOutputTokens": {
+                            "type": "integer",
+                            "minimum": -9007199254740991,
+                            "maximum": 9007199254740991
+                          },
+                          "prices": {
+                            "type": "object",
+                            "additionalProperties": {
+                              "type": "number"
+                            }
+                          },
+                          "enabled": {
+                            "type": "boolean"
+                          },
+                          "teacherSelectable": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "provider",
+                          "apiModel",
+                          "displayName",
+                          "contextWindow",
+                          "maxOutputTokens",
+                          "prices",
+                          "enabled",
+                          "teacherSelectable"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "routes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "task": {
+                            "type": "string",
+                            "enum": [
+                              "ocr_text",
+                              "ocr_math",
+                              "segment",
+                              "tag",
+                              "context_header",
+                              "query_understanding",
+                              "spec",
+                              "chat_title",
+                              "chat_qa",
+                              "generate",
+                              "notes_write",
+                              "edit_agent",
+                              "verify_grounding",
+                              "verify_solve",
+                              "lint",
+                              "bilingual_check"
+                            ]
+                          },
+                          "modelId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "effort": {
+                            "nullable": true,
+                            "type": "string",
+                            "enum": [
+                              "low",
+                              "medium",
+                              "high",
+                              "xhigh",
+                              "max"
+                            ]
+                          },
+                          "maxTokens": {
+                            "nullable": true,
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": true,
+                            "maximum": 9007199254740991
+                          },
+                          "fallbackModelId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "default",
+                              "center",
+                              "none"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "task",
+                          "modelId",
+                          "effort",
+                          "maxTokens",
+                          "fallbackModelId",
+                          "source"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "engine": {
+                      "nullable": true,
+                      "type": "object",
+                      "properties": {
+                        "providers": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "provider": {
+                                "type": "string",
+                                "enum": [
+                                  "anthropic",
+                                  "openai"
+                                ]
+                              },
+                              "configured": {
+                                "type": "boolean"
+                              },
+                              "endpoint": {
+                                "nullable": true,
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "provider",
+                              "configured",
+                              "endpoint"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "stubActive": {
+                          "type": "boolean"
+                        }
+                      },
+                      "required": [
+                        "providers",
+                        "stubActive"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "canEditModels": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "models",
+                    "routes",
+                    "engine",
+                    "canEditModels"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/ai/models/{modelId}": {
+      "put": {
+        "operationId": "AiController_updateModel",
+        "parameters": [
+          {
+            "name": "modelId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "teacherSelectable": {
+                    "type": "boolean"
+                  }
+                },
+                "required": [
+                  "enabled",
+                  "teacherSelectable"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/ai/routes/{task}": {
+      "put": {
+        "operationId": "AiController_setRoute",
+        "parameters": [
+          {
+            "name": "task",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "modelId": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "effort": {
+                    "nullable": true,
+                    "type": "string",
+                    "enum": [
+                      "low",
+                      "medium",
+                      "high",
+                      "xhigh",
+                      "max"
+                    ]
+                  },
+                  "maxTokens": {
+                    "type": "integer",
+                    "minimum": 256,
+                    "maximum": 200000
+                  },
+                  "fallbackModelId": {
+                    "nullable": true,
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "modelId",
+                  "effort",
+                  "maxTokens",
+                  "fallbackModelId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      },
+      "delete": {
+        "operationId": "AiController_clearRoute",
+        "parameters": [
+          {
+            "name": "task",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      }
+    },
     "/api/syllabus": {
       "get": {
         "operationId": "SyllabusController_overview",

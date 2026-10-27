@@ -1,4 +1,6 @@
 from fastapi.testclient import TestClient
+from pydantic import SecretStr
+from vidyam_ai.application.providers import provider_status
 from vidyam_ai.config import Settings
 from vidyam_ai.generated.contracts import Service, ServiceHealth
 from vidyam_ai.interface.http.app import create_app
@@ -36,3 +38,28 @@ def test_liveness_is_public_and_health_needs_the_service_token() -> None:
         response = client.get("/health", headers={"x-vidyam-service-token": TOKEN})
         assert response.status_code == 200
         assert response.json()["service"] == "ai"
+
+
+def test_provider_status_says_whether_keys_are_set_without_revealing_them() -> None:
+    keyed = settings().model_copy(update={"anthropic_api_key": SecretStr("sk-ant-secret-value")})
+    with TestClient(create_app(keyed)) as client:
+        assert client.get("/providers").status_code == 401
+        body = client.get("/providers", headers={"x-vidyam-service-token": TOKEN}).json()
+    assert body == {
+        "providers": [
+            {"provider": "anthropic", "configured": True, "endpoint": "anthropic"},
+            {"provider": "openai", "configured": False, "endpoint": None},
+        ],
+        "stubActive": False,
+    }
+    assert "sk-ant" not in str(body)
+
+
+def test_without_keys_the_stub_answers() -> None:
+    status = provider_status(settings())
+    assert status.stub_active is True
+    assert [p.configured for p in status.providers] == [False, False]
+    forced = provider_status(
+        settings().model_copy(update={"openai_api_key": SecretStr("k"), "ai_stub": True})
+    )
+    assert forced.stub_active is True

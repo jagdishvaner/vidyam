@@ -426,6 +426,14 @@ class EditOp7(BaseModel):
     title: str = Field(..., min_length=1)
 
 
+class Effort(StrEnum):
+    low = "low"
+    medium = "medium"
+    high = "high"
+    xhigh = "xhigh"
+    max = "max"
+
+
 class Syllabu(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -792,6 +800,21 @@ class ProgressEvent(
     ) = Field(..., title="ProgressEvent")
 
 
+class Provider(StrEnum):
+    anthropic = "anthropic"
+    openai = "openai"
+
+
+class ProviderStatus(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    provider: Provider
+    configured: bool
+    endpoint: str | None
+
+
 class Difficulty(RootModel[int]):
     root: int = Field(..., ge=1, le=5)
 
@@ -851,7 +874,7 @@ class QuestionType(StrEnum):
     long_answer = "long_answer"
 
 
-class Provider(StrEnum):
+class Provider1(StrEnum):
     anthropic = "anthropic"
     openai = "openai"
     stub = "stub"
@@ -864,7 +887,7 @@ class SelectableModel(BaseModel):
     )
     id: str
     display_name: str = Field(..., alias="displayName")
-    provider: Provider
+    provider: Provider1
 
 
 class Service(StrEnum):
@@ -890,6 +913,21 @@ class SetMemberPasswordRequest(BaseModel):
         populate_by_name=True,
     )
     password: str = Field(..., max_length=128, min_length=10)
+
+
+class FallbackModelId(RootModel[str]):
+    root: str = Field(..., min_length=1)
+
+
+class SetTaskRouteRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    model_id: str = Field(..., alias="modelId", min_length=1)
+    effort: Effort | None
+    max_tokens: int = Field(..., alias="maxTokens", ge=256, le=200000)
+    fallback_model_id: FallbackModelId | None = Field(..., alias="fallbackModelId")
 
 
 class SlotState(StrEnum):
@@ -1123,6 +1161,29 @@ class TaskQueue(StrEnum):
     render = "render"
 
 
+class MaxTokens(RootModel[int]):
+    root: int = Field(..., gt=0, le=9007199254740991)
+
+
+class Source(StrEnum):
+    default = "default"
+    center = "center"
+    none = "none"
+
+
+class TaskRoute(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    task: LlmTask
+    model_id: str | None = Field(..., alias="modelId")
+    effort: Effort | None
+    max_tokens: MaxTokens | None = Field(..., alias="maxTokens")
+    fallback_model_id: str | None = Field(..., alias="fallbackModelId")
+    source: Source
+
+
 class TopicAvailability(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1132,6 +1193,15 @@ class TopicAvailability(BaseModel):
     name: str
     from_bank: int = Field(..., alias="fromBank", ge=0, le=9007199254740991)
     to_generate: int = Field(..., alias="toGenerate", ge=0, le=9007199254740991)
+
+
+class UpdateAiModelRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    enabled: bool
+    teacher_selectable: bool = Field(..., alias="teacherSelectable")
 
 
 class UpdateBrandingRequest(BaseModel):
@@ -1219,6 +1289,46 @@ class AddMemberRequest(BaseModel):
     )
     role: OrgRole
     password: str = Field(..., max_length=128, min_length=10)
+
+
+class AiEngineStatus(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    providers: list[ProviderStatus]
+    stub_active: bool = Field(..., alias="stubActive")
+
+
+class AiModel(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: str
+    provider: LlmProvider
+    api_model: str = Field(..., alias="apiModel")
+    display_name: str = Field(..., alias="displayName")
+    context_window: int = Field(
+        ..., alias="contextWindow", ge=-9007199254740991, le=9007199254740991
+    )
+    max_output_tokens: int = Field(
+        ..., alias="maxOutputTokens", ge=-9007199254740991, le=9007199254740991
+    )
+    prices: dict[str, float]
+    enabled: bool
+    teacher_selectable: bool = Field(..., alias="teacherSelectable")
+
+
+class AiOverview(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    models: list[AiModel]
+    routes: list[TaskRoute]
+    engine: AiEngineStatus | None
+    can_edit_models: bool = Field(..., alias="canEditModels")
 
 
 class AiPolicy(BaseModel):

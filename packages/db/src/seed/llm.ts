@@ -154,8 +154,10 @@ export const DEFAULT_ROUTES: RouteRow[] = [
   // studio
   { task: "query_understanding", modelId: "claude-haiku-5-5", effort: "low", maxTokens: 2_000 },
   { task: "spec", modelId: "claude-haiku-5-5", effort: "medium", maxTokens: 4_000 },
+  { task: "chat_title", modelId: "claude-haiku-5-5", effort: "low", maxTokens: 200 },
   { task: "generate", modelId: "claude-opus-5-5", effort: "high", maxTokens: 64_000 },
   { task: "edit_agent", modelId: "claude-opus-5-5", effort: "medium", maxTokens: 32_000 },
+  { task: "notes_write", modelId: "claude-opus-5-5", effort: "high", maxTokens: 32_000 },
   { task: "chat_qa", modelId: "claude-opus-5-5", effort: "low", maxTokens: 16_000 },
   // verification
   { task: "verify_grounding", modelId: "claude-opus-5-5", effort: "medium", maxTokens: 8_000 },

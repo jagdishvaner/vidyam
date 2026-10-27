@@ -641,4 +641,56 @@ describe("API", () => {
     await request(server).delete("/api/center/logo").set("Cookie", admin).expect(204);
     await get("/api/center/logo").expect(404);
   });
+
+  it("shows admins the model registry and task routes, and lets a center choose its own routes", async () => {
+    const server = app.getHttpServer();
+    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    // The registry is global; these test models are removed again at the end.
+    const ids = [`test-big-${orgA}`, `test-small-${orgA}`];
+    const testModel = (id: string) => ({
+      id,
+      provider: "stub" as const,
+      apiModel: id,
+      displayName: id,
+      prices: { input: 1, output: 2 },
+      contextWindow: 100_000,
+      maxOutputTokens: 8_000,
+    });
+    await owner.db.insert(schema.llmModels).values(ids.map(testModel)).onConflictDoNothing();
+    try {
+      await request(server).get("/api/ai").set("Cookie", teacher).expect(403);
+      const overview = (await request(server).get("/api/ai").set("Cookie", admin).expect(200)).body;
+      expect(overview.canEditModels).toBe(false);
+      expect(overview.models.map((m: { id: string }) => m.id)).toEqual(expect.arrayContaining(ids));
+      expect(overview.routes).toHaveLength(16);
+
+      // A center admin (not the platform admin) can't change the shared registry.
+      await request(server)
+        .put(`/api/ai/models/${ids[0]}`)
+        .set("Cookie", admin)
+        .send({ enabled: false, teacherSelectable: false })
+        .expect(403);
+
+      const route = { modelId: ids[0], effort: "high", maxTokens: 32_000, fallbackModelId: ids[1] };
+      await request(server).put("/api/ai/routes/generate").set("Cookie", admin).send(route).expect(204);
+      await request(server)
+        .put("/api/ai/routes/generate")
+        .set("Cookie", admin)
+        .send({ ...route, modelId: "no-such-model" })
+        .expect(422);
+      const routes = (await request(server).get("/api/ai").set("Cookie", admin)).body.routes;
+      expect(routes.find((r: { task: string }) => r.task === "generate")).toEqual({
+        task: "generate",
+        ...route,
+        source: "center",
+      });
+
+      await request(server).delete("/api/ai/routes/generate").set("Cookie", admin).expect(204);
+      const after = (await request(server).get("/api/ai").set("Cookie", admin)).body.routes;
+      expect(after.find((r: { task: string }) => r.task === "generate").source).not.toBe("center");
+    } finally {
+      await owner.db.delete(schema.taskRoutes).where(sqlEq(schema.taskRoutes.orgId, orgA));
+      await owner.db.delete(schema.llmModels).where(sqlIn(schema.llmModels.id, ids));
+    }
+  });
 });
