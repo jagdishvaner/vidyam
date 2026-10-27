@@ -54,6 +54,16 @@ async function signIn(as = email, withPassword = password): Promise<string[]> {
   return res.get("Set-Cookie") ?? [];
 }
 
+/**
+ * One session per login for tests that only read or change data, so the suite stays under the real sign-in
+ * rate limit. Tests about passwords and sign-out use `signIn` for fresh sessions.
+ */
+const sessions = new Map<string, Promise<string[]>>();
+function sessionFor(as = email): Promise<string[]> {
+  if (!sessions.has(as)) sessions.set(as, signIn(as));
+  return sessions.get(as)!;
+}
+
 /** The suite signs in ~20 times; counters left by a run a minute ago would trip the real sign-in limit. */
 async function resetSignInRateLimits() {
   const redis = new Redis(env.VIDYAM_CACHE_REDIS_URL);
@@ -393,7 +403,7 @@ describe("API", () => {
       .set({ level: "chapter", parentId: science!.id })
       .where(sqlEq(schema.taxonomyNodes.id, motion!.id));
 
-    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
     await request(server).get("/api/staff").set("Cookie", teacher).expect(403);
     const before = (await request(server).get("/api/staff").set("Cookie", admin).expect(200)).body;
     expect(before.subjects).toEqual([
@@ -455,7 +465,7 @@ describe("API", () => {
     const pack = path.join(import.meta.dirname, "..", "..", "..", "fixtures", "demo-pack", "catalog");
     const syllabus = JSON.parse(readFileSync(path.join(pack, "syllabus-science.json"), "utf8"));
     const examPapers = JSON.parse(readFileSync(path.join(pack, "exams.json"), "utf8"));
-    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
     const post = (url: string, body: object, cookies = admin) =>
       request(server).post(url).set("Cookie", cookies).send(body);
 
@@ -527,7 +537,7 @@ describe("API", () => {
     const server = app.getHttpServer();
     const pack = path.join(import.meta.dirname, "..", "..", "..", "fixtures", "demo-pack", "catalog");
     const read = (file: string) => JSON.parse(readFileSync(path.join(pack, file), "utf8"));
-    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
     const send = (method: "post" | "put" | "delete", url: string, body?: object, cookies = admin) =>
       request(server)[method](url).set("Cookie", cookies).send(body);
     // The syllabus test imported the demo tree; the exam paper was deleted there, so bring it back.
@@ -597,7 +607,7 @@ describe("API", () => {
 
   it("keeps the center's branding, AI policy and logo, editable only by admins", async () => {
     const server = app.getHttpServer();
-    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
     const get = (url: string, cookies = teacher) => request(server).get(url).set("Cookie", cookies);
     const put = (url: string, body: object, cookies = admin) =>
       request(server).put(url).set("Cookie", cookies).send(body);
@@ -644,7 +654,7 @@ describe("API", () => {
 
   it("shows admins the model registry and task routes, and lets a center choose its own routes", async () => {
     const server = app.getHttpServer();
-    const [admin, teacher] = [await signIn(adminEmail), await signIn()];
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
     // The registry is global; these test models are removed again at the end.
     const ids = [`test-big-${orgA}`, `test-small-${orgA}`];
     const testModel = (id: string) => ({
@@ -692,5 +702,15 @@ describe("API", () => {
       await owner.db.delete(schema.taskRoutes).where(sqlEq(schema.taskRoutes.orgId, orgA));
       await owner.db.delete(schema.llmModels).where(sqlIn(schema.llmModels.id, ids));
     }
+  });
+
+  it("lets center admins read prompts but leaves writing them to the platform admin", async () => {
+    const server = app.getHttpServer();
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
+    await request(server).get("/api/prompts").set("Cookie", teacher).expect(403);
+    const overview = (await request(server).get("/api/prompts").set("Cookie", admin).expect(200)).body;
+    expect(overview.canEdit).toBe(false);
+    const prompt = { name: "chat_title", modelFamily: "any", body: "Give this chat a short title, please." };
+    await request(server).post("/api/prompts").set("Cookie", admin).send(prompt).expect(403);
   });
 });

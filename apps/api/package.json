@@ -15,7 +15,8 @@
     "db:seed": "tsx scripts/seed.ts",
     "ingest": "tsx scripts/ingest.ts",
     "codegen": "tsx scripts/export-openapi.ts",
-    "bootstrap": "tsx scripts/bootstrap-s3.ts"
+    "bootstrap": "tsx scripts/bootstrap-s3.ts",
+    "seed:check": "tsx scripts/seed-catalog.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1156.0",
@@ -27,6 +28,7 @@
     "@thallesp/nestjs-better-auth": "2.8.0",
     "@vidyam/contracts": "workspace:*",
     "@vidyam/db": "workspace:*",
+    "@vidyam/prompts": "workspace:*",
     "better-auth": "1.7.12",
     "drizzle-orm": "0.45.4",
     "express": "5.3.0",

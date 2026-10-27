@@ -1,0 +1,33 @@
+{
+  "name": "@vidyam/prompts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Prompt templates as files, one per task and model family. `pnpm db:seed` loads them as prompt versions.",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@vidyam/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@vidyam/config": "workspace:*",
+    "eslint": "10.13.0",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
+  }
+}

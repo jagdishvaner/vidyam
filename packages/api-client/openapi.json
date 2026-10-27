@@ -1791,6 +1791,288 @@
         ]
       }
     },
+    "/api/prompts": {
+      "get": {
+        "operationId": "PromptsController_list",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "versions": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "name": {
+                            "type": "string",
+                            "enum": [
+                              "ocr_text",
+                              "ocr_math",
+                              "segment",
+                              "tag",
+                              "context_header",
+                              "query_understanding",
+                              "spec",
+                              "chat_title",
+                              "chat_qa",
+                              "generate",
+                              "notes_write",
+                              "edit_agent",
+                              "verify_grounding",
+                              "verify_solve",
+                              "lint",
+                              "bilingual_check"
+                            ]
+                          },
+                          "modelFamily": {
+                            "type": "string",
+                            "enum": [
+                              "claude",
+                              "gpt",
+                              "any"
+                            ]
+                          },
+                          "version": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "exclusiveMinimum": true,
+                            "maximum": 9007199254740991
+                          },
+                          "body": {
+                            "type": "string"
+                          },
+                          "isActive": {
+                            "type": "boolean"
+                          },
+                          "source": {
+                            "type": "string",
+                            "enum": [
+                              "package",
+                              "admin"
+                            ]
+                          },
+                          "createdByName": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "name",
+                          "modelFamily",
+                          "version",
+                          "body",
+                          "isActive",
+                          "source",
+                          "createdByName",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "canEdit": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "versions",
+                    "canEdit"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      },
+      "post": {
+        "operationId": "PromptsController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "enum": [
+                      "ocr_text",
+                      "ocr_math",
+                      "segment",
+                      "tag",
+                      "context_header",
+                      "query_understanding",
+                      "spec",
+                      "chat_title",
+                      "chat_qa",
+                      "generate",
+                      "notes_write",
+                      "edit_agent",
+                      "verify_grounding",
+                      "verify_solve",
+                      "lint",
+                      "bilingual_check"
+                    ]
+                  },
+                  "modelFamily": {
+                    "type": "string",
+                    "enum": [
+                      "claude",
+                      "gpt",
+                      "any"
+                    ]
+                  },
+                  "body": {
+                    "type": "string",
+                    "minLength": 20,
+                    "maxLength": 60000
+                  }
+                },
+                "required": [
+                  "name",
+                  "modelFamily",
+                  "body"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "name": {
+                      "type": "string",
+                      "enum": [
+                        "ocr_text",
+                        "ocr_math",
+                        "segment",
+                        "tag",
+                        "context_header",
+                        "query_understanding",
+                        "spec",
+                        "chat_title",
+                        "chat_qa",
+                        "generate",
+                        "notes_write",
+                        "edit_agent",
+                        "verify_grounding",
+                        "verify_solve",
+                        "lint",
+                        "bilingual_check"
+                      ]
+                    },
+                    "modelFamily": {
+                      "type": "string",
+                      "enum": [
+                        "claude",
+                        "gpt",
+                        "any"
+                      ]
+                    },
+                    "version": {
+                      "type": "integer",
+                      "minimum": 0,
+                      "exclusiveMinimum": true,
+                      "maximum": 9007199254740991
+                    },
+                    "body": {
+                      "type": "string"
+                    },
+                    "isActive": {
+                      "type": "boolean"
+                    },
+                    "source": {
+                      "type": "string",
+                      "enum": [
+                        "package",
+                        "admin"
+                      ]
+                    },
+                    "createdByName": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "createdAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "modelFamily",
+                    "version",
+                    "body",
+                    "isActive",
+                    "source",
+                    "createdByName",
+                    "createdAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      }
+    },
+    "/api/prompts/{promptId}/activate": {
+      "post": {
+        "operationId": "PromptsController_activate",
+        "parameters": [
+          {
+            "name": "promptId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "ai"
+        ]
+      }
+    },
     "/api/syllabus": {
       "get": {
         "operationId": "SyllabusController_overview",

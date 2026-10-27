@@ -121,3 +121,41 @@ export const AiOverview = contract(
   }),
 );
 export type AiOverview = z.infer<typeof AiOverview>;
+
+/** Prompts are tuned per model family: a prompt that suits Claude is not assumed to suit GPT. */
+export const PromptFamily = contract("PromptFamily", z.enum(["claude", "gpt", "any"]));
+export type PromptFamily = z.infer<typeof PromptFamily>;
+
+export const PromptVersion = contract(
+  "PromptVersion",
+  z.object({
+    id: z.uuid(),
+    /** The task the prompt serves. */
+    name: LlmTask,
+    modelFamily: PromptFamily,
+    version: z.number().int().positive(),
+    body: z.string(),
+    isActive: z.boolean(),
+    /** "package": shipped with the code (packages/prompts); "admin": written in the admin panel. */
+    source: z.enum(["package", "admin"]),
+    createdByName: z.string().nullable(),
+    createdAt: z.iso.datetime({ offset: true }),
+  }),
+);
+export type PromptVersion = z.infer<typeof PromptVersion>;
+
+export const PromptsOverview = contract(
+  "PromptsOverview",
+  z.object({
+    versions: z.array(PromptVersion),
+    /** Prompts are shared by every center, so only the platform admin edits and activates them. */
+    canEdit: z.boolean(),
+  }),
+);
+export type PromptsOverview = z.infer<typeof PromptsOverview>;
+
+export const CreatePromptVersionRequest = contract(
+  "CreatePromptVersionRequest",
+  z.object({ name: LlmTask, modelFamily: PromptFamily, body: z.string().trim().min(20).max(60_000) }),
+);
+export type CreatePromptVersionRequest = z.infer<typeof CreatePromptVersionRequest>;

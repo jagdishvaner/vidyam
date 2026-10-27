@@ -1134,6 +1134,29 @@
       ],
       "additionalProperties": false
     },
+    "CreatePromptVersionRequest": {
+      "title": "CreatePromptVersionRequest",
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/$defs/LlmTask"
+        },
+        "modelFamily": {
+          "$ref": "#/$defs/PromptFamily"
+        },
+        "body": {
+          "type": "string",
+          "minLength": 20,
+          "maxLength": 60000
+        }
+      },
+      "required": [
+        "name",
+        "modelFamily",
+        "body"
+      ],
+      "additionalProperties": false
+    },
     "CreateSyllabusNodeRequest": {
       "title": "CreateSyllabusNodeRequest",
       "type": "object",
@@ -3113,6 +3136,92 @@
           "additionalProperties": false
         }
       ]
+    },
+    "PromptFamily": {
+      "title": "PromptFamily",
+      "type": "string",
+      "enum": [
+        "claude",
+        "gpt",
+        "any"
+      ]
+    },
+    "PromptsOverview": {
+      "title": "PromptsOverview",
+      "type": "object",
+      "properties": {
+        "versions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PromptVersion"
+          }
+        },
+        "canEdit": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "versions",
+        "canEdit"
+      ],
+      "additionalProperties": false
+    },
+    "PromptVersion": {
+      "title": "PromptVersion",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "name": {
+          "$ref": "#/$defs/LlmTask"
+        },
+        "modelFamily": {
+          "$ref": "#/$defs/PromptFamily"
+        },
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "body": {
+          "type": "string"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "package",
+            "admin"
+          ]
+        },
+        "createdByName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "modelFamily",
+        "version",
+        "body",
+        "isActive",
+        "source",
+        "createdByName",
+        "createdAt"
+      ],
+      "additionalProperties": false
     },
     "ProviderStatus": {
       "title": "ProviderStatus",

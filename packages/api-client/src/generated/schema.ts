@@ -308,6 +308,38 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/prompts": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["PromptsController_list"];
+        put?: never;
+        post: operations["PromptsController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/prompts/{promptId}/activate": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["PromptsController_activate"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/syllabus": {
         parameters: {
             query?: never;
@@ -1243,6 +1275,106 @@ export interface operations {
             header?: never;
             path: {
                 task: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    PromptsController_list: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        versions: {
+                            /** Format: uuid */
+                            id: string;
+                            /** @enum {string} */
+                            name: "ocr_text" | "ocr_math" | "segment" | "tag" | "context_header" | "query_understanding" | "spec" | "chat_title" | "chat_qa" | "generate" | "notes_write" | "edit_agent" | "verify_grounding" | "verify_solve" | "lint" | "bilingual_check";
+                            /** @enum {string} */
+                            modelFamily: "claude" | "gpt" | "any";
+                            version: number;
+                            body: string;
+                            isActive: boolean;
+                            /** @enum {string} */
+                            source: "package" | "admin";
+                            createdByName: string | null;
+                            /** Format: date-time */
+                            createdAt: string;
+                        }[];
+                        canEdit: boolean;
+                    };
+                };
+            };
+        };
+    };
+    PromptsController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    name: "ocr_text" | "ocr_math" | "segment" | "tag" | "context_header" | "query_understanding" | "spec" | "chat_title" | "chat_qa" | "generate" | "notes_write" | "edit_agent" | "verify_grounding" | "verify_solve" | "lint" | "bilingual_check";
+                    /** @enum {string} */
+                    modelFamily: "claude" | "gpt" | "any";
+                    body: string;
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** @enum {string} */
+                        name: "ocr_text" | "ocr_math" | "segment" | "tag" | "context_header" | "query_understanding" | "spec" | "chat_title" | "chat_qa" | "generate" | "notes_write" | "edit_agent" | "verify_grounding" | "verify_solve" | "lint" | "bilingual_check";
+                        /** @enum {string} */
+                        modelFamily: "claude" | "gpt" | "any";
+                        version: number;
+                        body: string;
+                        isActive: boolean;
+                        /** @enum {string} */
+                        source: "package" | "admin";
+                        createdByName: string | null;
+                        /** Format: date-time */
+                        createdAt: string;
+                    };
+                };
+            };
+        };
+    };
+    PromptsController_activate: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                promptId: string;
             };
             cookie?: never;
         };

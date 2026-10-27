@@ -800,6 +800,37 @@ class ProgressEvent(
     ) = Field(..., title="ProgressEvent")
 
 
+class PromptFamily(StrEnum):
+    claude = "claude"
+    gpt = "gpt"
+    any = "any"
+
+
+class Source(StrEnum):
+    package = "package"
+    admin = "admin"
+
+
+class PromptVersion(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    name: LlmTask
+    model_family: PromptFamily = Field(..., alias="modelFamily")
+    version: int = Field(..., gt=0, le=9007199254740991)
+    body: str
+    is_active: bool = Field(..., alias="isActive")
+    source: Source
+    created_by_name: str | None = Field(..., alias="createdByName")
+    created_at: AwareDatetime = Field(
+        ...,
+        alias="createdAt",
+        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
+    )
+
+
 class Provider(StrEnum):
     anthropic = "anthropic"
     openai = "openai"
@@ -1165,7 +1196,7 @@ class MaxTokens(RootModel[int]):
     root: int = Field(..., gt=0, le=9007199254740991)
 
 
-class Source(StrEnum):
+class Source1(StrEnum):
     default = "default"
     center = "center"
     none = "none"
@@ -1181,7 +1212,7 @@ class TaskRoute(BaseModel):
     effort: Effort | None
     max_tokens: MaxTokens | None = Field(..., alias="maxTokens")
     fallback_model_id: str | None = Field(..., alias="fallbackModelId")
-    source: Source
+    source: Source1
 
 
 class TopicAvailability(BaseModel):
@@ -1395,6 +1426,16 @@ class ChatBlock7(BaseModel):
     version: int = Field(..., ge=0, le=9007199254740991)
 
 
+class CreatePromptVersionRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    name: LlmTask
+    model_family: PromptFamily = Field(..., alias="modelFamily")
+    body: str = Field(..., max_length=60000, min_length=20)
+
+
 class CreateSyllabusNodeRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1575,6 +1616,15 @@ class PaperSpec(BaseModel):
     sourcing: Sourcing
     student_batch_id: UUID | None = Field(..., alias="studentBatchId")
     set_codes: list[SetCode] = Field(..., alias="setCodes", max_length=8)
+
+
+class PromptsOverview(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    versions: list[PromptVersion]
+    can_edit: bool = Field(..., alias="canEdit")
 
 
 class QuestionContent(BaseModel):
