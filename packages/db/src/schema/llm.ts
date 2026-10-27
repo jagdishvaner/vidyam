@@ -20,7 +20,8 @@ import { appRole, createdAt, currentOrgId, id, orgId, orgIsolation, timestamps }
 /** Model registry. Model ids and prices are configuration, never code. Global (all organizations). */
 export const llmModels = pgTable("llm_models", {
   id: text().primaryKey(), // registry key, e.g. "claude-opus-5-5"
-  provider: text({ enum: ["anthropic", "openai"] }).notNull(),
+  /** `stub` is the zero-cost stand-in used until provider keys are configured (plan v3 §8). */
+  provider: text({ enum: ["anthropic", "openai", "stub"] }).notNull(),
   apiModel: text().notNull(),
   displayName: text().notNull(),
   /** USD per million tokens: input, output, cache_read, cache_write_5m, cache_write_1h, long-context tiers. */
@@ -106,6 +107,8 @@ export const llmCalls = pgTable(
     requestId: text(),
     error: text(),
     chatSessionId: uuid(),
+    turnId: uuid(),
+    workflowId: text(),
     documentId: uuid(),
     createdAt: createdAt(),
   },

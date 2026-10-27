@@ -22,6 +22,13 @@
       "when": 1793038966762,
       "tag": "0002_chunk_position",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793100179122,
+      "tag": "0003_platform_v3",
+      "breakpoints": true
     }
   ]
 }

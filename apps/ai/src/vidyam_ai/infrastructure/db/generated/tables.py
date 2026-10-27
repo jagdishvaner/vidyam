@@ -6,6 +6,7 @@ from sqlalchemy import (
     Column,
     DateTime,
     ForeignKeyConstraint,
+    Identity,
     Index,
     Integer,
     MetaData,
@@ -189,6 +190,8 @@ t_exams = Table(
     Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("family", Text),
+    Column("paper_code", Text),
     ForeignKeyConstraint(
         ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="exams_org_id_organizations_id_fk"
     ),
@@ -218,6 +221,64 @@ t_feedback = Table(
     ForeignKeyConstraint(["user_id"], ["public.users.id"], name="feedback_user_id_users_id_fk"),
     PrimaryKeyConstraint("id", name="feedback_pkey"),
     Index("feedback_org_id_target_type_index", "org_id", "target_type"),
+    schema="public",
+)
+
+t_index_outbox = Table(
+    "index_outbox",
+    metadata,
+    Column(
+        "id",
+        BigInteger,
+        Identity(
+            always=True, start=1, increment=1, minvalue=1, maxvalue=9223372036854775807, cycle=False, cache=1
+        ),
+        primary_key=True,
+        autoincrement=True,
+    ),
+    Column("org_id", Uuid, nullable=False),
+    Column("entity", Text, nullable=False),
+    Column("entity_id", Uuid, nullable=False),
+    Column("op", Text, nullable=False),
+    Column("payload", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("attempts", Integer, nullable=False, server_default=text("0")),
+    Column("last_error", Text),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("processed_at", DateTime(True)),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="index_outbox_org_id_organizations_id_fk",
+    ),
+    PrimaryKeyConstraint("id", name="index_outbox_pkey"),
+    Index("index_outbox_processed_at_id_index", "processed_at", "id"),
+    schema="public",
+)
+
+t_ingest_batches = Table(
+    "ingest_batches",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("name", Text, nullable=False),
+    Column("manifest_s_3_key", Text),
+    Column("file_count", Integer, nullable=False, server_default=text("0")),
+    Column("uploaded_by", Uuid),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="ingest_batches_org_id_organizations_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["uploaded_by"],
+        ["public.users.id"],
+        ondelete="SET NULL",
+        name="ingest_batches_uploaded_by_users_id_fk",
+    ),
+    PrimaryKeyConstraint("id", name="ingest_batches_pkey"),
     schema="public",
 )
 
@@ -296,6 +357,8 @@ t_llm_calls = Table(
     Column("chat_session_id", Uuid),
     Column("document_id", Uuid),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("turn_id", Uuid),
+    Column("workflow_id", Text),
     ForeignKeyConstraint(
         ["org_id"],
         ["public.organizations.id"],
@@ -330,6 +393,24 @@ t_members = Table(
     PrimaryKeyConstraint("id", name="members_pkey"),
     Index("members_organizationId_idx", "organization_id"),
     Index("members_userId_idx", "user_id"),
+    schema="public",
+)
+
+t_org_settings = Table(
+    "org_settings",
+    metadata,
+    Column("org_id", Uuid, primary_key=True),
+    Column("branding", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("ai_policy", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="org_settings_org_id_organizations_id_fk",
+    ),
+    PrimaryKeyConstraint("org_id", name="org_settings_pkey"),
     schema="public",
 )
 
@@ -400,41 +481,6 @@ t_sessions = Table(
     schema="public",
 )
 
-t_sources = Table(
-    "sources",
-    metadata,
-    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
-    Column("org_id", Uuid, nullable=False),
-    Column("sha256", Text, nullable=False),
-    Column("filename", Text, nullable=False),
-    Column("s3_key", Text, nullable=False),
-    Column("mime_type", Text, nullable=False),
-    Column("size_bytes", BigInteger, nullable=False),
-    Column("kind", Text, nullable=False),
-    Column("licence", Text, nullable=False),
-    Column("language", Text),
-    Column("parallel_group_id", Uuid),
-    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
-    Column("stage", Text, nullable=False, server_default=text("'uploaded'::text")),
-    Column("status", Text, nullable=False, server_default=text("'pending'::text")),
-    Column("error", Text),
-    Column("page_count", Integer),
-    Column("duration_seconds", Integer),
-    Column("uploaded_by", Uuid),
-    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
-    Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
-    ForeignKeyConstraint(
-        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="sources_org_id_organizations_id_fk"
-    ),
-    ForeignKeyConstraint(
-        ["uploaded_by"], ["public.users.id"], ondelete="SET NULL", name="sources_uploaded_by_users_id_fk"
-    ),
-    PrimaryKeyConstraint("id", name="sources_pkey"),
-    UniqueConstraint("org_id", "sha256", name="sources_orgId_sha256_unique"),
-    Index("sources_org_id_stage_index", "org_id", "stage"),
-    schema="public",
-)
-
 t_task_routes = Table(
     "task_routes",
     metadata,
@@ -472,6 +518,9 @@ t_taxonomy_nodes = Table(
     Column("sort_order", Integer, nullable=False, server_default=text("0")),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("code", Text, nullable=False),
+    Column("is_active", Boolean, nullable=False, server_default=text("true")),
+    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
     ForeignKeyConstraint(
         ["org_id"],
         ["public.organizations.id"],
@@ -485,38 +534,8 @@ t_taxonomy_nodes = Table(
         name="taxonomy_nodes_parent_id_taxonomy_nodes_id_fk",
     ),
     PrimaryKeyConstraint("id", name="taxonomy_nodes_pkey"),
+    UniqueConstraint("org_id", "parent_id", "code", name="taxonomy_nodes_orgId_parentId_code_unique"),
     Index("taxonomy_nodes_org_id_parent_id_index", "org_id", "parent_id"),
-    schema="public",
-)
-
-t_chunks = Table(
-    "chunks",
-    metadata,
-    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
-    Column("org_id", Uuid, nullable=False),
-    Column("source_id", Uuid, nullable=False),
-    Column("parent_id", Uuid),
-    Column("page_start", Integer),
-    Column("page_end", Integer),
-    Column("start_ms", Integer),
-    Column("end_ms", Integer),
-    Column("text", Text, nullable=False),
-    Column("context_header", Text),
-    Column("language", Text, nullable=False),
-    Column("token_count", Integer, nullable=False),
-    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
-    Column("position", Integer, nullable=False),
-    ForeignKeyConstraint(
-        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="chunks_org_id_organizations_id_fk"
-    ),
-    ForeignKeyConstraint(
-        ["parent_id"], ["public.chunks.id"], ondelete="CASCADE", name="chunks_parent_id_chunks_id_fk"
-    ),
-    ForeignKeyConstraint(
-        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="chunks_source_id_sources_id_fk"
-    ),
-    PrimaryKeyConstraint("id", name="chunks_pkey"),
-    UniqueConstraint("source_id", "position", name="chunks_sourceId_position_unique"),
     schema="public",
 )
 
@@ -601,60 +620,71 @@ t_glossary_terms = Table(
     schema="public",
 )
 
-t_pages = Table(
-    "pages",
+t_member_settings = Table(
+    "member_settings",
     metadata,
-    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
-    Column("org_id", Uuid, nullable=False),
-    Column("source_id", Uuid, nullable=False),
-    Column("page_no", Integer, nullable=False),
-    Column("method", Text, nullable=False),
-    Column("content_md", Text, nullable=False, server_default=text("''::text")),
-    Column("confidence", REAL),
-    Column("review_status", Text, nullable=False, server_default=text("'not_needed'::text")),
-    Column("image_s_3_key", Text),
-    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("org_id", Uuid, primary_key=True),
+    Column("user_id", Uuid, primary_key=True),
+    Column("ui_locale", Text, nullable=False, server_default=text("'en'::text")),
+    Column("content_language", Text, nullable=False, server_default=text("'bilingual'::text")),
+    Column("default_model_id", Text),
+    Column("default_exam_id", Uuid),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
     ForeignKeyConstraint(
-        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="pages_org_id_organizations_id_fk"
+        ["default_exam_id"],
+        ["public.exams.id"],
+        ondelete="SET NULL",
+        name="member_settings_default_exam_id_exams_id_fk",
     ),
     ForeignKeyConstraint(
-        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="pages_source_id_sources_id_fk"
+        ["default_model_id"],
+        ["public.llm_models.id"],
+        ondelete="SET NULL",
+        name="member_settings_default_model_id_llm_models_id_fk",
     ),
-    PrimaryKeyConstraint("id", name="pages_pkey"),
-    UniqueConstraint("source_id", "page_no", name="pages_sourceId_pageNo_unique"),
-    Index("pages_org_id_review_status_index", "org_id", "review_status"),
-    schema="public",
-)
-
-t_pipeline_runs = Table(
-    "pipeline_runs",
-    metadata,
-    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
-    Column("org_id", Uuid, nullable=False),
-    Column("source_id", Uuid, nullable=False),
-    Column("stage", Text, nullable=False),
-    Column("status", Text, nullable=False, server_default=text("'pending'::text")),
-    Column("attempt", Integer, nullable=False, server_default=text("0")),
-    Column("job_id", Text),
-    Column("started_at", DateTime(True)),
-    Column("finished_at", DateTime(True)),
-    Column("error", Text),
-    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
-    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     ForeignKeyConstraint(
         ["org_id"],
         ["public.organizations.id"],
         ondelete="CASCADE",
-        name="pipeline_runs_org_id_organizations_id_fk",
+        name="member_settings_org_id_organizations_id_fk",
     ),
     ForeignKeyConstraint(
-        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="pipeline_runs_source_id_sources_id_fk"
+        ["user_id"], ["public.users.id"], ondelete="CASCADE", name="member_settings_user_id_users_id_fk"
     ),
-    PrimaryKeyConstraint("id", name="pipeline_runs_pkey"),
-    UniqueConstraint("source_id", "stage", name="pipeline_runs_sourceId_stage_unique"),
-    Index("pipeline_runs_status_index", "status"),
+    PrimaryKeyConstraint("org_id", "user_id", name="member_settings_org_id_user_id_pk"),
+    schema="public",
+)
+
+t_member_subjects = Table(
+    "member_subjects",
+    metadata,
+    Column("org_id", Uuid, nullable=False),
+    Column("user_id", Uuid, primary_key=True),
+    Column("subject_node_id", Uuid, primary_key=True),
+    Column("exam_id", Uuid),
+    Column("is_head", Boolean, nullable=False, server_default=text("false")),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    ForeignKeyConstraint(
+        ["exam_id"], ["public.exams.id"], ondelete="SET NULL", name="member_subjects_exam_id_exams_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="member_subjects_org_id_organizations_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["subject_node_id"],
+        ["public.taxonomy_nodes.id"],
+        ondelete="CASCADE",
+        name="member_subjects_subject_node_id_taxonomy_nodes_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["user_id"], ["public.users.id"], ondelete="CASCADE", name="member_subjects_user_id_users_id_fk"
+    ),
+    PrimaryKeyConstraint("user_id", "subject_node_id", name="member_subjects_user_id_subject_node_id_pk"),
+    Index("member_subjects_org_id_subject_node_id_index", "org_id", "subject_node_id"),
     schema="public",
 )
 
@@ -711,6 +741,69 @@ t_questions = Table(
     schema="public",
 )
 
+t_sources = Table(
+    "sources",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("sha256", Text, nullable=False),
+    Column("filename", Text, nullable=False),
+    Column("s3_key", Text, nullable=False),
+    Column("mime_type", Text, nullable=False),
+    Column("size_bytes", BigInteger, nullable=False),
+    Column("kind", Text, nullable=False),
+    Column("licence", Text, nullable=False),
+    Column("language", Text),
+    Column("parallel_group_id", Uuid),
+    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("stage", Text, nullable=False, server_default=text("'uploaded'::text")),
+    Column("status", Text, nullable=False, server_default=text("'pending'::text")),
+    Column("error", Text),
+    Column("page_count", Integer),
+    Column("duration_seconds", Integer),
+    Column("uploaded_by", Uuid),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("title", Text),
+    Column("subject_node_id", Uuid),
+    Column("exam_codes", ARRAY(Text()), nullable=False, server_default=text("'{}'::text[]")),
+    Column("class_level", Text),
+    Column("year", SmallInteger),
+    Column("set_code", Text),
+    Column("answer_key_for_source_id", Uuid),
+    Column("page_offset", Integer),
+    Column("font_hint", Text),
+    Column("manifest_batch_id", Uuid),
+    ForeignKeyConstraint(
+        ["answer_key_for_source_id"],
+        ["public.sources.id"],
+        ondelete="SET NULL",
+        name="sources_answer_key_for_source_id_sources_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["manifest_batch_id"],
+        ["public.ingest_batches.id"],
+        ondelete="SET NULL",
+        name="sources_manifest_batch_id_ingest_batches_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="sources_org_id_organizations_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["subject_node_id"],
+        ["public.taxonomy_nodes.id"],
+        ondelete="SET NULL",
+        name="sources_subject_node_id_taxonomy_nodes_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["uploaded_by"], ["public.users.id"], ondelete="SET NULL", name="sources_uploaded_by_users_id_fk"
+    ),
+    PrimaryKeyConstraint("id", name="sources_pkey"),
+    UniqueConstraint("org_id", "sha256", name="sources_orgId_sha256_unique"),
+    Index("sources_org_id_stage_index", "org_id", "stage"),
+    schema="public",
+)
+
 t_student_batches = Table(
     "student_batches",
     metadata,
@@ -734,61 +827,6 @@ t_student_batches = Table(
     schema="public",
 )
 
-t_assets = Table(
-    "assets",
-    metadata,
-    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
-    Column("org_id", Uuid, nullable=False),
-    Column("source_id", Uuid),
-    Column("page_id", Uuid),
-    Column("kind", Text, nullable=False),
-    Column("s3_key", Text, nullable=False),
-    Column("bbox", JSONB),
-    Column("caption", Text),
-    Column("description", Text),
-    Column("smiles", Text),
-    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
-    ForeignKeyConstraint(
-        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="assets_org_id_organizations_id_fk"
-    ),
-    ForeignKeyConstraint(
-        ["page_id"], ["public.pages.id"], ondelete="CASCADE", name="assets_page_id_pages_id_fk"
-    ),
-    ForeignKeyConstraint(
-        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="assets_source_id_sources_id_fk"
-    ),
-    PrimaryKeyConstraint("id", name="assets_pkey"),
-    Index("assets_source_id_index", "source_id"),
-    schema="public",
-)
-
-t_chunk_tags = Table(
-    "chunk_tags",
-    metadata,
-    Column("org_id", Uuid, nullable=False),
-    Column("chunk_id", Uuid, primary_key=True),
-    Column("node_id", Uuid, primary_key=True),
-    Column("confidence", REAL),
-    ForeignKeyConstraint(
-        ["chunk_id"], ["public.chunks.id"], ondelete="CASCADE", name="chunk_tags_chunk_id_chunks_id_fk"
-    ),
-    ForeignKeyConstraint(
-        ["node_id"],
-        ["public.taxonomy_nodes.id"],
-        ondelete="CASCADE",
-        name="chunk_tags_node_id_taxonomy_nodes_id_fk",
-    ),
-    ForeignKeyConstraint(
-        ["org_id"],
-        ["public.organizations.id"],
-        ondelete="CASCADE",
-        name="chunk_tags_org_id_organizations_id_fk",
-    ),
-    PrimaryKeyConstraint("chunk_id", "node_id", name="chunk_tags_chunk_id_node_id_pk"),
-    Index("chunk_tags_node_id_index", "node_id"),
-    schema="public",
-)
-
 t_documents = Table(
     "documents",
     metadata,
@@ -805,6 +843,11 @@ t_documents = Table(
     Column("student_batch_id", Uuid),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("exam_id", Uuid),
+    Column("subject_node_id", Uuid),
+    ForeignKeyConstraint(
+        ["exam_id"], ["public.exams.id"], ondelete="SET NULL", name="documents_exam_id_exams_id_fk"
+    ),
     ForeignKeyConstraint(
         ["org_id"],
         ["public.organizations.id"],
@@ -817,6 +860,12 @@ t_documents = Table(
         ["public.student_batches.id"],
         ondelete="SET NULL",
         name="documents_student_batch_id_student_batches_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["subject_node_id"],
+        ["public.taxonomy_nodes.id"],
+        ondelete="SET NULL",
+        name="documents_subject_node_id_taxonomy_nodes_id_fk",
     ),
     ForeignKeyConstraint(
         ["template_id"], ["public.content_templates.id"], name="documents_template_id_content_templates_id_fk"
@@ -856,6 +905,65 @@ t_item_exposure = Table(
         "question_id", "student_batch_id", name="item_exposure_question_id_student_batch_id_pk"
     ),
     Index("item_exposure_student_batch_id_index", "student_batch_id"),
+    schema="public",
+)
+
+t_pages = Table(
+    "pages",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("source_id", Uuid, nullable=False),
+    Column("page_no", Integer, nullable=False),
+    Column("method", Text, nullable=False),
+    Column("content_md", Text, nullable=False, server_default=text("''::text")),
+    Column("confidence", REAL),
+    Column("review_status", Text, nullable=False, server_default=text("'not_needed'::text")),
+    Column("image_s_3_key", Text),
+    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("page_label", Text),
+    Column("extractor_version", Text),
+    ForeignKeyConstraint(
+        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="pages_org_id_organizations_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="pages_source_id_sources_id_fk"
+    ),
+    PrimaryKeyConstraint("id", name="pages_pkey"),
+    UniqueConstraint("source_id", "page_no", name="pages_sourceId_pageNo_unique"),
+    Index("pages_org_id_review_status_index", "org_id", "review_status"),
+    schema="public",
+)
+
+t_pipeline_runs = Table(
+    "pipeline_runs",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("source_id", Uuid, nullable=False),
+    Column("stage", Text, nullable=False),
+    Column("status", Text, nullable=False, server_default=text("'pending'::text")),
+    Column("attempt", Integer, nullable=False, server_default=text("0")),
+    Column("job_id", Text),
+    Column("started_at", DateTime(True)),
+    Column("finished_at", DateTime(True)),
+    Column("error", Text),
+    Column("meta", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="pipeline_runs_org_id_organizations_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="pipeline_runs_source_id_sources_id_fk"
+    ),
+    PrimaryKeyConstraint("id", name="pipeline_runs_pkey"),
+    UniqueConstraint("source_id", "stage", name="pipeline_runs_sourceId_stage_unique"),
+    Index("pipeline_runs_status_index", "status"),
     schema="public",
 )
 
@@ -908,6 +1016,9 @@ t_question_tags = Table(
     Column("question_id", Uuid, primary_key=True),
     Column("node_id", Uuid, primary_key=True),
     Column("confidence", REAL),
+    Column("method", Text, nullable=False),
+    Column("tagger_version", Text),
+    Column("is_primary", Boolean, nullable=False, server_default=text("false")),
     ForeignKeyConstraint(
         ["node_id"],
         ["public.taxonomy_nodes.id"],
@@ -931,6 +1042,78 @@ t_question_tags = Table(
     schema="public",
 )
 
+t_source_sections = Table(
+    "source_sections",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("source_id", Uuid, nullable=False),
+    Column("parent_id", Uuid),
+    Column("title", Text, nullable=False),
+    Column("page_start", Integer),
+    Column("page_end", Integer),
+    Column("node_id", Uuid),
+    Column("origin", Text, nullable=False),
+    Column("confidence", REAL),
+    Column("position", Integer, nullable=False),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    ForeignKeyConstraint(
+        ["node_id"],
+        ["public.taxonomy_nodes.id"],
+        ondelete="SET NULL",
+        name="source_sections_node_id_taxonomy_nodes_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="source_sections_org_id_organizations_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["parent_id"],
+        ["public.source_sections.id"],
+        ondelete="CASCADE",
+        name="source_sections_parent_id_source_sections_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["source_id"],
+        ["public.sources.id"],
+        ondelete="CASCADE",
+        name="source_sections_source_id_sources_id_fk",
+    ),
+    PrimaryKeyConstraint("id", name="source_sections_pkey"),
+    UniqueConstraint("source_id", "position", name="source_sections_sourceId_position_unique"),
+    schema="public",
+)
+
+t_assets = Table(
+    "assets",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("source_id", Uuid),
+    Column("page_id", Uuid),
+    Column("kind", Text, nullable=False),
+    Column("s3_key", Text, nullable=False),
+    Column("bbox", JSONB),
+    Column("caption", Text),
+    Column("description", Text),
+    Column("smiles", Text),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    ForeignKeyConstraint(
+        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="assets_org_id_organizations_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["page_id"], ["public.pages.id"], ondelete="CASCADE", name="assets_page_id_pages_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="assets_source_id_sources_id_fk"
+    ),
+    PrimaryKeyConstraint("id", name="assets_pkey"),
+    Index("assets_source_id_index", "source_id"),
+    schema="public",
+)
+
 t_chat_sessions = Table(
     "chat_sessions",
     metadata,
@@ -942,6 +1125,10 @@ t_chat_sessions = Table(
     Column("model_override", Text),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("draft_spec", JSONB),
+    Column("status", Text, nullable=False, server_default=text("'idle'::text")),
+    Column("pinned", Boolean, nullable=False, server_default=text("false")),
+    Column("archived_at", DateTime(True)),
     ForeignKeyConstraint(
         ["document_id"],
         ["public.documents.id"],
@@ -960,6 +1147,55 @@ t_chat_sessions = Table(
     ForeignKeyConstraint(["user_id"], ["public.users.id"], name="chat_sessions_user_id_users_id_fk"),
     PrimaryKeyConstraint("id", name="chat_sessions_pkey"),
     Index("chat_sessions_org_id_user_id_index", "org_id", "user_id"),
+    schema="public",
+)
+
+t_chunks = Table(
+    "chunks",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("source_id", Uuid, nullable=False),
+    Column("parent_id", Uuid),
+    Column("page_start", Integer),
+    Column("page_end", Integer),
+    Column("start_ms", Integer),
+    Column("end_ms", Integer),
+    Column("text", Text, nullable=False),
+    Column("context_header", Text),
+    Column("language", Text, nullable=False),
+    Column("token_count", Integer, nullable=False),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("position", Integer, nullable=False),
+    Column("section_id", Uuid),
+    Column("heading_path", Text),
+    Column("kind", Text, nullable=False, server_default=text("'prose'::text")),
+    Column("content_hash", Text),
+    Column("chunker_version", Text),
+    Column("embedding_version_id", Text),
+    Column("indexed_at", DateTime(True)),
+    ForeignKeyConstraint(
+        ["embedding_version_id"],
+        ["public.embedding_versions.id"],
+        name="chunks_embedding_version_id_embedding_versions_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"], ["public.organizations.id"], ondelete="CASCADE", name="chunks_org_id_organizations_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["parent_id"], ["public.chunks.id"], ondelete="CASCADE", name="chunks_parent_id_chunks_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["section_id"],
+        ["public.source_sections.id"],
+        ondelete="SET NULL",
+        name="chunks_section_id_source_sections_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["source_id"], ["public.sources.id"], ondelete="CASCADE", name="chunks_source_id_sources_id_fk"
+    ),
+    PrimaryKeyConstraint("id", name="chunks_pkey"),
+    UniqueConstraint("source_id", "position", name="chunks_sourceId_position_unique"),
     schema="public",
 )
 
@@ -990,6 +1226,45 @@ t_comments = Table(
     ForeignKeyConstraint(["user_id"], ["public.users.id"], name="comments_user_id_users_id_fk"),
     PrimaryKeyConstraint("id", name="comments_pkey"),
     Index("comments_document_id_index", "document_id"),
+    schema="public",
+)
+
+t_document_exports = Table(
+    "document_exports",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("document_id", Uuid, nullable=False),
+    Column("version", Integer, nullable=False),
+    Column("format", Text, nullable=False),
+    Column("variant", Text, nullable=False),
+    Column("set_code", Text),
+    Column("s3_key", Text),
+    Column("status", Text, nullable=False, server_default=text("'pending'::text")),
+    Column("error", Text),
+    Column("created_by", Uuid),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("finished_at", DateTime(True)),
+    ForeignKeyConstraint(
+        ["created_by"],
+        ["public.users.id"],
+        ondelete="SET NULL",
+        name="document_exports_created_by_users_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["document_id"],
+        ["public.documents.id"],
+        ondelete="CASCADE",
+        name="document_exports_document_id_documents_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="document_exports_org_id_organizations_id_fk",
+    ),
+    PrimaryKeyConstraint("id", name="document_exports_pkey"),
+    Index("document_exports_org_id_document_id_index", "org_id", "document_id"),
     schema="public",
 )
 
@@ -1029,6 +1304,120 @@ t_chat_messages = Table(
     ),
     PrimaryKeyConstraint("id", name="chat_messages_pkey"),
     UniqueConstraint("session_id", "seq", name="chat_messages_sessionId_seq_unique"),
+    schema="public",
+)
+
+t_chunk_tags = Table(
+    "chunk_tags",
+    metadata,
+    Column("org_id", Uuid, nullable=False),
+    Column("chunk_id", Uuid, primary_key=True),
+    Column("node_id", Uuid, primary_key=True),
+    Column("confidence", REAL),
+    Column("method", Text, nullable=False),
+    Column("tagger_version", Text),
+    Column("is_primary", Boolean, nullable=False, server_default=text("false")),
+    ForeignKeyConstraint(
+        ["chunk_id"], ["public.chunks.id"], ondelete="CASCADE", name="chunk_tags_chunk_id_chunks_id_fk"
+    ),
+    ForeignKeyConstraint(
+        ["node_id"],
+        ["public.taxonomy_nodes.id"],
+        ondelete="CASCADE",
+        name="chunk_tags_node_id_taxonomy_nodes_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="chunk_tags_org_id_organizations_id_fk",
+    ),
+    PrimaryKeyConstraint("chunk_id", "node_id", name="chunk_tags_chunk_id_node_id_pk"),
+    Index("chunk_tags_node_id_index", "node_id"),
+    schema="public",
+)
+
+t_generation_runs = Table(
+    "generation_runs",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("document_id", Uuid, nullable=False),
+    Column("session_id", Uuid),
+    Column("workflow_id", Text, nullable=False),
+    Column("spec", JSONB, nullable=False),
+    Column("slot_plan", JSONB, nullable=False, server_default=text("'[]'::jsonb")),
+    Column("slot_states", JSONB, nullable=False, server_default=text("'{}'::jsonb")),
+    Column("status", Text, nullable=False, server_default=text("'planning'::text")),
+    Column("estimated_cost_usd", Numeric(12, 6)),
+    Column("actual_cost_usd", Numeric(12, 6)),
+    Column("error", Text),
+    Column("started_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("finished_at", DateTime(True)),
+    ForeignKeyConstraint(
+        ["document_id"],
+        ["public.documents.id"],
+        ondelete="CASCADE",
+        name="generation_runs_document_id_documents_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="generation_runs_org_id_organizations_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["session_id"],
+        ["public.chat_sessions.id"],
+        ondelete="SET NULL",
+        name="generation_runs_session_id_chat_sessions_id_fk",
+    ),
+    PrimaryKeyConstraint("id", name="generation_runs_pkey"),
+    UniqueConstraint("workflow_id", name="generation_runs_workflowId_unique"),
+    Index("generation_runs_org_id_document_id_index", "org_id", "document_id"),
+    schema="public",
+)
+
+t_chat_turns = Table(
+    "chat_turns",
+    metadata,
+    Column("id", Uuid, primary_key=True, server_default=text("gen_random_uuid()")),
+    Column("org_id", Uuid, nullable=False),
+    Column("session_id", Uuid, nullable=False),
+    Column("client_turn_id", Text, nullable=False),
+    Column("user_message_id", Uuid),
+    Column("assistant_message_id", Uuid),
+    Column("status", Text, nullable=False, server_default=text("'pending'::text")),
+    Column("stream_key", Text),
+    Column("error", Text),
+    Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("finished_at", DateTime(True)),
+    ForeignKeyConstraint(
+        ["assistant_message_id"],
+        ["public.chat_messages.id"],
+        ondelete="SET NULL",
+        name="chat_turns_assistant_message_id_chat_messages_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["org_id"],
+        ["public.organizations.id"],
+        ondelete="CASCADE",
+        name="chat_turns_org_id_organizations_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["session_id"],
+        ["public.chat_sessions.id"],
+        ondelete="CASCADE",
+        name="chat_turns_session_id_chat_sessions_id_fk",
+    ),
+    ForeignKeyConstraint(
+        ["user_message_id"],
+        ["public.chat_messages.id"],
+        ondelete="SET NULL",
+        name="chat_turns_user_message_id_chat_messages_id_fk",
+    ),
+    PrimaryKeyConstraint("id", name="chat_turns_pkey"),
+    UniqueConstraint("session_id", "client_turn_id", name="chat_turns_sessionId_clientTurnId_unique"),
     schema="public",
 )
 

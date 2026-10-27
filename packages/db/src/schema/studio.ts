@@ -4,9 +4,11 @@ import {
   index,
   integer,
   jsonb,
+  numeric,
   pgTable,
   smallint,
   text,
+  timestamp,
   unique,
   uuid,
   type AnyPgColumn,
@@ -14,6 +16,7 @@ import {
 
 import { users } from "./auth.js";
 import { studentBatches } from "./items.js";
+import { exams, taxonomyNodes } from "./knowledge.js";
 import { llmCalls, llmModels } from "./llm.js";
 import { createdAt, id, orgId, orgIsolation, timestamps } from "./_shared.js";
 
@@ -27,6 +30,11 @@ export const DOCUMENT_KINDS = [
   "lesson_plan",
 ] as const;
 export const DOCUMENT_STATUSES = ["draft", "in_review", "approved", "published"] as const;
+export const CHAT_SESSION_STATUSES = ["idle", "awaiting_input", "generating"] as const;
+export const CHAT_TURN_STATUSES = ["pending", "streaming", "done", "failed", "cancelled"] as const;
+export const GENERATION_STATUSES = ["planning", "running", "done", "failed", "cancelled"] as const;
+export const EXPORT_FORMATS = ["pdf", "docx", "krutidev_docx"] as const;
+export const EXPORT_VARIANTS = ["paper", "answer_key", "solutions"] as const;
 
 /** A content type: output JSON schema + prompt + HTML render template + verifier set. */
 export const contentTemplates = pgTable(
@@ -64,6 +72,8 @@ export const documents = pgTable(
       .notNull()
       .references(() => users.id),
     studentBatchId: uuid().references(() => studentBatches.id, { onDelete: "set null" }),
+    examId: uuid().references(() => exams.id, { onDelete: "set null" }),
+    subjectNodeId: uuid().references(() => taxonomyNodes.id, { onDelete: "set null" }),
     ...timestamps,
   },
   (t) => [index().on(t.orgId, t.ownerId), orgIsolation("documents")],
@@ -81,6 +91,11 @@ export const chatSessions = pgTable(
     title: text().notNull().default(""),
     /** Teacher's per-chat model choice for generate/edit tasks (from the admin-allowed list). */
     modelOverride: text().references(() => llmModels.id),
+    /** What the teacher has asked for so far (TaskSpec draft), filled by cards and messages until confirmed. */
+    draftSpec: jsonb().$type<Record<string, unknown>>(),
+    status: text({ enum: CHAT_SESSION_STATUSES }).notNull().default("idle"),
+    pinned: boolean().notNull().default(false),
+    archivedAt: timestamp({ withTimezone: true }),
     ...timestamps,
   },
   (t) => [index().on(t.orgId, t.userId), orgIsolation("chat_sessions")],
@@ -109,6 +124,80 @@ export const chatMessages = pgTable(
     createdAt: createdAt(),
   },
   (t) => [unique().on(t.sessionId, t.seq), orgIsolation("chat_messages")],
+).enableRLS();
+
+/**
+ * One teacher message and the assistant's answer to it. The client turn id makes retries idempotent; the
+ * stream key names the Valkey stream a dropped connection resumes from.
+ */
+export const chatTurns = pgTable(
+  "chat_turns",
+  {
+    id: id(),
+    orgId: orgId(),
+    sessionId: uuid()
+      .notNull()
+      .references(() => chatSessions.id, { onDelete: "cascade" }),
+    clientTurnId: text().notNull(),
+    userMessageId: uuid().references((): AnyPgColumn => chatMessages.id, { onDelete: "set null" }),
+    assistantMessageId: uuid().references((): AnyPgColumn => chatMessages.id, { onDelete: "set null" }),
+    status: text({ enum: CHAT_TURN_STATUSES }).notNull().default("pending"),
+    streamKey: text(),
+    error: text(),
+    createdAt: createdAt(),
+    finishedAt: timestamp({ withTimezone: true }),
+  },
+  (t) => [unique().on(t.sessionId, t.clientTurnId), orgIsolation("chat_turns")],
+).enableRLS();
+
+/** One generation of a document (a paper, worksheet or notes), run by a Temporal workflow. */
+export const generationRuns = pgTable(
+  "generation_runs",
+  {
+    id: id(),
+    orgId: orgId(),
+    documentId: uuid()
+      .notNull()
+      .references(() => documents.id, { onDelete: "cascade" }),
+    sessionId: uuid().references(() => chatSessions.id, { onDelete: "set null" }),
+    workflowId: text().notNull().unique(),
+    /** The confirmed TaskSpec. */
+    spec: jsonb().$type<Record<string, unknown>>().notNull(),
+    slotPlan: jsonb().$type<unknown[]>().notNull().default([]),
+    slotStates: jsonb().$type<Record<string, unknown>>().notNull().default({}),
+    status: text({ enum: GENERATION_STATUSES }).notNull().default("planning"),
+    estimatedCostUsd: numeric({ precision: 12, scale: 6 }),
+    actualCostUsd: numeric({ precision: 12, scale: 6 }),
+    error: text(),
+    startedAt: createdAt(),
+    finishedAt: timestamp({ withTimezone: true }),
+  },
+  (t) => [index().on(t.orgId, t.documentId), orgIsolation("generation_runs")],
+).enableRLS();
+
+/** A rendered file of one document version: the paper, its answer key or solutions, per booklet set. */
+export const documentExports = pgTable(
+  "document_exports",
+  {
+    id: id(),
+    orgId: orgId(),
+    documentId: uuid()
+      .notNull()
+      .references(() => documents.id, { onDelete: "cascade" }),
+    version: integer().notNull(),
+    format: text({ enum: EXPORT_FORMATS }).notNull(),
+    variant: text({ enum: EXPORT_VARIANTS }).notNull(),
+    setCode: text(),
+    s3Key: text(),
+    status: text({ enum: ["pending", "done", "failed"] })
+      .notNull()
+      .default("pending"),
+    error: text(),
+    createdBy: uuid().references(() => users.id, { onDelete: "set null" }),
+    createdAt: createdAt(),
+    finishedAt: timestamp({ withTimezone: true }),
+  },
+  (t) => [index().on(t.orgId, t.documentId), orgIsolation("document_exports")],
 ).enableRLS();
 
 export const documentVersions = pgTable(

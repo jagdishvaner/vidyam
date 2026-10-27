@@ -1,5 +1,6 @@
 /** The question item bank: imported past-paper questions, generated questions, and the pre-verified pool. */
 import {
+  boolean,
   index,
   integer,
   jsonb,
@@ -17,7 +18,7 @@ import {
 
 import { users } from "./auth.js";
 import { LICENCES, sources } from "./content.js";
-import { exams, LANGUAGES, taxonomyNodes } from "./knowledge.js";
+import { exams, LANGUAGES, TAG_METHODS, taxonomyNodes } from "./knowledge.js";
 import { createdAt, id, orgId, orgIsolation, timestamps } from "./_shared.js";
 
 export const QUESTION_TYPES = [
@@ -87,6 +88,9 @@ export const questionTags = pgTable(
       .notNull()
       .references(() => taxonomyNodes.id, { onDelete: "cascade" }),
     confidence: real(),
+    method: text({ enum: TAG_METHODS }).notNull(),
+    taggerVersion: text(),
+    isPrimary: boolean().notNull().default(false),
   },
   (t) => [
     primaryKey({ columns: [t.questionId, t.nodeId] }),

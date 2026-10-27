@@ -1,13 +1,13 @@
-/** Operational state: ingestion pipeline progress (the record the reconciler trusts) and the audit log. */
-import { index, integer, jsonb, pgTable, text, timestamp, unique, uuid } from "drizzle-orm/pg-core";
+/** Operational state: ingestion progress, the index outbox, and the audit log. */
+import { bigint, index, integer, jsonb, pgTable, text, timestamp, unique, uuid } from "drizzle-orm/pg-core";
 
-import { users } from "./auth.js";
+import { organizations, users } from "./auth.js";
 import { PIPELINE_STAGES, sources, STAGE_STATUSES } from "./content.js";
 import { createdAt, id, orgId, orgIsolation } from "./_shared.js";
 
 /**
- * One row per (source, stage). Postgres, not the queue, is the source of truth for pipeline state: a
- * reconciler re-enqueues stages that are pending/running without a live job (ADR 0005).
+ * One row per (source, stage): the progress a center sees in the Library. Temporal is the execution record
+ * (ADR 0013); this is the business-facing summary, written by the ingestion activities.
  */
 export const pipelineRuns = pgTable(
   "pipeline_runs",
@@ -29,6 +29,34 @@ export const pipelineRuns = pgTable(
   },
   (t) => [unique().on(t.sourceId, t.stage), index().on(t.status), orgIsolation("pipeline_runs")],
 ).enableRLS();
+
+export const OUTBOX_ENTITIES = ["source", "chunk", "question"] as const;
+export const OUTBOX_OPS = ["delete", "update_payload"] as const;
+
+/**
+ * Changes the vector index must follow (a removed file, retagged chunks, a retired question). Written in the
+ * same transaction as the change by whichever service made it; the AI engine applies them to Qdrant in order.
+ * The API never talks to Qdrant (ADR 0003), so this is how deleted text leaves search.
+ * Not row-level secured: it is an internal queue drained across all organizations.
+ */
+export const indexOutbox = pgTable(
+  "index_outbox",
+  {
+    id: bigint({ mode: "number" }).primaryKey().generatedAlwaysAsIdentity(),
+    orgId: uuid()
+      .notNull()
+      .references(() => organizations.id, { onDelete: "cascade" }),
+    entity: text({ enum: OUTBOX_ENTITIES }).notNull(),
+    entityId: uuid().notNull(),
+    op: text({ enum: OUTBOX_OPS }).notNull(),
+    payload: jsonb().$type<Record<string, unknown>>().notNull().default({}),
+    attempts: integer().notNull().default(0),
+    lastError: text(),
+    createdAt: timestamp({ withTimezone: true }).defaultNow().notNull(),
+    processedAt: timestamp({ withTimezone: true }),
+  },
+  (t) => [index().on(t.processedAt, t.id)],
+);
 
 export const auditLog = pgTable(
   "audit_log",

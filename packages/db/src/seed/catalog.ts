@@ -112,7 +112,14 @@ export async function seedExamCatalog(db: Database, orgId: string): Promise<void
       (
         await db
           .insert(schema.taxonomyNodes)
-          .values({ orgId, level: "subject", nameEn: subject.en, nameHi: subject.hi, sortOrder: i })
+          .values({
+            orgId,
+            level: "subject",
+            code: subject.key,
+            nameEn: subject.en,
+            nameHi: subject.hi,
+            sortOrder: i,
+          })
           .returning({ id: schema.taxonomyNodes.id })
       )[0]!.id;
     subjectIds.set(subject.key, id);
