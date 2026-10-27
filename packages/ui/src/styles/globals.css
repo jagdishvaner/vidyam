@@ -70,7 +70,8 @@
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.488 0.205 268 / 60%);
-  --chart-1: oklch(0.87 0 0);
+  /* Single-series charts: the brand blue, checked for contrast and lightness on this surface. */
+  --chart-1: oklch(0.488 0.205 268);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);
@@ -105,7 +106,7 @@
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
+  --chart-1: oklch(0.64 0.17 268);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
   --chart-4: oklch(0.371 0 0);

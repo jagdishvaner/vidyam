@@ -488,5 +488,67 @@
       "lint": "Check question quality",
       "bilingual_check": "Check Hindi and English match"
     }
+  },
+  "prompts": {
+    "title": "Prompts",
+    "subtitle": "The instructions the AI follows for each job, kept as versions per model family. Only the live version is used.",
+    "readOnly": "Prompts are shared by every center; only the platform admin can write or switch them.",
+    "families": {
+      "any": "All models",
+      "claude": "Claude",
+      "gpt": "GPT"
+    },
+    "noVersions": "No prompt yet for this job. It is written when the job is built.",
+    "live": "Live",
+    "version": "Version {version}",
+    "fromPackage": "Shipped with the app",
+    "byAuthor": "Written by {name}",
+    "newVersion": "New version",
+    "makeLive": "Make live",
+    "madeLive": "Version {version} is live",
+    "editorTitle": "New version: {job} ({family})",
+    "editorHint": "Placeholders like '{{first_message}}' are filled in when the prompt is used; keep the same ones.",
+    "save": "Save as a new version",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "saved": "Saved as version {version}. Make it live when you're ready."
+  },
+  "usage": {
+    "title": "Usage & budgets",
+    "subtitle": "What AI use cost this month, who and what it was for, and the center's monthly limit.",
+    "month": "Month",
+    "spent": "Spent",
+    "ofBudget": "of {budget} budget",
+    "noBudget": "No center budget set",
+    "calls": "AI calls",
+    "batchShare": "{count} at the half-price batch rate",
+    "status": {
+      "ok": "Within budget",
+      "warning": "Near the limit",
+      "over": "Over budget"
+    },
+    "budget": "Center budget",
+    "budgetHint": "A monthly ceiling for the whole center. Teachers' own budgets are set under Staff.",
+    "limit": "Monthly limit (US$)",
+    "limitHint": "Leave empty for no limit.",
+    "warnAt": "Warn at (% of the limit)",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Budget saved",
+    "daily": "Spend per day (US$)",
+    "showTable": "Show as a table",
+    "day": "Day",
+    "cost": "Cost (US$)",
+    "callsColumn": "Calls",
+    "dayTooltip": "{date}: {cost} · {calls, plural, one {# call} other {# calls}}",
+    "byTeacher": "By person",
+    "byTask": "By job",
+    "byModel": "By model",
+    "teacher": "Person",
+    "task": "Job",
+    "model": "Model",
+    "personalBudget": "Own budget",
+    "system": "Background work",
+    "none": "No AI use in this month yet."
   }
 }
