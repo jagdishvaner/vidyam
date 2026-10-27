@@ -419,5 +419,74 @@
       "openai": "OpenAI",
       "stub": "Built-in test model"
     }
+  },
+  "aiModels": {
+    "title": "AI models",
+    "subtitle": "Which AI models are available, which model does each job for your center, and whether provider keys are set.",
+    "providers": "Provider keys",
+    "keySet": "Key set",
+    "keyMissing": "No key yet",
+    "engineDown": "The AI engine isn't answering, so key status is unknown.",
+    "stubActive": "The built-in test model is answering. Everything works end to end, but answers are placeholders until a provider key is added.",
+    "keysHint": "Keys are kept only by the AI engine (never in the browser or the database). Your developer adds them to the server settings.",
+    "endpoints": {
+      "anthropic": "Claude API",
+      "aws": "Claude Platform on AWS"
+    },
+    "registry": "Models",
+    "registryReadOnly": "Only the platform admin can switch models on or off.",
+    "model": "Model",
+    "provider": "Provider",
+    "context": "Context",
+    "price": "US$ / 1M tokens (in · out)",
+    "enabled": "Enabled",
+    "teacherPick": "Teachers can pick",
+    "updated": "Saved {model}",
+    "routes": "Who does which job",
+    "routesHint": "Each job uses the platform's default model unless your center chooses another.",
+    "job": "Job",
+    "effort": "Effort",
+    "maxTokens": "Max output",
+    "fallback": "Fallback",
+    "source": "Set by",
+    "sources": {
+      "default": "Default",
+      "center": "Your center",
+      "none": "Not set"
+    },
+    "editRoute": "Change",
+    "resetRoute": "Use default",
+    "routeTitle": "Model for: {job}",
+    "routeSaved": "Saved",
+    "routeReset": "Back to the default",
+    "noFallback": "No fallback",
+    "save": "Save",
+    "saving": "Saving…",
+    "cancel": "Cancel",
+    "efforts": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "xhigh": "Extra high",
+      "max": "Maximum"
+    },
+    "tasks": {
+      "ocr_text": "Read scanned pages (text)",
+      "ocr_math": "Read scanned pages (maths and figures)",
+      "segment": "Split papers into questions",
+      "tag": "Tag content to the syllabus",
+      "context_header": "Summarise context for search",
+      "query_understanding": "Understand search queries",
+      "spec": "Understand teachers' requests",
+      "chat_title": "Name chats",
+      "chat_qa": "Answer doubts",
+      "generate": "Write questions",
+      "notes_write": "Write notes",
+      "edit_agent": "Edit papers by chat",
+      "verify_grounding": "Check questions against the sources",
+      "verify_solve": "Re-solve questions to check answers",
+      "lint": "Check question quality",
+      "bilingual_check": "Check Hindi and English match"
+    }
   }
 }
