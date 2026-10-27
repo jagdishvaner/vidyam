@@ -1,6 +1,6 @@
 "use client";
 
-import type { OrgRole } from "@vidyam/contracts";
+import type { OrgRole, StaffDirectory, StaffMember } from "@vidyam/contracts";
 import { Badge } from "@vidyam/ui/components/badge";
 import { Button } from "@vidyam/ui/components/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vidyam/ui/components/card";
@@ -24,27 +24,21 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Skeleton } from "@vidyam/ui/components/skeleton";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@vidyam/ui/components/table";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Ellipsis, KeyRound, UserMinus } from "lucide-react";
+import { Ellipsis, KeyRound, Pencil, Star, UserMinus, UserPlus } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
 import { api } from "@/lib/client/api";
-import { authClient } from "@/lib/client/auth";
 
-const ROLES = ["teacher", "reviewer", "content_operator", "admin"] as const satisfies readonly OrgRole[];
+import { EditStaffDialog } from "./edit-staff-dialog";
+import { errorMessage, ROLES } from "./shared";
 
 /** No look-alike characters (0/O, 1/l/I), so a password read out over the phone survives. */
 const ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
 function generatePassword(length = 12): string {
   const bytes = crypto.getRandomValues(new Uint8Array(length));
   return Array.from(bytes, (b) => ALPHABET[b % ALPHABET.length]).join("");
-}
-
-/** NestJS error bodies carry a readable `message`; validation errors may carry a list. */
-function errorMessage(error: unknown, fallback: string): string {
-  const message = (error as { message?: unknown } | undefined)?.message;
-  return typeof message === "string" ? message : fallback;
 }
 
 interface Login {
@@ -59,19 +53,28 @@ interface Target {
   email: string;
 }
 
-export function MembersManager({ currentUserId }: { currentUserId: string }) {
+/** Admin → Staff: logins (add, reset password, remove) and each person's role, subjects and AI budget. */
+export function StaffManager({ currentUserId }: { currentUserId: string }) {
   const t = useTranslations();
+  const locale = useLocale();
   const queryClient = useQueryClient();
   const [role, setRole] = useState<OrgRole>("teacher");
   const [password, setPassword] = useState("");
   const [shared, setShared] = useState<Login | null>(null);
   const [resetting, setResetting] = useState<Target | null>(null);
   const [removing, setRemoving] = useState<Target | null>(null);
+  const [editing, setEditing] = useState<StaffMember | null>(null);
+  const [adding, setAdding] = useState(false);
 
-  const organization = useQuery({
-    queryKey: ["organization", "full"],
-    queryFn: async () => (await authClient.organization.getFullOrganization()).data ?? null,
+  const staff = useQuery({
+    queryKey: ["staff"],
+    queryFn: async (): Promise<StaffDirectory> => {
+      const { data, error } = await api.GET("/api/staff");
+      if (error || !data) throw new Error(errorMessage(error, t("common.somethingWentWrong")));
+      return data;
+    },
   });
+  const refresh = () => void queryClient.invalidateQueries({ queryKey: ["staff"] });
 
   const add = useMutation({
     mutationFn: async (login: Login) => {
@@ -83,7 +86,7 @@ export function MembersManager({ currentUserId }: { currentUserId: string }) {
       toast.success(t("members.added", { name: login.name }));
       setShared(login);
       setPassword("");
-      void queryClient.invalidateQueries({ queryKey: ["organization", "full"] });
+      refresh();
     },
     onError: (error) => toast.error(error.message),
   });
@@ -98,80 +101,121 @@ export function MembersManager({ currentUserId }: { currentUserId: string }) {
         email: String(data.get("email")),
         password: password || generatePassword(),
       },
-      { onSuccess: () => form.reset() },
+      {
+        onSuccess: () => {
+          form.reset();
+          setAdding(false);
+        },
+      },
     );
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-3">
-      <div className="space-y-6 lg:col-span-1">
-        <Card>
-          <CardHeader>
-            <CardTitle>{t("members.addTitle")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <form onSubmit={onAdd} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="member-name">{t("members.nameLabel")}</Label>
-                <Input id="member-name" name="name" autoComplete="off" required maxLength={120} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="member-email">{t("members.emailLabel")}</Label>
-                <Input id="member-email" name="email" type="email" autoComplete="off" required />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="member-role">{t("members.roleLabel")}</Label>
-                <Select value={role} onValueChange={(value) => setRole(value as OrgRole)}>
-                  <SelectTrigger id="member-role" className="w-full">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {ROLES.map((r) => (
-                      <SelectItem key={r} value={r}>
-                        {t(`roles.${r}`)}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <PasswordField id="member-password" value={password} onChange={setPassword} />
-              <Button type="submit" className="w-full" disabled={add.isPending}>
+    <div className="space-y-6">
+      {shared && <LoginDetails login={shared} onDismiss={() => setShared(null)} />}
+
+      <Dialog open={adding} onOpenChange={setAdding}>
+        <DialogContent>
+          <form onSubmit={onAdd} className="space-y-4">
+            <DialogHeader>
+              <DialogTitle>{t("members.addTitle")}</DialogTitle>
+            </DialogHeader>
+            <div className="space-y-2">
+              <Label htmlFor="member-name">{t("members.nameLabel")}</Label>
+              <Input id="member-name" name="name" autoComplete="off" required maxLength={120} />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="member-email">{t("members.emailLabel")}</Label>
+              <Input id="member-email" name="email" type="email" autoComplete="off" required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="member-role">{t("members.roleLabel")}</Label>
+              <Select value={role} onValueChange={(value) => setRole(value as OrgRole)}>
+                <SelectTrigger id="member-role" className="w-full">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {ROLES.map((r) => (
+                    <SelectItem key={r} value={r}>
+                      {t(`roles.${r}`)}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+            <PasswordField id="member-password" value={password} onChange={setPassword} />
+            <DialogFooter>
+              <Button type="button" variant="ghost" onClick={() => setAdding(false)}>
+                {t("members.cancel")}
+              </Button>
+              <Button type="submit" disabled={add.isPending}>
                 {add.isPending ? t("members.adding") : t("members.add")}
               </Button>
-            </form>
-          </CardContent>
-        </Card>
-        {shared && <LoginDetails login={shared} onDismiss={() => setShared(null)} />}
-      </div>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
 
-      <Card className="lg:col-span-2">
-        <CardHeader>
+      <Card>
+        <CardHeader className="flex flex-row items-center justify-between gap-4">
           <CardTitle>{t("members.people")}</CardTitle>
+          <Button onClick={() => setAdding(true)}>
+            <UserPlus data-icon="inline-start" />
+            {t("members.add")}
+          </Button>
         </CardHeader>
         <CardContent>
-          {organization.isPending ? (
+          {staff.isPending ? (
             <Skeleton className="h-32 w-full" />
           ) : (
             <Table>
               <TableHeader>
                 <TableRow>
                   <TableHead>{t("members.nameColumn")}</TableHead>
-                  <TableHead>{t("members.emailColumn")}</TableHead>
                   <TableHead>{t("members.roleColumn")}</TableHead>
+                  <TableHead>{t("members.subjectsColumn")}</TableHead>
+                  <TableHead>{t("members.budgetColumn")}</TableHead>
                   <TableHead className="w-10" />
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {organization.data?.members.map((member) => {
-                  const target = { userId: member.userId, name: member.user.name, email: member.user.email };
+                {staff.data?.members.map((member) => {
+                  const target = { userId: member.userId, name: member.name, email: member.email };
                   return (
-                    <TableRow key={member.id}>
-                      <TableCell className="font-medium whitespace-normal">{member.user.name}</TableCell>
-                      <TableCell className="break-all whitespace-normal">{member.user.email}</TableCell>
+                    <TableRow key={member.userId}>
+                      <TableCell className="whitespace-normal">
+                        <p className="font-medium">{member.name}</p>
+                        <p className="text-xs break-all text-muted-foreground">{member.email}</p>
+                      </TableCell>
                       <TableCell>
-                        <Badge variant="secondary">
-                          {t.has(`roles.${member.role}`) ? t(`roles.${member.role}`) : member.role}
-                        </Badge>
+                        <Badge variant="secondary">{t(`roles.${member.role}`)}</Badge>
+                      </TableCell>
+                      <TableCell className="whitespace-normal">
+                        <div className="flex flex-wrap gap-1">
+                          {member.subjects.length === 0 && <span className="text-muted-foreground">—</span>}
+                          {member.subjects.map((subject) => {
+                            const name = (locale === "hi" && subject.nameHi) || subject.nameEn;
+                            return (
+                              <Badge key={subject.nodeId} variant="outline">
+                                {subject.isHead && (
+                                  <Star
+                                    className="fill-current"
+                                    aria-label={t("members.headOf", { subject: name })}
+                                  />
+                                )}
+                                {name}
+                              </Badge>
+                            );
+                          })}
+                        </div>
+                      </TableCell>
+                      <TableCell className="text-sm whitespace-nowrap tabular-nums">
+                        <p>${member.spentThisMonthUsd.toFixed(2)}</p>
+                        <p className="text-xs text-muted-foreground">
+                          {member.monthlyBudgetUsd === null
+                            ? t("members.centerBudget")
+                            : t("members.ofLimit", { limit: member.monthlyBudgetUsd.toFixed(2) })}
+                        </p>
                       </TableCell>
                       <TableCell className="w-10 text-right">
                         <DropdownMenu>
@@ -179,12 +223,15 @@ export function MembersManager({ currentUserId }: { currentUserId: string }) {
                             <Button
                               variant="ghost"
                               size="icon"
-                              aria-label={t("members.actionsFor", { name: member.user.name })}
+                              aria-label={t("members.actionsFor", { name: member.name })}
                             >
                               <Ellipsis />
                             </Button>
                           </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="min-w-44">
+                          <DropdownMenuContent align="end" className="min-w-52">
+                            <DropdownMenuItem onClick={() => setEditing(member)}>
+                              <Pencil /> {t("members.edit")}
+                            </DropdownMenuItem>
                             <DropdownMenuItem onClick={() => setResetting(target)}>
                               <KeyRound /> {t("members.resetPassword")}
                             </DropdownMenuItem>
@@ -206,6 +253,16 @@ export function MembersManager({ currentUserId }: { currentUserId: string }) {
         </CardContent>
       </Card>
 
+      <EditStaffDialog
+        member={editing}
+        subjects={staff.data?.subjects ?? []}
+        isSelf={editing?.userId === currentUserId}
+        onClose={() => setEditing(null)}
+        onDone={() => {
+          setEditing(null);
+          refresh();
+        }}
+      />
       <ResetPasswordDialog
         member={resetting}
         onClose={() => setResetting(null)}
@@ -219,7 +276,7 @@ export function MembersManager({ currentUserId }: { currentUserId: string }) {
         onClose={() => setRemoving(null)}
         onDone={() => {
           setRemoving(null);
-          void queryClient.invalidateQueries({ queryKey: ["organization", "full"] });
+          refresh();
         }}
       />
     </div>

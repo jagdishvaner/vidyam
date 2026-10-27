@@ -2,27 +2,38 @@
 
 import { Badge } from "@vidyam/ui/components/badge";
 import { cn } from "@vidyam/ui/lib/utils";
-import { BookOpenText, ClipboardCheck, FileQuestion, LayoutDashboard, Sparkles, Users } from "lucide-react";
+import {
+  BookOpenText,
+  ClipboardCheck,
+  FileQuestion,
+  LayoutDashboard,
+  MessagesSquare,
+  Settings,
+  ShieldCheck,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/navigation";
 
 const ITEMS = [
   { key: "dashboard", href: "/", icon: LayoutDashboard },
-  { key: "studio", href: null, icon: Sparkles },
+  { key: "chat", href: null, icon: MessagesSquare },
   { key: "library", href: "/library", icon: BookOpenText },
   { key: "questionBank", href: null, icon: FileQuestion },
   { key: "review", href: null, icon: ClipboardCheck },
-  { key: "members", href: "/settings/members", icon: Users },
+  { key: "settings", href: null, icon: Settings },
 ] as const;
 
-export function NavLinks() {
+const ADMIN = { key: "admin", href: "/admin", icon: ShieldCheck } as const;
+
+export function NavLinks({ isAdmin }: { isAdmin: boolean }) {
   const t = useTranslations("nav");
   const tc = useTranslations("common");
   const pathname = usePathname();
+  const items = isAdmin ? [...ITEMS, ADMIN] : ITEMS;
   return (
     <nav className="flex flex-col gap-1">
-      {ITEMS.map(({ key, href, icon: Icon }) =>
+      {items.map(({ key, href, icon: Icon }) =>
         href ? (
           <Link
             key={key}

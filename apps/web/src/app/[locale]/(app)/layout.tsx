@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import { Suspense, type ReactNode } from "react";
 
 import { LanguageSwitcher } from "@/features/shell/language-switcher";
-import { NavLinks } from "@/features/shell/nav-links";
+import { Nav } from "@/features/shell/nav";
 import { ThemeToggle } from "@/features/shell/theme-toggle";
 import { UserMenu } from "@/features/shell/user-menu";
 
@@ -17,9 +17,9 @@ export default function AppLayout({ children }: { children: ReactNode }) {
           <p className="text-lg font-semibold tracking-tight">{t("appName")}</p>
           <p className="text-xs text-muted-foreground">{t("tagline")}</p>
         </div>
-        {/* Active-link highlighting reads the URL: stream it in so dynamic routes keep a static shell. */}
+        {/* The links depend on the user's role and the URL: stream them in so the shell stays static. */}
         <Suspense fallback={<Skeleton className="h-64 w-full" />}>
-          <NavLinks />
+          <Nav />
         </Suspense>
       </aside>
       <div className="flex min-w-0 flex-1 flex-col">

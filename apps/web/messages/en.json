@@ -33,11 +33,12 @@
   },
   "nav": {
     "dashboard": "Dashboard",
-    "studio": "Studio",
+    "chat": "Chat",
     "library": "Library",
     "questionBank": "Question bank",
     "review": "Review",
-    "members": "Members"
+    "settings": "Settings",
+    "admin": "Admin"
   },
   "dashboard": {
     "title": "Dashboard",
@@ -60,8 +61,8 @@
     "nextUpBody": "Next, your books and past papers go into the knowledge base; question-paper generation and chat editing follow."
   },
   "members": {
-    "title": "Members",
-    "subtitle": "Give teachers and staff their own login, and choose what each person can do.",
+    "title": "Staff",
+    "subtitle": "Give teachers and staff their own login, the subjects they teach and an AI budget.",
     "addTitle": "Add a member",
     "nameLabel": "Full name",
     "emailLabel": "Email (their login ID)",
@@ -95,7 +96,24 @@
     "removeBody": "They'll be signed out right away and won't be able to sign in. You can add them again later.",
     "removing": "Removing…",
     "removed": "{name} was removed",
-    "adminOnly": "Only center admins can manage members."
+    "adminOnly": "Only center admins can manage staff.",
+    "subjectsColumn": "Subjects",
+    "budgetColumn": "AI this month",
+    "head": "Head",
+    "headOf": "Head of department for {subject}",
+    "edit": "Edit role, subjects & budget",
+    "editTitle": "{name}",
+    "editBody": "Subjects are where their papers and searches start by default; they can still use any subject.",
+    "ownRole": "You can't change your own role. Ask another admin.",
+    "subjectsLabel": "Subjects they teach",
+    "headHint": "Head of department: reviews that subject's questions and sees its AI usage.",
+    "noSubjectsYet": "No subjects yet. They come from the syllabus (Admin → Exams & syllabus).",
+    "budgetLabel": "Monthly AI budget (US$)",
+    "budgetHint": "Leave empty and only the center's budget applies.",
+    "centerBudget": "Center budget",
+    "save": "Save",
+    "saved": "Saved changes for {name}",
+    "ofLimit": "of ${limit} budget"
   },
   "library": {
     "title": "Library",
@@ -180,5 +198,63 @@
     "removing": "Removing…",
     "removed": "{name} was removed",
     "cancel": "Cancel"
+  },
+  "admin": {
+    "title": "Admin",
+    "subtitle": "Run the center: staff, syllabus, AI models and budgets.",
+    "adminOnly": "Only center admins can open the admin panel.",
+    "sections": {
+      "staff": "Staff",
+      "roles": "Roles & permissions",
+      "exams": "Exams & syllabus",
+      "blueprints": "Paper patterns",
+      "content": "Content",
+      "models": "AI models",
+      "prompts": "Prompts",
+      "usage": "Usage & budgets",
+      "center": "Center profile",
+      "audit": "Audit log",
+      "health": "System health"
+    }
+  },
+  "permissions": {
+    "title": "Roles & permissions",
+    "subtitle": "What each role can do. Roles are fixed; give each person the role that fits their work.",
+    "action": "Can…",
+    "allowed": "Allowed",
+    "notAllowed": "Not allowed",
+    "can": {
+      "chat": {
+        "use": "Use the chat (ask doubts, create material)"
+      },
+      "document": {
+        "create": "Create papers, worksheets and notes",
+        "edit": "Edit papers and notes",
+        "export": "Export to PDF and Word"
+      },
+      "question": {
+        "approve": "Approve questions into the question bank"
+      },
+      "library": {
+        "upload": "Add content to the library",
+        "review": "Check and correct text read from scans",
+        "remove": "Remove files from the library"
+      },
+      "syllabus": {
+        "manage": "Manage exams, syllabus and paper patterns"
+      },
+      "ai": {
+        "manage": "Manage AI models, routes and prompts"
+      },
+      "budget": {
+        "manage": "Set AI budgets"
+      },
+      "audit": {
+        "read": "Read the audit log"
+      },
+      "settings": {
+        "manage": "Manage staff and center settings"
+      }
+    }
   }
 }

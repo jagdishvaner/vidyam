@@ -40,14 +40,20 @@ test("admin sees a live dashboard, in English and Hindi", async ({ page }) => {
   await page.screenshot({ path: "test-results/dashboard-hi.png", fullPage: true });
 });
 
-test("admin adds a teacher, resets their password, then removes them", async ({ page, browser }) => {
+test("admin adds a teacher, sets their subjects and budget, resets their password, then removes them", async ({
+  page,
+  browser,
+}) => {
   const teacher = { email: `teacher-${Date.now()}@vidyam.test`, name: "Asha Sharma" };
 
+  // The old Members address still leads to Admin → Staff.
   await page.goto("/en/settings/members");
+  await expect(page).toHaveURL(/\/en\/admin\/staff$/);
+  await page.getByRole("button", { name: "Add member" }).click();
   await page.getByLabel("Full name").fill(teacher.name);
   await page.getByLabel("Email (their login ID)").fill(teacher.email);
   // Password left empty: the app generates one and shows it once.
-  await page.getByRole("button", { name: "Add member" }).click();
+  await page.getByRole("dialog").getByRole("button", { name: "Add member" }).click();
   const details = page.getByText(/^Sign-in page: /);
   await expect(details).toBeVisible();
   const password = (await details.textContent())!.match(/Password: (\S+)/)![1]!;
@@ -55,14 +61,32 @@ test("admin adds a teacher, resets their password, then removes them", async ({ 
   await expect(row).toBeVisible();
   await page.screenshot({ path: "test-results/members.png", fullPage: true });
 
+  // Role, subjects (head of department) and a personal AI budget, saved together.
+  await row.getByRole("button", { name: `Actions for ${teacher.name}` }).click();
+  await page.getByRole("menuitem", { name: "Edit role, subjects & budget" }).click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByLabel("Role").click();
+  await page.getByRole("option", { name: "Reviewer" }).click();
+  await dialog.getByLabel("Physics", { exact: true }).check();
+  await dialog.getByRole("switch", { name: "Head of department for Physics" }).click();
+  await dialog.getByLabel("Monthly AI budget (US$)").fill("20");
+  await page.screenshot({ path: "test-results/staff-edit.png" });
+  await dialog.getByRole("button", { name: "Save" }).click();
+  await expect(page.getByText(`Saved changes for ${teacher.name}`)).toBeVisible();
+  await expect(row.getByText("Reviewer")).toBeVisible();
+  await expect(row.getByText("Physics")).toBeVisible();
+  await expect(row.getByText("of $20.00 budget")).toBeVisible();
+  await page.screenshot({ path: "test-results/staff.png", fullPage: true });
+
   const teacherContext = await browser.newContext({ storageState: { cookies: [], origins: [] } });
   const teacherPage = await teacherContext.newPage();
   await signIn(teacherPage, teacher.email, password);
   await expect(teacherPage.getByRole("heading", { name: `Welcome, ${teacher.name}` })).toBeVisible();
-  await expect(teacherPage.getByText(`Teacher at ${ORG}`)).toBeVisible();
-  // Teachers can't manage members.
-  await teacherPage.goto("/en/settings/members");
-  await expect(teacherPage.getByText("Only center admins can manage members.")).toBeVisible();
+  await expect(teacherPage.getByText(`Reviewer at ${ORG}`)).toBeVisible();
+  // Only admins see the Admin panel.
+  await expect(teacherPage.getByRole("link", { name: "Admin" })).toHaveCount(0);
+  await teacherPage.goto("/en/admin/staff");
+  await expect(teacherPage.getByText("Only center admins can open the admin panel.")).toBeVisible();
   await teacherContext.close();
 
   // The admin sets a new password; only the new one works afterwards.
@@ -95,4 +119,15 @@ test("admin adds a teacher, resets their password, then removes them", async ({ 
   await signIn(gonePage, teacher.email, "a-new-teacher-password");
   await expect(gonePage.getByRole("alert").filter({ hasText: "don't match" })).toBeVisible();
   await gone.close();
+});
+
+test("admin sees the fixed roles and what each may do", async ({ page }) => {
+  await page.goto("/en");
+  await page.getByRole("link", { name: "Admin" }).click();
+  await expect(page).toHaveURL(/\/en\/admin\/staff$/);
+  await page.getByRole("link", { name: "Roles & permissions" }).click();
+  const approve = page.getByRole("row").filter({ hasText: "Approve questions into the question bank" });
+  await expect(approve.getByLabel("Allowed", { exact: true })).toHaveCount(2); // reviewer and admin
+  await expect(approve.getByLabel("Not allowed", { exact: true })).toHaveCount(2);
+  await page.screenshot({ path: "test-results/roles.png", fullPage: true });
 });
