@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import date as date_aliased
 from enum import StrEnum
 from typing import Any, Literal
 from uuid import UUID
@@ -938,6 +939,19 @@ class ServiceHealth(BaseModel):
     dependencies: list[DependencyStatus]
 
 
+class MonthlyLimitUsd(RootModel[float]):
+    root: float = Field(..., ge=0.0, le=1000000.0)
+
+
+class SetCenterBudgetRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    monthly_limit_usd: MonthlyLimitUsd | None = Field(..., alias="monthlyLimitUsd")
+    soft_limit_pct: int = Field(..., alias="softLimitPct", ge=1, le=100)
+
+
 class SetMemberPasswordRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1291,6 +1305,99 @@ class UpdateSyllabusNodeRequest(BaseModel):
     aliases: list[Alias2] = Field(..., max_length=50)
     objectives: list[Objective2] = Field(..., max_length=30)
     is_active: bool = Field(..., alias="isActive")
+
+
+class UsageQuery(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    month: str | None = Field(None, pattern="^\\d{4}-(0[1-9]|1[0-2])$")
+
+
+class Totals(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    calls: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    input_tokens: int = Field(..., alias="inputTokens", ge=0, le=9007199254740991)
+    output_tokens: int = Field(..., alias="outputTokens", ge=0, le=9007199254740991)
+    cache_read_tokens: int = Field(
+        ..., alias="cacheReadTokens", ge=0, le=9007199254740991
+    )
+    batch_calls: int = Field(..., alias="batchCalls", ge=0, le=9007199254740991)
+
+
+class Budget(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    monthly_limit_usd: float | None = Field(..., alias="monthlyLimitUsd")
+    soft_limit_pct: int = Field(
+        ..., alias="softLimitPct", ge=-9007199254740991, le=9007199254740991
+    )
+
+
+class ByTeacherItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    calls: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    user_id: UUID | None = Field(..., alias="userId")
+    name: str | None
+    monthly_budget_usd: float | None = Field(..., alias="monthlyBudgetUsd")
+
+
+class ByTaskItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    calls: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    task: str
+
+
+class ByModelItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    calls: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    model_id: str = Field(..., alias="modelId")
+
+
+class ByDayItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    calls: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    date: date_aliased = Field(
+        ...,
+        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
+    )
+
+
+class UsageReport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    month: str = Field(..., pattern="^\\d{4}-(0[1-9]|1[0-2])$")
+    totals: Totals
+    budget: Budget
+    by_teacher: list[ByTeacherItem] = Field(..., alias="byTeacher")
+    by_task: list[ByTaskItem] = Field(..., alias="byTask")
+    by_model: list[ByModelItem] = Field(..., alias="byModel")
+    by_day: list[ByDayItem] = Field(..., alias="byDay")
 
 
 class WorkflowEnvelope(BaseModel):

@@ -713,4 +713,73 @@ describe("API", () => {
     const prompt = { name: "chat_title", modelFamily: "any", body: "Give this chat a short title, please." };
     await request(server).post("/api/prompts").set("Cookie", admin).send(prompt).expect(403);
   });
+
+  it("reports a month's AI spend by teacher, job, model and day, in India time", async () => {
+    const server = app.getHttpServer();
+    const [admin, teacher] = [await sessionFor(adminEmail), await sessionFor()];
+    const people = (await request(server).get("/api/staff").set("Cookie", admin)).body.members;
+    const asha = people.find((m: { email: string }) => m.email === email);
+    const call = (
+      userId: string | null,
+      at: string,
+      costUsd: string,
+      task = "generate",
+      modelId = "claude-opus-5-5",
+    ) => ({
+      orgId: orgA,
+      userId,
+      task,
+      provider: "anthropic",
+      modelId,
+      inputTokens: 1000,
+      cacheWriteTokens: 0,
+      cacheReadTokens: 500,
+      outputTokens: 200,
+      costUsd,
+      latencyMs: 900,
+      createdAt: new Date(at),
+    });
+    await owner.db.insert(schema.llmCalls).values([
+      call(asha.userId, "2026-01-10T10:00:00+05:30", "0.500000"),
+      call(asha.userId, "2026-01-10T11:00:00+05:30", "0.250000", "chat_qa", "claude-haiku-5-5"),
+      call(null, "2026-01-31T23:59:00+05:30", "0.100000", "tag", "claude-haiku-5-5"),
+      // 00:30 on 1 February in India is still 31 January in UTC: it belongs to February.
+      call(asha.userId, "2026-02-01T00:30:00+05:30", "9.000000"),
+    ]);
+
+    await request(server).get("/api/usage?month=2026-01").set("Cookie", teacher).expect(403);
+    const report = (await request(server).get("/api/usage?month=2026-01").set("Cookie", admin).expect(200))
+      .body;
+    expect(report.totals).toMatchObject({
+      calls: 3,
+      costUsd: 0.85,
+      inputTokens: 3000,
+      cacheReadTokens: 1500,
+    });
+    expect(report.byTeacher).toEqual([
+      { userId: asha.userId, name: "Test Teacher", calls: 2, costUsd: 0.75, monthlyBudgetUsd: null },
+      { userId: null, name: null, calls: 1, costUsd: 0.1, monthlyBudgetUsd: null },
+    ]);
+    expect(report.byTask.map((r: { task: string }) => r.task)).toEqual(["generate", "chat_qa", "tag"]);
+    expect(report.byDay).toEqual([
+      { date: "2026-01-10", calls: 2, costUsd: 0.75 },
+      { date: "2026-01-31", calls: 1, costUsd: 0.1 },
+    ]);
+
+    await request(server)
+      .put("/api/usage/budget")
+      .set("Cookie", admin)
+      .send({ monthlyLimitUsd: 50, softLimitPct: 75 })
+      .expect(204);
+    expect((await request(server).get("/api/usage?month=2026-02").set("Cookie", admin)).body).toMatchObject({
+      totals: { calls: 1, costUsd: 9 },
+      budget: { monthlyLimitUsd: 50, softLimitPct: 75 },
+    });
+    await request(server)
+      .put("/api/usage/budget")
+      .set("Cookie", admin)
+      .send({ monthlyLimitUsd: null, softLimitPct: 80 })
+      .expect(204);
+    await request(server).get("/api/usage?month=2026-13").set("Cookie", admin).expect(400);
+  });
 });

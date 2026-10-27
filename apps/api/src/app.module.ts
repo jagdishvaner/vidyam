@@ -9,6 +9,7 @@ import { AiModelsModule } from "./modules/ai-models/ai-models.module.js";
 import { CenterModule } from "./modules/center/center.module.js";
 import { LibraryModule } from "./modules/library/library.module.js";
 import { SyllabusModule } from "./modules/syllabus/syllabus.module.js";
+import { UsageModule } from "./modules/usage/usage.module.js";
 import { SystemModule } from "./modules/system/system.module.js";
 import { CacheModule } from "./shared/cache/cache.module.js";
 import { DatabaseModule } from "./shared/database/database.module.js";
@@ -31,6 +32,7 @@ export class AppModule {
         LibraryModule,
         CenterModule,
         AiModelsModule,
+        UsageModule,
         SyllabusModule,
       ],
       providers: [

@@ -340,6 +340,38 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/usage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["UsageController_report"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/usage/budget": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["UsageController_setBudget"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/syllabus": {
         parameters: {
             query?: never;
@@ -1379,6 +1411,89 @@ export interface operations {
             cookie?: never;
         };
         requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    UsageController_report: {
+        parameters: {
+            query?: {
+                month?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        month: string;
+                        totals: {
+                            calls: number;
+                            costUsd: number;
+                            inputTokens: number;
+                            outputTokens: number;
+                            cacheReadTokens: number;
+                            batchCalls: number;
+                        };
+                        budget: {
+                            monthlyLimitUsd: number | null;
+                            softLimitPct: number;
+                        };
+                        byTeacher: {
+                            calls: number;
+                            costUsd: number;
+                            /** Format: uuid */
+                            userId: string | null;
+                            name: string | null;
+                            monthlyBudgetUsd: number | null;
+                        }[];
+                        byTask: {
+                            calls: number;
+                            costUsd: number;
+                            task: string;
+                        }[];
+                        byModel: {
+                            calls: number;
+                            costUsd: number;
+                            modelId: string;
+                        }[];
+                        byDay: {
+                            calls: number;
+                            costUsd: number;
+                            /** Format: date */
+                            date: string;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    UsageController_setBudget: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    monthlyLimitUsd: number | null;
+                    softLimitPct: number;
+                };
+            };
+        };
         responses: {
             204: {
                 headers: {

@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import type { StaffDirectory, StaffSubject, UpdateStaffMemberRequest } from "@vidyam/contracts";
 import { schema } from "@vidyam/db";
-import { and, asc, eq, gte, inArray, isNotNull, isNull, sql, sum } from "drizzle-orm";
+import { and, asc, eq, gte, inArray, isNotNull, isNull, sum } from "drizzle-orm";
 
 import { OrgDatabase } from "../../../shared/database/org-database.js";
+import { currentMonth, monthRange } from "../../../shared/kernel/month.js";
 import type { StaffStore } from "../application/manage-staff.js";
 import { asOrgRole, isPlatformAdminRole, type OrgRoleName } from "../domain/roles.js";
 
@@ -60,7 +61,7 @@ export class DrizzleStaffStore implements StaffStore {
       const spend = await tx
         .select({ userId: llmCalls.userId, total: sum(llmCalls.costUsd) })
         .from(llmCalls)
-        .where(gte(llmCalls.createdAt, sql`date_trunc('month', now())`))
+        .where(gte(llmCalls.createdAt, monthRange(currentMonth(new Date())).start))
         .groupBy(llmCalls.userId);
 
       const subjectsOf = new Map<string, StaffSubject[]>();
