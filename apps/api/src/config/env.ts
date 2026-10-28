@@ -6,6 +6,8 @@ import { z } from "zod";
 const EnvSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   VIDYAM_APP_URL: z.url(),
+  /** The admin panel's own origin (admin.<domain>); trusted for sign-in like the app's. */
+  VIDYAM_ADMIN_URL: z.url(),
   VIDYAM_API_HOST: z.string().default("127.0.0.1"),
   VIDYAM_API_PORT: z.coerce.number().int().positive().default(38110),
   VIDYAM_DATABASE_URL: z.url(),

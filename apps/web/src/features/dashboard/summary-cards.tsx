@@ -5,7 +5,7 @@ import { Skeleton } from "@vidyam/ui/components/skeleton";
 import { useQuery } from "@tanstack/react-query";
 import { useFormatter, useTranslations } from "next-intl";
 
-import { api } from "@/lib/client/api";
+import { api } from "@vidyam/app-shell/client/api";
 
 const METRICS = ["sources", "questions", "documents"] as const;
 

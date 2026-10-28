@@ -9,9 +9,9 @@ const nextConfig: NextConfig = {
   // Static shell prerendered; per-user parts stream in behind <Suspense> (hybrid rendering).
   cacheComponents: true,
   partialPrefetching: true,
-  transpilePackages: ["@vidyam/ui"],
+  transpilePackages: ["@vidyam/ui", "@vidyam/app-shell"],
   // Container image: a minimal server.js with only the files it needs. Trace from the monorepo root so the
-  // workspace packages (@vidyam/ui, api-client, contracts) are included. Builds run with cwd = apps/web.
+  // workspace packages (@vidyam/ui, app-shell, api-client, contracts) are included. Builds run with cwd = apps/web.
   output: "standalone",
   outputFileTracingRoot: path.resolve(process.cwd(), "../.."),
   experimental: {

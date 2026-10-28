@@ -6,8 +6,11 @@ uv.lock
 packages/api-client/openapi.json
 **/.import_linter_cache/**
 apps/web/test-results/
+apps/admin/test-results/
 apps/web/playwright-report/
+apps/admin/playwright-report/
 apps/web/e2e/.auth/
+apps/admin/e2e/.auth/
 
 # Ground truth for extraction tests: byte-exact
 fixtures/demo-pack/texts/

@@ -5,15 +5,15 @@ import { cn } from "@vidyam/ui/lib/utils";
 import {
   BookOpenText,
   ClipboardCheck,
+  ExternalLink,
   FileQuestion,
   LayoutDashboard,
   MessagesSquare,
   Settings,
   ShieldCheck,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
-
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link, usePathname } from "@vidyam/app-shell/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 
 const ITEMS = [
   { key: "dashboard", href: "/", icon: LayoutDashboard },
@@ -24,16 +24,15 @@ const ITEMS = [
   { key: "settings", href: "/settings", icon: Settings },
 ] as const;
 
-const ADMIN = { key: "admin", href: "/admin", icon: ShieldCheck } as const;
-
-export function NavLinks({ isAdmin }: { isAdmin: boolean }) {
+/** `adminUrl`: the admin panel's origin (its own subdomain), for those who can manage the center. */
+export function NavLinks({ adminUrl }: { adminUrl: string | null }) {
   const t = useTranslations("nav");
   const tc = useTranslations("common");
+  const locale = useLocale();
   const pathname = usePathname();
-  const items = isAdmin ? [...ITEMS, ADMIN] : ITEMS;
   return (
     <nav className="flex flex-col gap-1">
-      {items.map(({ key, href, icon: Icon }) =>
+      {ITEMS.map(({ key, href, icon: Icon }) =>
         href ? (
           <Link
             key={key}
@@ -56,6 +55,16 @@ export function NavLinks({ isAdmin }: { isAdmin: boolean }) {
             </Badge>
           </span>
         ),
+      )}
+      {adminUrl && (
+        <a
+          href={`${adminUrl}/${locale}`}
+          className="flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors hover:bg-sidebar-accent"
+        >
+          <ShieldCheck className="size-4" />
+          {t("admin")}
+          <ExternalLink className="ml-auto size-3.5 text-muted-foreground" />
+        </a>
       )}
     </nav>
   );

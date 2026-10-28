@@ -14,11 +14,11 @@ import { useLocale, useTranslations } from "next-intl";
 import { useId, useState, type FormEvent } from "react";
 import { toast } from "sonner";
 
-import { usePathname, useRouter } from "@/i18n/navigation";
-import { api } from "@/lib/client/api";
-import { authClient } from "@/lib/client/auth";
-import { errorMessage } from "@/lib/client/errors";
-import { roleKey } from "@/lib/roles";
+import { usePathname, useRouter } from "@vidyam/app-shell/i18n/navigation";
+import { api } from "@vidyam/app-shell/client/api";
+import { authClient } from "@vidyam/app-shell/client/auth";
+import { errorMessage } from "@vidyam/app-shell/client/errors";
+import { roleKey } from "@vidyam/app-shell/roles";
 
 const NONE = "__none__";
 

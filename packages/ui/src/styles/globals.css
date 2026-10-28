@@ -3,8 +3,10 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
-/* Tailwind scans these for class names: the web app and this package's components. */
+/* Tailwind scans these for class names: both apps, the shared app shell and this package. */
 @source "../../../../apps/web/src/**/*.{ts,tsx}";
+@source "../../../../apps/admin/src/**/*.{ts,tsx}";
+@source "../../../app-shell/src/**/*.{ts,tsx}";
 @source "../**/*.{ts,tsx}";
 
 @theme inline {

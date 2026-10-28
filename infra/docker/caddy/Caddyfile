@@ -3,7 +3,9 @@
 	auto_https off
 }
 
-:80 {
+# Two sites, as in production (app.<domain> and admin.<domain> behind CloudFront): each serves its own Next.js
+# app and passes /api/* to the same NestJS API, so both stay same-origin with the API and its session cookie.
+(api) {
 	handle /__caddy/health {
 		respond "ok" 200
 	}
@@ -14,9 +16,23 @@
 			flush_interval -1
 		}
 	}
+}
+
+# Teachers' app (local :38000).
+:80 {
+	import api
 
 	# Next.js web app (pages, assets, HMR websocket).
 	handle {
 		reverse_proxy {$WEB_UPSTREAM}
+	}
+}
+
+# Admin panel (local :38001).
+:81 {
+	import api
+
+	handle {
+		reverse_proxy {$ADMIN_UPSTREAM}
 	}
 }

@@ -1,0 +1,47 @@
+{
+  "common": {
+    "appName": "Vidyam",
+    "tagline": "Papers, worksheets and notes from your own material",
+    "loading": "Loading…",
+    "signOut": "Sign out",
+    "language": "Language",
+    "theme": "Theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System",
+    "comingSoon": "Coming soon",
+    "retry": "Try again",
+    "somethingWentWrong": "Something went wrong. Please try again.",
+    "adminName": "Vidyam Admin",
+    "openAdmin": "Admin panel"
+  },
+  "roles": {
+    "superadmin": "Platform admin",
+    "admin": "Center admin",
+    "reviewer": "Reviewer",
+    "teacher": "Teacher",
+    "content_operator": "Content operator",
+    "none": "No role"
+  },
+  "auth": {
+    "signInTitle": "Sign in",
+    "signInSubtitle": "Use the email and password your center gave you.",
+    "email": "Email",
+    "password": "Password",
+    "signIn": "Sign in",
+    "signingIn": "Signing in…",
+    "invalidCredentials": "That email and password don't match.",
+    "forgotPassword": "Forgot your password? Ask your center admin to set a new one."
+  },
+  "status": {
+    "title": "System status",
+    "allOperational": "All systems operational",
+    "degraded": "Some services need attention",
+    "service": {
+      "api": "API",
+      "ai": "AI engine",
+      "render": "Export renderer"
+    },
+    "checkedEvery": "Checked every 15 seconds"
+  }
+}

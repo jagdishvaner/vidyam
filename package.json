@@ -35,8 +35,8 @@
     "ingest": "pnpm --silent --filter @vidyam/api ingest",
     "local:init": "pnpm infra:up && pnpm db:seed && pnpm bootstrap",
     "test:e2e": "turbo run test:e2e",
-    "stack:up": "VIDYAM_WEB_UPSTREAM=web:38100 VIDYAM_API_UPSTREAM=api:38110 docker compose -f infra/docker/compose.yml --profile full up -d --build --wait",
-    "stack:down": "docker compose -f infra/docker/compose.yml --profile full stop api ai ai-worker web && pnpm infra:up",
+    "stack:up": "VIDYAM_WEB_UPSTREAM=web:38100 VIDYAM_ADMIN_UPSTREAM=admin:38102 VIDYAM_API_UPSTREAM=api:38110 docker compose -f infra/docker/compose.yml --profile full up -d --build --wait",
+    "stack:down": "docker compose -f infra/docker/compose.yml --profile full stop api ai ai-worker web admin && pnpm infra:up",
     "demo:build": "uv run --project apps/ai python fixtures/demo-pack/build.py",
     "demo:check": "uv run --project apps/ai python fixtures/demo-pack/check.py"
   },

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Next.js frontend: studio, library, question bank, review, admin. Talks only to the API.",
+  "description": "Next.js app for teachers: dashboard, chat, library, question bank, review, settings. The admin panel is apps/admin. Talks only to the API.",
   "scripts": {
     "dev": "next dev --port 38100 --hostname 127.0.0.1",
     "build": "next build",
@@ -15,6 +15,7 @@
   "dependencies": {
     "@tanstack/react-query": "5.104.5",
     "@vidyam/api-client": "workspace:*",
+    "@vidyam/app-shell": "workspace:*",
     "@vidyam/contracts": "workspace:*",
     "@vidyam/ui": "workspace:*",
     "better-auth": "1.7.12",

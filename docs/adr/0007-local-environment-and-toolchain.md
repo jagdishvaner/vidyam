@@ -16,7 +16,9 @@ temporary ports from 49152–65535, which a project should never claim.
 | Port          | Service                               |
 | ------------- | ------------------------------------- |
 | 38000         | app entry (Caddy, same origin as AWS) |
+| 38001         | admin panel entry (Caddy, ADR 0019)   |
 | 38100         | web                                   |
+| 38102         | admin                                 |
 | 38110         | api                                   |
 | 38120         | ai                                    |
 | 38130         | PostgreSQL                            |

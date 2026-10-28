@@ -2,7 +2,7 @@ import { Skeleton } from "@vidyam/ui/components/skeleton";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 
-import { LoginForm } from "@/features/auth/login-form";
+import { LoginForm } from "@vidyam/app-shell/login-form";
 
 export const metadata: Metadata = { title: "Sign in" };
 

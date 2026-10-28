@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 
 import { SummaryCards } from "@/features/dashboard/summary-cards";
-import { SystemStatus } from "@/features/dashboard/system-status";
+import { SystemStatus } from "@vidyam/app-shell/system-status";
 import { Welcome } from "@/features/dashboard/welcome";
 
 export const metadata: Metadata = { title: "Dashboard" };

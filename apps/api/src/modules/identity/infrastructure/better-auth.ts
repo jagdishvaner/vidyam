@@ -19,7 +19,7 @@ export function createAuth({ env, db, cache }: { env: Env; db: Database; cache: 
     baseURL: env.VIDYAM_APP_URL,
     basePath: "/api/auth",
     secret: env.VIDYAM_AUTH_SECRET,
-    trustedOrigins: [env.VIDYAM_APP_URL],
+    trustedOrigins: [env.VIDYAM_APP_URL, env.VIDYAM_ADMIN_URL],
     database: drizzleAdapter(db, {
       provider: "pg",
       schema: {

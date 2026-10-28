@@ -13,8 +13,8 @@ import { BookOpenText } from "lucide-react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useDeferredValue, useState } from "react";
 
-import { Link } from "@/i18n/navigation";
-import { api } from "@/lib/client/api";
+import { Link } from "@vidyam/app-shell/i18n/navigation";
+import { api } from "@vidyam/app-shell/client/api";
 
 import { StateBadge } from "./state-badge";
 

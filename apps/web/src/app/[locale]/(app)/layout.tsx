@@ -2,10 +2,10 @@ import { Skeleton } from "@vidyam/ui/components/skeleton";
 import { useTranslations } from "next-intl";
 import { Suspense, type ReactNode } from "react";
 
-import { LanguageSwitcher } from "@/features/shell/language-switcher";
+import { LanguageSwitcher } from "@vidyam/app-shell/shell/language-switcher";
 import { Nav } from "@/features/shell/nav";
-import { ThemeToggle } from "@/features/shell/theme-toggle";
-import { UserMenu } from "@/features/shell/user-menu";
+import { ThemeToggle } from "@vidyam/app-shell/shell/theme-toggle";
+import { UserMenu } from "@vidyam/app-shell/shell/user-menu";
 
 /** The shell (navigation, header) is static and prerendered; only the user menu waits for the session. */
 export default function AppLayout({ children }: { children: ReactNode }) {

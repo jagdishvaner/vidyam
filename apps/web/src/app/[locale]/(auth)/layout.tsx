@@ -2,7 +2,7 @@ import { Skeleton } from "@vidyam/ui/components/skeleton";
 import { useTranslations } from "next-intl";
 import { Suspense, type ReactNode } from "react";
 
-import { LanguageSwitcher } from "@/features/shell/language-switcher";
+import { LanguageSwitcher } from "@vidyam/app-shell/shell/language-switcher";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   const t = useTranslations("common");

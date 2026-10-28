@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Suspense } from "react";
 
 import { SettingsPage } from "@/features/settings/settings-page";
-import { getCurrentUser } from "@/lib/server/session";
+import { getCurrentUser } from "@vidyam/app-shell/server/session";
 
 export const metadata: Metadata = { title: "Settings" };
 

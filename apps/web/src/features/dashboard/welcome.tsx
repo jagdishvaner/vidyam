@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
-import { roleKey } from "@/lib/roles";
-import { getCurrentUser } from "@/lib/server/session";
+import { roleKey } from "@vidyam/app-shell/roles";
+import { getCurrentUser } from "@vidyam/app-shell/server/session";
 
 export async function Welcome() {
   const [user, t] = await Promise.all([getCurrentUser(), getTranslations()]);

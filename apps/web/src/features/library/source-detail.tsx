@@ -20,8 +20,8 @@ import { useFormatter, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
-import { Link, useRouter } from "@/i18n/navigation";
-import { api } from "@/lib/client/api";
+import { Link, useRouter } from "@vidyam/app-shell/i18n/navigation";
+import { api } from "@vidyam/app-shell/client/api";
 
 import { StateBadge } from "./state-badge";
 

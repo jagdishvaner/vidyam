@@ -1,7 +1,8 @@
-import { redirect } from "@/i18n/navigation";
+import { ADMIN_URL } from "@vidyam/app-shell/server/env";
+import { redirect } from "next/navigation";
 
-/** Members moved to Admin → Staff; old links and bookmarks still work. */
+/** Members moved to the admin panel (its own subdomain); old links and bookmarks still work. */
 export default async function MembersPage({ params }: PageProps<"/[locale]/settings/members">) {
   const { locale } = await params;
-  redirect({ href: "/admin/staff", locale });
+  redirect(`${ADMIN_URL}/${locale}/staff`);
 }

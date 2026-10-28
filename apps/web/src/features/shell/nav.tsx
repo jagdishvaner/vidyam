@@ -1,11 +1,11 @@
+import { ADMIN_URL } from "@vidyam/app-shell/server/env";
+import { getCurrentUser } from "@vidyam/app-shell/server/session";
 import { roleCan } from "@vidyam/contracts";
-
-import { getCurrentUser } from "@/lib/server/session";
 
 import { NavLinks } from "./nav-links";
 
-/** Server part: Admin appears only for those who can manage the center (must sit inside <Suspense>). */
+/** Server part: the Admin link appears only for those who can manage the center (must sit inside <Suspense>). */
 export async function Nav() {
   const user = await getCurrentUser();
-  return <NavLinks isAdmin={roleCan(user.orgRole, "settings", "manage")} />;
+  return <NavLinks adminUrl={roleCan(user.orgRole, "settings", "manage") ? ADMIN_URL : null} />;
 }

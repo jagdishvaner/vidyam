@@ -11,7 +11,8 @@ decision is in [`docs/adr`](docs/adr).
 
 ```
 apps/
-  web/          Next.js 16 frontend (English + Hindi), talks only to the API
+  web/          Next.js 16 app for teachers (English + Hindi), talks only to the API
+  admin/        Next.js 16 admin panel on its own subdomain (staff, syllabus, AI, budgets, audit)
   api/          NestJS 12 API: auth, roles, workflows, CRUD, streaming to the browser
   ai/           Python AI engine: the only service that calls LLMs, embeddings and Qdrant
 packages/
@@ -19,6 +20,8 @@ packages/
   db/           Drizzle schema, migrations, row-level security, seeds
   api-client/   typed API client generated from the API's OpenAPI document
   ui/           shared UI components (shadcn/ui, Tailwind CSS 4) and the theme
+  app-shell/    what both Next.js apps share: sign-in, session, API clients, locales, header pieces
+  prompts/      prompt templates per task and model family, loaded by the seed
   config/       shared ESLint (architecture rules, AI-SDK ban), Prettier, tsconfig presets
 infra/docker/   local infrastructure (compose.yml, Caddyfile)
 docs/           master plan and architecture decision records
@@ -43,10 +46,10 @@ cp .env.example .env
 pnpm install            # also installs git hooks
 uv sync --all-packages
 pnpm local:init         # start infrastructure, migrate, seed, create S3 buckets + Qdrant collections
-pnpm dev                # web + API + AI engine (with queue workers), hot reload
+pnpm dev                # web + admin + API + AI engine (with queue workers), hot reload
 ```
 
-Open **http://localhost:38000** and sign in. `pnpm db:seed` creates these local logins (values from `.env`):
+Open **http://localhost:38000** (the app) or **http://localhost:38001** (the admin panel) and sign in. `pnpm db:seed` creates these local logins (values from `.env`):
 
 | Role                    | Email (login ID)        | Password                |
 | ----------------------- | ----------------------- | ----------------------- |
@@ -55,7 +58,7 @@ Open **http://localhost:38000** and sign in. `pnpm db:seed` creates these local 
 | Reviewer                | `reviewer@vidyam.local` | `demo-password-123`     |
 | Content operator        | `operator@vidyam.local` | `demo-password-123`     |
 
-There is no email: the admin adds people and resets passwords under **Members** (ADR 0011).
+There is no email: the admin adds people and resets passwords in the admin panel under **Staff** (ADR 0011).
 
 Useful local tools:
 

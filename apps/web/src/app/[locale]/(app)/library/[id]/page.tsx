@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 import { SourceDetail } from "@/features/library/source-detail";
-import { getCurrentUser } from "@/lib/server/session";
+import { getCurrentUser } from "@vidyam/app-shell/server/session";
 
 export const metadata: Metadata = { title: "Library" };
 
