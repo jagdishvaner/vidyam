@@ -12,6 +12,7 @@ export const AuditAction = contract(
     "member.remove",
     "staff.update",
     "library.remove",
+    "library.backlog_run",
     "syllabus.import",
     "syllabus.node_create",
     "syllabus.node_update",

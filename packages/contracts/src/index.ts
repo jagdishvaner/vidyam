@@ -1,4 +1,5 @@
 export * from "./audit.js";
+export * from "./backlogs.js";
 export * from "./catalog.js";
 export * from "./chat.js";
 export * from "./common.js";

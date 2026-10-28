@@ -144,3 +144,47 @@ the chunk's primary tag. If a chunk's chapter changes, its model-picked topics a
 
 The library counts a file as ready from `chunked` onwards (`tagged`, and later `embedded` and `indexed`).
 Removing a file also deletes its page images.
+
+**Answer keys** are read by rules as part of ingestion, with no model: "1. C", "Q.3 (B)", "4-क" and tables.
+
+- A key must answer at least 80% of the numbers up to its highest one; otherwise it waits for a person.
+- The answers are kept on the key's source.
+- They are given to its paper's questions, matched by booklet set and question number. A final key overrides a
+  provisional one.
+
+**Backlogs** (`application/backlogs.py`) cover the model work. Each is estimated first and starts only when an
+admin or content operator (`library:process`) runs it:
+
+- in Admin → Content;
+- or with `pnpm backlog <kind> --run [--limit N] [--wait]`.
+
+The `RunBacklog` workflow submits Batch API requests at half price, waits for each through `LlmBatch`, and
+stores the results through the batch handlers:
+
+- **OCR** (`ocr_text`): each page image, at most 200 per batch, goes to a vision model.
+  - The result is the page as Markdown, with headings, tables, LaTeX math and `\ce{}` chemistry.
+  - A page read by OCR keeps its text when the file is read again. One with legibility below 0.5 is marked for
+    review.
+  - The files involved are then re-chunked and re-tagged.
+  - The stub can't see images: it records the attempt, and the page keeps waiting.
+- **Questions from papers** (`segment`): papers are sent four pages per request, plus the next page for context.
+  The model lists the questions that start on those pages: number, type, Hindi and English text, page.
+  - They go into the bank as imported drafts, each with a `pyq_refs` row (set, number). A question with no key
+    yet has an `unknown` answer.
+  - A parallel edition of the same paper fills in the other language of the same questions.
+  - The stub splits by the printed numbering, which is also a baseline for checking real models.
+- **Topics** (`tag`): chunks and questions whose chapter (or subject) has topics.
+  - The candidates are the syllabus under it. They sit in a 1-hour cached system block, shared by every item in
+    that chapter.
+  - Only nodes under the item's own chapter are accepted.
+  - A topic at 0.6 or above becomes the main tag, and the chapter stays beside it.
+  - `topics_checked_at` (migration 0004) records that an item was checked, even when nothing fitted.
+
+Estimates use generous sizes per request until Phase B measures real ones:
+
+- OCR: 2,100 tokens in and 2,500 out per page;
+- splitting: the window's text again, plus 30%;
+- topics: the item plus a cached candidate list.
+
+They go through `LlmGateway.estimate`, which raises what a real call would: no route, no prompt, no key, or the
+budget used up.

@@ -100,6 +100,12 @@ def _similarity(a: frozenset[str], b: frozenset[str]) -> float:
     return 2 * len(a & b) / (len(a) + len(b)) if a and b else 0.0
 
 
+def match_tokens(name: str, text: str) -> float:
+    """Share of a name's words that appear in a text, from 0 to 1: how fully the text mentions it."""
+    words = _tokens(name)
+    return len(words & _tokens(text)) / len(words) if words else 0.0
+
+
 _LEVEL_PREFERENCE = {"chapter": 0, "unit": 1, "topic": 2, "subtopic": 3}
 
 

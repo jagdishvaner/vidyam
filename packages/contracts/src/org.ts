@@ -13,7 +13,8 @@ export const PERMISSIONS = {
   chat: ["use"],
   document: ["create", "edit", "export"],
   question: ["approve"],
-  library: ["upload", "review", "remove"],
+  /** process: run the paid backlogs (OCR, splitting papers into questions, topics), after their estimate. */
+  library: ["upload", "review", "remove", "process"],
   syllabus: ["manage"],
   ai: ["manage"],
   budget: ["manage"],
@@ -33,8 +34,8 @@ export const ROLE_PERMISSIONS: Record<OrgRole, Permissions> = {
   // Head of department: a teacher who also approves questions into the bank and reviews OCR output.
   reviewer: { ...teacher, question: ["approve"], library: ["review"] },
   teacher,
-  // Looks after the library: uploads, corrects OCR output, removes wrong files. Can ask doubts in the chat.
-  content_operator: { chat: ["use"], library: ["upload", "review", "remove"] },
+  // Looks after the library: uploads, runs and corrects OCR, removes wrong files. Can ask doubts in the chat.
+  content_operator: { chat: ["use"], library: ["upload", "review", "remove", "process"] },
 };
 
 /** Whether a center role may do something. The API enforces this; the web app uses it to hide what would be refused. */

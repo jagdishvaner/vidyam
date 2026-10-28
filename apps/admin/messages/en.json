@@ -94,7 +94,8 @@
       "library": {
         "upload": "Add content to the library",
         "review": "Check and correct text read from scans",
-        "remove": "Remove files from the library"
+        "remove": "Remove files from the library",
+        "process": "Run paid AI work on content: OCR, questions from papers, topics"
       },
       "syllabus": {
         "manage": "Manage exams, syllabus and paper patterns"
@@ -447,7 +448,8 @@
         "update": "Changed role, subjects or budget"
       },
       "library": {
-        "remove": "Removed a library file"
+        "remove": "Removed a library file",
+        "backlog_run": "Ran a content backlog"
       },
       "syllabus": {
         "import": "Imported a syllabus",
@@ -483,5 +485,50 @@
         "set": "Changed the center budget"
       }
     }
+  },
+  "content": {
+    "title": "Content",
+    "subtitle": "Work on the library that needs an AI model: reading scanned pages, splitting question papers into questions, and tagging content with syllabus topics. Nothing is sent to a model until you run it.",
+    "unreachableTitle": "The AI engine can't be reached",
+    "unreachableBody": "What is waiting, and what it would cost, shows again once it is running.",
+    "stubTitle": "No AI key yet: the built-in test model answers",
+    "stubBody": "Runs are free and finish at once, so everything can be tried. The test model can't read scanned pages, so those keep waiting until a key is added under AI models.",
+    "kinds": {
+      "ocr": {
+        "title": "Read scanned pages",
+        "body": "Scans, and pages whose Hindi couldn't be read, are read from their page images by a vision model.",
+        "unit": "{count, plural, one {page waiting} other {pages waiting}}"
+      },
+      "segment": {
+        "title": "Split papers into questions",
+        "body": "Question papers are split into their questions in Hindi and English, given the answers from their keys, and added to the question bank.",
+        "unit": "{count, plural, one {paper waiting} other {papers waiting}}"
+      },
+      "tag": {
+        "title": "Pick syllabus topics",
+        "body": "Passages and questions tagged with a chapter get the topics inside it, so teachers can choose by topic.",
+        "unit": "{count, plural, one {item waiting} other {items waiting}}"
+      }
+    },
+    "requests": "Model requests",
+    "model": "Model",
+    "cost": "Estimated cost",
+    "stubBadge": "test model",
+    "run": "Run…",
+    "running": "Running",
+    "runs": {
+      "running": "Started {when}. Results arrive in the background.",
+      "completed": "The last run, started {when}, has finished.",
+      "failed": "The last run, started {when}, failed. The job runner shows why."
+    },
+    "batchNote": "Runs use the providers' Batch API at half price. Results arrive within minutes, and at most within 24 hours; this page updates as they do.",
+    "confirmTitle": "Run “{name}”?",
+    "confirmBody": "{items} {unit}, sent to {model}. Estimated cost {cost}, counted against the center's AI budget.",
+    "limitLabel": "How many this time",
+    "limitPlaceholder": "All of them",
+    "limitHint": "Try a few first to check the results; the rest stay waiting.",
+    "confirm": "Run for about {cost}",
+    "cancel": "Cancel",
+    "started": "{name}: started"
   }
 }

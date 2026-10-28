@@ -48,10 +48,13 @@ export class DrizzleSourceRegistry implements SourceRegistry, SourceRemover {
   }
 
   async describe(orgId: string, sourceId: string, description: SourceDescription): Promise<boolean> {
-    const { manifestBatchId: _batch, ...wanted } = description;
+    const { manifestBatchId: _batch, ...described } = description;
     return withOrgContext(this.database.db, orgId, async (tx) => {
       const [current] = await tx.select(DESCRIPTION).from(sources).where(eq(sources.id, sourceId));
-      if (!current || canonical(current) === canonical({ ...current, ...wanted })) return false;
+      if (!current) return false;
+      // The description owns only its own meta keys; what the pipeline keeps there (a key's answers) stays.
+      const wanted = { ...described, meta: { ...current.meta, ...described.meta } };
+      if (canonical(current) === canonical({ ...current, ...wanted })) return false;
       await tx
         .update(sources)
         .set({ ...wanted, manifestBatchId: description.manifestBatchId, updatedAt: new Date() })

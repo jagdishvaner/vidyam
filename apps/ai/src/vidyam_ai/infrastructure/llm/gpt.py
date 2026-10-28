@@ -6,6 +6,7 @@ Strict structured outputs need every property required, so optional ones are sen
 drops those nulls again before validating the reply.
 """
 
+import base64
 import json
 from collections.abc import AsyncIterator, Sequence
 from typing import Any, cast
@@ -22,7 +23,7 @@ from openai.types.responses import (
 )
 
 from vidyam_ai.application.llm_gateway import BatchStatus, ProviderError
-from vidyam_ai.domain.llm import BatchResult, Completion, Finish, ModelCall, Usage
+from vidyam_ai.domain.llm import BatchResult, Completion, Finish, ModelCall, Turn, Usage
 from vidyam_ai.infrastructure.llm.schemas import openai_strict_schema
 
 _ENDPOINT = "/v1/responses"
@@ -30,10 +31,25 @@ _ENDED = frozenset({"completed", "failed", "expired", "cancelled"})
 _RETRYABLE = (openai.APIConnectionError, openai.RateLimitError, openai.InternalServerError)
 
 
+def _content(turn: Turn) -> str | list[dict[str, Any]]:
+    """Plain text, or input images (at full detail: pages are read word by word) followed by the text."""
+    if not turn.images:
+        return turn.text
+    images: list[dict[str, Any]] = [
+        {
+            "type": "input_image",
+            "image_url": f"data:{image.media_type};base64,{base64.b64encode(image.data).decode()}",
+            "detail": "high",
+        }
+        for image in turn.images
+    ]
+    return [*images, {"type": "input_text", "text": turn.text}]
+
+
 def response_params(call: ModelCall) -> dict[str, Any]:
     params: dict[str, Any] = {
         "model": call.model,
-        "input": [{"role": turn.role, "content": turn.text} for turn in call.turns],
+        "input": [{"role": turn.role, "content": _content(turn)} for turn in call.turns],
         "max_output_tokens": call.max_tokens,
         "store": False,
     }

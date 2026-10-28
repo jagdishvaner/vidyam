@@ -715,6 +715,7 @@ t_questions = Table(
     Column("usage_count", Integer, nullable=False, server_default=text("0")),
     Column("created_at", DateTime(True), nullable=False, server_default=text("now()")),
     Column("updated_at", DateTime(True), nullable=False, server_default=text("now()")),
+    Column("topics_checked_at", DateTime(True)),
     ForeignKeyConstraint(
         ["approved_by"], ["public.users.id"], ondelete="SET NULL", name="questions_approved_by_users_id_fk"
     ),
@@ -1174,6 +1175,7 @@ t_chunks = Table(
     Column("chunker_version", Text),
     Column("embedding_version_id", Text),
     Column("indexed_at", DateTime(True)),
+    Column("topics_checked_at", DateTime(True)),
     ForeignKeyConstraint(
         ["embedding_version_id"],
         ["public.embedding_versions.id"],

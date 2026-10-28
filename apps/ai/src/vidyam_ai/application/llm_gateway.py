@@ -28,6 +28,7 @@ from vidyam_ai.domain.llm import (
     Completion,
     Family,
     Finish,
+    Image,
     MissingVariable,
     Model,
     ModelCall,
@@ -122,6 +123,8 @@ class LlmRequest:
     # The conversation so far, ending with the user's turn. With turns, the rendered prompt is the system
     # prompt (cached for `prompt_cache`); without them it is the only user message (one-shot tasks).
     turns: Sequence[Turn] = ()
+    # Pictures for a one-shot task (a page to read), sent with the rendered prompt.
+    images: Sequence[Image] = ()
     # More system blocks after the prompt: an exam's style pack, retrieved evidence. Longest-lived first.
     context: Sequence[Segment] = ()
     prompt_cache: CacheTtl | None = None
@@ -156,6 +159,7 @@ class BatchItem:
     variables: Mapping[str, str] = field(default_factory=dict[str, str])
     turns: Sequence[Turn] = ()
     context: Sequence[Segment] = ()
+    images: Sequence[Image] = ()
 
 
 @dataclass(frozen=True)
@@ -163,6 +167,13 @@ class BatchOutcome:
     custom_id: str
     reply: LlmReply | None
     error: str | None = None
+
+
+@dataclass(frozen=True)
+class CostEstimate:
+    model_id: str
+    provider: Provider  # the stub, while the model's provider has no key
+    cost_usd: Decimal
 
 
 @dataclass(frozen=True)
@@ -387,6 +398,7 @@ class LlmGateway:
                 variables=item.variables,
                 turns=item.turns,
                 context=item.context,
+                images=item.images,
                 prompt_cache=prompt_cache,
                 output=output,
             )
@@ -414,6 +426,29 @@ class LlmGateway:
                 request_count=len(items),
             )
         )
+
+    async def estimate(
+        self, org_id: UUID, task: str, usages: Sequence[Usage], *, batch: bool = True
+    ) -> CostEstimate:
+        """What requests of these sizes would cost on the task's route, before anything is sent (plan v3 §8:
+        nothing paid starts without an estimate). Raises what the calls themselves would: no route, model
+        switched off, no prompt, no provider key, budget used up."""
+        route = await self._route(org_id, task)
+        model = await self._catalog.model(route.model_id)
+        if model is None or not model.enabled:
+            raise ModelUnavailable(
+                f"{route.model_id} is unknown or switched off; choose another model for {task}"
+            )
+        provider, _ = self._provider_for(model)
+        if batch and provider != "stub" and not model.batch:
+            raise ModelUnavailable(f"{model.id} can't take batch requests; route {task} to another model")
+        prompt = await self._catalog.prompt(task, model.family) or await self._catalog.prompt(task, "any")
+        if prompt is None:
+            raise PromptMissing(f"no active prompt for {task!r}; add one in Admin → Prompts")
+        await self._check_budgets(Caller(org_id))
+        prices = FREE if provider == "stub" else model.prices
+        total = sum((cost_usd(usage, prices, batch=batch) for usage in usages), Decimal(0))
+        return CostEstimate(model.id, provider, total)
 
     async def batch_ended(self, org_id: UUID, batch_id: UUID) -> bool:
         batch = await self._batch(org_id, batch_id)
@@ -512,10 +547,12 @@ class LlmGateway:
         if request.turns:
             if request.turns[-1].role != "user":
                 raise ValueError("the conversation must end with the user's turn")
+            if request.images:
+                raise ValueError("in a conversation, pictures go on its turns")
             system = (Segment(rendered, request.prompt_cache), *request.context)
             turns = tuple(request.turns)
         else:
-            system, turns = tuple(request.context), (Turn("user", rendered),)
+            system, turns = tuple(request.context), (Turn("user", rendered, tuple(request.images)),)
         check_cache_layout(system)
         return ModelCall(
             model=model.api_model,

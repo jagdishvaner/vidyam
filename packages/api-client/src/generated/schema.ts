@@ -228,6 +228,38 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/admin/content/backlogs": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ContentController_overview"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/admin/content/backlogs/{kind}/run": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["ContentController_run"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/center": {
         parameters: {
             query?: never;
@@ -1141,6 +1173,82 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    ContentController_overview: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        backlogs: {
+                            /** @enum {string} */
+                            kind: "ocr" | "segment" | "tag";
+                            items: number;
+                            requests: number;
+                            modelId: string | null;
+                            /** @enum {string|null} */
+                            provider: "anthropic" | "openai" | "stub" | null;
+                            costUsd: number;
+                            blocked: string | null;
+                        }[];
+                        runs: {
+                            /** @enum {string} */
+                            kind: "ocr" | "segment" | "tag";
+                            workflowId: string;
+                            /** @enum {string} */
+                            status: "running" | "completed" | "failed";
+                            /** Format: date-time */
+                            startedAt: string;
+                        }[];
+                        reachable: boolean;
+                    };
+                };
+            };
+        };
+    };
+    ContentController_run: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                kind: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    limit: number | null;
+                };
+            };
+        };
+        responses: {
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @enum {string} */
+                        kind: "ocr" | "segment" | "tag";
+                        workflowId: string;
+                        /** @enum {string} */
+                        status: "running" | "completed" | "failed";
+                        /** Format: date-time */
+                        startedAt: string;
+                    };
+                };
             };
         };
     };

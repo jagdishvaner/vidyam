@@ -60,8 +60,16 @@ class Answer3(BaseModel):
     model_answer: str = Field(..., alias="modelAnswer")
 
 
-class Answer(RootModel[Answer1 | Answer2 | Answer3]):
-    root: Answer1 | Answer2 | Answer3 = Field(..., title="Answer")
+class Answer4(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    kind: Literal["unknown"]
+
+
+class Answer(RootModel[Answer1 | Answer2 | Answer3 | Answer4]):
+    root: Answer1 | Answer2 | Answer3 | Answer4 = Field(..., title="Answer")
 
 
 class AuditAction(StrEnum):
@@ -70,6 +78,7 @@ class AuditAction(StrEnum):
     member_remove = "member.remove"
     staff_update = "staff.update"
     library_remove = "library.remove"
+    library_backlog_run = "library.backlog_run"
     syllabus_import = "syllabus.import"
     syllabus_node_create = "syllabus.node_create"
     syllabus_node_update = "syllabus.node_update"
@@ -132,6 +141,29 @@ class AuditQuery(BaseModel):
     action: str | None = Field(None, pattern="^[a-z_]+(\\.[a-z_]+)?$")
     user_id: UUID | None = Field(None, alias="userId")
     cursor: str | None = None
+
+
+class BacklogKind(StrEnum):
+    ocr = "ocr"
+    segment = "segment"
+    tag = "tag"
+
+
+class Status(StrEnum):
+    running = "running"
+    completed = "completed"
+    failed = "failed"
+
+
+class BacklogRun(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    kind: BacklogKind
+    workflow_id: str = Field(..., alias="workflowId")
+    status: Status
+    started_at: AwareDatetime = Field(..., alias="startedAt")
 
 
 class CardFieldKey(StrEnum):
@@ -743,6 +775,16 @@ class NotesSpec(BaseModel):
     include_practice: bool = Field(..., alias="includePractice")
 
 
+class OcrPage(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    markdown: str
+    has_figures: bool = Field(..., alias="hasFigures")
+    legibility: float = Field(..., ge=0.0, le=1.0)
+
+
 class OrgBranding(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1000,6 +1042,60 @@ class QuestionType(StrEnum):
     passage = "passage"
     short_answer = "short_answer"
     long_answer = "long_answer"
+
+
+class Limit(RootModel[int]):
+    root: int = Field(..., gt=0, le=9007199254740991)
+
+
+class RunBacklogInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+    kind: BacklogKind
+    limit: Limit | None
+
+
+class Limit1(RootModel[int]):
+    root: int = Field(..., gt=0, le=100000)
+
+
+class RunBacklogRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    limit: Limit1 | None
+
+
+class RunBacklogResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    kind: BacklogKind
+    items: int = Field(..., ge=0, le=9007199254740991)
+    batches: list[UUID]
+    succeeded: int = Field(..., ge=0, le=9007199254740991)
+    failed: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+
+
+class SegmentedQuestion(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    number: int = Field(..., gt=0, le=9007199254740991)
+    qtype: QuestionType
+    hi: QuestionText | None
+    en: QuestionText | None
+    page: int = Field(..., gt=0, le=9007199254740991)
+    has_figure: bool = Field(..., alias="hasFigure")
 
 
 class Provider1(StrEnum):
@@ -1336,6 +1432,23 @@ class TopicAvailability(BaseModel):
     to_generate: int = Field(..., alias="toGenerate", ge=0, le=9007199254740991)
 
 
+class TopicTag(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node: CodePath
+    confidence: float = Field(..., ge=0.0, le=1.0)
+
+
+class TopicTags(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    tags: list[TopicTag]
+
+
 class UpdateAiModelRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1515,6 +1628,7 @@ class WorkflowType(StrEnum):
     ping = "Ping"
     ingest_source = "IngestSource"
     llm_batch = "LlmBatch"
+    run_backlog = "RunBacklog"
 
 
 class AddMemberRequest(BaseModel):
@@ -1579,6 +1693,38 @@ class AiPolicy(BaseModel):
     allowed_model_ids: list[str] = Field(..., alias="allowedModelIds")
     require_cross_provider_check: bool = Field(..., alias="requireCrossProviderCheck")
     default_sourcing: Sourcing = Field(..., alias="defaultSourcing")
+
+
+class BacklogEstimate(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    kind: BacklogKind
+    items: int = Field(..., ge=0, le=9007199254740991)
+    requests: int = Field(..., ge=0, le=9007199254740991)
+    model_id: str | None = Field(..., alias="modelId")
+    provider: LlmProvider | None
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    blocked: str | None
+
+
+class BacklogEstimates(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    backlogs: list[BacklogEstimate]
+
+
+class BacklogOverview(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    backlogs: list[BacklogEstimate]
+    runs: list[BacklogRun]
+    reachable: bool
 
 
 class CardField(BaseModel):
@@ -1867,6 +2013,14 @@ class QuestionImport(BaseModel):
     negative_marks: NegativeMarks | None = Field(..., alias="negativeMarks")
     taxonomy: list[CodePath] = Field(..., min_length=1)
     licence: Licence
+
+
+class SegmentedPaper(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    questions: list[SegmentedQuestion]
 
 
 class StaffMember(BaseModel):

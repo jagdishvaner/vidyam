@@ -142,6 +142,8 @@ export const chunks = pgTable(
     chunkerVersion: text(),
     embeddingVersionId: text().references((): AnyPgColumn => embeddingVersions.id),
     indexedAt: timestamp({ withTimezone: true }),
+    /** When a model last picked its topics (the tag backlog), even if none fitted; null means not yet. */
+    topicsCheckedAt: timestamp({ withTimezone: true }),
     parentId: uuid().references((): AnyPgColumn => chunks.id, { onDelete: "cascade" }),
     pageStart: integer(),
     pageEnd: integer(),

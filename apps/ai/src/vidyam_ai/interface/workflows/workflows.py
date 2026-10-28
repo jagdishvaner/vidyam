@@ -1,8 +1,10 @@
 """Workflows: durable orchestration only. Temporal replays this code after a crash, so it must be
 deterministic; anything that touches the outside world belongs in an activity."""
 
+import asyncio
 from datetime import timedelta
 from typing import Any
+from uuid import UUID
 
 from temporalio import workflow
 from temporalio.common import RetryPolicy
@@ -11,14 +13,23 @@ from temporalio.exceptions import ActivityError, ApplicationError
 with workflow.unsafe.imports_passed_through():
     from vidyam_ai.generated.contracts import (
         AiTaskQueue,
+        BacklogKind,
         IngestSourceInput,
         IngestSourceResult,
         LlmBatchInput,
         PingInput,
+        RunBacklogInput,
+        RunBacklogResult,
         Stages,
         WorkflowType,
     )
-    from vidyam_ai.interface.workflows.activities import Activities, IngestionActivities, LlmActivities, parse
+    from vidyam_ai.interface.workflows.activities import (
+        Activities,
+        BacklogActivities,
+        IngestionActivities,
+        LlmActivities,
+        parse,
+    )
 
 
 def _queue(kind: AiTaskQueue) -> str:
@@ -67,6 +78,12 @@ class IngestSourceWorkflow:
                 start_to_close_timeout=timedelta(minutes=10),
                 retry_policy=RetryPolicy(maximum_attempts=5),
             )
+            await workflow.execute_activity_method(
+                IngestionActivities.read_answer_key,
+                payload,
+                start_to_close_timeout=timedelta(minutes=5),
+                retry_policy=RetryPolicy(maximum_attempts=5),
+            )
         except ActivityError as error:
             reason = str(error.cause or error)
             await workflow.execute_activity_method(
@@ -107,4 +124,55 @@ class LlmBatchWorkflow:
         )
 
 
-WORKFLOWS = [PingWorkflow, IngestSourceWorkflow, LlmBatchWorkflow]
+@workflow.defn(name=WorkflowType.run_backlog)
+class RunBacklogWorkflow:
+    """One backlog of a center, started by an admin after seeing its estimate (plan v3 §8): submit its
+    batches, wait for each through LlmBatch, and after OCR re-chunk the files whose pages became readable."""
+
+    @workflow.run
+    async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
+        request = parse(RunBacklogInput, payload)
+        submitted: dict[str, Any] = await workflow.execute_activity_method(
+            BacklogActivities.submit_backlog,
+            payload,
+            task_queue=_queue(AiTaskQueue.ai_llm),
+            start_to_close_timeout=timedelta(minutes=30),  # reading and uploading a few thousand page images
+            retry_policy=RetryPolicy(maximum_attempts=3),
+        )
+        batches: list[str] = submitted["batches"]
+        results = await asyncio.gather(
+            *(
+                workflow.execute_child_workflow(
+                    LlmBatchWorkflow.run,
+                    {
+                        "v": 1,
+                        "orgId": str(request.org_id),
+                        "requestedBy": payload["requestedBy"],
+                        "batchId": batch,
+                    },
+                    id=f"{WorkflowType.llm_batch.value}:{batch}",
+                    task_queue=workflow.info().task_queue,
+                )
+                for batch in batches
+            )
+        )
+        if request.kind == BacklogKind.ocr and submitted["sources"]:
+            await workflow.execute_activity_method(
+                IngestionActivities.refresh_sources,
+                args=[payload, submitted["sources"]],
+                start_to_close_timeout=timedelta(hours=1),
+                heartbeat_timeout=timedelta(minutes=5),
+                retry_policy=RetryPolicy(maximum_attempts=3),
+            )
+        result = RunBacklogResult(
+            kind=request.kind,
+            items=submitted["items"],
+            batches=[UUID(batch) for batch in batches],
+            succeeded=sum(r["succeeded"] for r in results),
+            failed=sum(r["failed"] for r in results),
+            costUsd=sum(r["costUsd"] for r in results),
+        )
+        return result.model_dump(mode="json", by_alias=True)
+
+
+WORKFLOWS = [PingWorkflow, IngestSourceWorkflow, LlmBatchWorkflow, RunBacklogWorkflow]

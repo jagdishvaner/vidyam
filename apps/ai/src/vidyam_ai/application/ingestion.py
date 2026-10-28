@@ -17,6 +17,7 @@ from uuid import UUID
 
 from vidyam_ai.domain.chunking import Chunk, PageText, chunk_pages, context_header
 from vidyam_ai.domain.documents import PageReading
+from vidyam_ai.domain.papers import parse_answer_key
 from vidyam_ai.domain.sections import (
     LabelledPage,
     PlannedSection,
@@ -28,7 +29,7 @@ from vidyam_ai.domain.sections import (
 from vidyam_ai.domain.tagging import Tag, rule_tags
 
 Stage = Literal["parsed", "chunked", "tagged", "segmented"]
-Status = Literal["running", "done", "pending", "failed"]
+Status = Literal["running", "done", "pending", "needs_review", "failed"]
 
 
 @dataclass(frozen=True)
@@ -107,6 +108,15 @@ class Sources(Protocol):
         advance: bool = True,
     ) -> None: ...
     async def mark_failed(self, org_id: UUID, source_id: UUID, *, run_id: str, error: str) -> None: ...
+
+
+class AnswerKeys(Protocol):
+    """Port: answer keys and the questions they answer."""
+
+    async def save_key(self, org_id: UUID, source_id: UUID, key: Mapping[int, str]) -> int:
+        """Keeps a key's answers with it and gives them to its paper's questions (a final key overrides a
+        provisional one). Returns how many questions got their answer."""
+        ...
 
 
 class Syllabus(Protocol):
@@ -261,3 +271,39 @@ class TagSource:
             detail={"chunks": len(places), "tagged": tagged},
         )
         return tagged
+
+
+class ReadAnswerKey:
+    """Answer keys are read by rules (plan v3 §5, step 6): "1. C  2. D", "Q.3 (B)", "4-क", tables. A key that
+    doesn't read as one is left for a person to check."""
+
+    def __init__(self, sources: Sources, keys: AnswerKeys) -> None:
+        self._sources = sources
+        self._keys = keys
+
+    async def execute(self, org_id: UUID, source_id: UUID, *, run_id: str) -> int | None:
+        """How many of the paper's questions got an answer; None when the file is not an answer key."""
+        source = await self._sources.get(org_id, source_id)
+        if source is None:
+            raise SourceNotFound(f"source {source_id} not found in organization {org_id}")
+        if source.kind != "answer_key":
+            return None
+        stage: Stage = "segmented"
+        await self._sources.record_stage(
+            org_id, source_id, stage=stage, status="running", run_id=run_id, advance=False
+        )
+        pages = await self._sources.pages(org_id, source_id)
+        key = parse_answer_key("\n".join(page.text for page in pages if not page.awaiting_ocr))
+        applied = await self._keys.save_key(org_id, source_id, key) if key else 0
+        waiting = any(page.awaiting_ocr for page in pages)
+        status: Status = "done" if key else "pending" if waiting else "needs_review"
+        await self._sources.record_stage(
+            org_id,
+            source_id,
+            stage=stage,
+            status=status,
+            run_id=run_id,
+            detail={"answers": len(key), "applied": applied},
+            advance=False,
+        )
+        return applied

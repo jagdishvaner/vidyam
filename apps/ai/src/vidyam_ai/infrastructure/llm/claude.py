@@ -5,6 +5,7 @@ Thinking is left to the model's default (adaptive on every current Claude model)
 controls how deep it goes. System blocks carry cache_control on the last block of each cache lifetime.
 """
 
+import base64
 from collections.abc import AsyncIterator, Sequence
 from typing import Any, cast
 
@@ -13,7 +14,7 @@ from anthropic import AsyncAnthropic
 from anthropic.types import Message
 
 from vidyam_ai.application.llm_gateway import BatchStatus, ProviderError
-from vidyam_ai.domain.llm import BatchResult, Completion, Finish, ModelCall, Segment, Usage
+from vidyam_ai.domain.llm import BatchResult, Completion, Finish, ModelCall, Segment, Turn, Usage
 from vidyam_ai.infrastructure.llm.schemas import anthropic_schema
 
 _FINISH: dict[str, Finish] = {
@@ -32,11 +33,29 @@ _RETRYABLE = (
 )
 
 
+def _content(turn: Turn) -> str | list[dict[str, Any]]:
+    """Plain text, or image blocks followed by the text (Claude reads images best before the question)."""
+    if not turn.images:
+        return turn.text
+    images: list[dict[str, Any]] = [
+        {
+            "type": "image",
+            "source": {
+                "type": "base64",
+                "media_type": image.media_type,
+                "data": base64.b64encode(image.data).decode(),
+            },
+        }
+        for image in turn.images
+    ]
+    return [*images, {"type": "text", "text": turn.text}]
+
+
 def message_params(call: ModelCall) -> dict[str, Any]:
     params: dict[str, Any] = {
         "model": call.model,
         "max_tokens": call.max_tokens,
-        "messages": [{"role": turn.role, "content": turn.text} for turn in call.turns],
+        "messages": [{"role": turn.role, "content": _content(turn)} for turn in call.turns],
     }
     if call.system:
         params["system"] = _system_blocks(call.system)

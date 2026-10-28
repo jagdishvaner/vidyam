@@ -240,6 +240,21 @@ class SqlSources:
                     | and_(t_chunk_tags.c.chunk_id.in_(moved), t_chunk_tags.c.method == "llm"),
                 )
             )
+            if moved:  # their topics are picked again, among the new chapter's
+                await conn.execute(
+                    update(t_chunks).where(t_chunks.c.id.in_(moved)).values(topics_checked_at=None)
+                )
+            # A model-picked topic stays the chunk's main tag; the rule's chapter is kept beside it.
+            topical = {
+                row.chunk_id
+                for row in await conn.execute(
+                    select(t_chunk_tags.c.chunk_id).where(
+                        t_chunk_tags.c.chunk_id.in_(chunk_ids),
+                        t_chunk_tags.c.method == "llm",
+                        t_chunk_tags.c.is_primary,
+                    )
+                )
+            }
             rows = [
                 {
                     "org_id": org_id,
@@ -248,7 +263,7 @@ class SqlSources:
                     "confidence": tag.confidence,
                     "method": tag.method,
                     "tagger_version": RULES_TAGGER,
-                    "is_primary": tag.is_primary,
+                    "is_primary": tag.is_primary and chunk_id not in topical,
                 }
                 for chunk_id, chunk_tags in tags.items()
                 for tag in chunk_tags

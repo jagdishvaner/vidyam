@@ -259,6 +259,19 @@
             "modelAnswer"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "const": "unknown"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
         }
       ]
     },
@@ -271,6 +284,7 @@
         "member.remove",
         "staff.update",
         "library.remove",
+        "library.backlog_run",
         "syllabus.import",
         "syllabus.node_create",
         "syllabus.node_update",
@@ -399,6 +413,144 @@
           "type": "string"
         }
       },
+      "additionalProperties": false
+    },
+    "BacklogEstimate": {
+      "title": "BacklogEstimate",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/BacklogKind"
+        },
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "requests": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "provider": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/LlmProvider"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "costUsd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "blocked": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "items",
+        "requests",
+        "modelId",
+        "provider",
+        "costUsd",
+        "blocked"
+      ],
+      "additionalProperties": false
+    },
+    "BacklogEstimates": {
+      "title": "BacklogEstimates",
+      "type": "object",
+      "properties": {
+        "backlogs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BacklogEstimate"
+          }
+        }
+      },
+      "required": [
+        "backlogs"
+      ],
+      "additionalProperties": false
+    },
+    "BacklogKind": {
+      "title": "BacklogKind",
+      "type": "string",
+      "enum": [
+        "ocr",
+        "segment",
+        "tag"
+      ]
+    },
+    "BacklogOverview": {
+      "title": "BacklogOverview",
+      "type": "object",
+      "properties": {
+        "backlogs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BacklogEstimate"
+          }
+        },
+        "runs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BacklogRun"
+          }
+        },
+        "reachable": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "backlogs",
+        "runs",
+        "reachable"
+      ],
+      "additionalProperties": false
+    },
+    "BacklogRun": {
+      "title": "BacklogRun",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/BacklogKind"
+        },
+        "workflowId": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "running",
+            "completed",
+            "failed"
+          ]
+        },
+        "startedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "kind",
+        "workflowId",
+        "status",
+        "startedAt"
+      ],
       "additionalProperties": false
     },
     "Blueprint": {
@@ -2782,6 +2934,29 @@
       ],
       "additionalProperties": false
     },
+    "OcrPage": {
+      "title": "OcrPage",
+      "type": "object",
+      "properties": {
+        "markdown": {
+          "type": "string"
+        },
+        "hasFigures": {
+          "type": "boolean"
+        },
+        "legibility": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "markdown",
+        "hasFigures",
+        "legibility"
+      ],
+      "additionalProperties": false
+    },
     "OrgBranding": {
       "title": "OrgBranding",
       "type": "object",
@@ -3817,6 +3992,120 @@
         "long_answer"
       ]
     },
+    "RunBacklogInput": {
+      "title": "RunBacklogInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kind": {
+          "$ref": "#/$defs/BacklogKind"
+        },
+        "limit": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "kind",
+        "limit"
+      ],
+      "additionalProperties": false
+    },
+    "RunBacklogRequest": {
+      "title": "RunBacklogRequest",
+      "type": "object",
+      "properties": {
+        "limit": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 100000
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "limit"
+      ],
+      "additionalProperties": false
+    },
+    "RunBacklogResult": {
+      "title": "RunBacklogResult",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/BacklogKind"
+        },
+        "items": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "batches": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "succeeded": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "failed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "costUsd": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "kind",
+        "items",
+        "batches",
+        "succeeded",
+        "failed",
+        "costUsd"
+      ],
+      "additionalProperties": false
+    },
     "SavePaperPatternRequest": {
       "title": "SavePaperPatternRequest",
       "type": "object",
@@ -3838,6 +4127,73 @@
         "examId",
         "name",
         "blueprint"
+      ],
+      "additionalProperties": false
+    },
+    "SegmentedPaper": {
+      "title": "SegmentedPaper",
+      "type": "object",
+      "properties": {
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SegmentedQuestion"
+          }
+        }
+      },
+      "required": [
+        "questions"
+      ],
+      "additionalProperties": false
+    },
+    "SegmentedQuestion": {
+      "title": "SegmentedQuestion",
+      "type": "object",
+      "properties": {
+        "number": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "hi": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "en": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuestionText"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "page": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "hasFigure": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "number",
+        "qtype",
+        "hi",
+        "en",
+        "page",
+        "hasFigure"
       ],
       "additionalProperties": false
     },
@@ -4705,6 +5061,41 @@
       ],
       "additionalProperties": false
     },
+    "TopicTag": {
+      "title": "TopicTag",
+      "type": "object",
+      "properties": {
+        "node": {
+          "$ref": "#/$defs/CodePath"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "node",
+        "confidence"
+      ],
+      "additionalProperties": false
+    },
+    "TopicTags": {
+      "title": "TopicTags",
+      "type": "object",
+      "properties": {
+        "tags": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/TopicTag"
+          }
+        }
+      },
+      "required": [
+        "tags"
+      ],
+      "additionalProperties": false
+    },
     "UpdateAiModelRequest": {
       "title": "UpdateAiModelRequest",
       "type": "object",
@@ -5145,7 +5536,8 @@
       "enum": [
         "Ping",
         "IngestSource",
-        "LlmBatch"
+        "LlmBatch",
+        "RunBacklog"
       ]
     }
   }

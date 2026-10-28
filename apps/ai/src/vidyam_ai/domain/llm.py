@@ -42,9 +42,18 @@ class Segment:
 
 
 @dataclass(frozen=True)
+class Image:
+    """A picture sent with a turn: a page to read (OCR), a figure. PNG, JPEG, GIF or WebP."""
+
+    media_type: str
+    data: bytes
+
+
+@dataclass(frozen=True)
 class Turn:
     role: Role
     text: str
+    images: tuple[Image, ...] = ()  # shown to the model before the text
 
 
 @dataclass(frozen=True)

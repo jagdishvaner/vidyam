@@ -61,6 +61,8 @@ export const Answer = contract(
     z.object({ kind: z.literal("options"), keys: z.array(z.string()).min(1) }),
     z.object({ kind: z.literal("numeric"), value: z.number(), tolerance: z.number().nonnegative() }),
     z.object({ kind: z.literal("text"), modelAnswer: z.string() }),
+    /** Imported from a paper whose answer key hasn't arrived: such a question stays a draft. */
+    z.object({ kind: z.literal("unknown") }),
   ]),
 );
 export type Answer = z.infer<typeof Answer>;

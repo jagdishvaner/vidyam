@@ -6,13 +6,16 @@ import asyncio
 from collections.abc import Awaitable, Generator, Mapping, Sequence
 from contextlib import contextmanager
 from typing import Any
+from uuid import UUID
 
 from pydantic import BaseModel, ValidationError
 from temporalio import activity
 from temporalio.exceptions import ApplicationError
 
+from vidyam_ai.application.backlogs import Backlogs
 from vidyam_ai.application.ingestion import (
     ExtractSource,
+    ReadAnswerKey,
     SourceNotFound,
     Sources,
     StructureSource,
@@ -24,12 +27,19 @@ from vidyam_ai.application.llm_gateway import (
     BatchNotFound,
     BatchOutcome,
     BatchRecord,
+    Caller,
     LlmError,
     LlmGateway,
     ProviderError,
 )
 from vidyam_ai.application.ping import handle_ping
-from vidyam_ai.generated.contracts import IngestSourceInput, LlmBatchInput, LlmBatchResult, PingInput
+from vidyam_ai.generated.contracts import (
+    IngestSourceInput,
+    LlmBatchInput,
+    LlmBatchResult,
+    PingInput,
+    RunBacklogInput,
+)
 from vidyam_ai.infrastructure.temporal.cpu import CpuPool
 
 
@@ -79,11 +89,17 @@ class IngestionActivities:
     """The steps of IngestSourceWorkflow (ADR 0014, plan v3 §5)."""
 
     def __init__(
-        self, extract: ExtractSource, structure: StructureSource, tag: TagSource, sources: Sources
+        self,
+        extract: ExtractSource,
+        structure: StructureSource,
+        tag: TagSource,
+        answer_key: ReadAnswerKey,
+        sources: Sources,
     ) -> None:
         self._extract = extract
         self._structure = structure
         self._tag = tag
+        self._answer_key = answer_key
         self._sources = sources
 
     @activity.defn(name="extract_source")
@@ -127,6 +143,30 @@ class IngestionActivities:
         except SourceNotFound as error:
             raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
 
+    @activity.defn(name="read_answer_key")
+    async def read_answer_key(self, payload: dict[str, Any]) -> int | None:
+        """For an answer key: its answers, given to its paper's questions. Nothing for other files."""
+        request = parse(IngestSourceInput, payload)
+        try:
+            return await self._answer_key.execute(request.org_id, request.source_id, run_id=_run_id())
+        except SourceNotFound as error:
+            raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
+
+    @activity.defn(name="refresh_sources")
+    async def refresh_sources(self, payload: dict[str, Any], source_ids: list[str]) -> int:
+        """After OCR filled in pages: sections, chunks, tags and answer keys again, from the stored pages."""
+        request = parse(RunBacklogInput, payload)
+        for n, source_id in enumerate(source_ids):
+            source = UUID(source_id)
+            try:
+                await self._structure.execute(request.org_id, source, run_id=_run_id())
+                await self._tag.execute(request.org_id, source, run_id=_run_id())
+                await self._answer_key.execute(request.org_id, source, run_id=_run_id())
+            except SourceNotFound:
+                continue  # removed from the library meanwhile
+            activity.heartbeat(n)
+        return len(source_ids)
+
     @activity.defn(name="mark_source_failed")
     async def mark_source_failed(self, payload: dict[str, Any], reason: str) -> None:
         request = parse(IngestSourceInput, payload)
@@ -166,6 +206,26 @@ class LlmActivities:
                 f"nothing stores {batch.task} batch results", type="NoBatchHandler", non_retryable=True
             )
         await handler(batch, outcomes)
+
+
+class BacklogActivities:
+    """The steps of RunBacklogWorkflow: submitting a backlog's batches (plan v3 §5, §8)."""
+
+    def __init__(self, backlogs: Backlogs) -> None:
+        self._backlogs = backlogs
+
+    @activity.defn(name="submit_backlog")
+    async def submit_backlog(self, payload: dict[str, Any]) -> dict[str, Any]:
+        request = parse(RunBacklogInput, payload)
+        caller = Caller(request.org_id, user_id=request.requested_by, workflow_id=activity.info().workflow_id)
+        with _llm_failures():
+            limit = request.limit.root if request.limit else None
+            submitted = await self._backlogs.submit(caller, request.kind.value, limit)
+        return {
+            "items": submitted.items,
+            "batches": [str(batch) for batch in submitted.batch_ids],
+            "sources": [str(source) for source in submitted.sources],
+        }
 
 
 @contextmanager

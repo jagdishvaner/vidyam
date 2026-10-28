@@ -10,12 +10,14 @@ from dataclasses import dataclass
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from vidyam_ai.application.ingestion import ExtractSource, StructureSource, TagSource
+from vidyam_ai.application.backlogs import Backlogs
+from vidyam_ai.application.ingestion import ExtractSource, ReadAnswerKey, StructureSource, TagSource
 from vidyam_ai.application.llm_gateway import BatchHandler
 from vidyam_ai.application.providers import provider_status
 from vidyam_ai.config import Settings, get_settings
 from vidyam_ai.domain.documents import PageReading
 from vidyam_ai.generated.contracts import AiTaskQueue
+from vidyam_ai.infrastructure.db.backlogs import SqlBacklogStore
 from vidyam_ai.infrastructure.db.sources import SqlSources
 from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
 from vidyam_ai.infrastructure.extraction import extract, render_pages
@@ -25,7 +27,12 @@ from vidyam_ai.infrastructure.s3.files import S3Files
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.infrastructure.temporal.cpu import CpuPool
-from vidyam_ai.interface.workflows.activities import Activities, IngestionActivities, LlmActivities
+from vidyam_ai.interface.workflows.activities import (
+    Activities,
+    BacklogActivities,
+    IngestionActivities,
+    LlmActivities,
+)
 from vidyam_ai.interface.workflows.workflows import WORKFLOWS
 
 log = logging.getLogger(__name__)
@@ -36,18 +43,16 @@ class AllActivities:
     core: Activities
     ingestion: IngestionActivities
     llm: LlmActivities
+    backlog: BacklogActivities
     cpu_slots: int
-
-
-# What stores each kind of batch's results, by task. OCR, tagging and segmentation add theirs (step 16).
-BATCH_HANDLERS: Mapping[str, BatchHandler] = {}
 
 
 @asynccontextmanager
 async def open_activities(
-    settings: Settings, *, batch_handlers: Mapping[str, BatchHandler] = BATCH_HANDLERS
+    settings: Settings, *, batch_handlers: Mapping[str, BatchHandler] | None = None
 ) -> AsyncGenerator[AllActivities]:
-    """Activities wired to real Postgres, S3, the LLM gateway and a process pool for CPU-heavy reading."""
+    """Activities wired to real Postgres, S3, the LLM gateway and a process pool for CPU-heavy reading.
+    `batch_handlers`: more handlers for batch results, by task, beside the backlogs' own (tests add some)."""
     resources = await Resources.open(settings)
     cpu = CpuPool(settings.worker_cpu_processes)
 
@@ -58,19 +63,31 @@ async def open_activities(
         return await cpu.run(render_pages, path, mime_type, out_dir)
 
     sources = SqlSources(resources.engine)
+    syllabus = SqlSyllabus(resources.engine)
     files = S3Files(resources.s3, settings.bucket("raw"))
     images = S3PageImages(resources.s3, settings.bucket("derived"))
-    extract_source = ExtractSource(sources, files, read, render, images)
+    gateway = create_llm_gateway(settings, resources.engine)
+    store = SqlBacklogStore(resources.engine, sources, syllabus)
+    backlogs = Backlogs(gateway, store, syllabus, images)
+    # What stores each kind of batch's results, by task.
+    handlers: dict[str, BatchHandler] = {
+        "ocr_text": backlogs.store_ocr,
+        "segment": backlogs.store_questions,
+        "tag": backlogs.store_topic_tags,
+        **(batch_handlers or {}),
+    }
     try:
         yield AllActivities(
             core=Activities(cpu=cpu),
             ingestion=IngestionActivities(
-                extract_source,
-                StructureSource(sources, SqlSyllabus(resources.engine)),
+                ExtractSource(sources, files, read, render, images),
+                StructureSource(sources, syllabus),
                 TagSource(sources),
+                ReadAnswerKey(sources, store),
                 sources,
             ),
-            llm=LlmActivities(create_llm_gateway(settings, resources.engine), batch_handlers),
+            llm=LlmActivities(gateway, handlers),
+            backlog=BacklogActivities(backlogs),
             cpu_slots=settings.worker_cpu_processes,
         )
     finally:
@@ -95,6 +112,8 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
                 core.ping,
                 ingestion.structure_source,
                 ingestion.tag_source,
+                ingestion.read_answer_key,
+                ingestion.refresh_sources,
                 ingestion.mark_source_failed,
             ],
         ),
@@ -107,7 +126,7 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
         Worker(
             client,
             task_queue=queue(AiTaskQueue.ai_llm),
-            activities=[llm.batch_ended, llm.collect_batch],
+            activities=[llm.batch_ended, llm.collect_batch, activities.backlog.submit_backlog],
         ),
     ]
 

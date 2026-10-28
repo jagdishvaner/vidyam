@@ -72,6 +72,8 @@ export const questions = pgTable(
     createdBy: uuid().references(() => users.id, { onDelete: "set null" }),
     approvedBy: uuid().references(() => users.id, { onDelete: "set null" }),
     usageCount: integer().notNull().default(0),
+    /** When a model last picked its topics (the tag backlog), even if none fitted; null means not yet. */
+    topicsCheckedAt: timestamp({ withTimezone: true }),
     ...timestamps,
   },
   (t) => [index().on(t.orgId, t.status, t.origin), orgIsolation("questions")],

@@ -35,7 +35,12 @@ export const AiTaskQueue = contract(
 );
 
 /** Workflow type names: started from TypeScript (the API), implemented in Python (the AI engine). */
-export const WORKFLOWS = { ping: "Ping", ingestSource: "IngestSource", llmBatch: "LlmBatch" } as const;
+export const WORKFLOWS = {
+  ping: "Ping",
+  ingestSource: "IngestSource",
+  llmBatch: "LlmBatch",
+  runBacklog: "RunBacklog",
+} as const;
 export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
 export const WorkflowType = contract(
   "WorkflowType",
