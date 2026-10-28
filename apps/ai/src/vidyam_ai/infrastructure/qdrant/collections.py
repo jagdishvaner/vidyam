@@ -11,6 +11,8 @@ from dataclasses import dataclass
 
 from qdrant_client import AsyncQdrantClient, models
 
+from vidyam_ai.domain.lexical import fold, romanized
+
 SCHEMA_VERSION = 2  # v2: one dense vector from the configured embedding model; keywords via BM25 indexes
 COLLECTIONS = ("chunks", "questions", "figures")
 DENSE = "dense"
@@ -28,12 +30,18 @@ class EmbeddingProfile:
         return re.sub(r"[^a-z0-9]+", "_", f"{self.model}_{self.dims}".lower()).strip("_")
 
 
-# Conservative Hindi function words. The Phase 3 keyword bake-off tunes this list; it must stay in the same
-# normalized form the Devanagari normalizer writes into `lex`.
+# Conservative Hindi function words. The keyword bake-off (step 21) tunes this list; it must stay in the
+# normalized form domain/lexical.py writes into `lex`.
 HINDI_STOPWORDS = [
     "और", "का", "की", "के", "को", "से", "में", "पर", "है", "हैं", "था", "थे", "थी", "यह", "वह",
     "ये", "वे", "एक", "भी", "तो", "ही", "या", "कि", "जो", "इस", "उस", "लिए", "साथ", "तथा", "एवं",
 ]  # fmt: skip
+
+# The same words as teachers type them in Hinglish ("ka", "ki", "hai", "aur"), in `lex_roman`'s folded form.
+HINGLISH_STOPWORDS = sorted(
+    {key for word in HINDI_STOPWORDS for key in romanized(word).split()}
+    | {fold(word) for word in ("me", "mein", "hein", "bhi", "liye", "tha", "thi", "the")}
+)
 
 _KEYWORD_FIELDS = [
     "exam_codes", "taxonomy_node_ids", "language", "licence", "status",
@@ -112,7 +120,10 @@ async def bootstrap(client: AsyncQdrantClient, profile: EmbeddingProfile) -> lis
         await client.create_payload_index(
             physical,
             "lex_roman",
-            _text_index(models.StopwordsSet(languages=[models.Language.ENGLISH]), ascii_folding=True),
+            _text_index(
+                models.StopwordsSet(languages=[models.Language.ENGLISH], custom=HINGLISH_STOPWORDS),
+                ascii_folding=True,
+            ),
         )
 
         if existing_aliases.get(name) != physical:
