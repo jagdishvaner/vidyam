@@ -12,11 +12,11 @@ from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import create_async_engine
 from vidyam_ai.config import REPO_ROOT, get_settings
 from vidyam_ai.infrastructure.db.generated.tables import t_chunks, t_pages, t_sources
-from vidyam_ai.infrastructure.resources import create_s3
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.interface.workflows.worker import create_workers, open_activities
 
 from tests.fixtures.documents import krutidev_pdf, scanned_pdf
+from tests.integration.cleanup import remove_org
 
 
 def _admin_url() -> str:
@@ -76,10 +76,10 @@ async def test_ingest_command_reads_files_into_the_organizations_library(tmp_pat
             [ocr_page] = (
                 await conn.execute(select(t_pages).where(t_pages.c.source_id == sources["scan.pdf"].id))
             ).all()
-        # "embedded" too when the model servers are running (pnpm models:up).
-        assert sources["notes.pdf"].stage in ("tagged", "embedded") and sources["notes.pdf"].status == "done"
+        # "indexed" when the model servers are running (pnpm models:up).
+        assert sources["notes.pdf"].stage in ("tagged", "indexed") and sources["notes.pdf"].status == "done"
         assert sources["notes.pdf"].meta == {"exam": "rpsc"}
-        assert sources["scan.pdf"].stage in ("tagged", "embedded") and sources["scan.pdf"].status == "pending"
+        assert sources["scan.pdf"].stage in ("tagged", "indexed") and sources["scan.pdf"].status == "pending"
         # "Chapter 1" is a heading: it leads the chunk's heading path instead of its text.
         assert chunk.text == "भारत का संविधान 26 जनवरी 1950 को लागू हुआ था"
         assert (chunk.heading_path, chunk.kind) == ("Chapter 1", "prose")
@@ -95,12 +95,5 @@ async def test_ingest_command_reads_files_into_the_organizations_library(tmp_pat
         )
         assert (await again.communicate())[0].decode().count("already imported") == 2
     finally:
-        s3 = create_s3(settings)
-        for bucket in (settings.bucket(kind) for kind in ("raw", "derived", "embeddings")):
-            listed = s3.list_objects_v2(Bucket=bucket, Prefix=f"org/{org_id}/")
-            keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
-            if keys:
-                s3.delete_objects(Bucket=bucket, Delete={"Objects": keys})
-        async with owner.begin() as conn:
-            await conn.execute(text("delete from organizations where id = :id"), {"id": org_id})
+        await remove_org(settings, owner, org_id)
         await owner.dispose()

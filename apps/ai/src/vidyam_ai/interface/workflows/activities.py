@@ -14,6 +14,7 @@ from temporalio.exceptions import ApplicationError
 
 from vidyam_ai.application.backlogs import Backlogs
 from vidyam_ai.application.embedding import EmbedSource, ModelServerError
+from vidyam_ai.application.indexing import IndexSource
 from vidyam_ai.application.ingestion import (
     ExtractSource,
     ReadAnswerKey,
@@ -35,6 +36,7 @@ from vidyam_ai.application.llm_gateway import (
 )
 from vidyam_ai.application.ping import handle_ping
 from vidyam_ai.generated.contracts import (
+    IndexSourceInput,
     IngestSourceInput,
     LlmBatchInput,
     LlmBatchResult,
@@ -96,6 +98,7 @@ class IngestionActivities:
         tag: TagSource,
         answer_key: ReadAnswerKey,
         embed: EmbedSource,
+        index: IndexSource,
         sources: Sources,
     ) -> None:
         self._extract = extract
@@ -103,6 +106,7 @@ class IngestionActivities:
         self._tag = tag
         self._answer_key = answer_key
         self._embed = embed
+        self._index = index
         self._sources = sources
 
     @activity.defn(name="extract_source")
@@ -158,7 +162,7 @@ class IngestionActivities:
     @activity.defn(name="embed_source")
     async def embed_source(self, payload: dict[str, Any]) -> int:
         """Vectors for the file's chunks; 0 when the model server isn't running (they wait for it)."""
-        request = parse(IngestSourceInput, payload)
+        request = parse(IndexSourceInput, payload)
         try:
             summary = await _heartbeating(
                 self._embed.execute(request.org_id, request.source_id, run_id=_run_id())
@@ -171,6 +175,28 @@ class IngestionActivities:
             raise ApplicationError(str(error), type="ModelServerError", non_retryable=True) from error
         return 0 if summary.waiting else summary.chunks
 
+    @activity.defn(name="index_source")
+    async def index_source(self, payload: dict[str, Any]) -> int:
+        """The file's chunks into the search index, from their stored vectors; 0 while they have none."""
+        request = parse(IndexSourceInput, payload)
+        try:
+            summary = await self._index.execute(request.org_id, request.source_id, run_id=_run_id())
+        except SourceNotFound as error:
+            raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
+        return summary.points
+
+    @activity.defn(name="reindex_sources")
+    async def reindex_sources(self, payload: dict[str, Any], source_ids: list[str]) -> int:
+        """After topics were picked: each file's points again, with the new tags (no new vectors needed)."""
+        request = parse(RunBacklogInput, payload)
+        for n, source_id in enumerate(source_ids):
+            try:
+                await self._index.execute(request.org_id, UUID(source_id), run_id=_run_id())
+            except SourceNotFound:
+                continue
+            activity.heartbeat(n)
+        return len(source_ids)
+
     @activity.defn(name="refresh_sources")
     async def refresh_sources(self, payload: dict[str, Any], source_ids: list[str]) -> int:
         """After OCR filled in pages: sections, chunks, tags and answer keys again, from the stored pages."""
@@ -182,6 +208,7 @@ class IngestionActivities:
                 await self._tag.execute(request.org_id, source, run_id=_run_id())
                 await self._answer_key.execute(request.org_id, source, run_id=_run_id())
                 await self._embed.execute(request.org_id, source, run_id=_run_id())
+                await self._index.execute(request.org_id, source, run_id=_run_id())
             except SourceNotFound:
                 continue  # removed from the library meanwhile
             activity.heartbeat(n)

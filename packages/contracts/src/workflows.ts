@@ -40,6 +40,7 @@ export const WORKFLOWS = {
   ingestSource: "IngestSource",
   llmBatch: "LlmBatch",
   runBacklog: "RunBacklog",
+  indexSource: "IndexSource",
 } as const;
 export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
 export const WorkflowType = contract(
@@ -96,10 +97,26 @@ export const IngestSourceResult = contract(
     taggedChunks: count,
     /** Chunks with vectors; 0 while the embedding model server isn't running (they wait for it). */
     embeddedChunks: count,
+    /** Chunks searchable in the index (Qdrant). */
+    indexedChunks: count,
   }),
   "What ingesting one file produced.",
 );
 export type IngestSourceResult = z.infer<typeof IngestSourceResult>;
+
+export const IndexSourceInput = contract(
+  "IndexSourceInput",
+  WorkflowEnvelope.extend({ sourceId: Uuid }),
+  "Embed a file's chunks that have no vectors yet, then (re)write its points in the search index.",
+);
+export type IndexSourceInput = z.infer<typeof IndexSourceInput>;
+
+export const IndexSourceResult = contract(
+  "IndexSourceResult",
+  z.object({ sourceId: Uuid, embeddedChunks: count, indexedChunks: count }),
+  "What embedding and indexing one file produced.",
+);
+export type IndexSourceResult = z.infer<typeof IndexSourceResult>;
 
 export const LlmBatchInput = contract(
   "LlmBatchInput",

@@ -14,6 +14,8 @@ with workflow.unsafe.imports_passed_through():
     from vidyam_ai.generated.contracts import (
         AiTaskQueue,
         BacklogKind,
+        IndexSourceInput,
+        IndexSourceResult,
         IngestSourceInput,
         IngestSourceResult,
         LlmBatchInput,
@@ -30,6 +32,29 @@ with workflow.unsafe.imports_passed_through():
         LlmActivities,
         parse,
     )
+
+
+def _source_ref(payload: dict[str, Any]) -> dict[str, Any]:
+    """The part of an ingestion payload that names the file (what the embed and index steps take)."""
+    return {key: payload[key] for key in ("v", "orgId", "requestedBy", "sourceId")}
+
+
+async def _embed_and_index(ref: dict[str, Any]) -> tuple[int, int]:
+    embedded = await workflow.execute_activity_method(
+        IngestionActivities.embed_source,
+        ref,
+        task_queue=_queue(AiTaskQueue.ai_llm),
+        start_to_close_timeout=timedelta(hours=1),  # a 1,000-page book is a few thousand chunks
+        heartbeat_timeout=timedelta(minutes=2),
+        retry_policy=RetryPolicy(maximum_attempts=5, maximum_interval=timedelta(minutes=2)),
+    )
+    indexed = await workflow.execute_activity_method(
+        IngestionActivities.index_source,
+        ref,
+        start_to_close_timeout=timedelta(minutes=30),
+        retry_policy=RetryPolicy(maximum_attempts=5, maximum_interval=timedelta(minutes=2)),
+    )
+    return embedded, indexed
 
 
 def _queue(kind: AiTaskQueue) -> str:
@@ -84,14 +109,7 @@ class IngestSourceWorkflow:
                 start_to_close_timeout=timedelta(minutes=5),
                 retry_policy=RetryPolicy(maximum_attempts=5),
             )
-            embedded = await workflow.execute_activity_method(
-                IngestionActivities.embed_source,
-                payload,
-                task_queue=_queue(AiTaskQueue.ai_llm),
-                start_to_close_timeout=timedelta(hours=1),  # a 1,000-page book is a few thousand chunks
-                heartbeat_timeout=timedelta(minutes=2),
-                retry_policy=RetryPolicy(maximum_attempts=5, maximum_interval=timedelta(minutes=2)),
-            )
+            embedded, indexed = await _embed_and_index(_source_ref(payload))
         except ActivityError as error:
             reason = str(error.cause or error)
             await workflow.execute_activity_method(
@@ -101,8 +119,25 @@ class IngestSourceWorkflow:
             )
             raise ApplicationError(f"ingestion failed: {reason}", type="IngestionFailed") from error
         result = IngestSourceResult(
-            sourceId=request.source_id, taggedChunks=tagged, embeddedChunks=embedded, **structure
+            sourceId=request.source_id,
+            taggedChunks=tagged,
+            embeddedChunks=embedded,
+            indexedChunks=indexed,
+            **structure,
         )
+        return result.model_dump(mode="json", by_alias=True)
+
+
+@workflow.defn(name=WorkflowType.index_source)
+class IndexSourceWorkflow:
+    """Brings one file's vectors and search points up to date: after the model server was down during its
+    ingestion, or after the embedding model changed. Started by the worker's index keeper."""
+
+    @workflow.run
+    async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
+        request = parse(IndexSourceInput, payload)
+        embedded, indexed = await _embed_and_index(payload)
+        result = IndexSourceResult(sourceId=request.source_id, embeddedChunks=embedded, indexedChunks=indexed)
         return result.model_dump(mode="json", by_alias=True)
 
 
@@ -174,6 +209,14 @@ class RunBacklogWorkflow:
                 heartbeat_timeout=timedelta(minutes=5),
                 retry_policy=RetryPolicy(maximum_attempts=3),
             )
+        if request.kind == BacklogKind.tag and submitted["sources"]:
+            await workflow.execute_activity_method(
+                IngestionActivities.reindex_sources,
+                args=[payload, submitted["sources"]],
+                start_to_close_timeout=timedelta(hours=1),
+                heartbeat_timeout=timedelta(minutes=5),
+                retry_policy=RetryPolicy(maximum_attempts=3),
+            )
         result = RunBacklogResult(
             kind=request.kind,
             items=submitted["items"],
@@ -185,4 +228,4 @@ class RunBacklogWorkflow:
         return result.model_dump(mode="json", by_alias=True)
 
 
-WORKFLOWS = [PingWorkflow, IngestSourceWorkflow, LlmBatchWorkflow, RunBacklogWorkflow]
+WORKFLOWS = [PingWorkflow, IngestSourceWorkflow, LlmBatchWorkflow, RunBacklogWorkflow, IndexSourceWorkflow]

@@ -36,6 +36,13 @@
       "when": 1793175156717,
       "tag": "0004_topics_checked",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1793193789857,
+      "tag": "0005_coverage_stats",
+      "breakpoints": true
     }
   ]
 }

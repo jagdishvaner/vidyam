@@ -6,4 +6,5 @@ export * from "./llm.js";
 export * from "./ops.js";
 export * from "./org.js";
 export * from "./studio.js";
+export * from "./views.js";
 export { appRole } from "./_shared.js";

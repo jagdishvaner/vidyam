@@ -18,6 +18,7 @@ from vidyam_ai.config import Settings
 from vidyam_ai.infrastructure.db.engine import create_engine
 from vidyam_ai.infrastructure.probes import (
     ModelServerProbe,
+    OutboxProbe,
     PostgresProbe,
     QdrantProbe,
     S3Probe,
@@ -83,6 +84,7 @@ class Resources:
                 "embedding-model", self.http, self.settings.embedding_url, self.settings.embedding_model
             ),
             ModelServerProbe("rerank-model", self.http, self.settings.rerank_url, self.settings.rerank_model),
+            OutboxProbe(self.engine),
         ]
 
     async def close(self) -> None:

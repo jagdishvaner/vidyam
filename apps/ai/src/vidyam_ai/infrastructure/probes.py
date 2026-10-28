@@ -96,3 +96,29 @@ class ModelServerProbe:
         if self._model not in served:
             raise RuntimeError(f"serving {', '.join(served) or 'nothing'}, not {self._model}")
         return f"serving {self._model}"
+
+
+class OutboxProbe:
+    """Index changes waiting for Qdrant (ADR 0018). A growing outbox means the workers' keeper has stopped."""
+
+    name = "index-outbox"
+    TOO_MANY = 1000
+
+    def __init__(self, engine: AsyncEngine) -> None:
+        self._engine = engine
+
+    async def check(self) -> str | None:
+        async with self._engine.connect() as conn:
+            waiting, stuck = (
+                await conn.execute(
+                    text(
+                        "select count(*) filter (where processed_at is null), "
+                        "count(*) filter (where processed_at is null and attempts >= 10) from index_outbox"
+                    )
+                )
+            ).one()
+        if stuck:
+            raise RuntimeError(f"{stuck} change(s) failed 10 times; see index_outbox.last_error")
+        if waiting >= self.TOO_MANY:
+            raise RuntimeError(f"{waiting} changes waiting: are the AI workers running?")
+        return f"{waiting} change(s) waiting" if waiting else "up to date"

@@ -239,7 +239,7 @@ try {
       if (r.ocrPages) parts.push(`${r.ocrPages} waiting for OCR`);
       const chapters = r.sections ? ` in ${plural(r.sections, "section")}` : "";
       const search =
-        r.chunks && !r.embeddedChunks ? "search waits for the model server" : `${r.embeddedChunks} embedded`;
+        r.chunks && !r.indexedChunks ? "search waits for the model server" : `${r.indexedChunks} searchable`;
       return `${plural(r.pages, "page")} (${parts.join(", ")}) → ${plural(r.chunks, "passage")}${chapters}, ${r.taggedChunks} tagged, ${search}`;
     };
     for (const { name, outcome } of waiting) {

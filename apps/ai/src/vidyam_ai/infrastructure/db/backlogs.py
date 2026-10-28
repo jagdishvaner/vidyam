@@ -428,7 +428,7 @@ class SqlBacklogStore:
         n = t_taxonomy_nodes
         if item == "chunk":
             items, tags, tag_item = t_chunks, t_chunk_tags, t_chunk_tags.c.chunk_id
-            columns = [t_chunks.c.token_count, t_chunks.c.text, t_chunks.c.heading_path]
+            columns = [t_chunks.c.token_count, t_chunks.c.text, t_chunks.c.heading_path, t_chunks.c.source_id]
             order = [t_chunks.c.source_id, t_chunks.c.position]
         else:
             items, tags, tag_item = t_questions, t_question_tags, t_question_tags.c.question_id
@@ -458,6 +458,7 @@ class SqlBacklogStore:
                     row.scope,
                     row.text if with_text else "",
                     row.heading_path,
+                    row.source_id,
                 )
                 for row in rows
             ]

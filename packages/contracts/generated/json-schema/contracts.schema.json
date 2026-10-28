@@ -2210,6 +2210,68 @@
       ],
       "additionalProperties": false
     },
+    "IndexSourceInput": {
+      "title": "IndexSourceInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sourceId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "sourceId"
+      ],
+      "additionalProperties": false
+    },
+    "IndexSourceResult": {
+      "title": "IndexSourceResult",
+      "type": "object",
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "embeddedChunks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "indexedChunks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "sourceId",
+        "embeddedChunks",
+        "indexedChunks"
+      ],
+      "additionalProperties": false
+    },
     "IngestSourceInput": {
       "title": "IngestSourceInput",
       "type": "object",
@@ -2302,6 +2364,11 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 9007199254740991
+        },
+        "indexedChunks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
         }
       },
       "required": [
@@ -2313,7 +2380,8 @@
         "sections",
         "chunks",
         "taggedChunks",
-        "embeddedChunks"
+        "embeddedChunks",
+        "indexedChunks"
       ],
       "additionalProperties": false
     },
@@ -5543,7 +5611,8 @@
         "Ping",
         "IngestSource",
         "LlmBatch",
-        "RunBacklog"
+        "RunBacklog",
+        "IndexSource"
       ]
     }
   }

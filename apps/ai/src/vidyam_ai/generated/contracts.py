@@ -567,6 +567,27 @@ class ImportSummary(BaseModel):
     unchanged: int = Field(..., ge=0, le=9007199254740991)
 
 
+class IndexSourceInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+    source_id: UUID = Field(..., alias="sourceId")
+
+
+class IndexSourceResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    source_id: UUID = Field(..., alias="sourceId")
+    embedded_chunks: int = Field(..., alias="embeddedChunks", ge=0, le=9007199254740991)
+    indexed_chunks: int = Field(..., alias="indexedChunks", ge=0, le=9007199254740991)
+
+
 class Stages(StrEnum):
     all = "all"
     structure = "structure"
@@ -600,6 +621,7 @@ class IngestSourceResult(BaseModel):
     chunks: int = Field(..., ge=0, le=9007199254740991)
     tagged_chunks: int = Field(..., alias="taggedChunks", ge=0, le=9007199254740991)
     embedded_chunks: int = Field(..., alias="embeddedChunks", ge=0, le=9007199254740991)
+    indexed_chunks: int = Field(..., alias="indexedChunks", ge=0, le=9007199254740991)
 
 
 class Language(StrEnum):
@@ -1630,6 +1652,7 @@ class WorkflowType(StrEnum):
     ingest_source = "IngestSource"
     llm_batch = "LlmBatch"
     run_backlog = "RunBacklog"
+    index_source = "IndexSource"
 
 
 class AddMemberRequest(BaseModel):

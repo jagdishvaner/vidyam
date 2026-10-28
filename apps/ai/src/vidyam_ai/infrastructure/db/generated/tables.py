@@ -25,6 +25,19 @@ from sqlalchemy.dialects.postgresql import ARRAY, JSONB
 metadata = MetaData()
 
 
+t_coverage_stats = Table(
+    "coverage_stats",
+    metadata,
+    Column("org_id", Uuid),
+    Column("node_id", Uuid),
+    Column("item", Text),
+    Column("kind", Text),
+    Column("difficulty", SmallInteger),
+    Column("status", Text),
+    Column("items", Integer),
+    schema="public",
+)
+
 t_embedding_versions = Table(
     "embedding_versions",
     metadata,

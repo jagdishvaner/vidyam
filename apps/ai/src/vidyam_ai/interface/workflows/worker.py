@@ -11,7 +11,8 @@ from temporalio.client import Client
 from temporalio.worker import Worker
 
 from vidyam_ai.application.backlogs import Backlogs
-from vidyam_ai.application.embedding import EmbedSource
+from vidyam_ai.application.embedding import Embedder, EmbedSource
+from vidyam_ai.application.indexing import ApplyOutbox, IndexSource, WaitingSources
 from vidyam_ai.application.ingestion import ExtractSource, ReadAnswerKey, StructureSource, TagSource
 from vidyam_ai.application.llm_gateway import BatchHandler
 from vidyam_ai.application.providers import provider_status
@@ -20,11 +21,13 @@ from vidyam_ai.domain.documents import PageReading
 from vidyam_ai.generated.contracts import AiTaskQueue
 from vidyam_ai.infrastructure.db.backlogs import SqlBacklogStore
 from vidyam_ai.infrastructure.db.embeddings import SqlEmbeddingStore
+from vidyam_ai.infrastructure.db.indexing import SqlIndexStore, SqlOutbox, SqlWaitingSources
 from vidyam_ai.infrastructure.db.sources import SqlSources
 from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
 from vidyam_ai.infrastructure.extraction import extract, render_pages
 from vidyam_ai.infrastructure.llm import create_llm_gateway
 from vidyam_ai.infrastructure.models import create_embedder
+from vidyam_ai.infrastructure.qdrant.index import QdrantSearchIndex
 from vidyam_ai.infrastructure.resources import Resources
 from vidyam_ai.infrastructure.s3.files import S3Files
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
@@ -37,6 +40,7 @@ from vidyam_ai.interface.workflows.activities import (
     IngestionActivities,
     LlmActivities,
 )
+from vidyam_ai.interface.workflows.upkeep import IndexKeeper
 from vidyam_ai.interface.workflows.workflows import WORKFLOWS
 
 log = logging.getLogger(__name__)
@@ -49,6 +53,10 @@ class AllActivities:
     llm: LlmActivities
     backlog: BacklogActivities
     cpu_slots: int
+    # For the index keeper, which runs beside the workers (it needs the Temporal client to start workflows).
+    outbox: ApplyOutbox
+    waiting: WaitingSources
+    embedder: Embedder
 
 
 @asynccontextmanager
@@ -72,6 +80,9 @@ async def open_activities(
     images = S3PageImages(resources.s3, settings.bucket("derived"))
     gateway = create_llm_gateway(settings, resources.engine)
     store = SqlBacklogStore(resources.engine, sources, syllabus)
+    vectors = S3VectorFiles(resources.s3, settings.bucket("embeddings"))
+    embedder = create_embedder(settings, resources.http)
+    search_index = QdrantSearchIndex(resources.qdrant)
     backlogs = Backlogs(gateway, store, syllabus, images)
     # What stores each kind of batch's results, by task.
     handlers: dict[str, BatchHandler] = {
@@ -88,17 +99,18 @@ async def open_activities(
                 StructureSource(sources, syllabus),
                 TagSource(sources),
                 ReadAnswerKey(sources, store),
-                EmbedSource(
-                    sources,
-                    SqlEmbeddingStore(resources.engine),
-                    S3VectorFiles(resources.s3, settings.bucket("embeddings")),
-                    create_embedder(settings, resources.http),
+                EmbedSource(sources, SqlEmbeddingStore(resources.engine), vectors, embedder),
+                IndexSource(
+                    sources, SqlIndexStore(resources.engine, syllabus), vectors, embedder, search_index
                 ),
                 sources,
             ),
             llm=LlmActivities(gateway, handlers),
             backlog=BacklogActivities(backlogs),
             cpu_slots=settings.worker_cpu_processes,
+            outbox=ApplyOutbox(SqlOutbox(resources.engine), search_index),
+            waiting=SqlWaitingSources(resources.engine),
+            embedder=embedder,
         )
     finally:
         cpu.close()
@@ -123,6 +135,8 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
                 ingestion.structure_source,
                 ingestion.tag_source,
                 ingestion.read_answer_key,
+                ingestion.index_source,
+                ingestion.reindex_sources,
                 ingestion.refresh_sources,
                 ingestion.mark_source_failed,
             ],
@@ -165,7 +179,12 @@ async def run_workers(settings: Settings) -> None:
             await running.enter_async_context(worker)
         polled = ", ".join(q.value for q in (AiTaskQueue.ai, AiTaskQueue.ai_cpu, AiTaskQueue.ai_llm))
         log.info("workers polling namespace %r, task queues %s", client.namespace, polled)
+        keeper = IndexKeeper(
+            activities.outbox, activities.waiting, activities.embedder, client, AiTaskQueue.ai.value
+        )
+        keeping = asyncio.create_task(keeper.run(stop))
         await stop.wait()
+        await keeping
     log.info("workers stopped")
 
 

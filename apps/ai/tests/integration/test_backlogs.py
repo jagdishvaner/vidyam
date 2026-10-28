@@ -32,6 +32,7 @@ from vidyam_ai.infrastructure.s3.page_images import S3PageImages
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.interface.workflows.worker import create_workers, open_activities
 
+from tests.integration.cleanup import remove_org
 from tests.integration.test_manifest_ingestion import PACK, _ingest, _seed_catalog
 from tests.integration.test_rls import _admin_url
 
@@ -164,13 +165,6 @@ async def test_backlogs_estimate_and_run_on_the_stub(tmp_path: Path) -> None:
             after = [await backlogs.estimate(org_id, kind) for kind in ("ocr", "segment", "tag")]
             assert [estimate.items for estimate in after] == [3, 0, 0]
     finally:
-        s3 = create_s3(settings)
-        for bucket in (settings.bucket(kind) for kind in ("raw", "derived", "embeddings")):
-            listed = s3.list_objects_v2(Bucket=bucket, Prefix=f"org/{org_id}/")
-            keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
-            if keys:
-                s3.delete_objects(Bucket=bucket, Delete={"Objects": keys})
-        async with owner.begin() as conn:
-            await conn.execute(text("delete from organizations where id = :id"), {"id": org_id})
+        await remove_org(settings, owner, org_id)
         await owner.dispose()
         await app.dispose()

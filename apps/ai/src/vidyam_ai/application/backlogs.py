@@ -73,6 +73,7 @@ class TagJob:
     scope_id: UUID  # candidates are this node's descendants (the item's chapter, or its subject)
     text: str = ""
     heading_path: str | None = None
+    source_id: UUID | None = None  # a chunk's file, re-indexed once its topics are stored
 
 
 @dataclass(frozen=True)
@@ -134,7 +135,8 @@ class Estimate:
 class Submitted:
     items: int
     batch_ids: list[UUID]
-    sources: list[UUID]  # files whose pages are being read (OCR): they are re-chunked afterwards
+    # Files to bring up to date once the batches are in: re-chunked after OCR, re-indexed after topics.
+    sources: list[UUID]
 
 
 def _candidates(scope: SyllabusNode, nodes: Sequence[SyllabusNode]) -> str:
@@ -305,7 +307,8 @@ class Backlogs:
             )
             for start in range(0, len(items), BATCH_REQUESTS)
         ]
-        return Submitted(len(items), batch_ids, [])
+        sources = sorted({job.source_id for job in jobs if job.source_id and job.scope_id in candidates})
+        return Submitted(len(items), batch_ids, sources)
 
     # --- Storing results (batch handlers) ------------------------------------------------------------
 

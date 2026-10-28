@@ -30,6 +30,7 @@ from vidyam_ai.infrastructure.s3.vectors import S3VectorFiles
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.interface.workflows.worker import create_workers, open_activities
 
+from tests.integration.cleanup import remove_org
 from tests.integration.test_rls import _admin_url
 
 PACK = REPO_ROOT / "fixtures" / "demo-pack"
@@ -188,9 +189,9 @@ async def test_manifest_import_reads_tags_and_retags_the_demo_pack(tmp_path: Pat
             assert en.parallel_group_id is not None and en.parallel_group_id == hi.parallel_group_id
             assert nodes[motion_force.subject_node_id] == "science" and motion_force.language == "hi"
             assert motion_force.manifest_batch_id is not None
-            # "embedded" too when the model servers are running (pnpm models:up).
-            assert motion_force.stage in ("tagged", "embedded") and motion_force.status == "done"
-            assert sources["chemistry-acids-bases-salts-scan.pdf"].stage in ("tagged", "embedded")
+            # "indexed" when the model servers are running (pnpm models:up).
+            assert motion_force.stage in ("tagged", "indexed") and motion_force.status == "done"
+            assert sources["chemistry-acids-bases-salts-scan.pdf"].stage in ("tagged", "indexed")
 
             # Sections from the manifest's page ranges; every chunk tagged with the chapter its pages cover.
             assert [(s.page_start, s.page_end, nodes[s.node_id], s.origin) for s in sections] == [
@@ -228,7 +229,7 @@ async def test_manifest_import_reads_tags_and_retags_the_demo_pack(tmp_path: Pat
                             )
                         )
                     }
-                assert motion_force.stage == "embedded" and chunk_versions == {version.id}
+                assert motion_force.stage == "indexed" and chunk_versions == {version.id}
                 assert len(vectors) == len(tagged) and all(len(v.vector) == version.dims for v in vectors)
 
             # The same manifest again: nothing to do.
@@ -257,12 +258,5 @@ async def test_manifest_import_reads_tags_and_retags_the_demo_pack(tmp_path: Pat
                 }
             assert retagged == {"work_and_energy"}
     finally:
-        s3 = create_s3(settings)
-        for bucket in (settings.bucket(kind) for kind in ("raw", "derived", "embeddings")):
-            listed = s3.list_objects_v2(Bucket=bucket, Prefix=f"org/{org_id}/")
-            keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
-            if keys:
-                s3.delete_objects(Bucket=bucket, Delete={"Objects": keys})
-        async with owner.begin() as conn:
-            await conn.execute(text("delete from organizations where id = :id"), {"id": org_id})
+        await remove_org(settings, owner, org_id)
         await owner.dispose()
