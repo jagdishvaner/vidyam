@@ -1,0 +1,1259 @@
+{
+  "subject": {
+    "code": "reasoning",
+    "level": "subject",
+    "nameEn": "Reasoning",
+    "nameHi": "तर्कशक्ति",
+    "aliases": [
+      "tarkshakti",
+      "general intelligence and reasoning",
+      "mental ability",
+      "manasik yogyata",
+      "logical reasoning"
+    ],
+    "objectives": [],
+    "children": [
+      {
+        "code": "verbal_reasoning",
+        "level": "unit",
+        "nameEn": "Verbal Reasoning",
+        "nameHi": "शाब्दिक तर्कशक्ति",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "analogy",
+            "level": "chapter",
+            "nameEn": "Analogy",
+            "nameHi": "सादृश्यता",
+            "aliases": ["sadrishyata", "analogy", "samanta"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "semantic_analogy",
+                "level": "topic",
+                "nameEn": "Semantic (Word) Analogy",
+                "nameHi": "शब्द सादृश्यता",
+                "aliases": ["word analogy", "shabd sadrishyata", "semantic analogy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "number_analogy",
+                "level": "topic",
+                "nameEn": "Number Analogy",
+                "nameHi": "संख्या सादृश्यता",
+                "aliases": ["number analogy", "sankhya sadrishyata", "numeric analogy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "letter_symbol_analogy",
+                "level": "topic",
+                "nameEn": "Letter and Symbolic Analogy",
+                "nameHi": "अक्षर एवं प्रतीकात्मक सादृश्यता",
+                "aliases": ["alphabet analogy", "akshar sadrishyata", "symbolic analogy"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "classification",
+            "level": "chapter",
+            "nameEn": "Classification (Odd One Out)",
+            "nameHi": "वर्गीकरण (विषम को चुनना)",
+            "aliases": ["vargikaran", "odd one out", "visham chuniye"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "semantic_classification",
+                "level": "topic",
+                "nameEn": "Semantic (Word) Classification",
+                "nameHi": "शब्द वर्गीकरण",
+                "aliases": ["word classification", "shabd vargikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "number_classification",
+                "level": "topic",
+                "nameEn": "Number Classification",
+                "nameHi": "संख्या वर्गीकरण",
+                "aliases": ["number odd one out", "sankhya vargikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "letter_symbol_classification",
+                "level": "topic",
+                "nameEn": "Letter and Symbolic Classification",
+                "nameHi": "अक्षर एवं प्रतीकात्मक वर्गीकरण",
+                "aliases": ["letter odd one out", "akshar vargikaran", "symbolic classification"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "series",
+            "level": "chapter",
+            "nameEn": "Series",
+            "nameHi": "श्रृंखला",
+            "aliases": ["shrinkhla", "series completion", "shreni", "missing term"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "number_series",
+                "level": "topic",
+                "nameEn": "Number Series",
+                "nameHi": "संख्या श्रृंखला",
+                "aliases": ["sankhya shrinkhla", "number series", "wrong number series"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "letter_series",
+                "level": "topic",
+                "nameEn": "Letter and Alphanumeric Series",
+                "nameHi": "अक्षर एवं अक्षरांकीय श्रृंखला",
+                "aliases": ["alphabet series", "akshar shrinkhla", "alphanumeric series"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "letter_repeating_series",
+                "level": "topic",
+                "nameEn": "Letter Repeating Series",
+                "nameHi": "अक्षर पुनरावृत्ति श्रृंखला",
+                "aliases": ["repeating series", "missing letters", "rikt sthan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "semantic_series",
+                "level": "topic",
+                "nameEn": "Semantic Series and Logical Order of Words",
+                "nameHi": "शब्द श्रृंखला एवं शब्दों का तार्किक क्रम",
+                "aliases": ["logical order of words", "meaningful order", "tarkik kram"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "coding_decoding",
+            "level": "chapter",
+            "nameEn": "Coding-Decoding",
+            "nameHi": "कूटलेखन-कूटवाचन",
+            "aliases": ["coding decoding", "kootlekhan", "kut bhasha", "code language"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "letter_coding",
+                "level": "topic",
+                "nameEn": "Letter Coding",
+                "nameHi": "अक्षर कूटलेखन",
+                "aliases": ["letter coding", "akshar kootlekhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "number_coding",
+                "level": "topic",
+                "nameEn": "Number and Mixed Coding",
+                "nameHi": "संख्या एवं मिश्रित कूटलेखन",
+                "aliases": ["number coding", "sankhya kootlekhan", "mixed coding"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "word_sentence_coding",
+                "level": "topic",
+                "nameEn": "Word and Sentence Coding",
+                "nameHi": "शब्द एवं वाक्य कूटलेखन",
+                "aliases": ["sentence coding", "chinese coding"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "substitution_coding",
+                "level": "topic",
+                "nameEn": "Substitution and Symbol Coding",
+                "nameHi": "प्रतिस्थापन एवं प्रतीक कूटलेखन",
+                "aliases": ["substitution", "pratisthapan", "symbol coding"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "case_coding",
+                "level": "topic",
+                "nameEn": "Small and Capital Letter/Number Coding",
+                "nameHi": "छोटे-बड़े अक्षर एवं संख्या कूटलेखन",
+                "aliases": ["small capital letters coding", "case coding"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "blood_relations",
+            "level": "chapter",
+            "nameEn": "Blood Relations",
+            "nameHi": "रक्त सम्बन्ध",
+            "aliases": ["rakt sambandh", "blood relation", "family tree", "parivarik sambandh"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "direct_relations",
+                "level": "topic",
+                "nameEn": "Direct and Conversation-based Relations",
+                "nameHi": "प्रत्यक्ष एवं कथन आधारित सम्बन्ध",
+                "aliases": ["pointing to a photograph", "family relations"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coded_relations",
+                "level": "topic",
+                "nameEn": "Coded Blood Relations",
+                "nameHi": "कूट रक्त सम्बन्ध",
+                "aliases": ["coded relations", "symbol based blood relation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "family_tree_puzzles",
+                "level": "topic",
+                "nameEn": "Family Tree Puzzles",
+                "nameHi": "पारिवारिक वृक्ष पहेलियाँ",
+                "aliases": ["family tree", "vansh vriksh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "direction_sense",
+            "level": "chapter",
+            "nameEn": "Direction and Distance",
+            "nameHi": "दिशा एवं दूरी",
+            "aliases": ["disha gyan", "direction sense test", "disha parikshan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "direction_distance",
+                "level": "topic",
+                "nameEn": "Direction and Distance Problems",
+                "nameHi": "दिशा एवं दूरी के प्रश्न",
+                "aliases": ["distance direction", "shortest distance"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "turns_and_orientation",
+                "level": "topic",
+                "nameEn": "Turns, Rotation and Spatial Orientation",
+                "nameHi": "मोड़, घूर्णन एवं स्थानिक अभिविन्यास",
+                "aliases": ["left right turn", "clockwise rotation", "spatial orientation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shadow_problems",
+                "level": "topic",
+                "nameEn": "Shadow-based Direction Problems",
+                "nameHi": "छाया आधारित दिशा प्रश्न",
+                "aliases": ["parchhai", "shadow", "sunrise direction"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ranking_and_order",
+            "level": "chapter",
+            "nameEn": "Ranking and Order",
+            "nameHi": "क्रम एवं स्थान निर्धारण",
+            "aliases": ["ranking", "kram vyavastha", "position in row", "order and ranking"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "position_in_row",
+                "level": "topic",
+                "nameEn": "Position in a Row or Queue",
+                "nameHi": "पंक्ति में स्थान",
+                "aliases": ["pankti mein sthan", "rank from left right"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "comparison_and_ordering",
+                "level": "topic",
+                "nameEn": "Comparison and Ordering",
+                "nameHi": "तुलना एवं क्रम निर्धारण",
+                "aliases": ["comparison", "tallest shortest", "tulna"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "alphabet_and_word_test",
+            "level": "chapter",
+            "nameEn": "Alphabet Test and Word Building",
+            "nameHi": "वर्णमाला परीक्षण एवं शब्द निर्माण",
+            "aliases": ["alphabet test", "word formation", "word building", "shabd nirman"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "alphabet_positions",
+                "level": "topic",
+                "nameEn": "Alphabet Positions and Letter Arrangement",
+                "nameHi": "वर्णमाला क्रम एवं अक्षर व्यवस्था",
+                "aliases": ["alphabet position", "EJOTY", "akshar sthan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dictionary_order",
+                "level": "topic",
+                "nameEn": "Dictionary Order of Words",
+                "nameHi": "शब्दकोश क्रम",
+                "aliases": ["dictionary order", "shabdkosh kram", "alphabetical order"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "word_building",
+                "level": "topic",
+                "nameEn": "Word Building from Given Letters",
+                "nameHi": "दिए गए अक्षरों से शब्द निर्माण",
+                "aliases": ["word formation", "shabd nirman", "word building"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "mathematical_operations",
+            "level": "chapter",
+            "nameEn": "Mathematical and Symbolic Operations",
+            "nameHi": "गणितीय एवं प्रतीकात्मक संक्रियाएँ",
+            "aliases": [
+              "ganitiya sankriya",
+              "mathematical operations",
+              "symbol substitution",
+              "sign interchange"
+            ],
+            "objectives": [],
+            "children": [
+              {
+                "code": "symbol_substitution",
+                "level": "topic",
+                "nameEn": "Symbol Substitution",
+                "nameHi": "प्रतीक प्रतिस्थापन",
+                "aliases": ["symbolic operations", "pratik pratisthapan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sign_interchange",
+                "level": "topic",
+                "nameEn": "Interchange of Signs and Numbers",
+                "nameHi": "चिह्नों एवं संख्याओं का परस्पर परिवर्तन",
+                "aliases": ["interchange signs", "chinh parivartan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "numerical_operations",
+                "level": "topic",
+                "nameEn": "Numerical Operations and Balancing Equations",
+                "nameHi": "संख्यात्मक संक्रियाएँ एवं समीकरण संतुलन",
+                "aliases": ["BODMAS", "balancing equation", "numerical operations"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coded_inequalities",
+                "level": "topic",
+                "nameEn": "Coded Inequalities",
+                "nameHi": "कूट असमिकाएँ",
+                "aliases": ["inequality", "asmikayen"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "clerical_aptitude",
+            "level": "chapter",
+            "nameEn": "Clerical Aptitude",
+            "nameHi": "लिपिकीय अभिक्षमता",
+            "aliases": ["clerical aptitude", "lipikiya abhikshamata", "indexing", "address matching"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "indexing",
+                "level": "topic",
+                "nameEn": "Indexing",
+                "nameHi": "अनुक्रमण",
+                "aliases": ["indexing", "anukraman"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "address_matching",
+                "level": "topic",
+                "nameEn": "Address Matching",
+                "nameHi": "पता मिलान",
+                "aliases": ["address matching", "pata milan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "date_city_matching",
+                "level": "topic",
+                "nameEn": "Date and City Matching",
+                "nameHi": "तिथि एवं शहर मिलान",
+                "aliases": ["date and city matching"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "code_classification",
+                "level": "topic",
+                "nameEn": "Classification of Centre Codes and Roll Numbers",
+                "nameHi": "केन्द्र कूट एवं अनुक्रमांक वर्गीकरण",
+                "aliases": ["roll number classification", "centre codes"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "non_verbal_reasoning",
+        "level": "unit",
+        "nameEn": "Non-Verbal Reasoning",
+        "nameHi": "अशाब्दिक तर्कशक्ति",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "figural_reasoning",
+            "level": "chapter",
+            "nameEn": "Figure Analogy, Classification, Series and Matrix",
+            "nameHi": "आकृति सादृश्यता, वर्गीकरण, श्रृंखला एवं आव्यूह",
+            "aliases": ["figure series", "figural analogy", "aakriti shrinkhla", "non-verbal series"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "figural_analogy",
+                "level": "topic",
+                "nameEn": "Figural Analogy",
+                "nameHi": "आकृति सादृश्यता",
+                "aliases": ["figure analogy", "aakriti sadrishyata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "figural_classification",
+                "level": "topic",
+                "nameEn": "Figural Classification",
+                "nameHi": "आकृति वर्गीकरण",
+                "aliases": ["figure odd one out", "aakriti vargikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "figural_series",
+                "level": "topic",
+                "nameEn": "Figural Series",
+                "nameHi": "आकृति श्रृंखला",
+                "aliases": ["figure series", "non-verbal series"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "figure_matrix",
+                "level": "topic",
+                "nameEn": "Figure Matrix",
+                "nameHi": "आकृति आव्यूह",
+                "aliases": ["figure matrix", "missing figure"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "mirror_and_water_images",
+            "level": "chapter",
+            "nameEn": "Mirror and Water Images",
+            "nameHi": "दर्पण एवं जल प्रतिबिम्ब",
+            "aliases": ["mirror image", "water image", "darpan pratibimb", "jal pratibimb"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "mirror_images",
+                "level": "topic",
+                "nameEn": "Mirror Images",
+                "nameHi": "दर्पण प्रतिबिम्ब",
+                "aliases": ["mirror image", "darpan pratibimb"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "water_images",
+                "level": "topic",
+                "nameEn": "Water Images",
+                "nameHi": "जल प्रतिबिम्ब",
+                "aliases": ["water image", "jal pratibimb"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "paper_folding_cutting",
+            "level": "chapter",
+            "nameEn": "Paper Folding and Cutting",
+            "nameHi": "कागज मोड़ना एवं काटना",
+            "aliases": ["paper folding", "paper cutting", "punched hole", "kagaj modna"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "paper_folding",
+                "level": "topic",
+                "nameEn": "Paper Folding",
+                "nameHi": "कागज मोड़ना",
+                "aliases": ["paper folding", "folded paper"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "punched_hole",
+                "level": "topic",
+                "nameEn": "Punched Hole and Paper Cutting",
+                "nameHi": "छिद्रित कागज एवं कागज काटना",
+                "aliases": ["punched hole", "paper cutting", "unfolding"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "embedded_and_completion",
+            "level": "chapter",
+            "nameEn": "Embedded Figures and Figure Completion",
+            "nameHi": "अन्तर्निहित आकृतियाँ एवं आकृति पूर्ति",
+            "aliases": ["embedded figures", "hidden figure", "figure completion", "antarnihit aakriti"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "embedded_figures",
+                "level": "topic",
+                "nameEn": "Embedded Figures",
+                "nameHi": "अन्तर्निहित आकृतियाँ",
+                "aliases": ["embedded figure", "hidden figure"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "figure_completion",
+                "level": "topic",
+                "nameEn": "Figure and Pattern Completion",
+                "nameHi": "आकृति एवं प्रतिरूप पूर्ति",
+                "aliases": ["pattern completion", "aakriti poorti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "figure_formation",
+                "level": "topic",
+                "nameEn": "Figure Formation and Analysis",
+                "nameHi": "आकृति निर्माण एवं विश्लेषण",
+                "aliases": ["form a figure from pieces", "figure formation"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "counting_figures",
+            "level": "chapter",
+            "nameEn": "Counting of Figures",
+            "nameHi": "आकृतियों की गणना",
+            "aliases": ["counting figures", "triangle counting", "aakritiyon ki ginti"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "counting_triangles",
+                "level": "topic",
+                "nameEn": "Counting Triangles",
+                "nameHi": "त्रिभुजों की गणना",
+                "aliases": ["number of triangles", "tribhuj ginti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "counting_squares_and_others",
+                "level": "topic",
+                "nameEn": "Counting Squares, Rectangles and Other Shapes",
+                "nameHi": "वर्गों, आयतों एवं अन्य आकृतियों की गणना",
+                "aliases": ["number of squares", "rectangles count"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "counting_lines",
+                "level": "topic",
+                "nameEn": "Counting Lines",
+                "nameHi": "रेखाओं की गणना",
+                "aliases": ["straight lines count"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "cubes_and_dice",
+            "level": "chapter",
+            "nameEn": "Cubes and Dice",
+            "nameHi": "घन एवं पासा",
+            "aliases": ["cube and dice", "dice", "ghan aur pasa", "cube cutting"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "dice",
+                "level": "topic",
+                "nameEn": "Dice: Opposite and Adjacent Faces",
+                "nameHi": "पासा: विपरीत एवं आसन्न फलक",
+                "aliases": ["dice", "opposite face", "pasa"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "painted_cube_cutting",
+                "level": "topic",
+                "nameEn": "Painted Cube Cutting",
+                "nameHi": "रंगे हुए घन का कटाव",
+                "aliases": ["cube cutting", "painted cube", "ghan katna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cube_folding",
+                "level": "topic",
+                "nameEn": "Folding Nets into Cubes",
+                "nameHi": "जाल को मोड़कर घन बनाना",
+                "aliases": ["pattern folding", "open cube net", "cube formation"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "space_visualization",
+            "level": "chapter",
+            "nameEn": "Space Visualization and Visual Memory",
+            "nameHi": "स्थानिक कल्पना एवं दृश्य स्मृति",
+            "aliases": ["spatial visualization", "space visualisation", "visual memory", "sthanik kalpana"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "spatial_visualization",
+                "level": "topic",
+                "nameEn": "Spatial Visualization",
+                "nameHi": "स्थानिक कल्पना",
+                "aliases": ["rotation of figures", "3D visualization"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "grouping_identical_figures",
+                "level": "topic",
+                "nameEn": "Grouping of Identical Figures",
+                "nameHi": "समान आकृतियों का समूहन",
+                "aliases": ["grouping figures"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "visual_memory_and_observation",
+                "level": "topic",
+                "nameEn": "Visual Memory, Discrimination and Observation",
+                "nameHi": "दृश्य स्मृति, विभेदन एवं अवलोकन",
+                "aliases": ["visual memory", "observation", "drishya smriti"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "logical_reasoning",
+        "level": "unit",
+        "nameEn": "Logical Reasoning",
+        "nameHi": "तार्किक विवेचन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "syllogism",
+            "level": "chapter",
+            "nameEn": "Syllogism",
+            "nameHi": "न्याय निगमन",
+            "aliases": ["nyay nigaman", "syllogism", "all some no", "conclusion follows"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "categorical_syllogism",
+                "level": "topic",
+                "nameEn": "Statements and Conclusions (All/Some/No)",
+                "nameHi": "कथन एवं निष्कर्ष (सभी/कुछ/कोई नहीं)",
+                "aliases": ["all some no", "venn method syllogism"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "possibility_cases",
+                "level": "topic",
+                "nameEn": "Possibility and Either-Or Cases",
+                "nameHi": "सम्भावना एवं या-तो/अथवा स्थितियाँ",
+                "aliases": ["possibility", "either or", "complementary pair"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "logical_connectives",
+                "level": "topic",
+                "nameEn": "Logical Connectives and Conditional Statements",
+                "nameHi": "तार्किक संयोजक एवं सप्रतिबन्ध कथन",
+                "aliases": ["if then", "logical deduction", "neither nor", "conditional statements"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "venn_diagrams",
+            "level": "chapter",
+            "nameEn": "Venn Diagrams",
+            "nameHi": "वेन आरेख",
+            "aliases": ["venn diagram", "ven aarekh", "logical venn diagram"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "logical_venn",
+                "level": "topic",
+                "nameEn": "Logical Venn Diagrams (Class Relationships)",
+                "nameHi": "तार्किक वेन आरेख (वर्ग सम्बन्ध)",
+                "aliases": ["relationship between classes", "logical venn"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "venn_counting",
+                "level": "topic",
+                "nameEn": "Venn Diagram Counting and Analysis",
+                "nameHi": "वेन आरेख आधारित गणना",
+                "aliases": ["region counting", "sets based problems"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "statement_reasoning",
+            "level": "chapter",
+            "nameEn": "Statement-based Reasoning",
+            "nameHi": "कथन आधारित तर्क",
+            "aliases": [
+              "statement conclusion",
+              "kathan aur nishkarsh",
+              "statement assumption",
+              "course of action"
+            ],
+            "objectives": [],
+            "children": [
+              {
+                "code": "statement_conclusion",
+                "level": "topic",
+                "nameEn": "Statement and Conclusions",
+                "nameHi": "कथन एवं निष्कर्ष",
+                "aliases": ["statement and conclusion", "nishkarsh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "statement_assumption",
+                "level": "topic",
+                "nameEn": "Statement and Assumptions",
+                "nameHi": "कथन एवं पूर्वधारणाएँ",
+                "aliases": ["assumption", "purvdharna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "statement_argument",
+                "level": "topic",
+                "nameEn": "Statement and Arguments",
+                "nameHi": "कथन एवं तर्क",
+                "aliases": ["strong weak argument", "prabal durbal tark"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "course_of_action",
+                "level": "topic",
+                "nameEn": "Statement and Course of Action",
+                "nameHi": "कथन एवं कार्यवाही",
+                "aliases": ["course of action", "karyavahi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cause_and_effect",
+                "level": "topic",
+                "nameEn": "Cause and Effect",
+                "nameHi": "कारण एवं प्रभाव",
+                "aliases": ["cause and effect", "karan aur prabhav"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "critical_reasoning",
+            "level": "chapter",
+            "nameEn": "Critical Thinking and Drawing Inferences",
+            "nameHi": "आलोचनात्मक चिन्तन एवं निष्कर्ष निकालना",
+            "aliases": [
+              "critical reasoning",
+              "drawing inferences",
+              "alochnatmak chintan",
+              "passage based inference"
+            ],
+            "objectives": [],
+            "children": [
+              {
+                "code": "inferences",
+                "level": "topic",
+                "nameEn": "Drawing Inferences from Passages",
+                "nameHi": "गद्यांश से निष्कर्ष निकालना",
+                "aliases": ["inference", "logical inference"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "strengthen_weaken",
+                "level": "topic",
+                "nameEn": "Strengthening and Weakening Arguments",
+                "nameHi": "तर्कों को सुदृढ़ एवं दुर्बल करना",
+                "aliases": ["strengthen weaken", "argument evaluation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "assumptions_and_flaws",
+                "level": "topic",
+                "nameEn": "Assumptions and Flaws in Arguments",
+                "nameHi": "तर्कों में पूर्वधारणाएँ एवं दोष",
+                "aliases": ["hidden assumption", "logical flaw"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "analytical_reasoning",
+        "level": "unit",
+        "nameEn": "Analytical Reasoning",
+        "nameHi": "विश्लेषणात्मक तर्क",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "seating_arrangement",
+            "level": "chapter",
+            "nameEn": "Seating Arrangement",
+            "nameHi": "बैठक व्यवस्था",
+            "aliases": ["seating arrangement", "baithak vyavastha", "circular arrangement"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "linear_arrangement",
+                "level": "topic",
+                "nameEn": "Linear Arrangement",
+                "nameHi": "रैखिक व्यवस्था",
+                "aliases": ["linear seating", "row arrangement"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "circular_arrangement",
+                "level": "topic",
+                "nameEn": "Circular Arrangement",
+                "nameHi": "वृत्ताकार व्यवस्था",
+                "aliases": ["circular seating", "round table"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rectangular_arrangement",
+                "level": "topic",
+                "nameEn": "Square and Rectangular Arrangement",
+                "nameHi": "वर्गाकार एवं आयताकार व्यवस्था",
+                "aliases": ["square table", "rectangular seating"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "puzzles",
+            "level": "chapter",
+            "nameEn": "Puzzles",
+            "nameHi": "पहेलियाँ",
+            "aliases": ["puzzle", "paheli", "analytical puzzles", "logical puzzles"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "floor_and_box",
+                "level": "topic",
+                "nameEn": "Floor and Box Puzzles",
+                "nameHi": "मंजिल एवं बॉक्स पहेलियाँ",
+                "aliases": ["floor puzzle", "box puzzle"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "scheduling",
+                "level": "topic",
+                "nameEn": "Scheduling Puzzles (Days, Months)",
+                "nameHi": "समय-सारिणी पहेलियाँ (दिन, माह)",
+                "aliases": ["day based puzzle", "month puzzle"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "grouping_and_selection",
+                "level": "topic",
+                "nameEn": "Grouping, Selection and Distribution",
+                "nameHi": "समूहन, चयन एवं वितरण",
+                "aliases": ["selection based", "committee selection", "distribution puzzle"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "matching_puzzles",
+                "level": "topic",
+                "nameEn": "Multi-attribute Matching Puzzles",
+                "nameHi": "बहु-गुण मिलान पहेलियाँ",
+                "aliases": ["matching puzzle", "matrix puzzle"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "truth_and_lie",
+                "level": "topic",
+                "nameEn": "Truth-teller and Liar Puzzles",
+                "nameHi": "सत्यवादी एवं असत्यवादी पहेलियाँ",
+                "aliases": ["truth teller liar", "binary logic"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "arithmetical_reasoning",
+        "level": "unit",
+        "nameEn": "Arithmetical Reasoning",
+        "nameHi": "अंकगणितीय तर्क",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "clocks",
+            "level": "chapter",
+            "nameEn": "Clocks",
+            "nameHi": "घड़ी",
+            "aliases": ["ghadi", "clock", "clock angle"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "angle_between_hands",
+                "level": "topic",
+                "nameEn": "Angle between the Hands",
+                "nameHi": "सूइयों के बीच का कोण",
+                "aliases": ["clock angle", "suiyon ka kon"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coinciding_and_opposite_hands",
+                "level": "topic",
+                "nameEn": "Coinciding, Opposite and Right-angled Hands",
+                "nameHi": "सूइयों का सम्पाती, विपरीत एवं समकोण होना",
+                "aliases": ["hands together", "hands opposite", "right angle hands"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "faulty_clocks",
+                "level": "topic",
+                "nameEn": "Fast and Slow Clocks",
+                "nameHi": "तेज एवं सुस्त घड़ियाँ",
+                "aliases": ["gaining clock", "losing clock", "faulty clock"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "clock_mirror_image",
+                "level": "topic",
+                "nameEn": "Mirror Image of a Clock",
+                "nameHi": "घड़ी का दर्पण प्रतिबिम्ब",
+                "aliases": ["clock mirror image", "time in mirror"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "calendar",
+            "level": "chapter",
+            "nameEn": "Calendar",
+            "nameHi": "कैलेंडर",
+            "aliases": ["calendar", "odd days", "vishm din"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "odd_days",
+                "level": "topic",
+                "nameEn": "Odd Days and Leap Years",
+                "nameHi": "विषम दिन एवं अधिवर्ष",
+                "aliases": ["odd days", "leap year", "adhivarsh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "day_of_week",
+                "level": "topic",
+                "nameEn": "Finding the Day of the Week",
+                "nameHi": "सप्ताह का दिन ज्ञात करना",
+                "aliases": ["day of the week", "din gyat karna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "repeating_calendars",
+                "level": "topic",
+                "nameEn": "Repetition of Calendars",
+                "nameHi": "कैलेंडर की पुनरावृत्ति",
+                "aliases": ["same calendar year", "calendar repeat"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "number_puzzles",
+            "level": "chapter",
+            "nameEn": "Number Puzzles and Trends",
+            "nameHi": "संख्या पहेलियाँ एवं प्रवृत्तियाँ",
+            "aliases": ["missing number", "trends", "lupt sankhya", "number puzzle"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "missing_number_in_figures",
+                "level": "topic",
+                "nameEn": "Missing Number in Figures",
+                "nameHi": "आकृतियों में लुप्त संख्या",
+                "aliases": ["missing number", "trends", "lupt sankhya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "number_matrix",
+                "level": "topic",
+                "nameEn": "Number Matrix",
+                "nameHi": "संख्या आव्यूह",
+                "aliases": ["number matrix", "sankhya aavyuh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "number_arrangement",
+                "level": "topic",
+                "nameEn": "Number and Digit Arrangement",
+                "nameHi": "संख्या एवं अंक व्यवस्था",
+                "aliases": ["digit based questions", "number arrangement", "ank vyavastha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "arithmetic_word_problems",
+                "level": "topic",
+                "nameEn": "Arithmetical Reasoning Word Problems",
+                "nameHi": "अंकगणितीय तर्क आधारित प्रश्न",
+                "aliases": ["arithmetical reasoning", "logic based maths"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "decision_making",
+        "level": "unit",
+        "nameEn": "Decision Making, Interpersonal Skills and Social Intelligence",
+        "nameHi": "निर्णयन, अंतर्वैयक्तिक कौशल एवं सामाजिक बुद्धि",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "decision_making_problem_solving",
+            "level": "chapter",
+            "nameEn": "Decision Making and Problem Solving",
+            "nameHi": "निर्णयन एवं समस्या समाधान",
+            "aliases": ["decision making", "nirnay lena", "problem solving", "samasya samadhan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "situational_decisions",
+                "level": "topic",
+                "nameEn": "Situation-based Decision Making",
+                "nameHi": "परिस्थिति आधारित निर्णयन",
+                "aliases": ["situational judgement", "administrative decisions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ethical_dilemmas",
+                "level": "topic",
+                "nameEn": "Ethical and Administrative Dilemmas",
+                "nameHi": "नैतिक एवं प्रशासनिक दुविधाएँ",
+                "aliases": ["ethical dilemma", "naitik duvidha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "criteria_based_selection",
+                "level": "topic",
+                "nameEn": "Criteria-based Eligibility Decisions",
+                "nameHi": "मानदण्ड आधारित पात्रता निर्णय",
+                "aliases": ["eligibility criteria", "selection criteria"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "problem_solving_and_judgement",
+                "level": "topic",
+                "nameEn": "Problem Solving and Judgement",
+                "nameHi": "समस्या समाधान एवं निर्णय क्षमता",
+                "aliases": ["judgement", "analysis", "problem solving"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "interpersonal_skills",
+            "level": "chapter",
+            "nameEn": "Interpersonal Skills including Communication Skills",
+            "nameHi": "संचार कौशल सहित अंतर्वैयक्तिक कौशल",
+            "aliases": [
+              "interpersonal skills",
+              "communication skills",
+              "antarvaiyaktik kaushal",
+              "sanchar kaushal"
+            ],
+            "objectives": [
+              "Choose effective interpersonal and communication responses in workplace and public situations"
+            ],
+            "children": [
+              {
+                "code": "interpersonal_relationships",
+                "level": "topic",
+                "nameEn": "Interpersonal Relationships and Teamwork",
+                "nameHi": "अंतर्वैयक्तिक सम्बन्ध एवं टीम भावना",
+                "aliases": ["teamwork", "team spirit", "working with colleagues", "sahkarmi sambandh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "communication_skills",
+                "level": "topic",
+                "nameEn": "Communication Skills: Listening, Speaking and Feedback",
+                "nameHi": "संचार कौशल: श्रवण, सम्भाषण एवं प्रतिपुष्टि",
+                "aliases": ["active listening", "effective communication", "feedback", "sampreshan kaushal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conflict_resolution",
+                "level": "topic",
+                "nameEn": "Conflict Resolution and Negotiation",
+                "nameHi": "द्वन्द्व समाधान एवं वार्ता",
+                "aliases": ["conflict management", "negotiation", "vivad samadhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "workplace_communication",
+                "level": "topic",
+                "nameEn": "Communication at the Workplace and in Public Dealing",
+                "nameHi": "कार्यस्थल एवं जन-व्यवहार में संचार",
+                "aliases": ["public dealing", "official communication", "grievance handling"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "emotional_social_intelligence",
+            "level": "chapter",
+            "nameEn": "Emotional and Social Intelligence",
+            "nameHi": "संवेगात्मक एवं सामाजिक बुद्धि",
+            "aliases": [
+              "emotional intelligence",
+              "social intelligence",
+              "samvegatmak buddhi",
+              "samajik buddhi"
+            ],
+            "objectives": [],
+            "children": [
+              {
+                "code": "emotional_intelligence",
+                "level": "topic",
+                "nameEn": "Emotional Intelligence",
+                "nameHi": "संवेगात्मक बुद्धि",
+                "aliases": ["EQ", "samvegatmak buddhi", "empathy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "social_intelligence",
+                "level": "topic",
+                "nameEn": "Social Intelligence",
+                "nameHi": "सामाजिक बुद्धि",
+                "aliases": ["samajik buddhi", "social awareness"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

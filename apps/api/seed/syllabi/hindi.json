@@ -1,0 +1,3673 @@
+{
+  "subject": {
+    "code": "hindi",
+    "level": "subject",
+    "nameEn": "Hindi",
+    "nameHi": "हिन्दी",
+    "aliases": ["hindi bhasha", "हिंदी", "hindi vyakaran aur sahitya"],
+    "objectives": [],
+    "children": [
+      {
+        "code": "varna_vichar",
+        "level": "unit",
+        "nameEn": "Sounds, Letters and Spelling (Varna Vichar)",
+        "nameHi": "वर्ण-विचार एवं वर्तनी",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "varna_vyavastha",
+            "level": "chapter",
+            "nameEn": "Sound System and Alphabet (Varna Vyavastha)",
+            "nameHi": "वर्ण-व्यवस्था",
+            "aliases": ["varn vyavastha", "varnamala", "वर्णमाला", "hindi alphabet", "varn vichar"],
+            "objectives": [
+              "Classify Hindi vowels and consonants by place and manner of articulation",
+              "Arrange words in dictionary (kosh-kram) order"
+            ],
+            "children": [
+              {
+                "code": "svar",
+                "level": "topic",
+                "nameEn": "Vowels and their Classification",
+                "nameHi": "स्वर एवं उनका वर्गीकरण",
+                "aliases": ["swar", "swar ke bhed", "hrasva dirgh swar", "vowels"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vyanjan",
+                "level": "topic",
+                "nameEn": "Consonants and their Classification",
+                "nameHi": "व्यंजन एवं उनका वर्गीकरण",
+                "aliases": ["vyanjan ke bhed", "sparsh antastha ushm", "consonants", "alpapran mahapran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uccharan_sthan",
+                "level": "topic",
+                "nameEn": "Places of Articulation",
+                "nameHi": "उच्चारण-स्थान",
+                "aliases": ["uchcharan sthan", "kanthya talavya murdhanya", "place of articulation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anusvar_visarg",
+                "level": "topic",
+                "nameEn": "Anusvara, Anunasika and Visarga",
+                "nameHi": "अनुस्वार, अनुनासिक एवं विसर्ग (अयोगवाह)",
+                "aliases": ["anuswar", "chandrabindu", "visarg", "ayogvah"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "varna_vichchhed",
+                "level": "topic",
+                "nameEn": "Conjunct Letters and Splitting Words into Letters",
+                "nameHi": "संयुक्त व्यंजन एवं वर्ण-विच्छेद",
+                "aliases": ["varn vichchhed", "varna viched", "sanyukt vyanjan", "conjunct consonants"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kosh_kram",
+                "level": "topic",
+                "nameEn": "Dictionary Order",
+                "nameHi": "कोश-क्रम (वर्णानुक्रम)",
+                "aliases": ["kosh kram", "shabdkosh kram", "dictionary order", "varnanukram"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "shabd_shuddhi",
+            "level": "chapter",
+            "nameEn": "Spelling Correction (Shabd Shuddhi)",
+            "nameHi": "शब्द-शुद्धि (वर्तनी)",
+            "aliases": [
+              "shabd shuddhikaran",
+              "vartani",
+              "शब्द शुद्धीकरण",
+              "ashuddh shabd",
+              "hindi spelling errors"
+            ],
+            "objectives": ["Identify and correct common spelling errors in Hindi words"],
+            "children": [
+              {
+                "code": "matra_ashuddhi",
+                "level": "topic",
+                "nameEn": "Vowel-sign (Matra) Errors",
+                "nameHi": "मात्रा संबंधी अशुद्धियाँ",
+                "aliases": ["matra ki galti", "matra ashuddhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anusvar_halant_ashuddhi",
+                "level": "topic",
+                "nameEn": "Errors of Anusvara, Chandrabindu and Halant",
+                "nameHi": "अनुस्वार, चंद्रबिंदु एवं हलंत संबंधी अशुद्धियाँ",
+                "aliases": ["anuswar ki ashuddhi", "halant", "chandrabindu galti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "manak_vartani",
+                "level": "topic",
+                "nameEn": "Standard Hindi Spelling Rules",
+                "nameHi": "मानक हिन्दी वर्तनी",
+                "aliases": ["manak vartani", "standard spelling", "kendriya hindi nideshalay vartani"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shuddh_shabd_chayan",
+                "level": "topic",
+                "nameEn": "Choosing the Correctly Spelt Word",
+                "nameHi": "शुद्ध शब्द का चयन",
+                "aliases": ["shuddh shabd", "correct spelling hindi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "viram_chihn",
+            "level": "chapter",
+            "nameEn": "Punctuation (Viram Chihn)",
+            "nameHi": "विराम-चिह्न",
+            "aliases": ["viram chinh", "punctuation marks", "विराम चिन्ह"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "pramukh_viram_chihn",
+                "level": "topic",
+                "nameEn": "Main Punctuation Marks",
+                "nameHi": "प्रमुख विराम-चिह्न",
+                "aliases": ["purn viram", "alp viram", "prashnvachak chihn"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "viram_chihn_prayog",
+                "level": "topic",
+                "nameEn": "Correct Use of Punctuation",
+                "nameHi": "विराम-चिह्नों का प्रयोग",
+                "aliases": ["viram chihn ka prayog", "punctuation usage"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "shabd_bhed",
+        "level": "unit",
+        "nameEn": "Word Classification and Parts of Speech",
+        "nameHi": "शब्द-वर्गीकरण",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "shabd_srot",
+            "level": "chapter",
+            "nameEn": "Words by Origin: Tatsam, Tadbhav, Deshaj, Videshi",
+            "nameHi": "शब्द-वर्गीकरण (स्रोत के आधार पर)",
+            "aliases": [
+              "tatsam tadbhav",
+              "shabd bhed utpatti ke aadhar par",
+              "तत्सम तद्भव",
+              "deshaj videshi shabd"
+            ],
+            "objectives": [
+              "Distinguish tatsam, tadbhav, deshaj and foreign words and convert tatsam words to tadbhav"
+            ],
+            "children": [
+              {
+                "code": "tatsam",
+                "level": "topic",
+                "nameEn": "Tatsam Words",
+                "nameHi": "तत्सम शब्द",
+                "aliases": ["tatsam shabd", "sanskrit words in hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tadbhav",
+                "level": "topic",
+                "nameEn": "Tadbhav Words",
+                "nameHi": "तद्भव शब्द",
+                "aliases": ["tadbhav shabd", "tatsam se tadbhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "deshaj",
+                "level": "topic",
+                "nameEn": "Deshaj (Native) Words",
+                "nameHi": "देशज शब्द",
+                "aliases": ["deshaj shabd", "deshi shabd"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "videshi",
+                "level": "topic",
+                "nameEn": "Foreign (Borrowed) Words",
+                "nameHi": "विदेशी (आगत) शब्द",
+                "aliases": ["videshi shabd", "arabi farsi angrezi shabd", "aagat shabd"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sankar",
+                "level": "topic",
+                "nameEn": "Hybrid Words",
+                "nameHi": "संकर शब्द",
+                "aliases": ["sankar shabd", "hybrid words"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rachna_adhar",
+                "level": "topic",
+                "nameEn": "Words by Formation: Rudh, Yaugik, Yogrudh",
+                "nameHi": "रचना के आधार पर शब्द-भेद (रूढ़, यौगिक, योगरूढ़)",
+                "aliases": ["rudh yaugik yogrudh", "yogrudh shabd"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sangya",
+            "level": "chapter",
+            "nameEn": "Nouns (Sangya)",
+            "nameHi": "संज्ञा",
+            "aliases": ["sangya", "noun", "sangya ke bhed", "संज्ञा के भेद"],
+            "objectives": ["Identify kinds of nouns and form abstract nouns"],
+            "children": [
+              {
+                "code": "sangya_bhed",
+                "level": "topic",
+                "nameEn": "Kinds of Nouns",
+                "nameHi": "संज्ञा के भेद",
+                "aliases": [
+                  "vyaktivachak jativachak bhavvachak",
+                  "kinds of noun",
+                  "samuhvachak dravyavachak"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhavvachak_nirman",
+                "level": "topic",
+                "nameEn": "Forming Abstract Nouns",
+                "nameHi": "भाववाचक संज्ञा का निर्माण",
+                "aliases": ["bhavvachak sangya banana", "abstract noun formation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sangya_prayog",
+                "level": "topic",
+                "nameEn": "Use and Inflection of Nouns",
+                "nameHi": "संज्ञा का प्रयोग एवं रूपांतरण",
+                "aliases": ["sangya ka rupantar", "sangya pad"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sarvanam",
+            "level": "chapter",
+            "nameEn": "Pronouns (Sarvanam)",
+            "nameHi": "सर्वनाम",
+            "aliases": ["sarvanam", "pronoun", "sarvanam ke bhed"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sarvanam_bhed",
+                "level": "topic",
+                "nameEn": "Kinds of Pronouns",
+                "nameHi": "सर्वनाम के भेद",
+                "aliases": ["purushvachak", "nijvachak", "sambandhvachak sarvanam", "nishchayvachak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sarvanam_rup",
+                "level": "topic",
+                "nameEn": "Pronoun Forms and Usage",
+                "nameHi": "सर्वनाम के रूप एवं प्रयोग",
+                "aliases": ["sarvanam ke roop", "sarvanam prayog"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "visheshan",
+            "level": "chapter",
+            "nameEn": "Adjectives (Visheshan)",
+            "nameHi": "विशेषण",
+            "aliases": ["visheshan", "adjective", "visheshan ke bhed"],
+            "objectives": ["Classify adjectives and use their degrees of comparison"],
+            "children": [
+              {
+                "code": "visheshan_bhed",
+                "level": "topic",
+                "nameEn": "Kinds of Adjectives",
+                "nameHi": "विशेषण के भेद",
+                "aliases": ["gunvachak", "sankhyavachak", "parimanvachak", "sarvanamik visheshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "visheshya_pravisheshan",
+                "level": "topic",
+                "nameEn": "Qualified Noun and Intensifier",
+                "nameHi": "विशेष्य एवं प्रविशेषण",
+                "aliases": ["visheshya", "pravisheshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tulna_avastha",
+                "level": "topic",
+                "nameEn": "Degrees of Comparison",
+                "nameHi": "विशेषण की तुलनात्मक अवस्थाएँ",
+                "aliases": ["mulavastha uttaravastha uttamavastha", "tulnatmak visheshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "visheshan_nirman",
+                "level": "topic",
+                "nameEn": "Forming Adjectives",
+                "nameHi": "विशेषण-निर्माण",
+                "aliases": ["visheshan banana", "sangya se visheshan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kriya",
+            "level": "chapter",
+            "nameEn": "Verbs (Kriya)",
+            "nameHi": "क्रिया",
+            "aliases": ["kriya", "verb", "kriya ke bhed"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "dhatu",
+                "level": "topic",
+                "nameEn": "Verb Roots",
+                "nameHi": "धातु",
+                "aliases": ["dhatu", "mool dhatu", "yaugik dhatu"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sakarmak_akarmak",
+                "level": "topic",
+                "nameEn": "Transitive and Intransitive Verbs",
+                "nameHi": "सकर्मक एवं अकर्मक क्रिया",
+                "aliases": ["sakarmak akarmak", "dvikarmak kriya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kriya_rachna_bhed",
+                "level": "topic",
+                "nameEn": "Compound, Causative, Denominative and Conjunctive Verbs",
+                "nameHi": "संयुक्त, प्रेरणार्थक, नामधातु एवं पूर्वकालिक क्रिया",
+                "aliases": ["prernarthak kriya", "sanyukt kriya", "namdhatu", "purvakalik kriya"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "avyay",
+            "level": "chapter",
+            "nameEn": "Indeclinables (Avyay)",
+            "nameHi": "अव्यय (अविकारी शब्द)",
+            "aliases": ["avyay", "avikari shabd", "indeclinable", "अविकारी शब्द"],
+            "objectives": ["Identify adverbs, postpositions, conjunctions, interjections and particles"],
+            "children": [
+              {
+                "code": "kriyavisheshan",
+                "level": "topic",
+                "nameEn": "Adverbs and their Kinds",
+                "nameHi": "क्रियाविशेषण एवं उसके भेद",
+                "aliases": ["kriya visheshan", "adverb", "kaalvachak sthanvachak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sambandhbodhak",
+                "level": "topic",
+                "nameEn": "Relational Postpositions",
+                "nameHi": "संबंधबोधक अव्यय",
+                "aliases": ["sambandh bodhak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "samuchchayabodhak",
+                "level": "topic",
+                "nameEn": "Conjunctions",
+                "nameHi": "समुच्चयबोधक अव्यय",
+                "aliases": ["samuchchay bodhak", "yojak", "conjunction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vismayadibodhak",
+                "level": "topic",
+                "nameEn": "Interjections",
+                "nameHi": "विस्मयादिबोधक अव्यय",
+                "aliases": ["vismayadi bodhak", "interjection"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nipat",
+                "level": "topic",
+                "nameEn": "Emphatic Particles (Nipat)",
+                "nameHi": "निपात",
+                "aliases": ["nipat", "avdharak"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "vyakaranik_kotiyan",
+        "level": "unit",
+        "nameEn": "Grammatical Categories",
+        "nameHi": "व्याकरणिक कोटियाँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "ling",
+            "level": "chapter",
+            "nameEn": "Gender (Ling)",
+            "nameHi": "लिंग",
+            "aliases": ["ling", "gender", "ling parivartan", "pulling striling"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "ling_nirdharan",
+                "level": "topic",
+                "nameEn": "Identifying Gender",
+                "nameHi": "लिंग-निर्धारण",
+                "aliases": ["pulling striling pahchan", "ling pahchan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ling_parivartan",
+                "level": "topic",
+                "nameEn": "Changing Gender",
+                "nameHi": "लिंग-परिवर्तन",
+                "aliases": ["striling banana", "ling badlo"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "vachan",
+            "level": "chapter",
+            "nameEn": "Number (Vachan)",
+            "nameHi": "वचन",
+            "aliases": ["vachan", "number", "ekvachan bahuvachan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "vachan_pahchan",
+                "level": "topic",
+                "nameEn": "Singular and Plural",
+                "nameHi": "एकवचन एवं बहुवचन",
+                "aliases": ["ekvachan", "bahuvachan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vachan_parivartan",
+                "level": "topic",
+                "nameEn": "Changing Number",
+                "nameHi": "वचन-परिवर्तन",
+                "aliases": ["vachan badlo", "bahuvachan banana"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "karak",
+            "level": "chapter",
+            "nameEn": "Case (Karak)",
+            "nameHi": "कारक",
+            "aliases": ["karak", "vibhakti", "case", "karak chinh"],
+            "objectives": ["Identify the eight cases and their markers"],
+            "children": [
+              {
+                "code": "karak_bhed",
+                "level": "topic",
+                "nameEn": "Kinds of Case",
+                "nameHi": "कारक के भेद",
+                "aliases": ["aath karak", "karta karm karan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "karak_chihn",
+                "level": "topic",
+                "nameEn": "Case Markers (Vibhakti / Parsarg)",
+                "nameHi": "कारक-चिह्न (विभक्ति/परसर्ग)",
+                "aliases": ["parsarg", "vibhakti chinh", "karak chinh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "karak_antar",
+                "level": "topic",
+                "nameEn": "Distinguishing Similar Cases",
+                "nameHi": "कर्म-संप्रदान एवं करण-अपादान में अंतर",
+                "aliases": ["karm sampradan antar", "karan apadan antar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kaal",
+            "level": "chapter",
+            "nameEn": "Tense (Kaal)",
+            "nameHi": "काल",
+            "aliases": ["kaal", "tense", "kaal ke bhed"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "bhoot_kaal",
+                "level": "topic",
+                "nameEn": "Past Tense",
+                "nameHi": "भूतकाल",
+                "aliases": ["bhootkal", "past tense hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vartaman_kaal",
+                "level": "topic",
+                "nameEn": "Present Tense",
+                "nameHi": "वर्तमान काल",
+                "aliases": ["vartman kaal", "present tense hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhavishyat_kaal",
+                "level": "topic",
+                "nameEn": "Future Tense",
+                "nameHi": "भविष्यत् काल",
+                "aliases": ["bhavishya kaal", "future tense hindi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "vachya",
+            "level": "chapter",
+            "nameEn": "Voice (Vachya)",
+            "nameHi": "वाच्य",
+            "aliases": ["vachya", "voice", "vachya parivartan"],
+            "objectives": ["Identify and change active, passive and impersonal voice"],
+            "children": [
+              {
+                "code": "kartri_vachya",
+                "level": "topic",
+                "nameEn": "Active Voice",
+                "nameHi": "कर्तृवाच्य",
+                "aliases": ["kartrivachya", "kartri vachya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "karm_vachya",
+                "level": "topic",
+                "nameEn": "Passive Voice",
+                "nameHi": "कर्मवाच्य",
+                "aliases": ["karmvachya", "karm vachya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhav_vachya",
+                "level": "topic",
+                "nameEn": "Impersonal Voice",
+                "nameHi": "भाववाच्य",
+                "aliases": ["bhavvachya", "bhav vachya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vachya_parivartan",
+                "level": "topic",
+                "nameEn": "Changing the Voice",
+                "nameHi": "वाच्य-परिवर्तन",
+                "aliases": ["vachya badlo", "vachya rupantaran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "shabd_rachna",
+        "level": "unit",
+        "nameEn": "Word Formation",
+        "nameHi": "शब्द-रचना",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "sandhi",
+            "level": "chapter",
+            "nameEn": "Euphonic Combination (Sandhi)",
+            "nameHi": "संधि",
+            "aliases": ["sandhi", "sandhi vichchhed", "sandhi ke bhed"],
+            "objectives": ["Join and split words using vowel, consonant and visarga sandhi"],
+            "children": [
+              {
+                "code": "svar_sandhi",
+                "level": "topic",
+                "nameEn": "Vowel Sandhi",
+                "nameHi": "स्वर संधि",
+                "aliases": ["swar sandhi", "dirgh gun vriddhi yan ayadi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vyanjan_sandhi",
+                "level": "topic",
+                "nameEn": "Consonant Sandhi",
+                "nameHi": "व्यंजन संधि",
+                "aliases": ["vyanjan sandhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "visarg_sandhi",
+                "level": "topic",
+                "nameEn": "Visarga Sandhi",
+                "nameHi": "विसर्ग संधि",
+                "aliases": ["visarg sandhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sandhi_vichchhed",
+                "level": "topic",
+                "nameEn": "Splitting Sandhi Words",
+                "nameHi": "संधि-विच्छेद",
+                "aliases": ["sandhi viched", "sandhi todna"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "samas",
+            "level": "chapter",
+            "nameEn": "Compound Words (Samas)",
+            "nameHi": "समास",
+            "aliases": ["samas", "samaas", "samas vigrah", "compound words"],
+            "objectives": ["Form compounds, dissolve them (vigrah) and name the type of samas"],
+            "children": [
+              {
+                "code": "avyayibhav",
+                "level": "topic",
+                "nameEn": "Avyayibhav Samas",
+                "nameHi": "अव्ययीभाव समास",
+                "aliases": ["avyayibhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tatpurush",
+                "level": "topic",
+                "nameEn": "Tatpurush Samas",
+                "nameHi": "तत्पुरुष समास",
+                "aliases": ["tatpurush", "tatpurush ke bhed"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "karmadharay",
+                "level": "topic",
+                "nameEn": "Karmadharay Samas",
+                "nameHi": "कर्मधारय समास",
+                "aliases": ["karmdharay", "karmadharay"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dvigu",
+                "level": "topic",
+                "nameEn": "Dvigu Samas",
+                "nameHi": "द्विगु समास",
+                "aliases": ["dwigu", "dvigu"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dvandva",
+                "level": "topic",
+                "nameEn": "Dvandva Samas",
+                "nameHi": "द्वंद्व समास",
+                "aliases": ["dwandwa", "dvand samas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bahuvrihi",
+                "level": "topic",
+                "nameEn": "Bahuvrihi Samas",
+                "nameHi": "बहुव्रीहि समास",
+                "aliases": ["bahubrihi", "bahuvrihi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "samas_vigrah",
+                "level": "topic",
+                "nameEn": "Dissolving Compounds; Samas versus Sandhi",
+                "nameHi": "समास-विग्रह एवं संधि-समास में अंतर",
+                "aliases": ["samas vigrah", "sandhi aur samas mein antar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "upsarg",
+            "level": "chapter",
+            "nameEn": "Prefixes (Upsarg)",
+            "nameHi": "उपसर्ग",
+            "aliases": ["upsarg", "prefix", "upsarg se shabd"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sanskrit_upsarg",
+                "level": "topic",
+                "nameEn": "Sanskrit (Tatsam) Prefixes",
+                "nameHi": "संस्कृत के उपसर्ग",
+                "aliases": ["tatsam upsarg", "sanskrit upsarg"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hindi_upsarg",
+                "level": "topic",
+                "nameEn": "Hindi Prefixes",
+                "nameHi": "हिन्दी के उपसर्ग",
+                "aliases": ["hindi upsarg", "tadbhav upsarg"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "videshi_upsarg",
+                "level": "topic",
+                "nameEn": "Urdu-Persian Prefixes",
+                "nameHi": "विदेशी (उर्दू-फ़ारसी) उपसर्ग",
+                "aliases": ["urdu upsarg", "farsi upsarg"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "pratyay",
+            "level": "chapter",
+            "nameEn": "Suffixes (Pratyay)",
+            "nameHi": "प्रत्यय",
+            "aliases": ["pratyay", "suffix", "pratyay ke bhed"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "krit_pratyay",
+                "level": "topic",
+                "nameEn": "Primary Suffixes (Krit)",
+                "nameHi": "कृत् प्रत्यय",
+                "aliases": ["krit pratyay", "kridant"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "taddhit_pratyay",
+                "level": "topic",
+                "nameEn": "Secondary Suffixes (Taddhit)",
+                "nameHi": "तद्धित प्रत्यय",
+                "aliases": ["taddhit pratyay", "taddhitant"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "videshi_pratyay",
+                "level": "topic",
+                "nameEn": "Urdu-Persian Suffixes",
+                "nameHi": "विदेशी (उर्दू-फ़ारसी) प्रत्यय",
+                "aliases": ["urdu pratyay", "farsi pratyay"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "shabd_bhandar",
+        "level": "unit",
+        "nameEn": "Vocabulary, Idioms and Proverbs",
+        "nameHi": "शब्द-भंडार, मुहावरे एवं लोकोक्तियाँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "shabd_gyan",
+            "level": "chapter",
+            "nameEn": "Word Knowledge (Shabd Gyan)",
+            "nameHi": "शब्द-ज्ञान",
+            "aliases": ["shabd gyan", "paryayvachi vilom", "synonyms antonyms hindi", "शब्द भंडार"],
+            "objectives": ["Use synonyms, antonyms, paronyms and one-word substitutes accurately"],
+            "children": [
+              {
+                "code": "paryayvachi",
+                "level": "topic",
+                "nameEn": "Synonyms",
+                "nameHi": "पर्यायवाची शब्द",
+                "aliases": ["paryayvachi", "samanarthi shabd", "synonyms hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vilom",
+                "level": "topic",
+                "nameEn": "Antonyms",
+                "nameHi": "विलोम शब्द",
+                "aliases": ["vilom", "vipritarthak shabd", "antonyms hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anekarthi",
+                "level": "topic",
+                "nameEn": "Words with Multiple Meanings",
+                "nameHi": "अनेकार्थी शब्द",
+                "aliases": ["anekarthak shabd", "anekarthi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ekarthi",
+                "level": "topic",
+                "nameEn": "Near-synonyms with Subtle Differences",
+                "nameHi": "एकार्थी (एकार्थक प्रतीत होने वाले) शब्द",
+                "aliases": ["ekarthi shabd", "ekarthak shabd"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "samshrut_bhinnarthak",
+                "level": "topic",
+                "nameEn": "Paronyms (Similar-sounding Words)",
+                "nameHi": "समश्रुत भिन्नार्थक शब्द (युग्म शब्द)",
+                "aliases": ["shrutisam bhinnarthak", "yugm shabd", "samochcharit shabd", "paronyms"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vakyansh_ek_shabd",
+                "level": "topic",
+                "nameEn": "One-word Substitution",
+                "nameHi": "वाक्यांश के लिए एक शब्द",
+                "aliases": [
+                  "anek shabdon ke liye ek shabd",
+                  "vakyansh ke liye ek shabd",
+                  "one word substitution hindi"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "muhavare_lokoktiyan",
+            "level": "chapter",
+            "nameEn": "Idioms and Proverbs",
+            "nameHi": "मुहावरे एवं लोकोक्तियाँ",
+            "aliases": ["muhavare", "lokokti", "kahavat", "idioms proverbs hindi"],
+            "objectives": ["Explain the meaning of idioms and proverbs and use them in sentences"],
+            "children": [
+              {
+                "code": "muhavare",
+                "level": "topic",
+                "nameEn": "Idioms (Muhavare): Meaning and Use",
+                "nameHi": "मुहावरे: अर्थ एवं प्रयोग",
+                "aliases": ["muhavra", "muhavare ka arth"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lokoktiyan",
+                "level": "topic",
+                "nameEn": "Proverbs (Lokoktiyan): Meaning and Use",
+                "nameHi": "लोकोक्तियाँ: अर्थ एवं प्रयोग",
+                "aliases": ["lokoktiyan", "kahavaten"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "muhavara_lokokti_antar",
+                "level": "topic",
+                "nameEn": "Difference between Idiom and Proverb",
+                "nameHi": "मुहावरे और लोकोक्ति में अंतर",
+                "aliases": ["muhavare aur lokokti mein antar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "vakya_vichar",
+        "level": "unit",
+        "nameEn": "Sentence Structure and Correction",
+        "nameHi": "वाक्य-विचार",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "vakya_rachna",
+            "level": "chapter",
+            "nameEn": "Sentence Construction (Vakya Rachna)",
+            "nameHi": "वाक्य-रचना",
+            "aliases": ["vakya rachna", "vakya ke bhed", "vakya ke ang", "sentence types hindi"],
+            "objectives": ["Identify subject and predicate and classify sentences by structure and meaning"],
+            "children": [
+              {
+                "code": "vakya_ang",
+                "level": "topic",
+                "nameEn": "Parts of a Sentence (Subject and Predicate)",
+                "nameHi": "वाक्य के अंग (उद्देश्य एवं विधेय)",
+                "aliases": ["uddeshya vidheya", "vakya ke ang"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vakya_bhed_rachna",
+                "level": "topic",
+                "nameEn": "Simple, Compound and Complex Sentences",
+                "nameHi": "रचना के आधार पर वाक्य-भेद",
+                "aliases": ["saral sanyukt mishra vakya", "rachna ke aadhar par vakya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vakya_bhed_arth",
+                "level": "topic",
+                "nameEn": "Sentence Types by Meaning",
+                "nameHi": "अर्थ के आधार पर वाक्य-भेद",
+                "aliases": ["arth ke aadhar par vakya", "vidhivachak nishedhvachak", "prashnvachak vakya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vakya_rupantaran",
+                "level": "topic",
+                "nameEn": "Transforming Sentences",
+                "nameHi": "वाक्य-रूपांतरण",
+                "aliases": ["vakya rupantaran", "vakya parivartan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "padbandh",
+            "level": "chapter",
+            "nameEn": "Phrases (Padbandh)",
+            "nameHi": "पदबंध",
+            "aliases": ["padbandh", "padbandh ke bhed", "phrase hindi"],
+            "objectives": ["Identify the five kinds of padbandh in a sentence"],
+            "children": [
+              {
+                "code": "sangya_padbandh",
+                "level": "topic",
+                "nameEn": "Noun Phrase",
+                "nameHi": "संज्ञा पदबंध",
+                "aliases": ["sangya padbandh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sarvanam_padbandh",
+                "level": "topic",
+                "nameEn": "Pronoun Phrase",
+                "nameHi": "सर्वनाम पदबंध",
+                "aliases": ["sarvanam padbandh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "visheshan_padbandh",
+                "level": "topic",
+                "nameEn": "Adjective Phrase",
+                "nameHi": "विशेषण पदबंध",
+                "aliases": ["visheshan padbandh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kriya_padbandh",
+                "level": "topic",
+                "nameEn": "Verb Phrase",
+                "nameHi": "क्रिया पदबंध",
+                "aliases": ["kriya padbandh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kriyavisheshan_padbandh",
+                "level": "topic",
+                "nameEn": "Adverb Phrase",
+                "nameHi": "क्रियाविशेषण पदबंध",
+                "aliases": ["kriyavisheshan padbandh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "pad_parichay",
+            "level": "chapter",
+            "nameEn": "Parsing (Pad Parichay)",
+            "nameHi": "पद-परिचय",
+            "aliases": ["pad parichay", "pad parichay kaise likhen", "parsing hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "shabd_aur_pad",
+                "level": "topic",
+                "nameEn": "Word and Inflected Word (Shabd and Pad)",
+                "nameHi": "शब्द और पद",
+                "aliases": ["shabd aur pad mein antar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vikari_pad_parichay",
+                "level": "topic",
+                "nameEn": "Parsing Nouns, Pronouns, Adjectives and Verbs",
+                "nameHi": "विकारी पदों का पद-परिचय",
+                "aliases": ["sangya ka pad parichay", "kriya ka pad parichay"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "avikari_pad_parichay",
+                "level": "topic",
+                "nameEn": "Parsing Indeclinables",
+                "nameHi": "अविकारी पदों का पद-परिचय",
+                "aliases": ["avyay ka pad parichay"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "vakya_shuddhi",
+            "level": "chapter",
+            "nameEn": "Sentence Correction (Vakya Shuddhi)",
+            "nameHi": "वाक्य-शुद्धि",
+            "aliases": [
+              "vakya shuddhikaran",
+              "ashuddh vakya",
+              "वाक्य शुद्धीकरण",
+              "sentence correction hindi"
+            ],
+            "objectives": ["Find and correct grammatical errors in Hindi sentences"],
+            "children": [
+              {
+                "code": "ling_vachan_ashuddhi",
+                "level": "topic",
+                "nameEn": "Gender and Number Errors",
+                "nameHi": "लिंग-वचन संबंधी अशुद्धियाँ",
+                "aliases": ["ling vachan ki ashuddhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "karak_sarvanam_ashuddhi",
+                "level": "topic",
+                "nameEn": "Case-marker and Pronoun Errors",
+                "nameHi": "कारक एवं सर्वनाम संबंधी अशुद्धियाँ",
+                "aliases": ["karak ki ashuddhi", "parsarg galti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kriya_kaal_ashuddhi",
+                "level": "topic",
+                "nameEn": "Verb and Tense Errors",
+                "nameHi": "क्रिया एवं काल संबंधी अशुद्धियाँ",
+                "aliases": ["kriya ki ashuddhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "padkram_punarukti",
+                "level": "topic",
+                "nameEn": "Word Order, Redundancy and Word Choice",
+                "nameHi": "पदक्रम, पुनरुक्ति एवं शब्द-चयन संबंधी अशुद्धियाँ",
+                "aliases": ["padkram", "punarukti dosh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "apathit_bodh",
+        "level": "unit",
+        "nameEn": "Unseen Comprehension",
+        "nameHi": "अपठित बोध",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "apathit_gadyansh",
+            "level": "chapter",
+            "nameEn": "Unseen Prose Passage",
+            "nameHi": "अपठित गद्यांश",
+            "aliases": ["apathit gadyansh", "unseen passage hindi", "gadyansh"],
+            "objectives": ["Answer factual, inferential and language questions on an unseen prose passage"],
+            "children": [
+              {
+                "code": "gadyansh_kendriya_bhav",
+                "level": "topic",
+                "nameEn": "Central Idea and Title",
+                "nameHi": "केंद्रीय भाव एवं शीर्षक",
+                "aliases": ["shirshak", "kendriya bhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gadyansh_tathyatmak_bodh",
+                "level": "topic",
+                "nameEn": "Factual Comprehension",
+                "nameHi": "तथ्यात्मक बोध-प्रश्न",
+                "aliases": ["bodh prashn", "tathyatmak prashn"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gadyansh_anuman_nishkarsh",
+                "level": "topic",
+                "nameEn": "Inference and Conclusion",
+                "nameHi": "अनुमान एवं निष्कर्ष",
+                "aliases": ["nishkarsh", "anuman"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gadyansh_vyakaran",
+                "level": "topic",
+                "nameEn": "Passage-based Grammar and Word Meaning",
+                "nameHi": "गद्यांश आधारित शब्दार्थ एवं व्याकरण",
+                "aliases": ["gadyansh par aadharit vyakaran", "rekhankit shabd ka arth"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "apathit_padyansh",
+            "level": "chapter",
+            "nameEn": "Unseen Poem Passage",
+            "nameHi": "अपठित पद्यांश (काव्यांश)",
+            "aliases": ["apathit padyansh", "apathit kavyansh", "unseen poem hindi"],
+            "objectives": ["Appreciate an unseen poem for its feeling, thought, sound and craft"],
+            "children": [
+              {
+                "code": "bhav_saundarya",
+                "level": "topic",
+                "nameEn": "Beauty of Feeling",
+                "nameHi": "भाव-सौंदर्य",
+                "aliases": ["bhav saundarya", "bhav paksh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vichar_saundarya",
+                "level": "topic",
+                "nameEn": "Beauty of Thought",
+                "nameHi": "विचार-सौंदर्य",
+                "aliases": ["vichar saundarya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nad_saundarya",
+                "level": "topic",
+                "nameEn": "Beauty of Sound and Rhythm",
+                "nameHi": "नाद-सौंदर्य",
+                "aliases": ["naad saundarya", "lay tuk"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shilp_saundarya",
+                "level": "topic",
+                "nameEn": "Craft and Style",
+                "nameHi": "शिल्प-सौंदर्य",
+                "aliases": ["shilp saundarya", "kala paksh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jeevan_drishti",
+                "level": "topic",
+                "nameEn": "Outlook on Life",
+                "nameHi": "जीवन-दृष्टि",
+                "aliases": ["jeevan drishti", "kavita ka sandesh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "rachna",
+        "level": "unit",
+        "nameEn": "Composition and Functional Writing",
+        "nameHi": "रचना एवं रचनात्मक लेखन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "nibandh_anuchchhed",
+            "level": "chapter",
+            "nameEn": "Essay and Paragraph Writing",
+            "nameHi": "निबंध एवं अनुच्छेद लेखन",
+            "aliases": ["nibandh lekhan", "anuchchhed lekhan", "essay writing hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "nibandh_lekhan",
+                "level": "topic",
+                "nameEn": "Essay Writing",
+                "nameHi": "निबंध-लेखन",
+                "aliases": ["nibandh", "essay hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anuchchhed_lekhan",
+                "level": "topic",
+                "nameEn": "Paragraph Writing",
+                "nameHi": "अनुच्छेद-लेखन",
+                "aliases": ["anuchchhed", "paragraph hindi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "patra_lekhan",
+            "level": "chapter",
+            "nameEn": "Letter Writing",
+            "nameHi": "पत्र-लेखन",
+            "aliases": ["patra lekhan", "letter writing hindi", "prarthana patra"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "aupcharik_patra",
+                "level": "topic",
+                "nameEn": "Formal Letters",
+                "nameHi": "औपचारिक पत्र",
+                "aliases": ["aupcharik patra", "shikayati patra", "prarthana patra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anaupcharik_patra",
+                "level": "topic",
+                "nameEn": "Informal Letters",
+                "nameHi": "अनौपचारिक पत्र",
+                "aliases": ["anaupcharik patra", "vyaktigat patra"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "vyavaharik_lekhan",
+            "level": "chapter",
+            "nameEn": "Functional Writing",
+            "nameHi": "व्यावहारिक लेखन",
+            "aliases": ["vyavaharik lekhan", "email vigyapan suchna", "functional writing hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "email_lekhan",
+                "level": "topic",
+                "nameEn": "E-mail Writing",
+                "nameHi": "ई-मेल लेखन",
+                "aliases": ["email lekhan", "e-mail hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "swavritt_lekhan",
+                "level": "topic",
+                "nameEn": "Writing a CV (Swavritt)",
+                "nameHi": "स्ववृत्त लेखन",
+                "aliases": ["swavritt", "biodata", "resume hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "soochna_lekhan",
+                "level": "topic",
+                "nameEn": "Notice Writing",
+                "nameHi": "सूचना लेखन",
+                "aliases": ["suchna lekhan", "notice hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vigyapan_lekhan",
+                "level": "topic",
+                "nameEn": "Advertisement Writing",
+                "nameHi": "विज्ञापन लेखन",
+                "aliases": ["vigyapan lekhan", "advertisement hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sandesh_lekhan",
+                "level": "topic",
+                "nameEn": "Message Writing",
+                "nameHi": "संदेश लेखन",
+                "aliases": ["sandesh lekhan", "shubhkamna sandesh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "laghukatha_lekhan",
+                "level": "topic",
+                "nameEn": "Short Story Writing",
+                "nameHi": "लघुकथा लेखन",
+                "aliases": ["laghukatha", "short story hindi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sankshepan_pallavan",
+            "level": "chapter",
+            "nameEn": "Precis and Expansion",
+            "nameHi": "संक्षेपण एवं पल्लवन",
+            "aliases": ["sankshepan", "sankshiptikaran", "pallavan", "precis hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sankshepan",
+                "level": "topic",
+                "nameEn": "Precis Writing",
+                "nameHi": "संक्षेपण (संक्षिप्तीकरण)",
+                "aliases": ["sankshiptikaran", "saar lekhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pallavan",
+                "level": "topic",
+                "nameEn": "Expansion of an Idea",
+                "nameHi": "पल्लवन",
+                "aliases": ["pallavan", "vistaran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "kavyang",
+        "level": "unit",
+        "nameEn": "Elements of Poetry (Kavyang)",
+        "nameHi": "काव्यांग",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "ras",
+            "level": "chapter",
+            "nameEn": "Rasa (Aesthetic Emotion)",
+            "nameHi": "रस",
+            "aliases": ["ras", "rasa", "ras ke bhed", "sthayi bhav"],
+            "objectives": [
+              "Identify the rasa of a passage from its sthayi bhav, vibhav, anubhav and sanchari bhav"
+            ],
+            "children": [
+              {
+                "code": "ras_swaroop",
+                "level": "topic",
+                "nameEn": "Nature of Rasa",
+                "nameHi": "रस का स्वरूप",
+                "aliases": ["ras ki paribhasha", "ras ka swaroop"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rasavayav",
+                "level": "topic",
+                "nameEn": "Constituents of Rasa",
+                "nameHi": "रसावयव (स्थायी भाव, विभाव, अनुभाव, संचारी भाव)",
+                "aliases": ["rasavayav", "vibhav anubhav", "sanchari bhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ras_bhed",
+                "level": "topic",
+                "nameEn": "Kinds of Rasa",
+                "nameHi": "रस-भेद",
+                "aliases": ["shringar ras", "veer ras", "karun ras", "nau ras"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "chhand",
+            "level": "chapter",
+            "nameEn": "Prosody and Metres (Chhand)",
+            "nameHi": "छंद",
+            "aliases": ["chhand", "chand", "metre", "doha chaupai"],
+            "objectives": ["Identify matrik and varnik metres by counting matras and ganas"],
+            "children": [
+              {
+                "code": "chhand_ang",
+                "level": "topic",
+                "nameEn": "Elements of Metre",
+                "nameHi": "छंद के अंग (मात्रा, वर्ण, गण, यति, गति, तुक)",
+                "aliases": ["matra ganana", "gan", "yati gati", "laghu guru"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "matrik_chhand",
+                "level": "topic",
+                "nameEn": "Matrik (Moraic) Metres",
+                "nameHi": "मात्रिक छंद",
+                "aliases": ["matrik chhand", "matra chhand"],
+                "objectives": [],
+                "children": [
+                  {
+                    "code": "doha",
+                    "level": "subtopic",
+                    "nameEn": "Doha",
+                    "nameHi": "दोहा",
+                    "aliases": ["doha chhand"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "soratha",
+                    "level": "subtopic",
+                    "nameEn": "Soratha",
+                    "nameHi": "सोरठा",
+                    "aliases": ["sortha", "soratha chhand"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "chaupai",
+                    "level": "subtopic",
+                    "nameEn": "Chaupai",
+                    "nameHi": "चौपाई",
+                    "aliases": ["chaupai chhand"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "harigitika",
+                    "level": "subtopic",
+                    "nameEn": "Harigitika",
+                    "nameHi": "हरिगीतिका",
+                    "aliases": ["harigeetika"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "kundaliya",
+                    "level": "subtopic",
+                    "nameEn": "Kundaliya",
+                    "nameHi": "कुण्डलिया",
+                    "aliases": ["kundaliya chhand", "kundliya"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "chhappay",
+                    "level": "subtopic",
+                    "nameEn": "Chhappay",
+                    "nameHi": "छप्पय",
+                    "aliases": ["chhappay chhand", "chhappy"],
+                    "objectives": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "varnik_chhand",
+                "level": "topic",
+                "nameEn": "Varnik (Syllabic) Metres",
+                "nameHi": "वर्णिक छंद",
+                "aliases": ["varnik chhand", "vritt"],
+                "objectives": [],
+                "children": [
+                  {
+                    "code": "drutvilambit",
+                    "level": "subtopic",
+                    "nameEn": "Drutvilambit",
+                    "nameHi": "द्रुतविलम्बित",
+                    "aliases": ["drut vilambit"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "mandakranta",
+                    "level": "subtopic",
+                    "nameEn": "Mandakranta",
+                    "nameHi": "मन्दाक्रान्ता",
+                    "aliases": ["mandakranta chhand"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "manharan_kavitt",
+                    "level": "subtopic",
+                    "nameEn": "Manharan Kavitt",
+                    "nameHi": "मनहरण कवित्त",
+                    "aliases": ["kavitt", "ghanakshari"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "mattgayand_savaiya",
+                    "level": "subtopic",
+                    "nameEn": "Mattagayand Savaiya",
+                    "nameHi": "मत्तगयन्द सवैया",
+                    "aliases": ["savaiya", "malti savaiya"],
+                    "objectives": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code": "alankar",
+            "level": "chapter",
+            "nameEn": "Figures of Speech (Alankar)",
+            "nameHi": "अलंकार",
+            "aliases": ["alankar", "alankaar", "arthalankar shabdalankar", "figures of speech hindi"],
+            "objectives": ["Identify shabdalankar and arthalankar in given lines of poetry"],
+            "children": [
+              {
+                "code": "shabdalankar",
+                "level": "topic",
+                "nameEn": "Figures of Sound (Shabdalankar)",
+                "nameHi": "शब्दालंकार",
+                "aliases": ["shabdalankar", "shabd alankar"],
+                "objectives": [],
+                "children": [
+                  {
+                    "code": "anupras",
+                    "level": "subtopic",
+                    "nameEn": "Anupras (Alliteration)",
+                    "nameHi": "अनुप्रास",
+                    "aliases": ["anupras alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "yamak",
+                    "level": "subtopic",
+                    "nameEn": "Yamak",
+                    "nameHi": "यमक",
+                    "aliases": ["yamak alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "shlesh",
+                    "level": "subtopic",
+                    "nameEn": "Shlesh (Pun)",
+                    "nameHi": "श्लेष",
+                    "aliases": ["shlesh alankar"],
+                    "objectives": [],
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "code": "arthalankar",
+                "level": "topic",
+                "nameEn": "Figures of Meaning (Arthalankar)",
+                "nameHi": "अर्थालंकार",
+                "aliases": ["arthalankar", "arth alankar"],
+                "objectives": [],
+                "children": [
+                  {
+                    "code": "upma",
+                    "level": "subtopic",
+                    "nameEn": "Upma (Simile)",
+                    "nameHi": "उपमा",
+                    "aliases": ["upma alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "rupak",
+                    "level": "subtopic",
+                    "nameEn": "Rupak (Metaphor)",
+                    "nameHi": "रूपक",
+                    "aliases": ["rupak alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "utpreksha",
+                    "level": "subtopic",
+                    "nameEn": "Utpreksha (Poetic Fancy)",
+                    "nameHi": "उत्प्रेक्षा",
+                    "aliases": ["utpreksha alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "sandeh",
+                    "level": "subtopic",
+                    "nameEn": "Sandeh (Doubt)",
+                    "nameHi": "संदेह",
+                    "aliases": ["sandeh alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "bhrantiman",
+                    "level": "subtopic",
+                    "nameEn": "Bhrantiman (Illusion)",
+                    "nameHi": "भ्रांतिमान",
+                    "aliases": ["bhrantiman alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "atishayokti",
+                    "level": "subtopic",
+                    "nameEn": "Atishayokti (Hyperbole)",
+                    "nameHi": "अतिशयोक्ति",
+                    "aliases": ["atishyokti alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "manvikaran",
+                    "level": "subtopic",
+                    "nameEn": "Manvikaran (Personification)",
+                    "nameHi": "मानवीकरण",
+                    "aliases": ["manvikaran alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "virodhabhas",
+                    "level": "subtopic",
+                    "nameEn": "Virodhabhas (Apparent Contradiction)",
+                    "nameHi": "विरोधाभास",
+                    "aliases": ["virodhabhas alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "vibhavana",
+                    "level": "subtopic",
+                    "nameEn": "Vibhavana (Effect without Cause)",
+                    "nameHi": "विभावना",
+                    "aliases": ["vibhavana alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "asangati",
+                    "level": "subtopic",
+                    "nameEn": "Asangati (Incongruity)",
+                    "nameHi": "असंगति",
+                    "aliases": ["asangati alankar"],
+                    "objectives": [],
+                    "children": []
+                  },
+                  {
+                    "code": "apahnuti",
+                    "level": "subtopic",
+                    "nameEn": "Apahnuti (Concealment)",
+                    "nameHi": "अपह्नुति",
+                    "aliases": ["apahnuti alankar", "apanhuti"],
+                    "objectives": [],
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "code": "shabd_shakti",
+            "level": "chapter",
+            "nameEn": "Powers of Words (Shabd Shakti)",
+            "nameHi": "शब्द-शक्ति",
+            "aliases": ["shabd shakti", "abhidha lakshana vyanjana"],
+            "objectives": ["Distinguish denotation, indication and suggestion with examples"],
+            "children": [
+              {
+                "code": "abhidha",
+                "level": "topic",
+                "nameEn": "Abhidha (Denotation)",
+                "nameHi": "अभिधा",
+                "aliases": ["abhidha shabd shakti", "vachyarth"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lakshana",
+                "level": "topic",
+                "nameEn": "Lakshana (Indication)",
+                "nameHi": "लक्षणा",
+                "aliases": ["lakshana shabd shakti", "lakshyarth"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vyanjana",
+                "level": "topic",
+                "nameEn": "Vyanjana (Suggestion)",
+                "nameHi": "व्यंजना",
+                "aliases": ["vyanjana shabd shakti", "vyangyarth"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kavya_gun",
+            "level": "chapter",
+            "nameEn": "Poetic Qualities (Kavya Gun)",
+            "nameHi": "काव्य-गुण",
+            "aliases": ["kavya gun", "madhurya oj prasad"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "madhurya",
+                "level": "topic",
+                "nameEn": "Madhurya (Sweetness)",
+                "nameHi": "माधुर्य गुण",
+                "aliases": ["madhurya gun"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "oj",
+                "level": "topic",
+                "nameEn": "Oj (Vigour)",
+                "nameHi": "ओज गुण",
+                "aliases": ["oj gun"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "prasad",
+                "level": "topic",
+                "nameEn": "Prasad (Lucidity)",
+                "nameHi": "प्रसाद गुण",
+                "aliases": ["prasad gun"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kavya_dosh",
+            "level": "chapter",
+            "nameEn": "Poetic Faults (Kavya Dosh)",
+            "nameHi": "काव्य-दोष",
+            "aliases": ["kavya dosh", "shrutikatutva", "kavya ke dosh"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "shrutikatutva",
+                "level": "topic",
+                "nameEn": "Shrutikatutva (Harshness to the Ear)",
+                "nameHi": "श्रुतिकटुत्व",
+                "aliases": ["shruti katutva dosh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gramyatva",
+                "level": "topic",
+                "nameEn": "Gramyatva (Vulgarism)",
+                "nameHi": "ग्राम्यत्व",
+                "aliases": ["gramyatva dosh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "apratitatva",
+                "level": "topic",
+                "nameEn": "Apratitatva (Obscure Usage)",
+                "nameHi": "अप्रतीतत्व",
+                "aliases": ["apratitatva dosh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "klishtatva",
+                "level": "topic",
+                "nameEn": "Klishtatva (Laboured Meaning)",
+                "nameHi": "क्लिष्टत्व",
+                "aliases": ["klisht dosh", "klishtatva dosh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "akramatva",
+                "level": "topic",
+                "nameEn": "Akramatva (Lack of Sequence)",
+                "nameHi": "अक्रमत्व",
+                "aliases": ["akramatva dosh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dushkramatva",
+                "level": "topic",
+                "nameEn": "Dushkramatva (Faulty Sequence)",
+                "nameHi": "दुष्क्रमत्व",
+                "aliases": ["dushkramatva dosh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "kavyashastra",
+        "level": "unit",
+        "nameEn": "Indian and Western Poetics",
+        "nameHi": "भारतीय एवं पाश्चात्य काव्यशास्त्र",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "bhartiya_kavyashastra",
+            "level": "chapter",
+            "nameEn": "Indian Poetics",
+            "nameHi": "भारतीय काव्यशास्त्र",
+            "aliases": ["bhartiya kavyashastra", "kavya hetu lakshan prayojan", "ras siddhant"],
+            "objectives": [
+              "Explain the causes, definitions and purposes of poetry and the rasa, dhvani and vakrokti schools"
+            ],
+            "children": [
+              {
+                "code": "kavya_hetu",
+                "level": "topic",
+                "nameEn": "Causes of Poetry (Kavya Hetu)",
+                "nameHi": "काव्य-हेतु",
+                "aliases": ["kavya hetu", "pratibha vyutpatti abhyas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kavya_lakshan",
+                "level": "topic",
+                "nameEn": "Definitions of Poetry (Kavya Lakshan)",
+                "nameHi": "काव्य-लक्षण",
+                "aliases": ["kavya lakshan", "kavya ki paribhasha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kavya_prayojan",
+                "level": "topic",
+                "nameEn": "Purposes of Poetry (Kavya Prayojan)",
+                "nameHi": "काव्य-प्रयोजन",
+                "aliases": ["kavya prayojan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ras_nishpatti",
+                "level": "topic",
+                "nameEn": "Realisation of Rasa (Ras Nishpatti)",
+                "nameHi": "रस-निष्पत्ति",
+                "aliases": ["ras nishpatti", "bharat muni ras sutra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sadharanikaran",
+                "level": "topic",
+                "nameEn": "Universalisation (Sadharanikaran)",
+                "nameHi": "साधारणीकरण",
+                "aliases": ["sadharanikaran", "bhattnayak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dhvani_siddhant",
+                "level": "topic",
+                "nameEn": "Theory of Suggestion (Dhvani)",
+                "nameHi": "ध्वनि सिद्धांत",
+                "aliases": ["dhvani siddhant", "anandvardhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vakrokti_siddhant",
+                "level": "topic",
+                "nameEn": "Theory of Oblique Expression (Vakrokti)",
+                "nameHi": "वक्रोक्ति सिद्धांत",
+                "aliases": ["vakrokti siddhant", "kuntak"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "pashchatya_kavyashastra",
+            "level": "chapter",
+            "nameEn": "Western Poetics",
+            "nameHi": "पाश्चात्य काव्यशास्त्र",
+            "aliases": ["pashchatya kavyashastra", "arastu", "longinus"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "anukaran_siddhant",
+                "level": "topic",
+                "nameEn": "Aristotle's Theory of Imitation",
+                "nameHi": "अरस्तू का अनुकरण सिद्धांत",
+                "aliases": ["anukaran siddhant", "mimesis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "trasadi",
+                "level": "topic",
+                "nameEn": "Aristotle's Theory of Tragedy",
+                "nameHi": "अरस्तू का त्रासदी सिद्धांत",
+                "aliases": ["trasadi", "virechan", "catharsis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "udatt_tatva",
+                "level": "topic",
+                "nameEn": "Longinus on the Sublime",
+                "nameHi": "लोंजाइनस का उदात्त तत्त्व",
+                "aliases": ["udatt tatva", "sublime", "longinus udattata"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "sahitya_itihas",
+        "level": "unit",
+        "nameEn": "History of Hindi Literature",
+        "nameHi": "हिन्दी साहित्य का इतिहास",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "itihas_lekhan",
+            "level": "chapter",
+            "nameEn": "Historiography, Periodisation and Naming",
+            "nameHi": "इतिहास-लेखन, काल-विभाजन एवं नामकरण",
+            "aliases": ["kaal vibhajan", "namkaran", "hindi sahitya itihas lekhan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "itihas_lekhan_parampara",
+                "level": "topic",
+                "nameEn": "Tradition of Literary Historiography",
+                "nameHi": "इतिहास-लेखन की परम्परा",
+                "aliases": ["itihas lekhan parampara"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "itihas_granth",
+                "level": "topic",
+                "nameEn": "Major Histories and Historians",
+                "nameHi": "प्रमुख इतिहास-ग्रंथ एवं इतिहास-लेखक",
+                "aliases": ["ramchandra shukla itihas", "grierson", "garsa da tasi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sahitya_arambh",
+                "level": "topic",
+                "nameEn": "Beginning of Hindi Literature",
+                "nameHi": "हिन्दी साहित्य का आरम्भ",
+                "aliases": ["hindi sahitya ka arambh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kaal_vibhajan_namkaran",
+                "level": "topic",
+                "nameEn": "Periodisation and Naming of Eras",
+                "nameHi": "काल-विभाजन एवं नामकरण",
+                "aliases": ["kaal vibhajan", "namkaran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "aadikaal",
+            "level": "chapter",
+            "nameEn": "Adikal (Early Period)",
+            "nameHi": "आदिकाल",
+            "aliases": ["aadikal", "veergatha kaal", "siddh nath sahitya", "raso"],
+            "objectives": [
+              "Describe the trends, poets and works of Adikal and the debate on their authenticity"
+            ],
+            "children": [
+              {
+                "code": "aadikaal_pravrittiyan",
+                "level": "topic",
+                "nameEn": "Main Trends of Adikal",
+                "nameHi": "आदिकाल की प्रमुख प्रवृत्तियाँ",
+                "aliases": ["aadikal ki pravrittiyan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "siddh_nath_jain",
+                "level": "topic",
+                "nameEn": "Siddha, Nath and Jain Literature",
+                "nameHi": "सिद्ध, नाथ एवं जैन साहित्य",
+                "aliases": ["siddh sahitya", "nath sahitya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "raso_kavya",
+                "level": "topic",
+                "nameEn": "Raso Poetry",
+                "nameHi": "रासो काव्य",
+                "aliases": ["prithviraj raso", "raso kavya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "laukik_sahitya",
+                "level": "topic",
+                "nameEn": "Secular Literature: Khusro and Vidyapati",
+                "nameHi": "लौकिक साहित्य (अमीर खुसरो, विद्यापति)",
+                "aliases": ["amir khusro", "vidyapati"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rachna_pramanikta",
+                "level": "topic",
+                "nameEn": "Authenticity of Adikal Texts",
+                "nameHi": "आदिकालीन रचनाओं की प्रामाणिकता",
+                "aliases": ["raso ki pramanikta"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "bhaktikaal",
+            "level": "chapter",
+            "nameEn": "Bhaktikal (Devotional Period)",
+            "nameHi": "भक्तिकाल",
+            "aliases": ["bhaktikal", "bhakti kaal", "nirgun sagun", "swarn yug"],
+            "objectives": ["Describe the four streams of Bhakti poetry with their poets and works"],
+            "children": [
+              {
+                "code": "bhakti_udbhav",
+                "level": "topic",
+                "nameEn": "Origin, Development and Philosophy of Bhakti",
+                "nameHi": "भक्ति का उद्भव, विकास एवं दार्शनिक पृष्ठभूमि",
+                "aliases": ["bhakti andolan", "bhakti ka udbhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sant_kavya",
+                "level": "topic",
+                "nameEn": "Sant (Nirgun Gyanashrayi) Poetry",
+                "nameHi": "संत काव्य (ज्ञानाश्रयी शाखा)",
+                "aliases": ["sant kavya", "gyanashrayi shakha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sufi_kavya",
+                "level": "topic",
+                "nameEn": "Sufi (Premashrayi) Poetry",
+                "nameHi": "सूफ़ी काव्य (प्रेमाश्रयी शाखा)",
+                "aliases": ["sufi kavya", "premakhyan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ram_bhakti_kavya",
+                "level": "topic",
+                "nameEn": "Ram Bhakti Poetry",
+                "nameHi": "राम भक्ति काव्य",
+                "aliases": ["ram kavya", "rambhakti shakha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "krishna_bhakti_kavya",
+                "level": "topic",
+                "nameEn": "Krishna Bhakti Poetry",
+                "nameHi": "कृष्ण भक्ति काव्य",
+                "aliases": ["krishna kavya", "ashtachhap"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ritikaal",
+            "level": "chapter",
+            "nameEn": "Ritikal (Mannerist Period)",
+            "nameHi": "रीतिकाल",
+            "aliases": ["ritikal", "riti kaal", "shringar kaal"],
+            "objectives": ["Distinguish ritibaddh, ritisiddh and ritimukt poets and their works"],
+            "children": [
+              {
+                "code": "ritikaal_parichay",
+                "level": "topic",
+                "nameEn": "Naming, Background and Main Trends",
+                "nameHi": "रीतिकाल: नामकरण, पृष्ठभूमि एवं प्रवृत्तियाँ",
+                "aliases": ["ritikal ki pravrittiyan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ritibaddh",
+                "level": "topic",
+                "nameEn": "Ritibaddh Poetry",
+                "nameHi": "रीतिबद्ध काव्य",
+                "aliases": ["ritibaddh kavi", "keshav", "chintamani"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ritisiddh",
+                "level": "topic",
+                "nameEn": "Ritisiddh Poetry",
+                "nameHi": "रीतिसिद्ध काव्य",
+                "aliases": ["ritisiddh kavi", "bihari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ritimukt",
+                "level": "topic",
+                "nameEn": "Ritimukt Poetry",
+                "nameHi": "रीतिमुक्त काव्य",
+                "aliases": ["ritimukt kavi", "ghananand", "bodha alam"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "adhunik_kaal_arambh",
+            "level": "chapter",
+            "nameEn": "Modern Period: Renaissance and Rise of Khari Boli Prose",
+            "nameHi": "आधुनिक काल: नवजागरण एवं खड़ी बोली गद्य का उद्भव",
+            "aliases": ["adhunik kaal", "navjagran", "khadi boli gadya"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "navjagaran",
+                "level": "topic",
+                "nameEn": "Hindi Renaissance (Navjagaran)",
+                "nameHi": "नवजागरण",
+                "aliases": ["navjagran", "hindi renaissance"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "khadi_boli_gadya",
+                "level": "topic",
+                "nameEn": "Origin of Khari Boli Prose",
+                "nameHi": "हिन्दी (खड़ी बोली) गद्य का उद्भव",
+                "aliases": ["fort william college", "khadi boli gadya ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhartendu_gadyakar",
+                "level": "topic",
+                "nameEn": "Prose Writers of the Bharatendu Era",
+                "nameHi": "भारतेंदुयुगीन गद्यकारों का योगदान",
+                "aliases": ["bhartendu mandal", "bhartendu yug gadya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhartendu_patrakarita",
+                "level": "topic",
+                "nameEn": "Journalism of the Bharatendu Era",
+                "nameHi": "भारतेंदुयुगीन पत्रकारिता",
+                "aliases": ["hindi patrakarita", "udant martand"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "adhunik_kavita",
+            "level": "chapter",
+            "nameEn": "Development of Modern Hindi Poetry",
+            "nameHi": "आधुनिक हिन्दी कविता का विकास",
+            "aliases": ["adhunik kavita", "chhayavad", "pragativad prayogvad"],
+            "objectives": ["Trace the trends, poets and works of each phase of modern Hindi poetry"],
+            "children": [
+              {
+                "code": "bhartendu_yug",
+                "level": "topic",
+                "nameEn": "Bharatendu Era",
+                "nameHi": "भारतेंदु युग",
+                "aliases": ["bhartendu yug kavita"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dwivedi_yug",
+                "level": "topic",
+                "nameEn": "Dwivedi Era",
+                "nameHi": "द्विवेदी युग",
+                "aliases": ["dwivedi yug", "jagran sudhar kaal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chhayavad",
+                "level": "topic",
+                "nameEn": "Chhayavad (Hindi Romanticism)",
+                "nameHi": "छायावाद",
+                "aliases": ["chhayavad", "prasad pant nirala mahadevi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uttar_chhayavad",
+                "level": "topic",
+                "nameEn": "Post-Chhayavad Poetry",
+                "nameHi": "छायावादोत्तर काव्य",
+                "aliases": ["halavad", "rashtriya sanskritik kavya", "chhayavadottar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pragativad",
+                "level": "topic",
+                "nameEn": "Pragativad (Progressivism)",
+                "nameHi": "प्रगतिवाद",
+                "aliases": ["pragativad", "pragatishil kavita"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "prayogvad",
+                "level": "topic",
+                "nameEn": "Prayogvad (Experimentalism)",
+                "nameHi": "प्रयोगवाद",
+                "aliases": ["prayogvad", "tar saptak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nayi_kavita",
+                "level": "topic",
+                "nameEn": "Nayi Kavita (New Poetry)",
+                "nameHi": "नयी कविता",
+                "aliases": ["nai kavita", "nayi kavita"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "samkalin_kavita",
+                "level": "topic",
+                "nameEn": "Contemporary Poetry",
+                "nameHi": "समकालीन कविता",
+                "aliases": ["samkalin kavita", "saathottari kavita"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "gadya_vidhayen",
+            "level": "chapter",
+            "nameEn": "Development of Prose Genres",
+            "nameHi": "गद्य की विविध विधाओं का विकास",
+            "aliases": ["gadya vidhayen", "hindi kahani upanyas ka vikas", "gadya sahitya"],
+            "objectives": ["Trace the main trends, writers and works of each Hindi prose genre"],
+            "children": [
+              {
+                "code": "kahani",
+                "level": "topic",
+                "nameEn": "Short Story",
+                "nameHi": "कहानी",
+                "aliases": ["hindi kahani ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "upanyas",
+                "level": "topic",
+                "nameEn": "Novel",
+                "nameHi": "उपन्यास",
+                "aliases": ["hindi upanyas ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "natak",
+                "level": "topic",
+                "nameEn": "Drama",
+                "nameHi": "नाटक",
+                "aliases": ["hindi natak ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ekanki",
+                "level": "topic",
+                "nameEn": "One-act Play",
+                "nameHi": "एकांकी",
+                "aliases": ["ekanki ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nibandh",
+                "level": "topic",
+                "nameEn": "Essay",
+                "nameHi": "निबंध",
+                "aliases": ["hindi nibandh ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aatmakatha",
+                "level": "topic",
+                "nameEn": "Autobiography",
+                "nameHi": "आत्मकथा",
+                "aliases": ["atmakatha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jeevani",
+                "level": "topic",
+                "nameEn": "Biography",
+                "nameHi": "जीवनी",
+                "aliases": ["jivani"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "yatravritt",
+                "level": "topic",
+                "nameEn": "Travelogue",
+                "nameHi": "यात्रावृत्तांत",
+                "aliases": ["yatra vritant", "yatra sahitya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sansmaran_rekhachitra",
+                "level": "topic",
+                "nameEn": "Memoir and Sketch",
+                "nameHi": "संस्मरण एवं रेखाचित्र",
+                "aliases": ["sansmaran", "rekhachitra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alochana",
+                "level": "topic",
+                "nameEn": "Hindi Criticism",
+                "nameHi": "हिन्दी आलोचना",
+                "aliases": ["hindi alochana", "aalochana ka vikas"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "hindi_bhasha",
+        "level": "unit",
+        "nameEn": "Hindi Language: Origin, Dialects and Script",
+        "nameHi": "हिन्दी भाषा: उद्भव, बोलियाँ एवं लिपि",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "hindi_udbhav",
+            "level": "chapter",
+            "nameEn": "Origin and Development of Hindi",
+            "nameHi": "हिन्दी भाषा का उद्भव और विकास",
+            "aliases": ["hindi ka udbhav", "hindi bhasha ka vikas", "origin of hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "arya_bhasha_kram",
+                "level": "topic",
+                "nameEn": "Indo-Aryan Languages: Sanskrit, Pali, Prakrit, Apabhramsha",
+                "nameHi": "भारतीय आर्यभाषाएँ (संस्कृत, पालि, प्राकृत, अपभ्रंश)",
+                "aliases": ["arya bhasha", "pali prakrit apbhransh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "apabhransh_se_hindi",
+                "level": "topic",
+                "nameEn": "From Apabhramsha and Avahattha to Old Hindi",
+                "nameHi": "अपभ्रंश, अवहट्ठ एवं पुरानी हिन्दी",
+                "aliases": ["avahatth", "purani hindi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hindi_vikas_charan",
+                "level": "topic",
+                "nameEn": "Stages of Hindi: Early, Medieval and Modern",
+                "nameHi": "हिन्दी के विकास के चरण",
+                "aliases": ["adikalin hindi", "madhyakalin hindi", "adhunik hindi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "hindi_boliyan",
+            "level": "chapter",
+            "nameEn": "Hindi and its Dialects",
+            "nameHi": "हिन्दी एवं उसकी बोलियाँ",
+            "aliases": ["hindi ki boliyan", "upbhasha", "dialects of hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "paschimi_hindi",
+                "level": "topic",
+                "nameEn": "Western Hindi: Khari Boli, Braj, Haryanvi, Bundeli, Kannauji",
+                "nameHi": "पश्चिमी हिन्दी",
+                "aliases": ["khadi boli", "braj bhasha", "bundeli"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "purvi_hindi",
+                "level": "topic",
+                "nameEn": "Eastern Hindi: Awadhi, Bagheli, Chhattisgarhi",
+                "nameHi": "पूर्वी हिन्दी",
+                "aliases": ["awadhi", "bagheli", "chhattisgarhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rajasthani",
+                "level": "topic",
+                "nameEn": "Rajasthani and its Main Dialects",
+                "nameHi": "राजस्थानी की प्रमुख बोलियाँ",
+                "aliases": ["marwari", "dhundhari", "mewati", "hadoti", "mewari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bihari_hindi",
+                "level": "topic",
+                "nameEn": "Bihari: Bhojpuri, Magahi, Maithili",
+                "nameHi": "बिहारी (भोजपुरी, मगही, मैथिली)",
+                "aliases": ["bhojpuri", "magahi", "maithili"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pahadi_hindi",
+                "level": "topic",
+                "nameEn": "Pahari: Garhwali, Kumaoni",
+                "nameHi": "पहाड़ी (गढ़वाली, कुमाऊँनी)",
+                "aliases": ["garhwali", "kumaoni"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "rajbhasha",
+            "level": "chapter",
+            "nameEn": "Hindi as Official Language",
+            "nameHi": "राजभाषा हिन्दी",
+            "aliases": ["rajbhasha", "official language hindi", "rashtrabhasha"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "samvaidhanik_pravdhan",
+                "level": "topic",
+                "nameEn": "Constitutional Provisions (Articles 343-351)",
+                "nameHi": "राजभाषा संबंधी संवैधानिक प्रावधान",
+                "aliases": ["anuchchhed 343", "article 343 351"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rajbhasha_adhiniyam",
+                "level": "topic",
+                "nameEn": "Official Languages Act and Rules",
+                "nameHi": "राजभाषा अधिनियम एवं नियम",
+                "aliases": ["rajbhasha adhiniyam 1963"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hindi_ke_rup",
+                "level": "topic",
+                "nameEn": "Roles of Hindi: National, Official and Link Language",
+                "nameHi": "हिन्दी के विविध रूप (राष्ट्रभाषा, राजभाषा, संपर्क भाषा)",
+                "aliases": ["rashtrabhasha rajbhasha", "sampark bhasha"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "devanagari",
+            "level": "chapter",
+            "nameEn": "Devanagari Script",
+            "nameHi": "देवनागरी लिपि",
+            "aliases": ["devnagari lipi", "devanagari script", "lipi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "lipi_vikas",
+                "level": "topic",
+                "nameEn": "Origin and Development of Devanagari",
+                "nameHi": "देवनागरी लिपि का उद्भव एवं विकास",
+                "aliases": ["brahmi lipi", "lipi ka vikas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lipi_visheshtayen",
+                "level": "topic",
+                "nameEn": "Features and Limitations of Devanagari",
+                "nameHi": "देवनागरी की विशेषताएँ एवं सीमाएँ",
+                "aliases": ["devanagari ki visheshtayen"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "manak_swaroop",
+                "level": "topic",
+                "nameEn": "Standard Form of Devanagari",
+                "nameHi": "देवनागरी लिपि का मानक स्वरूप",
+                "aliases": ["manakikaran", "manak devanagari"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "nirdharit_path",
+        "level": "unit",
+        "nameEn": "Prescribed Literary Texts",
+        "nameHi": "निर्धारित पाठ (साहित्यिक कृतियाँ)",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "madhyakalin_kavya",
+            "level": "chapter",
+            "nameEn": "Medieval Poetry",
+            "nameHi": "मध्यकालीन काव्य",
+            "aliases": ["madhyakalin kavya", "bhakti riti kavya path"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "kabir_granthavali",
+                "level": "topic",
+                "nameEn": "Kabir Granthavali: Sakhi and Pad",
+                "nameHi": "कबीर ग्रंथावली (साखी एवं पद)",
+                "aliases": ["kabir granthavali", "kabir sakhi", "kabir ke pad", "shyamsundar das"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jayasi_nagmati_viyog",
+                "level": "topic",
+                "nameEn": "Jayasi Granthavali: Nagmati Viyog Khand",
+                "nameHi": "जायसी ग्रंथावली: नागमती वियोग खंड",
+                "aliases": ["nagmati viyog khand", "padmavat", "jayasi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ramcharitmanas_balkand",
+                "level": "topic",
+                "nameEn": "Ramcharitmanas: Balkand",
+                "nameHi": "रामचरितमानस: बालकांड",
+                "aliases": ["balkand", "tulsidas ramcharitmanas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhramargeet_saar",
+                "level": "topic",
+                "nameEn": "Bhramargeet Saar (Surdas)",
+                "nameHi": "भ्रमरगीत सार (सूरदास)",
+                "aliases": ["bhramar geet", "surdas pad", "bhramargeet"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "meera_padavali",
+                "level": "topic",
+                "nameEn": "Meera Padavali",
+                "nameHi": "मीराँ पदावली",
+                "aliases": ["meera ke pad", "meerabai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bihari_ratnakar",
+                "level": "topic",
+                "nameEn": "Bihari Ratnakar: Dohe",
+                "nameHi": "बिहारी रत्नाकर (दोहे)",
+                "aliases": ["bihari satsai", "bihari ke dohe"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "veer_satsai",
+                "level": "topic",
+                "nameEn": "Veer Satsai (Suryamall Misran)",
+                "nameHi": "वीर सतसई (सूर्यमल्ल मीसण)",
+                "aliases": ["veer satsai", "suryamal misran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ghananand_kavitt",
+                "level": "topic",
+                "nameEn": "Ghananand Kavitt",
+                "nameHi": "घनानंद कवित्त",
+                "aliases": ["ghananand", "ghanand kavitt"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "adhunik_kavya",
+            "level": "chapter",
+            "nameEn": "Modern Poetry",
+            "nameHi": "आधुनिक काव्य",
+            "aliases": ["adhunik kavya path", "khand kavya"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "saket_navam_sarg",
+                "level": "topic",
+                "nameEn": "Saket: Canto IX (Maithilisharan Gupt)",
+                "nameHi": "साकेत: नवम सर्ग (मैथिलीशरण गुप्त)",
+                "aliases": ["saket", "urmila viraha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kamayani_shraddha_sarg",
+                "level": "topic",
+                "nameEn": "Kamayani: Shraddha Canto (Jaishankar Prasad)",
+                "nameHi": "कामायनी: श्रद्धा सर्ग (जयशंकर प्रसाद)",
+                "aliases": ["kamayani", "shraddha sarg"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ram_ki_shaktipuja",
+                "level": "topic",
+                "nameEn": "Ram ki Shaktipuja (Nirala)",
+                "nameHi": "राम की शक्तिपूजा (निराला)",
+                "aliases": ["shakti puja", "nirala"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kurukshetra_chhatha_sarg",
+                "level": "topic",
+                "nameEn": "Kurukshetra: Canto VI (Dinkar)",
+                "nameHi": "कुरुक्षेत्र: छठा सर्ग (रामधारी सिंह दिनकर)",
+                "aliases": ["kurukshetra", "dinkar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "nibandh_upanyas",
+            "level": "chapter",
+            "nameEn": "Essays and Novels",
+            "nameHi": "निबंध एवं उपन्यास",
+            "aliases": ["nirdharit upanyas", "nirdharit nibandh"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "chintamani",
+                "level": "topic",
+                "nameEn": "Chintamani Part 1 (Ramchandra Shukla): Utsah, Shraddha aur Bhakti, Lobh aur Priti",
+                "nameHi": "चिंतामणि भाग-1 (उत्साह, श्रद्धा और भक्ति, लोभ और प्रीति)",
+                "aliases": ["chintamani", "ramchandra shukla nibandh", "utsah nibandh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "godan",
+                "level": "topic",
+                "nameEn": "Godan (Premchand)",
+                "nameHi": "गोदान (प्रेमचंद)",
+                "aliases": ["godan", "hori dhaniya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aapka_banti",
+                "level": "topic",
+                "nameEn": "Aapka Bunty (Mannu Bhandari)",
+                "nameHi": "आपका बंटी (मन्नू भंडारी)",
+                "aliases": ["aapka banti", "aapka bunty"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kahaniyan",
+            "level": "chapter",
+            "nameEn": "Prescribed Short Stories",
+            "nameHi": "निर्धारित कहानियाँ",
+            "aliases": ["nirdharit kahaniyan", "hindi kahaniyan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "usne_kaha_tha",
+                "level": "topic",
+                "nameEn": "Usne Kaha Tha (Chandradhar Sharma Guleri)",
+                "nameHi": "उसने कहा था (चंद्रधर शर्मा गुलेरी)",
+                "aliases": ["usne kaha tha", "guleri"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "poos_ki_raat",
+                "level": "topic",
+                "nameEn": "Poos ki Raat (Premchand)",
+                "nameHi": "पूस की रात (प्रेमचंद)",
+                "aliases": ["poos ki raat", "halku"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kafan",
+                "level": "topic",
+                "nameEn": "Kafan (Premchand)",
+                "nameHi": "कफ़न (प्रेमचंद)",
+                "aliases": ["kafan", "ghisu madhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "puraskar",
+                "level": "topic",
+                "nameEn": "Puraskar (Jaishankar Prasad)",
+                "nameHi": "पुरस्कार (जयशंकर प्रसाद)",
+                "aliases": ["puraskar kahani"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "yahi_sach_hai",
+                "level": "topic",
+                "nameEn": "Yahi Sach Hai (Mannu Bhandari)",
+                "nameHi": "यही सच है (मन्नू भंडारी)",
+                "aliases": ["yahi sach hai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gangrene_roz",
+                "level": "topic",
+                "nameEn": "Gangrene / Roz (Agyeya)",
+                "nameHi": "गैंग्रीन/रोज़ (अज्ञेय)",
+                "aliases": ["gangrene", "roz agyeya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gadal",
+                "level": "topic",
+                "nameEn": "Gadal (Rangeya Raghav)",
+                "nameHi": "गदल (रांगेय राघव)",
+                "aliases": ["gadal", "rangeya raghav"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "natak_path",
+            "level": "chapter",
+            "nameEn": "Prescribed Plays",
+            "nameHi": "निर्धारित नाटक",
+            "aliases": ["nirdharit natak", "hindi natak path"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "chandragupt",
+                "level": "topic",
+                "nameEn": "Chandragupt (Jaishankar Prasad)",
+                "nameHi": "चन्द्रगुप्त (जयशंकर प्रसाद)",
+                "aliases": ["chandragupt natak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ashadh_ka_ek_din",
+                "level": "topic",
+                "nameEn": "Ashadh ka Ek Din (Mohan Rakesh)",
+                "nameHi": "आषाढ़ का एक दिन (मोहन राकेश)",
+                "aliases": ["ashadh ka ek din", "kalidas mallika"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "pathyapustak",
+        "level": "unit",
+        "nameEn": "Textbook Lessons: Kshitij, Kritika, Sparsh and Sanchayan",
+        "nameHi": "पाठ्यपुस्तक के पाठ (क्षितिज, कृतिका, स्पर्श, संचयन)",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "kshitij_2_kavya",
+            "level": "chapter",
+            "nameEn": "Kshitij Part 2: Poetry Section",
+            "nameHi": "क्षितिज भाग-2: काव्य खंड",
+            "aliases": ["kshitij kavya khand", "kshitij poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "surdas_pad",
+                "level": "topic",
+                "nameEn": "Surdas: Pad",
+                "nameHi": "सूरदास: पद",
+                "aliases": ["udho tum ho ati badbhagi", "surdas ke pad"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ram_lakshman_parshuram_samvad",
+                "level": "topic",
+                "nameEn": "Tulsidas: Ram-Lakshman-Parshuram Samvad",
+                "nameHi": "तुलसीदास: राम-लक्ष्मण-परशुराम संवाद",
+                "aliases": ["parshuram samvad", "tulsidas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aatmakathya",
+                "level": "topic",
+                "nameEn": "Jaishankar Prasad: Aatmakathya",
+                "nameHi": "जयशंकर प्रसाद: आत्मकथ्य",
+                "aliases": ["atmakathya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "utsah_at_nahin_rahi",
+                "level": "topic",
+                "nameEn": "Nirala: Utsah; At Nahin Rahi Hai",
+                "nameHi": "सूर्यकांत त्रिपाठी 'निराला': उत्साह, अट नहीं रही है",
+                "aliases": ["utsah", "at nahi rahi hai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "danturit_muskan_fasal",
+                "level": "topic",
+                "nameEn": "Nagarjun: Yah Danturit Muskan; Fasal",
+                "nameHi": "नागार्जुन: यह दंतुरित मुसकान, फसल",
+                "aliases": ["yah danturit muskan", "fasal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sangatkar",
+                "level": "topic",
+                "nameEn": "Manglesh Dabral: Sangatkar",
+                "nameHi": "मंगलेश डबराल: संगतकार",
+                "aliases": ["sangatkar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kshitij_2_gadya",
+            "level": "chapter",
+            "nameEn": "Kshitij Part 2: Prose Section",
+            "nameHi": "क्षितिज भाग-2: गद्य खंड",
+            "aliases": ["kshitij gadya khand", "kshitij prose"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "netaji_ka_chashma",
+                "level": "topic",
+                "nameEn": "Swayam Prakash: Netaji ka Chashma",
+                "nameHi": "स्वयं प्रकाश: नेताजी का चश्मा",
+                "aliases": ["netaji ka chashma"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "balgobin_bhagat",
+                "level": "topic",
+                "nameEn": "Ramvriksh Benipuri: Balgobin Bhagat",
+                "nameHi": "रामवृक्ष बेनीपुरी: बालगोबिन भगत",
+                "aliases": ["balgobin bhagat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lakhnavi_andaz",
+                "level": "topic",
+                "nameEn": "Yashpal: Lakhnavi Andaz",
+                "nameHi": "यशपाल: लखनवी अंदाज़",
+                "aliases": ["lakhnavi andaz"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ek_kahani_yah_bhi",
+                "level": "topic",
+                "nameEn": "Mannu Bhandari: Ek Kahani Yah Bhi",
+                "nameHi": "मन्नू भंडारी: एक कहानी यह भी",
+                "aliases": ["ek kahani yah bhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "naubatkhane_mein_ibadat",
+                "level": "topic",
+                "nameEn": "Yatindra Mishra: Naubatkhane mein Ibadat",
+                "nameHi": "यतींद्र मिश्र: नौबतखाने में इबादत",
+                "aliases": ["naubatkhane mein ibadat", "bismillah khan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sanskriti",
+                "level": "topic",
+                "nameEn": "Bhadant Anand Kausalyayan: Sanskriti",
+                "nameHi": "भदंत आनंद कौसल्यायन: संस्कृति",
+                "aliases": ["sanskriti path"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "kritika_2",
+            "level": "chapter",
+            "nameEn": "Kritika Part 2 (Supplementary Reader)",
+            "nameHi": "कृतिका भाग-2",
+            "aliases": ["kritika", "kritika bhag 2"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "mata_ka_anchal",
+                "level": "topic",
+                "nameEn": "Shivpujan Sahay: Mata ka Anchal",
+                "nameHi": "शिवपूजन सहाय: माता का अँचल",
+                "aliases": ["mata ka anchal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sana_sana_hath_jodi",
+                "level": "topic",
+                "nameEn": "Madhu Kankariya: Sana-Sana Hath Jodi",
+                "nameHi": "मधु कांकरिया: साना-साना हाथ जोड़ि",
+                "aliases": ["sana sana hath jodi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "main_kyon_likhta_hun",
+                "level": "topic",
+                "nameEn": "Agyeya: Main Kyon Likhta Hun?",
+                "nameHi": "अज्ञेय: मैं क्यों लिखता हूँ?",
+                "aliases": ["main kyon likhta hoon"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sparsh_2_kavya",
+            "level": "chapter",
+            "nameEn": "Sparsh Part 2: Poetry Section",
+            "nameHi": "स्पर्श भाग-2: पद्य खंड",
+            "aliases": ["sparsh kavya khand", "sparsh poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "kabir_sakhi",
+                "level": "topic",
+                "nameEn": "Kabir: Sakhi",
+                "nameHi": "कबीर: साखी",
+                "aliases": ["kabir ki sakhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "meera_pad",
+                "level": "topic",
+                "nameEn": "Meera: Pad",
+                "nameHi": "मीरा: पद",
+                "aliases": ["meera ke pad"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "manushyata",
+                "level": "topic",
+                "nameEn": "Maithilisharan Gupt: Manushyata",
+                "nameHi": "मैथिलीशरण गुप्त: मनुष्यता",
+                "aliases": ["manushyata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "parvat_pradesh_mein_pavas",
+                "level": "topic",
+                "nameEn": "Sumitranandan Pant: Parvat Pradesh mein Pavas",
+                "nameHi": "सुमित्रानंदन पंत: पर्वत प्रदेश में पावस",
+                "aliases": ["parvat pradesh mein pavas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "top",
+                "level": "topic",
+                "nameEn": "Viren Dangwal: Top",
+                "nameHi": "वीरेन डंगवाल: तोप",
+                "aliases": ["top kavita"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kar_chale_hum_fida",
+                "level": "topic",
+                "nameEn": "Kaifi Azmi: Kar Chale Hum Fida",
+                "nameHi": "कैफ़ी आज़मी: कर चले हम फ़िदा",
+                "aliases": ["kar chale hum fida"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aatmatran",
+                "level": "topic",
+                "nameEn": "Rabindranath Tagore: Aatmatran",
+                "nameHi": "रवींद्रनाथ ठाकुर: आत्मत्राण",
+                "aliases": ["atmatran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sparsh_2_gadya",
+            "level": "chapter",
+            "nameEn": "Sparsh Part 2: Prose Section",
+            "nameHi": "स्पर्श भाग-2: गद्य खंड",
+            "aliases": ["sparsh gadya khand", "sparsh prose"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "bade_bhai_sahab",
+                "level": "topic",
+                "nameEn": "Premchand: Bade Bhai Sahab",
+                "nameHi": "प्रेमचंद: बड़े भाई साहब",
+                "aliases": ["bade bhai sahab"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "diary_ka_ek_panna",
+                "level": "topic",
+                "nameEn": "Sitaram Seksaria: Diary ka Ek Panna",
+                "nameHi": "सीताराम सेकसरिया: डायरी का एक पन्ना",
+                "aliases": ["diary ka ek panna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tatara_vamiro_katha",
+                "level": "topic",
+                "nameEn": "Leeladhar Mandloi: Tatara-Vamiro Katha",
+                "nameHi": "लीलाधर मंडलोई: तताँरा-वामीरो कथा",
+                "aliases": ["tatara vamiro"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teesri_kasam_ke_shilpkar",
+                "level": "topic",
+                "nameEn": "Prahlad Agrawal: Teesri Kasam ke Shilpkar Shailendra",
+                "nameHi": "प्रहलाद अग्रवाल: तीसरी कसम के शिल्पकार शैलेंद्र",
+                "aliases": ["teesri kasam", "shailendra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ab_kahan_doosre_ke_dukh_se",
+                "level": "topic",
+                "nameEn": "Nida Fazli: Ab Kahan Doosre ke Dukh se Dukhi Hone Wale",
+                "nameHi": "निदा फ़ाज़ली: अब कहाँ दूसरे के दुख से दुखी होने वाले",
+                "aliases": ["ab kahan dusre ke dukh se dukhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "patjhar_mein_tooti_pattiyan",
+                "level": "topic",
+                "nameEn": "Ravindra Kelekar: Patjhar mein Tooti Pattiyan",
+                "nameHi": "रवींद्र केलेकर: पतझर में टूटी पत्तियाँ",
+                "aliases": ["patjhar mein tooti pattiyan", "girni ka sona", "zen ki den"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kartoos",
+                "level": "topic",
+                "nameEn": "Habib Tanvir: Kartoos (One-act Play)",
+                "nameHi": "हबीब तनवीर: कारतूस (एकांकी)",
+                "aliases": ["kartoos ekanki"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sanchayan_2",
+            "level": "chapter",
+            "nameEn": "Sanchayan Part 2 (Supplementary Reader)",
+            "nameHi": "संचयन भाग-2",
+            "aliases": ["sanchayan", "sanchayan bhag 2"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "harihar_kaka",
+                "level": "topic",
+                "nameEn": "Mithileshwar: Harihar Kaka",
+                "nameHi": "मिथिलेश्वर: हरिहर काका",
+                "aliases": ["harihar kaka"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sapnon_ke_se_din",
+                "level": "topic",
+                "nameEn": "Gurdial Singh: Sapnon ke-se Din",
+                "nameHi": "गुरदयाल सिंह: सपनों के-से दिन",
+                "aliases": ["sapno ke se din"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "topi_shukla",
+                "level": "topic",
+                "nameEn": "Rahi Masoom Raza: Topi Shukla",
+                "nameHi": "राही मासूम रज़ा: टोपी शुक्ला",
+                "aliases": ["topi shukla"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "hindi_shikshan",
+        "level": "unit",
+        "nameEn": "Hindi Language Teaching (Pedagogy)",
+        "nameHi": "हिन्दी शिक्षण एवं शिक्षण विधियाँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "bhasha_shikshan_siddhant",
+            "level": "chapter",
+            "nameEn": "Principles, Approaches and Methods of Language Teaching",
+            "nameHi": "भाषा शिक्षण के सिद्धांत, उपागम एवं विधियाँ",
+            "aliases": ["bhasha shikshan vidhi", "hindi shikshan vidhiyan", "language pedagogy hindi"],
+            "objectives": [
+              "Apply principles, approaches and methods of teaching Hindi as a first or second language"
+            ],
+            "children": [
+              {
+                "code": "shikshan_siddhant",
+                "level": "topic",
+                "nameEn": "Principles and Maxims of Language Teaching",
+                "nameHi": "भाषा शिक्षण के सिद्धांत एवं सूत्र",
+                "aliases": ["shikshan sutra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shikshan_upagam",
+                "level": "topic",
+                "nameEn": "Approaches to Language Teaching",
+                "nameHi": "भाषा शिक्षण के उपागम",
+                "aliases": ["sanrachnatmak upagam", "samprekshanatmak upagam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shikshan_vidhiyan",
+                "level": "topic",
+                "nameEn": "Methods of Teaching Hindi",
+                "nameHi": "हिन्दी शिक्षण की विधियाँ",
+                "aliases": ["pratyaksh vidhi", "vyakaran anuvad vidhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhasha_dakshata",
+                "level": "topic",
+                "nameEn": "Developing Language Proficiency",
+                "nameHi": "भाषा दक्षता का विकास",
+                "aliases": ["bhashayi dakshata", "bhasha arjan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shikshan_chunautiyan",
+                "level": "topic",
+                "nameEn": "Challenges in Teaching Hindi",
+                "nameHi": "हिन्दी भाषा शिक्षण में चुनौतियाँ",
+                "aliases": ["bahubhashi kaksha", "chunautiyan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "bhashayi_kaushal",
+            "level": "chapter",
+            "nameEn": "Developing Language Skills",
+            "nameHi": "भाषायी कौशलों का विकास",
+            "aliases": ["bhashayi kaushal", "sunna bolna padhna likhna", "LSRW hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "shravan",
+                "level": "topic",
+                "nameEn": "Listening",
+                "nameHi": "श्रवण कौशल (सुनना)",
+                "aliases": ["shravan kaushal", "sunna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uchcharan",
+                "level": "topic",
+                "nameEn": "Pronunciation",
+                "nameHi": "उच्चारण शिक्षण",
+                "aliases": ["uchcharan dosh", "shuddh uchcharan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maukhik_abhivyakti",
+                "level": "topic",
+                "nameEn": "Speaking and Oral Expression",
+                "nameHi": "मौखिक अभिव्यक्ति (बोलना)",
+                "aliases": ["bolna", "maukhik abhivyakti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pathan",
+                "level": "topic",
+                "nameEn": "Reading: Loud and Silent",
+                "nameHi": "वाचन (सस्वर एवं मौन)",
+                "aliases": ["maun vachan", "saswar vachan", "padhna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vartani_shikshan",
+                "level": "topic",
+                "nameEn": "Teaching Spelling",
+                "nameHi": "वर्तनी शिक्षण",
+                "aliases": ["vartani shikshan", "vartani dosh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "likhit_abhivyakti",
+                "level": "topic",
+                "nameEn": "Writing and Written Expression",
+                "nameHi": "लिखित अभिव्यक्ति (लेखन)",
+                "aliases": ["lekhan kaushal", "likhna"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "vidha_shikshan",
+            "level": "chapter",
+            "nameEn": "Teaching Hindi Genres and Lesson Planning",
+            "nameHi": "हिन्दी की विधाओं का शिक्षण एवं पाठ योजना",
+            "aliases": ["gadya shikshan", "padya shikshan", "path yojana"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "gadya_shikshan",
+                "level": "topic",
+                "nameEn": "Teaching Prose",
+                "nameHi": "गद्य शिक्षण",
+                "aliases": ["gadya shikshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "padya_shikshan",
+                "level": "topic",
+                "nameEn": "Teaching Poetry",
+                "nameHi": "पद्य (काव्य) शिक्षण",
+                "aliases": ["kavya shikshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vyakaran_shikshan",
+                "level": "topic",
+                "nameEn": "Teaching Grammar",
+                "nameHi": "व्याकरण शिक्षण",
+                "aliases": ["vyakaran shikshan vidhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rachna_shikshan",
+                "level": "topic",
+                "nameEn": "Teaching Composition",
+                "nameHi": "रचना शिक्षण",
+                "aliases": ["rachna shikshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "natak_shikshan",
+                "level": "topic",
+                "nameEn": "Teaching Drama",
+                "nameHi": "नाटक शिक्षण",
+                "aliases": ["natak shikshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "path_yojana",
+                "level": "topic",
+                "nameEn": "Unit and Daily Lesson Plans",
+                "nameHi": "पाठ योजना (इकाई एवं दैनिक)",
+                "aliases": ["path yojana", "lesson plan hindi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "shikshan_samagri",
+            "level": "chapter",
+            "nameEn": "Teaching-Learning Materials and Resources",
+            "nameHi": "शिक्षण अधिगम सामग्री एवं संसाधन",
+            "aliases": ["shikshan adhigam samagri", "TLM hindi", "sahayak samagri"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "pathya_pustak",
+                "level": "topic",
+                "nameEn": "Textbooks",
+                "nameHi": "पाठ्य पुस्तक",
+                "aliases": ["pathya pustak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sahayak_samagri",
+                "level": "topic",
+                "nameEn": "Teaching Aids",
+                "nameHi": "सहायक शिक्षण सामग्री (दृश्य-श्रव्य)",
+                "aliases": ["drishya shravya samagri"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bahu_madhyam",
+                "level": "topic",
+                "nameEn": "Multimedia and Other Resources",
+                "nameHi": "बहु-माध्यम एवं शिक्षण के अन्य संसाधन",
+                "aliases": ["bahu madhyam", "multimedia"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "bhasha_mulyankan",
+            "level": "chapter",
+            "nameEn": "Evaluation in Language Teaching",
+            "nameHi": "भाषा शिक्षण में मूल्यांकन",
+            "aliases": ["bhasha mulyankan", "satat evam vyapak mulyankan", "CCE hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "satat_samagra",
+                "level": "topic",
+                "nameEn": "Continuous and Comprehensive Evaluation",
+                "nameHi": "सतत एवं समग्र मूल्यांकन",
+                "aliases": ["CCE", "satat mulyankan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uplabdhi_parikshan",
+                "level": "topic",
+                "nameEn": "Constructing Achievement Tests",
+                "nameHi": "उपलब्धि परीक्षण का निर्माण",
+                "aliases": ["uplabdhi parikshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pathantargat_pathoparant",
+                "level": "topic",
+                "nameEn": "In-lesson and Post-lesson Evaluation",
+                "nameHi": "पाठान्तर्गत एवं पाठोपरांत मूल्यांकन",
+                "aliases": ["pathantargat mulyankan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "prashn_prakar",
+                "level": "topic",
+                "nameEn": "Types of Oral and Written Questions",
+                "nameHi": "मौखिक एवं लिखित प्रश्नों के प्रकार",
+                "aliases": ["prashno ke prakar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "nidan_upchar",
+            "level": "chapter",
+            "nameEn": "Diagnostic Testing and Remedial Teaching",
+            "nameHi": "निदानात्मक परीक्षण एवं उपचारात्मक शिक्षण",
+            "aliases": ["nidanatmak parikshan", "upcharatmak shikshan", "remedial teaching hindi"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "nidanatmak_parikshan",
+                "level": "topic",
+                "nameEn": "Diagnostic Testing",
+                "nameHi": "निदानात्मक परीक्षण",
+                "aliases": ["nidan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "upcharatmak_shikshan",
+                "level": "topic",
+                "nameEn": "Remedial Teaching",
+                "nameHi": "उपचारात्मक शिक्षण",
+                "aliases": ["upchar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhashayi_truti",
+                "level": "topic",
+                "nameEn": "Language Errors and Difficulties",
+                "nameHi": "भाषायी त्रुटियाँ एवं कठिनाइयाँ",
+                "aliases": ["bhashayi truti", "bhasha dosh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "shikshan_pratiman",
+            "level": "chapter",
+            "nameEn": "Instructional Strategies for Adolescent Learners",
+            "nameHi": "किशोर अधिगमकर्ता हेतु अनुदेशनात्मक रणनीतियाँ",
+            "aliases": ["shikshan pratiman", "teaching models", "anudeshnatmak ranneeti"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sampreshan_kaushal",
+                "level": "topic",
+                "nameEn": "Verbal and Non-verbal Classroom Communication",
+                "nameHi": "संप्रेषण कौशल एवं शाब्दिक-अशाब्दिक कक्षा संप्रेषण",
+                "aliases": ["sampreshan kaushal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shikshan_pratiman_model",
+                "level": "topic",
+                "nameEn": "Models of Teaching",
+                "nameHi": "शिक्षण प्रतिमान (अग्रिम संगठक, पृच्छा प्रशिक्षण, सामूहिक अन्वेषण, गैर-निर्देशात्मक)",
+                "aliases": ["agrim sangathak", "prichha prashikshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tlm_nirman",
+                "level": "topic",
+                "nameEn": "Preparing and Using Teaching-Learning Material",
+                "nameHi": "शिक्षण-अधिगम सामग्री का निर्माण एवं प्रयोग",
+                "aliases": ["TLM nirman"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sahkari_adhigam",
+                "level": "topic",
+                "nameEn": "Cooperative Learning",
+                "nameHi": "सहकारी अधिगम",
+                "aliases": ["sahkari adhigam"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ict_shikshan",
+            "level": "chapter",
+            "nameEn": "ICT in Teaching and Learning",
+            "nameHi": "शिक्षण अधिगम में संगणक एवं सूचना प्रौद्योगिकी",
+            "aliases": ["ICT", "e-learning", "sanganak shikshan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "ict_digital",
+                "level": "topic",
+                "nameEn": "ICT and Digital Learning",
+                "nameHi": "आई.सी.टी. का संप्रत्यय एवं डिजिटल अधिगम",
+                "aliases": ["digital adhigam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "e_adhigam",
+                "level": "topic",
+                "nameEn": "E-learning and Virtual Classroom",
+                "nameHi": "ई-अधिगम एवं वर्चुअल (आभासी) कक्षा-कक्ष",
+                "aliases": ["virtual classroom", "abhasi kaksha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "takniki_ekikaran",
+                "level": "topic",
+                "nameEn": "Technology Integration in Teaching and Assessment",
+                "nameHi": "शिक्षण-अधिगम एवं आकलन में प्रौद्योगिकी का एकीकरण",
+                "aliases": ["technology integration"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

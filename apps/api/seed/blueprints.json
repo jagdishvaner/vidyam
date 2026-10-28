@@ -1,0 +1,5383 @@
+[
+  {
+    "exam": "rpsc_2g_paper_1",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "राजस्थान का भौगोलिक, ऐतिहासिक, सांस्कृतिक एवं सामान्य ज्ञान (राजनीतिक एवं प्रशासनिक व्यवस्था सहित)",
+            "en": "Geographical, historical, cultural and general knowledge of Rajasthan (incl. polity and administration)"
+          },
+          "qtype": "mcq_single",
+          "count": 40,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["rajasthan_gk"]
+        },
+        {
+          "name": {
+            "hi": "राजस्थान की समसामयिक घटनाएँ",
+            "en": "Current affairs of Rajasthan"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["rajasthan_gk"]
+        },
+        {
+          "name": {
+            "hi": "विश्व एवं भारत का सामान्य ज्ञान (भूगोल, अर्थव्यवस्था, संविधान, विदेश नीति)",
+            "en": "General knowledge of World and India (geography, economy, constitution, foreign policy)"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["general_studies"]
+        },
+        {
+          "name": {
+            "hi": "शैक्षिक मनोविज्ञान",
+            "en": "Educational psychology"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["educational_psychology"]
+        }
+      ],
+      "durationMinutes": 120,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 100 बहुविकल्पीय प्रश्न हैं, कुल 200 अंक, समय दो घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 100 multiple-choice questions for 200 marks; time two hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_science",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: विज्ञान — माध्यमिक एवं उच्च माध्यमिक स्तर",
+            "en": "Part I: Science, secondary and senior secondary standard"
+          },
+          "qtype": "mcq_single",
+          "count": 90,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: विज्ञान — स्नातक स्तर",
+            "en": "Part II: Science, graduation standard"
+          },
+          "qtype": "mcq_single",
+          "count": 40,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: विज्ञान की शिक्षण विधियाँ",
+            "en": "Part III: Teaching methods of Science"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 2 घंटे 30 मिनट। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 2 hours 30 minutes. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_mathematics",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: गणित — माध्यमिक एवं उच्च माध्यमिक स्तर",
+            "en": "Part I: Mathematics, secondary and senior secondary standard"
+          },
+          "qtype": "mcq_single",
+          "count": 90,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: गणित — स्नातक स्तर",
+            "en": "Part II: Mathematics, graduation standard"
+          },
+          "qtype": "mcq_single",
+          "count": 40,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: गणित की शिक्षण विधियाँ",
+            "en": "Part III: Teaching methods of Mathematics"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 2 घंटे 30 मिनट। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 2 hours 30 minutes. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_social_science",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: सामाजिक विज्ञान — माध्यमिक एवं उच्च माध्यमिक स्तर",
+            "en": "Part I: Social Science, secondary and senior secondary standard"
+          },
+          "qtype": "mcq_single",
+          "count": 90,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: सामाजिक विज्ञान — स्नातक स्तर",
+            "en": "Part II: Social Science, graduation standard"
+          },
+          "qtype": "mcq_single",
+          "count": 40,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: सामाजिक विज्ञान की शिक्षण विधियाँ",
+            "en": "Part III: Teaching methods of Social Science"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 2 घंटे 30 मिनट। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 2 hours 30 minutes. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_hindi",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: हिन्दी — माध्यमिक एवं उच्च माध्यमिक स्तर",
+            "en": "Part I: Hindi, secondary and senior secondary standard"
+          },
+          "qtype": "mcq_single",
+          "count": 90,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: हिन्दी — स्नातक स्तर",
+            "en": "Part II: Hindi, graduation standard"
+          },
+          "qtype": "mcq_single",
+          "count": 40,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: हिन्दी की शिक्षण विधियाँ",
+            "en": "Part III: Teaching methods of Hindi"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 2 घंटे 30 मिनट। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 2 hours 30 minutes. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_english",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: अंग्रेज़ी — माध्यमिक एवं उच्च माध्यमिक स्तर",
+            "en": "Part I: English, secondary and senior secondary standard"
+          },
+          "qtype": "mcq_single",
+          "count": 90,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: अंग्रेज़ी — स्नातक स्तर",
+            "en": "Part II: English, graduation standard"
+          },
+          "qtype": "mcq_single",
+          "count": 40,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: अंग्रेज़ी की शिक्षण विधियाँ",
+            "en": "Part III: Teaching methods of English"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 2 घंटे 30 मिनट। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 2 hours 30 minutes. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_paper_1",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "राजस्थान का इतिहास एवं भारतीय इतिहास (भारतीय राष्ट्रीय आंदोलन)",
+            "en": "History of Rajasthan and Indian history (Indian national movement)"
+          },
+          "qtype": "mcq_single",
+          "count": 15,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["rajasthan_gk", "general_studies"]
+        },
+        {
+          "name": {
+            "hi": "मानसिक योग्यता, सांख्यिकी एवं गणित (माध्यमिक स्तर), भाषा योग्यता (हिन्दी, अंग्रेज़ी)",
+            "en": "Mental ability, statistics and mathematics (secondary level), language ability (Hindi, English)"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["general_studies"]
+        },
+        {
+          "name": {
+            "hi": "समसामयिक घटनाएँ (राजस्थान, भारत एवं अंतरराष्ट्रीय)",
+            "en": "Current affairs (Rajasthan, India and international)"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["rajasthan_gk", "general_studies"]
+        },
+        {
+          "name": {
+            "hi": "सामान्य विज्ञान, भारतीय राजव्यवस्था, राजस्थान का भूगोल",
+            "en": "General science, Indian polity, geography of Rajasthan"
+          },
+          "qtype": "mcq_single",
+          "count": 15,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["general_studies", "rajasthan_gk"]
+        },
+        {
+          "name": {
+            "hi": "शैक्षिक मनोविज्ञान, शैक्षिक प्रबंधन, राजस्थान में शैक्षिक परिदृश्य, राष्ट्रीय शिक्षा नीति 2020 एवं शिक्षा का अधिकार अधिनियम 2009",
+            "en": "Educational psychology, educational management, educational scenario in Rajasthan, NEP 2020 and RTE Act 2009"
+          },
+          "qtype": "mcq_single",
+          "count": 15,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["educational_psychology", "general_studies"]
+        }
+      ],
+      "durationMinutes": 90,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 75 बहुविकल्पीय प्रश्न हैं, कुल 150 अंक, समय 1 घंटा 30 मिनट। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 75 multiple-choice questions for 150 marks; time 1 hour 30 minutes. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_physics",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: भौतिक विज्ञान — उच्च माध्यमिक स्तर",
+            "en": "Part I: Physics, senior secondary level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: भौतिक विज्ञान — स्नातक स्तर",
+            "en": "Part II: Physics, graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: भौतिक विज्ञान — स्नातकोत्तर स्तर",
+            "en": "Part III: Physics, post-graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग IV: शैक्षिक मनोविज्ञान, शिक्षाशास्त्र, शिक्षण-अधिगम सामग्री, शिक्षण में कंप्यूटर एवं सूचना प्रौद्योगिकी",
+            "en": "Part IV: Educational psychology, pedagogy, teaching-learning material, ICT in teaching"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 3 hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_chemistry",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: रसायन विज्ञान — उच्च माध्यमिक स्तर",
+            "en": "Part I: Chemistry, senior secondary level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: रसायन विज्ञान — स्नातक स्तर",
+            "en": "Part II: Chemistry, graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: रसायन विज्ञान — स्नातकोत्तर स्तर",
+            "en": "Part III: Chemistry, post-graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग IV: शैक्षिक मनोविज्ञान, शिक्षाशास्त्र, शिक्षण-अधिगम सामग्री, शिक्षण में कंप्यूटर एवं सूचना प्रौद्योगिकी",
+            "en": "Part IV: Educational psychology, pedagogy, teaching-learning material, ICT in teaching"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 3 hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_biology",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: जीव विज्ञान — उच्च माध्यमिक स्तर",
+            "en": "Part I: Biology, senior secondary level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: जीव विज्ञान — स्नातक स्तर",
+            "en": "Part II: Biology, graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: जीव विज्ञान — स्नातकोत्तर स्तर",
+            "en": "Part III: Biology, post-graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग IV: शैक्षिक मनोविज्ञान, शिक्षाशास्त्र, शिक्षण-अधिगम सामग्री, शिक्षण में कंप्यूटर एवं सूचना प्रौद्योगिकी",
+            "en": "Part IV: Educational psychology, pedagogy, teaching-learning material, ICT in teaching"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 3 hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_mathematics",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: गणित — उच्च माध्यमिक स्तर",
+            "en": "Part I: Mathematics, senior secondary level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: गणित — स्नातक स्तर",
+            "en": "Part II: Mathematics, graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: गणित — स्नातकोत्तर स्तर",
+            "en": "Part III: Mathematics, post-graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग IV: शैक्षिक मनोविज्ञान, शिक्षाशास्त्र, शिक्षण-अधिगम सामग्री, शिक्षण में कंप्यूटर एवं सूचना प्रौद्योगिकी",
+            "en": "Part IV: Educational psychology, pedagogy, teaching-learning material, ICT in teaching"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 3 hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_hindi",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: हिन्दी — उच्च माध्यमिक स्तर",
+            "en": "Part I: Hindi, senior secondary level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: हिन्दी — स्नातक स्तर",
+            "en": "Part II: Hindi, graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: हिन्दी — स्नातकोत्तर स्तर",
+            "en": "Part III: Hindi, post-graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग IV: शैक्षिक मनोविज्ञान, शिक्षाशास्त्र, शिक्षण-अधिगम सामग्री, शिक्षण में कंप्यूटर एवं सूचना प्रौद्योगिकी",
+            "en": "Part IV: Educational psychology, pedagogy, teaching-learning material, ICT in teaching"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 3 hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_english",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भाग I: अंग्रेज़ी — उच्च माध्यमिक स्तर",
+            "en": "Part I: English, senior secondary level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग II: अंग्रेज़ी — स्नातक स्तर",
+            "en": "Part II: English, graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 55,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग III: अंग्रेज़ी — स्नातकोत्तर स्तर",
+            "en": "Part III: English, post-graduation level"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        },
+        {
+          "name": {
+            "hi": "भाग IV: शैक्षिक मनोविज्ञान, शिक्षाशास्त्र, शिक्षण-अधिगम सामग्री, शिक्षण में कंप्यूटर एवं सूचना प्रौद्योगिकी",
+            "en": "Part IV: Educational psychology, pedagogy, teaching-learning material, ICT in teaching"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। सभी प्रश्न अनिवार्य हैं और सभी के अंक समान (2) हैं। प्रत्येक प्रश्न के पाँच विकल्प हैं; केवल एक विकल्प सही है। यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प ('अनुत्तरित प्रश्न') भरें — प्रत्येक प्रश्न का कोई एक विकल्प भरना अनिवार्य है। प्रत्येक गलत उत्तर (एक से अधिक विकल्प भरना भी गलत उत्तर है) पर उस प्रश्न के निर्धारित अंकों का एक-तिहाई काटा जाएगा। किसी भी विकल्प को न भरने पर भी प्रति प्रश्न एक-तिहाई अंक काटे जाएँगे, और 10 प्रतिशत से अधिक प्रश्नों में कोई भी विकल्प न भरने वाला अभ्यर्थी अयोग्य घोषित किया जाएगा। ओएमआर शीट भरने के लिए 10 मिनट का अतिरिक्त समय दिया जाता है।",
+        "en": "The paper has 150 multiple-choice questions for 300 marks; time 3 hours. All questions are compulsory and carry equal marks (2 each). Each question has five options and only one is correct. If you do not wish to answer a question, fill the fifth option ('question not attempted'); filling one option for every question is compulsory. One-third of the marks of a question is deducted for each wrong answer (marking more than one option is a wrong answer). One-third is also deducted for a question where no option is filled, and a candidate who fills no option in more than 10% of the questions is disqualified. 10 extra minutes are given for filling the OMR sheet."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "reet_level_1",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बाल विकास एवं शिक्षण विधियाँ",
+            "en": "Child development and pedagogy"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["child_development"]
+        },
+        {
+          "name": {
+            "hi": "भाषा-I: हिन्दी",
+            "en": "Language I: Hindi"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "भाषा-II: अंग्रेज़ी",
+            "en": "Language II: English"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "गणित",
+            "en": "Mathematics"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "पर्यावरण अध्ययन",
+            "en": "Environmental studies"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["environmental_studies"]
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 150 अंक, समय 2 घंटे 30 मिनट। सभी खंड हल करने अनिवार्य हैं। प्रत्येक प्रश्न 1 अंक का है। गलत उत्तर के लिए कोई अंक नहीं काटा जाएगा। प्रत्येक प्रश्न के पाँच विकल्प हैं; यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प भरें — किसी भी विकल्प को न भरने पर उस प्रश्न के अंकों का एक-तिहाई काटा जाएगा। भाषा-I और भाषा-II अभ्यर्थी द्वारा चुनी गई भाषाएँ हैं (यहाँ हिन्दी एवं अंग्रेज़ी)।",
+        "en": "The paper has 150 multiple-choice questions for 150 marks; time 2 hours 30 minutes. All sections are compulsory. Each question carries 1 mark. No marks are deducted for wrong answers. Each question has five options; if you do not wish to answer a question, fill the fifth option — one-third of the question's marks is deducted if no option is filled. Language I and Language II are the languages chosen by the candidate (here Hindi and English)."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "reet_level_2_science_math",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बाल विकास एवं शिक्षण विधियाँ",
+            "en": "Child development and pedagogy"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["child_development"]
+        },
+        {
+          "name": {
+            "hi": "भाषा-I: हिन्दी",
+            "en": "Language I: Hindi"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "भाषा-II: अंग्रेज़ी",
+            "en": "Language II: English"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "गणित",
+            "en": "Mathematics"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "विज्ञान",
+            "en": "Science"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 150 अंक, समय 2 घंटे 30 मिनट। सभी खंड हल करने अनिवार्य हैं। प्रत्येक प्रश्न 1 अंक का है। गलत उत्तर के लिए कोई अंक नहीं काटा जाएगा। प्रत्येक प्रश्न के पाँच विकल्प हैं; यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प भरें — किसी भी विकल्प को न भरने पर उस प्रश्न के अंकों का एक-तिहाई काटा जाएगा। भाषा-I और भाषा-II अभ्यर्थी द्वारा चुनी गई भाषाएँ हैं (यहाँ हिन्दी एवं अंग्रेज़ी)।",
+        "en": "The paper has 150 multiple-choice questions for 150 marks; time 2 hours 30 minutes. All sections are compulsory. Each question carries 1 mark. No marks are deducted for wrong answers. Each question has five options; if you do not wish to answer a question, fill the fifth option — one-third of the question's marks is deducted if no option is filled. Language I and Language II are the languages chosen by the candidate (here Hindi and English)."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "reet_level_2_social_studies",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बाल विकास एवं शिक्षण विधियाँ",
+            "en": "Child development and pedagogy"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["child_development"]
+        },
+        {
+          "name": {
+            "hi": "भाषा-I: हिन्दी",
+            "en": "Language I: Hindi"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "भाषा-II: अंग्रेज़ी",
+            "en": "Language II: English"
+          },
+          "qtype": "mcq_single",
+          "count": 30,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "सामाजिक अध्ययन",
+            "en": "Social studies"
+          },
+          "qtype": "mcq_single",
+          "count": 60,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        }
+      ],
+      "durationMinutes": 150,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 150 बहुविकल्पीय प्रश्न हैं, कुल 150 अंक, समय 2 घंटे 30 मिनट। सभी खंड हल करने अनिवार्य हैं। प्रत्येक प्रश्न 1 अंक का है। गलत उत्तर के लिए कोई अंक नहीं काटा जाएगा। प्रत्येक प्रश्न के पाँच विकल्प हैं; यदि आप किसी प्रश्न का उत्तर नहीं देना चाहते हैं तो पाँचवाँ विकल्प भरें — किसी भी विकल्प को न भरने पर उस प्रश्न के अंकों का एक-तिहाई काटा जाएगा। भाषा-I और भाषा-II अभ्यर्थी द्वारा चुनी गई भाषाएँ हैं (यहाँ हिन्दी एवं अंग्रेज़ी)।",
+        "en": "The paper has 150 multiple-choice questions for 150 marks; time 2 hours 30 minutes. All sections are compulsory. Each question carries 1 mark. No marks are deducted for wrong answers. Each question has five options; if you do not wish to answer a question, fill the fifth option — one-third of the question's marks is deducted if no option is filled. Language I and Language II are the languages chosen by the candidate (here Hindi and English)."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "jee_main_paper_1",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "गणित: खंड A (बहुविकल्पीय)",
+            "en": "Mathematics: Section A (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "गणित: खंड B (संख्यात्मक मान, पूर्णांक उत्तर)",
+            "en": "Mathematics: Section B (numerical value, integer answer)"
+          },
+          "qtype": "integer",
+          "count": 5,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "भौतिक विज्ञान: खंड A (बहुविकल्पीय)",
+            "en": "Physics: Section A (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "भौतिक विज्ञान: खंड B (संख्यात्मक मान, पूर्णांक उत्तर)",
+            "en": "Physics: Section B (numerical value, integer answer)"
+          },
+          "qtype": "integer",
+          "count": 5,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "रसायन विज्ञान: खंड A (बहुविकल्पीय)",
+            "en": "Chemistry: Section A (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "रसायन विज्ञान: खंड B (संख्यात्मक मान, पूर्णांक उत्तर)",
+            "en": "Chemistry: Section B (numerical value, integer answer)"
+          },
+          "qtype": "integer",
+          "count": 5,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": ["chemistry"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 75 प्रश्न हैं, कुल 300 अंक, समय 3 घंटे। गणित, भौतिक विज्ञान और रसायन विज्ञान प्रत्येक में 25 प्रश्न: खंड A में 20 बहुविकल्पीय प्रश्न (एक सही विकल्प) और खंड B में 5 प्रश्न जिनका उत्तर संख्यात्मक मान है, जिसे निकटतम पूर्णांक में पूर्णांकित करके भरें। सभी प्रश्न अनिवार्य हैं। सही उत्तर पर +4, गलत उत्तर पर −1 (दोनों खंडों में), अनुत्तरित पर 0।",
+        "en": "The paper has 75 questions for 300 marks; time 3 hours. Mathematics, Physics and Chemistry have 25 questions each: Section A has 20 multiple-choice questions with one correct option, and Section B has 5 questions whose answer is a numerical value, to be rounded off to the nearest integer. All questions are compulsory. +4 for a correct answer, −1 for an incorrect answer (in both sections), 0 if unanswered."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.2,
+        "medium": 0.5,
+        "hard": 0.3
+      }
+    }
+  },
+  {
+    "exam": "neet_ug",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "भौतिक विज्ञान",
+            "en": "Physics"
+          },
+          "qtype": "mcq_single",
+          "count": 45,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "रसायन विज्ञान",
+            "en": "Chemistry"
+          },
+          "qtype": "mcq_single",
+          "count": 45,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "जीव विज्ञान: वनस्पति विज्ञान",
+            "en": "Biology: Botany"
+          },
+          "qtype": "mcq_single",
+          "count": 45,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "जीव विज्ञान: प्राणि विज्ञान",
+            "en": "Biology: Zoology"
+          },
+          "qtype": "mcq_single",
+          "count": 45,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 180 अनिवार्य बहुविकल्पीय प्रश्न हैं (भौतिक विज्ञान 45, रसायन विज्ञान 45, वनस्पति विज्ञान 45, प्राणि विज्ञान 45), कुल 720 अंक, समय 3 घंटे। प्रत्येक प्रश्न के चार विकल्प हैं, जिनमें से एक सही या सर्वाधिक उपयुक्त उत्तर है। सही उत्तर पर +4, गलत उत्तर पर −1, अनुत्तरित पर 0।",
+        "en": "The paper has 180 compulsory multiple-choice questions (Physics 45, Chemistry 45, Botany 45, Zoology 45) for 720 marks; time 3 hours. Each question has four options with one correct or most appropriate answer. +4 for a correct answer, −1 for an incorrect answer, 0 if unanswered."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "upsc_cse_prelims_gs",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "सामान्य अध्ययन प्रश्न-पत्र I",
+            "en": "General Studies Paper I"
+          },
+          "qtype": "mcq_single",
+          "count": 100,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 120,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 100 प्रश्न हैं, प्रत्येक 2 अंक का, कुल 200 अंक, समय 2 घंटे। प्रत्येक प्रश्न के चार विकल्प हैं। प्रत्येक गलत उत्तर पर उस प्रश्न के अंकों का एक-तिहाई (0.33) दंड के रूप में काटा जाएगा; एक से अधिक उत्तर देना गलत उत्तर माना जाएगा। जो प्रश्न खाली छोड़ा गया है, उस पर कोई दंड नहीं है।",
+        "en": "The paper has 100 questions of 2 marks each, 200 marks in all; time 2 hours. Each question has four alternatives. One-third (0.33) of the marks assigned to a question is deducted as penalty for each wrong answer; giving more than one answer is treated as a wrong answer. There is no penalty for a question left blank."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "upsc_cse_prelims_csat",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बोधगम्यता (अंग्रेज़ी भाषा बोधगम्यता, कक्षा X स्तर सहित)",
+            "en": "Comprehension (including English language comprehension, Class X level)"
+          },
+          "qtype": "mcq_single",
+          "count": 29,
+          "marksEach": 2.5,
+          "negativeMarks": 0.83,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "तार्किक कौशल, विश्लेषणात्मक क्षमता, निर्णय लेना एवं सामान्य मानसिक योग्यता",
+            "en": "Logical reasoning, analytical ability, decision making and general mental ability"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 2.5,
+          "negativeMarks": 0.83,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["reasoning"]
+        },
+        {
+          "name": {
+            "hi": "आधारभूत संख्यनन एवं आँकड़ों का निर्वचन (कक्षा X स्तर)",
+            "en": "Basic numeracy and data interpretation (Class X level)"
+          },
+          "qtype": "mcq_single",
+          "count": 31,
+          "marksEach": 2.5,
+          "negativeMarks": 0.83,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["quantitative_aptitude"]
+        }
+      ],
+      "durationMinutes": 120,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में 80 प्रश्न हैं, प्रत्येक 2.5 अंक का, कुल 200 अंक, समय 2 घंटे। यह अर्हक प्रश्न-पत्र है; न्यूनतम अर्हक अंक 33% हैं। प्रत्येक प्रश्न के चार विकल्प हैं। प्रत्येक गलत उत्तर पर उस प्रश्न के अंकों का एक-तिहाई (0.33) काटा जाएगा; एक से अधिक उत्तर देना गलत उत्तर माना जाएगा। खाली छोड़े गए प्रश्न पर कोई दंड नहीं है।",
+        "en": "The paper has 80 questions of 2.5 marks each, 200 marks in all; time 2 hours. It is a qualifying paper with minimum qualifying marks of 33%. Each question has four alternatives. One-third (0.33) of the marks assigned to a question is deducted for each wrong answer; giving more than one answer is treated as a wrong answer. There is no penalty for a question left blank."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "ssc_cgl_tier_1",
+    "name": "Full paper",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "A. सामान्य बुद्धिमत्ता एवं तर्कशक्ति",
+            "en": "A. General Intelligence and Reasoning"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.5,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["reasoning"]
+        },
+        {
+          "name": {
+            "hi": "B. सामान्य जागरूकता",
+            "en": "B. General Awareness"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.5,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["general_studies"]
+        },
+        {
+          "name": {
+            "hi": "C. संख्यात्मक अभियोग्यता",
+            "en": "C. Quantitative Aptitude"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.5,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["quantitative_aptitude"]
+        },
+        {
+          "name": {
+            "hi": "D. अंग्रेज़ी बोधगम्यता",
+            "en": "D. English Comprehension"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.5,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        }
+      ],
+      "durationMinutes": 60,
+      "instructions": {
+        "hi": "प्रश्न-पत्र में चार खंडों में 100 बहुविकल्पीय प्रश्न हैं (प्रत्येक खंड में 25), प्रत्येक 2 अंक का, कुल 200 अंक। समय 1 घंटा, प्रत्येक खंड के लिए 15 मिनट का खंडवार टाइमर। प्रत्येक गलत उत्तर पर 0.50 अंक काटे जाएँगे। अंग्रेज़ी बोधगम्यता को छोड़कर प्रश्न अंग्रेज़ी और हिन्दी दोनों में हैं।",
+        "en": "The paper has 100 multiple-choice questions in four sections of 25, 2 marks each, 200 marks in all. Time 1 hour, with a sectional timer of 15 minutes for each section. 0.50 marks are deducted for each wrong answer. Questions are set in English and Hindi, except English Comprehension."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_paper_1",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_science",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_mathematics",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_social_science",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_hindi",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_2g_p2_english",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_paper_1",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_physics",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_chemistry",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_biology",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_mathematics",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_hindi",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rpsc_1g_p2_english",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। आरपीएससी के अनुसार पाँच विकल्प: उत्तर न देना हो तो पाँचवाँ विकल्प भरें। गलत उत्तर पर, या कोई भी विकल्प न भरने पर, एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. Five options as in RPSC papers: fill the fifth option to leave a question unanswered. One-third of the marks is deducted for a wrong answer, or when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "reet_level_1",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 1 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। गलत उत्तर पर कोई अंक नहीं काटा जाएगा; उत्तर न देना हो तो पाँचवाँ विकल्प भरें — कोई भी विकल्प न भरने पर एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 1 marks each; time 30 minutes. All questions are compulsory. No marks are deducted for wrong answers; fill the fifth option to leave a question unanswered — one-third of the marks is deducted when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "reet_level_2_science_math",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 1 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। गलत उत्तर पर कोई अंक नहीं काटा जाएगा; उत्तर न देना हो तो पाँचवाँ विकल्प भरें — कोई भी विकल्प न भरने पर एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 1 marks each; time 30 minutes. All questions are compulsory. No marks are deducted for wrong answers; fill the fifth option to leave a question unanswered — one-third of the marks is deducted when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "reet_level_2_social_studies",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 1 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। गलत उत्तर पर कोई अंक नहीं काटा जाएगा; उत्तर न देना हो तो पाँचवाँ विकल्प भरें — कोई भी विकल्प न भरने पर एक-तिहाई अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 1 marks each; time 30 minutes. All questions are compulsory. No marks are deducted for wrong answers; fill the fifth option to leave a question unanswered — one-third of the marks is deducted when no option is filled."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "jee_main_paper_1",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.2,
+            "medium": 0.5,
+            "hard": 0.3
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 4 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। सही उत्तर पर +4, गलत उत्तर पर −1, अनुत्तरित पर 0।",
+        "en": "Chapter test: 25 multiple-choice questions of 4 marks each; time 30 minutes. All questions are compulsory. +4 for a correct answer, −1 for an incorrect answer, 0 if unanswered."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.2,
+        "medium": 0.5,
+        "hard": 0.3
+      }
+    }
+  },
+  {
+    "exam": "neet_ug",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 4,
+          "negativeMarks": 1,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 4 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। सही उत्तर पर +4, गलत उत्तर पर −1, अनुत्तरित पर 0।",
+        "en": "Chapter test: 25 multiple-choice questions of 4 marks each; time 30 minutes. All questions are compulsory. +4 for a correct answer, −1 for an incorrect answer, 0 if unanswered."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "upsc_cse_prelims_gs",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.67,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। प्रत्येक गलत उत्तर पर प्रश्न के अंकों का एक-तिहाई काटा जाएगा; खाली छोड़े गए प्रश्न पर कोई दंड नहीं।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. One-third of the question's marks is deducted for each wrong answer; no penalty for a question left blank."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "upsc_cse_prelims_csat",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2.5,
+          "negativeMarks": 0.83,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2.5 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। प्रत्येक गलत उत्तर पर प्रश्न के अंकों का एक-तिहाई काटा जाएगा; खाली छोड़े गए प्रश्न पर कोई दंड नहीं।",
+        "en": "Chapter test: 25 multiple-choice questions of 2.5 marks each; time 30 minutes. All questions are compulsory. One-third of the question's marks is deducted for each wrong answer; no penalty for a question left blank."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "ssc_cgl_tier_1",
+    "name": "Chapter test",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "बहुविकल्पीय प्रश्न",
+            "en": "Multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 25,
+          "marksEach": 2,
+          "negativeMarks": 0.5,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": []
+        }
+      ],
+      "durationMinutes": 30,
+      "instructions": {
+        "hi": "अध्याय परीक्षण: 25 बहुविकल्पीय प्रश्न, प्रत्येक 2 अंक का, समय 30 मिनट। सभी प्रश्न अनिवार्य हैं। प्रत्येक गलत उत्तर पर 0.50 अंक काटे जाएँगे।",
+        "en": "Chapter test: 25 multiple-choice questions of 2 marks each; time 30 minutes. All questions are compulsory. 0.50 marks are deducted for each wrong answer."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_10",
+    "name": "Full paper — Science",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A (जीव विज्ञान): बहुविकल्पीय प्रश्न",
+            "en": "Section A (Biology): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 7,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (जीव विज्ञान): अभिकथन एवं कारण",
+            "en": "Section A (Biology): assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 2,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (जीव विज्ञान): अति लघु उत्तरीय प्रश्न",
+            "en": "Section A (Biology): very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 3,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (जीव विज्ञान): लघु उत्तरीय प्रश्न",
+            "en": "Section A (Biology): short answer"
+          },
+          "qtype": "short_answer",
+          "count": 2,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (जीव विज्ञान): केस आधारित प्रश्न",
+            "en": "Section A (Biology): case-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (जीव विज्ञान): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section A (Biology): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (रसायन विज्ञान): बहुविकल्पीय प्रश्न",
+            "en": "Section B (Chemistry): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 7,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (रसायन विज्ञान): अभिकथन एवं कारण",
+            "en": "Section B (Chemistry): assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 1,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (रसायन विज्ञान): अति लघु उत्तरीय प्रश्न",
+            "en": "Section B (Chemistry): very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (रसायन विज्ञान): लघु उत्तरीय प्रश्न",
+            "en": "Section B (Chemistry): short answer"
+          },
+          "qtype": "short_answer",
+          "count": 2,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (रसायन विज्ञान): केस आधारित प्रश्न",
+            "en": "Section B (Chemistry): case-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (रसायन विज्ञान): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section B (Chemistry): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (भौतिक विज्ञान): बहुविकल्पीय प्रश्न",
+            "en": "Section C (Physics): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 2,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (भौतिक विज्ञान): अभिकथन एवं कारण",
+            "en": "Section C (Physics): assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 1,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (भौतिक विज्ञान): अति लघु उत्तरीय प्रश्न",
+            "en": "Section C (Physics): very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 2,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (भौतिक विज्ञान): लघु उत्तरीय प्रश्न",
+            "en": "Section C (Physics): short answer"
+          },
+          "qtype": "short_answer",
+          "count": 3,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (भौतिक विज्ञान): केस आधारित प्रश्न",
+            "en": "Section C (Physics): case-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (भौतिक विज्ञान): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C (Physics): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 80, समय 3 घंटे। इस प्रश्न-पत्र में 39 प्रश्न हैं, जो तीन खंडों में हैं: खंड A जीव विज्ञान, खंड B रसायन विज्ञान और खंड C भौतिक विज्ञान। सभी प्रश्न अनिवार्य हैं। कुछ प्रश्नों में आंतरिक विकल्प दिया गया है; ऐसे प्रश्नों में केवल एक विकल्प हल करें।",
+        "en": "Maximum marks 80, time 3 hours. This question paper has 39 questions in three sections: Section A is Biology, Section B is Chemistry and Section C is Physics. All questions are compulsory. An internal choice is provided in some questions; attempt only one of the alternatives in such questions."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_10",
+    "name": "Full paper — Mathematics",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A: बहुविकल्पीय प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 18,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड A: अभिकथन एवं कारण",
+            "en": "Section A: assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 2,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: अति लघु उत्तरीय प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 6,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड D: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section D: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 4,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड E: केस आधारित प्रश्न",
+            "en": "Section E: case-based"
+          },
+          "qtype": "passage",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 80, समय 3 घंटे। इस प्रश्न-पत्र में 38 प्रश्न हैं, जो पाँच खंडों (A–E) में हैं। कोई समग्र विकल्प नहीं है; खंड B, C और D के दो-दो प्रश्नों में तथा खंड E के 2 अंक वाले उप-भागों में आंतरिक विकल्प है। आवश्यकतानुसार स्वच्छ चित्र बनाइए। कैलकुलेटर का प्रयोग वर्जित है।",
+        "en": "Maximum marks 80, time 3 hours. This question paper has 38 questions in five sections (A–E). There is no overall choice; an internal choice is provided in 2 questions each of Sections B, C and D and in the 2-mark sub-parts of Section E. Draw neat figures wherever required. Use of calculators is not allowed. (Pattern of Mathematics Standard, 041; Basic, 241, has the same design.)"
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_10",
+    "name": "Full paper — Social Science",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A (इतिहास): बहुविकल्पीय प्रश्न",
+            "en": "Section A (History): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 4,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (इतिहास): अति लघु उत्तरीय प्रश्न",
+            "en": "Section A (History): very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (इतिहास): लघु उत्तरीय प्रश्न",
+            "en": "Section A (History): short answer"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (इतिहास): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section A (History): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (इतिहास): केस आधारित प्रश्न",
+            "en": "Section A (History): case-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड A (इतिहास): मानचित्र कौशल",
+            "en": "Section A (History): map skill"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (भूगोल): बहुविकल्पीय प्रश्न",
+            "en": "Section B (Geography): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 5,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (भूगोल): अभिकथन एवं कारण",
+            "en": "Section B (Geography): assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 1,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (भूगोल): अति लघु उत्तरीय प्रश्न",
+            "en": "Section B (Geography): very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (भूगोल): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section B (Geography): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (भूगोल): केस आधारित प्रश्न",
+            "en": "Section B (Geography): case-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड B (भूगोल): मानचित्र कौशल",
+            "en": "Section B (Geography): map skill"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (राजनीति विज्ञान): अभिकथन एवं कारण",
+            "en": "Section C (Political Science): assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 1,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (राजनीति विज्ञान): बहुविकल्पीय प्रश्न",
+            "en": "Section C (Political Science): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 3,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (राजनीति विज्ञान): अति लघु उत्तरीय प्रश्न",
+            "en": "Section C (Political Science): very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 2,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (राजनीति विज्ञान): लघु उत्तरीय प्रश्न",
+            "en": "Section C (Political Science): short answer"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (राजनीति विज्ञान): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C (Political Science): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड C (राजनीति विज्ञान): केस आधारित प्रश्न",
+            "en": "Section C (Political Science): case-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड D (अर्थशास्त्र): बहुविकल्पीय प्रश्न",
+            "en": "Section D (Economics): multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 5,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड D (अर्थशास्त्र): अभिकथन एवं कारण",
+            "en": "Section D (Economics): assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 1,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड D (अर्थशास्त्र): लघु उत्तरीय प्रश्न",
+            "en": "Section D (Economics): short answer"
+          },
+          "qtype": "short_answer",
+          "count": 3,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड D (अर्थशास्त्र): दीर्घ उत्तरीय प्रश्न",
+            "en": "Section D (Economics): long answer"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 80, समय 3 घंटे। इस प्रश्न-पत्र में 38 प्रश्न हैं, सभी अनिवार्य; चार खंड, प्रत्येक 20 अंक: खंड A इतिहास, खंड B भूगोल, खंड C राजनीति विज्ञान, खंड D अर्थशास्त्र। अति लघु उत्तरीय (2 अंक) 40 शब्द, लघु उत्तरीय (3 अंक) 60 शब्द, दीर्घ उत्तरीय (5 अंक) 120 शब्द, केस आधारित (4 अंक, तीन उप-प्रश्न) 100 शब्द तक। मानचित्र प्रश्न: खंड A में 2 अंक, खंड B में 3 अंक। कुछ प्रश्नों में आंतरिक विकल्प है; केवल एक विकल्प हल करें।",
+        "en": "Maximum marks 80, time 3 hours. This question paper has 38 questions, all compulsory, in four sections of 20 marks each: Section A History, Section B Geography, Section C Political Science, Section D Economics. Very short answers (2 marks) up to 40 words, short answers (3 marks) up to 60 words, long answers (5 marks) up to 120 words, case-based questions (4 marks, three sub-questions) up to 100 words. Map questions: 2 marks in Section A and 3 marks in Section B. An internal choice is provided in a few questions; attempt only one of the alternatives."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_10",
+    "name": "Full paper — Hindi",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड क: अपठित गद्यांश एवं काव्यांश (अपठित बोध)",
+            "en": "Section A: unseen prose and poetry passages (comprehension)"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 7,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ख: रचना के आधार पर वाक्य भेद (पाँच में से कोई चार)",
+            "en": "Section B: grammar — sentence types by construction (any 4 of 5)"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": 4,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ख: वाच्य (पाँच में से कोई चार)",
+            "en": "Section B: grammar — voice (any 4 of 5)"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": 4,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ख: पद परिचय (पाँच में से कोई चार)",
+            "en": "Section B: grammar — parsing (pad parichay) (any 4 of 5)"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": 4,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ख: अलंकार (पाँच में से कोई चार)",
+            "en": "Section B: grammar — figures of speech (any 4 of 5)"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": 4,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ग: पठित गद्यांश पर बहुविकल्पीय प्रश्न",
+            "en": "Section C: textbook prose extract (multiple choice)"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ग: गद्य पाठों पर प्रश्न (चार में से कोई तीन)",
+            "en": "Section C: questions on prose lessons (any 3 of 4)"
+          },
+          "qtype": "short_answer",
+          "count": 4,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": 3,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ग: पठित काव्यांश पर बहुविकल्पीय प्रश्न",
+            "en": "Section C: textbook poetry extract (multiple choice)"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ग: कविताओं पर प्रश्न (चार में से कोई तीन)",
+            "en": "Section C: questions on poems (any 3 of 4)"
+          },
+          "qtype": "short_answer",
+          "count": 4,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": 3,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ग: पूरक पाठ्यपुस्तक पर प्रश्न (तीन में से कोई दो)",
+            "en": "Section C: supplementary reader (any 2 of 3)"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": 2,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड घ: अनुच्छेद लेखन (तीन में से किसी एक विषय पर)",
+            "en": "Section D: paragraph writing (any 1 of 3 topics)"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": 1,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड घ: पत्र लेखन",
+            "en": "Section D: letter writing"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड घ: ई-मेल / स्ववृत्त लेखन",
+            "en": "Section D: functional writing (e-mail / CV)"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड घ: विज्ञापन / संदेश लेखन",
+            "en": "Section D: advertisement / message writing"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 80, समय 3 घंटे (हिंदी पाठ्यक्रम-अ, 002)। इस प्रश्न-पत्र में कुल 15 प्रश्न हैं, सभी अनिवार्य हैं। प्रश्न-पत्र चार खंडों में विभाजित है: खंड क अपठित बोध, खंड ख व्यावहारिक व्याकरण, खंड ग पाठ्यपुस्तक एवं पूरक पाठ्यपुस्तक, खंड घ रचनात्मक लेखन। प्रश्नों में दिए गए विकल्पों और निर्देशों का पालन करते हुए उत्तर लिखिए; यथासंभव चारों खंडों के प्रश्नों के उत्तर क्रमशः लिखिए।",
+        "en": "Maximum marks 80, time 3 hours (Hindi Course A, 002). The paper has 15 questions, all compulsory, in four sections: A unseen comprehension, B applied grammar, C textbook and supplementary reader, D creative writing. Follow the choices and instructions given in each question; answer the sections in order as far as possible."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_10",
+    "name": "Full paper — English",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A: पठन कौशल — अपठित गद्यांश",
+            "en": "Section A: reading skills — unseen passages"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 10,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: व्याकरण (बारह में से कोई दस)",
+            "en": "Section B: grammar (any 10 of 12 tasks)"
+          },
+          "qtype": "short_answer",
+          "count": 12,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": 10,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: औपचारिक पत्र",
+            "en": "Section B: formal letter"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: विश्लेषणात्मक अनुच्छेद",
+            "en": "Section B: analytical paragraph"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: उद्धरण आधारित प्रश्न 6 (दो में से कोई एक)",
+            "en": "Section C: extract-based question Q6 (any 1 of 2 extracts)"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": 1,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: उद्धरण आधारित प्रश्न 7 (दो में से कोई एक)",
+            "en": "Section C: extract-based question Q7 (any 1 of 2 extracts)"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": 1,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय, First Flight (पाँच में से कोई चार)",
+            "en": "Section C: short answers, First Flight (any 4 of 5, 40–50 words)"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": 4,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय, Footprints without Feet (तीन में से कोई दो)",
+            "en": "Section C: short answers, Footprints without Feet (any 2 of 3, 40–50 words)"
+          },
+          "qtype": "short_answer",
+          "count": 3,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": 2,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: दीर्घ उत्तरीय प्रश्न 10, First Flight (दो में से कोई एक)",
+            "en": "Section C: long answer Q10, First Flight (any 1 of 2, 100–120 words)"
+          },
+          "qtype": "long_answer",
+          "count": 2,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": 1,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: दीर्घ उत्तरीय प्रश्न 11, Footprints without Feet (दो में से कोई एक)",
+            "en": "Section C: long answer Q11, Footprints without Feet (any 1 of 2, 100–120 words)"
+          },
+          "qtype": "long_answer",
+          "count": 2,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": 1,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 80, समय 3 घंटे (English Language and Literature, 184)। प्रश्न-पत्र में 11 प्रश्न हैं, सभी अनिवार्य, तीन खंडों में: खंड A पठन कौशल, खंड B व्याकरण एवं रचनात्मक लेखन, खंड C साहित्य। प्रत्येक भाग के विशेष निर्देशों के अनुसार प्रश्न हल करें।",
+        "en": "Maximum marks 80, time 3 hours (English Language and Literature, 184). The paper has 11 questions, all compulsory, in three sections: A Reading Skills, B Grammar and Creative Writing Skills, C Literature Textbook. Attempt questions based on the specific instructions for each part."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_12_science",
+    "name": "Full paper — Physics",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A: बहुविकल्पीय प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 12,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड A: अभिकथन एवं कारण",
+            "en": "Section A: assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 4,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: अति लघु उत्तरीय प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 7,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड D: केस आधारित प्रश्न",
+            "en": "Section D: case-based"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड E: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section E: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 70, समय 3 घंटे। इस प्रश्न-पत्र में 33 प्रश्न हैं, सभी अनिवार्य, पाँच खंडों में: खंड A में 16 प्रश्न (12 बहुविकल्पीय और 4 अभिकथन-कारण, प्रत्येक 1 अंक), खंड B में 5 प्रश्न (2 अंक), खंड C में 7 प्रश्न (3 अंक), खंड D में 2 केस आधारित प्रश्न (4 अंक) और खंड E में 3 दीर्घ उत्तरीय प्रश्न (5 अंक)। कोई समग्र विकल्प नहीं है; कुछ प्रश्नों में आंतरिक विकल्प है, केवल एक विकल्प हल करें। कैलकुलेटर का प्रयोग वर्जित है।",
+        "en": "Maximum marks 70, time 3 hours. The paper has 33 questions, all compulsory, in five sections: Section A has 16 questions (12 MCQs and 4 assertion-reason, 1 mark each), Section B 5 questions of 2 marks, Section C 7 questions of 3 marks, Section D 2 case-based questions of 4 marks and Section E 3 long-answer questions of 5 marks. There is no overall choice; an internal choice is provided in some questions — attempt only one of the alternatives. Calculators are not allowed."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_12_science",
+    "name": "Full paper — Chemistry",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A: बहुविकल्पीय प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 12,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड A: अभिकथन एवं कारण",
+            "en": "Section A: assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 4,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: अति लघु उत्तरीय प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 7,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड D: केस आधारित प्रश्न",
+            "en": "Section D: case-based"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड E: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section E: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 70, समय 3 घंटे। इस प्रश्न-पत्र में 33 प्रश्न हैं, सभी अनिवार्य, पाँच खंडों में: खंड A में 16 प्रश्न (12 बहुविकल्पीय और 4 अभिकथन-कारण, प्रत्येक 1 अंक), खंड B में 5 प्रश्न (2 अंक), खंड C में 7 प्रश्न (3 अंक), खंड D में 2 केस आधारित प्रश्न (4 अंक) और खंड E में 3 दीर्घ उत्तरीय प्रश्न (5 अंक)। कोई समग्र विकल्प नहीं है; कुछ प्रश्नों में आंतरिक विकल्प है, केवल एक विकल्प हल करें। कैलकुलेटर का प्रयोग वर्जित है।",
+        "en": "Maximum marks 70, time 3 hours. The paper has 33 questions, all compulsory, in five sections: Section A has 16 questions (12 MCQs and 4 assertion-reason, 1 mark each), Section B 5 questions of 2 marks, Section C 7 questions of 3 marks, Section D 2 case-based questions of 4 marks and Section E 3 long-answer questions of 5 marks. There is no overall choice; an internal choice is provided in some questions — attempt only one of the alternatives. Calculators are not allowed."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_12_science",
+    "name": "Full paper — Biology",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A: बहुविकल्पीय प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 12,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड A: अभिकथन एवं कारण",
+            "en": "Section A: assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 4,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: अति लघु उत्तरीय प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 7,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड D: केस आधारित प्रश्न",
+            "en": "Section D: case-based"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड E: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section E: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 70, समय 3 घंटे। इस प्रश्न-पत्र में 33 प्रश्न हैं, सभी अनिवार्य, पाँच खंडों में: खंड A में 16 प्रश्न (12 बहुविकल्पीय और 4 अभिकथन-कारण, प्रत्येक 1 अंक), खंड B में 5 प्रश्न (2 अंक), खंड C में 7 प्रश्न (3 अंक), खंड D में 2 केस आधारित प्रश्न (4 अंक) और खंड E में 3 दीर्घ उत्तरीय प्रश्न (5 अंक)। कोई समग्र विकल्प नहीं है; कुछ प्रश्नों में आंतरिक विकल्प है, केवल एक विकल्प हल करें। कैलकुलेटर का प्रयोग वर्जित है।",
+        "en": "Maximum marks 70, time 3 hours. The paper has 33 questions, all compulsory, in five sections: Section A has 16 questions (12 MCQs and 4 assertion-reason, 1 mark each), Section B 5 questions of 2 marks, Section C 7 questions of 3 marks, Section D 2 case-based questions of 4 marks and Section E 3 long-answer questions of 5 marks. There is no overall choice; an internal choice is provided in some questions — attempt only one of the alternatives. Calculators are not allowed."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "cbse_class_12_science",
+    "name": "Full paper — Mathematics",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड A: बहुविकल्पीय प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 18,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड A: अभिकथन एवं कारण",
+            "en": "Section A: assertion and reason"
+          },
+          "qtype": "assertion_reason",
+          "count": 2,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड B: अति लघु उत्तरीय प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 5,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड C: लघु उत्तरीय प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 6,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड D: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section D: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 4,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड E: केस आधारित प्रश्न",
+            "en": "Section E: case-based"
+          },
+          "qtype": "passage",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        }
+      ],
+      "durationMinutes": 180,
+      "instructions": {
+        "hi": "अधिकतम अंक 80, समय 3 घंटे। इस प्रश्न-पत्र में 38 प्रश्न हैं, सभी अनिवार्य, पाँच खंडों (A–E) में: खंड A में 18 बहुविकल्पीय और 2 अभिकथन-कारण (1 अंक), खंड B में 5 (2 अंक), खंड C में 6 (3 अंक), खंड D में 4 दीर्घ उत्तरीय (5 अंक) और खंड E में 3 केस आधारित प्रश्न (4 अंक)। कोई समग्र विकल्प नहीं है; कुछ प्रश्नों में आंतरिक विकल्प है। कैलकुलेटर का प्रयोग वर्जित है।",
+        "en": "Maximum marks 80, time 3 hours. The paper has 38 questions, all compulsory, in five sections (A–E): Section A 18 MCQs and 2 assertion-reason (1 mark), Section B 5 VSA (2 marks), Section C 6 SA (3 marks), Section D 4 LA (5 marks) and Section E 3 case-study questions (4 marks). There is no overall choice; an internal choice is provided in some questions. Calculators are not allowed."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_10",
+    "name": "Full paper — Science",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: वस्तुनिष्ठ (बहुविकल्पीय) प्रश्न",
+            "en": "Section A: objective (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 8,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: लघूत्तरात्मक प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 6,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: केस / स्रोत आधारित प्रश्न",
+            "en": "Section C: case / source-based"
+          },
+          "qtype": "passage",
+          "count": 2,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section D: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 4,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["science"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 80, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 40 प्रश्न हैं। प्रश्न 1 से 20 वस्तुनिष्ठ, 21 से 28 अतिलघूत्तरात्मक, 29 से 36 लघूत्तरात्मक और 37 से 40 दीर्घ उत्तरीय हैं; खंड द में आंतरिक विकल्प है। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 80, time 3 hours 15 minutes. The paper has 40 questions. Questions 1–20 are objective, 21–28 very short answer, 29–36 short answer and 37–40 long answer; Section D has internal choices. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_10",
+    "name": "Full paper — Mathematics",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: वस्तुनिष्ठ (बहुविकल्पीय) प्रश्न",
+            "en": "Section A: objective (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 20,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: अतिलघूत्तरात्मक प्रश्न (20–30 शब्द)",
+            "en": "Section B: very short answer (20–30 words)"
+          },
+          "qtype": "short_answer",
+          "count": 8,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: लघूत्तरात्मक प्रश्न (40–60 शब्द)",
+            "en": "Section C: short answer (40–60 words)"
+          },
+          "qtype": "short_answer",
+          "count": 8,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section D: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 4,
+          "marksEach": 5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 80, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 40 प्रश्न हैं। प्रश्न 1 से 20 वस्तुनिष्ठ हैं (सही विकल्प चुनकर उत्तर-पुस्तिका में लिखें), 21 से 28 अतिलघूत्तरात्मक, 29 से 36 लघूत्तरात्मक और 37 से 40 दीर्घ उत्तरीय; प्रश्न 35 से 40 में आंतरिक विकल्प है। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 80, time 3 hours 15 minutes. The paper has 40 questions. Questions 1–20 are objective (write the correct option in the answer book), 21–28 very short answer, 29–36 short answer and 37–40 long answer; questions 35–40 have internal choices. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_10",
+    "name": "Full paper — Social Science",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: वस्तुनिष्ठ (बहुविकल्पीय) प्रश्न",
+            "en": "Section A: objective (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 16,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 8,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: लघूत्तरात्मक प्रश्न",
+            "en": "Section C: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 7,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: स्रोत आधारित प्रश्न",
+            "en": "Section C: source-based"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: दीर्घ उत्तरीय / स्रोत, प्रकरण या चित्र आधारित प्रश्न",
+            "en": "Section D: long answer / source, case or picture-based"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: निबंधात्मक प्रश्न",
+            "en": "Section D: essay-type"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: मानचित्र कार्य (भारत का रेखा-मानचित्र)",
+            "en": "Section D: map work (India outline map)"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["social_science"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 80, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 37 प्रश्न हैं। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 80, time 3 hours 15 minutes. The paper has 37 questions. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_10",
+    "name": "Full paper — Hindi",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: बहुविकल्पात्मक प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 10,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: रिक्त स्थानों की पूर्ति",
+            "en": "Section A: fill in the blanks"
+          },
+          "qtype": "short_answer",
+          "count": 6,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section B: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 6,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: अपठित गद्यांश एवं काव्यांश",
+            "en": "Section C: unseen prose and poetry passages"
+          },
+          "qtype": "passage",
+          "count": 4,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: लघूत्तरात्मक प्रश्न (सप्रसंग व्याख्या, रचनाकार परिचय, पाठ आधारित)",
+            "en": "Section C: short answer (explanation with reference, author introduction, textbook)"
+          },
+          "qtype": "short_answer",
+          "count": 4,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: दीर्घ उत्तरीय प्रश्न (पाठ आधारित, संक्षिप्तीकरण, पत्र लेखन)",
+            "en": "Section D: long answer (textbook, summarising, letter writing)"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: केस अध्ययन आधारित प्रश्न",
+            "en": "Section D: case study"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: निबंध लेखन (लगभग 300 शब्द, किसी एक विषय पर)",
+            "en": "Section D: essay (about 300 words, one topic)"
+          },
+          "qtype": "long_answer",
+          "count": 1,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: केस अध्ययन आधारित प्रश्न",
+            "en": "Section D: case study"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["hindi"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 80, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 36 प्रश्न हैं। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 80, time 3 hours 15 minutes. The paper has 36 questions. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_10",
+    "name": "Full paper — English",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: अपठित गद्यांश (बहुविकल्पीय)",
+            "en": "Section A: unseen passage (multiple choice)"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 10,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: केस आधारित तथ्यात्मक गद्यांश (अतिलघूत्तरात्मक)",
+            "en": "Section A: case-based factual passage (very short answers)"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 10,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: व्याकरण (बहुविकल्पीय)",
+            "en": "Section B: grammar (multiple choice)"
+          },
+          "qtype": "mcq_single",
+          "count": 6,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: व्याकरण (रूपांतरण / कथन)",
+            "en": "Section B: grammar (transformation / narration)"
+          },
+          "qtype": "short_answer",
+          "count": 1,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: लेखन — पत्र, अनुच्छेद, कहानी",
+            "en": "Section B: writing — letter, paragraph, story"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: गद्य उद्धरण",
+            "en": "Section C: prose extract"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: पद्य उद्धरण",
+            "en": "Section C: poetry extract"
+          },
+          "qtype": "passage",
+          "count": 1,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: लघूत्तरात्मक (First Flight, Footprints without Feet)",
+            "en": "Section C: short answer (First Flight, Footprints without Feet)"
+          },
+          "qtype": "short_answer",
+          "count": 7,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 2,
+          "marksEach": 6,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["english"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 80, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 36 प्रश्न हैं। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 80, time 3 hours 15 minutes. The paper has 36 questions. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_12_science",
+    "name": "Full paper — Physics",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: बहुविकल्पात्मक प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 18,
+          "marksEach": 0.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: रिक्त स्थानों की पूर्ति",
+            "en": "Section A: fill in the blanks"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 0.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section A: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: लघूत्तरात्मक प्रश्न",
+            "en": "Section B: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 1.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: निबंधात्मक प्रश्न",
+            "en": "Section D: essay-type"
+          },
+          "qtype": "long_answer",
+          "count": 2,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["physics"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 56, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 53 प्रश्न हैं। खंड स और द के प्रत्येक प्रश्न में आंतरिक विकल्प है। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 56, time 3 hours 15 minutes. The paper has 53 questions. Each question in Sections C and D has an internal choice. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_12_science",
+    "name": "Full paper — Chemistry",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: बहुविकल्पात्मक प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 18,
+          "marksEach": 0.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: रिक्त स्थानों की पूर्ति",
+            "en": "Section A: fill in the blanks"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 0.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section A: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: लघूत्तरात्मक प्रश्न",
+            "en": "Section B: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 1.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: निबंधात्मक प्रश्न",
+            "en": "Section D: essay-type"
+          },
+          "qtype": "long_answer",
+          "count": 2,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["chemistry"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 56, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 53 प्रश्न हैं। खंड स और द के प्रत्येक प्रश्न में आंतरिक विकल्प है। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 56, time 3 hours 15 minutes. The paper has 53 questions. Each question in Sections C and D has an internal choice. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_12_science",
+    "name": "Full paper — Biology",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: बहुविकल्पात्मक प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 18,
+          "marksEach": 0.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: रिक्त स्थानों की पूर्ति",
+            "en": "Section A: fill in the blanks"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 0.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section A: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: लघूत्तरात्मक प्रश्न",
+            "en": "Section B: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 1.5,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: निबंधात्मक प्रश्न",
+            "en": "Section D: essay-type"
+          },
+          "qtype": "long_answer",
+          "count": 2,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["biology"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 56, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 53 प्रश्न हैं। खंड स और द के प्रत्येक प्रश्न में आंतरिक विकल्प है। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 56, time 3 hours 15 minutes. The paper has 53 questions. Each question in Sections C and D has an internal choice. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  },
+  {
+    "exam": "rbse_class_12_science",
+    "name": "Full paper — Mathematics",
+    "blueprint": {
+      "sections": [
+        {
+          "name": {
+            "hi": "खंड अ: बहुविकल्पात्मक प्रश्न",
+            "en": "Section A: multiple choice"
+          },
+          "qtype": "mcq_single",
+          "count": 18,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: रिक्त स्थानों की पूर्ति",
+            "en": "Section A: fill in the blanks"
+          },
+          "qtype": "short_answer",
+          "count": 6,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड अ: अतिलघूत्तरात्मक प्रश्न",
+            "en": "Section A: very short answer"
+          },
+          "qtype": "short_answer",
+          "count": 12,
+          "marksEach": 1,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड ब: लघूत्तरात्मक प्रश्न",
+            "en": "Section B: short answer"
+          },
+          "qtype": "short_answer",
+          "count": 10,
+          "marksEach": 2,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड स: दीर्घ उत्तरीय प्रश्न",
+            "en": "Section C: long answer"
+          },
+          "qtype": "long_answer",
+          "count": 4,
+          "marksEach": 3,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        },
+        {
+          "name": {
+            "hi": "खंड द: निबंधात्मक प्रश्न",
+            "en": "Section D: essay-type"
+          },
+          "qtype": "long_answer",
+          "count": 3,
+          "marksEach": 4,
+          "negativeMarks": 0,
+          "attemptAny": null,
+          "difficultyMix": {
+            "easy": 0.3,
+            "medium": 0.5,
+            "hard": 0.2
+          },
+          "scope": ["mathematics"]
+        }
+      ],
+      "durationMinutes": 195,
+      "instructions": {
+        "hi": "पूर्णांक 80, समय 3 घंटे 15 मिनट। प्रश्न-पत्र में 53 प्रश्न हैं। खंड स और द के प्रत्येक प्रश्न में आंतरिक विकल्प है। सभी प्रश्न हल करना अनिवार्य है। प्रत्येक प्रश्न का उत्तर दी गई उत्तर-पुस्तिका में ही लिखें। जिन प्रश्नों में आंतरिक खंड हैं, उनके उत्तर एक साथ लिखें। प्रश्न का उत्तर लिखने से पूर्व प्रश्न का क्रमांक अवश्य लिखें। प्रश्न-पत्र के हिन्दी व अंग्रेज़ी रूपांतर में किसी प्रकार की त्रुटि/अंतर/विरोधाभास होने पर हिन्दी भाषा के प्रश्न को ही सही मानें।",
+        "en": "Maximum marks 80, time 3 hours 15 minutes. The paper has 53 questions. Each question in Sections C and D has an internal choice. All questions are compulsory. Write the answer to each question in the given answer book only. For questions with more than one part, write the answers to all parts together. Write the question number before the answer. If there is any error/difference/contradiction between the Hindi and English versions, the Hindi version is valid."
+      },
+      "defaultDifficultyMix": {
+        "easy": 0.3,
+        "medium": 0.5,
+        "hard": 0.2
+      }
+    }
+  }
+]

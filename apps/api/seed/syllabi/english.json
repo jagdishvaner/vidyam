@@ -1,0 +1,3079 @@
+{
+  "subject": {
+    "code": "english",
+    "level": "subject",
+    "nameEn": "English",
+    "nameHi": "अंग्रेज़ी",
+    "aliases": ["angrezi", "english language", "english grammar"],
+    "objectives": [],
+    "children": [
+      {
+        "code": "parts_of_speech",
+        "level": "unit",
+        "nameEn": "Parts of Speech",
+        "nameHi": "शब्द-भेद (पार्ट्स ऑफ़ स्पीच)",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "nouns",
+            "level": "chapter",
+            "nameEn": "Nouns",
+            "nameHi": "संज्ञा (नाउन)",
+            "aliases": ["noun", "kinds of nouns", "sangya english"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "kinds_of_nouns",
+                "level": "topic",
+                "nameEn": "Kinds of Nouns",
+                "nameHi": "संज्ञा के प्रकार",
+                "aliases": ["proper common collective abstract noun"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "noun_number",
+                "level": "topic",
+                "nameEn": "Number: Singular and Plural",
+                "nameHi": "वचन (एकवचन-बहुवचन)",
+                "aliases": ["plural nouns", "singular plural"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "noun_gender",
+                "level": "topic",
+                "nameEn": "Gender of Nouns",
+                "nameHi": "संज्ञा का लिंग",
+                "aliases": ["masculine feminine nouns"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "noun_case",
+                "level": "topic",
+                "nameEn": "Case and Possessive Forms",
+                "nameHi": "कारक एवं सम्बन्धसूचक रूप",
+                "aliases": ["possessive case", "apostrophe s"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "countable_uncountable",
+                "level": "topic",
+                "nameEn": "Countable and Uncountable Nouns",
+                "nameHi": "गणनीय एवं अगणनीय संज्ञाएँ",
+                "aliases": ["count nouns", "mass nouns"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "pronouns",
+            "level": "chapter",
+            "nameEn": "Pronouns",
+            "nameHi": "सर्वनाम (प्रोनाउन)",
+            "aliases": ["pronoun", "kinds of pronouns", "sarvanam english"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "kinds_of_pronouns",
+                "level": "topic",
+                "nameEn": "Kinds of Pronouns",
+                "nameHi": "सर्वनाम के प्रकार",
+                "aliases": ["personal reflexive relative pronouns"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pronoun_case",
+                "level": "topic",
+                "nameEn": "Case Forms of Pronouns",
+                "nameHi": "सर्वनाम के कारक रूप",
+                "aliases": ["I vs me", "who vs whom"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pronoun_agreement",
+                "level": "topic",
+                "nameEn": "Pronoun-Antecedent Agreement",
+                "nameHi": "सर्वनाम एवं पूर्ववर्ती संज्ञा की संगति",
+                "aliases": ["antecedent agreement"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "adjectives",
+            "level": "chapter",
+            "nameEn": "Adjectives and Degrees of Comparison",
+            "nameHi": "विशेषण एवं तुलना की अवस्थाएँ",
+            "aliases": ["adjective", "degrees of comparison", "change of degree"],
+            "objectives": ["Use adjectives correctly and change sentences between degrees of comparison"],
+            "children": [
+              {
+                "code": "kinds_of_adjectives",
+                "level": "topic",
+                "nameEn": "Kinds of Adjectives",
+                "nameHi": "विशेषण के प्रकार",
+                "aliases": ["adjective of quality quantity number"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "order_of_adjectives",
+                "level": "topic",
+                "nameEn": "Position and Order of Adjectives",
+                "nameHi": "विशेषणों का क्रम",
+                "aliases": ["adjective order"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "degrees_of_comparison",
+                "level": "topic",
+                "nameEn": "Degrees of Comparison",
+                "nameHi": "तुलना की अवस्थाएँ (Positive, Comparative, Superlative)",
+                "aliases": ["comparative superlative", "change of degrees", "positive degree"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "adjective_usage",
+                "level": "topic",
+                "nameEn": "Correct Use of Adjectives",
+                "nameHi": "विशेषणों का शुद्ध प्रयोग",
+                "aliases": ["few a few the few", "less fewer", "elder older"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "articles_determiners",
+            "level": "chapter",
+            "nameEn": "Articles and Determiners",
+            "nameHi": "आर्टिकल एवं निर्धारक",
+            "aliases": ["articles", "determiners", "a an the"],
+            "objectives": ["Choose the correct article or determiner in context"],
+            "children": [
+              {
+                "code": "indefinite_articles",
+                "level": "topic",
+                "nameEn": "Indefinite Articles (a, an)",
+                "nameHi": "अनिश्चयवाचक आर्टिकल (a, an)",
+                "aliases": ["use of a and an"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "definite_article",
+                "level": "topic",
+                "nameEn": "Definite Article (the)",
+                "nameHi": "निश्चयवाचक आर्टिकल (the)",
+                "aliases": ["use of the"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "omission_of_articles",
+                "level": "topic",
+                "nameEn": "Omission of Articles",
+                "nameHi": "आर्टिकल का लोप",
+                "aliases": ["zero article"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "determiners",
+                "level": "topic",
+                "nameEn": "Determiners: Quantifiers, Demonstratives, Possessives, Distributives",
+                "nameHi": "निर्धारक (Determiners)",
+                "aliases": ["quantifiers", "some any much many", "each every"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "verbs",
+            "level": "chapter",
+            "nameEn": "Verbs and Verb Forms",
+            "nameHi": "क्रिया (वर्ब)",
+            "aliases": ["verb", "kinds of verbs", "verb forms"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "kinds_of_verbs",
+                "level": "topic",
+                "nameEn": "Kinds of Verbs: Transitive, Intransitive and Linking",
+                "nameHi": "क्रिया के प्रकार",
+                "aliases": ["transitive intransitive"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "primary_auxiliaries",
+                "level": "topic",
+                "nameEn": "Primary Auxiliaries (be, do, have)",
+                "nameHi": "प्राथमिक सहायक क्रियाएँ",
+                "aliases": ["helping verbs", "be do have"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "verb_forms",
+                "level": "topic",
+                "nameEn": "Principal Parts; Regular and Irregular Verbs",
+                "nameHi": "क्रिया के रूप",
+                "aliases": ["v1 v2 v3", "irregular verbs"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "non_finites",
+                "level": "topic",
+                "nameEn": "Non-finites: Infinitive, Gerund, Participle",
+                "nameHi": "अपूर्ण क्रियाएँ (Infinitive, Gerund, Participle)",
+                "aliases": ["gerund", "infinitive", "participle"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "modals",
+            "level": "chapter",
+            "nameEn": "Modal Auxiliaries",
+            "nameHi": "मॉडल सहायक क्रियाएँ",
+            "aliases": ["modals", "modal verbs", "can could may might"],
+            "objectives": ["Use modals to express ability, permission, possibility, obligation and futurity"],
+            "children": [
+              {
+                "code": "ability_permission_possibility",
+                "level": "topic",
+                "nameEn": "Ability, Permission and Possibility (can, could, may, might)",
+                "nameHi": "सामर्थ्य, अनुमति एवं संभावना",
+                "aliases": ["can could", "may might"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "obligation_necessity",
+                "level": "topic",
+                "nameEn": "Obligation and Necessity (must, have to, should, ought to, need)",
+                "nameHi": "दायित्व एवं आवश्यकता",
+                "aliases": ["must have to", "ought to", "need dare"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "futurity_volition",
+                "level": "topic",
+                "nameEn": "Futurity, Volition and Habit (shall, will, would, used to)",
+                "nameHi": "भविष्य, इच्छा एवं आदत",
+                "aliases": ["shall will", "would used to"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "adverbs",
+            "level": "chapter",
+            "nameEn": "Adverbs",
+            "nameHi": "क्रियाविशेषण (एडवर्ब)",
+            "aliases": ["adverb", "kinds of adverbs"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "kinds_of_adverbs",
+                "level": "topic",
+                "nameEn": "Kinds of Adverbs",
+                "nameHi": "क्रियाविशेषण के प्रकार",
+                "aliases": ["adverb of manner place time"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "position_of_adverbs",
+                "level": "topic",
+                "nameEn": "Position of Adverbs",
+                "nameHi": "क्रियाविशेषण का स्थान",
+                "aliases": ["adverb placement"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "comparison_of_adverbs",
+                "level": "topic",
+                "nameEn": "Comparison of Adverbs",
+                "nameHi": "क्रियाविशेषण की तुलना",
+                "aliases": ["degrees of adverbs"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "prepositions",
+            "level": "chapter",
+            "nameEn": "Prepositions",
+            "nameHi": "पूर्वसर्ग (प्रीपोज़िशन)",
+            "aliases": ["preposition", "use of prepositions"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "prepositions_time_place",
+                "level": "topic",
+                "nameEn": "Prepositions of Time, Place and Direction",
+                "nameHi": "समय, स्थान एवं दिशा के पूर्वसर्ग",
+                "aliases": ["in on at", "since for"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "phrase_prepositions",
+                "level": "topic",
+                "nameEn": "Compound and Phrase Prepositions",
+                "nameHi": "मिश्र एवं वाक्यांश पूर्वसर्ग",
+                "aliases": ["in spite of", "on account of"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "appropriate_prepositions",
+                "level": "topic",
+                "nameEn": "Fixed Prepositions after Words",
+                "nameHi": "शब्दों के साथ निश्चित पूर्वसर्ग",
+                "aliases": ["prepositions after verbs", "appropriate prepositions"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "conjunctions",
+            "level": "chapter",
+            "nameEn": "Conjunctions and Linking Devices",
+            "nameHi": "संयोजक एवं संबद्धता-सूचक शब्द",
+            "aliases": ["conjunction", "linkers", "connectors", "linking devices"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "coordinating_conjunctions",
+                "level": "topic",
+                "nameEn": "Coordinating Conjunctions",
+                "nameHi": "समानाधिकरण संयोजक",
+                "aliases": ["and but or"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "subordinating_conjunctions",
+                "level": "topic",
+                "nameEn": "Subordinating Conjunctions",
+                "nameHi": "आश्रित संयोजक",
+                "aliases": ["because although unless"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "correlative_conjunctions",
+                "level": "topic",
+                "nameEn": "Correlative Conjunctions",
+                "nameHi": "सहसंबंधी संयोजक",
+                "aliases": ["either or", "not only but also"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "linking_devices",
+                "level": "topic",
+                "nameEn": "Linking Devices and Discourse Markers",
+                "nameHi": "संबद्धता-सूचक शब्द (Linkers)",
+                "aliases": ["discourse markers", "connectives"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "interjections",
+                "level": "topic",
+                "nameEn": "Interjections",
+                "nameHi": "विस्मयादिबोधक शब्द",
+                "aliases": ["interjection"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "sentence_grammar",
+        "level": "unit",
+        "nameEn": "Tenses, Agreement and Sentence Structure",
+        "nameHi": "काल, संगति एवं वाक्य-संरचना",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "tenses",
+            "level": "chapter",
+            "nameEn": "Tenses",
+            "nameHi": "काल (टेन्स)",
+            "aliases": ["tense", "kaal english", "present past future tense"],
+            "objectives": ["Use the twelve tense forms and the sequence of tenses correctly"],
+            "children": [
+              {
+                "code": "present_tenses",
+                "level": "topic",
+                "nameEn": "Present Tense Forms",
+                "nameHi": "वर्तमान काल",
+                "aliases": ["present continuous", "present perfect"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "past_tenses",
+                "level": "topic",
+                "nameEn": "Past Tense Forms",
+                "nameHi": "भूतकाल",
+                "aliases": ["past perfect", "past continuous"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "future_forms",
+                "level": "topic",
+                "nameEn": "Future Time Forms",
+                "nameHi": "भविष्यत् काल",
+                "aliases": ["future perfect", "going to"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sequence_of_tenses",
+                "level": "topic",
+                "nameEn": "Sequence of Tenses",
+                "nameHi": "कालों का अनुक्रम",
+                "aliases": ["tense sequence"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "subject_verb_agreement",
+            "level": "chapter",
+            "nameEn": "Subject-Verb Agreement (Concord)",
+            "nameHi": "कर्ता-क्रिया संगति",
+            "aliases": ["concord", "subject verb concord", "agreement of verb"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "concord_basic_rules",
+                "level": "topic",
+                "nameEn": "Basic Rules of Concord",
+                "nameHi": "संगति के मूल नियम",
+                "aliases": ["singular subject singular verb"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "concord_special_cases",
+                "level": "topic",
+                "nameEn": "Special Cases: Collective Nouns, Either/Neither, As well as",
+                "nameHi": "संगति के विशेष नियम",
+                "aliases": ["collective noun verb", "each every agreement"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sentence_structure",
+            "level": "chapter",
+            "nameEn": "Sentence Patterns, Phrases and Clauses",
+            "nameHi": "वाक्य-संरचना, पदबंध एवं उपवाक्य",
+            "aliases": ["svoca", "clause analysis", "sentence patterns", "compound complex sentences"],
+            "objectives": ["Analyse sentences into SVOCA elements and identify phrases and clauses"],
+            "children": [
+              {
+                "code": "basic_sentence_patterns",
+                "level": "topic",
+                "nameEn": "Basic Sentence Patterns (SV, SVO, SVC, SVOO, SVOC, SVA)",
+                "nameHi": "आधारभूत वाक्य-संरचनाएँ",
+                "aliases": ["sentence patterns", "SVO pattern"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "svoca_analysis",
+                "level": "topic",
+                "nameEn": "Clause and Phrase Analysis (SVOCA)",
+                "nameHi": "SVOCA के आधार पर वाक्य-विश्लेषण",
+                "aliases": ["svoca analysis", "clause analysis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "phrases",
+                "level": "topic",
+                "nameEn": "Kinds of Phrases",
+                "nameHi": "पदबंध (Phrases) के प्रकार",
+                "aliases": ["noun phrase", "prepositional phrase"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "clauses",
+                "level": "topic",
+                "nameEn": "Noun, Adjective and Adverb Clauses",
+                "nameHi": "उपवाक्य के प्रकार",
+                "aliases": ["relative clause", "noun clause", "adverb clause"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coordination_subordination",
+                "level": "topic",
+                "nameEn": "Coordination and Subordination: Simple, Compound and Complex Sentences",
+                "nameHi": "समानाधिकरण एवं आश्रितता (सरल, संयुक्त, मिश्र वाक्य)",
+                "aliases": ["simple compound complex", "subordination coordination"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "conditionals",
+            "level": "chapter",
+            "nameEn": "Conditional Sentences",
+            "nameHi": "शर्तवाचक वाक्य",
+            "aliases": ["if clauses", "conditionals", "conditional sentences"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "real_conditionals",
+                "level": "topic",
+                "nameEn": "Zero and First Conditionals",
+                "nameHi": "वास्तविक शर्तवाचक वाक्य",
+                "aliases": ["first conditional", "zero conditional"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "unreal_conditionals",
+                "level": "topic",
+                "nameEn": "Second and Third Conditionals",
+                "nameHi": "काल्पनिक शर्तवाचक वाक्य",
+                "aliases": ["second conditional", "third conditional"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mixed_conditionals",
+                "level": "topic",
+                "nameEn": "Mixed Conditionals and Inversion",
+                "nameHi": "मिश्र शर्तवाचक वाक्य",
+                "aliases": ["had I known", "mixed conditional"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "question_forms",
+            "level": "chapter",
+            "nameEn": "Framing Questions",
+            "nameHi": "प्रश्न-निर्माण",
+            "aliases": ["wh questions", "question tags", "framing questions"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "yes_no_questions",
+                "level": "topic",
+                "nameEn": "Yes/No Questions",
+                "nameHi": "हाँ/ना प्रश्न",
+                "aliases": ["auxiliary questions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wh_questions",
+                "level": "topic",
+                "nameEn": "Wh-questions",
+                "nameHi": "Wh- प्रश्न",
+                "aliases": ["what where when questions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "question_tags",
+                "level": "topic",
+                "nameEn": "Question Tags",
+                "nameHi": "प्रश्न-पुच्छ (Question Tags)",
+                "aliases": ["tag questions"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "transformation",
+        "level": "unit",
+        "nameEn": "Transformation of Sentences",
+        "nameHi": "वाक्य-रूपांतरण",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "sentence_conversion",
+            "level": "chapter",
+            "nameEn": "Changing Sentence Types",
+            "nameHi": "वाक्य-प्रकार परिवर्तन",
+            "aliases": ["transformation of sentences", "affirmative to negative", "interchange of sentences"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "affirmative_negative",
+                "level": "topic",
+                "nameEn": "Affirmative and Negative",
+                "nameHi": "सकारात्मक एवं नकारात्मक वाक्य",
+                "aliases": ["affirmative to negative"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "assertive_interrogative",
+                "level": "topic",
+                "nameEn": "Assertive and Interrogative",
+                "nameHi": "विधानवाचक एवं प्रश्नवाचक वाक्य",
+                "aliases": ["assertive to interrogative"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "imperative_exclamatory",
+                "level": "topic",
+                "nameEn": "Imperative and Exclamatory",
+                "nameHi": "आज्ञार्थक एवं विस्मयादिबोधक वाक्य",
+                "aliases": ["exclamatory to assertive"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "simple_compound_complex",
+                "level": "topic",
+                "nameEn": "Interchange of Simple, Compound and Complex Sentences",
+                "nameHi": "सरल, संयुक्त एवं मिश्र वाक्यों का रूपांतरण",
+                "aliases": ["simple to complex", "compound to simple"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "voice",
+            "level": "chapter",
+            "nameEn": "Active and Passive Voice",
+            "nameHi": "कर्तृवाच्य एवं कर्मवाच्य",
+            "aliases": ["active passive", "voice change", "passive voice"],
+            "objectives": ["Change sentences from active to passive voice and back in all tenses"],
+            "children": [
+              {
+                "code": "passive_tenses",
+                "level": "topic",
+                "nameEn": "Passive in Different Tenses",
+                "nameHi": "विभिन्न कालों में कर्मवाच्य",
+                "aliases": ["passive of tenses"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "passive_modals_imperatives",
+                "level": "topic",
+                "nameEn": "Passive of Modals and Imperatives",
+                "nameHi": "मॉडल एवं आज्ञार्थक वाक्यों का कर्मवाच्य",
+                "aliases": ["let passive", "modal passive"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "passive_special",
+                "level": "topic",
+                "nameEn": "Passive of Questions, Two-object and Phrasal Verbs",
+                "nameHi": "प्रश्नवाचक एवं विशेष वाक्यों का कर्मवाच्य",
+                "aliases": ["interrogative passive", "double object passive"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "narration",
+            "level": "chapter",
+            "nameEn": "Direct and Indirect Speech (Reported Speech)",
+            "nameHi": "प्रत्यक्ष एवं अप्रत्यक्ष कथन",
+            "aliases": ["narration", "reported speech", "direct indirect"],
+            "objectives": [
+              "Report statements, questions, commands and exclamations with the correct changes"
+            ],
+            "children": [
+              {
+                "code": "reporting_rules",
+                "level": "topic",
+                "nameEn": "Changes in Tense, Pronoun and Time Words",
+                "nameHi": "काल, सर्वनाम एवं समय-सूचक परिवर्तन",
+                "aliases": ["narration rules"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reporting_statements",
+                "level": "topic",
+                "nameEn": "Reporting Statements",
+                "nameHi": "विधानवाचक वाक्यों का कथन-परिवर्तन",
+                "aliases": ["assertive narration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reporting_questions",
+                "level": "topic",
+                "nameEn": "Reporting Questions",
+                "nameHi": "प्रश्नवाचक वाक्यों का कथन-परिवर्तन",
+                "aliases": ["interrogative narration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reporting_commands_requests",
+                "level": "topic",
+                "nameEn": "Reporting Commands and Requests",
+                "nameHi": "आज्ञा एवं अनुरोध का कथन-परिवर्तन",
+                "aliases": ["imperative narration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reporting_exclamations",
+                "level": "topic",
+                "nameEn": "Reporting Exclamations and Wishes",
+                "nameHi": "विस्मयादिबोधक एवं इच्छार्थक वाक्यों का कथन-परिवर्तन",
+                "aliases": ["exclamatory narration", "optative narration"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "vocabulary",
+        "level": "unit",
+        "nameEn": "Vocabulary",
+        "nameHi": "शब्द-भंडार",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "word_meaning",
+            "level": "chapter",
+            "nameEn": "Synonyms, Antonyms and One-word Substitution",
+            "nameHi": "समानार्थी, विलोम एवं वाक्यांश के लिए एक शब्द",
+            "aliases": ["synonyms antonyms", "one word substitution", "OWS", "vocabulary"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "synonyms",
+                "level": "topic",
+                "nameEn": "Synonyms",
+                "nameHi": "समानार्थी शब्द (Synonyms)",
+                "aliases": ["similar words", "samanarthi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "antonyms",
+                "level": "topic",
+                "nameEn": "Antonyms",
+                "nameHi": "विलोम शब्द (Antonyms)",
+                "aliases": ["opposite words", "vilom english"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "one_word_substitution",
+                "level": "topic",
+                "nameEn": "One-word Substitution",
+                "nameHi": "वाक्यांश के लिए एक शब्द",
+                "aliases": ["ows", "one word for many"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "spelling_confusables",
+            "level": "chapter",
+            "nameEn": "Spelling and Words Often Confused",
+            "nameHi": "वर्तनी एवं भ्रमकारी शब्द",
+            "aliases": ["misspelt words", "spelling", "homonyms", "confusable words"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "spelling",
+                "level": "topic",
+                "nameEn": "Correct Spelling (Misspelt Words)",
+                "nameHi": "शुद्ध वर्तनी",
+                "aliases": ["spelling errors", "misspelt words"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "confusable_words",
+                "level": "topic",
+                "nameEn": "Homonyms, Homophones and Words Often Confused",
+                "nameHi": "समध्वनि एवं भ्रमकारी शब्द",
+                "aliases": ["homophones", "words often confused"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "word_formation",
+            "level": "chapter",
+            "nameEn": "Word Formation",
+            "nameHi": "शब्द-निर्माण",
+            "aliases": ["prefix suffix", "word formation", "derivation"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "prefixes",
+                "level": "topic",
+                "nameEn": "Prefixes",
+                "nameHi": "उपसर्ग (Prefixes)",
+                "aliases": ["prefix"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "suffixes",
+                "level": "topic",
+                "nameEn": "Suffixes",
+                "nameHi": "प्रत्यय (Suffixes)",
+                "aliases": ["suffix"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "compounding_conversion",
+                "level": "topic",
+                "nameEn": "Compounding and Conversion",
+                "nameHi": "समास एवं शब्द-रूपांतरण",
+                "aliases": ["compound words english"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "idioms_phrases",
+            "level": "chapter",
+            "nameEn": "Idioms, Proverbs and Phrasal Verbs",
+            "nameHi": "मुहावरे, लोकोक्तियाँ एवं फ़्रेज़ल वर्ब",
+            "aliases": ["idioms and phrases", "phrasal verbs", "proverbs", "idiomatic expressions"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "idioms",
+                "level": "topic",
+                "nameEn": "Idioms and Idiomatic Expressions",
+                "nameHi": "मुहावरे (Idioms)",
+                "aliases": ["idioms meaning", "idiomatic expressions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "proverbs",
+                "level": "topic",
+                "nameEn": "Proverbs",
+                "nameHi": "लोकोक्तियाँ (Proverbs)",
+                "aliases": ["proverb meaning", "sayings"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "phrasal_verbs",
+                "level": "topic",
+                "nameEn": "Phrasal Verbs",
+                "nameHi": "फ़्रेज़ल वर्ब",
+                "aliases": ["phrasal verb meaning", "look after give up"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "usage_practice",
+        "level": "unit",
+        "nameEn": "Error Detection and Sentence Improvement",
+        "nameHi": "त्रुटि-पहचान एवं वाक्य-सुधार",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "error_spotting",
+            "level": "chapter",
+            "nameEn": "Spotting Errors",
+            "nameHi": "त्रुटि पहचान",
+            "aliases": ["error detection", "spot the error", "common errors"],
+            "objectives": ["Locate and correct grammatical errors in a sentence"],
+            "children": [
+              {
+                "code": "errors_nouns_pronouns",
+                "level": "topic",
+                "nameEn": "Errors in Nouns and Pronouns",
+                "nameHi": "संज्ञा एवं सर्वनाम संबंधी त्रुटियाँ",
+                "aliases": ["noun errors", "pronoun errors"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "errors_verbs_concord",
+                "level": "topic",
+                "nameEn": "Errors in Verbs, Tenses and Concord",
+                "nameHi": "क्रिया, काल एवं संगति संबंधी त्रुटियाँ",
+                "aliases": ["verb errors", "tense errors"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "errors_articles_prepositions",
+                "level": "topic",
+                "nameEn": "Errors in Articles and Prepositions",
+                "nameHi": "आर्टिकल एवं पूर्वसर्ग संबंधी त्रुटियाँ",
+                "aliases": ["article errors", "preposition errors"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "errors_modifiers_conjunctions",
+                "level": "topic",
+                "nameEn": "Errors in Adjectives, Adverbs and Conjunctions",
+                "nameHi": "विशेषण, क्रियाविशेषण एवं संयोजक संबंधी त्रुटियाँ",
+                "aliases": ["adjective errors", "conjunction errors"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sentence_improvement",
+            "level": "chapter",
+            "nameEn": "Sentence Improvement, Gap Filling and Cloze",
+            "nameHi": "वाक्य-सुधार, रिक्त स्थान एवं क्लोज़ टेस्ट",
+            "aliases": ["sentence improvement", "fill in the blanks", "cloze test", "editing"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "improvement_of_sentences",
+                "level": "topic",
+                "nameEn": "Improvement of Sentences",
+                "nameHi": "वाक्य-सुधार",
+                "aliases": ["sentence correction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fill_in_the_blanks",
+                "level": "topic",
+                "nameEn": "Fill in the Blanks",
+                "nameHi": "रिक्त स्थान पूर्ति",
+                "aliases": ["gap filling"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cloze_test",
+                "level": "topic",
+                "nameEn": "Cloze Passages",
+                "nameHi": "क्लोज़ टेस्ट",
+                "aliases": ["cloze passage"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "editing_omission",
+                "level": "topic",
+                "nameEn": "Editing and Omission",
+                "nameHi": "संपादन एवं लुप्त शब्द",
+                "aliases": ["editing exercise", "omission"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sentence_rearrangement",
+            "level": "chapter",
+            "nameEn": "Sentence Rearrangement",
+            "nameHi": "वाक्य-पुनर्व्यवस्था",
+            "aliases": ["para jumbles", "jumbled sentences", "shuffling"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "shuffling_sentence_parts",
+                "level": "topic",
+                "nameEn": "Shuffling Parts of a Sentence",
+                "nameHi": "वाक्यांशों का क्रम",
+                "aliases": ["jumbled words", "sentence parts"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "para_jumbles",
+                "level": "topic",
+                "nameEn": "Shuffling Sentences in a Passage",
+                "nameHi": "अनुच्छेद में वाक्यों का क्रम",
+                "aliases": ["parajumbles", "sentence ordering"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "phonetics",
+        "level": "unit",
+        "nameEn": "Phonetics",
+        "nameHi": "ध्वनि-विज्ञान (फ़ोनेटिक्स)",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "sounds_of_english",
+            "level": "chapter",
+            "nameEn": "English Sounds, Transcription and Stress",
+            "nameHi": "अंग्रेज़ी ध्वनियाँ, प्रतिलेखन एवं बलाघात",
+            "aliases": ["phonetics", "phonetic symbols", "IPA", "phonetic transcription"],
+            "objectives": [
+              "Identify English vowel and consonant sounds, transcribe words and mark word stress"
+            ],
+            "children": [
+              {
+                "code": "vowel_sounds",
+                "level": "topic",
+                "nameEn": "Vowel Sounds",
+                "nameHi": "स्वर ध्वनियाँ",
+                "aliases": ["monophthongs", "pure vowels"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "diphthongs",
+                "level": "topic",
+                "nameEn": "Diphthongs",
+                "nameHi": "संयुक्त स्वर (Diphthongs)",
+                "aliases": ["diphthong"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "consonant_sounds",
+                "level": "topic",
+                "nameEn": "Consonant Sounds",
+                "nameHi": "व्यंजन ध्वनियाँ",
+                "aliases": ["consonants english", "plosives fricatives"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "phonetic_transcription",
+                "level": "topic",
+                "nameEn": "Phonetic Transcription",
+                "nameHi": "ध्वन्यात्मक प्रतिलेखन",
+                "aliases": ["transcription", "IPA symbols"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "word_stress",
+                "level": "topic",
+                "nameEn": "Syllables and Word Stress",
+                "nameHi": "अक्षर एवं शब्द-बलाघात",
+                "aliases": ["stress", "syllable division"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "reading",
+        "level": "unit",
+        "nameEn": "Reading Comprehension",
+        "nameHi": "पठन-बोध",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "prose_comprehension",
+            "level": "chapter",
+            "nameEn": "Unseen Prose Passages",
+            "nameHi": "अपठित गद्यांश",
+            "aliases": ["reading comprehension", "unseen passage", "RC", "comprehension passage"],
+            "objectives": ["Answer factual, inferential and vocabulary questions on unseen passages"],
+            "children": [
+              {
+                "code": "discursive_passage",
+                "level": "topic",
+                "nameEn": "Discursive Passages",
+                "nameHi": "विमर्शात्मक गद्यांश",
+                "aliases": ["discursive passage", "opinion passage"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "case_based_passage",
+                "level": "topic",
+                "nameEn": "Case-based Factual Passages with Visual Input",
+                "nameHi": "तथ्यात्मक (केस-आधारित) गद्यांश",
+                "aliases": ["case based passage", "factual passage", "data based passage"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "main_idea_title",
+                "level": "topic",
+                "nameEn": "Main Idea, Title and Summary",
+                "nameHi": "मुख्य विचार, शीर्षक एवं सारांश",
+                "aliases": ["central idea", "suitable title"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "inference_assumption",
+                "level": "topic",
+                "nameEn": "Inference, Assumption and Critical Reasoning",
+                "nameHi": "अनुमान, पूर्वधारणा एवं निष्कर्ष",
+                "aliases": ["inference questions", "assumption", "csat comprehension"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vocabulary_in_context",
+                "level": "topic",
+                "nameEn": "Vocabulary in Context",
+                "nameHi": "प्रसंगानुसार शब्दार्थ",
+                "aliases": ["word meaning from passage"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "poem_comprehension",
+            "level": "chapter",
+            "nameEn": "Unseen Poems and Poetry Appreciation",
+            "nameHi": "अपठित पद्यांश एवं काव्य-रसास्वादन",
+            "aliases": ["unseen poem", "poetry appreciation", "poem comprehension"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "unseen_poem",
+                "level": "topic",
+                "nameEn": "Comprehension of an Unseen Poem",
+                "nameHi": "अपठित कविता का बोध",
+                "aliases": ["unseen poem questions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "poetry_appreciation",
+                "level": "topic",
+                "nameEn": "Critical Appreciation of Poetry",
+                "nameHi": "काव्य-सौंदर्य एवं समीक्षा",
+                "aliases": ["appreciation of poem"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "writing",
+        "level": "unit",
+        "nameEn": "Writing Skills",
+        "nameHi": "लेखन कौशल",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "letters_emails",
+            "level": "chapter",
+            "nameEn": "Letters and E-mails",
+            "nameHi": "पत्र एवं ई-मेल लेखन",
+            "aliases": ["letter writing", "formal letter", "email writing"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "formal_letter",
+                "level": "topic",
+                "nameEn": "Formal Letters",
+                "nameHi": "औपचारिक पत्र",
+                "aliases": ["letter of complaint", "letter to editor", "application"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "informal_letter",
+                "level": "topic",
+                "nameEn": "Informal Letters",
+                "nameHi": "अनौपचारिक पत्र",
+                "aliases": ["personal letter"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "email",
+                "level": "topic",
+                "nameEn": "E-mails",
+                "nameHi": "ई-मेल",
+                "aliases": ["email format"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "composition",
+            "level": "chapter",
+            "nameEn": "Paragraph, Essay, Report and Story Writing",
+            "nameHi": "अनुच्छेद, निबंध, प्रतिवेदन एवं कहानी लेखन",
+            "aliases": ["essay writing", "analytical paragraph", "report writing"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "analytical_paragraph",
+                "level": "topic",
+                "nameEn": "Analytical Paragraph (Map, Chart, Graph, Cues)",
+                "nameHi": "विश्लेषणात्मक अनुच्छेद",
+                "aliases": ["chart description", "graph paragraph"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "essay",
+                "level": "topic",
+                "nameEn": "Essay",
+                "nameHi": "निबंध",
+                "aliases": ["essay writing english"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "report",
+                "level": "topic",
+                "nameEn": "Report",
+                "nameHi": "प्रतिवेदन (Report)",
+                "aliases": ["report writing"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "story_writing",
+                "level": "topic",
+                "nameEn": "Story Writing",
+                "nameHi": "कहानी लेखन",
+                "aliases": ["story from outline"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "blog",
+                "level": "topic",
+                "nameEn": "Blog Writing",
+                "nameHi": "ब्लॉग लेखन",
+                "aliases": ["blog post"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "literary_terms",
+        "level": "unit",
+        "nameEn": "Literary Devices and Forms",
+        "nameHi": "साहित्यिक उपकरण एवं विधाएँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "figures_of_speech",
+            "level": "chapter",
+            "nameEn": "Figures of Speech",
+            "nameHi": "अलंकार (Figures of Speech)",
+            "aliases": ["literary devices", "poetic devices", "figures of speech"],
+            "objectives": ["Identify figures of speech in a line of verse or prose"],
+            "children": [
+              {
+                "code": "simile",
+                "level": "topic",
+                "nameEn": "Simile",
+                "nameHi": "उपमा (Simile)",
+                "aliases": ["like or as comparison"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "metaphor",
+                "level": "topic",
+                "nameEn": "Metaphor",
+                "nameHi": "रूपक (Metaphor)",
+                "aliases": ["implied comparison"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "personification",
+                "level": "topic",
+                "nameEn": "Personification",
+                "nameHi": "मानवीकरण (Personification)",
+                "aliases": ["human qualities to objects"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pun",
+                "level": "topic",
+                "nameEn": "Pun",
+                "nameHi": "श्लेष (Pun)",
+                "aliases": ["play on words"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hyperbole",
+                "level": "topic",
+                "nameEn": "Hyperbole",
+                "nameHi": "अतिशयोक्ति (Hyperbole)",
+                "aliases": ["exaggeration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alliteration",
+                "level": "topic",
+                "nameEn": "Alliteration",
+                "nameHi": "अनुप्रास (Alliteration)",
+                "aliases": ["repetition of consonant sounds"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "assonance",
+                "level": "topic",
+                "nameEn": "Assonance",
+                "nameHi": "स्वरानुप्रास (Assonance)",
+                "aliases": ["repetition of vowel sounds"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "onomatopoeia",
+                "level": "topic",
+                "nameEn": "Onomatopoeia",
+                "nameHi": "ध्वन्यर्थ-व्यंजना (Onomatopoeia)",
+                "aliases": ["sound words"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "paradox",
+                "level": "topic",
+                "nameEn": "Paradox",
+                "nameHi": "विरोधाभास (Paradox)",
+                "aliases": ["oxymoron paradox"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rhyme",
+                "level": "topic",
+                "nameEn": "Rhyme and Rhyme Scheme",
+                "nameHi": "तुक (Rhyme)",
+                "aliases": ["rhyme scheme"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "poetic_forms",
+            "level": "chapter",
+            "nameEn": "Poetic Forms",
+            "nameHi": "काव्य-रूप",
+            "aliases": ["sonnet ode elegy", "poetic forms", "types of poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sonnet",
+                "level": "topic",
+                "nameEn": "Sonnet",
+                "nameHi": "सॉनेट (चतुर्दशपदी)",
+                "aliases": ["petrarchan sonnet", "shakespearean sonnet"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ode",
+                "level": "topic",
+                "nameEn": "Ode",
+                "nameHi": "ओड (संबोधगीत)",
+                "aliases": ["pindaric ode"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "elegy",
+                "level": "topic",
+                "nameEn": "Elegy",
+                "nameHi": "शोकगीत (Elegy)",
+                "aliases": ["pastoral elegy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ballad",
+                "level": "topic",
+                "nameEn": "Ballad",
+                "nameHi": "गाथागीत (Ballad)",
+                "aliases": ["folk ballad"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "epic_mock_epic",
+                "level": "topic",
+                "nameEn": "Epic and Mock Epic",
+                "nameHi": "महाकाव्य एवं हास्य-महाकाव्य",
+                "aliases": ["mock heroic", "epic poetry"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dramatic_monologue",
+                "level": "topic",
+                "nameEn": "Dramatic Monologue",
+                "nameHi": "नाटकीय एकालाप (Dramatic Monologue)",
+                "aliases": ["browning monologue"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "dramatic_narrative_forms",
+            "level": "chapter",
+            "nameEn": "Dramatic and Narrative Forms and Techniques",
+            "nameHi": "नाटकीय एवं कथात्मक विधाएँ",
+            "aliases": ["soliloquy", "stream of consciousness", "allegory", "short story drama"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "drama",
+                "level": "topic",
+                "nameEn": "Drama: Tragedy and Comedy",
+                "nameHi": "नाटक (त्रासदी एवं कॉमेडी)",
+                "aliases": ["tragedy", "comedy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "soliloquy",
+                "level": "topic",
+                "nameEn": "Soliloquy",
+                "nameHi": "स्वगत-कथन (Soliloquy)",
+                "aliases": ["aside"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "short_story",
+                "level": "topic",
+                "nameEn": "Short Story",
+                "nameHi": "कहानी (Short Story)",
+                "aliases": ["short fiction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "allegory",
+                "level": "topic",
+                "nameEn": "Allegory",
+                "nameHi": "रूपक-कथा (Allegory)",
+                "aliases": ["allegorical"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stream_of_consciousness",
+                "level": "topic",
+                "nameEn": "Stream of Consciousness",
+                "nameHi": "चेतना-प्रवाह (Stream of Consciousness)",
+                "aliases": ["interior monologue"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "literary_history",
+        "level": "unit",
+        "nameEn": "History of English Literature",
+        "nameHi": "अंग्रेज़ी साहित्य का इतिहास",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "literary_periods",
+            "level": "chapter",
+            "nameEn": "Major Literary Periods",
+            "nameHi": "प्रमुख साहित्यिक काल",
+            "aliases": ["literary ages", "periods of english literature", "history of english literature"],
+            "objectives": [
+              "Relate the major authors, works and features of each period of English literature"
+            ],
+            "children": [
+              {
+                "code": "renaissance",
+                "level": "topic",
+                "nameEn": "Renaissance (Elizabethan Age)",
+                "nameHi": "पुनर्जागरण काल (एलिज़ाबेथन युग)",
+                "aliases": ["elizabethan age", "age of shakespeare"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "metaphysical",
+                "level": "topic",
+                "nameEn": "Metaphysical Poetry",
+                "nameHi": "मेटाफ़िज़िकल काव्य",
+                "aliases": ["metaphysical poets", "donne school"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jacobean",
+                "level": "topic",
+                "nameEn": "Jacobean Age",
+                "nameHi": "जैकोबियन काल",
+                "aliases": ["jacobean drama"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "neoclassical",
+                "level": "topic",
+                "nameEn": "Neoclassical Age (Restoration and Augustan)",
+                "nameHi": "नव-शास्त्रीय काल",
+                "aliases": ["augustan age", "restoration age"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "romantic",
+                "level": "topic",
+                "nameEn": "Romantic Age",
+                "nameHi": "स्वच्छंदतावादी काल",
+                "aliases": ["romantic period", "romantic poets"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "victorian",
+                "level": "topic",
+                "nameEn": "Victorian Age",
+                "nameHi": "विक्टोरियन काल",
+                "aliases": ["victorian period"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "modern",
+                "level": "topic",
+                "nameEn": "Modern Age",
+                "nameHi": "आधुनिक काल",
+                "aliases": ["modernism", "modern period"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "postmodern",
+                "level": "topic",
+                "nameEn": "Postmodern Age",
+                "nameHi": "उत्तर-आधुनिक काल",
+                "aliases": ["postmodernism"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "literary_movements",
+            "level": "chapter",
+            "nameEn": "Major Literary Movements",
+            "nameHi": "प्रमुख साहित्यिक आंदोलन",
+            "aliases": ["literary movements", "isms in literature"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "romanticism",
+                "level": "topic",
+                "nameEn": "Romanticism",
+                "nameHi": "स्वच्छंदतावाद",
+                "aliases": ["romantic movement"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gothic",
+                "level": "topic",
+                "nameEn": "Gothic",
+                "nameHi": "गॉथिक",
+                "aliases": ["gothic novel"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pre_raphaelite",
+                "level": "topic",
+                "nameEn": "Pre-Raphaelite Movement",
+                "nameHi": "प्री-रैफ़ेलाइट आंदोलन",
+                "aliases": ["pre raphaelites", "rossetti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "realism",
+                "level": "topic",
+                "nameEn": "Realism",
+                "nameHi": "यथार्थवाद",
+                "aliases": ["realist novel"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "existentialism",
+                "level": "topic",
+                "nameEn": "Existentialism",
+                "nameHi": "अस्तित्ववाद",
+                "aliases": ["absurd", "sartre"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "sociolinguistics",
+        "level": "unit",
+        "nameEn": "Varieties of Language",
+        "nameHi": "भाषा की विविधताएँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "varieties_of_language",
+            "level": "chapter",
+            "nameEn": "Varieties of Language",
+            "nameHi": "भाषा-विविधता",
+            "aliases": ["language varieties", "dialect register pidgin creole", "code switching"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "dialect",
+                "level": "topic",
+                "nameEn": "Dialect",
+                "nameHi": "बोली (Dialect)",
+                "aliases": ["regional dialect"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "register",
+                "level": "topic",
+                "nameEn": "Register",
+                "nameHi": "प्रयुक्ति (Register)",
+                "aliases": ["language register"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pidgin",
+                "level": "topic",
+                "nameEn": "Pidgin",
+                "nameHi": "पिजिन (Pidgin)",
+                "aliases": ["pidgin language"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "creole",
+                "level": "topic",
+                "nameEn": "Creole",
+                "nameHi": "क्रियोल (Creole)",
+                "aliases": ["creole language"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "code_switching",
+                "level": "topic",
+                "nameEn": "Code-switching",
+                "nameHi": "कोड-स्विचिंग",
+                "aliases": ["code switching"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "code_mixing",
+                "level": "topic",
+                "nameEn": "Code-mixing",
+                "nameHi": "कोड-मिश्रण",
+                "aliases": ["code mixing", "hinglish"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "prescribed_poetry",
+        "level": "unit",
+        "nameEn": "Prescribed Poetry",
+        "nameHi": "निर्धारित कविताएँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "renaissance_metaphysical_poetry",
+            "level": "chapter",
+            "nameEn": "Renaissance and Metaphysical Poetry",
+            "nameHi": "पुनर्जागरण एवं मेटाफ़िज़िकल कविता",
+            "aliases": ["shakespeare sonnets", "donne poems", "milton poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "shakespeare_sonnet_18",
+                "level": "topic",
+                "nameEn": "Shakespeare: Shall I Compare Thee to a Summer's Day? (Sonnet 18)",
+                "nameHi": "शेक्सपियर: शैल आई कम्पेयर दी टू अ समर्स डे (सॉनेट 18)",
+                "aliases": ["shall i compare thee", "sonnet 18"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shakespeare_sonnet_30",
+                "level": "topic",
+                "nameEn": "Shakespeare: When to the Sessions of Sweet Silent Thought (Sonnet 30)",
+                "nameHi": "शेक्सपियर: व्हेन टू द सेशन्स (सॉनेट 30)",
+                "aliases": ["when to the sessions", "sonnet 30"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "milton_age_twenty_three",
+                "level": "topic",
+                "nameEn": "Milton: On His Having Arrived at the Age of Twenty-Three",
+                "nameHi": "मिल्टन: ऑन हिज़ हैविंग अराइव्ड एट द एज ऑफ़ ट्वेंटी-थ्री",
+                "aliases": ["how soon hath time", "milton sonnet 7", "on his 23rd birthday"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "milton_paradise_lost",
+                "level": "topic",
+                "nameEn": "Milton: Paradise Lost, Book I (lines 1-124)",
+                "nameHi": "मिल्टन: पैराडाइज़ लॉस्ट, बुक I",
+                "aliases": ["paradise lost", "of man's first disobedience"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "donne_sunne_rising",
+                "level": "topic",
+                "nameEn": "Donne: The Sunne Rising",
+                "nameHi": "जॉन डन: द सन राइज़िंग",
+                "aliases": ["the sun rising", "busy old fool"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "donne_batter_my_heart",
+                "level": "topic",
+                "nameEn": "Donne: Batter My Heart (Holy Sonnet 14)",
+                "nameHi": "जॉन डन: बैटर माई हार्ट",
+                "aliases": ["holy sonnet 14", "batter my heart three-person'd god"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "marvell_coy_mistress",
+                "level": "topic",
+                "nameEn": "Marvell: To His Coy Mistress",
+                "nameHi": "एंड्रयू मार्वेल: टू हिज़ कॉय मिस्ट्रेस",
+                "aliases": ["to his coy mistress", "andrew marvell"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "neoclassical_poetry",
+            "level": "chapter",
+            "nameEn": "Neoclassical and Transitional Poetry",
+            "nameHi": "नव-शास्त्रीय एवं संक्रमणकालीन कविता",
+            "aliases": ["dryden poems", "gray elegy"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "dryden_st_cecilia",
+                "level": "topic",
+                "nameEn": "Dryden: A Song for St. Cecilia's Day",
+                "nameHi": "ड्राइडन: अ सॉन्ग फ़ॉर सेंट सिसिलियाज़ डे",
+                "aliases": ["st cecilia's day"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dryden_alexanders_feast",
+                "level": "topic",
+                "nameEn": "Dryden: Alexander's Feast",
+                "nameHi": "ड्राइडन: अलेक्ज़ेंडर्स फ़ीस्ट",
+                "aliases": ["alexander's feast", "power of music"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gray_elegy",
+                "level": "topic",
+                "nameEn": "Gray: Elegy Written in a Country Churchyard",
+                "nameHi": "थॉमस ग्रे: एलेजी रिटन इन अ कंट्री चर्चयार्ड",
+                "aliases": ["gray's elegy", "country churchyard"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "romantic_poetry",
+            "level": "chapter",
+            "nameEn": "Romantic Poetry",
+            "nameHi": "स्वच्छंदतावादी कविता",
+            "aliases": ["wordsworth poems", "keats poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "wordsworth_solitary_reaper",
+                "level": "topic",
+                "nameEn": "Wordsworth: The Solitary Reaper",
+                "nameHi": "वर्ड्सवर्थ: द सॉलिटरी रीपर",
+                "aliases": ["solitary reaper"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wordsworth_tintern_abbey",
+                "level": "topic",
+                "nameEn": "Wordsworth: Lines Written a Few Miles above Tintern Abbey",
+                "nameHi": "वर्ड्सवर्थ: टिन्टर्न ऐबी",
+                "aliases": ["tintern abbey"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "keats_thing_of_beauty",
+                "level": "topic",
+                "nameEn": "Keats: A Thing of Beauty (Endymion)",
+                "nameHi": "कीट्स: अ थिंग ऑफ़ ब्यूटी",
+                "aliases": ["a thing of beauty", "endymion"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "keats_nightingale",
+                "level": "topic",
+                "nameEn": "Keats: Ode to a Nightingale",
+                "nameHi": "कीट्स: ओड टू अ नाइटिंगेल",
+                "aliases": ["ode to a nightingale"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "victorian_poetry",
+            "level": "chapter",
+            "nameEn": "Victorian Poetry",
+            "nameHi": "विक्टोरियन कविता",
+            "aliases": ["browning poems", "tennyson poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "browning_last_ride",
+                "level": "topic",
+                "nameEn": "Browning: The Last Ride Together",
+                "nameHi": "रॉबर्ट ब्राउनिंग: द लास्ट राइड टुगेदर",
+                "aliases": ["last ride together"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "browning_andrea_del_sarto",
+                "level": "topic",
+                "nameEn": "Browning: Andrea del Sarto",
+                "nameHi": "रॉबर्ट ब्राउनिंग: आन्द्रेया देल सार्तो",
+                "aliases": ["andrea del sarto", "faultless painter"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tennyson_ulysses",
+                "level": "topic",
+                "nameEn": "Tennyson: Ulysses",
+                "nameHi": "टेनिसन: यूलिसिस",
+                "aliases": ["ulysses poem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "arnold_dover_beach",
+                "level": "topic",
+                "nameEn": "Arnold: Dover Beach",
+                "nameHi": "मैथ्यू आर्नल्ड: डोवर बीच",
+                "aliases": ["dover beach"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "modern_poetry",
+            "level": "chapter",
+            "nameEn": "Modern Poetry",
+            "nameHi": "आधुनिक कविता",
+            "aliases": ["eliot poems", "yeats poems", "modern poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "eliot_prufrock",
+                "level": "topic",
+                "nameEn": "Eliot: The Love Song of J. Alfred Prufrock",
+                "nameHi": "टी.एस. एलियट: द लव सॉन्ग ऑफ़ जे. अल्फ़्रेड प्रूफ़्रॉक",
+                "aliases": ["prufrock"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "eliot_hollow_men",
+                "level": "topic",
+                "nameEn": "Eliot: The Hollow Men",
+                "nameHi": "टी.एस. एलियट: द हॉलो मेन",
+                "aliases": ["hollow men"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "yeats_byzantium",
+                "level": "topic",
+                "nameEn": "Yeats: Sailing to Byzantium",
+                "nameHi": "डब्ल्यू.बी. येट्स: सेलिंग टू बाइज़ेंटियम",
+                "aliases": ["sailing to byzantium"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "neruda_keeping_quiet",
+                "level": "topic",
+                "nameEn": "Neruda: Keeping Quiet",
+                "nameHi": "पाब्लो नेरूदा: कीपिंग क्वाइट",
+                "aliases": ["keeping quiet"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "american_poetry",
+            "level": "chapter",
+            "nameEn": "American Poetry",
+            "nameHi": "अमेरिकी कविता",
+            "aliases": ["whitman frost dickinson", "american poets"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "whitman_brooklyn_ferry",
+                "level": "topic",
+                "nameEn": "Whitman: Crossing Brooklyn Ferry",
+                "nameHi": "वॉल्ट व्हिटमैन: क्रॉसिंग ब्रुकलिन फ़ेरी",
+                "aliases": ["crossing brooklyn ferry"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "frost_apple_picking",
+                "level": "topic",
+                "nameEn": "Frost: After Apple-Picking",
+                "nameHi": "रॉबर्ट फ़्रॉस्ट: आफ़्टर ऐपल-पिकिंग",
+                "aliases": ["after apple picking"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dickinson_because_i_could_not_stop",
+                "level": "topic",
+                "nameEn": "Dickinson: Because I Could Not Stop for Death",
+                "nameHi": "एमिली डिकिन्सन: बिकॉज़ आई कुड नॉट स्टॉप फ़ॉर डेथ",
+                "aliases": ["because i could not stop for death"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dickinson_fly_buzz",
+                "level": "topic",
+                "nameEn": "Dickinson: I Heard a Fly Buzz",
+                "nameHi": "एमिली डिकिन्सन: आई हर्ड अ फ़्लाई बज़",
+                "aliases": ["i heard a fly buzz when i died"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "indian_english_poetry",
+            "level": "chapter",
+            "nameEn": "Indian English Poetry",
+            "nameHi": "भारतीय अंग्रेज़ी कविता",
+            "aliases": ["indian poets in english", "indo anglian poetry"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "tagore_where_the_mind",
+                "level": "topic",
+                "nameEn": "Tagore: Where the Mind is Without Fear",
+                "nameHi": "रवींद्रनाथ टैगोर: व्हेयर द माइंड इज़ विदाउट फ़ियर",
+                "aliases": ["where the mind is without fear"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aurobindo_pilgrim_of_night",
+                "level": "topic",
+                "nameEn": "Sri Aurobindo: The Pilgrim of Night",
+                "nameHi": "श्री अरविंद: द पिलग्रिम ऑफ़ नाइट",
+                "aliases": ["pilgrim of night"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "toru_dutt_casuarina_tree",
+                "level": "topic",
+                "nameEn": "Toru Dutt: Our Casuarina Tree",
+                "nameHi": "तोरु दत्त: अवर कैज़ुरीना ट्री",
+                "aliases": ["casuarina tree"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "toru_dutt_lakshman",
+                "level": "topic",
+                "nameEn": "Toru Dutt: Lakshman",
+                "nameHi": "तोरु दत्त: लक्ष्मण",
+                "aliases": ["lakshman poem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ezekiel_night_of_the_scorpion",
+                "level": "topic",
+                "nameEn": "Nissim Ezekiel: Night of the Scorpion",
+                "nameHi": "निसिम एज़ेकील: नाइट ऑफ़ द स्कॉर्पियन",
+                "aliases": ["night of the scorpion"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ezekiel_goodbye_party",
+                "level": "topic",
+                "nameEn": "Nissim Ezekiel: Goodbye Party for Miss Pushpa T.S.",
+                "nameHi": "निसिम एज़ेकील: गुडबाय पार्टी फ़ॉर मिस पुष्पा टी.एस.",
+                "aliases": ["goodbye party for miss pushpa"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kamala_das_mother_at_sixty_six",
+                "level": "topic",
+                "nameEn": "Kamala Das: My Mother at Sixty-six",
+                "nameHi": "कमला दास: माई मदर एट सिक्सटी-सिक्स",
+                "aliases": ["my mother at sixty six"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kolatkar_the_bus",
+                "level": "topic",
+                "nameEn": "Arun Kolatkar: The Bus",
+                "nameHi": "अरुण कोलटकर: द बस",
+                "aliases": ["the bus jejuri"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "seth_tale_of_melon_city",
+                "level": "topic",
+                "nameEn": "Vikram Seth: The Tale of Melon City",
+                "nameHi": "विक्रम सेठ: द टेल ऑफ़ मेलन सिटी",
+                "aliases": ["tale of melon city"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "amanuddin_indo_anglian",
+                "level": "topic",
+                "nameEn": "Syed Amanuddin: Don't Call Me Indo-Anglian",
+                "nameHi": "सैयद अमानुद्दीन: डोंट कॉल मी इंडो-एंग्लियन",
+                "aliases": ["don't call me indo anglian"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "prescribed_prose_drama",
+        "level": "unit",
+        "nameEn": "Prescribed Prose, Fiction and Drama",
+        "nameHi": "निर्धारित गद्य, कथा-साहित्य एवं नाटक",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "essays",
+            "level": "chapter",
+            "nameEn": "Essays and Critical Prose",
+            "nameHi": "निबंध एवं आलोचनात्मक गद्य",
+            "aliases": ["english essays", "bacon lamb essays", "prose texts"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "bacon_of_studies",
+                "level": "topic",
+                "nameEn": "Bacon: Of Studies",
+                "nameHi": "फ़्रांसिस बेकन: ऑफ़ स्टडीज़",
+                "aliases": ["of studies"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bacon_of_truth",
+                "level": "topic",
+                "nameEn": "Bacon: Of Truth",
+                "nameHi": "फ़्रांसिस बेकन: ऑफ़ ट्रुथ",
+                "aliases": ["of truth"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "addison_westminster_abbey",
+                "level": "topic",
+                "nameEn": "Addison: Meditations in Westminster Abbey",
+                "nameHi": "जोसेफ़ एडिसन: मेडिटेशन्स इन वेस्टमिंस्टर ऐबी",
+                "aliases": ["westminster abbey"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "steele_spectator_club",
+                "level": "topic",
+                "nameEn": "Steele: The Spectator Club",
+                "nameHi": "रिचर्ड स्टील: द स्पेक्टेटर क्लब",
+                "aliases": ["spectator club"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lamb_my_relations",
+                "level": "topic",
+                "nameEn": "Lamb: My Relations",
+                "nameHi": "चार्ल्स लैम्ब: माई रिलेशन्स",
+                "aliases": ["my relations"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lamb_modern_gallantry",
+                "level": "topic",
+                "nameEn": "Lamb: Modern Gallantry",
+                "nameHi": "चार्ल्स लैम्ब: मॉडर्न गैलेंट्री",
+                "aliases": ["modern gallantry"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stevenson_walking_tours",
+                "level": "topic",
+                "nameEn": "Stevenson: Walking Tours",
+                "nameHi": "आर.एल. स्टीवेन्सन: वॉकिंग टूर्स",
+                "aliases": ["on walking tours"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shaw_freedom",
+                "level": "topic",
+                "nameEn": "Shaw: Freedom",
+                "nameHi": "जॉर्ज बर्नार्ड शॉ: फ़्रीडम",
+                "aliases": ["freedom shaw"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gandhi_what_is_swaraj",
+                "level": "topic",
+                "nameEn": "Gandhi: What is Swaraj? (Hind Swaraj, Chapter 4)",
+                "nameHi": "महात्मा गांधी: व्हाट इज़ स्वराज",
+                "aliases": ["hind swaraj"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "eliot_tradition_individual_talent",
+                "level": "topic",
+                "nameEn": "Eliot: Tradition and the Individual Talent",
+                "nameHi": "टी.एस. एलियट: ट्रेडिशन ऐंड द इंडिविजुअल टैलेंट",
+                "aliases": ["tradition and individual talent"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "fiction",
+            "level": "chapter",
+            "nameEn": "Novels and Short Stories",
+            "nameHi": "उपन्यास एवं कहानियाँ",
+            "aliases": ["novels", "prescribed fiction", "short stories"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "dickens_tale_of_two_cities",
+                "level": "topic",
+                "nameEn": "Dickens: A Tale of Two Cities",
+                "nameHi": "चार्ल्स डिकेन्स: अ टेल ऑफ़ टू सिटीज़",
+                "aliases": ["tale of two cities"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dickens_david_copperfield",
+                "level": "topic",
+                "nameEn": "Dickens: David Copperfield",
+                "nameHi": "चार्ल्स डिकेन्स: डेविड कॉपरफ़ील्ड",
+                "aliases": ["david copperfield"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "narayan_malgudi_days",
+                "level": "topic",
+                "nameEn": "R.K. Narayan: Malgudi Days",
+                "nameHi": "आर.के. नारायण: मालगुडी डेज़",
+                "aliases": ["malgudi days"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "deshpande_that_long_silence",
+                "level": "topic",
+                "nameEn": "Shashi Deshpande: That Long Silence",
+                "nameHi": "शशि देशपांडे: दैट लॉन्ग साइलेंस",
+                "aliases": ["that long silence"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "daudet_last_lesson",
+                "level": "topic",
+                "nameEn": "Alphonse Daudet: The Last Lesson",
+                "nameHi": "अल्फ़ोंस दोदे: द लास्ट लेसन",
+                "aliases": ["the last lesson"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "buck_the_enemy",
+                "level": "topic",
+                "nameEn": "Pearl S. Buck: The Enemy",
+                "nameHi": "पर्ल एस. बक: द एनिमी",
+                "aliases": ["the enemy"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "plays",
+            "level": "chapter",
+            "nameEn": "Plays",
+            "nameHi": "नाटक",
+            "aliases": ["prescribed drama", "shakespeare plays"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "shakespeare_macbeth",
+                "level": "topic",
+                "nameEn": "Shakespeare: Macbeth",
+                "nameHi": "शेक्सपियर: मैकबेथ",
+                "aliases": ["macbeth"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shakespeare_as_you_like_it",
+                "level": "topic",
+                "nameEn": "Shakespeare: As You Like It",
+                "nameHi": "शेक्सपियर: ऐज़ यू लाइक इट",
+                "aliases": ["as you like it"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chekhov_marriage_proposal",
+                "level": "topic",
+                "nameEn": "Chekhov: A Marriage Proposal",
+                "nameHi": "एंटन चेखव: अ मैरिज प्रपोज़ल",
+                "aliases": ["the proposal chekhov", "marriage proposal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "karnad_tughlaq",
+                "level": "topic",
+                "nameEn": "Girish Karnad: Tughlaq",
+                "nameHi": "गिरीश कर्नाड: तुग़लक़",
+                "aliases": ["tughlaq"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "textbooks",
+        "level": "unit",
+        "nameEn": "School Textbooks: First Flight and Footprints without Feet",
+        "nameHi": "पाठ्यपुस्तकें: फ़र्स्ट फ़्लाइट एवं फ़ुटप्रिंट्स विदाउट फ़ीट",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "first_flight_prose",
+            "level": "chapter",
+            "nameEn": "First Flight: Prose and Play",
+            "nameHi": "फ़र्स्ट फ़्लाइट: गद्य एवं नाटक",
+            "aliases": ["first flight prose", "first flight chapters"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "letter_to_god",
+                "level": "topic",
+                "nameEn": "A Letter to God",
+                "nameHi": "ए लेटर टू गॉड",
+                "aliases": ["lencho"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "long_walk_to_freedom",
+                "level": "topic",
+                "nameEn": "Nelson Mandela: Long Walk to Freedom",
+                "nameHi": "नेल्सन मंडेला: लॉन्ग वॉक टू फ़्रीडम",
+                "aliases": ["nelson mandela"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "two_stories_about_flying",
+                "level": "topic",
+                "nameEn": "Two Stories about Flying (His First Flight; The Black Aeroplane)",
+                "nameHi": "टू स्टोरीज़ अबाउट फ़्लाइंग",
+                "aliases": ["his first flight", "black aeroplane"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "diary_of_anne_frank",
+                "level": "topic",
+                "nameEn": "From the Diary of Anne Frank",
+                "nameHi": "फ़्रॉम द डायरी ऑफ़ ऐन फ़्रैंक",
+                "aliases": ["anne frank"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "glimpses_of_india",
+                "level": "topic",
+                "nameEn": "Glimpses of India (A Baker from Goa; Coorg; Tea from Assam)",
+                "nameHi": "ग्लिम्प्सेज़ ऑफ़ इंडिया",
+                "aliases": ["baker from goa", "coorg", "tea from assam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mijbil_the_otter",
+                "level": "topic",
+                "nameEn": "Mijbil the Otter",
+                "nameHi": "मिजबिल द ऑटर",
+                "aliases": ["mijbil", "gavin maxwell"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "madam_rides_the_bus",
+                "level": "topic",
+                "nameEn": "Madam Rides the Bus",
+                "nameHi": "मैडम राइड्स द बस",
+                "aliases": ["valli"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sermon_at_benares",
+                "level": "topic",
+                "nameEn": "The Sermon at Benares",
+                "nameHi": "द सर्मन एट बनारस",
+                "aliases": ["buddha sermon", "kisa gotami"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "the_proposal",
+                "level": "topic",
+                "nameEn": "The Proposal (Play)",
+                "nameHi": "द प्रपोज़ल (नाटक)",
+                "aliases": ["the proposal", "chekhov play"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "first_flight_poems",
+            "level": "chapter",
+            "nameEn": "First Flight: Poems",
+            "nameHi": "फ़र्स्ट फ़्लाइट: कविताएँ",
+            "aliases": ["first flight poems", "class poems"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "dust_of_snow",
+                "level": "topic",
+                "nameEn": "Dust of Snow",
+                "nameHi": "डस्ट ऑफ़ स्नो",
+                "aliases": ["robert frost dust of snow"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fire_and_ice",
+                "level": "topic",
+                "nameEn": "Fire and Ice",
+                "nameHi": "फ़ायर ऐंड आइस",
+                "aliases": ["robert frost fire and ice"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tiger_in_the_zoo",
+                "level": "topic",
+                "nameEn": "A Tiger in the Zoo",
+                "nameHi": "ए टाइगर इन द ज़ू",
+                "aliases": ["tiger in the zoo"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "how_to_tell_wild_animals",
+                "level": "topic",
+                "nameEn": "How to Tell Wild Animals",
+                "nameHi": "हाउ टू टेल वाइल्ड एनिमल्स",
+                "aliases": ["wild animals poem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "the_ball_poem",
+                "level": "topic",
+                "nameEn": "The Ball Poem",
+                "nameHi": "द बॉल पोएम",
+                "aliases": ["ball poem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "amanda",
+                "level": "topic",
+                "nameEn": "Amanda!",
+                "nameHi": "अमांडा!",
+                "aliases": ["amanda poem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "the_trees",
+                "level": "topic",
+                "nameEn": "The Trees",
+                "nameHi": "द ट्रीज़",
+                "aliases": ["trees adrienne rich"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fog",
+                "level": "topic",
+                "nameEn": "Fog",
+                "nameHi": "फ़ॉग",
+                "aliases": ["fog carl sandburg"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "custard_the_dragon",
+                "level": "topic",
+                "nameEn": "The Tale of Custard the Dragon",
+                "nameHi": "द टेल ऑफ़ कस्टर्ड द ड्रैगन",
+                "aliases": ["custard the dragon"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "for_anne_gregory",
+                "level": "topic",
+                "nameEn": "For Anne Gregory",
+                "nameHi": "फ़ॉर ऐन ग्रेगरी",
+                "aliases": ["anne gregory"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "footprints_without_feet",
+            "level": "chapter",
+            "nameEn": "Footprints without Feet (Supplementary Reader)",
+            "nameHi": "फ़ुटप्रिंट्स विदाउट फ़ीट",
+            "aliases": ["footprints without feet", "supplementary reader"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "triumph_of_surgery",
+                "level": "topic",
+                "nameEn": "A Triumph of Surgery",
+                "nameHi": "ए ट्रायम्फ़ ऑफ़ सर्जरी",
+                "aliases": ["tricki"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "thiefs_story",
+                "level": "topic",
+                "nameEn": "The Thief's Story",
+                "nameHi": "द थीफ़्स स्टोरी",
+                "aliases": ["thief's story", "hari singh anil"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "midnight_visitor",
+                "level": "topic",
+                "nameEn": "The Midnight Visitor",
+                "nameHi": "द मिडनाइट विज़िटर",
+                "aliases": ["ausable"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "question_of_trust",
+                "level": "topic",
+                "nameEn": "A Question of Trust",
+                "nameHi": "ए क्वेश्चन ऑफ़ ट्रस्ट",
+                "aliases": ["horace danby"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "footprints_without_feet_story",
+                "level": "topic",
+                "nameEn": "Footprints without Feet (Chapter)",
+                "nameHi": "फ़ुटप्रिंट्स विदाउट फ़ीट (पाठ)",
+                "aliases": ["griffin invisible man"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "making_of_a_scientist",
+                "level": "topic",
+                "nameEn": "The Making of a Scientist",
+                "nameHi": "द मेकिंग ऑफ़ ए साइंटिस्ट",
+                "aliases": ["richard ebright"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "the_necklace",
+                "level": "topic",
+                "nameEn": "The Necklace",
+                "nameHi": "द नेकलेस",
+                "aliases": ["matilda loisel"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bholi",
+                "level": "topic",
+                "nameEn": "Bholi",
+                "nameHi": "भोली",
+                "aliases": ["bholi story"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "book_that_saved_the_earth",
+                "level": "topic",
+                "nameEn": "The Book that Saved the Earth",
+                "nameHi": "द बुक दैट सेव्ड द अर्थ",
+                "aliases": ["think-tank martians"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "english_pedagogy",
+        "level": "unit",
+        "nameEn": "English Language Teaching (Pedagogy)",
+        "nameHi": "अंग्रेज़ी शिक्षण एवं शिक्षण विधियाँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "elt_principles",
+            "level": "chapter",
+            "nameEn": "Principles of Teaching English as a Second Language",
+            "nameHi": "द्वितीय भाषा के रूप में अंग्रेज़ी शिक्षण के सिद्धांत",
+            "aliases": ["principles of teaching english", "ELT principles", "second language teaching"],
+            "objectives": [
+              "Apply the principles of second-language teaching and address learners' difficulties"
+            ],
+            "children": [
+              {
+                "code": "principles_of_teaching_english",
+                "level": "topic",
+                "nameEn": "Principles of Teaching English",
+                "nameHi": "अंग्रेज़ी शिक्षण के सिद्धांत",
+                "aliases": ["maxims of teaching english"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "language_acquisition",
+                "level": "topic",
+                "nameEn": "Language Acquisition and Learning",
+                "nameHi": "भाषा अर्जन एवं अधिगम",
+                "aliases": ["L1 L2 acquisition", "krashen"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aims_of_teaching_english",
+                "level": "topic",
+                "nameEn": "Aims and Objectives of Teaching English",
+                "nameHi": "अंग्रेज़ी शिक्षण के उद्देश्य",
+                "aliases": ["objectives of ELT"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "challenges_of_teaching_english",
+                "level": "topic",
+                "nameEn": "Challenges: Language Difficulties, Errors and Disorders",
+                "nameHi": "अंग्रेज़ी शिक्षण की चुनौतियाँ: कठिनाइयाँ, त्रुटियाँ एवं विकार",
+                "aliases": ["errors and disorders", "language difficulties"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "elt_methods",
+            "level": "chapter",
+            "nameEn": "Approaches and Methods of English Language Teaching",
+            "nameHi": "अंग्रेज़ी शिक्षण के उपागम एवं विधियाँ",
+            "aliases": ["methods of teaching english", "ELT methods", "approaches to ELT"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "grammar_translation_method",
+                "level": "topic",
+                "nameEn": "Grammar Translation Method",
+                "nameHi": "व्याकरण-अनुवाद विधि",
+                "aliases": ["GTM"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "direct_method",
+                "level": "topic",
+                "nameEn": "Direct Method",
+                "nameHi": "प्रत्यक्ष विधि",
+                "aliases": ["natural method"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "structural_approach",
+                "level": "topic",
+                "nameEn": "Structural Approach",
+                "nameHi": "संरचनात्मक उपागम",
+                "aliases": ["structural method"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "audio_lingual_method",
+                "level": "topic",
+                "nameEn": "Audio-lingual Method",
+                "nameHi": "श्रव्य-भाषिक विधि",
+                "aliases": ["ALM", "audiolingual"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "communicative_approach",
+                "level": "topic",
+                "nameEn": "Communicative Language Teaching",
+                "nameHi": "संप्रेषणात्मक उपागम",
+                "aliases": ["CLT", "communicative approach"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bilingual_method",
+                "level": "topic",
+                "nameEn": "Bilingual Method",
+                "nameHi": "द्विभाषी विधि",
+                "aliases": ["bilingual method dodson"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "language_skills",
+            "level": "chapter",
+            "nameEn": "Developing the Four Language Skills",
+            "nameHi": "चार भाषायी कौशलों का विकास",
+            "aliases": ["LSRW", "listening speaking reading writing", "language skills"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "listening",
+                "level": "topic",
+                "nameEn": "Listening",
+                "nameHi": "श्रवण (Listening)",
+                "aliases": ["listening skill"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "speaking",
+                "level": "topic",
+                "nameEn": "Speaking",
+                "nameHi": "बोलना (Speaking)",
+                "aliases": ["speaking skill"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reading_skill",
+                "level": "topic",
+                "nameEn": "Reading",
+                "nameHi": "पठन (Reading)",
+                "aliases": ["reading skill", "skimming scanning"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "writing_skill",
+                "level": "topic",
+                "nameEn": "Writing",
+                "nameHi": "लेखन (Writing)",
+                "aliases": ["writing skill"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "teaching_language_forms",
+            "level": "chapter",
+            "nameEn": "Teaching Prose, Poetry, Grammar and Composition",
+            "nameHi": "गद्य, पद्य, व्याकरण एवं रचना शिक्षण",
+            "aliases": ["teaching of prose", "teaching of poetry", "lesson plan english"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "teaching_prose",
+                "level": "topic",
+                "nameEn": "Teaching Prose",
+                "nameHi": "गद्य शिक्षण",
+                "aliases": ["prose lesson"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_poetry",
+                "level": "topic",
+                "nameEn": "Teaching Poetry",
+                "nameHi": "पद्य शिक्षण",
+                "aliases": ["poetry lesson"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_grammar",
+                "level": "topic",
+                "nameEn": "Teaching Grammar",
+                "nameHi": "व्याकरण शिक्षण",
+                "aliases": ["inductive deductive grammar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_composition",
+                "level": "topic",
+                "nameEn": "Teaching Composition",
+                "nameHi": "रचना शिक्षण",
+                "aliases": ["guided composition"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lesson_planning",
+                "level": "topic",
+                "nameEn": "Lesson Planning",
+                "nameHi": "पाठ योजना",
+                "aliases": ["lesson plan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "teaching_materials",
+            "level": "chapter",
+            "nameEn": "Teaching-Learning Materials",
+            "nameHi": "शिक्षण अधिगम सामग्री",
+            "aliases": ["TLM", "teaching aids english"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "textbooks_in_elt",
+                "level": "topic",
+                "nameEn": "Textbooks",
+                "nameHi": "पाठ्यपुस्तकें",
+                "aliases": ["textbook evaluation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "multimedia_materials",
+                "level": "topic",
+                "nameEn": "Multimedia Materials",
+                "nameHi": "बहु-माध्यम सामग्री",
+                "aliases": ["multimedia", "audio visual aids"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_resources",
+                "level": "topic",
+                "nameEn": "Other Resources",
+                "nameHi": "अन्य संसाधन",
+                "aliases": ["language lab", "authentic materials"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "english_evaluation",
+            "level": "chapter",
+            "nameEn": "Evaluation in English",
+            "nameHi": "अंग्रेज़ी में मूल्यांकन",
+            "aliases": ["evaluation in english", "CCE english", "testing"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "cce",
+                "level": "topic",
+                "nameEn": "Continuous and Comprehensive Evaluation",
+                "nameHi": "सतत एवं व्यापक मूल्यांकन",
+                "aliases": ["continuous comprehensive evaluation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "evaluating_proficiency",
+                "level": "topic",
+                "nameEn": "Evaluating Language Proficiency",
+                "nameHi": "भाषा दक्षता का मूल्यांकन",
+                "aliases": ["testing LSRW", "proficiency test"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "evaluation_methods_tools",
+                "level": "topic",
+                "nameEn": "Methods and Tools of Evaluation",
+                "nameHi": "मूल्यांकन की विधियाँ एवं उपकरण",
+                "aliases": ["achievement test", "rubrics"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "remedial_teaching",
+                "level": "topic",
+                "nameEn": "Remedial Teaching",
+                "nameHi": "उपचारात्मक शिक्षण",
+                "aliases": ["remedial", "diagnostic testing"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "instructional_strategies",
+            "level": "chapter",
+            "nameEn": "Instructional Strategies for Adolescent Learners",
+            "nameHi": "किशोर अधिगमकर्ता हेतु अनुदेशनात्मक रणनीतियाँ",
+            "aliases": ["teaching models", "instructional strategies"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "classroom_communication",
+                "level": "topic",
+                "nameEn": "Verbal and Non-verbal Classroom Communication",
+                "nameHi": "शाब्दिक एवं अशाब्दिक कक्षा संप्रेषण",
+                "aliases": ["communication skills"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_models",
+                "level": "topic",
+                "nameEn": "Models of Teaching",
+                "nameHi": "शिक्षण प्रतिमान",
+                "aliases": ["advance organizer", "inquiry training", "non-directive model"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tlm_preparation",
+                "level": "topic",
+                "nameEn": "Preparing and Using Teaching-Learning Material",
+                "nameHi": "शिक्षण-अधिगम सामग्री का निर्माण एवं प्रयोग",
+                "aliases": ["TLM preparation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cooperative_learning",
+                "level": "topic",
+                "nameEn": "Cooperative Learning",
+                "nameHi": "सहकारी अधिगम",
+                "aliases": ["group learning"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ict_in_teaching",
+            "level": "chapter",
+            "nameEn": "ICT in Teaching and Learning",
+            "nameHi": "शिक्षण अधिगम में सूचना एवं संचार प्रौद्योगिकी",
+            "aliases": ["ICT", "e-learning"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "ict_digital_learning",
+                "level": "topic",
+                "nameEn": "ICT and Digital Learning",
+                "nameHi": "आई.सी.टी. एवं डिजिटल अधिगम",
+                "aliases": ["digital learning"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "e_learning_virtual_classroom",
+                "level": "topic",
+                "nameEn": "E-learning and Virtual Classroom",
+                "nameHi": "ई-अधिगम एवं आभासी कक्षा",
+                "aliases": ["virtual classroom"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "technology_integration",
+                "level": "topic",
+                "nameEn": "Technology Integration in Teaching and Assessment",
+                "nameHi": "शिक्षण एवं आकलन में प्रौद्योगिकी का एकीकरण",
+                "aliases": ["technology integration"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

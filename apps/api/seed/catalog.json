@@ -1,0 +1,312 @@
+{
+  "subjects": [
+    {
+      "code": "physics",
+      "nameEn": "Physics",
+      "nameHi": "भौतिक विज्ञान"
+    },
+    {
+      "code": "chemistry",
+      "nameEn": "Chemistry",
+      "nameHi": "रसायन विज्ञान"
+    },
+    {
+      "code": "mathematics",
+      "nameEn": "Mathematics",
+      "nameHi": "गणित"
+    },
+    {
+      "code": "biology",
+      "nameEn": "Biology",
+      "nameHi": "जीव विज्ञान"
+    },
+    {
+      "code": "science",
+      "nameEn": "Science",
+      "nameHi": "विज्ञान"
+    },
+    {
+      "code": "social_science",
+      "nameEn": "Social Science",
+      "nameHi": "सामाजिक विज्ञान"
+    },
+    {
+      "code": "environmental_studies",
+      "nameEn": "Environmental Studies",
+      "nameHi": "पर्यावरण अध्ययन"
+    },
+    {
+      "code": "hindi",
+      "nameEn": "Hindi",
+      "nameHi": "हिन्दी"
+    },
+    {
+      "code": "english",
+      "nameEn": "English",
+      "nameHi": "अंग्रेज़ी"
+    },
+    {
+      "code": "rajasthan_gk",
+      "nameEn": "General Knowledge of Rajasthan",
+      "nameHi": "राजस्थान का सामान्य ज्ञान"
+    },
+    {
+      "code": "general_studies",
+      "nameEn": "General Studies",
+      "nameHi": "सामान्य अध्ययन"
+    },
+    {
+      "code": "educational_psychology",
+      "nameEn": "Educational Psychology",
+      "nameHi": "शैक्षिक मनोविज्ञान"
+    },
+    {
+      "code": "child_development",
+      "nameEn": "Child Development and Pedagogy",
+      "nameHi": "बाल विकास एवं शिक्षण विधियाँ"
+    },
+    {
+      "code": "reasoning",
+      "nameEn": "Reasoning",
+      "nameHi": "तर्कशक्ति"
+    },
+    {
+      "code": "quantitative_aptitude",
+      "nameEn": "Quantitative Aptitude",
+      "nameHi": "संख्यात्मक अभियोग्यता"
+    }
+  ],
+  "papers": [
+    {
+      "code": "rpsc_2g_paper_1",
+      "family": "rpsc_2nd_grade",
+      "paperCode": "paper_1",
+      "nameEn": "RPSC Senior Teacher (2nd Grade), Paper I: General Knowledge, Current Affairs and Educational Psychology",
+      "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), प्रथम प्रश्न-पत्र: सामान्य ज्ञान, समसामयिकी एवं शैक्षिक मनोविज्ञान",
+      "authoritativeLanguage": "hi",
+      "subjects": ["rajasthan_gk", "general_studies", "educational_psychology"]
+    },
+    {
+      "code": "rpsc_2g_p2_science",
+      "family": "rpsc_2nd_grade",
+      "paperCode": "paper_2_science",
+      "nameEn": "RPSC Senior Teacher (2nd Grade), Paper II: Science",
+      "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), द्वितीय प्रश्न-पत्र: विज्ञान",
+      "authoritativeLanguage": "hi",
+      "subjects": ["science"]
+    },
+    {
+      "code": "rpsc_2g_p2_mathematics",
+      "family": "rpsc_2nd_grade",
+      "paperCode": "paper_2_mathematics",
+      "nameEn": "RPSC Senior Teacher (2nd Grade), Paper II: Mathematics",
+      "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), द्वितीय प्रश्न-पत्र: गणित",
+      "authoritativeLanguage": "hi",
+      "subjects": ["mathematics"]
+    },
+    {
+      "code": "rpsc_2g_p2_social_science",
+      "family": "rpsc_2nd_grade",
+      "paperCode": "paper_2_social_science",
+      "nameEn": "RPSC Senior Teacher (2nd Grade), Paper II: Social Science",
+      "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), द्वितीय प्रश्न-पत्र: सामाजिक विज्ञान",
+      "authoritativeLanguage": "hi",
+      "subjects": ["social_science"]
+    },
+    {
+      "code": "rpsc_2g_p2_hindi",
+      "family": "rpsc_2nd_grade",
+      "paperCode": "paper_2_hindi",
+      "nameEn": "RPSC Senior Teacher (2nd Grade), Paper II: Hindi",
+      "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), द्वितीय प्रश्न-पत्र: हिन्दी",
+      "authoritativeLanguage": "hi",
+      "subjects": ["hindi"]
+    },
+    {
+      "code": "rpsc_2g_p2_english",
+      "family": "rpsc_2nd_grade",
+      "paperCode": "paper_2_english",
+      "nameEn": "RPSC Senior Teacher (2nd Grade), Paper II: English",
+      "nameHi": "आरपीएससी वरिष्ठ अध्यापक (द्वितीय श्रेणी), द्वितीय प्रश्न-पत्र: अंग्रेज़ी",
+      "authoritativeLanguage": "en",
+      "subjects": ["english"]
+    },
+    {
+      "code": "rpsc_1g_paper_1",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_1",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper I: General Studies",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), प्रथम प्रश्न-पत्र: सामान्य अध्ययन",
+      "authoritativeLanguage": "hi",
+      "subjects": [
+        "rajasthan_gk",
+        "general_studies",
+        "educational_psychology",
+        "reasoning",
+        "quantitative_aptitude"
+      ]
+    },
+    {
+      "code": "rpsc_1g_p2_physics",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_2_physics",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper II: Physics",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), द्वितीय प्रश्न-पत्र: भौतिक विज्ञान",
+      "authoritativeLanguage": "hi",
+      "subjects": ["physics"]
+    },
+    {
+      "code": "rpsc_1g_p2_chemistry",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_2_chemistry",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper II: Chemistry",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), द्वितीय प्रश्न-पत्र: रसायन विज्ञान",
+      "authoritativeLanguage": "hi",
+      "subjects": ["chemistry"]
+    },
+    {
+      "code": "rpsc_1g_p2_biology",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_2_biology",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper II: Biology",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), द्वितीय प्रश्न-पत्र: जीव विज्ञान",
+      "authoritativeLanguage": "hi",
+      "subjects": ["biology"]
+    },
+    {
+      "code": "rpsc_1g_p2_mathematics",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_2_mathematics",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper II: Mathematics",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), द्वितीय प्रश्न-पत्र: गणित",
+      "authoritativeLanguage": "hi",
+      "subjects": ["mathematics"]
+    },
+    {
+      "code": "rpsc_1g_p2_hindi",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_2_hindi",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper II: Hindi",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), द्वितीय प्रश्न-पत्र: हिन्दी",
+      "authoritativeLanguage": "hi",
+      "subjects": ["hindi"]
+    },
+    {
+      "code": "rpsc_1g_p2_english",
+      "family": "rpsc_1st_grade",
+      "paperCode": "paper_2_english",
+      "nameEn": "RPSC School Lecturer (1st Grade), Paper II: English",
+      "nameHi": "आरपीएससी प्राध्यापक (प्रथम श्रेणी), द्वितीय प्रश्न-पत्र: अंग्रेज़ी",
+      "authoritativeLanguage": "en",
+      "subjects": ["english"]
+    },
+    {
+      "code": "reet_level_1",
+      "family": "reet",
+      "paperCode": "level_1",
+      "nameEn": "REET Level 1 (Classes 1 to 5)",
+      "nameHi": "रीट लेवल 1 (कक्षा 1 से 5)",
+      "authoritativeLanguage": "hi",
+      "subjects": ["child_development", "hindi", "english", "mathematics", "environmental_studies"]
+    },
+    {
+      "code": "reet_level_2_science_math",
+      "family": "reet",
+      "paperCode": "level_2_science_math",
+      "nameEn": "REET Level 2 (Classes 6 to 8): Science and Mathematics",
+      "nameHi": "रीट लेवल 2 (कक्षा 6 से 8): विज्ञान एवं गणित",
+      "authoritativeLanguage": "hi",
+      "subjects": ["child_development", "hindi", "english", "mathematics", "science"]
+    },
+    {
+      "code": "reet_level_2_social_studies",
+      "family": "reet",
+      "paperCode": "level_2_social_studies",
+      "nameEn": "REET Level 2 (Classes 6 to 8): Social Studies",
+      "nameHi": "रीट लेवल 2 (कक्षा 6 से 8): सामाजिक अध्ययन",
+      "authoritativeLanguage": "hi",
+      "subjects": ["child_development", "hindi", "english", "social_science"]
+    },
+    {
+      "code": "jee_main_paper_1",
+      "family": "jee",
+      "paperCode": "main_paper_1",
+      "nameEn": "JEE Main, Paper 1 (B.E./B.Tech.)",
+      "nameHi": "जेईई मेन, पेपर 1 (बी.ई./बी.टेक.)",
+      "authoritativeLanguage": "en",
+      "subjects": ["physics", "chemistry", "mathematics"]
+    },
+    {
+      "code": "neet_ug",
+      "family": "neet",
+      "paperCode": "ug",
+      "nameEn": "NEET (UG)",
+      "nameHi": "नीट (यूजी)",
+      "authoritativeLanguage": "en",
+      "subjects": ["physics", "chemistry", "biology"]
+    },
+    {
+      "code": "cbse_class_10",
+      "family": "cbse",
+      "paperCode": "class_10",
+      "nameEn": "CBSE Class 10",
+      "nameHi": "सीबीएसई कक्षा 10",
+      "authoritativeLanguage": "en",
+      "subjects": ["science", "mathematics", "social_science", "hindi", "english"]
+    },
+    {
+      "code": "cbse_class_12_science",
+      "family": "cbse",
+      "paperCode": "class_12_science",
+      "nameEn": "CBSE Class 12 (Science)",
+      "nameHi": "सीबीएसई कक्षा 12 (विज्ञान)",
+      "authoritativeLanguage": "en",
+      "subjects": ["physics", "chemistry", "mathematics", "biology"]
+    },
+    {
+      "code": "rbse_class_10",
+      "family": "rbse",
+      "paperCode": "class_10",
+      "nameEn": "RBSE Class 10",
+      "nameHi": "आरबीएसई कक्षा 10",
+      "authoritativeLanguage": "hi",
+      "subjects": ["science", "mathematics", "social_science", "hindi", "english"]
+    },
+    {
+      "code": "rbse_class_12_science",
+      "family": "rbse",
+      "paperCode": "class_12_science",
+      "nameEn": "RBSE Class 12 (Science)",
+      "nameHi": "आरबीएसई कक्षा 12 (विज्ञान)",
+      "authoritativeLanguage": "hi",
+      "subjects": ["physics", "chemistry", "mathematics", "biology"]
+    },
+    {
+      "code": "upsc_cse_prelims_gs",
+      "family": "upsc_cse",
+      "paperCode": "prelims_gs_paper_1",
+      "nameEn": "UPSC Civil Services (Preliminary), General Studies Paper I",
+      "nameHi": "यूपीएससी सिविल सेवा (प्रारंभिक), सामान्य अध्ययन प्रश्न-पत्र I",
+      "authoritativeLanguage": "en",
+      "subjects": ["general_studies"]
+    },
+    {
+      "code": "upsc_cse_prelims_csat",
+      "family": "upsc_cse",
+      "paperCode": "prelims_csat",
+      "nameEn": "UPSC Civil Services (Preliminary), CSAT (General Studies Paper II)",
+      "nameHi": "यूपीएससी सिविल सेवा (प्रारंभिक), सीसैट (सामान्य अध्ययन प्रश्न-पत्र II)",
+      "authoritativeLanguage": "en",
+      "subjects": ["quantitative_aptitude", "reasoning", "english"]
+    },
+    {
+      "code": "ssc_cgl_tier_1",
+      "family": "ssc_cgl",
+      "paperCode": "tier_1",
+      "nameEn": "SSC CGL, Tier 1",
+      "nameHi": "एसएससी सीजीएल, टियर 1",
+      "authoritativeLanguage": "en",
+      "subjects": ["reasoning", "general_studies", "quantitative_aptitude", "english"]
+    }
+  ]
+}

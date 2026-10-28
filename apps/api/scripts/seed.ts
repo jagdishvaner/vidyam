@@ -1,15 +1,25 @@
 /**
  * `pnpm db:seed` (local/staging): model registry + routes, the first super-admin, one organization with that
- * admin as its center admin, the starting exam catalog and, when VIDYAM_SEED_DEMO_PASSWORD is set, one demo
- * login per remaining role. Safe to run repeatedly; existing accounts keep their passwords.
+ * admin as its center admin, the official exam papers and syllabus trees (seed/, checked by `pnpm seed:check`)
+ * and, when VIDYAM_SEED_DEMO_PASSWORD is set, one demo login per remaining role. Safe to run repeatedly:
+ * existing accounts keep their passwords and syllabus nodes are updated in place by code path.
  */
-import { createDatabase, schema, seedExamCatalog, seedLlmRegistry } from "@vidyam/db";
-import { and, eq } from "drizzle-orm";
+import { createDatabase, schema, seedLlmRegistry } from "@vidyam/db";
+import { loadPromptTemplates } from "@vidyam/prompts";
+import { and, eq, inArray } from "drizzle-orm";
 
 import { loadEnv } from "../src/config/env.js";
 import { PLATFORM_ADMIN, type OrgRoleName } from "../src/modules/identity/domain/roles.js";
 import { createAuth } from "../src/modules/identity/infrastructure/better-auth.js";
+import { PromptAdmin } from "../src/modules/ai-models/application/manage-prompts.js";
+import { DrizzlePromptStore } from "../src/modules/ai-models/infrastructure/drizzle-prompt-store.js";
+import { ImportPaperPatterns } from "../src/modules/syllabus/application/manage-patterns.js";
+import { ImportExamPapers, ImportSyllabus } from "../src/modules/syllabus/application/manage-syllabus.js";
+import { DrizzlePatternStore } from "../src/modules/syllabus/infrastructure/drizzle-pattern-store.js";
+import { DrizzleSyllabusStore } from "../src/modules/syllabus/infrastructure/drizzle-syllabus-store.js";
+import { OrgDatabase } from "../src/shared/database/org-database.js";
 import { memorySecondaryStorage } from "../src/modules/identity/infrastructure/valkey-secondary-storage.js";
+import { loadSeedCatalog } from "./seed-catalog.js";
 
 const env = loadEnv();
 const required = (name: string) => {
@@ -34,8 +44,17 @@ const orgSlug = orgName
   .replace(/[^a-z0-9]+/g, "-")
   .replace(/^-|-$/g, "");
 
+/** Exam rows from the first catalog, which named whole exams; papers replaced them (plan v3, step 6). */
+const LEGACY_EXAM_CODES = ["jee_main", "rpsc_2nd_grade", "rpsc_1st_grade", "reet_level_2"];
+
+const catalog = loadSeedCatalog();
+if (catalog.problems.length) {
+  throw new Error(`the seed catalog has problems (pnpm seed:check):\n${catalog.problems.join("\n")}`);
+}
+
 // Seeds run as the schema owner (row-level security does not apply).
-const { db, pool } = createDatabase(required("VIDYAM_DATABASE_ADMIN_URL"), { max: 2 });
+const database = createDatabase(required("VIDYAM_DATABASE_ADMIN_URL"), { max: 2 });
+const { db, pool } = database;
 const auth = createAuth({ env, db, cache: memorySecondaryStorage() });
 
 /** Creates the login if it doesn't exist yet (public sign-up is off, so through the admin API). */
@@ -58,6 +77,9 @@ async function ensureMember(organizationId: string, userId: string, role: OrgRol
 
 try {
   await seedLlmRegistry(db);
+  const prompts = await new PromptAdmin(new DrizzlePromptStore(database)).syncFromPackage(
+    loadPromptTemplates(),
+  );
 
   const user = await ensureUser(admin);
   await db
@@ -81,10 +103,23 @@ try {
     }
   }
 
-  await seedExamCatalog(db, org!.id);
+  const orgDatabase = new OrgDatabase(database);
+  const syllabus = new DrizzleSyllabusStore(orgDatabase);
+  let nodes = 0;
+  for (const { file } of catalog.syllabi) {
+    const { created, updated, unchanged } = await new ImportSyllabus(syllabus).execute(org!.id, file);
+    nodes += created + updated + unchanged;
+  }
+  await new ImportExamPapers(syllabus).execute(org!.id, catalog.exams);
+  if (catalog.blueprints.length) {
+    await new ImportPaperPatterns(new DrizzlePatternStore(orgDatabase)).execute(org!.id, catalog.blueprints);
+  }
+  await db
+    .delete(schema.exams)
+    .where(and(eq(schema.exams.orgId, org!.id), inArray(schema.exams.code, LEGACY_EXAM_CODES)));
   console.log(
     `seeded: super-admin ${admin.email}, organization "${org!.name}", ` +
-      `${demoPassword ? "demo logins, " : ""}models, routes, exam catalog`,
+      `${demoPassword ? "demo logins, " : ""}models, routes, ${prompts.added} new prompt versions, ${catalog.exams.length} exam papers, ${nodes} syllabus nodes, ${catalog.blueprints.length} paper patterns`,
   );
 } finally {
   await pool.end();

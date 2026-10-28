@@ -1,0 +1,1826 @@
+{
+  "subject": {
+    "code": "environmental_studies",
+    "nameEn": "Environmental Studies",
+    "nameHi": "पर्यावरण अध्ययन",
+    "aliases": [
+      "paryavaran adhyayan",
+      "EVS",
+      "environmental science",
+      "hamara parivesh",
+      "looking around",
+      "our wondrous world"
+    ],
+    "level": "subject",
+    "children": [
+      {
+        "code": "family_and_community",
+        "level": "unit",
+        "nameEn": "Family, Friends and Community",
+        "nameHi": "परिवार, मित्र एवं समुदाय",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "family",
+            "level": "chapter",
+            "nameEn": "Family and Relationships",
+            "nameHi": "परिवार एवं आपसी संबंध",
+            "aliases": ["parivar", "family", "rishte naate", "joint family", "family and friends"],
+            "objectives": ["Describe family relationships and changes in families over time"],
+            "children": [
+              {
+                "code": "relationships",
+                "level": "topic",
+                "nameEn": "Family Members and Relationships",
+                "nameHi": "परिवार के सदस्य एवं आपसी संबंध",
+                "aliases": ["rishte", "family tree", "vansh vriksh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nuclear_joint_families",
+                "level": "topic",
+                "nameEn": "Nuclear and Joint Families",
+                "nameHi": "एकल एवं संयुक्त परिवार",
+                "aliases": ["ekal parivar", "sanyukt parivar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "changes_in_family",
+                "level": "topic",
+                "nameEn": "Changes in the Family: Birth, Marriage and Migration",
+                "nameHi": "परिवार में बदलाव: जन्म, विवाह एवं स्थानांतरण",
+                "aliases": ["parivar mein badlav", "transfer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "family_resemblance",
+                "level": "topic",
+                "nameEn": "Family Resemblance and Inherited Traits",
+                "nameHi": "पारिवारिक समानता एवं वंशानुगत लक्षण",
+                "aliases": ["family resemblance", "milte julte lakshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "care_of_elders_differently_abled",
+                "level": "topic",
+                "nameEn": "Care of Elders, Children and the Differently-abled",
+                "nameHi": "बुज़ुर्गों, बच्चों एवं दिव्यांगजनों की देखभाल",
+                "aliases": ["divyang", "buzurg", "dekhbhal"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "social_evils_addiction",
+            "level": "chapter",
+            "nameEn": "Social Evils and Addiction",
+            "nameHi": "सामाजिक बुराइयाँ एवं दुर्व्यसन",
+            "aliases": ["samajik buraiyan", "durvyasan", "nashakhori", "bal vivah", "dahej"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "child_marriage",
+                "level": "topic",
+                "nameEn": "Child Marriage",
+                "nameHi": "बाल विवाह",
+                "aliases": ["bal vivah"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dowry",
+                "level": "topic",
+                "nameEn": "Dowry System",
+                "nameHi": "दहेज प्रथा",
+                "aliases": ["dahej pratha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "child_labour",
+                "level": "topic",
+                "nameEn": "Child Labour",
+                "nameHi": "बालश्रम",
+                "aliases": ["bal shram", "child labour"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "theft_other_evils",
+                "level": "topic",
+                "nameEn": "Theft and Other Social Evils",
+                "nameHi": "चोरी एवं अन्य सामाजिक बुराइयाँ",
+                "aliases": ["chori", "samajik kuritiyan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "addiction",
+                "level": "topic",
+                "nameEn": "Addiction: Intoxication and Smoking",
+                "nameHi": "दुर्व्यसन: नशाखोरी एवं धूम्रपान",
+                "aliases": ["nashakhori", "dhumrapan", "tambaku", "smoking"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ill_effects",
+                "level": "topic",
+                "nameEn": "Personal, Social and Economic Ill-effects",
+                "nameHi": "व्यक्तिगत, सामाजिक एवं आर्थिक दुष्परिणाम",
+                "aliases": ["dushparinam", "bure prabhav"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "work_and_play",
+            "level": "chapter",
+            "nameEn": "Work, Play and Friends",
+            "nameHi": "काम, खेल एवं मित्र",
+            "aliases": ["kaam aur khel", "khel", "friends", "dost", "work and play"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "games_sports",
+                "level": "topic",
+                "nameEn": "Games and Sports: Local and Traditional",
+                "nameHi": "खेल: स्थानीय एवं पारंपरिक",
+                "aliases": ["paramparik khel", "sthaniya khel"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "work_at_home",
+                "level": "topic",
+                "nameEn": "Work at Home and Sharing of Chores",
+                "nameHi": "घर का काम एवं काम का बँटवारा",
+                "aliases": ["ghar ka kaam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "school_neighbourhood",
+                "level": "topic",
+                "nameEn": "School, Friends and Neighbourhood",
+                "nameHi": "विद्यालय, मित्र एवं पड़ोस",
+                "aliases": ["vidyalaya", "padosi", "our school a happy place"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gender_equality",
+                "level": "topic",
+                "nameEn": "Gender Equality in Work and Play",
+                "nameHi": "काम एवं खेल में लैंगिक समानता",
+                "aliases": ["ladka ladki barabar", "samanta"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "occupations",
+            "level": "chapter",
+            "nameEn": "Occupations and Professions",
+            "nameHi": "व्यवसाय",
+            "aliases": ["vyavsay", "profession", "occupation", "kaam dhandhe", "career"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "local_occupations",
+                "level": "topic",
+                "nameEn": "Occupations in Our Surroundings: Tailoring, Gardening, Farming, Animal Rearing, Vegetable Vending",
+                "nameHi": "अपने परिवेश के व्यवसाय: कपड़े सिलना, बागवानी, कृषि कार्य, पशुपालन, सब्ज़ीवाला",
+                "aliases": ["darji", "mali", "kisan", "pashupalan", "sabziwala"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "small_cottage_industries",
+                "level": "topic",
+                "nameEn": "Small and Cottage Industries",
+                "nameHi": "लघु एवं कुटीर उद्योग",
+                "aliases": ["kutir udyog", "laghu udyog"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rajasthan_industries_crafts",
+                "level": "topic",
+                "nameEn": "Major Industries and Handicrafts of Rajasthan",
+                "nameHi": "राजस्थान के प्रमुख उद्योग एवं हस्तकलाएँ",
+                "aliases": ["rajasthan ke udyog", "hastkala", "blue pottery", "bandhej"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "consumer_protection",
+                "level": "topic",
+                "nameEn": "Need for Consumer Protection",
+                "nameHi": "उपभोक्ता संरक्षण की आवश्यकता",
+                "aliases": ["upbhokta sanrakshan", "jago grahak jago"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cooperatives",
+                "level": "topic",
+                "nameEn": "Co-operative Societies",
+                "nameHi": "सहकारी समितियाँ",
+                "aliases": ["sahkari samiti", "dairy cooperative"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "public_places",
+            "level": "chapter",
+            "nameEn": "Public Places and Institutions",
+            "nameHi": "सार्वजनिक स्थान एवं संस्थाएँ",
+            "aliases": ["sarvajanik sthan", "public places", "public institutions", "sarvajanik sansthayen"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "public_places",
+                "level": "topic",
+                "nameEn": "Public Places: School, Hospital, Park and Post Office",
+                "nameHi": "सार्वजनिक स्थल: विद्यालय, अस्पताल, पार्क एवं डाकघर",
+                "aliases": ["aspatal", "dakghar", "park"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "public_property",
+                "level": "topic",
+                "nameEn": "Care of Public Property",
+                "nameHi": "सार्वजनिक संपत्ति की देखभाल",
+                "aliases": ["sarvajanik sampatti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "local_bodies",
+                "level": "topic",
+                "nameEn": "Panchayat, Municipality and Local Institutions",
+                "nameHi": "पंचायत, नगरपालिका एवं स्थानीय संस्थाएँ",
+                "aliases": ["panchayat", "nagarpalika", "gram sabha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bank_post_police",
+                "level": "topic",
+                "nameEn": "Bank, Post Office and Police Station",
+                "nameHi": "बैंक, डाकघर एवं पुलिस थाना",
+                "aliases": ["bank", "police thana"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "food_and_health",
+        "level": "unit",
+        "nameEn": "Food, Health and Hygiene",
+        "nameHi": "भोजन, स्वास्थ्य एवं स्वच्छता",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "food",
+            "level": "chapter",
+            "nameEn": "Food and Nutrition",
+            "nameHi": "भोजन एवं पोषण",
+            "aliases": ["bhojan", "khana", "poshan", "food we eat", "the mystery of food"],
+            "objectives": ["Identify the components of a balanced diet and the effects of their deficiency"],
+            "children": [
+              {
+                "code": "sources_of_food",
+                "level": "topic",
+                "nameEn": "Sources of Food: Plants and Animals",
+                "nameHi": "भोजन के स्रोत: पौधे एवं जंतु",
+                "aliases": ["bhojan ke srot"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cooking_preservation",
+                "level": "topic",
+                "nameEn": "Cooking, Preservation and Wastage of Food",
+                "nameHi": "भोजन पकाना, परिरक्षण एवं बर्बादी",
+                "aliases": ["achar", "bhojan parirakshan", "bhojan ki barbadi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "food_habits",
+                "level": "topic",
+                "nameEn": "Food Habits and Diversity, including the Cuisine of Rajasthan",
+                "nameHi": "खान-पान की आदतें एवं विविधता (राजस्थान के खान-पान सहित)",
+                "aliases": ["khan pan", "rajasthani khana", "dal baati churma"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "balanced_diet",
+                "level": "topic",
+                "nameEn": "Components of Food and Balanced Diet",
+                "nameHi": "भोजन के अवयव एवं संतुलित आहार",
+                "aliases": ["santulit aahar", "poshak tatva", "vitamin"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "deficiency_diseases",
+                "level": "topic",
+                "nameEn": "Deficiency Diseases",
+                "nameHi": "हीनताजन्य रोग",
+                "aliases": ["kuposhan", "ghenga", "ratondhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "farm_to_plate",
+                "level": "topic",
+                "nameEn": "From Farm to Plate: Crops and Farming",
+                "nameHi": "खेत से थाली तक: फसलें एवं खेती",
+                "aliases": ["fasal", "kheti"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "our_body",
+            "level": "chapter",
+            "nameEn": "Our Body and its Care",
+            "nameHi": "अपने शरीर की देखभाल",
+            "aliases": [
+              "sharir ki dekhbhal",
+              "body parts",
+              "sharir ke ang",
+              "gyanendriyan",
+              "personal hygiene"
+            ],
+            "objectives": [],
+            "children": [
+              {
+                "code": "external_organs",
+                "level": "topic",
+                "nameEn": "External Body Parts and Sense Organs",
+                "nameHi": "शरीर के बाह्य अंग एवं ज्ञानेंद्रियाँ",
+                "aliases": ["gyanendriyan", "sense organs", "bahya ang"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "internal_organs",
+                "level": "topic",
+                "nameEn": "General Information about Internal Organs",
+                "nameHi": "शरीर के आंतरिक अंगों की सामान्य जानकारी",
+                "aliases": ["hriday", "fefde", "aamashay", "antarik ang"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "personal_hygiene",
+                "level": "topic",
+                "nameEn": "Personal Hygiene and Cleanliness",
+                "nameHi": "व्यक्तिगत स्वच्छता एवं साफ़-सफ़ाई",
+                "aliases": ["saaf safai", "hath dhona", "danton ki safai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "growing_up",
+                "level": "topic",
+                "nameEn": "Growing Up and Physical Changes",
+                "nameHi": "बड़े होना एवं शारीरिक परिवर्तन",
+                "aliases": ["sharirik parivartan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "exercise_yoga",
+                "level": "topic",
+                "nameEn": "Exercise, Yoga and Rest",
+                "nameHi": "व्यायाम, योग एवं विश्राम",
+                "aliases": ["yoga", "vyayam", "happy and healthy living"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "diseases_prevention",
+            "level": "chapter",
+            "nameEn": "Common Diseases and their Prevention",
+            "nameHi": "सामान्य रोग एवं बचाव",
+            "aliases": ["rog", "bimari", "diseases", "bachav ke upay"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "gastroenteritis_amoebiasis",
+                "level": "topic",
+                "nameEn": "Gastroenteritis and Amoebiasis",
+                "nameHi": "आंत्रशोथ एवं अमीबायोसिस",
+                "aliases": ["dast", "pechish", "amoebiasis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anaemia",
+                "level": "topic",
+                "nameEn": "Anaemia",
+                "nameHi": "एनीमिया (रक्ताल्पता)",
+                "aliases": ["khoon ki kami", "raktalpata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fluorosis",
+                "level": "topic",
+                "nameEn": "Fluorosis",
+                "nameHi": "फ्लुओरोसिस",
+                "aliases": ["fluoride", "daant peele"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "malaria_dengue",
+                "level": "topic",
+                "nameEn": "Malaria and Dengue",
+                "nameHi": "मलेरिया एवं डेंगू",
+                "aliases": ["machhar", "mosquito"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vaccination_pulse_polio",
+                "level": "topic",
+                "nameEn": "Vaccination and the Pulse Polio Campaign",
+                "nameHi": "टीकाकरण एवं पल्स पोलियो अभियान",
+                "aliases": ["teekakaran", "pulse polio", "do boond zindagi ki"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "first_aid",
+                "level": "topic",
+                "nameEn": "First Aid and Safety",
+                "nameHi": "प्राथमिक चिकित्सा एवं सुरक्षा",
+                "aliases": ["prathmik chikitsa"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "clothes_and_shelter",
+        "level": "unit",
+        "nameEn": "Clothes and Shelter",
+        "nameHi": "वस्त्र एवं आवास",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "clothes",
+            "level": "chapter",
+            "nameEn": "Clothes",
+            "nameHi": "वस्त्र",
+            "aliases": ["kapde", "vastra", "clothes", "poshak", "clothes how things are made"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "seasonal_clothes",
+                "level": "topic",
+                "nameEn": "Clothes for Different Seasons",
+                "nameHi": "विभिन्न ऋतुओं में पहने जाने वाले वस्त्र",
+                "aliases": ["mausam ke kapde"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "care_of_clothes",
+                "level": "topic",
+                "nameEn": "Care and Maintenance of Clothes at Home",
+                "nameHi": "घर पर वस्त्रों का रख-रखाव",
+                "aliases": ["kapdon ki dekhbhal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "handloom_powerloom",
+                "level": "topic",
+                "nameEn": "Handloom and Powerloom",
+                "nameHi": "हस्त करघा तथा पावरलूम",
+                "aliases": ["hathkargha", "powerloom", "khadi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fibre_to_fabric",
+                "level": "topic",
+                "nameEn": "From Fibre to Fabric",
+                "nameHi": "रेशे से वस्त्र तक",
+                "aliases": ["kapas", "oon", "resham"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rajasthan_dress_ornaments",
+                "level": "topic",
+                "nameEn": "Dresses and Ornaments of Rajasthan",
+                "nameHi": "राजस्थान की वेशभूषा एवं आभूषण",
+                "aliases": ["rajasthani poshak", "ghaghra", "safa", "gahne"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "houses_habitats",
+            "level": "chapter",
+            "nameEn": "Houses and Habitats",
+            "nameHi": "आवास",
+            "aliases": ["ghar", "makan", "awas", "shelter", "habitat"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "types_of_houses",
+                "level": "topic",
+                "nameEn": "Different Types of Human Houses",
+                "nameHi": "विभिन्न प्रकार के मानव आवास",
+                "aliases": ["kachcha pakka ghar", "houseboat", "igloo"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "building_materials",
+                "level": "topic",
+                "nameEn": "Materials for Building Houses",
+                "nameHi": "आवास निर्माण हेतु विभिन्न सामग्री",
+                "aliases": ["eint", "mitti", "pathar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "animal_habitats",
+                "level": "topic",
+                "nameEn": "Habitats of Animals",
+                "nameHi": "जीव-जंतुओं के आवास",
+                "aliases": ["jeev jantuon ke ghar", "ghonsla", "bil"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cleanliness_surroundings",
+                "level": "topic",
+                "nameEn": "Cleanliness of Houses and Neighbouring Areas",
+                "nameHi": "आवास एवं निकटवर्ती स्थानों की स्वच्छता",
+                "aliases": ["swachhta", "swachh bharat", "kachra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "houses_in_rajasthan",
+                "level": "topic",
+                "nameEn": "Houses in Rajasthan and Regional Variations",
+                "nameHi": "राजस्थान के आवास एवं क्षेत्रीय विविधता",
+                "aliases": ["jhompa", "dhani", "haveli"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "water",
+        "level": "unit",
+        "nameEn": "Water",
+        "nameHi": "जल",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "water_basics",
+            "level": "chapter",
+            "nameEn": "Water: Properties, Sources and Uses",
+            "nameHi": "जल: गुण, स्रोत एवं उपयोग",
+            "aliases": ["pani", "jal", "water", "jal ke srot", "water the essence of life"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "properties",
+                "level": "topic",
+                "nameEn": "Properties of Water",
+                "nameHi": "जल के गुण",
+                "aliases": ["ghulna", "tairna doobna", "vilayak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sources",
+                "level": "topic",
+                "nameEn": "Sources of Water",
+                "nameHi": "जल के स्रोत",
+                "aliases": ["kuan", "nadi", "talab", "baori"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "water_cycle_uses",
+                "level": "topic",
+                "nameEn": "Water Cycle and Uses of Water",
+                "nameHi": "जल चक्र एवं जल के उपयोग",
+                "aliases": ["jal chakra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "potable_water",
+                "level": "topic",
+                "nameEn": "Potable Water and Purification",
+                "nameHi": "पेयजल एवं जल शुद्धिकरण",
+                "aliases": ["peyjal", "saaf pani", "ubalna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "water_borne_diseases",
+                "level": "topic",
+                "nameEn": "Water-borne Diseases",
+                "nameHi": "जल-जनित रोग",
+                "aliases": ["haija", "typhoid", "jal janit rog"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "water_management",
+            "level": "chapter",
+            "nameEn": "Water Management and Conservation in Rajasthan",
+            "nameHi": "जल प्रबंधन एवं संरक्षण (राजस्थान के संदर्भ में)",
+            "aliases": ["jal prabandhan", "jal sanrakshan", "rainwater harvesting", "tanka"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "management_conservation",
+                "level": "topic",
+                "nameEn": "Water Management and Conservation",
+                "nameHi": "जल-प्रबंधन एवं संरक्षण",
+                "aliases": ["jal bachao", "varsha jal sangrahan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "artistic_water_sources",
+                "level": "topic",
+                "nameEn": "Artistic Water Sources of Rajasthan: Baoris, Kunds and Talabs",
+                "nameHi": "राजस्थान के कलात्मक जल स्रोत: बावड़ी, कुंड एवं तालाब",
+                "aliases": ["baori", "kalatmak jal srot", "chand baori", "tanka"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "drinking_irrigation_sources",
+                "level": "topic",
+                "nameEn": "Sources of Drinking Water and Irrigation in Rajasthan",
+                "nameHi": "राजस्थान में पेयजल एवं सिंचाई के स्रोत",
+                "aliases": ["sinchai", "nahar", "indira gandhi nahar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "scarcity_sharing",
+                "level": "topic",
+                "nameEn": "Water Scarcity and Sharing",
+                "nameHi": "जल की कमी एवं बँटवारा",
+                "aliases": ["pani ki kami"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "natural_environment",
+        "level": "unit",
+        "nameEn": "Natural Resources and Environment",
+        "nameHi": "प्राकृतिक संसाधन एवं पर्यावरण",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "forests_wetlands_deserts",
+            "level": "chapter",
+            "nameEn": "Forests, Wetlands and Deserts",
+            "nameHi": "वन, नमभूमि एवं मरुस्थल",
+            "aliases": ["van", "jungle", "marusthal", "namabhumi", "wetland"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "forests",
+                "level": "topic",
+                "nameEn": "Forests and their Importance",
+                "nameHi": "वन एवं उनका महत्त्व",
+                "aliases": ["van ka mahatva"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wetlands",
+                "level": "topic",
+                "nameEn": "Wetlands",
+                "nameHi": "नमभूमि",
+                "aliases": ["namabhumi", "keoladeo"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "deserts",
+                "level": "topic",
+                "nameEn": "Deserts and Desert Life",
+                "nameHi": "मरुस्थल एवं मरुस्थलीय जीवन",
+                "aliases": ["thar", "registan", "oont"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "forest_dwellers",
+                "level": "topic",
+                "nameEn": "Forest Dwellers and Tribal Life",
+                "nameHi": "वनवासी एवं जनजातीय जीवन",
+                "aliases": ["adivasi", "janjati"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "air_weather",
+            "level": "chapter",
+            "nameEn": "Air, Weather and Natural Disasters",
+            "nameHi": "वायु, मौसम एवं प्राकृतिक आपदाएँ",
+            "aliases": ["hawa", "vayu", "mausam", "aapda", "rhythms of nature"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "air_around_us",
+                "level": "topic",
+                "nameEn": "Air around Us and its Importance",
+                "nameHi": "हमारे चारों ओर वायु एवं उसका महत्त्व",
+                "aliases": ["vayu ka mahatva"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "weather_seasons",
+                "level": "topic",
+                "nameEn": "Weather and Seasons",
+                "nameHi": "मौसम एवं ऋतुएँ",
+                "aliases": ["ritu", "mausam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "natural_disasters",
+                "level": "topic",
+                "nameEn": "Natural Disasters: Flood, Drought and Earthquake",
+                "nameHi": "प्राकृतिक आपदाएँ: बाढ़, सूखा एवं भूकंप",
+                "aliases": ["baadh", "sukha", "bhukamp"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "pollution",
+            "level": "chapter",
+            "nameEn": "Pollution and its Control",
+            "nameHi": "प्रदूषण एवं नियंत्रण",
+            "aliases": ["pradushan", "pollution", "vayu pradushan", "jal pradushan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "air_pollution",
+                "level": "topic",
+                "nameEn": "Air Pollution",
+                "nameHi": "वायु प्रदूषण",
+                "aliases": ["vayu pradushan", "dhuan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "water_pollution",
+                "level": "topic",
+                "nameEn": "Water Pollution",
+                "nameHi": "जल प्रदूषण",
+                "aliases": ["jal pradushan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "soil_noise_pollution",
+                "level": "topic",
+                "nameEn": "Soil and Noise Pollution",
+                "nameHi": "मृदा एवं ध्वनि प्रदूषण",
+                "aliases": ["mrida pradushan", "dhwani pradushan", "shor"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "waste_management",
+                "level": "topic",
+                "nameEn": "Waste Management: Reduce, Reuse, Recycle",
+                "nameHi": "अपशिष्ट प्रबंधन: कम उपयोग, पुनः उपयोग, पुनर्चक्रण",
+                "aliases": ["kachra prabandhan", "3R"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pollution_control",
+                "level": "topic",
+                "nameEn": "Measures to Control Pollution",
+                "nameHi": "प्रदूषण नियंत्रण के उपाय",
+                "aliases": ["pradushan niyantran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "living_world",
+        "level": "unit",
+        "nameEn": "Living World: Plants and Animals",
+        "nameHi": "सजीव जगत: पादप एवं जंतु",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "organisation_diversity",
+            "level": "chapter",
+            "nameEn": "Organisation and Diversity of Living Beings",
+            "nameHi": "सजीवों का संगठन एवं विविधता",
+            "aliases": ["sajivon mein vividhata", "sajeev nirjeev", "living non living", "jaiv vividhata"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "living_nonliving",
+                "level": "topic",
+                "nameEn": "Living and Non-living Things",
+                "nameHi": "सजीव एवं निर्जीव",
+                "aliases": ["sajeev nirjeev"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "levels_of_organisation",
+                "level": "topic",
+                "nameEn": "Levels of Organisation in Plants and Animals",
+                "nameHi": "पादपों एवं जंतुओं के संगठन के स्तर",
+                "aliases": ["koshika", "utak", "ang tantra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "diversity",
+                "level": "topic",
+                "nameEn": "Diversity in Living Organisms",
+                "nameHi": "सजीवों में विविधता",
+                "aliases": ["jaiv vividhata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "adaptation",
+                "level": "topic",
+                "nameEn": "Adaptation to Surroundings",
+                "nameHi": "परिवेश के प्रति अनुकूलन",
+                "aliases": ["anukulan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "interdependence",
+                "level": "topic",
+                "nameEn": "Interdependence and Food Chain",
+                "nameHi": "परस्पर निर्भरता एवं खाद्य श्रृंखला",
+                "aliases": ["khadya shrinkhala", "living in harmony"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "plants",
+            "level": "chapter",
+            "nameEn": "Plants around Us",
+            "nameHi": "हमारे आसपास के पौधे",
+            "aliases": ["paudhe", "ped paudhe", "plants", "vanaspati", "getting to know plants"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "parts_of_plants",
+                "level": "topic",
+                "nameEn": "Parts of Plants and their Functions",
+                "nameHi": "पौधों के भाग एवं उनके कार्य",
+                "aliases": ["jad tana patti", "phool"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "types_of_plants",
+                "level": "topic",
+                "nameEn": "Types of Plants: Herbs, Shrubs, Trees and Climbers",
+                "nameHi": "पौधों के प्रकार: शाक, झाड़ी, वृक्ष एवं लताएँ",
+                "aliases": ["shaak", "jhadi", "lata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "seeds_germination",
+                "level": "topic",
+                "nameEn": "Seeds, Dispersal and Germination",
+                "nameHi": "बीज, प्रकीर्णन एवं अंकुरण",
+                "aliases": ["beej", "ankuran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uses_of_plants",
+                "level": "topic",
+                "nameEn": "Uses of Plants",
+                "nameHi": "पौधों के उपयोग",
+                "aliases": ["aushadhi paudhe"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "plants_of_rajasthan",
+                "level": "topic",
+                "nameEn": "Plants of Rajasthan (Khejri, Rohida, Ker)",
+                "nameHi": "राजस्थान के पौधे (खेजड़ी, रोहिड़ा, कैर)",
+                "aliases": ["khejri", "rohida", "kair"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "animals",
+            "level": "chapter",
+            "nameEn": "Animals around Us",
+            "nameHi": "हमारे आसपास के जंतु",
+            "aliases": ["jantu", "janwar", "pashu pakshi", "animals"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "domestic_wild",
+                "level": "topic",
+                "nameEn": "Diversity of Animals: Domestic and Wild",
+                "nameHi": "जंतुओं की विविधता: पालतू एवं जंगली",
+                "aliases": ["paltu janwar", "jangli janwar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "food_movement",
+                "level": "topic",
+                "nameEn": "Food Habits and Movement of Animals",
+                "nameHi": "जंतुओं का भोजन एवं गति",
+                "aliases": ["shakahari", "mansahari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "senses_behaviour",
+                "level": "topic",
+                "nameEn": "Senses and Behaviour of Animals",
+                "nameHi": "जंतुओं की इंद्रियाँ एवं व्यवहार",
+                "aliases": ["super senses", "indriyan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "birds_insects",
+                "level": "topic",
+                "nameEn": "Birds and Insects",
+                "nameHi": "पक्षी एवं कीट",
+                "aliases": ["pakshi", "keet", "chonch"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "animal_rearing",
+                "level": "topic",
+                "nameEn": "Animal Rearing and Care",
+                "nameHi": "पशुपालन एवं देखभाल",
+                "aliases": ["pashupalan", "gaay bhains oont"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "conservation",
+            "level": "chapter",
+            "nameEn": "Conservation of Plants and Animals",
+            "nameHi": "पादपों एवं जंतुओं का संरक्षण",
+            "aliases": ["sanrakshan", "wildlife conservation", "rashtriya udyan", "abhyaranya"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "state_symbols",
+                "level": "topic",
+                "nameEn": "State Flower, Tree, Bird and Animal of Rajasthan",
+                "nameHi": "राज्य पुष्प, राज्य वृक्ष, राज्य पक्षी एवं राज्य पशु",
+                "aliases": ["rohida", "khejri", "godawan", "chinkara", "oont"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "protected_areas",
+                "level": "topic",
+                "nameEn": "Reserve Forests, National Parks, Sanctuaries and Tiger Reserves",
+                "nameHi": "संरक्षित वन, राष्ट्रीय उद्यान, वन्य जीव अभयारण्य एवं बाघ संरक्षित क्षेत्र",
+                "aliases": ["ranthambore", "sariska", "keoladeo", "tiger reserve"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "world_heritage",
+                "level": "topic",
+                "nameEn": "World Heritage Sites",
+                "nameHi": "विश्व धरोहर",
+                "aliases": ["vishva dharohar", "unesco"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "species_conservation",
+                "level": "topic",
+                "nameEn": "Conservation of Plant and Animal Species",
+                "nameHi": "पादपों एवं जंतुओं की प्रजातियों का संरक्षण",
+                "aliases": ["vilupt prajati", "endangered", "bishnoi", "amrita devi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "agriculture",
+            "level": "chapter",
+            "nameEn": "Agricultural Practices",
+            "nameHi": "कृषि पद्धतियाँ",
+            "aliases": ["krishi paddhatiyan", "kheti", "farming"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "crops_seasons",
+                "level": "topic",
+                "nameEn": "Crops and Seasons (Rabi, Kharif)",
+                "nameHi": "फसलें एवं ऋतुएँ (रबी, खरीफ)",
+                "aliases": ["rabi kharif"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "farming_practices",
+                "level": "topic",
+                "nameEn": "Farming Practices: Ploughing to Harvesting",
+                "nameHi": "कृषि कार्य: जुताई से कटाई तक",
+                "aliases": ["jutai", "buvai", "sinchai", "katai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tools_methods",
+                "level": "topic",
+                "nameEn": "Traditional and Modern Tools and Methods",
+                "nameHi": "पारंपरिक एवं आधुनिक औज़ार व विधियाँ",
+                "aliases": ["hal", "tractor"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "manure_organic_farming",
+                "level": "topic",
+                "nameEn": "Manure, Fertilisers and Organic Farming",
+                "nameHi": "खाद, उर्वरक एवं जैविक खेती",
+                "aliases": ["jaivik kheti", "khad", "urvarak"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "travel_communication",
+        "level": "unit",
+        "nameEn": "Travel, Transport and Communication",
+        "nameHi": "यात्रा, परिवहन एवं संचार",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "transport",
+            "level": "chapter",
+            "nameEn": "Means of Transport and Traffic Rules",
+            "nameHi": "यातायात के साधन एवं नियम",
+            "aliases": ["yatayat", "parivahan", "traffic rules", "transport"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "means_of_transport",
+                "level": "topic",
+                "nameEn": "Means of Transport: Land, Water and Air",
+                "nameHi": "यातायात के साधन: थल, जल एवं वायु",
+                "aliases": ["yatayat ke sadhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "road_rules",
+                "level": "topic",
+                "nameEn": "Rules for Pedestrians and Road Safety",
+                "nameHi": "सड़क पर चलने के नियम एवं सड़क सुरक्षा",
+                "aliases": ["sadak suraksha", "zebra crossing"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "traffic_signals",
+                "level": "topic",
+                "nameEn": "Traffic Signals and Signs",
+                "nameHi": "यातायात के संकेत",
+                "aliases": ["traffic light", "yatayat sanket"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "changes_in_transport",
+                "level": "topic",
+                "nameEn": "Changes in Transport over Time",
+                "nameHi": "समय के साथ परिवहन में बदलाव",
+                "aliases": ["purane sadhan", "naye sadhan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "communication",
+            "level": "chapter",
+            "nameEn": "Means of Communication",
+            "nameHi": "संचार के साधन",
+            "aliases": ["sanchar", "communication", "mobile", "dak"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "means_of_communication",
+                "level": "topic",
+                "nameEn": "Means of Communication: Post, Telephone, Radio, TV and Internet",
+                "nameHi": "संचार के साधन: डाक, टेलीफ़ोन, रेडियो, टीवी एवं इंटरनेट",
+                "aliases": ["dak", "mobile", "internet"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "effects_on_lifestyle",
+                "level": "topic",
+                "nameEn": "Effects of Means of Communication on Lifestyle",
+                "nameHi": "संचार साधनों का जीवन शैली पर प्रभाव",
+                "aliases": ["jeevan shaili par prabhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mass_media",
+                "level": "topic",
+                "nameEn": "Mass Media",
+                "nameHi": "जनसंचार माध्यम",
+                "aliases": ["akhbar", "jansanchar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "mountaineering",
+            "level": "chapter",
+            "nameEn": "Travel and Mountaineering",
+            "nameHi": "यात्रा एवं पर्वतारोहण",
+            "aliases": ["parvatarohan", "mountaineering", "bachendri pal", "yatra"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "difficulties",
+                "level": "topic",
+                "nameEn": "Difficulties in Mountaineering",
+                "nameHi": "पर्वतारोहण में कठिनाइयाँ",
+                "aliases": ["kathinaiyan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "equipment",
+                "level": "topic",
+                "nameEn": "Mountaineering Equipment",
+                "nameHi": "पर्वतारोहण में काम आने वाले औज़ार",
+                "aliases": ["ice axe", "rassi", "auzar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "women_mountaineers",
+                "level": "topic",
+                "nameEn": "Famous Women Mountaineers of India",
+                "nameHi": "भारत की प्रमुख महिला पर्वतारोही",
+                "aliases": ["bachendri pal", "santosh yadav", "arunima sinha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maps_directions",
+                "level": "topic",
+                "nameEn": "Travel, Maps and Directions",
+                "nameHi": "यात्रा, मानचित्र एवं दिशाएँ",
+                "aliases": ["disha", "naksha"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "things_we_make",
+        "level": "unit",
+        "nameEn": "Things We Make and Do: Materials and Energy",
+        "nameHi": "हम क्या बनाते हैं: पदार्थ एवं ऊर्जा",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "materials",
+            "level": "chapter",
+            "nameEn": "Materials and Objects around Us",
+            "nameHi": "हमारे आसपास की वस्तुएँ एवं पदार्थ",
+            "aliases": ["padarth", "vastuen", "materials", "how things are made"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "states_of_matter",
+                "level": "topic",
+                "nameEn": "Solids, Liquids and Gases",
+                "nameHi": "ठोस, द्रव एवं गैस",
+                "aliases": ["thos drav gas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "properties_of_materials",
+                "level": "topic",
+                "nameEn": "Materials and their Properties",
+                "nameHi": "पदार्थ एवं उनके गुण",
+                "aliases": ["padarthon ke gun"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "things_we_make",
+                "level": "topic",
+                "nameEn": "Things We Make: Crafts, Pottery and Toys",
+                "nameHi": "हम क्या बनाते हैं: शिल्प, मिट्टी के बर्तन एवं खिलौने",
+                "aliases": ["shilp", "kumhar", "khilaune"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "energy",
+            "level": "chapter",
+            "nameEn": "Energy and its Sources",
+            "nameHi": "ऊर्जा एवं उसके स्रोत",
+            "aliases": ["urja", "energy", "indhan", "energy how things work"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sources_of_energy",
+                "level": "topic",
+                "nameEn": "Sources of Energy",
+                "nameHi": "ऊर्जा के स्रोत",
+                "aliases": ["urja ke srot"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "renewable_nonrenewable",
+                "level": "topic",
+                "nameEn": "Renewable and Non-renewable Energy",
+                "nameHi": "नवीकरणीय एवं अनवीकरणीय ऊर्जा",
+                "aliases": ["saur urja", "pavan urja"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "saving_energy",
+                "level": "topic",
+                "nameEn": "Saving Energy and Fuel",
+                "nameHi": "ऊर्जा एवं ईंधन की बचत",
+                "aliases": ["urja bachat", "indhan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "earth_and_space",
+        "level": "unit",
+        "nameEn": "Our Earth and Space",
+        "nameHi": "हमारी पृथ्वी व अंतरिक्ष",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "solar_system",
+            "level": "chapter",
+            "nameEn": "Our Solar System",
+            "nameHi": "हमारा सौर परिवार",
+            "aliases": ["saur parivar", "saur mandal", "solar system", "our sky"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "sun_planets_moon",
+                "level": "topic",
+                "nameEn": "The Sun, Planets and the Moon",
+                "nameHi": "सूर्य, ग्रह एवं चंद्रमा",
+                "aliases": ["surya", "grah", "chandrama"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "earth_day_night",
+                "level": "topic",
+                "nameEn": "The Earth: Day, Night and Seasons",
+                "nameHi": "पृथ्वी: दिन-रात एवं ऋतुएँ",
+                "aliases": ["din raat", "ritu"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stars_constellations",
+                "level": "topic",
+                "nameEn": "Stars and Constellations",
+                "nameHi": "तारे एवं तारामंडल",
+                "aliases": ["tare", "saptarishi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "space_exploration",
+            "level": "chapter",
+            "nameEn": "Space Exploration and Indian Astronauts",
+            "nameHi": "अंतरिक्ष अन्वेषण एवं भारत के अंतरिक्ष यात्री",
+            "aliases": ["antariksh yatri", "astronaut", "ISRO", "space"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "indian_astronauts",
+                "level": "topic",
+                "nameEn": "Indian Astronauts",
+                "nameHi": "भारत के अंतरिक्ष यात्री",
+                "aliases": ["rakesh sharma", "kalpana chawla", "sunita williams", "shubhanshu shukla"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "isro_missions",
+                "level": "topic",
+                "nameEn": "ISRO and Space Missions",
+                "nameHi": "इसरो एवं अंतरिक्ष मिशन",
+                "aliases": ["chandrayaan", "mangalyaan", "gaganyaan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "our_culture_rajasthan",
+        "level": "unit",
+        "nameEn": "Our Culture, Civilisation and Rajasthan",
+        "nameHi": "हमारी सभ्यता, संस्कृति एवं राजस्थान",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "national_symbols_festivals",
+            "level": "chapter",
+            "nameEn": "National Symbols and National Festivals",
+            "nameHi": "राष्ट्रीय प्रतीक एवं राष्ट्रीय पर्व",
+            "aliases": ["rashtriya prateek", "rashtriya parv", "national symbols", "tiranga"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "national_symbols",
+                "level": "topic",
+                "nameEn": "National Symbols: Flag, Emblem, Anthem, Song, Animal, Bird and Flower",
+                "nameHi": "राष्ट्रीय प्रतीक: ध्वज, चिह्न, गान, गीत, पशु, पक्षी एवं पुष्प",
+                "aliases": ["rashtriya dhwaj", "rashtragan", "ashok stambh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "national_festivals",
+                "level": "topic",
+                "nameEn": "National Festivals: Independence Day, Republic Day and Gandhi Jayanti",
+                "nameHi": "राष्ट्रीय पर्व: स्वतंत्रता दिवस, गणतंत्र दिवस एवं गांधी जयंती",
+                "aliases": ["15 august", "26 january", "2 october"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "unity_in_diversity",
+                "level": "topic",
+                "nameEn": "Unity in Diversity in India",
+                "nameHi": "भारत में विविधता में एकता",
+                "aliases": ["vividhata mein ekta", "our vibrant country"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "fairs_festivals_rajasthan",
+            "level": "chapter",
+            "nameEn": "Fairs, Festivals and Folk Deities of Rajasthan",
+            "nameHi": "राजस्थान के मेले, त्योहार एवं लोकदेवता",
+            "aliases": ["mele", "tyohar", "pushkar mela", "gangaur", "lok devta", "going to the mela"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "fairs",
+                "level": "topic",
+                "nameEn": "Major Fairs of Rajasthan",
+                "nameHi": "राजस्थान के प्रमुख मेले",
+                "aliases": ["pushkar mela", "ramdevra", "baneshwar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "festivals",
+                "level": "topic",
+                "nameEn": "Major Festivals of Rajasthan",
+                "nameHi": "राजस्थान के प्रमुख त्योहार",
+                "aliases": ["gangaur", "teej", "celebrating festivals"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "folk_deities",
+                "level": "topic",
+                "nameEn": "Folk Deities of Rajasthan",
+                "nameHi": "राजस्थान के लोकदेवता",
+                "aliases": ["ramdev ji", "tejaji", "pabuji", "goga ji"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "heritage_art_rajasthan",
+            "level": "chapter",
+            "nameEn": "Heritage, Architecture, Painting and Tourism of Rajasthan",
+            "nameHi": "राजस्थान की विरासत, वास्तुकला, चित्रकला एवं पर्यटन",
+            "aliases": ["durg", "mahal", "virasat", "chitrakala", "vastukala", "some unique places"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "forts_palaces_monuments",
+                "level": "topic",
+                "nameEn": "Heritage: Major Forts, Palaces and Monuments",
+                "nameHi": "विरासत: प्रमुख दुर्ग, महल एवं स्मारक",
+                "aliases": ["chittorgarh", "kumbhalgarh", "hawa mahal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "architecture",
+                "level": "topic",
+                "nameEn": "Architecture of Rajasthan",
+                "nameHi": "राजस्थान की वास्तुकला",
+                "aliases": ["vastukala", "haveli"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "paintings",
+                "level": "topic",
+                "nameEn": "Paintings of Rajasthan",
+                "nameHi": "राजस्थान की चित्रकला",
+                "aliases": ["phad", "bani thani", "mandana"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tourist_places",
+                "level": "topic",
+                "nameEn": "Tourist Places of Rajasthan",
+                "nameHi": "राजस्थान के पर्यटन स्थल",
+                "aliases": ["paryatan sthal", "jaipur", "udaipur", "jaisalmer"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "people_food_proverbs",
+            "level": "chapter",
+            "nameEn": "Great Personalities, Food and Proverbs of Rajasthan",
+            "nameHi": "राजस्थान की प्रमुख विभूतियाँ, खान-पान एवं लोकोक्तियाँ",
+            "aliases": ["vibhutiyan", "gaurav", "lokoktiyan", "khan pan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "great_personalities",
+                "level": "topic",
+                "nameEn": "Great Personalities and Pride of Rajasthan",
+                "nameHi": "राजस्थान की प्रमुख विभूतियाँ एवं गौरव",
+                "aliases": ["maharana pratap", "mirabai", "panna dhai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "food_habits",
+                "level": "topic",
+                "nameEn": "Food Habits of Rajasthan",
+                "nameHi": "राजस्थान का खान-पान",
+                "aliases": ["dal baati", "ker sangri", "bajre ki roti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "proverbs",
+                "level": "topic",
+                "nameEn": "Rajasthani Proverbs and Phrases",
+                "nameHi": "राजस्थान की लोकोक्तियाँ",
+                "aliases": ["kahavaten", "lokokti", "muhavare"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "rajasthan_gk",
+            "level": "chapter",
+            "nameEn": "General Knowledge of Rajasthan",
+            "nameHi": "राजस्थान का सामान्य ज्ञान",
+            "aliases": ["rajasthan gk", "rajasthan samanya gyan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "geography",
+                "level": "topic",
+                "nameEn": "Location, Districts and Physical Features",
+                "nameHi": "स्थिति, जिले एवं भौतिक स्वरूप",
+                "aliases": ["jile", "aravali", "thar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "history",
+                "level": "topic",
+                "nameEn": "Brief History and Integration of Rajasthan",
+                "nameHi": "संक्षिप्त इतिहास एवं राजस्थान का एकीकरण",
+                "aliases": ["ekikaran", "itihas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "economy_resources",
+                "level": "topic",
+                "nameEn": "Agriculture, Minerals and Industries",
+                "nameHi": "कृषि, खनिज एवं उद्योग",
+                "aliases": ["krishi", "khanij", "udyog"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "administration_schemes",
+                "level": "topic",
+                "nameEn": "Administration and Government Schemes",
+                "nameHi": "प्रशासन एवं सरकारी योजनाएँ",
+                "aliases": ["sarkari yojanayen", "prashasan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "languages_dialects",
+                "level": "topic",
+                "nameEn": "Languages and Dialects",
+                "nameHi": "भाषा एवं बोलियाँ",
+                "aliases": ["marwari", "mewari", "boliyan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "evs_pedagogy",
+        "level": "unit",
+        "nameEn": "EVS Pedagogy",
+        "nameHi": "पर्यावरण अध्ययन का शिक्षणशास्त्र",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "concept_scope",
+            "level": "chapter",
+            "nameEn": "Concept and Scope of Environmental Studies",
+            "nameHi": "पर्यावरण अध्ययन की अवधारणा एवं क्षेत्र",
+            "aliases": ["paryavaran adhyayan ki avdharana", "EVS concept", "scope of EVS"],
+            "objectives": ["Explain the concept, scope and integrated nature of EVS"],
+            "children": [
+              {
+                "code": "concept_and_scope",
+                "level": "topic",
+                "nameEn": "Concept and Scope of EVS",
+                "nameHi": "पर्यावरण अध्ययन की अवधारणा एवं क्षेत्र",
+                "aliases": ["avdharana", "kshetra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "significance",
+                "level": "topic",
+                "nameEn": "Significance of Environmental Studies",
+                "nameHi": "पर्यावरण अध्ययन का महत्त्व",
+                "aliases": ["mahatva"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "integrated_evs",
+                "level": "topic",
+                "nameEn": "Integrated Environmental Studies",
+                "nameHi": "समाकलित पर्यावरण अध्ययन",
+                "aliases": ["samakalit", "integrated approach"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "learning_principles",
+                "level": "topic",
+                "nameEn": "Learning Principles of Environmental Education",
+                "nameHi": "पर्यावरण शिक्षा के अधिगम सिद्धांत",
+                "aliases": ["adhigam siddhant"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "relation_science_social_science",
+                "level": "topic",
+                "nameEn": "Interrelationship and Scope with Science and Social Science",
+                "nameHi": "विज्ञान एवं सामाजिक विज्ञान विषयों के साथ अंतर्संबंध एवं क्षेत्र",
+                "aliases": ["antarsambandh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "approaches_methods",
+            "level": "chapter",
+            "nameEn": "Approaches of Presenting Concepts",
+            "nameHi": "संकल्पना प्रस्तुतीकरण के उपागम",
+            "aliases": ["upagam", "teaching approaches", "shikshan vidhiyan", "EVS methods"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "approaches",
+                "level": "topic",
+                "nameEn": "Approaches of Presenting Concepts",
+                "nameHi": "संकल्पना प्रस्तुतीकरण के उपागम",
+                "aliases": ["thematic approach", "bal kendrit"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "activities",
+                "level": "topic",
+                "nameEn": "Activities",
+                "nameHi": "क्रियाकलाप",
+                "aliases": ["kriyakalap"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "experimentation",
+                "level": "topic",
+                "nameEn": "Experimentation and Practical Work",
+                "nameHi": "प्रयोग/प्रायोगिक कार्य",
+                "aliases": ["prayog", "prayogik karya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "discussion",
+                "level": "topic",
+                "nameEn": "Discussion",
+                "nameHi": "चर्चा",
+                "aliases": ["charcha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "field_visits_projects",
+                "level": "topic",
+                "nameEn": "Field Visits, Surveys and Projects",
+                "nameHi": "क्षेत्र भ्रमण, सर्वेक्षण एवं प्रायोजना",
+                "aliases": ["survey", "project", "bhraman"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "material_evaluation",
+            "level": "chapter",
+            "nameEn": "Teaching Material, Evaluation and Problems of Teaching",
+            "nameHi": "शिक्षण सामग्री, मूल्यांकन एवं शिक्षण की समस्याएँ",
+            "aliases": ["shikshan samagri", "mulyankan", "CCE", "sahayak samagri"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "teaching_aids",
+                "level": "topic",
+                "nameEn": "Teaching Material and Aids",
+                "nameHi": "शिक्षण सामग्री/सहायक सामग्री",
+                "aliases": ["TLM", "sahayak samagri"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ict",
+                "level": "topic",
+                "nameEn": "Information and Communication Technology",
+                "nameHi": "सूचना एवं संचार प्रौद्योगिकी",
+                "aliases": ["ICT"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cce",
+                "level": "topic",
+                "nameEn": "Comprehensive and Continuous Evaluation",
+                "nameHi": "समग्र एवं सतत मूल्यांकन",
+                "aliases": ["CCE", "satat mulyankan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "problems_of_teaching",
+                "level": "topic",
+                "nameEn": "Problems of Teaching EVS",
+                "nameHi": "शिक्षण की समस्याएँ",
+                "aliases": ["shikshan ki samasyayen"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "objectives": []
+  }
+}

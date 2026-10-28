@@ -1,0 +1,4522 @@
+{
+  "subject": {
+    "code": "chemistry",
+    "level": "subject",
+    "nameEn": "Chemistry",
+    "nameHi": "रसायन विज्ञान",
+    "aliases": ["rasayan vigyan", "rasayan", "chem", "रसायन"],
+    "objectives": [],
+    "children": [
+      {
+        "code": "physical_chemistry",
+        "level": "unit",
+        "nameEn": "Physical Chemistry",
+        "nameHi": "भौतिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "some_basic_concepts",
+            "level": "chapter",
+            "nameEn": "Some Basic Concepts of Chemistry",
+            "nameHi": "रसायन विज्ञान की कुछ मूल अवधारणाएँ",
+            "aliases": [
+              "rasayan vigyan ki kuch mool avdharnayen",
+              "mole concept",
+              "mol sankalpana",
+              "basic concepts of chemistry",
+              "stoichiometry"
+            ],
+            "objectives": [
+              "Apply the laws of chemical combination and the mole concept",
+              "Solve stoichiometric and empirical-formula problems"
+            ],
+            "children": [
+              {
+                "code": "matter_and_measurement",
+                "level": "topic",
+                "nameEn": "Nature of Matter and its Measurement",
+                "nameHi": "द्रव्य की प्रकृति एवं उसका मापन",
+                "aliases": [
+                  "dravya ki prakriti",
+                  "classification of matter",
+                  "SI units",
+                  "importance of chemistry"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uncertainty_in_measurement",
+                "level": "topic",
+                "nameEn": "Uncertainty in Measurement and Significant Figures",
+                "nameHi": "मापन में अनिश्चितता एवं सार्थक अंक",
+                "aliases": [
+                  "sarthak ank",
+                  "significant figures",
+                  "precision and accuracy",
+                  "dimensional analysis"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "laws_of_chemical_combination",
+                "level": "topic",
+                "nameEn": "Laws of Chemical Combination",
+                "nameHi": "रासायनिक संयोजन के नियम",
+                "aliases": [
+                  "rasayanik sanyojan ke niyam",
+                  "law of definite proportions",
+                  "law of multiple proportions",
+                  "Gay-Lussac law of gaseous volumes"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dalton_atomic_theory",
+                "level": "topic",
+                "nameEn": "Dalton's Atomic Theory: Atoms, Molecules, Elements and Compounds",
+                "nameHi": "डाल्टन का परमाणु सिद्धांत: परमाणु, अणु, तत्त्व एवं यौगिक",
+                "aliases": ["dalton ka parmanu siddhant", "dalton atomic theory", "atom and molecule"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "atomic_and_molecular_masses",
+                "level": "topic",
+                "nameEn": "Atomic and Molecular Masses",
+                "nameHi": "परमाणु एवं आण्विक द्रव्यमान",
+                "aliases": [
+                  "parmanu dravyaman",
+                  "atomic mass unit",
+                  "amu",
+                  "average atomic mass",
+                  "formula mass"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mole_concept",
+                "level": "topic",
+                "nameEn": "Mole Concept and Molar Mass",
+                "nameHi": "मोल संकल्पना एवं मोलर द्रव्यमान",
+                "aliases": ["mol sankalpana", "mole concept", "avogadro number", "molar mass"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "percentage_composition_formulae",
+                "level": "topic",
+                "nameEn": "Percentage Composition, Empirical and Molecular Formulae",
+                "nameHi": "प्रतिशत संघटन, मूलानुपाती एवं आण्विक सूत्र",
+                "aliases": [
+                  "pratishat sanghatan",
+                  "empirical formula",
+                  "mulanupati sutra",
+                  "molecular formula"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stoichiometry",
+                "level": "topic",
+                "nameEn": "Chemical Equations, Stoichiometry and Limiting Reagent",
+                "nameHi": "रासायनिक समीकरण, स्टॉइकियोमीट्री एवं सीमांत अभिकर्मक",
+                "aliases": [
+                  "stoichiometry",
+                  "limiting reagent",
+                  "seemant abhikarmak",
+                  "molarity molality mole fraction",
+                  "balancing chemical equations"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "atomic_structure",
+            "level": "chapter",
+            "nameEn": "Structure of Atom",
+            "nameHi": "परमाणु की संरचना",
+            "aliases": ["parmanu ki sanrachna", "atomic structure", "parmanu sanrachna", "structure of atom"],
+            "objectives": [
+              "Trace the development from Bohr's model to the quantum mechanical model",
+              "Use quantum numbers to write electronic configurations"
+            ],
+            "children": [
+              {
+                "code": "subatomic_particles",
+                "level": "topic",
+                "nameEn": "Discovery of Sub-atomic Particles",
+                "nameHi": "अवपरमाणुक कणों की खोज",
+                "aliases": [
+                  "avparmanuk kan",
+                  "electron proton neutron",
+                  "cathode rays",
+                  "charge to mass ratio"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "atomic_models",
+                "level": "topic",
+                "nameEn": "Atomic Models: Thomson and Rutherford",
+                "nameHi": "परमाणु मॉडल: टॉमसन एवं रदरफोर्ड",
+                "aliases": [
+                  "parmanu model",
+                  "rutherford model",
+                  "thomson model",
+                  "isotopes isobars",
+                  "atomic number mass number"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electromagnetic_radiation_photoelectric",
+                "level": "topic",
+                "nameEn": "Electromagnetic Radiation, Planck's Quantum Theory and Photoelectric Effect",
+                "nameHi": "विद्युत-चुंबकीय विकिरण, प्लांक का क्वांटम सिद्धांत एवं प्रकाश-विद्युत प्रभाव",
+                "aliases": [
+                  "vidyut chumbakiya vikiran",
+                  "photoelectric effect",
+                  "prakash vidyut prabhav",
+                  "planck quantum theory",
+                  "black body radiation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hydrogen_spectrum",
+                "level": "topic",
+                "nameEn": "Atomic Spectra and the Spectrum of Hydrogen",
+                "nameHi": "परमाणु स्पेक्ट्रम एवं हाइड्रोजन स्पेक्ट्रम",
+                "aliases": ["hydrogen spectrum", "line spectrum", "rydberg formula", "lyman balmer series"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bohr_model",
+                "level": "topic",
+                "nameEn": "Bohr's Model of the Hydrogen Atom",
+                "nameHi": "हाइड्रोजन परमाणु के लिए बोर मॉडल",
+                "aliases": [
+                  "bohr model",
+                  "bohr ka parmanu model",
+                  "radius and energy of orbit",
+                  "limitations of bohr model"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dual_nature_uncertainty",
+                "level": "topic",
+                "nameEn": "Dual Nature of Matter and Heisenberg's Uncertainty Principle",
+                "nameHi": "द्रव्य की द्वैत प्रकृति एवं हाइज़ेनबर्ग का अनिश्चितता सिद्धांत",
+                "aliases": [
+                  "dvait prakriti",
+                  "de broglie relation",
+                  "heisenberg uncertainty principle",
+                  "anishchitata siddhant"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quantum_mechanical_model",
+                "level": "topic",
+                "nameEn": "Quantum Mechanical Model of Atom and Atomic Orbitals",
+                "nameHi": "परमाणु का क्वांटम यांत्रिकीय मॉडल एवं परमाणु कक्षक",
+                "aliases": [
+                  "quantum yantrikiy model",
+                  "schrodinger equation",
+                  "wave function psi",
+                  "radial nodes",
+                  "kakshak"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quantum_numbers_orbital_shapes",
+                "level": "topic",
+                "nameEn": "Quantum Numbers and Shapes of s, p and d Orbitals",
+                "nameHi": "क्वांटम संख्याएँ एवं s, p तथा d कक्षकों की आकृतियाँ",
+                "aliases": [
+                  "quantum sankhya",
+                  "quantum numbers",
+                  "shapes of orbitals",
+                  "spin quantum number"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electronic_configuration",
+                "level": "topic",
+                "nameEn": "Filling of Orbitals and Electronic Configuration",
+                "nameHi": "कक्षकों में इलेक्ट्रॉनों का भरना एवं इलेक्ट्रॉनिक विन्यास",
+                "aliases": [
+                  "electronic vinyas",
+                  "aufbau principle",
+                  "pauli exclusion principle",
+                  "hund's rule",
+                  "half filled stability"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "chemical_bonding",
+            "level": "chapter",
+            "nameEn": "Chemical Bonding and Molecular Structure",
+            "nameHi": "रासायनिक आबंधन तथा आण्विक संरचना",
+            "aliases": [
+              "rasayanik aabandhan",
+              "chemical bonding",
+              "aabandhan",
+              "molecular structure",
+              "bonding"
+            ],
+            "objectives": [
+              "Explain ionic and covalent bonding and predict molecular shapes",
+              "Apply VBT, hybridisation and MO theory to simple molecules"
+            ],
+            "children": [
+              {
+                "code": "kossel_lewis_approach",
+                "level": "topic",
+                "nameEn": "Kössel–Lewis Approach and the Octet Rule",
+                "nameHi": "कॉसेल-लूइस अवधारणा एवं अष्टक नियम",
+                "aliases": ["kossel lewis", "octet rule", "ashtak niyam", "lewis structure", "formal charge"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ionic_bond",
+                "level": "topic",
+                "nameEn": "Ionic Bond and Lattice Enthalpy",
+                "nameHi": "आयनिक आबंध एवं जालक एन्थैल्पी",
+                "aliases": ["aayanik aabandh", "electrovalent bond", "lattice enthalpy", "born haber cycle"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bond_parameters_resonance",
+                "level": "topic",
+                "nameEn": "Bond Parameters and Resonance",
+                "nameHi": "आबंध प्राचल एवं अनुनाद",
+                "aliases": [
+                  "aabandh prachal",
+                  "bond length bond angle",
+                  "bond enthalpy",
+                  "bond order",
+                  "anunad"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "polarity_dipole_fajans",
+                "level": "topic",
+                "nameEn": "Polarity of Bonds, Dipole Moment and Fajans' Rules",
+                "nameHi": "आबंधों की ध्रुवता, द्विध्रुव आघूर्ण एवं फ़ायान्स नियम",
+                "aliases": [
+                  "dvidhruv aaghurn",
+                  "dipole moment",
+                  "fajans rule",
+                  "electronegativity",
+                  "covalent character of ionic bond"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vsepr_theory",
+                "level": "topic",
+                "nameEn": "VSEPR Theory and Shapes of Molecules",
+                "nameHi": "VSEPR सिद्धांत एवं अणुओं की आकृतियाँ",
+                "aliases": ["vsepr", "shapes of molecules", "anuon ki aakriti", "lone pair repulsion"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "valence_bond_theory",
+                "level": "topic",
+                "nameEn": "Valence Bond Theory: Sigma and Pi Bonds",
+                "nameHi": "संयोजकता आबंध सिद्धांत: सिग्मा एवं पाई आबंध",
+                "aliases": ["sanyojakta aabandh siddhant", "VBT", "orbital overlap", "sigma pi bond"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hybridisation",
+                "level": "topic",
+                "nameEn": "Hybridisation Involving s, p and d Orbitals",
+                "nameHi": "s, p एवं d कक्षकों से संबंधित संकरण",
+                "aliases": ["sankaran", "hybridization", "sp3 sp2 sp", "sp3d sp3d2"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "molecular_orbital_theory",
+                "level": "topic",
+                "nameEn": "Molecular Orbital Theory of Homonuclear Diatomic Molecules",
+                "nameHi": "समनाभिकीय द्विपरमाणुक अणुओं का आण्विक कक्षक सिद्धांत",
+                "aliases": ["aanvik kakshak siddhant", "MOT", "LCAO", "bond order", "MO diagram of O2 N2"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "metallic_hydrogen_bonding",
+                "level": "topic",
+                "nameEn": "Metallic Bonding and Hydrogen Bonding",
+                "nameHi": "धात्विक आबंधन एवं हाइड्रोजन आबंधन",
+                "aliases": [
+                  "hydrogen aabandhan",
+                  "hydrogen bond",
+                  "metallic bond",
+                  "intramolecular hydrogen bonding"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "states_of_matter",
+            "level": "chapter",
+            "nameEn": "States of Matter: Gases and Liquids",
+            "nameHi": "द्रव्य की अवस्थाएँ: गैस एवं द्रव",
+            "aliases": [
+              "dravya ki avasthayen",
+              "gaseous state",
+              "gas avastha",
+              "states of matter",
+              "gas laws"
+            ],
+            "objectives": [
+              "Apply the gas laws and the ideal gas equation",
+              "Explain deviation of real gases using the van der Waals equation"
+            ],
+            "children": [
+              {
+                "code": "intermolecular_forces",
+                "level": "topic",
+                "nameEn": "Intermolecular Forces and Thermal Energy",
+                "nameHi": "अंतराआण्विक बल एवं तापीय ऊर्जा",
+                "aliases": [
+                  "antar aanvik bal",
+                  "van der waals forces",
+                  "dipole dipole interaction",
+                  "london dispersion forces"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gas_laws",
+                "level": "topic",
+                "nameEn": "Gas Laws and the Ideal Gas Equation",
+                "nameHi": "गैस नियम एवं आदर्श गैस समीकरण",
+                "aliases": [
+                  "gas niyam",
+                  "boyle charles law",
+                  "ideal gas equation PV=nRT",
+                  "dalton law of partial pressure",
+                  "graham law of diffusion"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kinetic_molecular_theory",
+                "level": "topic",
+                "nameEn": "Kinetic Molecular Theory of Gases",
+                "nameHi": "गैसों का अणुगति सिद्धांत",
+                "aliases": ["anugati siddhant", "kinetic theory of gases", "rms speed", "molecular speeds"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "real_gases",
+                "level": "topic",
+                "nameEn": "Real Gases, van der Waals Equation and Liquefaction",
+                "nameHi": "वास्तविक गैसें, वान्डरवाल्स समीकरण एवं द्रवीकरण",
+                "aliases": [
+                  "vastavik gas",
+                  "van der waals equation",
+                  "compressibility factor",
+                  "critical temperature"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "liquid_state",
+                "level": "topic",
+                "nameEn": "Liquid State: Vapour Pressure, Surface Tension and Viscosity",
+                "nameHi": "द्रव अवस्था: वाष्प दाब, पृष्ठ तनाव एवं श्यानता",
+                "aliases": ["drav avastha", "surface tension", "prishth tanav", "viscosity", "shyanata"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "thermodynamics",
+            "level": "chapter",
+            "nameEn": "Thermodynamics",
+            "nameHi": "ऊष्मागतिकी",
+            "aliases": [
+              "ushmagatiki",
+              "chemical thermodynamics",
+              "thermo",
+              "rasayanik ushmagatiki",
+              "thermochemistry"
+            ],
+            "objectives": [
+              "Apply the first law and Hess's law to enthalpy changes",
+              "Predict spontaneity using entropy and Gibbs energy"
+            ],
+            "children": [
+              {
+                "code": "thermodynamic_terms",
+                "level": "topic",
+                "nameEn": "Thermodynamic Terms, State Functions and Types of Processes",
+                "nameHi": "ऊष्मागतिकी के तकनीकी शब्द, अवस्था फलन एवं प्रक्रमों के प्रकार",
+                "aliases": [
+                  "system and surroundings",
+                  "nikay aur parivesh",
+                  "state function",
+                  "extensive intensive properties",
+                  "zeroth law"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "first_law",
+                "level": "topic",
+                "nameEn": "First Law of Thermodynamics: Work, Heat and Internal Energy",
+                "nameHi": "ऊष्मागतिकी का प्रथम नियम: कार्य, ऊष्मा एवं आंतरिक ऊर्जा",
+                "aliases": [
+                  "pratham niyam",
+                  "first law",
+                  "internal energy",
+                  "isothermal adiabatic work",
+                  "aantarik urja"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "enthalpy_heat_capacity",
+                "level": "topic",
+                "nameEn": "Enthalpy, Heat Capacity and Calorimetry",
+                "nameHi": "एन्थैल्पी, ऊष्माधारिता एवं कैलोरीमिति",
+                "aliases": ["enthalpy", "heat capacity", "ushmadharita", "Cp Cv", "bomb calorimeter"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reaction_enthalpy_hess_law",
+                "level": "topic",
+                "nameEn": "Reaction Enthalpy, Thermochemical Equations and Hess's Law",
+                "nameHi": "अभिक्रिया एन्थैल्पी, ऊष्मरासायनिक समीकरण एवं हेस का नियम",
+                "aliases": [
+                  "hess ka niyam",
+                  "hess law",
+                  "standard enthalpy of reaction",
+                  "thermochemical equation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "enthalpies_of_reactions",
+                "level": "topic",
+                "nameEn": "Enthalpies of Formation, Combustion, Bond Dissociation and Other Processes",
+                "nameHi": "संभवन, दहन, आबंध वियोजन एवं अन्य प्रक्रमों की एन्थैल्पी",
+                "aliases": [
+                  "enthalpy of formation",
+                  "enthalpy of combustion",
+                  "bond dissociation enthalpy",
+                  "enthalpy of atomization",
+                  "enthalpy of solution hydration"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "entropy_spontaneity",
+                "level": "topic",
+                "nameEn": "Spontaneity, Entropy and the Second Law",
+                "nameHi": "स्वतःप्रवर्तिता, एन्ट्रॉपी एवं द्वितीय नियम",
+                "aliases": ["entropy", "swatah pravartita", "second law", "spontaneous process"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gibbs_energy_equilibrium",
+                "level": "topic",
+                "nameEn": "Gibbs Energy Change and Equilibrium",
+                "nameHi": "गिब्ज़ ऊर्जा परिवर्तन एवं साम्यावस्था",
+                "aliases": [
+                  "gibbs urja",
+                  "gibbs free energy",
+                  "delta G = -RT lnK",
+                  "free energy and spontaneity"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "equilibrium",
+            "level": "chapter",
+            "nameEn": "Equilibrium",
+            "nameHi": "साम्यावस्था",
+            "aliases": ["samyavastha", "chemical equilibrium", "ionic equilibrium", "aayanik samyavastha"],
+            "objectives": [
+              "Write and use equilibrium constants and Le Chatelier's principle",
+              "Calculate pH, buffer pH and solubility products"
+            ],
+            "children": [
+              {
+                "code": "physical_equilibrium",
+                "level": "topic",
+                "nameEn": "Equilibrium in Physical Processes and Henry's Law",
+                "nameHi": "भौतिक प्रक्रमों में साम्यावस्था एवं हेनरी नियम",
+                "aliases": [
+                  "bhautik samyavastha",
+                  "solid liquid equilibrium",
+                  "henry law",
+                  "dynamic equilibrium"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "law_of_chemical_equilibrium",
+                "level": "topic",
+                "nameEn": "Law of Chemical Equilibrium and Equilibrium Constants Kp and Kc",
+                "nameHi": "रासायनिक साम्यावस्था का नियम एवं साम्यावस्था स्थिरांक Kp तथा Kc",
+                "aliases": [
+                  "law of mass action",
+                  "Kp Kc",
+                  "samyavastha sthirank",
+                  "homogeneous heterogeneous equilibria"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "applications_of_equilibrium_constant",
+                "level": "topic",
+                "nameEn": "Applications of Equilibrium Constant, Reaction Quotient and Gibbs Energy",
+                "nameHi": "साम्यावस्था स्थिरांक के अनुप्रयोग, अभिक्रिया भागफल एवं गिब्ज़ ऊर्जा",
+                "aliases": [
+                  "reaction quotient Q",
+                  "extent of reaction",
+                  "delta G and K",
+                  "calculating equilibrium concentrations"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "le_chatelier_principle",
+                "level": "topic",
+                "nameEn": "Factors Affecting Equilibrium and Le Chatelier's Principle",
+                "nameHi": "साम्य को प्रभावित करने वाले कारक एवं ला-शातेलिए सिद्धांत",
+                "aliases": [
+                  "le chatelier",
+                  "la shatelie siddhant",
+                  "effect of pressure temperature catalyst"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acids_bases_concepts",
+                "level": "topic",
+                "nameEn": "Electrolytes and Concepts of Acids and Bases",
+                "nameHi": "वैद्युत-अपघट्य एवं अम्ल-क्षारक की अवधारणाएँ",
+                "aliases": [
+                  "arrhenius bronsted lewis",
+                  "amla kshar",
+                  "strong and weak electrolytes",
+                  "conjugate acid base"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ionization_and_ph",
+                "level": "topic",
+                "nameEn": "Ionization of Acids, Bases and Water; pH Scale and Common Ion Effect",
+                "nameHi": "अम्लों, क्षारकों एवं जल का आयनन; pH स्केल एवं सम-आयन प्रभाव",
+                "aliases": [
+                  "pH scale",
+                  "Ka Kb Kw",
+                  "ionic product of water",
+                  "common ion effect",
+                  "sam aayan prabhav"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "salt_hydrolysis_buffers",
+                "level": "topic",
+                "nameEn": "Hydrolysis of Salts and Buffer Solutions",
+                "nameHi": "लवणों का जल-अपघटन एवं बफ़र विलयन",
+                "aliases": ["lavan jal apghatan", "salt hydrolysis", "buffer solution", "henderson equation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "solubility_product",
+                "level": "topic",
+                "nameEn": "Solubility Equilibria and Solubility Product",
+                "nameHi": "विलेयता साम्यावस्था एवं विलेयता गुणनफल",
+                "aliases": ["vileyata gunanfal", "Ksp", "solubility product", "sparingly soluble salts"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "redox_reactions",
+            "level": "chapter",
+            "nameEn": "Redox Reactions",
+            "nameHi": "अपचयोपचय अभिक्रियाएँ",
+            "aliases": ["apchayopachay abhikriyayen", "redox", "oxidation reduction", "oxikaran apchayan"],
+            "objectives": ["Assign oxidation numbers and balance redox equations"],
+            "children": [
+              {
+                "code": "oxidation_reduction_concepts",
+                "level": "topic",
+                "nameEn": "Classical and Electronic Concepts of Oxidation and Reduction",
+                "nameHi": "ऑक्सीकरण एवं अपचयन की पारंपरिक एवं इलेक्ट्रॉनिक अवधारणा",
+                "aliases": [
+                  "oxikaran aur apchayan",
+                  "oxidising agent reducing agent",
+                  "electron transfer reactions"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "oxidation_number",
+                "level": "topic",
+                "nameEn": "Oxidation Number and Rules for Assigning It",
+                "nameHi": "ऑक्सीकरण संख्या एवं उसके निर्धारण के नियम",
+                "aliases": ["oxikaran sankhya", "oxidation state", "oxidation number rules"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "types_of_redox_reactions",
+                "level": "topic",
+                "nameEn": "Types of Redox Reactions including Disproportionation",
+                "nameHi": "अपचयोपचय अभिक्रियाओं के प्रकार (असमानुपातन सहित)",
+                "aliases": [
+                  "disproportionation",
+                  "asamanupatan",
+                  "displacement reaction",
+                  "combination decomposition"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "balancing_redox_reactions",
+                "level": "topic",
+                "nameEn": "Balancing of Redox Reactions",
+                "nameHi": "अपचयोपचय अभिक्रियाओं का संतुलन",
+                "aliases": [
+                  "redox balancing",
+                  "ion electron method",
+                  "half reaction method",
+                  "oxidation number method"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "redox_electrode_processes",
+                "level": "topic",
+                "nameEn": "Redox Reactions and Electrode Processes",
+                "nameHi": "अपचयोपचय अभिक्रियाएँ तथा इलेक्ट्रोड प्रक्रम",
+                "aliases": ["electrode process", "redox couple", "electrochemical series"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "solutions",
+            "level": "chapter",
+            "nameEn": "Solutions",
+            "nameHi": "विलयन",
+            "aliases": ["vilayan", "solution", "colligative properties", "anusankhya gundharm"],
+            "objectives": [
+              "Express concentration and apply Raoult's and Henry's laws",
+              "Use colligative properties to find molar masses"
+            ],
+            "children": [
+              {
+                "code": "types_of_solutions",
+                "level": "topic",
+                "nameEn": "Types of Solutions",
+                "nameHi": "विलयनों के प्रकार",
+                "aliases": ["vilayan ke prakar", "solid liquid gaseous solutions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "concentration_of_solutions",
+                "level": "topic",
+                "nameEn": "Expressing Concentration of Solutions",
+                "nameHi": "विलयनों की सांद्रता को व्यक्त करना",
+                "aliases": ["sandrata", "molarity", "molality", "mole fraction", "ppm mass percentage"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "solubility_henry_law",
+                "level": "topic",
+                "nameEn": "Solubility of Solids and Gases; Henry's Law",
+                "nameHi": "ठोसों एवं गैसों की विलेयता; हेनरी का नियम",
+                "aliases": ["vileyata", "henry law", "solubility of gases in liquids"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vapour_pressure_raoult_law",
+                "level": "topic",
+                "nameEn": "Vapour Pressure of Liquid Solutions and Raoult's Law",
+                "nameHi": "द्रवीय विलयनों का वाष्प दाब एवं राउल्ट का नियम",
+                "aliases": ["raoult ka niyam", "raoult law", "vapour pressure", "vashp daab"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ideal_non_ideal_solutions",
+                "level": "topic",
+                "nameEn": "Ideal and Non-ideal Solutions and Azeotropes",
+                "nameHi": "आदर्श एवं अनादर्श विलयन तथा स्थिरक्वाथी मिश्रण",
+                "aliases": [
+                  "adarsh anadarsh vilayan",
+                  "positive negative deviation",
+                  "azeotrope",
+                  "sthirkvathi"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "colligative_vapour_boiling_freezing",
+                "level": "topic",
+                "nameEn": "Relative Lowering of Vapour Pressure, Elevation of Boiling Point and Depression of Freezing Point",
+                "nameHi": "वाष्प दाब का आपेक्षिक अवनमन, क्वथनांक का उन्नयन एवं हिमांक का अवनमन",
+                "aliases": [
+                  "colligative properties",
+                  "elevation of boiling point",
+                  "depression of freezing point",
+                  "Kb Kf",
+                  "anusankhya gundharm"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "osmosis_osmotic_pressure",
+                "level": "topic",
+                "nameEn": "Osmosis, Osmotic Pressure and Reverse Osmosis",
+                "nameHi": "परासरण, परासरण दाब एवं प्रतिलोम परासरण",
+                "aliases": ["parasaran daab", "osmotic pressure", "reverse osmosis", "isotonic solutions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "abnormal_molar_mass",
+                "level": "topic",
+                "nameEn": "Abnormal Molar Masses and van't Hoff Factor",
+                "nameHi": "असामान्य मोलर द्रव्यमान एवं वान्ट हॉफ गुणक",
+                "aliases": [
+                  "van't hoff factor",
+                  "vant hoff gunak",
+                  "abnormal molar mass",
+                  "association dissociation"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "electrochemistry",
+            "level": "chapter",
+            "nameEn": "Electrochemistry",
+            "nameHi": "वैद्युतरसायन",
+            "aliases": ["vaidyut rasayan", "vidyut rasayan", "electro chemistry", "electrochem"],
+            "objectives": [
+              "Relate cell potential to Gibbs energy and apply the Nernst equation",
+              "Explain conductance, electrolysis, batteries and corrosion"
+            ],
+            "children": [
+              {
+                "code": "galvanic_cells",
+                "level": "topic",
+                "nameEn": "Electrochemical and Galvanic Cells",
+                "nameHi": "वैद्युत रासायनिक सेल एवं गैल्वैनी सेल",
+                "aliases": ["galvanic cell", "daniell cell", "electrochemical cell", "galvani cell"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrode_potential",
+                "level": "topic",
+                "nameEn": "Electrode Potential and Standard Hydrogen Electrode",
+                "nameHi": "इलेक्ट्रोड विभव एवं मानक हाइड्रोजन इलेक्ट्रोड",
+                "aliases": [
+                  "electrode vibhav",
+                  "SHE",
+                  "standard electrode potential",
+                  "electrochemical series",
+                  "types of electrodes"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nernst_equation",
+                "level": "topic",
+                "nameEn": "Nernst Equation and its Applications",
+                "nameHi": "नेर्न्स्ट समीकरण एवं इसके अनुप्रयोग",
+                "aliases": [
+                  "nernst samikaran",
+                  "nernst equation",
+                  "emf of cell",
+                  "equilibrium constant from nernst"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cell_potential_gibbs_energy",
+                "level": "topic",
+                "nameEn": "Cell Potential and Gibbs Energy Change",
+                "nameHi": "सेल विभव एवं गिब्ज़ ऊर्जा परिवर्तन",
+                "aliases": ["delta G = -nFE", "cell emf and gibbs energy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conductance_of_solutions",
+                "level": "topic",
+                "nameEn": "Conductance of Electrolytic Solutions and Molar Conductivity",
+                "nameHi": "वैद्युतअपघटनी विलयनों का चालकत्व एवं मोलर चालकता",
+                "aliases": [
+                  "chalakta",
+                  "conductivity",
+                  "molar conductivity",
+                  "variation with concentration",
+                  "conductance"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kohlrausch_law",
+                "level": "topic",
+                "nameEn": "Kohlrausch's Law and its Applications",
+                "nameHi": "कोलराउश का नियम एवं इसके अनुप्रयोग",
+                "aliases": ["kohlrausch law", "limiting molar conductivity", "kolraush niyam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrolysis",
+                "level": "topic",
+                "nameEn": "Electrolytic Cells and Faraday's Laws of Electrolysis",
+                "nameHi": "वैद्युतअपघटनी सेल एवं फैराडे के वैद्युतअपघटन नियम",
+                "aliases": ["vaidyut apghatan", "faraday laws", "products of electrolysis", "electrolysis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "batteries_fuel_cells",
+                "level": "topic",
+                "nameEn": "Batteries and Fuel Cells",
+                "nameHi": "बैटरियाँ एवं ईंधन सेल",
+                "aliases": [
+                  "dry cell",
+                  "lead accumulator",
+                  "fuel cell",
+                  "indhan cell",
+                  "primary secondary batteries"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "corrosion",
+                "level": "topic",
+                "nameEn": "Corrosion",
+                "nameHi": "संक्षारण",
+                "aliases": ["sankshran", "rusting of iron", "prevention of corrosion"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "chemical_kinetics",
+            "level": "chapter",
+            "nameEn": "Chemical Kinetics",
+            "nameHi": "रासायनिक बलगतिकी",
+            "aliases": [
+              "rasayanik balgatiki",
+              "balgatiki",
+              "kinetics",
+              "rate of reaction",
+              "chemical dynamics"
+            ],
+            "objectives": [
+              "Write rate laws and use integrated rate equations for zero and first order reactions",
+              "Use the Arrhenius equation to find activation energy"
+            ],
+            "children": [
+              {
+                "code": "rate_of_reaction",
+                "level": "topic",
+                "nameEn": "Rate of a Chemical Reaction: Average and Instantaneous",
+                "nameHi": "रासायनिक अभिक्रिया का वेग: औसत एवं तात्क्षणिक",
+                "aliases": ["abhikriya veg", "rate of reaction", "average rate", "instantaneous rate"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rate_law_rate_constant",
+                "level": "topic",
+                "nameEn": "Factors Affecting Rate, Rate Law and Rate Constant",
+                "nameHi": "अभिक्रिया वेग को प्रभावित करने वाले कारक, वेग नियम एवं वेग स्थिरांक",
+                "aliases": ["veg niyam", "rate law", "rate constant units", "veg sthirank"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "order_molecularity",
+                "level": "topic",
+                "nameEn": "Order and Molecularity; Elementary and Complex Reactions",
+                "nameHi": "अभिक्रिया की कोटि एवं आण्विकता; प्राथमिक एवं जटिल अभिक्रियाएँ",
+                "aliases": ["koti aur aanvikta", "order of reaction", "molecularity", "elementary reactions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "integrated_rate_equations",
+                "level": "topic",
+                "nameEn": "Integrated Rate Equations for Zero and First Order Reactions",
+                "nameHi": "शून्य एवं प्रथम कोटि अभिक्रियाओं के समाकलित वेग समीकरण",
+                "aliases": [
+                  "samakalit veg samikaran",
+                  "zero order reaction",
+                  "first order reaction",
+                  "integrated rate law"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "half_life_pseudo_first_order",
+                "level": "topic",
+                "nameEn": "Half-life and Pseudo First Order Reactions",
+                "nameHi": "अर्धायु एवं छद्म प्रथम कोटि की अभिक्रियाएँ",
+                "aliases": ["ardhayu", "half life", "pseudo first order", "chhadm pratham koti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "temperature_dependence_arrhenius",
+                "level": "topic",
+                "nameEn": "Temperature Dependence of Rate: Arrhenius Equation, Activation Energy and Catalyst",
+                "nameHi": "वेग की ताप पर निर्भरता: आरेनियस समीकरण, सक्रियण ऊर्जा एवं उत्प्रेरक",
+                "aliases": ["arrhenius equation", "activation energy", "sakriyan urja", "effect of catalyst"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "collision_theory",
+                "level": "topic",
+                "nameEn": "Collision Theory of Chemical Reactions",
+                "nameHi": "रासायनिक अभिक्रिया का संघट्ट सिद्धांत",
+                "aliases": ["sanghatt siddhant", "collision theory", "collision frequency", "steric factor"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "solid_state",
+            "level": "chapter",
+            "nameEn": "The Solid State",
+            "nameHi": "ठोस अवस्था",
+            "aliases": ["thos avastha", "solid state", "solids", "crystal structure"],
+            "objectives": [
+              "Classify solids and calculate density and packing efficiency of unit cells",
+              "Explain point defects and electrical and magnetic properties"
+            ],
+            "children": [
+              {
+                "code": "classification_of_solids",
+                "level": "topic",
+                "nameEn": "Classification of Solids: Crystalline and Amorphous",
+                "nameHi": "ठोसों का वर्गीकरण: क्रिस्टलीय एवं अक्रिस्टलीय",
+                "aliases": [
+                  "thoson ka vargikaran",
+                  "crystalline amorphous",
+                  "ionic covalent molecular metallic solids"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "crystal_lattices_unit_cells",
+                "level": "topic",
+                "nameEn": "Crystal Lattices and Unit Cells",
+                "nameHi": "क्रिस्टल जालक एवं एकक कोष्ठिका",
+                "aliases": ["unit cell", "ekak koshthika", "bravais lattice", "crystal systems"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "unit_cell_density",
+                "level": "topic",
+                "nameEn": "Number of Atoms per Unit Cell and Density Calculation",
+                "nameHi": "एकक कोष्ठिका में परमाणुओं की संख्या एवं घनत्व की गणना",
+                "aliases": ["density of unit cell", "atoms per unit cell", "bcc fcc", "Z value"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "close_packing_voids",
+                "level": "topic",
+                "nameEn": "Close Packing, Voids and Packing Efficiency",
+                "nameHi": "निविड संकुलन, रिक्तियाँ एवं संकुलन क्षमता",
+                "aliases": ["close packing", "hcp ccp", "tetrahedral octahedral voids", "packing efficiency"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "point_defects",
+                "level": "topic",
+                "nameEn": "Imperfections in Solids: Point Defects",
+                "nameHi": "ठोसों में अपूर्णताएँ: बिंदु दोष",
+                "aliases": ["bindu dosh", "schottky defect", "frenkel defect", "point defects"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrical_magnetic_properties",
+                "level": "topic",
+                "nameEn": "Electrical and Magnetic Properties of Solids",
+                "nameHi": "ठोसों के वैद्युत एवं चुंबकीय गुण",
+                "aliases": ["band theory", "semiconductors", "ferromagnetism", "paramagnetic diamagnetic"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "surface_chemistry",
+            "level": "chapter",
+            "nameEn": "Surface Chemistry",
+            "nameHi": "पृष्ठ रसायन",
+            "aliases": ["prishth rasayan", "surface chemistry", "colloids", "adhishoshan", "colloid"],
+            "objectives": [
+              "Distinguish physisorption from chemisorption and describe catalysis",
+              "Classify colloids and explain their preparation and properties"
+            ],
+            "children": [
+              {
+                "code": "adsorption",
+                "level": "topic",
+                "nameEn": "Adsorption: Physisorption, Chemisorption and Isotherms",
+                "nameHi": "अधिशोषण: भौतिक अधिशोषण, रासायनिक अधिशोषण एवं समतापी वक्र",
+                "aliases": [
+                  "adhishoshan",
+                  "adsorption",
+                  "freundlich isotherm",
+                  "physisorption chemisorption"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "catalysis",
+                "level": "topic",
+                "nameEn": "Catalysis: Homogeneous, Heterogeneous and Enzyme Catalysis",
+                "nameHi": "उत्प्रेरण: समांगी, विषमांगी एवं एन्ज़ाइम उत्प्रेरण",
+                "aliases": ["utpreran", "catalysis", "catalyst", "zeolites shape selective catalysis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "colloids_classification",
+                "level": "topic",
+                "nameEn": "Colloidal State and Classification of Colloids",
+                "nameHi": "कोलॉइडी अवस्था एवं कोलॉइडों का वर्गीकरण",
+                "aliases": [
+                  "colloid",
+                  "lyophilic lyophobic",
+                  "dravragi dravviragi",
+                  "micelles associated colloids"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_purification_colloids",
+                "level": "topic",
+                "nameEn": "Preparation and Purification of Colloids",
+                "nameHi": "कोलॉइडों का विरचन एवं शोधन",
+                "aliases": ["bredig arc", "peptisation", "dialysis", "apohan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "properties_of_colloids",
+                "level": "topic",
+                "nameEn": "Properties of Colloids: Tyndall Effect, Electrophoresis and Coagulation",
+                "nameHi": "कोलॉइडों के गुण: टिन्डल प्रभाव, वैद्युत कण संचलन एवं स्कंदन",
+                "aliases": [
+                  "tyndall effect",
+                  "brownian movement",
+                  "electrophoresis",
+                  "coagulation",
+                  "hardy schulze rule"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "emulsions_applications",
+                "level": "topic",
+                "nameEn": "Emulsions and Applications of Colloids",
+                "nameHi": "पायस एवं कोलॉइडों के अनुप्रयोग",
+                "aliases": ["payas", "emulsion", "emulsifying agent", "applications of colloids"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "inorganic_chemistry",
+        "level": "unit",
+        "nameEn": "Inorganic Chemistry",
+        "nameHi": "अकार्बनिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "periodic_classification",
+            "level": "chapter",
+            "nameEn": "Classification of Elements and Periodicity in Properties",
+            "nameHi": "तत्त्वों का वर्गीकरण एवं गुणधर्मों में आवर्तिता",
+            "aliases": [
+              "tatvon ka vargikaran",
+              "periodic table",
+              "aavart sarni",
+              "periodicity",
+              "periodic properties"
+            ],
+            "objectives": [
+              "Relate the modern periodic table to electronic configuration",
+              "Explain periodic trends in radii, ionization enthalpy and electron gain enthalpy"
+            ],
+            "children": [
+              {
+                "code": "genesis_of_periodic_table",
+                "level": "topic",
+                "nameEn": "Genesis of Periodic Classification",
+                "nameHi": "आवर्त वर्गीकरण की उत्पत्ति",
+                "aliases": ["mendeleev periodic table", "dobereiner triads", "newlands octaves"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "modern_periodic_law",
+                "level": "topic",
+                "nameEn": "Modern Periodic Law and the Present Form of the Periodic Table",
+                "nameHi": "आधुनिक आवर्त नियम तथा आवर्त सारणी का वर्तमान स्वरूप",
+                "aliases": [
+                  "adhunik aavart niyam",
+                  "long form periodic table",
+                  "IUPAC names of elements above 100"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electronic_configuration_and_blocks",
+                "level": "topic",
+                "nameEn": "Electronic Configuration and s, p, d, f Blocks",
+                "nameHi": "इलेक्ट्रॉनिक विन्यास एवं s, p, d, f ब्लॉक",
+                "aliases": ["s p d f block", "blocks of periodic table", "groups and periods"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "atomic_ionic_radii",
+                "level": "topic",
+                "nameEn": "Atomic and Ionic Radii",
+                "nameHi": "परमाणु एवं आयनिक त्रिज्या",
+                "aliases": ["parmanu trijya", "atomic radius", "ionic radius", "isoelectronic species"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ionization_enthalpy",
+                "level": "topic",
+                "nameEn": "Ionization Enthalpy",
+                "nameHi": "आयनन एन्थैल्पी",
+                "aliases": ["aayanan enthalpy", "ionisation energy", "IE trend"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electron_gain_enthalpy_electronegativity",
+                "level": "topic",
+                "nameEn": "Electron Gain Enthalpy and Electronegativity",
+                "nameHi": "इलेक्ट्रॉन लब्धि एन्थैल्पी एवं विद्युत्-ऋणात्मकता",
+                "aliases": [
+                  "electron affinity",
+                  "electron labdhi enthalpy",
+                  "electronegativity",
+                  "vidyut rinatmakta"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "valence_and_reactivity",
+                "level": "topic",
+                "nameEn": "Valence, Oxidation States and Chemical Reactivity",
+                "nameHi": "संयोजकता, ऑक्सीकरण अवस्थाएँ एवं रासायनिक अभिक्रियाशीलता",
+                "aliases": [
+                  "sanyojakta",
+                  "anomalous properties of second period",
+                  "diagonal relationship",
+                  "metallic character"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "s_block_elements",
+            "level": "chapter",
+            "nameEn": "The s-Block Elements",
+            "nameHi": "s-ब्लॉक तत्त्व",
+            "aliases": ["s block tatva", "s-block", "alkali metals", "kshar dhatu", "alkaline earth metals"],
+            "objectives": ["Compare trends in alkali and alkaline earth metals and their compounds"],
+            "children": [
+              {
+                "code": "alkali_metals",
+                "level": "topic",
+                "nameEn": "Group 1 Elements: Alkali Metals",
+                "nameHi": "वर्ग 1 के तत्त्व: क्षार धातुएँ",
+                "aliases": ["kshar dhatuen", "alkali metals", "group 1", "sodium potassium"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alkaline_earth_metals",
+                "level": "topic",
+                "nameEn": "Group 2 Elements: Alkaline Earth Metals",
+                "nameHi": "वर्ग 2 के तत्त्व: क्षारीय मृदा धातुएँ",
+                "aliases": [
+                  "kshariya mrida dhatuen",
+                  "alkaline earth metals",
+                  "group 2",
+                  "magnesium calcium"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "anomalous_behaviour_diagonal",
+                "level": "topic",
+                "nameEn": "Anomalous Behaviour of Lithium and Beryllium; Diagonal Relationship",
+                "nameHi": "लीथियम एवं बेरिलियम का असामान्य व्यवहार; विकर्ण संबंध",
+                "aliases": [
+                  "diagonal relationship",
+                  "vikarn sambandh",
+                  "anomalous lithium",
+                  "Li Mg similarity"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "compounds_of_sodium",
+                "level": "topic",
+                "nameEn": "Important Compounds of Sodium",
+                "nameHi": "सोडियम के महत्त्वपूर्ण यौगिक",
+                "aliases": ["washing soda", "baking soda", "caustic soda", "solvay process"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "compounds_of_calcium",
+                "level": "topic",
+                "nameEn": "Important Compounds of Calcium",
+                "nameHi": "कैल्सियम के महत्त्वपूर्ण यौगिक",
+                "aliases": ["plaster of paris", "quick lime slaked lime", "cement", "calcium carbonate"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "biological_importance_s_block",
+                "level": "topic",
+                "nameEn": "Biological Importance of Na, K, Mg and Ca",
+                "nameHi": "Na, K, Mg एवं Ca का जैविक महत्त्व",
+                "aliases": ["sodium potassium pump", "biological role of magnesium calcium"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "p_block_elements",
+            "level": "chapter",
+            "nameEn": "The p-Block Elements",
+            "nameHi": "p-ब्लॉक तत्त्व",
+            "aliases": ["p block tatva", "p-block", "p block elements", "group 13 to 18"],
+            "objectives": [
+              "Explain trends and the anomalous first member in groups 13 to 18",
+              "Describe structures and properties of important p-block compounds"
+            ],
+            "children": [
+              {
+                "code": "general_trends_p_block",
+                "level": "topic",
+                "nameEn": "General Trends in p-Block Elements and Inert Pair Effect",
+                "nameHi": "p-ब्लॉक तत्त्वों की सामान्य प्रवृत्तियाँ एवं अक्रिय युग्म प्रभाव",
+                "aliases": [
+                  "inert pair effect",
+                  "akriya yugm prabhav",
+                  "anomalous behaviour of first element",
+                  "p block trends"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "group_13",
+                "level": "topic",
+                "nameEn": "Group 13 Elements: Boron Family",
+                "nameHi": "वर्ग 13 के तत्त्व: बोरॉन परिवार",
+                "aliases": [
+                  "boron parivar",
+                  "boron family",
+                  "borax boric acid",
+                  "diborane",
+                  "aluminium chloride"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "group_14",
+                "level": "topic",
+                "nameEn": "Group 14 Elements: Carbon Family",
+                "nameHi": "वर्ग 14 के तत्त्व: कार्बन परिवार",
+                "aliases": [
+                  "carbon parivar",
+                  "carbon family",
+                  "allotropes of carbon",
+                  "silicones silicates",
+                  "zeolites"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "group_15",
+                "level": "topic",
+                "nameEn": "Group 15 Elements: Nitrogen Family",
+                "nameHi": "वर्ग 15 के तत्त्व: नाइट्रोजन परिवार",
+                "aliases": [
+                  "nitrogen parivar",
+                  "nitrogen family",
+                  "ammonia nitric acid",
+                  "phosphorus allotropes",
+                  "oxoacids of phosphorus"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "group_16",
+                "level": "topic",
+                "nameEn": "Group 16 Elements: Oxygen Family",
+                "nameHi": "वर्ग 16 के तत्त्व: ऑक्सीजन परिवार",
+                "aliases": [
+                  "oxygen parivar",
+                  "chalcogens",
+                  "ozone",
+                  "sulphuric acid contact process",
+                  "oxoacids of sulphur"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "group_17",
+                "level": "topic",
+                "nameEn": "Group 17 Elements: Halogens",
+                "nameHi": "वर्ग 17 के तत्त्व: हैलोजन",
+                "aliases": [
+                  "halogen",
+                  "halogen family",
+                  "interhalogen compounds",
+                  "oxoacids of halogens",
+                  "chlorine HCl"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "group_18",
+                "level": "topic",
+                "nameEn": "Group 18 Elements: Noble Gases",
+                "nameHi": "वर्ग 18 के तत्त्व: उत्कृष्ट गैसें",
+                "aliases": ["utkrisht gas", "noble gases", "inert gases", "xenon fluorides"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "metallurgy",
+            "level": "chapter",
+            "nameEn": "General Principles and Processes of Isolation of Elements",
+            "nameHi": "तत्त्वों के निष्कर्षण के सिद्धांत एवं प्रक्रम",
+            "aliases": [
+              "dhatukarm",
+              "metallurgy",
+              "isolation of elements",
+              "tatvon ke nishkarshan ke siddhant"
+            ],
+            "objectives": ["Describe concentration, reduction and refining of metals from their ores"],
+            "children": [
+              {
+                "code": "occurrence_concentration_of_ores",
+                "level": "topic",
+                "nameEn": "Occurrence of Metals and Concentration of Ores",
+                "nameHi": "धातुओं की उपस्थिति एवं अयस्कों का सांद्रण",
+                "aliases": ["ayask", "froth floatation", "concentration of ore", "ores and minerals"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "extraction_of_crude_metal",
+                "level": "topic",
+                "nameEn": "Extraction of Crude Metal: Calcination, Roasting and Reduction",
+                "nameHi": "अपरिष्कृत धातु का निष्कर्षण: निस्तापन, भर्जन एवं अपचयन",
+                "aliases": ["calcination roasting", "nistapan bharjan", "smelting", "reduction of oxide"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "thermodynamic_principles_metallurgy",
+                "level": "topic",
+                "nameEn": "Thermodynamic Principles of Metallurgy and Ellingham Diagram",
+                "nameHi": "धातुकर्म के ऊष्मागतिकीय सिद्धांत एवं एलिंघम आरेख",
+                "aliases": ["ellingham diagram", "thermodynamics of metallurgy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrochemical_principles_metallurgy",
+                "level": "topic",
+                "nameEn": "Electrochemical Principles of Metallurgy",
+                "nameHi": "धातुकर्म के वैद्युतरासायनिक सिद्धांत",
+                "aliases": ["electrolytic reduction", "hall heroult process"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "refining_of_metals",
+                "level": "topic",
+                "nameEn": "Refining of Metals",
+                "nameHi": "धातुओं का परिष्करण",
+                "aliases": ["parishkaran", "zone refining", "electrolytic refining", "van arkel method"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "extraction_of_al_cu_zn_fe",
+                "level": "topic",
+                "nameEn": "Extraction of Aluminium, Copper, Zinc and Iron",
+                "nameHi": "ऐलुमिनियम, कॉपर, ज़िंक एवं आयरन का निष्कर्षण",
+                "aliases": [
+                  "extraction of iron blast furnace",
+                  "extraction of aluminium",
+                  "extraction of copper"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "d_f_block_elements",
+            "level": "chapter",
+            "nameEn": "The d- and f-Block Elements",
+            "nameHi": "d- एवं f-ब्लॉक के तत्त्व",
+            "aliases": [
+              "d aur f block ke tatva",
+              "transition elements",
+              "sankraman tatva",
+              "d-block",
+              "f-block"
+            ],
+            "objectives": [
+              "Explain trends in properties of first-row transition elements",
+              "Describe K2Cr2O7, KMnO4 and the lanthanoids and actinoids"
+            ],
+            "children": [
+              {
+                "code": "position_and_electronic_configuration",
+                "level": "topic",
+                "nameEn": "Position in the Periodic Table and Electronic Configuration",
+                "nameHi": "आवर्त सारणी में स्थिति एवं इलेक्ट्रॉनिक विन्यास",
+                "aliases": ["d block configuration", "transition series", "occurrence of transition metals"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "physical_properties_radii_ionization",
+                "level": "topic",
+                "nameEn": "Physical Properties, Atomic Radii and Ionization Enthalpies",
+                "nameHi": "भौतिक गुण, परमाणु त्रिज्या एवं आयनन एन्थैल्पी",
+                "aliases": [
+                  "melting point of transition metals",
+                  "atomic size trend",
+                  "ionisation enthalpy transition"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "oxidation_states_electrode_potentials",
+                "level": "topic",
+                "nameEn": "Oxidation States and Standard Electrode Potentials",
+                "nameHi": "ऑक्सीकरण अवस्थाएँ एवं मानक इलेक्ट्रोड विभव",
+                "aliases": [
+                  "variable oxidation states",
+                  "M2+/M potential",
+                  "stability of higher oxidation states"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "magnetic_properties_coloured_ions",
+                "level": "topic",
+                "nameEn": "Magnetic Properties and Formation of Coloured Ions",
+                "nameHi": "चुंबकीय गुण एवं रंगीन आयनों का बनना",
+                "aliases": [
+                  "magnetic moment",
+                  "spin only formula",
+                  "colour of transition metal ions",
+                  "d-d transition"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "catalytic_complex_interstitial_alloys",
+                "level": "topic",
+                "nameEn": "Catalytic Properties, Complex Formation, Interstitial Compounds and Alloys",
+                "nameHi": "उत्प्रेरकीय गुण, संकुल निर्माण, अंतराकाशी यौगिक एवं मिश्रातु",
+                "aliases": [
+                  "catalytic property",
+                  "interstitial compounds",
+                  "antarakashi yaugik",
+                  "alloy formation",
+                  "mishratu"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "potassium_dichromate_permanganate",
+                "level": "topic",
+                "nameEn": "Potassium Dichromate and Potassium Permanganate",
+                "nameHi": "पोटैशियम डाइक्रोमेट एवं पोटैशियम परमैंगनेट",
+                "aliases": ["K2Cr2O7", "KMnO4", "potassium dichromate", "potassium permanganate"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lanthanoids",
+                "level": "topic",
+                "nameEn": "Lanthanoids and Lanthanoid Contraction",
+                "nameHi": "लैन्थेनॉयड एवं लैन्थेनॉयड आकुंचन",
+                "aliases": ["lanthanide", "lanthanoid contraction", "lanthanoid aakunchan", "4f series"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "actinoids",
+                "level": "topic",
+                "nameEn": "Actinoids",
+                "nameHi": "ऐक्टिनॉयड",
+                "aliases": ["actinide", "5f series", "actinoids comparison with lanthanoids"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "applications_of_d_f_block",
+                "level": "topic",
+                "nameEn": "Applications of d- and f-Block Elements",
+                "nameHi": "d- एवं f-ब्लॉक तत्त्वों के अनुप्रयोग",
+                "aliases": ["uses of transition metals", "misch metal", "applications d and f block"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "coordination_compounds",
+            "level": "chapter",
+            "nameEn": "Coordination Compounds",
+            "nameHi": "उपसहसंयोजन यौगिक",
+            "aliases": [
+              "upsahsanyojan yaugik",
+              "coordination chemistry",
+              "complex compounds",
+              "sankul yaugik"
+            ],
+            "objectives": [
+              "Name coordination compounds and identify their isomers",
+              "Explain bonding, colour and magnetism using VBT and CFT"
+            ],
+            "children": [
+              {
+                "code": "werner_theory",
+                "level": "topic",
+                "nameEn": "Werner's Theory of Coordination Compounds",
+                "nameHi": "उपसहसंयोजन यौगिकों का वर्नर सिद्धांत",
+                "aliases": ["werner theory", "primary secondary valency", "double salts vs complexes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ligands_coordination_number",
+                "level": "topic",
+                "nameEn": "Ligands, Coordination Number, Denticity and Chelation",
+                "nameHi": "लिगन्ड, उपसहसंयोजन संख्या, दंतुकता एवं कीलेशन",
+                "aliases": ["ligand", "coordination number", "denticity", "chelate", "ambidentate ligand"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "iupac_nomenclature_complexes",
+                "level": "topic",
+                "nameEn": "IUPAC Nomenclature of Coordination Compounds",
+                "nameHi": "उपसहसंयोजन यौगिकों का IUPAC नामकरण",
+                "aliases": ["naming of complexes", "IUPAC naming coordination", "formula of complexes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "isomerism_in_complexes",
+                "level": "topic",
+                "nameEn": "Isomerism in Coordination Compounds",
+                "nameHi": "उपसहसंयोजन यौगिकों में समावयवता",
+                "aliases": [
+                  "samavayavata",
+                  "geometrical optical isomerism",
+                  "linkage isomerism",
+                  "ionisation isomerism"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "valence_bond_theory_complexes",
+                "level": "topic",
+                "nameEn": "Valence Bond Theory and Magnetic Properties of Complexes",
+                "nameHi": "संकुलों का संयोजकता आबंध सिद्धांत एवं चुंबकीय गुण",
+                "aliases": ["VBT of complexes", "inner outer orbital complex", "hybridisation in complexes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "crystal_field_theory_basic",
+                "level": "topic",
+                "nameEn": "Crystal Field Theory: Splitting and Colour",
+                "nameHi": "क्रिस्टल क्षेत्र सिद्धांत: विपाटन एवं रंग",
+                "aliases": [
+                  "CFT",
+                  "crystal field splitting",
+                  "kristal kshetra siddhant",
+                  "spectrochemical series",
+                  "colour of complexes"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bonding_in_metal_carbonyls",
+                "level": "topic",
+                "nameEn": "Bonding in Metal Carbonyls",
+                "nameHi": "धातु कार्बोनिलों में आबंधन",
+                "aliases": ["metal carbonyl", "synergic bonding", "back bonding"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "applications_of_coordination_compounds",
+                "level": "topic",
+                "nameEn": "Importance and Applications of Coordination Compounds",
+                "nameHi": "उपसहसंयोजन यौगिकों का महत्त्व एवं अनुप्रयोग",
+                "aliases": [
+                  "uses of complexes",
+                  "complexes in qualitative analysis",
+                  "biological complexes chlorophyll haemoglobin",
+                  "EDTA titration"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "organic_chemistry",
+        "level": "unit",
+        "nameEn": "Organic Chemistry",
+        "nameHi": "कार्बनिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "organic_chemistry_basics",
+            "level": "chapter",
+            "nameEn": "Organic Chemistry: Some Basic Principles and Techniques",
+            "nameHi": "कार्बनिक रसायन: कुछ आधारभूत सिद्धांत तथा तकनीकें",
+            "aliases": [
+              "karbanik rasayan kuch aadharbhut siddhant",
+              "GOC",
+              "general organic chemistry",
+              "IUPAC naming",
+              "purification and characterisation of organic compounds"
+            ],
+            "objectives": [
+              "Name organic compounds and explain electronic effects and reactive intermediates",
+              "Describe purification and qualitative and quantitative analysis of organic compounds"
+            ],
+            "children": [
+              {
+                "code": "tetravalence_and_shapes",
+                "level": "topic",
+                "nameEn": "Tetravalence of Carbon and Shapes of Organic Molecules",
+                "nameHi": "कार्बन की चतुःसंयोजकता एवं कार्बनिक अणुओं की आकृतियाँ",
+                "aliases": [
+                  "chatuh sanyojakta",
+                  "tetravalency of carbon",
+                  "hybridisation in organic molecules"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "structural_representation_classification",
+                "level": "topic",
+                "nameEn": "Structural Representation and Classification of Organic Compounds",
+                "nameHi": "कार्बनिक यौगिकों का संरचनात्मक निरूपण एवं वर्गीकरण",
+                "aliases": ["functional groups", "homologous series", "bond line formula", "sajatiya shreni"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nomenclature_of_organic_compounds",
+                "level": "topic",
+                "nameEn": "Nomenclature of Organic Compounds (Trivial and IUPAC)",
+                "nameHi": "कार्बनिक यौगिकों की नामपद्धति (रूढ़ एवं IUPAC)",
+                "aliases": ["IUPAC nomenclature", "naampaddhati", "naming organic compounds", "common names"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "isomerism",
+                "level": "topic",
+                "nameEn": "Isomerism: Structural and Stereoisomerism",
+                "nameHi": "समावयवता: संरचनात्मक एवं त्रिविम समावयवता",
+                "aliases": [
+                  "samavayavata",
+                  "structural isomerism",
+                  "stereoisomerism",
+                  "chain position functional isomerism"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bond_fission_reactive_intermediates",
+                "level": "topic",
+                "nameEn": "Covalent Bond Fission and Reactive Intermediates",
+                "nameHi": "सहसंयोजी आबंध विदलन एवं अभिक्रियाशील मध्यवर्ती",
+                "aliases": [
+                  "homolytic heterolytic fission",
+                  "free radicals",
+                  "carbocation",
+                  "carbanion",
+                  "karbdhanayan"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrophiles_nucleophiles_reaction_types",
+                "level": "topic",
+                "nameEn": "Electrophiles, Nucleophiles and Types of Organic Reactions",
+                "nameHi": "इलेक्ट्रॉनस्नेही, नाभिकस्नेही एवं कार्बनिक अभिक्रियाओं के प्रकार",
+                "aliases": [
+                  "electrophile nucleophile",
+                  "substitution addition elimination rearrangement",
+                  "electron snehi nabhik snehi"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electronic_effects",
+                "level": "topic",
+                "nameEn": "Electronic Displacement Effects: Inductive, Electromeric, Resonance and Hyperconjugation",
+                "nameHi": "इलेक्ट्रॉनिक विस्थापन प्रभाव: प्रेरणिक, इलेक्ट्रोमेरी, अनुनाद एवं अतिसंयुग्मन",
+                "aliases": [
+                  "inductive effect",
+                  "resonance effect",
+                  "mesomeric effect",
+                  "hyperconjugation",
+                  "atisanyugman"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "purification_methods",
+                "level": "topic",
+                "nameEn": "Methods of Purification of Organic Compounds",
+                "nameHi": "कार्बनिक यौगिकों के शोधन की विधियाँ",
+                "aliases": [
+                  "crystallisation sublimation distillation",
+                  "differential extraction",
+                  "chromatography",
+                  "varnalekhan"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "qualitative_analysis_organic",
+                "level": "topic",
+                "nameEn": "Qualitative Analysis: Detection of N, S, P and Halogens",
+                "nameHi": "गुणात्मक विश्लेषण: N, S, P एवं हैलोजनों का परीक्षण",
+                "aliases": [
+                  "lassaigne test",
+                  "detection of nitrogen sulphur halogens",
+                  "sodium fusion extract"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quantitative_analysis_organic",
+                "level": "topic",
+                "nameEn": "Quantitative Analysis of Organic Compounds",
+                "nameHi": "कार्बनिक यौगिकों का मात्रात्मक विश्लेषण",
+                "aliases": [
+                  "dumas method",
+                  "kjeldahl method",
+                  "carius method",
+                  "estimation of carbon hydrogen"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "hydrocarbons",
+            "level": "chapter",
+            "nameEn": "Hydrocarbons",
+            "nameHi": "हाइड्रोकार्बन",
+            "aliases": ["hydrocarbon", "alkane alkene alkyne", "aromatic hydrocarbons", "benzene"],
+            "objectives": [
+              "Prepare alkanes, alkenes and alkynes and explain their reaction mechanisms",
+              "Explain aromaticity and electrophilic substitution in benzene"
+            ],
+            "children": [
+              {
+                "code": "alkanes",
+                "level": "topic",
+                "nameEn": "Alkanes: Preparation, Properties and Halogenation Mechanism",
+                "nameHi": "ऐल्केन: विरचन, गुणधर्म एवं हैलोजनन की क्रियाविधि",
+                "aliases": [
+                  "alkane",
+                  "paraffins",
+                  "free radical halogenation",
+                  "wurtz reaction",
+                  "classification of hydrocarbons"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conformations_of_alkanes",
+                "level": "topic",
+                "nameEn": "Conformations of Ethane: Sawhorse and Newman Projections",
+                "nameHi": "एथेन के संरूपण: सॉहॉर्स एवं न्यूमैन प्रक्षेपण",
+                "aliases": [
+                  "sanrupan",
+                  "conformation",
+                  "newman projection",
+                  "sawhorse projection",
+                  "staggered eclipsed"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alkenes_structure_preparation",
+                "level": "topic",
+                "nameEn": "Alkenes: Structure, Geometrical Isomerism and Preparation",
+                "nameHi": "ऐल्कीन: संरचना, ज्यामितीय समावयवता एवं विरचन",
+                "aliases": ["alkene", "olefins", "cis trans isomerism", "geometrical isomerism"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_alkenes",
+                "level": "topic",
+                "nameEn": "Reactions of Alkenes: Electrophilic Addition, Markovnikov Rule, Peroxide Effect and Ozonolysis",
+                "nameHi": "ऐल्कीनों की अभिक्रियाएँ: इलेक्ट्रॉनस्नेही योगज, मारकोनीकॉफ नियम, परॉक्साइड प्रभाव एवं ओज़ोनी-अपघटन",
+                "aliases": [
+                  "markovnikov rule",
+                  "anti markovnikov",
+                  "peroxide effect kharasch",
+                  "ozonolysis",
+                  "polymerisation of alkenes"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alkynes",
+                "level": "topic",
+                "nameEn": "Alkynes: Preparation, Acidic Character and Reactions",
+                "nameHi": "ऐल्काइन: विरचन, अम्लीय गुण एवं अभिक्रियाएँ",
+                "aliases": ["alkyne", "acetylene", "acidic character of alkynes", "addition to alkynes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "benzene_aromaticity",
+                "level": "topic",
+                "nameEn": "Benzene: Structure, Aromaticity and Preparation",
+                "nameHi": "बेंज़ीन: संरचना, ऐरोमैटिकता एवं विरचन",
+                "aliases": ["benzene", "aromaticity", "huckel rule", "kekule structure", "airomaitikta"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrophilic_substitution_benzene",
+                "level": "topic",
+                "nameEn": "Electrophilic Substitution in Benzene: Halogenation, Nitration, Sulphonation and Friedel–Crafts",
+                "nameHi": "बेंज़ीन में इलेक्ट्रॉनस्नेही प्रतिस्थापन: हैलोजनन, नाइट्रोकरण, सल्फ़ोनीकरण एवं फ्रीडेल-क्राफ्ट्स",
+                "aliases": [
+                  "electrophilic aromatic substitution",
+                  "friedel crafts alkylation acylation",
+                  "nitration of benzene",
+                  "EAS"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "directive_influence",
+                "level": "topic",
+                "nameEn": "Directive Influence of Functional Groups in Monosubstituted Benzene",
+                "nameHi": "एकल प्रतिस्थापित बेंज़ीन में प्रकार्यात्मक समूहों का निर्देशात्मक प्रभाव",
+                "aliases": ["ortho para directing", "meta directing", "activating deactivating groups"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "carcinogenicity_toxicity",
+                "level": "topic",
+                "nameEn": "Carcinogenicity and Toxicity of Hydrocarbons",
+                "nameHi": "हाइड्रोकार्बनों के कैंसरजन्य गुण तथा विषाक्तता",
+                "aliases": ["carcinogenic hydrocarbons", "benzpyrene", "polynuclear hydrocarbons"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "haloalkanes_haloarenes",
+            "level": "chapter",
+            "nameEn": "Haloalkanes and Haloarenes",
+            "nameHi": "हैलोऐल्केन तथा हैलोऐरीन",
+            "aliases": [
+              "haloalkane tatha haloarene",
+              "alkyl halides",
+              "aryl halides",
+              "organic compounds containing halogens"
+            ],
+            "objectives": [
+              "Prepare haloalkanes and haloarenes and explain SN1 and SN2 mechanisms",
+              "Discuss uses and environmental effects of polyhalogen compounds"
+            ],
+            "children": [
+              {
+                "code": "classification_nomenclature_c_x_bond",
+                "level": "topic",
+                "nameEn": "Classification, Nomenclature, Nature of C–X Bond and Physical Properties",
+                "nameHi": "वर्गीकरण, नामपद्धति, C–X आबंध की प्रकृति एवं भौतिक गुण",
+                "aliases": ["C-X bond", "alkyl halide nomenclature", "classification of halides"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_haloalkanes",
+                "level": "topic",
+                "nameEn": "Preparation of Haloalkanes",
+                "nameHi": "हैलोऐल्केनों का विरचन",
+                "aliases": ["from alcohols", "finkelstein reaction", "swarts reaction", "halogen exchange"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_haloarenes",
+                "level": "topic",
+                "nameEn": "Preparation of Haloarenes",
+                "nameHi": "हैलोऐरीनों का विरचन",
+                "aliases": [
+                  "sandmeyer reaction",
+                  "electrophilic halogenation of arenes",
+                  "aryl halide preparation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nucleophilic_substitution",
+                "level": "topic",
+                "nameEn": "Nucleophilic Substitution Reactions: SN1 and SN2 Mechanisms",
+                "nameHi": "नाभिकस्नेही प्रतिस्थापन अभिक्रियाएँ: SN1 एवं SN2 क्रियाविधि",
+                "aliases": ["SN1 SN2", "nucleophilic substitution", "nabhikasnehi pratisthapan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "optical_isomerism_stereochemistry",
+                "level": "topic",
+                "nameEn": "Optical Isomerism and Stereochemistry of Substitution Reactions",
+                "nameHi": "प्रकाशिक समावयवता एवं प्रतिस्थापन अभिक्रियाओं का त्रिविम रसायन",
+                "aliases": [
+                  "chirality",
+                  "optical activity",
+                  "racemisation",
+                  "inversion of configuration",
+                  "walden inversion"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "elimination_and_reactions_with_metals",
+                "level": "topic",
+                "nameEn": "Elimination Reactions and Reactions with Metals",
+                "nameHi": "विलोपन अभिक्रियाएँ एवं धातुओं के साथ अभिक्रियाएँ",
+                "aliases": ["dehydrohalogenation", "saytzeff rule", "grignard reagent", "wurtz reaction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_haloarenes",
+                "level": "topic",
+                "nameEn": "Reactions of Haloarenes",
+                "nameHi": "हैलोऐरीनों की अभिक्रियाएँ",
+                "aliases": [
+                  "nucleophilic aromatic substitution",
+                  "wurtz fittig",
+                  "fittig reaction",
+                  "dow process"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "polyhalogen_compounds",
+                "level": "topic",
+                "nameEn": "Polyhalogen Compounds: Uses and Environmental Effects",
+                "nameHi": "पॉलिहैलोजन यौगिक: उपयोग एवं पर्यावरणीय प्रभाव",
+                "aliases": ["chloroform iodoform", "freons", "DDT", "carbon tetrachloride"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "alcohols_phenols_ethers",
+            "level": "chapter",
+            "nameEn": "Alcohols, Phenols and Ethers",
+            "nameHi": "ऐल्कोहॉल, फ़ीनॉल एवं ईथर",
+            "aliases": [
+              "alcohol phenol ether",
+              "alcohol phenol evam ether",
+              "organic compounds containing oxygen"
+            ],
+            "objectives": [
+              "Prepare alcohols, phenols and ethers and compare their acidity",
+              "Distinguish primary, secondary and tertiary alcohols"
+            ],
+            "children": [
+              {
+                "code": "classification_nomenclature_structure",
+                "level": "topic",
+                "nameEn": "Classification, Nomenclature and Structure of Functional Groups",
+                "nameHi": "वर्गीकरण, नामपद्धति एवं प्रकार्यात्मक समूहों की संरचना",
+                "aliases": ["alcohol nomenclature", "classification of alcohols", "monohydric dihydric"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_alcohols",
+                "level": "topic",
+                "nameEn": "Preparation of Alcohols",
+                "nameHi": "ऐल्कोहॉलों का विरचन",
+                "aliases": ["hydroboration oxidation", "alcohol from grignard", "hydration of alkenes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_phenols",
+                "level": "topic",
+                "nameEn": "Preparation of Phenols",
+                "nameHi": "फ़ीनॉलों का विरचन",
+                "aliases": ["cumene process", "phenol from diazonium salt", "dow process phenol"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_alcohols",
+                "level": "topic",
+                "nameEn": "Reactions of Alcohols, Dehydration Mechanism and Identification of 1°, 2° and 3° Alcohols",
+                "nameHi": "ऐल्कोहॉलों की अभिक्रियाएँ, निर्जलीकरण की क्रियाविधि एवं प्राथमिक, द्वितीयक व तृतीयक ऐल्कोहॉलों की पहचान",
+                "aliases": [
+                  "lucas test",
+                  "dehydration of alcohols",
+                  "oxidation of alcohols",
+                  "esterification"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acidity_of_alcohols_phenols",
+                "level": "topic",
+                "nameEn": "Acidic Nature of Alcohols and Phenols",
+                "nameHi": "ऐल्कोहॉलों एवं फ़ीनॉलों की अम्लीय प्रकृति",
+                "aliases": ["acidity of phenol", "phenoxide ion", "effect of substituents on acidity"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_phenols",
+                "level": "topic",
+                "nameEn": "Reactions of Phenols: Electrophilic Substitution, Kolbe and Reimer–Tiemann Reactions",
+                "nameHi": "फ़ीनॉलों की अभिक्रियाएँ: इलेक्ट्रॉनस्नेही प्रतिस्थापन, कोल्बे एवं राइमर-टीमन अभिक्रिया",
+                "aliases": [
+                  "reimer tiemann",
+                  "kolbe reaction",
+                  "bromination of phenol",
+                  "nitration sulphonation of phenol"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "commercially_important_alcohols",
+                "level": "topic",
+                "nameEn": "Commercially Important Alcohols: Methanol and Ethanol",
+                "nameHi": "औद्योगिक महत्त्व के ऐल्कोहॉल: मेथेनॉल एवं एथेनॉल",
+                "aliases": ["methanol ethanol", "fermentation", "denatured alcohol"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ethers",
+                "level": "topic",
+                "nameEn": "Ethers: Preparation, Properties and Reactions",
+                "nameHi": "ईथर: विरचन, गुणधर्म एवं अभिक्रियाएँ",
+                "aliases": ["williamson synthesis", "cleavage of ethers", "anisole", "ether"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "aldehydes_ketones_carboxylic_acids",
+            "level": "chapter",
+            "nameEn": "Aldehydes, Ketones and Carboxylic Acids",
+            "nameHi": "ऐल्डिहाइड, कीटोन एवं कार्बोक्सिलिक अम्ल",
+            "aliases": [
+              "aldehyde ketone carboxylic amla",
+              "carbonyl compounds",
+              "carbonyl yaugik",
+              "carboxylic acids"
+            ],
+            "objectives": [
+              "Explain nucleophilic addition and reactions due to alpha-hydrogen",
+              "Compare acidity of carboxylic acids and describe their reactions"
+            ],
+            "children": [
+              {
+                "code": "carbonyl_nomenclature_structure",
+                "level": "topic",
+                "nameEn": "Nomenclature and Structure of the Carbonyl Group",
+                "nameHi": "कार्बोनिल समूह की नामपद्धति एवं संरचना",
+                "aliases": ["carbonyl group", "aldehyde ketone nomenclature", "polarity of carbonyl"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_aldehydes_ketones",
+                "level": "topic",
+                "nameEn": "Preparation of Aldehydes and Ketones",
+                "nameHi": "ऐल्डिहाइडों एवं कीटोनों का विरचन",
+                "aliases": ["rosenmund reduction", "stephen reaction", "etard reaction", "gatterman koch"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nucleophilic_addition",
+                "level": "topic",
+                "nameEn": "Nucleophilic Addition Reactions and Relative Reactivity",
+                "nameHi": "नाभिकस्नेही योगज अभिक्रियाएँ एवं आपेक्षिक अभिक्रियाशीलता",
+                "aliases": [
+                  "nucleophilic addition",
+                  "addition of HCN",
+                  "addition of ammonia derivatives",
+                  "grignard addition",
+                  "acetal formation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "oxidation_reduction_tests",
+                "level": "topic",
+                "nameEn": "Oxidation, Reduction and Tests to Distinguish Aldehydes and Ketones",
+                "nameHi": "ऑक्सीकरण, अपचयन एवं ऐल्डिहाइड व कीटोन में विभेद करने के परीक्षण",
+                "aliases": [
+                  "clemmensen reduction",
+                  "wolff kishner reduction",
+                  "tollens test",
+                  "fehling test",
+                  "haloform reaction"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alpha_hydrogen_aldol",
+                "level": "topic",
+                "nameEn": "Acidity of α-Hydrogen and Aldol Condensation",
+                "nameHi": "α-हाइड्रोजन की अम्लता एवं ऐल्डोल संघनन",
+                "aliases": ["aldol condensation", "cross aldol", "alpha hydrogen", "enolate"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cannizzaro_and_uses",
+                "level": "topic",
+                "nameEn": "Cannizzaro Reaction, Electrophilic Substitution and Uses",
+                "nameHi": "कैनिज़ारो अभिक्रिया, इलेक्ट्रॉनस्नेही प्रतिस्थापन एवं उपयोग",
+                "aliases": [
+                  "cannizzaro reaction",
+                  "uses of formaldehyde acetone",
+                  "disproportionation of aldehydes"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_carboxylic_acids",
+                "level": "topic",
+                "nameEn": "Nomenclature and Preparation of Carboxylic Acids",
+                "nameHi": "कार्बोक्सिलिक अम्लों की नामपद्धति एवं विरचन",
+                "aliases": ["preparation of carboxylic acids", "hydrolysis of nitriles", "carboxyl group"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acidity_of_carboxylic_acids",
+                "level": "topic",
+                "nameEn": "Acidity of Carboxylic Acids and Factors Affecting It",
+                "nameHi": "कार्बोक्सिलिक अम्लों की अम्लता एवं उसे प्रभावित करने वाले कारक",
+                "aliases": ["acidic strength", "effect of substituents", "pKa of carboxylic acids"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_carboxylic_acids",
+                "level": "topic",
+                "nameEn": "Reactions of Carboxylic Acids and Formation of Acid Derivatives",
+                "nameHi": "कार्बोक्सिलिक अम्लों की अभिक्रियाएँ एवं अम्ल व्युत्पन्नों का निर्माण",
+                "aliases": [
+                  "HVZ reaction",
+                  "decarboxylation",
+                  "esterification",
+                  "acid chlorides anhydrides amides",
+                  "acid derivatives"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "amines",
+            "level": "chapter",
+            "nameEn": "Amines",
+            "nameHi": "ऐमीन",
+            "aliases": [
+              "amine",
+              "organic compounds containing nitrogen",
+              "diazonium salts",
+              "nitrogen yukt karbanik yaugik"
+            ],
+            "objectives": [
+              "Prepare amines and compare their basic strength",
+              "Use diazonium salts in the synthesis of aromatic compounds"
+            ],
+            "children": [
+              {
+                "code": "structure_classification_nomenclature_amines",
+                "level": "topic",
+                "nameEn": "Structure, Classification and Nomenclature of Amines",
+                "nameHi": "ऐमीनों की संरचना, वर्गीकरण एवं नामपद्धति",
+                "aliases": ["primary secondary tertiary amines", "amine nomenclature", "aniline"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_amines",
+                "level": "topic",
+                "nameEn": "Preparation of Amines",
+                "nameHi": "ऐमीनों का विरचन",
+                "aliases": [
+                  "gabriel phthalimide synthesis",
+                  "hoffmann bromamide degradation",
+                  "reduction of nitro compounds",
+                  "reduction of nitriles"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "basic_character_of_amines",
+                "level": "topic",
+                "nameEn": "Basic Character of Amines",
+                "nameHi": "ऐमीनों का क्षारकीय गुण",
+                "aliases": ["basicity of amines", "pKb", "basic strength aliphatic aromatic amines"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reactions_of_amines",
+                "level": "topic",
+                "nameEn": "Chemical Reactions of Amines and Identification of 1°, 2° and 3° Amines",
+                "nameHi": "ऐमीनों की रासायनिक अभिक्रियाएँ एवं प्राथमिक, द्वितीयक व तृतीयक ऐमीनों की पहचान",
+                "aliases": [
+                  "hinsberg test",
+                  "carbylamine reaction",
+                  "acylation of amines",
+                  "electrophilic substitution of aniline"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "diazonium_salts_preparation",
+                "level": "topic",
+                "nameEn": "Diazonium Salts: Preparation and Properties",
+                "nameHi": "डाइऐज़ोनियम लवण: विरचन एवं गुणधर्म",
+                "aliases": ["diazotisation", "benzene diazonium chloride", "diazonium lavan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "diazonium_salts_reactions",
+                "level": "topic",
+                "nameEn": "Reactions of Diazonium Salts and their Importance in Synthesis",
+                "nameHi": "डाइऐज़ोनियम लवणों की अभिक्रियाएँ एवं संश्लेषण में उनका महत्त्व",
+                "aliases": ["sandmeyer reaction", "gattermann reaction", "coupling reaction", "azo dyes"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "nitro_compounds",
+            "level": "chapter",
+            "nameEn": "Nitro Compounds",
+            "nameHi": "नाइट्रो यौगिक",
+            "aliases": ["nitro yaugik", "nitrobenzene", "nitroarenes", "nitroalkanes"],
+            "objectives": ["Prepare nitroalkanes and nitroarenes and describe their reduction"],
+            "children": [
+              {
+                "code": "preparation_of_nitro_compounds",
+                "level": "topic",
+                "nameEn": "Preparation of Nitroalkanes and Nitroarenes",
+                "nameHi": "नाइट्रोऐल्केनों एवं नाइट्रोऐरीनों का विरचन",
+                "aliases": ["nitration", "preparation of nitrobenzene", "nitroalkane preparation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "properties_reactions_nitro_compounds",
+                "level": "topic",
+                "nameEn": "Properties and Reactions of Nitro Compounds",
+                "nameHi": "नाइट्रो यौगिकों के गुणधर्म एवं अभिक्रियाएँ",
+                "aliases": [
+                  "nitro tautomerism",
+                  "electrophilic substitution in nitrobenzene",
+                  "acidity of nitroalkanes"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reduction_of_nitroarenes",
+                "level": "topic",
+                "nameEn": "Reduction of Nitrobenzene in Different Media",
+                "nameHi": "विभिन्न माध्यमों में नाइट्रोबेंज़ीन का अपचयन",
+                "aliases": [
+                  "reduction of nitrobenzene",
+                  "azoxybenzene hydrazobenzene",
+                  "acidic neutral alkaline reduction"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "biomolecules",
+            "level": "chapter",
+            "nameEn": "Biomolecules",
+            "nameHi": "जैव-अणु",
+            "aliases": ["jaiv anu", "biomolecule", "carbohydrates proteins", "biochemistry"],
+            "objectives": [
+              "Describe the structure and functions of carbohydrates, proteins, enzymes, vitamins and nucleic acids"
+            ],
+            "children": [
+              {
+                "code": "carbohydrates_monosaccharides",
+                "level": "topic",
+                "nameEn": "Carbohydrates: Classification and Monosaccharides (Glucose and Fructose)",
+                "nameHi": "कार्बोहाइड्रेट: वर्गीकरण एवं मोनोसैकेराइड (ग्लूकोस एवं फ्रक्टोस)",
+                "aliases": [
+                  "carbohydrate",
+                  "glucose structure",
+                  "fructose",
+                  "aldoses ketoses",
+                  "D-L configuration"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "disaccharides_polysaccharides",
+                "level": "topic",
+                "nameEn": "Disaccharides and Polysaccharides",
+                "nameHi": "डाइसैकेराइड एवं पॉलिसैकेराइड",
+                "aliases": ["sucrose lactose maltose", "starch cellulose glycogen", "invert sugar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "amino_acids_proteins",
+                "level": "topic",
+                "nameEn": "Amino Acids, Peptide Bond and Proteins",
+                "nameHi": "ऐमीनो अम्ल, पेप्टाइड आबंध एवं प्रोटीन",
+                "aliases": ["amino acids", "peptide bond", "zwitter ion", "essential amino acids"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "protein_structure_denaturation",
+                "level": "topic",
+                "nameEn": "Structure of Proteins and Denaturation",
+                "nameHi": "प्रोटीन की संरचना एवं विकृतीकरण",
+                "aliases": [
+                  "primary secondary tertiary quaternary structure",
+                  "denaturation",
+                  "vikritikaran",
+                  "alpha helix"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "enzymes",
+                "level": "topic",
+                "nameEn": "Enzymes",
+                "nameHi": "एन्ज़ाइम",
+                "aliases": ["enzyme", "mechanism of enzyme action", "biocatalyst"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vitamins",
+                "level": "topic",
+                "nameEn": "Vitamins",
+                "nameHi": "विटामिन",
+                "aliases": ["vitamin", "fat soluble water soluble vitamins", "deficiency diseases"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nucleic_acids",
+                "level": "topic",
+                "nameEn": "Nucleic Acids: DNA and RNA",
+                "nameHi": "न्यूक्लीक अम्ल: DNA एवं RNA",
+                "aliases": ["DNA RNA", "nucleotides nucleosides", "nucleic acid", "double helix"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hormones",
+                "level": "topic",
+                "nameEn": "Hormones",
+                "nameHi": "हॉर्मोन",
+                "aliases": ["hormone", "insulin thyroxine", "steroid hormones"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "applied_chemistry",
+        "level": "unit",
+        "nameEn": "Applied and Environmental Chemistry",
+        "nameHi": "अनुप्रयुक्त एवं पर्यावरणीय रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "polymers",
+            "level": "chapter",
+            "nameEn": "Polymers",
+            "nameHi": "बहुलक",
+            "aliases": ["bahulak", "polymer", "polymerisation", "bahulakan"],
+            "objectives": [
+              "Classify polymers and explain the mechanisms of addition and condensation polymerisation"
+            ],
+            "children": [
+              {
+                "code": "classification_of_polymers",
+                "level": "topic",
+                "nameEn": "Classification of Polymers",
+                "nameHi": "बहुलकों का वर्गीकरण",
+                "aliases": [
+                  "natural synthetic polymers",
+                  "homopolymer copolymer",
+                  "thermoplastic thermosetting",
+                  "elastomers fibres"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "addition_polymerisation",
+                "level": "topic",
+                "nameEn": "Addition Polymerisation and its Mechanism",
+                "nameHi": "योगज बहुलकन एवं इसकी क्रियाविधि",
+                "aliases": [
+                  "chain growth polymerisation",
+                  "free radical polymerisation",
+                  "ionic polymerisation",
+                  "ziegler natta"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "condensation_polymerisation",
+                "level": "topic",
+                "nameEn": "Condensation Polymerisation",
+                "nameHi": "संघनन बहुलकन",
+                "aliases": ["step growth polymerisation", "nylon 6,6", "terylene polyester", "bakelite"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rubber",
+                "level": "topic",
+                "nameEn": "Natural and Synthetic Rubber",
+                "nameHi": "प्राकृतिक एवं संश्लिष्ट रबर",
+                "aliases": ["vulcanisation", "neoprene", "buna-S buna-N", "valkanikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "commercial_polymers",
+                "level": "topic",
+                "nameEn": "Commercially Important Polymers",
+                "nameHi": "व्यावसायिक रूप से महत्त्वपूर्ण बहुलक",
+                "aliases": ["polythene PVC teflon", "polystyrene", "uses of polymers"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "molecular_mass_biodegradable_polymers",
+                "level": "topic",
+                "nameEn": "Molecular Mass of Polymers and Biodegradable Polymers",
+                "nameHi": "बहुलकों का आण्विक द्रव्यमान एवं जैवनिम्नीकरणीय बहुलक",
+                "aliases": ["number average weight average molecular mass", "PHBV", "biodegradable polymers"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "chemistry_in_everyday_life",
+            "level": "chapter",
+            "nameEn": "Chemistry in Everyday Life",
+            "nameHi": "दैनिक जीवन में रसायन",
+            "aliases": ["dainik jeevan mein rasayan", "drugs", "aushadhiyan", "medicinal chemistry"],
+            "objectives": [
+              "Classify drugs by therapeutic action and describe chemicals in food and cleansing agents"
+            ],
+            "children": [
+              {
+                "code": "drugs_and_drug_target_interaction",
+                "level": "topic",
+                "nameEn": "Drugs, their Classification and Drug–Target Interaction",
+                "nameHi": "औषधियाँ, उनका वर्गीकरण एवं औषध-लक्ष्य अन्योन्यक्रिया",
+                "aliases": [
+                  "drug classification",
+                  "drug target interaction",
+                  "aushadhi",
+                  "receptors enzymes as drug targets"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "antacids_antihistamines",
+                "level": "topic",
+                "nameEn": "Antacids and Antihistamines",
+                "nameHi": "प्रतिअम्ल एवं प्रतिहिस्टैमिन",
+                "aliases": ["antacid", "antihistamine", "ranitidine", "pratiamla"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "analgesics_antipyretics_tranquilizers",
+                "level": "topic",
+                "nameEn": "Analgesics, Antipyretics and Tranquilizers",
+                "nameHi": "पीड़ाहारी, ज्वरनाशी एवं प्रशांतक",
+                "aliases": [
+                  "analgesic",
+                  "antipyretic",
+                  "tranquilizer",
+                  "aspirin paracetamol",
+                  "narcotic analgesics"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "antimicrobials",
+                "level": "topic",
+                "nameEn": "Antimicrobials: Antibiotics, Antiseptics and Disinfectants",
+                "nameHi": "प्रतिसूक्ष्मजैविक: प्रतिजैविक, पूतिरोधी एवं विसंक्रामी",
+                "aliases": ["antibiotic", "antiseptic", "disinfectant", "penicillin", "pratijaivik"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "antifertility_drugs",
+                "level": "topic",
+                "nameEn": "Antifertility Drugs",
+                "nameHi": "प्रतिउर्वरता औषधियाँ",
+                "aliases": ["antifertility", "birth control pills", "norethindrone"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chemicals_in_food",
+                "level": "topic",
+                "nameEn": "Chemicals in Food: Preservatives, Artificial Sweeteners and Antioxidants",
+                "nameHi": "भोजन में रसायन: परिरक्षक, कृत्रिम मधुरक एवं प्रतिऑक्सीकारक",
+                "aliases": [
+                  "food preservatives",
+                  "artificial sweeteners",
+                  "aspartame saccharin",
+                  "antioxidants BHT BHA"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cleansing_agents",
+                "level": "topic",
+                "nameEn": "Cleansing Agents: Soaps and Detergents",
+                "nameHi": "शोधन अभिकर्मक: साबुन एवं अपमार्जक",
+                "aliases": ["soap", "detergent", "saponification", "apmarjak"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "environmental_chemistry",
+            "level": "chapter",
+            "nameEn": "Environmental Chemistry and Green Chemistry",
+            "nameHi": "पर्यावरणीय रसायन एवं हरित रसायन",
+            "aliases": [
+              "paryavaraniya rasayan",
+              "environmental pollution",
+              "pradushan",
+              "green chemistry",
+              "harit rasayan"
+            ],
+            "objectives": [
+              "Explain the chemistry of air, water and soil pollution and global environmental problems",
+              "State the principles of green chemistry"
+            ],
+            "children": [
+              {
+                "code": "air_pollution",
+                "level": "topic",
+                "nameEn": "Air Pollution: Tropospheric Pollutants",
+                "nameHi": "वायु प्रदूषण: क्षोभमंडलीय प्रदूषक",
+                "aliases": [
+                  "vayu pradushan",
+                  "air pollutants",
+                  "oxides of sulphur nitrogen",
+                  "particulate pollutants"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "smog_and_acid_rain",
+                "level": "topic",
+                "nameEn": "Photochemical Smog and Acid Rain",
+                "nameHi": "प्रकाश-रासायनिक धूम-कोहरा एवं अम्ल वर्षा",
+                "aliases": ["smog", "photochemical smog", "acid rain", "amla varsha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ozone_depletion",
+                "level": "topic",
+                "nameEn": "Stratospheric Ozone Depletion",
+                "nameHi": "समतापमंडलीय ओज़ोन क्षरण",
+                "aliases": ["ozone hole", "ozone layer depletion", "CFC", "ozone kshay"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "greenhouse_effect_global_warming",
+                "level": "topic",
+                "nameEn": "Greenhouse Effect and Global Warming",
+                "nameHi": "ग्रीनहाउस प्रभाव एवं भूमंडलीय ऊष्मन",
+                "aliases": ["greenhouse gases", "global warming", "climate change", "green house prabhav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "water_pollution",
+                "level": "topic",
+                "nameEn": "Water Pollution",
+                "nameHi": "जल प्रदूषण",
+                "aliases": [
+                  "jal pradushan",
+                  "BOD COD",
+                  "eutrophication",
+                  "international standards of drinking water"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "soil_pollution",
+                "level": "topic",
+                "nameEn": "Soil Pollution",
+                "nameHi": "मृदा प्रदूषण",
+                "aliases": ["mrida pradushan", "pesticides", "industrial waste"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "heavy_metal_pollution",
+                "level": "topic",
+                "nameEn": "Heavy Metal Pollution",
+                "nameHi": "भारी धातु प्रदूषण",
+                "aliases": ["mercury lead cadmium arsenic", "minamata disease", "heavy metals"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "green_chemistry_principles",
+                "level": "topic",
+                "nameEn": "Principles of Green Chemistry",
+                "nameHi": "हरित रसायन के सिद्धांत",
+                "aliases": ["green chemistry", "harit rasayan", "atom economy", "twelve principles"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "practical_chemistry",
+        "level": "unit",
+        "nameEn": "Practical Chemistry",
+        "nameHi": "प्रायोगिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "functional_group_tests",
+            "level": "chapter",
+            "nameEn": "Tests for Functional Groups in Organic Compounds",
+            "nameHi": "कार्बनिक यौगिकों में प्रकार्यात्मक समूहों के परीक्षण",
+            "aliases": [
+              "prakaryatmak samooh pariksha",
+              "functional group tests",
+              "organic qualitative tests",
+              "detection of functional groups"
+            ],
+            "objectives": [
+              "Identify unsaturation, hydroxyl, carbonyl, carboxyl and amino groups by chemical tests"
+            ],
+            "children": [
+              {
+                "code": "unsaturation_test",
+                "level": "topic",
+                "nameEn": "Test for Unsaturation",
+                "nameHi": "असंतृप्तता का परीक्षण",
+                "aliases": ["bromine water test", "baeyer test", "unsaturation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alcoholic_phenolic_tests",
+                "level": "topic",
+                "nameEn": "Tests for Alcoholic and Phenolic Groups",
+                "nameHi": "ऐल्कोहॉलीय एवं फ़ीनॉलीय समूहों के परीक्षण",
+                "aliases": [
+                  "ceric ammonium nitrate test",
+                  "ferric chloride test",
+                  "ester test",
+                  "test for phenol"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aldehydic_ketonic_tests",
+                "level": "topic",
+                "nameEn": "Tests for Aldehydic and Ketonic Groups",
+                "nameHi": "ऐल्डिहाइडी एवं कीटोनी समूहों के परीक्षण",
+                "aliases": ["2,4-DNP test", "tollens test", "fehling test", "sodium nitroprusside test"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "carboxyl_group_test",
+                "level": "topic",
+                "nameEn": "Test for Carboxyl Group",
+                "nameHi": "कार्बोक्सिल समूह का परीक्षण",
+                "aliases": ["sodium bicarbonate test", "test for carboxylic acid"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "amino_group_test",
+                "level": "topic",
+                "nameEn": "Test for Primary Amino Group",
+                "nameHi": "प्राथमिक ऐमीनो समूह का परीक्षण",
+                "aliases": ["carbylamine test", "azo dye test", "test for amines"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "tests_for_carbohydrates_fats_proteins",
+            "level": "chapter",
+            "nameEn": "Tests for Carbohydrates, Fats and Proteins",
+            "nameHi": "कार्बोहाइड्रेट, वसा एवं प्रोटीन के परीक्षण",
+            "aliases": ["carbohydrate vasa protein pariksha", "food tests", "tests for biomolecules"],
+            "objectives": ["Detect carbohydrates, fats and proteins in pure samples and foodstuffs"],
+            "children": [
+              {
+                "code": "tests_for_carbohydrates",
+                "level": "topic",
+                "nameEn": "Tests for Carbohydrates",
+                "nameHi": "कार्बोहाइड्रेट के परीक्षण",
+                "aliases": ["molisch test", "benedict test", "iodine test for starch"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tests_for_oils_and_fats",
+                "level": "topic",
+                "nameEn": "Tests for Oils and Fats",
+                "nameHi": "तेल एवं वसा के परीक्षण",
+                "aliases": ["acrolein test", "solubility test for fats", "translucent spot test"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tests_for_proteins",
+                "level": "topic",
+                "nameEn": "Tests for Proteins",
+                "nameHi": "प्रोटीन के परीक्षण",
+                "aliases": ["biuret test", "xanthoproteic test", "millon test", "ninhydrin test"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "preparation_of_compounds",
+            "level": "chapter",
+            "nameEn": "Preparation of Inorganic and Organic Compounds",
+            "nameHi": "अकार्बनिक एवं कार्बनिक यौगिकों का विरचन",
+            "aliases": [
+              "yaugikon ka virchan",
+              "preparation of compounds",
+              "lab preparation",
+              "synthesis practical"
+            ],
+            "objectives": [
+              "Explain the chemistry involved in preparing standard inorganic and organic compounds in the laboratory"
+            ],
+            "children": [
+              {
+                "code": "double_salts",
+                "level": "topic",
+                "nameEn": "Double Salts: Mohr's Salt and Potash Alum",
+                "nameHi": "द्विक लवण: मोर लवण एवं पोटाश ऐलम",
+                "aliases": ["mohr's salt", "ferrous ammonium sulphate", "potash alum", "dvik lavan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "potassium_trioxalatoferrate",
+                "level": "topic",
+                "nameEn": "Potassium Trioxalatoferrate(III)",
+                "nameHi": "पोटैशियम ट्राइऑक्सैलेटोफ़ेरेट(III)",
+                "aliases": ["potassium ferric oxalate", "trioxalatoferrate"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acetanilide_p_nitroacetanilide",
+                "level": "topic",
+                "nameEn": "Acetanilide and p-Nitroacetanilide",
+                "nameHi": "ऐसीटैनिलाइड एवं p-नाइट्रोऐसीटैनिलाइड",
+                "aliases": ["acetanilide", "p-nitroacetanilide", "acetylation of aniline"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aniline_yellow_and_dyes",
+                "level": "topic",
+                "nameEn": "Aniline Yellow and 2-Naphthol Aniline Dye",
+                "nameHi": "ऐनिलीन येलो एवं 2-नैफ़्थॉल ऐनिलीन रंजक",
+                "aliases": ["aniline yellow", "p-aminoazobenzene", "azo dye preparation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "iodoform_preparation",
+                "level": "topic",
+                "nameEn": "Iodoform",
+                "nameHi": "आयोडोफ़ॉर्म",
+                "aliases": ["iodoform", "triiodomethane preparation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dibenzalacetone",
+                "level": "topic",
+                "nameEn": "Dibenzalacetone",
+                "nameHi": "डाइबेन्ज़ैलऐसीटोन",
+                "aliases": ["dibenzylidene acetone", "claisen schmidt"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "titrimetric_analysis",
+            "level": "chapter",
+            "nameEn": "Titrimetric (Volumetric) Analysis",
+            "nameHi": "अनुमापनमितीय (आयतनमितीय) विश्लेषण",
+            "aliases": ["anumapan", "titration", "volumetric analysis", "aayatanmitiya vishleshan"],
+            "objectives": ["Prepare standard solutions and perform acid–base and redox titrations"],
+            "children": [
+              {
+                "code": "standard_solutions",
+                "level": "topic",
+                "nameEn": "Standard Solutions and Concentration in Titrimetry",
+                "nameHi": "मानक विलयन एवं अनुमापन में सांद्रता",
+                "aliases": ["primary standard", "standard solution preparation", "molarity normality"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acid_base_titrations",
+                "level": "topic",
+                "nameEn": "Acid–Base Titrations and Indicators",
+                "nameHi": "अम्ल-क्षारक अनुमापन एवं सूचक",
+                "aliases": ["acid base titration", "phenolphthalein methyl orange", "indicators", "suchak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kmno4_oxalic_acid",
+                "level": "topic",
+                "nameEn": "KMnO4 versus Oxalic Acid Titration",
+                "nameHi": "KMnO4 बनाम ऑक्सैलिक अम्ल अनुमापन",
+                "aliases": ["permanganate oxalic acid", "redox titration", "KMnO4 titration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kmno4_mohrs_salt",
+                "level": "topic",
+                "nameEn": "KMnO4 versus Mohr's Salt Titration",
+                "nameHi": "KMnO4 बनाम मोर लवण अनुमापन",
+                "aliases": ["permanganate mohr salt", "ferrous ammonium sulphate titration"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "qualitative_salt_analysis",
+            "level": "chapter",
+            "nameEn": "Qualitative Inorganic Salt Analysis",
+            "nameHi": "गुणात्मक अकार्बनिक लवण विश्लेषण",
+            "aliases": [
+              "lavan vishleshan",
+              "salt analysis",
+              "qualitative analysis",
+              "cation anion detection"
+            ],
+            "objectives": ["Identify one cation and one anion in a given salt using systematic tests"],
+            "children": [
+              {
+                "code": "preliminary_tests",
+                "level": "topic",
+                "nameEn": "Preliminary Tests: Dry Tests, Flame Test and Borax Bead Test",
+                "nameHi": "प्रारंभिक परीक्षण: शुष्क परीक्षण, ज्वाला परीक्षण एवं बोरेक्स मनका परीक्षण",
+                "aliases": ["flame test", "borax bead test", "dry tests", "charcoal cavity test"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "detection_of_anions",
+                "level": "topic",
+                "nameEn": "Detection of Anions (Acid Radicals)",
+                "nameHi": "ऋणायनों (अम्लीय मूलकों) की पहचान",
+                "aliases": [
+                  "acid radicals",
+                  "amliya moolak",
+                  "test for carbonate sulphide sulphate nitrate chloride"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "detection_of_cations",
+                "level": "topic",
+                "nameEn": "Detection of Cations (Basic Radicals) by Group Analysis",
+                "nameHi": "समूह विश्लेषण द्वारा धनायनों (क्षारकीय मूलकों) की पहचान",
+                "aliases": ["basic radicals", "group reagents", "kshariya moolak", "cation group analysis"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "physical_chemistry_experiments",
+            "level": "chapter",
+            "nameEn": "Physical Chemistry and Chromatography Experiments",
+            "nameHi": "भौतिक रसायन एवं वर्णलेखन के प्रयोग",
+            "aliases": [
+              "bhautik rasayan ke prayog",
+              "content based experiments",
+              "physical experiments",
+              "thermochemistry kinetics experiments"
+            ],
+            "objectives": [
+              "Explain the principles behind thermochemical, kinetic, colloid, electrochemical and chromatography experiments"
+            ],
+            "children": [
+              {
+                "code": "enthalpy_of_solution_experiment",
+                "level": "topic",
+                "nameEn": "Enthalpy of Solution of Copper Sulphate or Potassium Nitrate",
+                "nameHi": "कॉपर सल्फ़ेट या पोटैशियम नाइट्रेट के विलयन की एन्थैल्पी",
+                "aliases": ["enthalpy of dissolution", "CuSO4 enthalpy of solution", "KNO3"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "enthalpy_of_neutralisation_experiment",
+                "level": "topic",
+                "nameEn": "Enthalpy of Neutralisation of Strong Acid and Strong Base",
+                "nameHi": "प्रबल अम्ल एवं प्रबल क्षारक की उदासीनीकरण एन्थैल्पी",
+                "aliases": ["enthalpy of neutralization", "HCl NaOH", "udasinikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acetone_chloroform_interaction",
+                "level": "topic",
+                "nameEn": "Enthalpy of Interaction between Acetone and Chloroform",
+                "nameHi": "ऐसीटोन एवं क्लोरोफ़ॉर्म के मध्य अन्योन्यक्रिया की एन्थैल्पी",
+                "aliases": ["hydrogen bond formation enthalpy", "acetone chloroform"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "preparation_of_sols",
+                "level": "topic",
+                "nameEn": "Preparation of Lyophilic and Lyophobic Sols",
+                "nameHi": "द्रवरागी एवं द्रवविरागी सॉलों का विरचन",
+                "aliases": [
+                  "lyophilic lyophobic sol",
+                  "starch sol",
+                  "ferric hydroxide sol",
+                  "dialysis emulsion"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kinetics_iodide_hydrogen_peroxide",
+                "level": "topic",
+                "nameEn": "Kinetics of Reaction of Iodide Ions with Hydrogen Peroxide",
+                "nameHi": "आयोडाइड आयनों की हाइड्रोजन परॉक्साइड से अभिक्रिया की बलगतिकी",
+                "aliases": ["iodide hydrogen peroxide", "kinetic study"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kinetics_thiosulphate_and_clock_reaction",
+                "level": "topic",
+                "nameEn": "Kinetics of Thiosulphate–HCl and Iodate–Sulphite (Clock) Reactions",
+                "nameHi": "थायोसल्फ़ेट-HCl एवं आयोडेट-सल्फ़ाइट (क्लॉक) अभिक्रियाओं की बलगतिकी",
+                "aliases": ["sodium thiosulphate HCl", "clock reaction", "KIO3 Na2SO3"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cell_potential_variation",
+                "level": "topic",
+                "nameEn": "Variation of Cell Potential with Concentration in the Zn–Cu Cell",
+                "nameHi": "Zn-Cu सेल में सांद्रता के साथ सेल विभव में परिवर्तन",
+                "aliases": ["daniell cell experiment", "cell potential concentration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "paper_chromatography",
+                "level": "topic",
+                "nameEn": "Paper Chromatography and Rf Values",
+                "nameHi": "कागज़ वर्णलेखन एवं Rf मान",
+                "aliases": [
+                  "paper chromatography",
+                  "Rf value",
+                  "separation of pigments",
+                  "kagaz varnalekhan"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "advanced_physical_chemistry",
+        "level": "unit",
+        "nameEn": "Advanced Physical Chemistry",
+        "nameHi": "उन्नत भौतिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "quantum_chemistry",
+            "level": "chapter",
+            "nameEn": "Quantum Chemistry",
+            "nameHi": "क्वांटम रसायन",
+            "aliases": [
+              "quantum rasayan",
+              "quantum mechanics",
+              "schrodinger wave equation",
+              "quantum chemistry"
+            ],
+            "objectives": ["Apply the Schrödinger equation to simple and one-electron systems"],
+            "children": [
+              {
+                "code": "postulates_and_operators",
+                "level": "topic",
+                "nameEn": "Postulates of Quantum Mechanics and Operators",
+                "nameHi": "क्वांटम यांत्रिकी की अभिधारणाएँ एवं संकारक",
+                "aliases": ["postulates of quantum mechanics", "operators eigenvalues", "sankarak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "schrodinger_wave_equation",
+                "level": "topic",
+                "nameEn": "Schrödinger Wave Equation and Significance of ψ and ψ²",
+                "nameHi": "श्रोडिंजर तरंग समीकरण एवं ψ तथा ψ² का महत्त्व",
+                "aliases": ["schrodinger equation", "wave function", "normalisation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "particle_in_a_box",
+                "level": "topic",
+                "nameEn": "Particle in a Box",
+                "nameHi": "बॉक्स में कण",
+                "aliases": ["particle in one dimensional box", "zero point energy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hydrogen_like_atom",
+                "level": "topic",
+                "nameEn": "Hydrogen-like (One-electron) Atom: Radial and Angular Wave Functions",
+                "nameHi": "हाइड्रोजन सदृश (एक-इलेक्ट्रॉन) परमाणु: त्रिज्य एवं कोणीय तरंग फलन",
+                "aliases": ["one electron system", "radial distribution function", "angular wave function"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quantum_treatment_of_bonding",
+                "level": "topic",
+                "nameEn": "Quantum Mechanical Treatment of Bonding: VB and MO Approaches",
+                "nameHi": "आबंधन का क्वांटम यांत्रिकीय विवेचन: संयोजकता आबंध एवं आण्विक कक्षक उपागम",
+                "aliases": ["H2+ ion", "VB vs MO theory", "LCAO MO"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "advanced_thermodynamics",
+            "level": "chapter",
+            "nameEn": "Advanced Thermodynamics",
+            "nameHi": "उन्नत ऊष्मागतिकी",
+            "aliases": [
+              "unnat ushmagatiki",
+              "third law",
+              "maxwell relations",
+              "fugacity",
+              "thermodynamics advanced"
+            ],
+            "objectives": [
+              "Use thermodynamic functions, Maxwell relations and the third law",
+              "Explain fugacity, activity and partial molar quantities"
+            ],
+            "children": [
+              {
+                "code": "kirchhoff_equation",
+                "level": "topic",
+                "nameEn": "Temperature Dependence of Enthalpy: Kirchhoff's Equation",
+                "nameHi": "एन्थैल्पी की ताप पर निर्भरता: किरचॉफ समीकरण",
+                "aliases": ["kirchhoff equation", "enthalpy at constant pressure and temperature"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "carnot_cycle_entropy",
+                "level": "topic",
+                "nameEn": "Carnot Cycle and Entropy as a Function of Temperature, Volume and Pressure",
+                "nameHi": "कार्नो चक्र एवं ताप, आयतन तथा दाब के फलन के रूप में एन्ट्रॉपी",
+                "aliases": ["carnot cycle", "entropy change of ideal gas", "efficiency of heat engine"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "helmholtz_gibbs_functions",
+                "level": "topic",
+                "nameEn": "Helmholtz and Gibbs Functions; Gibbs–Helmholtz Equation",
+                "nameHi": "हेल्महोल्ट्ज़ एवं गिब्ज़ फलन; गिब्ज़-हेल्महोल्ट्ज़ समीकरण",
+                "aliases": ["helmholtz free energy", "work function", "gibbs helmholtz equation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maxwell_relations",
+                "level": "topic",
+                "nameEn": "Maxwell Relations and their Applications",
+                "nameHi": "मैक्सवेल संबंध एवं उनके अनुप्रयोग",
+                "aliases": ["maxwell relations", "thermodynamic equations of state"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "joule_thomson_effect",
+                "level": "topic",
+                "nameEn": "Joule–Thomson Effect and Inversion Temperature",
+                "nameHi": "जूल-टॉमसन प्रभाव एवं प्रतीपन ताप",
+                "aliases": ["joule thomson", "inversion temperature", "joule thomson coefficient"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "third_law",
+                "level": "topic",
+                "nameEn": "Third Law of Thermodynamics and Absolute Entropy",
+                "nameHi": "ऊष्मागतिकी का तृतीय नियम एवं निरपेक्ष एन्ट्रॉपी",
+                "aliases": ["third law", "nernst heat theorem", "absolute entropy"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "partial_molar_gibbs_duhem",
+                "level": "topic",
+                "nameEn": "Partial Molar Quantities, Chemical Potential and Gibbs–Duhem Equation",
+                "nameHi": "आंशिक मोलर राशियाँ, रासायनिक विभव एवं गिब्ज़-ड्यूहेम समीकरण",
+                "aliases": ["gibbs duhem", "chemical potential", "partial molar volume"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fugacity_activity",
+                "level": "topic",
+                "nameEn": "Fugacity and Activity",
+                "nameHi": "पलायनता (फ्यूगैसिटी) एवं सक्रियता",
+                "aliases": ["fugacity", "activity coefficient", "palayanta"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "advanced_chemical_kinetics",
+            "level": "chapter",
+            "nameEn": "Chemical Dynamics and Catalysis",
+            "nameHi": "रासायनिक गतिकी एवं उत्प्रेरण",
+            "aliases": [
+              "chemical dynamics",
+              "advanced kinetics",
+              "transition state theory",
+              "rasayanik gatiki"
+            ],
+            "objectives": [
+              "Determine reaction order and compare collision and transition state theories",
+              "Describe kinetics of photochemical, polymerisation and catalysed reactions"
+            ],
+            "children": [
+              {
+                "code": "second_order_reactions",
+                "level": "topic",
+                "nameEn": "Second and Higher Order Reactions",
+                "nameHi": "द्वितीय एवं उच्च कोटि की अभिक्रियाएँ",
+                "aliases": ["second order kinetics", "third order reactions", "half life of second order"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "determination_of_order",
+                "level": "topic",
+                "nameEn": "Methods for Determining the Order of Reaction",
+                "nameHi": "अभिक्रिया की कोटि ज्ञात करने की विधियाँ",
+                "aliases": [
+                  "integration method",
+                  "half life method",
+                  "differential method",
+                  "isolation method"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "transition_state_theory",
+                "level": "topic",
+                "nameEn": "Transition State Theory and its Comparison with Collision Theory",
+                "nameHi": "संक्रमण अवस्था सिद्धांत एवं संघट्ट सिद्धांत से इसकी तुलना",
+                "aliases": ["activated complex theory", "eyring equation", "absolute reaction rate theory"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "complex_reactions",
+                "level": "topic",
+                "nameEn": "Complex Reactions: Parallel, Consecutive, Reversible and Chain Reactions",
+                "nameHi": "जटिल अभिक्रियाएँ: समांतर, क्रमागत, उत्क्रमणीय एवं श्रृंखला अभिक्रियाएँ",
+                "aliases": [
+                  "consecutive reactions",
+                  "parallel reactions",
+                  "chain reactions",
+                  "steady state approximation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "photochemical_kinetics",
+                "level": "topic",
+                "nameEn": "Kinetics of Photochemical Reactions",
+                "nameHi": "प्रकाश-रासायनिक अभिक्रियाओं की बलगतिकी",
+                "aliases": [
+                  "quantum yield",
+                  "H2 Cl2 reaction",
+                  "photochemistry laws",
+                  "grotthuss draper stark einstein"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "polymerisation_kinetics",
+                "level": "topic",
+                "nameEn": "Kinetics of Polymerisation Reactions",
+                "nameHi": "बहुलकन अभिक्रियाओं की बलगतिकी",
+                "aliases": ["kinetics of chain polymerisation", "kinetic chain length"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "acid_base_enzyme_catalysis",
+                "level": "topic",
+                "nameEn": "Acid–Base and Enzyme Catalysis",
+                "nameHi": "अम्ल-क्षारक एवं एन्ज़ाइम उत्प्रेरण",
+                "aliases": ["michaelis menten", "enzyme kinetics", "acid base catalysis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ionic_reactions_salt_effect",
+                "level": "topic",
+                "nameEn": "Ionic Reactions and the Kinetic Salt Effect",
+                "nameHi": "आयनिक अभिक्रियाएँ एवं बलगतिक लवण प्रभाव",
+                "aliases": ["primary salt effect", "bronsted bjerrum equation", "kinetic salt effect"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "advanced_electrochemistry",
+            "level": "chapter",
+            "nameEn": "Advanced Electrochemistry",
+            "nameHi": "उन्नत वैद्युतरसायन",
+            "aliases": [
+              "unnat vaidyut rasayan",
+              "debye huckel theory",
+              "concentration cells",
+              "electrochemistry advanced"
+            ],
+            "objectives": [
+              "Apply the theory of strong electrolytes and activity coefficients",
+              "Derive thermodynamic quantities from EMF measurements"
+            ],
+            "children": [
+              {
+                "code": "theory_of_strong_electrolytes",
+                "level": "topic",
+                "nameEn": "Theory of Strong Electrolytes: Debye–Hückel–Onsager",
+                "nameHi": "प्रबल वैद्युत-अपघट्यों का सिद्धांत: डिबाई-हुकेल-ऑनसागर",
+                "aliases": ["debye huckel onsager", "ionic atmosphere", "strong electrolytes theory"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "activity_coefficient_debye_huckel",
+                "level": "topic",
+                "nameEn": "Activity, Activity Coefficient and Debye–Hückel Limiting Law",
+                "nameHi": "सक्रियता, सक्रियता गुणांक एवं डिबाई-हुकेल सीमांत नियम",
+                "aliases": ["activity coefficient", "ionic strength", "debye huckel limiting law"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conductance_applications",
+                "level": "topic",
+                "nameEn": "Equivalent Conductance, Transport Number and Conductometric Titrations",
+                "nameHi": "तुल्यांकी चालकता, अभिगमनांक एवं चालकतामितीय अनुमापन",
+                "aliases": [
+                  "equivalent conductivity",
+                  "transport number",
+                  "conductometric titration",
+                  "ostwald dilution law"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "concentration_cells",
+                "level": "topic",
+                "nameEn": "Concentration Cells and Liquid Junction Potential",
+                "nameHi": "सांद्रता सेल एवं द्रव संधि विभव",
+                "aliases": [
+                  "concentration cell",
+                  "electrode concentration cell",
+                  "liquid junction potential"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "emf_measurement_thermodynamics",
+                "level": "topic",
+                "nameEn": "Measurement of EMF and Calculation of ΔG, ΔH, ΔS and K from EMF",
+                "nameHi": "EMF का मापन एवं EMF से ΔG, ΔH, ΔS तथा K की गणना",
+                "aliases": ["potentiometer", "reference electrodes", "temperature coefficient of emf"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "membrane_equilibria",
+                "level": "topic",
+                "nameEn": "Membrane Equilibria and Donnan Membrane Potential",
+                "nameHi": "झिल्ली साम्य एवं डोनन झिल्ली विभव",
+                "aliases": ["donnan membrane equilibrium", "membrane potential"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "spectroscopy",
+            "level": "chapter",
+            "nameEn": "Spectroscopy",
+            "nameHi": "स्पेक्ट्रमिकी",
+            "aliases": ["spectroscopy", "spectrometry", "spectra", "structure elucidation", "spectrumiki"],
+            "objectives": [
+              "Explain the principles of UV, IR, Raman, NMR, ESR and mass spectrometry",
+              "Elucidate structures of organic compounds from spectral data"
+            ],
+            "children": [
+              {
+                "code": "spectroscopy_principles",
+                "level": "topic",
+                "nameEn": "Electromagnetic Spectrum and Principles of Spectroscopy",
+                "nameHi": "विद्युत-चुंबकीय स्पेक्ट्रम एवं स्पेक्ट्रमिकी के सिद्धांत",
+                "aliases": ["electromagnetic spectrum", "absorption emission", "beer lambert law"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uv_visible_spectroscopy",
+                "level": "topic",
+                "nameEn": "UV–Visible Spectroscopy",
+                "nameHi": "पराबैंगनी-दृश्य स्पेक्ट्रमिकी",
+                "aliases": [
+                  "UV spectroscopy",
+                  "chromophore auxochrome",
+                  "woodward fieser rules",
+                  "electronic transitions"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "infrared_spectroscopy",
+                "level": "topic",
+                "nameEn": "Infrared (IR) Spectroscopy",
+                "nameHi": "अवरक्त (IR) स्पेक्ट्रमिकी",
+                "aliases": [
+                  "IR spectroscopy",
+                  "vibrational spectroscopy",
+                  "fingerprint region",
+                  "group frequencies"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "raman_spectroscopy",
+                "level": "topic",
+                "nameEn": "Raman Spectroscopy",
+                "nameHi": "रामन स्पेक्ट्रमिकी",
+                "aliases": ["raman effect", "stokes anti-stokes lines", "rule of mutual exclusion"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nmr_spectroscopy",
+                "level": "topic",
+                "nameEn": "Nuclear Magnetic Resonance (NMR) Spectroscopy",
+                "nameHi": "नाभिकीय चुंबकीय अनुनाद (NMR) स्पेक्ट्रमिकी",
+                "aliases": ["NMR", "PMR", "chemical shift", "spin spin coupling"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "esr_spectroscopy",
+                "level": "topic",
+                "nameEn": "Electron Spin Resonance (ESR) Spectroscopy",
+                "nameHi": "इलेक्ट्रॉन चक्रण अनुनाद (ESR) स्पेक्ट्रमिकी",
+                "aliases": ["ESR", "EPR", "hyperfine splitting", "g value"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mass_spectrometry",
+                "level": "topic",
+                "nameEn": "Mass Spectrometry",
+                "nameHi": "द्रव्यमान स्पेक्ट्रममिति",
+                "aliases": ["mass spectrum", "molecular ion peak", "fragmentation", "base peak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "structure_elucidation",
+                "level": "topic",
+                "nameEn": "Structure Elucidation of Organic Compounds from Spectral Data",
+                "nameHi": "स्पेक्ट्रमी आँकड़ों से कार्बनिक यौगिकों की संरचना का निर्धारण",
+                "aliases": [
+                  "combined spectral problems",
+                  "structure determination",
+                  "spectral data interpretation"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "advanced_inorganic_chemistry",
+        "level": "unit",
+        "nameEn": "Advanced Inorganic Chemistry",
+        "nameHi": "उन्नत अकार्बनिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "symmetry_and_mo_theory",
+            "level": "chapter",
+            "nameEn": "Molecular Symmetry and Molecular Orbital Theory",
+            "nameHi": "आण्विक सममिति एवं आण्विक कक्षक सिद्धांत",
+            "aliases": ["aanvik sammiti", "group theory", "point groups", "character tables", "symmetry"],
+            "objectives": [
+              "Assign point groups and use character tables",
+              "Build MO diagrams of heteronuclear diatomic and AXn molecules"
+            ],
+            "children": [
+              {
+                "code": "symmetry_elements_operations",
+                "level": "topic",
+                "nameEn": "Symmetry Elements and Symmetry Operations",
+                "nameHi": "सममिति तत्त्व एवं सममिति संक्रियाएँ",
+                "aliases": ["symmetry elements", "rotation axis mirror plane", "improper axis"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "point_groups",
+                "level": "topic",
+                "nameEn": "Point Groups",
+                "nameHi": "बिंदु समूह",
+                "aliases": ["point group", "C2v D3h Td Oh", "bindu samooh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "character_tables_mulliken_symbols",
+                "level": "topic",
+                "nameEn": "Great Orthogonality Theorem, Character Tables and Mulliken Symbols",
+                "nameHi": "महान लांबिकता प्रमेय, अभिलक्षण सारणी एवं मुलिकन प्रतीक",
+                "aliases": [
+                  "character table",
+                  "great orthogonality theorem",
+                  "GOT",
+                  "mulliken symbols",
+                  "irreducible representation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mo_heteronuclear_diatomic",
+                "level": "topic",
+                "nameEn": "MO Theory of Heteronuclear Diatomic Molecules",
+                "nameHi": "विषमनाभिकीय द्विपरमाणुक अणुओं का आण्विक कक्षक सिद्धांत",
+                "aliases": ["MO diagram of CO NO HF", "heteronuclear diatomic"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mo_polyatomic_molecules",
+                "level": "topic",
+                "nameEn": "MO Theory of Polyatomic Molecules (AX2, AX3 and AX4)",
+                "nameHi": "बहुपरमाणुक अणुओं (AX2, AX3 एवं AX4) का आण्विक कक्षक सिद्धांत",
+                "aliases": ["MO of H2O BeH2", "MO of NH3 BF3", "MO of CH4", "SALC"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "advanced_coordination_chemistry",
+            "level": "chapter",
+            "nameEn": "Advanced Coordination Chemistry",
+            "nameHi": "उन्नत उपसहसंयोजन रसायन",
+            "aliases": [
+              "crystal field theory advanced",
+              "CFT",
+              "10 Dq",
+              "jahn teller",
+              "unnat upsahsanyojan rasayan"
+            ],
+            "objectives": [
+              "Apply crystal field theory to weak- and strong-field complexes",
+              "Explain spectra, magnetism and stability of complexes"
+            ],
+            "children": [
+              {
+                "code": "crystal_field_splitting",
+                "level": "topic",
+                "nameEn": "Crystal Field Splitting in Octahedral, Tetrahedral and Square Planar Complexes",
+                "nameHi": "अष्टफलकीय, चतुष्फलकीय एवं वर्ग समतली संकुलों में क्रिस्टल क्षेत्र विपाटन",
+                "aliases": ["octahedral splitting", "tetrahedral splitting", "square planar complexes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "weak_and_strong_field_complexes",
+                "level": "topic",
+                "nameEn": "Weak and Strong Field Complexes: High Spin and Low Spin",
+                "nameHi": "दुर्बल एवं प्रबल क्षेत्र संकुल: उच्च चक्रण एवं निम्न चक्रण",
+                "aliases": ["high spin low spin", "pairing energy", "weak field strong field ligands"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factors_affecting_10dq",
+                "level": "topic",
+                "nameEn": "Factors Affecting 10Dq and the Spectrochemical Series",
+                "nameHi": "10Dq को प्रभावित करने वाले कारक एवं स्पेक्ट्रमरासायनिक श्रेणी",
+                "aliases": ["10 Dq", "crystal field splitting energy", "spectrochemical series"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cfse_thermodynamic_aspects",
+                "level": "topic",
+                "nameEn": "CFSE and Thermodynamic Aspects of Crystal Fields",
+                "nameHi": "क्रिस्टल क्षेत्र स्थायीकरण ऊर्जा एवं क्रिस्टल क्षेत्रों के ऊष्मागतिकीय पक्ष",
+                "aliases": ["CFSE", "hydration energy", "spinels", "ionic radii of transition ions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jahn_teller_effect",
+                "level": "topic",
+                "nameEn": "Jahn–Teller Effect",
+                "nameHi": "जॉन-टेलर प्रभाव",
+                "aliases": ["jahn teller distortion", "tetragonal distortion"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vbt_vs_cft",
+                "level": "topic",
+                "nameEn": "Comparison of Valence Bond and Crystal Field Theories",
+                "nameHi": "संयोजकता आबंध एवं क्रिस्टल क्षेत्र सिद्धांतों की तुलना",
+                "aliases": ["VBT vs CFT", "limitations of VBT", "limitations of CFT"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electronic_and_charge_transfer_spectra",
+                "level": "topic",
+                "nameEn": "Electronic Absorption Spectra and Charge Transfer Spectra",
+                "nameHi": "इलेक्ट्रॉनिक अवशोषण स्पेक्ट्रम एवं आवेश स्थानांतरण स्पेक्ट्रम",
+                "aliases": ["d-d transitions", "charge transfer spectra", "LMCT MLCT", "selection rules"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "magnetic_properties_of_complexes",
+                "level": "topic",
+                "nameEn": "Magnetic Properties of Transition Metal Complexes",
+                "nameHi": "संक्रमण धातु संकुलों के चुंबकीय गुण",
+                "aliases": ["spin only magnetic moment", "orbital contribution", "magnetic susceptibility"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stability_of_complexes",
+                "level": "topic",
+                "nameEn": "Stability of Coordination Compounds: Stability Constants and Chelate Effect",
+                "nameHi": "उपसहसंयोजन यौगिकों का स्थायित्व: स्थायित्व स्थिरांक एवं कीलेट प्रभाव",
+                "aliases": ["stability constant", "chelate effect", "factors affecting stability"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "lanthanides_actinides",
+            "level": "chapter",
+            "nameEn": "Chemistry of Lanthanides and Actinides",
+            "nameHi": "लैन्थेनाइडों एवं ऐक्टिनाइडों का रसायन",
+            "aliases": [
+              "lanthanide actinide",
+              "inner transition elements",
+              "f block chemistry",
+              "antah sankraman tatva"
+            ],
+            "objectives": [
+              "Explain lanthanide contraction, separation of lanthanides and properties of their complexes"
+            ],
+            "children": [
+              {
+                "code": "lanthanide_actinide_contraction",
+                "level": "topic",
+                "nameEn": "Lanthanide and Actinide Contraction and its Consequences",
+                "nameHi": "लैन्थेनाइड एवं ऐक्टिनाइड आकुंचन तथा इसके परिणाम",
+                "aliases": ["lanthanide contraction consequences", "actinide contraction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "separation_of_lanthanides",
+                "level": "topic",
+                "nameEn": "Separation of Lanthanides",
+                "nameHi": "लैन्थेनाइडों का पृथक्करण",
+                "aliases": ["ion exchange separation", "solvent extraction of lanthanides"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coordination_behaviour_ln_an",
+                "level": "topic",
+                "nameEn": "Coordination Behaviour of Lanthanide and Actinide Complexes",
+                "nameHi": "लैन्थेनाइड एवं ऐक्टिनाइड संकुलों का उपसहसंयोजन व्यवहार",
+                "aliases": ["lanthanide complexes", "coordination number of lanthanides"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "magnetic_spectral_ln_an",
+                "level": "topic",
+                "nameEn": "Magnetic and Spectroscopic Properties of Lanthanides and Actinides",
+                "nameHi": "लैन्थेनाइडों एवं ऐक्टिनाइडों के चुंबकीय एवं स्पेक्ट्रमी गुण",
+                "aliases": ["magnetic moment of lanthanides", "f-f transitions", "colour of lanthanide ions"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "organometallic_compounds",
+            "level": "chapter",
+            "nameEn": "Organometallic Compounds",
+            "nameHi": "कार्बधात्विक यौगिक",
+            "aliases": ["karbdhatvik yaugik", "organometallics", "metal carbonyls", "ferrocene"],
+            "objectives": [
+              "Describe structure and bonding in organometallic compounds and metal carbonyls",
+              "Explain uses of organometallic reagents in catalysis and synthesis"
+            ],
+            "children": [
+              {
+                "code": "classification_and_18_electron_rule",
+                "level": "topic",
+                "nameEn": "Definition, Classification, Nomenclature and the 18-Electron Rule",
+                "nameHi": "परिभाषा, वर्गीकरण, नामपद्धति एवं 18-इलेक्ट्रॉन नियम",
+                "aliases": ["18 electron rule", "EAN rule", "hapticity"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "organometallics_of_li_mg_zn_cu",
+                "level": "topic",
+                "nameEn": "Organometallic Compounds of Li, Mg, Zn and Cu",
+                "nameHi": "Li, Mg, Zn एवं Cu के कार्बधात्विक यौगिक",
+                "aliases": ["organolithium", "grignard reagent", "organozinc", "gilman reagent"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "organotin_and_ferrocene",
+                "level": "topic",
+                "nameEn": "Organotin Compounds and Ferrocene",
+                "nameHi": "कार्बटिन यौगिक एवं फ़ेरोसीन",
+                "aliases": ["organotin", "ferrocene structure", "sandwich compounds"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "metal_carbonyls_structure_bonding",
+                "level": "topic",
+                "nameEn": "Metal Carbonyls: Structure and Bonding",
+                "nameHi": "धातु कार्बोनिल: संरचना एवं आबंधन",
+                "aliases": ["mononuclear polynuclear carbonyls", "pi back bonding", "Ni(CO)4 Fe(CO)5"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cage_and_cluster_compounds",
+                "level": "topic",
+                "nameEn": "Cage and Cluster Compounds",
+                "nameHi": "पिंजर (केज) एवं गुच्छ (क्लस्टर) यौगिक",
+                "aliases": ["boranes", "carboranes", "metal clusters", "wade rules"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "organometallics_in_catalysis",
+                "level": "topic",
+                "nameEn": "Organometallic Reagents in Catalysis",
+                "nameHi": "उत्प्रेरण में कार्बधात्विक अभिकर्मक",
+                "aliases": [
+                  "wilkinson catalyst",
+                  "ziegler natta catalyst",
+                  "hydroformylation",
+                  "homogeneous catalysis"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "organometallics_in_organic_synthesis",
+                "level": "topic",
+                "nameEn": "Organometallic Reagents in Organic Synthesis",
+                "nameHi": "कार्बनिक संश्लेषण में कार्बधात्विक अभिकर्मक",
+                "aliases": ["grignard synthesis", "organocuprates", "organolithium in synthesis"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "advanced_organic_chemistry",
+        "level": "unit",
+        "nameEn": "Advanced Organic Chemistry",
+        "nameHi": "उन्नत कार्बनिक रसायन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "stereochemistry",
+            "level": "chapter",
+            "nameEn": "Stereochemistry of Organic Compounds",
+            "nameHi": "कार्बनिक यौगिकों का त्रिविम रसायन",
+            "aliases": ["trivim rasayan", "stereochemistry", "optical isomerism", "conformational analysis"],
+            "objectives": [
+              "Assign R/S and E/Z configurations and identify stereoisomers",
+              "Analyse conformations of butane and cyclohexane derivatives"
+            ],
+            "children": [
+              {
+                "code": "chirality_optical_activity",
+                "level": "topic",
+                "nameEn": "Chirality and Optical Activity",
+                "nameHi": "किरैलता एवं प्रकाशिक सक्रियता",
+                "aliases": ["chirality", "chiral centre", "specific rotation", "optical activity"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "enantiomers_diastereomers_meso",
+                "level": "topic",
+                "nameEn": "Enantiomers, Diastereomers and Meso Compounds",
+                "nameHi": "प्रतिबिंबरूप, अप्रतिबिंबी त्रिविम समावयव एवं मीसो यौगिक",
+                "aliases": ["enantiomers", "diastereomers", "meso compounds", "erythro threo"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rs_ez_nomenclature",
+                "level": "topic",
+                "nameEn": "Configuration: R/S and E/Z Nomenclature and Projection Formulae",
+                "nameHi": "विन्यास: R/S एवं E/Z नामपद्धति तथा प्रक्षेपण सूत्र",
+                "aliases": [
+                  "R S configuration",
+                  "E Z nomenclature",
+                  "CIP rules",
+                  "fischer projection",
+                  "D L configuration"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "geometrical_isomerism",
+                "level": "topic",
+                "nameEn": "Geometrical Isomerism",
+                "nameHi": "ज्यामितीय समावयवता",
+                "aliases": ["cis trans isomerism", "geometrical isomers of alkenes and cycloalkanes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "resolution_racemisation",
+                "level": "topic",
+                "nameEn": "Resolution of Enantiomers, Racemisation, Inversion and Retention",
+                "nameHi": "प्रतिबिंबरूपों का वियोजन, रेसिमीकरण, प्रतीपन एवं धारण",
+                "aliases": [
+                  "resolution of racemic mixture",
+                  "racemisation",
+                  "retention of configuration",
+                  "inversion"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conformational_analysis",
+                "level": "topic",
+                "nameEn": "Conformational Analysis of Ethane, Butane and Cyclohexane Derivatives",
+                "nameHi": "एथेन, ब्यूटेन एवं साइक्लोहेक्सेन व्युत्पन्नों का संरूपण विश्लेषण",
+                "aliases": [
+                  "conformations of butane",
+                  "chair boat cyclohexane",
+                  "axial equatorial",
+                  "substituted cyclohexanes"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "reaction_intermediates_name_reactions",
+            "level": "chapter",
+            "nameEn": "Reaction Intermediates and Name Reactions",
+            "nameHi": "अभिक्रिया मध्यवर्ती एवं नाम अभिक्रियाएँ",
+            "aliases": [
+              "name reactions",
+              "reactive intermediates",
+              "named reactions mechanism",
+              "naam abhikriyayen"
+            ],
+            "objectives": [
+              "Describe carbenes, nitrenes and benzyne",
+              "Write mechanisms of the important named condensation and oxidation reactions"
+            ],
+            "children": [
+              {
+                "code": "carbenes_nitrenes",
+                "level": "topic",
+                "nameEn": "Carbenes and Nitrenes",
+                "nameHi": "कार्बीन एवं नाइट्रीन",
+                "aliases": ["carbene", "nitrene", "singlet triplet carbene"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "benzyne",
+                "level": "topic",
+                "nameEn": "Benzyne (Arynes)",
+                "nameHi": "बेंज़ाइन (ऐराइन)",
+                "aliases": ["benzyne", "aryne intermediate"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "condensation_name_reactions",
+                "level": "topic",
+                "nameEn": "Perkin, Knoevenagel, Stobbe and Benzoin Condensations",
+                "nameHi": "पर्किन, नोवेनेजेल, स्टॉबे एवं बेन्ज़ॉइन संघनन",
+                "aliases": [
+                  "perkin reaction",
+                  "knoevenagel condensation",
+                  "stobbe condensation",
+                  "benzoin condensation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reformatsky_wittig",
+                "level": "topic",
+                "nameEn": "Reformatsky and Wittig Reactions",
+                "nameHi": "रिफ़ॉर्मेट्स्की एवं विटिग अभिक्रियाएँ",
+                "aliases": ["reformatsky reaction", "wittig reaction", "phosphorus ylide"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "baeyer_villiger_oxidation",
+                "level": "topic",
+                "nameEn": "Baeyer–Villiger Oxidation",
+                "nameHi": "बेयर-विलिगर ऑक्सीकरण",
+                "aliases": ["baeyer villiger", "peracid oxidation of ketones"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mannich_reaction",
+                "level": "topic",
+                "nameEn": "Mannich Reaction",
+                "nameHi": "मैनिक अभिक्रिया",
+                "aliases": ["mannich reaction", "mannich base"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "aromaticity_heterocycles",
+            "level": "chapter",
+            "nameEn": "Aromaticity, Arenes and Heterocyclic Compounds",
+            "nameHi": "ऐरोमैटिकता, ऐरीन एवं विषमचक्रीय यौगिक",
+            "aliases": ["vishamchakriya yaugik", "heterocyclic compounds", "aromaticity", "arenes"],
+            "objectives": [
+              "Apply Hückel's rule to aromatic, antiaromatic and heterocyclic systems",
+              "Compare the chemistry of pyrrole, furan, thiophene and pyridine"
+            ],
+            "children": [
+              {
+                "code": "huckel_rule_aromaticity",
+                "level": "topic",
+                "nameEn": "Hückel's Rule: Aromatic, Antiaromatic and Non-aromatic Systems",
+                "nameHi": "हकल नियम: ऐरोमैटिक, प्रति-ऐरोमैटिक एवं अन्-ऐरोमैटिक निकाय",
+                "aliases": ["huckel rule", "antiaromatic", "annulenes", "aromatic ions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "arenes_and_alkylarenes",
+                "level": "topic",
+                "nameEn": "Nomenclature, Isomerism and Alkylarenes",
+                "nameHi": "ऐरीनों की नामपद्धति, समावयवता एवं ऐल्किलऐरीन",
+                "aliases": ["alkylbenzenes", "side chain oxidation", "toluene xylene"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pyrrole_furan_thiophene",
+                "level": "topic",
+                "nameEn": "Pyrrole, Furan and Thiophene",
+                "nameHi": "पिरोल, फ्यूरान एवं थायोफ़ीन",
+                "aliases": ["five membered heterocycles", "pyrrole", "furan", "thiophene"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pyridine",
+                "level": "topic",
+                "nameEn": "Pyridine",
+                "nameHi": "पिरिडीन",
+                "aliases": ["pyridine", "six membered heterocycle", "basicity of pyridine"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "substitution_elimination_reactions",
+            "level": "chapter",
+            "nameEn": "Substitution and Elimination Reactions",
+            "nameHi": "प्रतिस्थापन एवं विलोपन अभिक्रियाएँ",
+            "aliases": ["pratisthapan vilopan", "SN1 SN2 SNi", "E1 E2", "reaction mechanism"],
+            "objectives": [
+              "Compare SN1, SN2 and SNi mechanisms and E1, E2 and E1cB eliminations",
+              "Describe preparation and ring opening of epoxides"
+            ],
+            "children": [
+              {
+                "code": "aliphatic_nucleophilic_substitution",
+                "level": "topic",
+                "nameEn": "Aliphatic Nucleophilic Substitution: SN1, SN2 and SNi and Influencing Factors",
+                "nameHi": "ऐलिफैटिक नाभिकस्नेही प्रतिस्थापन: SN1, SN2 एवं SNi तथा प्रभावित करने वाले कारक",
+                "aliases": [
+                  "SNi mechanism",
+                  "solvent effect",
+                  "leaving group",
+                  "neighbouring group participation"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "elimination_mechanisms",
+                "level": "topic",
+                "nameEn": "Elimination Reactions: E1, E2 and E1cB; Saytzeff and Hofmann Rules",
+                "nameHi": "विलोपन अभिक्रियाएँ: E1, E2 एवं E1cB; सेत्ज़ेफ एवं हॉफमान नियम",
+                "aliases": ["E1 E2 E1cB", "saytzeff rule", "hofmann elimination", "anti periplanar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "substitution_vs_elimination",
+                "level": "topic",
+                "nameEn": "Substitution versus Elimination",
+                "nameHi": "प्रतिस्थापन बनाम विलोपन",
+                "aliases": ["SN2 vs E2", "competition between substitution and elimination"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aromatic_nucleophilic_substitution",
+                "level": "topic",
+                "nameEn": "Aromatic Nucleophilic Substitution: Addition–Elimination and Elimination–Addition (Benzyne) Mechanisms",
+                "nameHi": "ऐरोमैटिक नाभिकस्नेही प्रतिस्थापन: योगज-विलोपन एवं विलोपन-योगज (बेंज़ाइन) क्रियाविधि",
+                "aliases": ["SNAr", "benzyne mechanism", "addition elimination mechanism"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "epoxides",
+                "level": "topic",
+                "nameEn": "Epoxides: Preparation and Ring-Opening Reactions",
+                "nameHi": "इपॉक्साइड: विरचन एवं वलय-विवृत अभिक्रियाएँ",
+                "aliases": ["epoxide", "oxirane", "ring opening of epoxides"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "pericyclic_photochemistry",
+            "level": "chapter",
+            "nameEn": "Pericyclic Reactions and Organic Photochemistry",
+            "nameHi": "परिचक्रीय अभिक्रियाएँ एवं कार्बनिक प्रकाश-रसायन",
+            "aliases": [
+              "parichakriya abhikriyayen",
+              "pericyclic reactions",
+              "photochemistry",
+              "woodward hoffmann"
+            ],
+            "objectives": [
+              "Classify pericyclic reactions and apply FMO and Woodward–Hoffmann rules",
+              "Describe photochemical reactions of alkenes and carbonyl compounds"
+            ],
+            "children": [
+              {
+                "code": "fmo_woodward_hoffmann",
+                "level": "topic",
+                "nameEn": "Frontier Molecular Orbitals and Woodward–Hoffmann Rules",
+                "nameHi": "सीमांत आण्विक कक्षक एवं वुडवर्ड-हॉफमान नियम",
+                "aliases": ["FMO approach", "woodward hoffmann rules", "HOMO LUMO"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "electrocyclic_reactions",
+                "level": "topic",
+                "nameEn": "Electrocyclic Reactions",
+                "nameHi": "इलेक्ट्रोचक्रीय अभिक्रियाएँ",
+                "aliases": ["electrocyclic", "conrotatory disrotatory"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cycloaddition_reactions",
+                "level": "topic",
+                "nameEn": "Cycloaddition Reactions",
+                "nameHi": "चक्रीय योगज अभिक्रियाएँ",
+                "aliases": ["diels alder reaction", "[4+2] cycloaddition", "[2+2] cycloaddition"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sigmatropic_rearrangements",
+                "level": "topic",
+                "nameEn": "Sigmatropic Rearrangements",
+                "nameHi": "सिग्माट्रॉपिक पुनर्विन्यास",
+                "aliases": ["cope rearrangement", "claisen rearrangement", "[3,3] sigmatropic"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "photochemistry_of_alkenes",
+                "level": "topic",
+                "nameEn": "Photochemistry of Alkenes",
+                "nameHi": "ऐल्कीनों का प्रकाश-रसायन",
+                "aliases": ["cis trans photoisomerisation", "photochemical [2+2]"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "photochemistry_of_carbonyls",
+                "level": "topic",
+                "nameEn": "Photochemistry of Carbonyl Compounds",
+                "nameHi": "कार्बोनिल यौगिकों का प्रकाश-रसायन",
+                "aliases": ["norrish type I", "norrish type II", "paterno buchi reaction", "photoreduction"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "pedagogy",
+        "level": "unit",
+        "nameEn": "Pedagogy, Teaching-Learning Material and ICT",
+        "nameHi": "शिक्षणशास्त्र, शिक्षण-अधिगम सामग्री एवं सूचना प्रौद्योगिकी",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "instructional_strategies",
+            "level": "chapter",
+            "nameEn": "Pedagogy and Teaching-Learning Material (Instructional Strategies for Adolescent Learners)",
+            "nameHi": "शिक्षणशास्त्र एवं शिक्षण-अधिगम सामग्री (किशोर अधिगमकर्ताओं हेतु अनुदेशनात्मक रणनीतियाँ)",
+            "aliases": [
+              "shikshan shastra",
+              "pedagogy",
+              "teaching methods of chemistry",
+              "rasayan shikshan vidhiyan"
+            ],
+            "objectives": [
+              "Select teaching models, materials and cooperative strategies for adolescent learners"
+            ],
+            "children": [
+              {
+                "code": "communication_skills",
+                "level": "topic",
+                "nameEn": "Communication Skills and Verbal and Non-verbal Classroom Communication",
+                "nameHi": "संप्रेषण कौशल एवं कक्षा में शाब्दिक व अशाब्दिक संप्रेषण",
+                "aliases": ["sampreshan kaushal", "classroom communication", "non verbal communication"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_models",
+                "level": "topic",
+                "nameEn": "Teaching Models: Advance Organizer, Inquiry Training, Group Investigation and Non-directive Model",
+                "nameHi": "शिक्षण प्रतिमान: अग्रिम संगठक, पृच्छा प्रशिक्षण, समूह अन्वेषण एवं अनिर्देशात्मक प्रतिमान",
+                "aliases": [
+                  "models of teaching",
+                  "advance organizer model",
+                  "inquiry training model",
+                  "concept attainment",
+                  "shikshan pratiman"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_learning_material",
+                "level": "topic",
+                "nameEn": "Preparation and Use of Teaching-Learning Material",
+                "nameHi": "शिक्षण-अधिगम सामग्री का निर्माण एवं उपयोग",
+                "aliases": ["TLM", "teaching aids", "shikshan adhigam samagri"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cooperative_learning",
+                "level": "topic",
+                "nameEn": "Cooperative Learning",
+                "nameHi": "सहकारी अधिगम",
+                "aliases": ["sahkari adhigam", "collaborative learning", "jigsaw"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ict_in_teaching",
+            "level": "chapter",
+            "nameEn": "Use of Computers and ICT in Teaching-Learning",
+            "nameHi": "शिक्षण-अधिगम में कंप्यूटर एवं सूचना प्रौद्योगिकी का उपयोग",
+            "aliases": [
+              "ICT in education",
+              "computer in teaching",
+              "soochna praudyogiki",
+              "digital learning"
+            ],
+            "objectives": ["Integrate ICT, e-learning and virtual classrooms into teaching and assessment"],
+            "children": [
+              {
+                "code": "ict_and_digital_learning",
+                "level": "topic",
+                "nameEn": "Concept of ICT and Digital Learning",
+                "nameHi": "ICT एवं डिजिटल अधिगम की अवधारणा",
+                "aliases": ["ICT concept", "digital learning", "hardware software"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "e_learning_virtual_classroom",
+                "level": "topic",
+                "nameEn": "E-learning and Virtual Classroom",
+                "nameHi": "ई-अधिगम एवं आभासी कक्षा",
+                "aliases": [
+                  "e-learning",
+                  "virtual classroom",
+                  "online learning",
+                  "computer assisted learning"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "technology_integration",
+                "level": "topic",
+                "nameEn": "Technology Integration in Teaching-Learning and Assessment",
+                "nameHi": "शिक्षण-अधिगम एवं आकलन में प्रौद्योगिकी का एकीकरण",
+                "aliases": ["technology integration", "TPACK", "online assessment"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

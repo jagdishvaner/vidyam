@@ -1,0 +1,1434 @@
+{
+  "subject": {
+    "code": "quantitative_aptitude",
+    "level": "subject",
+    "nameEn": "Quantitative Aptitude",
+    "nameHi": "संख्यात्मक अभियोग्यता",
+    "aliases": ["quant", "maths", "ganit", "sankhyatmak abhiyogyata", "basic numeracy"],
+    "objectives": [],
+    "children": [
+      {
+        "code": "number_system",
+        "level": "unit",
+        "nameEn": "Number System and Computation",
+        "nameHi": "संख्या पद्धति एवं संगणना",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "numbers",
+            "level": "chapter",
+            "nameEn": "Number System",
+            "nameHi": "संख्या पद्धति",
+            "aliases": ["sankhya paddhati", "number system", "numbers"],
+            "objectives": ["Use properties of numbers, divisibility and remainders to solve problems"],
+            "children": [
+              {
+                "code": "types_of_numbers",
+                "level": "topic",
+                "nameEn": "Types of Numbers",
+                "nameHi": "संख्याओं के प्रकार",
+                "aliases": [
+                  "natural whole integer",
+                  "rational irrational",
+                  "prime composite",
+                  "abhajya sankhya"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "divisibility",
+                "level": "topic",
+                "nameEn": "Divisibility Rules",
+                "nameHi": "विभाज्यता के नियम",
+                "aliases": ["vibhajyata", "divisibility test"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "remainders_and_unit_digit",
+                "level": "topic",
+                "nameEn": "Remainders and Unit Digit",
+                "nameHi": "शेषफल एवं इकाई अंक",
+                "aliases": ["remainder theorem", "unit digit", "sheshphal", "ikai ank"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factors_and_multiples",
+                "level": "topic",
+                "nameEn": "Factors and Multiples",
+                "nameHi": "गुणनखण्ड एवं गुणज",
+                "aliases": ["number of factors", "gunankhand", "sum of factors"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "number_relations",
+                "level": "topic",
+                "nameEn": "Relationships between Numbers and Orders of Magnitude",
+                "nameHi": "संख्याओं के सम्बन्ध एवं परिमाण की कोटि",
+                "aliases": ["orders of magnitude", "place value", "sthaniya maan", "face value"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "real_numbers",
+            "level": "chapter",
+            "nameEn": "Real Numbers",
+            "nameHi": "वास्तविक संख्याएँ",
+            "aliases": ["vastavik sankhyaen", "real numbers", "rational irrational numbers"],
+            "objectives": ["Classify real numbers, find their decimal expansions and operate on them"],
+            "children": [
+              {
+                "code": "rational_and_irrational",
+                "level": "topic",
+                "nameEn": "Natural, Rational and Irrational Numbers",
+                "nameHi": "प्राकृत, परिमेय एवं अपरिमेय संख्याएँ",
+                "aliases": [
+                  "parimey aparimey",
+                  "rational numbers",
+                  "irrational numbers",
+                  "root 2 irrational"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "decimal_expansions",
+                "level": "topic",
+                "nameEn": "Decimal Expansions of Real Numbers",
+                "nameHi": "वास्तविक संख्याओं के दशमलव प्रसार",
+                "aliases": ["terminating decimal", "non-terminating recurring", "dashamlav prasar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "operations_on_real_numbers",
+                "level": "topic",
+                "nameEn": "Operations on Real Numbers and the Number Line",
+                "nameHi": "वास्तविक संख्याओं पर संक्रियाएँ एवं संख्या रेखा",
+                "aliases": ["number line", "sankhya rekha", "operations on real numbers"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "hcf_lcm",
+            "level": "chapter",
+            "nameEn": "HCF and LCM",
+            "nameHi": "महत्तम समापवर्तक एवं लघुत्तम समापवर्त्य",
+            "aliases": ["HCF LCM", "mahattam samapvartak", "laghuttam samapvartya", "MSP LSP"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "hcf",
+                "level": "topic",
+                "nameEn": "Highest Common Factor",
+                "nameHi": "महत्तम समापवर्तक",
+                "aliases": ["HCF", "GCD", "mahattam samapvartak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lcm",
+                "level": "topic",
+                "nameEn": "Least Common Multiple",
+                "nameHi": "लघुत्तम समापवर्त्य",
+                "aliases": ["LCM", "laghuttam samapvartya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hcf_lcm_problems",
+                "level": "topic",
+                "nameEn": "Word Problems on HCF and LCM",
+                "nameHi": "म.स. एवं ल.स. पर आधारित प्रश्न",
+                "aliases": ["bells ringing together", "HCF LCM of fractions"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "simplification",
+            "level": "chapter",
+            "nameEn": "Simplification",
+            "nameHi": "सरलीकरण",
+            "aliases": ["saralikaran", "simplification", "BODMAS"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "bodmas",
+                "level": "topic",
+                "nameEn": "BODMAS and Order of Operations",
+                "nameHi": "BODMAS नियम",
+                "aliases": ["BODMAS", "VBODMAS"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fractions_and_decimals",
+                "level": "topic",
+                "nameEn": "Fractions and Decimals",
+                "nameHi": "भिन्न एवं दशमलव",
+                "aliases": ["bhinn", "dashamlav", "recurring decimals", "continued fraction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "approximation",
+                "level": "topic",
+                "nameEn": "Approximation",
+                "nameHi": "सन्निकटन",
+                "aliases": ["sannikatan", "approximate value"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "powers_and_roots",
+            "level": "chapter",
+            "nameEn": "Powers, Roots and Surds",
+            "nameHi": "घातांक, मूल एवं करणी",
+            "aliases": ["ghatank", "square root", "vargmool", "karni", "surds and indices"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "squares_and_square_roots",
+                "level": "topic",
+                "nameEn": "Squares and Square Roots",
+                "nameHi": "वर्ग एवं वर्गमूल",
+                "aliases": ["vargmool", "square root"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cubes_and_cube_roots",
+                "level": "topic",
+                "nameEn": "Cubes and Cube Roots",
+                "nameHi": "घन एवं घनमूल",
+                "aliases": ["ghanmool", "cube root"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "indices",
+                "level": "topic",
+                "nameEn": "Laws of Exponents (Indices)",
+                "nameHi": "घातांक के नियम",
+                "aliases": ["indices", "exponents", "ghatank ke niyam"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "surds",
+                "level": "topic",
+                "nameEn": "Elementary Surds",
+                "nameHi": "करणी",
+                "aliases": ["surds", "karni", "rationalisation", "parimeyikaran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "arithmetic",
+        "level": "unit",
+        "nameEn": "Arithmetic",
+        "nameHi": "अंकगणित",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "percentage",
+            "level": "chapter",
+            "nameEn": "Percentage",
+            "nameHi": "प्रतिशत",
+            "aliases": ["pratishat", "percentage", "percent"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "percentage_basics",
+                "level": "topic",
+                "nameEn": "Percentage Basics and Conversions",
+                "nameHi": "प्रतिशत की मूल अवधारणा एवं रूपान्तरण",
+                "aliases": ["fraction to percent", "pratishat badalna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "percentage_change",
+                "level": "topic",
+                "nameEn": "Percentage Increase, Decrease and Successive Change",
+                "nameHi": "प्रतिशत वृद्धि, कमी एवं क्रमागत परिवर्तन",
+                "aliases": ["successive percentage", "pratishat vriddhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "population_and_depreciation",
+                "level": "topic",
+                "nameEn": "Population Growth and Depreciation",
+                "nameHi": "जनसंख्या वृद्धि एवं मूल्यह्रास",
+                "aliases": ["janasankhya", "mulyahras", "depreciation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "price_consumption_expenditure",
+                "level": "topic",
+                "nameEn": "Price, Consumption and Expenditure",
+                "nameHi": "मूल्य, उपभोग एवं व्यय",
+                "aliases": ["consumption expenditure", "upbhog"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "elections_and_marks",
+                "level": "topic",
+                "nameEn": "Election and Examination Problems",
+                "nameHi": "चुनाव एवं परीक्षा आधारित प्रश्न",
+                "aliases": ["election votes", "pass marks percent"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ratio_proportion",
+            "level": "chapter",
+            "nameEn": "Ratio and Proportion",
+            "nameHi": "अनुपात एवं समानुपात",
+            "aliases": ["anupat samanupat", "ratio", "proportion"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "ratio",
+                "level": "topic",
+                "nameEn": "Ratio",
+                "nameHi": "अनुपात",
+                "aliases": ["anupat", "compound ratio"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "proportion_and_variation",
+                "level": "topic",
+                "nameEn": "Proportion and Variation",
+                "nameHi": "समानुपात एवं विचरण",
+                "aliases": ["samanupat", "direct inverse proportion", "mean proportional"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "distribution_and_coins",
+                "level": "topic",
+                "nameEn": "Distribution and Coins Problems",
+                "nameHi": "वितरण एवं सिक्कों पर आधारित प्रश्न",
+                "aliases": ["coins problem", "divide in ratio"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ages",
+                "level": "topic",
+                "nameEn": "Problems on Ages",
+                "nameHi": "आयु सम्बन्धी प्रश्न",
+                "aliases": ["ages", "aayu", "umra"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "partnership",
+            "level": "chapter",
+            "nameEn": "Partnership",
+            "nameHi": "साझेदारी",
+            "aliases": ["sajhedari", "partnership business", "sajhedari vyapar"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "simple_partnership",
+                "level": "topic",
+                "nameEn": "Simple Partnership",
+                "nameHi": "साधारण साझेदारी",
+                "aliases": ["equal time partnership"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "compound_partnership",
+                "level": "topic",
+                "nameEn": "Compound Partnership",
+                "nameHi": "मिश्रित साझेदारी",
+                "aliases": ["capital and time", "working partner"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "mixture_alligation",
+            "level": "chapter",
+            "nameEn": "Mixture and Alligation",
+            "nameHi": "मिश्रण एवं एलिगेशन",
+            "aliases": ["mishran", "alligation", "mixture", "mishran aur prithakkaran"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "rule_of_alligation",
+                "level": "topic",
+                "nameEn": "Rule of Alligation",
+                "nameHi": "एलिगेशन का नियम",
+                "aliases": ["alligation rule", "mean price"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mixtures_and_replacement",
+                "level": "topic",
+                "nameEn": "Mixtures and Replacement",
+                "nameHi": "मिश्रण एवं प्रतिस्थापन",
+                "aliases": ["replacement", "milk and water"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "average",
+            "level": "chapter",
+            "nameEn": "Average",
+            "nameHi": "औसत",
+            "aliases": ["ausat", "average", "mean"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "simple_average",
+                "level": "topic",
+                "nameEn": "Simple Average",
+                "nameHi": "साधारण औसत",
+                "aliases": ["average", "ausat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "weighted_average",
+                "level": "topic",
+                "nameEn": "Weighted Average",
+                "nameHi": "भारित औसत",
+                "aliases": ["weighted mean", "bharit ausat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "average_problems",
+                "level": "topic",
+                "nameEn": "Problems on Averages (Age, Runs, Replacement)",
+                "nameHi": "औसत पर आधारित प्रश्न",
+                "aliases": ["cricket runs average", "new member average"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "interest",
+            "level": "chapter",
+            "nameEn": "Simple and Compound Interest",
+            "nameHi": "साधारण एवं चक्रवृद्धि ब्याज",
+            "aliases": ["byaj", "SI CI", "sadharan byaj", "chakravriddhi byaj"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "simple_interest",
+                "level": "topic",
+                "nameEn": "Simple Interest",
+                "nameHi": "साधारण ब्याज",
+                "aliases": ["SI", "sadharan byaj"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "compound_interest",
+                "level": "topic",
+                "nameEn": "Compound Interest",
+                "nameHi": "चक्रवृद्धि ब्याज",
+                "aliases": ["CI", "chakravriddhi byaj", "half yearly compounding"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "si_ci_difference",
+                "level": "topic",
+                "nameEn": "Difference between SI and CI",
+                "nameHi": "साधारण एवं चक्रवृद्धि ब्याज में अन्तर",
+                "aliases": ["CI minus SI", "difference SI CI"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "instalments",
+                "level": "topic",
+                "nameEn": "Instalments",
+                "nameHi": "किश्तें",
+                "aliases": ["kisht", "EMI", "instalment"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "profit_loss_discount",
+            "level": "chapter",
+            "nameEn": "Profit, Loss and Discount",
+            "nameHi": "लाभ, हानि एवं बट्टा",
+            "aliases": ["labh hani", "profit and loss", "discount", "chhoot", "batta"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "profit_and_loss",
+                "level": "topic",
+                "nameEn": "Cost Price, Selling Price, Profit and Loss",
+                "nameHi": "क्रय मूल्य, विक्रय मूल्य, लाभ एवं हानि",
+                "aliases": ["CP SP", "kray mulya", "vikray mulya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dishonest_dealer",
+                "level": "topic",
+                "nameEn": "Dishonest Dealer and False Weights",
+                "nameHi": "बेईमान व्यापारी एवं गलत बाट",
+                "aliases": ["false weight", "dishonest shopkeeper"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "marked_price_and_discount",
+                "level": "topic",
+                "nameEn": "Marked Price and Discount",
+                "nameHi": "अंकित मूल्य एवं बट्टा",
+                "aliases": ["ankit mulya", "MRP", "discount"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "successive_discounts",
+                "level": "topic",
+                "nameEn": "Successive Discounts",
+                "nameHi": "क्रमागत बट्टे",
+                "aliases": ["successive discount", "kramik chhoot"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "time_and_work",
+            "level": "chapter",
+            "nameEn": "Time and Work",
+            "nameHi": "समय एवं कार्य",
+            "aliases": ["samay aur kaam", "time and work", "kaam aur samay"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "work_and_efficiency",
+                "level": "topic",
+                "nameEn": "Work and Efficiency",
+                "nameHi": "कार्य एवं कार्यक्षमता",
+                "aliases": ["efficiency", "karyakshamta"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pipes_and_cisterns",
+                "level": "topic",
+                "nameEn": "Pipes and Cisterns",
+                "nameHi": "नल एवं टंकी",
+                "aliases": ["nal aur tanki", "pipes and cisterns"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "work_and_wages",
+                "level": "topic",
+                "nameEn": "Work and Wages",
+                "nameHi": "कार्य एवं मजदूरी",
+                "aliases": ["majduri", "wages"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "man_days",
+                "level": "topic",
+                "nameEn": "Man-days and Group Work",
+                "nameHi": "मानव-दिवस एवं सामूहिक कार्य",
+                "aliases": ["M1D1H1", "men and days"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "time_speed_distance",
+            "level": "chapter",
+            "nameEn": "Time, Speed and Distance",
+            "nameHi": "समय, चाल एवं दूरी",
+            "aliases": ["samay chaal doori", "speed distance", "TSD", "time and distance"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "speed_basics",
+                "level": "topic",
+                "nameEn": "Speed, Average Speed and Relative Speed",
+                "nameHi": "चाल, औसत चाल एवं सापेक्ष चाल",
+                "aliases": ["average speed", "relative speed", "sapeksh chaal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "trains",
+                "level": "topic",
+                "nameEn": "Problems on Trains",
+                "nameHi": "रेलगाड़ी सम्बन्धी प्रश्न",
+                "aliases": ["train", "railgadi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "boats_and_streams",
+                "level": "topic",
+                "nameEn": "Boats and Streams",
+                "nameHi": "नाव एवं धारा",
+                "aliases": ["nav aur dhara", "upstream downstream"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "races",
+                "level": "topic",
+                "nameEn": "Races and Circular Tracks",
+                "nameHi": "दौड़ एवं वृत्ताकार पथ",
+                "aliases": ["race", "circular track", "daud"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "algebra",
+        "level": "unit",
+        "nameEn": "Algebra",
+        "nameHi": "बीजगणित",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "algebraic_identities",
+            "level": "chapter",
+            "nameEn": "Algebraic Identities",
+            "nameHi": "बीजीय सर्वसमिकाएँ",
+            "aliases": ["sarvasamika", "algebraic identities", "x + 1/x", "bijganit"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "basic_identities",
+                "level": "topic",
+                "nameEn": "Basic Algebraic Identities",
+                "nameHi": "मूल बीजीय सर्वसमिकाएँ",
+                "aliases": ["(a+b)^2", "a^3 + b^3"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reciprocal_expressions",
+                "level": "topic",
+                "nameEn": "Expressions of the Form x + 1/x",
+                "nameHi": "x + 1/x प्रकार के व्यंजक",
+                "aliases": ["x + 1/x", "reciprocal expressions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factorisation",
+                "level": "topic",
+                "nameEn": "Factorisation and Simplifying Expressions",
+                "nameHi": "गुणनखण्डन एवं व्यंजकों का सरलीकरण",
+                "aliases": ["gunankhandan", "factorization"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "conditional_identities",
+                "level": "topic",
+                "nameEn": "Conditional Identities (a + b + c = 0)",
+                "nameHi": "सप्रतिबन्ध सर्वसमिकाएँ",
+                "aliases": ["a+b+c=0", "a^3+b^3+c^3-3abc"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "linear_equations",
+            "level": "chapter",
+            "nameEn": "Linear Equations and Their Graphs",
+            "nameHi": "रैखिक समीकरण एवं उनके आलेख",
+            "aliases": ["rekhik samikaran", "linear equations", "graph of linear equation"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "one_variable",
+                "level": "topic",
+                "nameEn": "Linear Equations in One Variable",
+                "nameHi": "एक चर वाले रैखिक समीकरण",
+                "aliases": ["one variable equation", "ek char"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pair_of_equations",
+                "level": "topic",
+                "nameEn": "Pair of Linear Equations in Two Variables",
+                "nameHi": "दो चरों वाले रैखिक समीकरण युग्म",
+                "aliases": ["two variables", "simultaneous equations"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "graphs_of_linear_equations",
+                "level": "topic",
+                "nameEn": "Graphs of Linear Equations",
+                "nameHi": "रैखिक समीकरणों के आलेख",
+                "aliases": ["aalekh", "slope intercept", "area between lines"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "polynomials_and_quadratics",
+            "level": "chapter",
+            "nameEn": "Polynomials and Quadratic Equations",
+            "nameHi": "बहुपद एवं द्विघात समीकरण",
+            "aliases": ["bahupad", "dvighat samikaran", "quadratic equation", "polynomials"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "polynomials",
+                "level": "topic",
+                "nameEn": "Zeroes of a Polynomial and Their Relationship with Coefficients",
+                "nameHi": "बहुपद के शून्यक एवं गुणांकों से सम्बन्ध",
+                "aliases": ["zeroes of polynomial", "sum and product of zeroes", "shunyak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "division_algorithm",
+                "level": "topic",
+                "nameEn": "Division Algorithm for Polynomials",
+                "nameHi": "बहुपदों के लिए विभाजन एल्गोरिथ्म",
+                "aliases": [
+                  "division algorithm",
+                  "polynomial division",
+                  "remainder theorem",
+                  "vibhajan algorithm"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quadratic_equations",
+                "level": "topic",
+                "nameEn": "Quadratic Equations",
+                "nameHi": "द्विघात समीकरण",
+                "aliases": ["roots", "discriminant", "vivechak"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "progressions",
+            "level": "chapter",
+            "nameEn": "Arithmetic and Geometric Progressions",
+            "nameHi": "समान्तर एवं गुणोत्तर श्रेढ़ी",
+            "aliases": ["AP GP", "samantar shredhi", "gunottar shredhi", "progression"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "arithmetic_progression",
+                "level": "topic",
+                "nameEn": "Arithmetic Progression",
+                "nameHi": "समान्तर श्रेढ़ी",
+                "aliases": ["AP", "nth term", "sum of AP"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "geometric_progression",
+                "level": "topic",
+                "nameEn": "Geometric Progression",
+                "nameHi": "गुणोत्तर श्रेढ़ी",
+                "aliases": ["GP", "common ratio"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "geometry",
+        "level": "unit",
+        "nameEn": "Geometry",
+        "nameHi": "ज्यामिति",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "lines_and_angles",
+            "level": "chapter",
+            "nameEn": "Lines and Angles",
+            "nameHi": "रेखाएँ एवं कोण",
+            "aliases": ["rekha aur kon", "lines and angles", "parallel lines"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "types_of_angles",
+                "level": "topic",
+                "nameEn": "Types of Angles",
+                "nameHi": "कोणों के प्रकार",
+                "aliases": ["complementary supplementary", "poorak sampoorak", "vertically opposite"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "parallel_lines",
+                "level": "topic",
+                "nameEn": "Parallel Lines and Transversals",
+                "nameHi": "समान्तर रेखाएँ एवं तिर्यक रेखा",
+                "aliases": ["transversal", "alternate angles", "ekantar kon"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "triangles",
+            "level": "chapter",
+            "nameEn": "Triangles",
+            "nameHi": "त्रिभुज",
+            "aliases": ["tribhuj", "triangle", "triangles"],
+            "objectives": ["Apply properties of triangles, their centres, congruence and similarity"],
+            "children": [
+              {
+                "code": "properties_of_triangles",
+                "level": "topic",
+                "nameEn": "Types and Properties of Triangles",
+                "nameHi": "त्रिभुज के प्रकार एवं गुणधर्म",
+                "aliases": ["angle sum", "exterior angle", "triangle inequality"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "centres_of_triangle",
+                "level": "topic",
+                "nameEn": "Centres of a Triangle",
+                "nameHi": "त्रिभुज के केन्द्र",
+                "aliases": ["centroid", "incentre", "circumcentre", "orthocentre", "kendrak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "congruence",
+                "level": "topic",
+                "nameEn": "Congruence of Triangles",
+                "nameHi": "त्रिभुजों की सर्वांगसमता",
+                "aliases": ["sarvangasamta", "SAS ASA SSS"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "similarity",
+                "level": "topic",
+                "nameEn": "Similarity of Triangles",
+                "nameHi": "त्रिभुजों की समरूपता",
+                "aliases": ["samrupta", "BPT", "thales theorem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pythagoras_theorem",
+                "level": "topic",
+                "nameEn": "Pythagoras Theorem and Its Applications",
+                "nameHi": "पाइथागोरस प्रमेय एवं अनुप्रयोग",
+                "aliases": ["pythagoras", "pythagorean triplets", "apollonius"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bisectors_medians_altitudes",
+                "level": "topic",
+                "nameEn": "Angle Bisectors, Medians and Altitudes",
+                "nameHi": "कोण समद्विभाजक, माध्यिकाएँ एवं शीर्षलम्ब",
+                "aliases": ["angle bisector theorem", "median", "madhyika"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "quadrilaterals_and_polygons",
+            "level": "chapter",
+            "nameEn": "Quadrilaterals and Polygons",
+            "nameHi": "चतुर्भुज एवं बहुभुज",
+            "aliases": ["chaturbhuj", "bahubhuj", "quadrilateral", "polygon"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "quadrilaterals",
+                "level": "topic",
+                "nameEn": "Quadrilaterals and Their Properties",
+                "nameHi": "चतुर्भुज एवं उनके गुणधर्म",
+                "aliases": ["parallelogram", "rhombus", "trapezium", "samantar chaturbhuj"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "regular_polygons",
+                "level": "topic",
+                "nameEn": "Regular Polygons",
+                "nameHi": "सम बहुभुज",
+                "aliases": ["interior angle", "exterior angle", "diagonals", "sam bahubhuj"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "circles",
+            "level": "chapter",
+            "nameEn": "Circles",
+            "nameHi": "वृत्त",
+            "aliases": ["vritt", "circle", "chord tangent"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "chords",
+                "level": "topic",
+                "nameEn": "Chords and Their Properties",
+                "nameHi": "जीवा एवं उसके गुणधर्म",
+                "aliases": ["jiva", "chord"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "angles_in_circle",
+                "level": "topic",
+                "nameEn": "Angles Subtended by Chords and Arcs",
+                "nameHi": "जीवा एवं चाप द्वारा अन्तरित कोण",
+                "aliases": ["angle at centre", "same segment", "cyclic quadrilateral", "chakriya chaturbhuj"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tangents",
+                "level": "topic",
+                "nameEn": "Tangents and Secants",
+                "nameHi": "स्पर्शरेखा एवं छेदक रेखा",
+                "aliases": ["sparsh rekha", "tangent", "tangent secant theorem"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "common_tangents",
+                "level": "topic",
+                "nameEn": "Common Tangents to Two or More Circles",
+                "nameHi": "दो या अधिक वृत्तों की उभयनिष्ठ स्पर्शरेखाएँ",
+                "aliases": ["direct common tangent", "transverse common tangent"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "mensuration",
+        "level": "unit",
+        "nameEn": "Mensuration",
+        "nameHi": "क्षेत्रमिति",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "plane_figures",
+            "level": "chapter",
+            "nameEn": "Area and Perimeter of Plane Figures",
+            "nameHi": "समतल आकृतियों का क्षेत्रफल एवं परिमाप",
+            "aliases": ["kshetrafal", "parimap", "2D mensuration", "area perimeter"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "triangle_area",
+                "level": "topic",
+                "nameEn": "Area of Triangles",
+                "nameHi": "त्रिभुज का क्षेत्रफल",
+                "aliases": ["heron's formula", "heron sutra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quadrilateral_area",
+                "level": "topic",
+                "nameEn": "Area of Quadrilaterals",
+                "nameHi": "चतुर्भुजों का क्षेत्रफल",
+                "aliases": ["rectangle square area", "rhombus area", "trapezium area"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "polygon_area",
+                "level": "topic",
+                "nameEn": "Area of Regular Polygons",
+                "nameHi": "सम बहुभुजों का क्षेत्रफल",
+                "aliases": ["hexagon area"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "circle_sector_arc",
+                "level": "topic",
+                "nameEn": "Circle, Sector and Arc",
+                "nameHi": "वृत्त, त्रिज्यखण्ड एवं चाप",
+                "aliases": ["sector", "trijyakhand", "circumference", "paridhi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "solids",
+            "level": "chapter",
+            "nameEn": "Surface Area and Volume of Solids",
+            "nameHi": "ठोसों का पृष्ठीय क्षेत्रफल एवं आयतन",
+            "aliases": ["aayatan", "prishthiya kshetrafal", "3D mensuration", "volume"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "cuboid_and_cube",
+                "level": "topic",
+                "nameEn": "Cuboid (Rectangular Parallelepiped) and Cube",
+                "nameHi": "घनाभ एवं घन",
+                "aliases": ["ghanabh", "ghan", "rectangular parallelepiped"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "right_prism",
+                "level": "topic",
+                "nameEn": "Right Prism",
+                "nameHi": "लम्ब प्रिज्म",
+                "aliases": ["prism", "lamb prism"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cylinder",
+                "level": "topic",
+                "nameEn": "Right Circular Cylinder",
+                "nameHi": "लम्ब वृत्तीय बेलन",
+                "aliases": ["belan", "cylinder"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cone",
+                "level": "topic",
+                "nameEn": "Right Circular Cone",
+                "nameHi": "लम्ब वृत्तीय शंकु",
+                "aliases": ["shanku", "cone", "frustum", "chhinnak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sphere_and_hemisphere",
+                "level": "topic",
+                "nameEn": "Sphere and Hemisphere",
+                "nameHi": "गोला एवं अर्धगोला",
+                "aliases": ["gola", "ardhgola", "sphere"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pyramid",
+                "level": "topic",
+                "nameEn": "Regular Right Pyramid",
+                "nameHi": "सम लम्ब पिरामिड",
+                "aliases": ["pyramid", "tetrahedron"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "combination_and_conversion",
+                "level": "topic",
+                "nameEn": "Combination and Conversion of Solids",
+                "nameHi": "ठोसों का संयोजन एवं रूपान्तरण",
+                "aliases": ["melting recasting", "conversion of solids"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "trigonometry",
+        "level": "unit",
+        "nameEn": "Trigonometry",
+        "nameHi": "त्रिकोणमिति",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "trigonometric_ratios",
+            "level": "chapter",
+            "nameEn": "Trigonometric Ratios and Identities",
+            "nameHi": "त्रिकोणमितीय अनुपात एवं सर्वसमिकाएँ",
+            "aliases": ["trikonmiti", "trigonometry", "sin cos tan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "ratios",
+                "level": "topic",
+                "nameEn": "Trigonometric Ratios",
+                "nameHi": "त्रिकोणमितीय अनुपात",
+                "aliases": ["sin cos tan", "trikonmitiya anupat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "standard_angles",
+                "level": "topic",
+                "nameEn": "Values at Standard Angles",
+                "nameHi": "मानक कोणों के मान",
+                "aliases": ["0 30 45 60 90", "standard values"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "degree_and_radian",
+                "level": "topic",
+                "nameEn": "Degree and Radian Measures",
+                "nameHi": "डिग्री एवं रेडियन माप",
+                "aliases": ["radian", "angle measure"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "standard_identities",
+                "level": "topic",
+                "nameEn": "Standard Identities",
+                "nameHi": "मानक सर्वसमिकाएँ",
+                "aliases": ["sin^2 + cos^2 = 1", "trig identities"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "complementary_angles",
+                "level": "topic",
+                "nameEn": "Trigonometric Ratios of Complementary Angles",
+                "nameHi": "पूरक कोणों के त्रिकोणमितीय अनुपात",
+                "aliases": ["poorak kon", "sin(90-x)"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maximum_minimum",
+                "level": "topic",
+                "nameEn": "Maximum and Minimum Values",
+                "nameHi": "अधिकतम एवं न्यूनतम मान",
+                "aliases": ["max min value", "a sin x + b cos x"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "heights_and_distances",
+            "level": "chapter",
+            "nameEn": "Heights and Distances",
+            "nameHi": "ऊँचाई एवं दूरी",
+            "aliases": ["unchai aur doori", "heights and distances", "angle of elevation"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "elevation_and_depression",
+                "level": "topic",
+                "nameEn": "Angles of Elevation and Depression",
+                "nameHi": "उन्नयन एवं अवनमन कोण",
+                "aliases": ["unnayan kon", "avnaman kon"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "height_distance_problems",
+                "level": "topic",
+                "nameEn": "Problems on Heights and Distances",
+                "nameHi": "ऊँचाई एवं दूरी के प्रश्न",
+                "aliases": ["tower", "lighthouse"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "data_interpretation",
+        "level": "unit",
+        "nameEn": "Data Interpretation and Statistics",
+        "nameHi": "आँकड़ों का निर्वचन एवं सांख्यिकी",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "data_interpretation",
+            "level": "chapter",
+            "nameEn": "Data Interpretation",
+            "nameHi": "आँकड़ों का निर्वचन",
+            "aliases": ["DI", "data interpretation", "aankda nirvachan", "aankdon ka vishleshan"],
+            "objectives": ["Read tables and charts to compute ratios, percentages and averages"],
+            "children": [
+              {
+                "code": "tables",
+                "level": "topic",
+                "nameEn": "Tabular Data",
+                "nameHi": "सारणीबद्ध आँकड़े",
+                "aliases": ["table DI", "saarni"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bar_diagrams",
+                "level": "topic",
+                "nameEn": "Bar Diagrams",
+                "nameHi": "दण्ड आरेख",
+                "aliases": ["bar graph", "dand aarekh", "bar chart"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "line_graphs",
+                "level": "topic",
+                "nameEn": "Line Graphs",
+                "nameHi": "रेखा आलेख",
+                "aliases": ["line graph", "rekha aalekh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pie_charts",
+                "level": "topic",
+                "nameEn": "Pie Charts",
+                "nameHi": "पाई चार्ट (वृत्त आरेख)",
+                "aliases": ["pie chart", "vritt aarekh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "histogram_frequency_polygon",
+                "level": "topic",
+                "nameEn": "Histogram and Frequency Polygon",
+                "nameHi": "आयतचित्र एवं बारम्बारता बहुभुज",
+                "aliases": ["histogram", "frequency polygon", "aayat chitra", "barambarta bahubhuj"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mixed_and_caselet",
+                "level": "topic",
+                "nameEn": "Mixed Graphs and Caselets",
+                "nameHi": "मिश्रित आलेख एवं केसलेट",
+                "aliases": ["caselet", "mixed DI"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "data_sufficiency",
+            "level": "chapter",
+            "nameEn": "Data Sufficiency",
+            "nameHi": "आँकड़ा पर्याप्तता",
+            "aliases": ["data sufficiency", "aankda paryaptata", "DS"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "numerical_data_sufficiency",
+                "level": "topic",
+                "nameEn": "Data Sufficiency in Arithmetic and Numbers",
+                "nameHi": "अंकगणित एवं संख्याओं में आँकड़ा पर्याप्तता",
+                "aliases": ["arithmetic data sufficiency"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "logical_data_sufficiency",
+                "level": "topic",
+                "nameEn": "Data Sufficiency in Logical Problems",
+                "nameHi": "तार्किक प्रश्नों में आँकड़ा पर्याप्तता",
+                "aliases": ["blood relation data sufficiency", "ranking data sufficiency"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "basic_statistics",
+            "level": "chapter",
+            "nameEn": "Basic Statistics",
+            "nameHi": "मूल सांख्यिकी",
+            "aliases": ["sankhyiki", "statistics", "mean median mode", "kendriya pravritti"],
+            "objectives": ["Compute mean, median and mode of ungrouped and grouped data"],
+            "children": [
+              {
+                "code": "collection_and_presentation",
+                "level": "topic",
+                "nameEn": "Collection, Classification and Presentation of Data",
+                "nameHi": "आँकड़ों का संग्रह, वर्गीकरण एवं प्रस्तुतीकरण",
+                "aliases": ["frequency distribution", "barambarta bantan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mean",
+                "level": "topic",
+                "nameEn": "Mean of Ungrouped and Grouped Data",
+                "nameHi": "अवर्गीकृत एवं वर्गीकृत आँकड़ों का माध्य",
+                "aliases": ["madhya", "arithmetic mean", "assumed mean method", "step deviation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "median",
+                "level": "topic",
+                "nameEn": "Median of Ungrouped and Grouped Data",
+                "nameHi": "अवर्गीकृत एवं वर्गीकृत आँकड़ों की माध्यिका",
+                "aliases": ["madhyika", "median", "cumulative frequency"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mode",
+                "level": "topic",
+                "nameEn": "Mode of Ungrouped and Grouped Data",
+                "nameHi": "अवर्गीकृत एवं वर्गीकृत आँकड़ों का बहुलक",
+                "aliases": ["bahulak", "mode", "modal class"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "counting_and_probability",
+        "level": "unit",
+        "nameEn": "Counting and Probability",
+        "nameHi": "गणना एवं प्रायिकता",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "permutations_combinations",
+            "level": "chapter",
+            "nameEn": "Permutations and Combinations",
+            "nameHi": "क्रमचय एवं संचय",
+            "aliases": ["P&C", "kramchay sanchay", "permutation combination", "counting"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "counting_principle",
+                "level": "topic",
+                "nameEn": "Fundamental Principle of Counting",
+                "nameHi": "गणना का मूलभूत सिद्धान्त",
+                "aliases": ["multiplication principle", "ganana siddhant"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "permutations",
+                "level": "topic",
+                "nameEn": "Permutations (Arrangements)",
+                "nameHi": "क्रमचय (व्यवस्थाएँ)",
+                "aliases": ["arrangements", "kramchay", "nPr"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "combinations",
+                "level": "topic",
+                "nameEn": "Combinations (Selections)",
+                "nameHi": "संचय (चयन)",
+                "aliases": ["selections", "sanchay", "nCr"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "probability",
+            "level": "chapter",
+            "nameEn": "Probability",
+            "nameHi": "प्रायिकता",
+            "aliases": ["prayikta", "probability", "chance"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "classical_probability",
+                "level": "topic",
+                "nameEn": "Classical Probability",
+                "nameHi": "प्रायिकता की शास्त्रीय परिभाषा",
+                "aliases": ["favourable outcomes", "prayikta ki paribhasha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coins_dice_cards",
+                "level": "topic",
+                "nameEn": "Coins, Dice and Cards",
+                "nameHi": "सिक्के, पासे एवं ताश",
+                "aliases": ["coin toss", "dice probability", "playing cards"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "complementary_events",
+                "level": "topic",
+                "nameEn": "Complementary and Mutually Exclusive Events",
+                "nameHi": "पूरक एवं परस्पर अपवर्जी घटनाएँ",
+                "aliases": ["complementary event", "mutually exclusive"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

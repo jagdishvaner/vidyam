@@ -1,0 +1,3193 @@
+{
+  "subject": {
+    "code": "rajasthan_gk",
+    "level": "subject",
+    "nameEn": "General Knowledge of Rajasthan",
+    "nameHi": "राजस्थान का सामान्य ज्ञान",
+    "aliases": ["rajasthan gk", "rajasthan samanya gyan", "raj gk", "rajasthan adhyayan", "राजस्थान अध्ययन"],
+    "objectives": [],
+    "children": [
+      {
+        "code": "geography",
+        "level": "unit",
+        "nameEn": "Geography of Rajasthan",
+        "nameHi": "राजस्थान का भूगोल",
+        "aliases": ["rajasthan ka bhugol", "rajasthan geography", "raj bhugol"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "location_extent",
+            "level": "chapter",
+            "nameEn": "Location, Extent and Administrative Divisions",
+            "nameHi": "स्थिति, विस्तार एवं प्रशासनिक इकाइयाँ",
+            "aliases": ["rajasthan ki sthiti", "sthiti aur vistar", "location and extent", "भौगोलिक स्थिति"],
+            "objectives": [
+              "Describe the location, extent, shape, size, boundaries and administrative divisions of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "latitude_longitude",
+                "level": "topic",
+                "nameEn": "Latitudinal and Longitudinal Extent",
+                "nameHi": "अक्षांशीय एवं देशांतरीय विस्तार",
+                "aliases": ["akshansh deshantar", "karka rekha", "tropic of cancer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shape_size_area",
+                "level": "topic",
+                "nameEn": "Shape, Size and Area",
+                "nameHi": "आकृति, आकार एवं क्षेत्रफल",
+                "aliases": ["vishamkon chaturbhuj", "rhomboid shape", "largest state by area", "kshetrafal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "boundaries_neighbours",
+                "level": "topic",
+                "nameEn": "International and Interstate Boundaries",
+                "nameHi": "अंतरराष्ट्रीय एवं अंतरराज्यीय सीमाएँ",
+                "aliases": ["radcliffe rekha", "radcliffe line", "padosi rajya", "seemavarti jile"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "divisions_districts",
+                "level": "topic",
+                "nameEn": "Divisions and Districts",
+                "nameHi": "संभाग एवं जिले",
+                "aliases": ["sambhag", "jile", "naye jile", "new districts"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "physiography",
+            "level": "chapter",
+            "nameEn": "Physiographic Divisions",
+            "nameHi": "भौतिक प्रदेश",
+            "aliases": ["bhautik pradesh", "physical features", "bhautik swaroop", "relief of rajasthan"],
+            "objectives": ["Identify the physiographic divisions of Rajasthan and their characteristics"],
+            "children": [
+              {
+                "code": "thar_desert",
+                "level": "topic",
+                "nameEn": "North-Western Desert Region (Thar)",
+                "nameHi": "उत्तर-पश्चिमी मरुस्थलीय प्रदेश (थार)",
+                "aliases": ["thar marusthal", "great indian desert", "balu ke tibbe", "sand dunes"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "aravalli_range",
+                "level": "topic",
+                "nameEn": "Aravalli Mountain Region",
+                "nameHi": "अरावली पर्वतीय प्रदेश",
+                "aliases": ["aravali", "arawali parvatmala", "guru shikhar", "abu parvat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "eastern_plains",
+                "level": "topic",
+                "nameEn": "Eastern Plains",
+                "nameHi": "पूर्वी मैदानी प्रदेश",
+                "aliases": ["purvi maidan", "banas basin", "chambal basin", "chhappan ka maidan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "south_eastern_plateau",
+                "level": "topic",
+                "nameEn": "South-Eastern Plateau (Hadoti)",
+                "nameHi": "दक्षिण-पूर्वी पठारी प्रदेश (हाड़ौती)",
+                "aliases": ["hadoti ka pathar", "vindhyan plateau", "pathari pradesh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "peaks_passes_plateaus",
+                "level": "topic",
+                "nameEn": "Major Peaks, Passes and Plateaus",
+                "nameHi": "प्रमुख चोटियाँ, दर्रे एवं पठार",
+                "aliases": ["chotiyan", "darre", "uriya pathar", "bhorat pathar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "climate",
+            "level": "chapter",
+            "nameEn": "Climate",
+            "nameHi": "जलवायु",
+            "aliases": ["jalvayu", "rajasthan ki jalvayu", "mausam", "climate of rajasthan"],
+            "objectives": [
+              "Explain the seasons, rainfall, climatic regions and drought conditions of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "seasons",
+                "level": "topic",
+                "nameEn": "Seasons",
+                "nameHi": "ऋतुएँ",
+                "aliases": ["rituyen", "loo", "mawath"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rainfall",
+                "level": "topic",
+                "nameEn": "Monsoon and Rainfall Distribution",
+                "nameHi": "मानसून एवं वर्षा का वितरण",
+                "aliases": ["varsha", "monsoon", "50 cm isohyet", "samvarsha rekha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "temperature_winds",
+                "level": "topic",
+                "nameEn": "Temperature, Pressure and Winds",
+                "nameHi": "तापमान, वायुदाब एवं पवनें",
+                "aliases": ["taapman", "vayudab", "andhi", "dust storms"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "climatic_regions",
+                "level": "topic",
+                "nameEn": "Climatic Regions",
+                "nameHi": "जलवायु प्रदेश",
+                "aliases": ["jalvayu pradesh", "koppen classification", "climatic zones"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "drought_desertification",
+                "level": "topic",
+                "nameEn": "Drought, Famine and Desertification",
+                "nameHi": "सूखा, अकाल एवं मरुस्थलीकरण",
+                "aliases": ["akal", "sookha", "marusthalikaran", "chhappaniya akal", "CAZRI"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "drainage",
+            "level": "chapter",
+            "nameEn": "Rivers and Lakes",
+            "nameHi": "नदियाँ एवं झीलें (अपवाह तंत्र)",
+            "aliases": ["apvah tantra", "rajasthan ki nadiyan", "rivers of rajasthan", "jheelen"],
+            "objectives": ["Classify the rivers of Rajasthan by drainage system and locate its major lakes"],
+            "children": [
+              {
+                "code": "bay_of_bengal_rivers",
+                "level": "topic",
+                "nameEn": "Rivers of the Bay of Bengal System",
+                "nameHi": "बंगाल की खाड़ी अपवाह तंत्र की नदियाँ",
+                "aliases": ["chambal", "banas", "banganga", "kali sindh", "parvati"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "arabian_sea_rivers",
+                "level": "topic",
+                "nameEn": "Rivers of the Arabian Sea System",
+                "nameHi": "अरब सागर अपवाह तंत्र की नदियाँ",
+                "aliases": ["luni", "mahi", "sabarmati", "pashchimi banas"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "inland_drainage",
+                "level": "topic",
+                "nameEn": "Inland Drainage",
+                "nameHi": "आंतरिक अपवाह तंत्र",
+                "aliases": ["ghaggar", "kantli", "kakni", "aantarik apvah"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "saline_lakes",
+                "level": "topic",
+                "nameEn": "Saline Lakes",
+                "nameHi": "खारे पानी की झीलें",
+                "aliases": ["sambhar", "didwana", "pachpadra", "lunkaransar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "freshwater_lakes",
+                "level": "topic",
+                "nameEn": "Freshwater Lakes",
+                "nameHi": "मीठे पानी की झीलें",
+                "aliases": ["jaisamand", "rajsamand", "pichola", "fateh sagar", "anasagar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "water_resources",
+            "level": "chapter",
+            "nameEn": "Water Resources and Irrigation",
+            "nameHi": "जल संसाधन एवं सिंचाई",
+            "aliases": ["jal sansadhan", "sinchai pariyojana", "irrigation projects", "nahar"],
+            "objectives": [
+              "Describe irrigation sources, river valley projects and water conservation in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "irrigation_sources",
+                "level": "topic",
+                "nameEn": "Sources of Irrigation",
+                "nameHi": "सिंचाई के साधन",
+                "aliases": ["kuan", "nalkoop", "talab", "tubewell"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "indira_gandhi_canal",
+                "level": "topic",
+                "nameEn": "Indira Gandhi Canal Project",
+                "nameHi": "इंदिरा गांधी नहर परियोजना",
+                "aliases": ["IGNP", "rajasthan nahar", "marugang", "indira gandhi nahar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "river_valley_projects",
+                "level": "topic",
+                "nameEn": "Multipurpose River Valley Projects",
+                "nameHi": "बहुउद्देशीय नदी घाटी परियोजनाएँ",
+                "aliases": ["chambal pariyojana", "mahi bajaj sagar", "bisalpur", "ERCP", "PKC ERCP"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "traditional_water_conservation",
+                "level": "topic",
+                "nameEn": "Traditional Water Conservation",
+                "nameHi": "परंपरागत जल संरक्षण",
+                "aliases": ["baori", "tanka", "johad", "khadin", "kui"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "water_supply_schemes",
+                "level": "topic",
+                "nameEn": "Drinking Water and Watershed Programmes",
+                "nameHi": "पेयजल एवं जलग्रहण कार्यक्रम",
+                "aliases": ["jal jeevan mission", "jal swavlamban abhiyan", "watershed", "peyjal"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "soils",
+            "level": "chapter",
+            "nameEn": "Soils",
+            "nameHi": "मृदा",
+            "aliases": ["mitti", "mrida", "rajasthan ki mittiyan", "soils of rajasthan"],
+            "objectives": ["Classify the soils of Rajasthan and explain soil erosion and soil problems"],
+            "children": [
+              {
+                "code": "soil_types",
+                "level": "topic",
+                "nameEn": "Types and Distribution of Soils",
+                "nameHi": "मृदा के प्रकार एवं वितरण",
+                "aliases": [
+                  "retili mitti",
+                  "kali mitti",
+                  "jalodh mitti",
+                  "lal peeli mitti",
+                  "entisols aridisols"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "soil_erosion_conservation",
+                "level": "topic",
+                "nameEn": "Soil Erosion and Conservation",
+                "nameHi": "मृदा अपरदन एवं संरक्षण",
+                "aliases": ["mrida apardan", "beehad", "ravines", "soil conservation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "soil_problems",
+                "level": "topic",
+                "nameEn": "Salinity, Alkalinity and Waterlogging",
+                "nameHi": "लवणता, क्षारीयता एवं जलभराव",
+                "aliases": ["lavanta", "ksharita", "sem samasya", "jalbharav"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "vegetation_wildlife",
+            "level": "chapter",
+            "nameEn": "Natural Vegetation and Wildlife",
+            "nameHi": "प्राकृतिक वनस्पति एवं वन्यजीव",
+            "aliases": ["van", "vanaspati", "vanya jeev", "forests of rajasthan"],
+            "objectives": ["Describe forest types, protected areas and wildlife conservation in Rajasthan"],
+            "children": [
+              {
+                "code": "forest_types",
+                "level": "topic",
+                "nameEn": "Forest Types and Distribution",
+                "nameHi": "वनों के प्रकार एवं वितरण",
+                "aliases": ["van ke prakar", "dhok", "sagwan", "van kshetra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "grasslands_trees",
+                "level": "topic",
+                "nameEn": "Grasslands and Important Trees",
+                "nameHi": "घास के मैदान एवं प्रमुख वृक्ष",
+                "aliases": ["sewan ghas", "beed", "khejri", "rohida", "oran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "national_parks_sanctuaries",
+                "level": "topic",
+                "nameEn": "National Parks and Wildlife Sanctuaries",
+                "nameHi": "राष्ट्रीय उद्यान एवं वन्यजीव अभयारण्य",
+                "aliases": [
+                  "ranthambore",
+                  "keoladeo",
+                  "abhayaranya",
+                  "rashtriya udyan",
+                  "desert national park"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tiger_conservation_ramsar",
+                "level": "topic",
+                "nameEn": "Tiger Reserves, Conservation Reserves and Ramsar Sites",
+                "nameHi": "बाघ परियोजना क्षेत्र, कंज़र्वेशन रिज़र्व एवं रामसर स्थल",
+                "aliases": ["tiger reserve", "sariska", "mukundra", "ramsar sites", "conservation reserve"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wildlife_conservation",
+                "level": "topic",
+                "nameEn": "Wildlife and Its Conservation",
+                "nameHi": "वन्यजीव एवं उनका संरक्षण",
+                "aliases": ["godawan", "great indian bustard", "chinkara", "bishnoi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "forest_policy",
+                "level": "topic",
+                "nameEn": "Forest Policy and Programmes",
+                "nameHi": "वन नीति एवं कार्यक्रम",
+                "aliases": ["van niti", "samajik vanikee", "social forestry", "van mahotsav"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "agriculture",
+            "level": "chapter",
+            "nameEn": "Agriculture",
+            "nameHi": "कृषि",
+            "aliases": ["krishi", "kheti", "fasalen", "agriculture of rajasthan"],
+            "objectives": [
+              "Describe agro-climatic zones, major crops and agricultural development in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "agro_climatic_zones",
+                "level": "topic",
+                "nameEn": "Agro-Climatic Zones",
+                "nameHi": "कृषि जलवायु खंड",
+                "aliases": ["krishi jalvayu khand", "agro climatic zones", "krishi jalvayu pradesh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kharif_crops",
+                "level": "topic",
+                "nameEn": "Kharif Crops",
+                "nameHi": "खरीफ फसलें",
+                "aliases": ["bajra", "makka", "jowar", "moong", "kharif ki fasal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rabi_crops",
+                "level": "topic",
+                "nameEn": "Rabi Crops",
+                "nameHi": "रबी फसलें",
+                "aliases": ["gehun", "sarson", "chana", "jau", "rabi ki fasal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "commercial_crops",
+                "level": "topic",
+                "nameEn": "Commercial Crops (Oilseeds, Pulses, Cotton, Spices)",
+                "nameHi": "व्यापारिक फसलें (तिलहन, दलहन, कपास, मसाले)",
+                "aliases": ["tilhan", "dalhan", "kapas", "jeera", "isabgol"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "horticulture",
+                "level": "topic",
+                "nameEn": "Horticulture",
+                "nameHi": "उद्यानिकी",
+                "aliases": ["udyaniki", "bagwani", "kinnow", "anar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "agricultural_development",
+                "level": "topic",
+                "nameEn": "Agricultural Development, Problems and Marketing",
+                "nameHi": "कृषि विकास, समस्याएँ एवं विपणन",
+                "aliases": ["krishi vikas", "krishi mandi", "jaivik kheti", "organic farming"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "livestock_dairy",
+            "level": "chapter",
+            "nameEn": "Livestock and Dairy Development",
+            "nameHi": "पशुधन एवं डेयरी विकास",
+            "aliases": ["pashupalan", "pashudhan", "dairy vikas", "animal husbandry"],
+            "objectives": ["Describe livestock wealth, breeds and dairy development in Rajasthan"],
+            "children": [
+              {
+                "code": "livestock_census",
+                "level": "topic",
+                "nameEn": "Livestock Census and Distribution",
+                "nameHi": "पशुगणना एवं पशुधन वितरण",
+                "aliases": ["pashu ganana", "livestock census", "pashudhan vitaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cattle_buffalo_breeds",
+                "level": "topic",
+                "nameEn": "Cattle and Buffalo Breeds",
+                "nameHi": "गोवंश एवं भैंस की नस्लें",
+                "aliases": ["gir", "tharparkar", "rathi", "nagori", "murrah"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sheep_goat_camel",
+                "level": "topic",
+                "nameEn": "Sheep, Goat and Camel Breeds",
+                "nameHi": "भेड़, बकरी एवं ऊँट की नस्लें",
+                "aliases": ["chokla", "magra", "sirohi bakri", "bikaneri oont", "rajya pashu oont"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dairy_development",
+                "level": "topic",
+                "nameEn": "Dairy Development and Cooperatives",
+                "nameHi": "डेयरी विकास एवं सहकारिता",
+                "aliases": ["saras dairy", "RCDF", "dugdh utpadan", "operation flood"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fisheries_poultry_institutions",
+                "level": "topic",
+                "nameEn": "Fisheries, Poultry and Animal Husbandry Institutions",
+                "nameHi": "मत्स्य पालन, मुर्गी पालन एवं पशुपालन संस्थान",
+                "aliases": ["matsya palan", "murgi palan", "NRC camel", "pashu anusandhan kendra"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "minerals",
+            "level": "chapter",
+            "nameEn": "Mineral Resources",
+            "nameHi": "खनिज संसाधन",
+            "aliases": ["khanij", "khanij sansadhan", "mines of rajasthan", "museum of minerals"],
+            "objectives": ["Locate the metallic, non-metallic and fuel minerals of Rajasthan"],
+            "children": [
+              {
+                "code": "metallic_minerals",
+                "level": "topic",
+                "nameEn": "Metallic Minerals",
+                "nameHi": "धात्विक खनिज",
+                "aliases": ["seesa jasta", "tamba", "zawar", "khetri", "lead zinc"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "non_metallic_minerals",
+                "level": "topic",
+                "nameEn": "Non-metallic Minerals",
+                "nameHi": "अधात्विक खनिज",
+                "aliases": ["jipsam", "rock phosphate", "wollastonite", "chuna patthar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "building_stones",
+                "level": "topic",
+                "nameEn": "Building and Decorative Stones",
+                "nameHi": "इमारती एवं सजावटी पत्थर",
+                "aliases": ["sangmarmar", "makrana marble", "kota stone", "granite"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "fuel_minerals",
+                "level": "topic",
+                "nameEn": "Fuel Minerals (Lignite, Petroleum, Natural Gas)",
+                "nameHi": "ईंधन खनिज (लिग्नाइट, पेट्रोलियम, प्राकृतिक गैस)",
+                "aliases": ["lignite", "barmer tel", "petroleum", "prakritik gas", "mangala"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mineral_policy",
+                "level": "topic",
+                "nameEn": "Mineral Policy and Mining Issues",
+                "nameHi": "खनिज नीति एवं खनन समस्याएँ",
+                "aliases": ["khanij niti", "silicosis", "khanan", "mineral policy"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "energy",
+            "level": "chapter",
+            "nameEn": "Energy Resources",
+            "nameHi": "ऊर्जा संसाधन",
+            "aliases": ["urja", "urja sansadhan", "vidyut", "power projects"],
+            "objectives": [
+              "Describe conventional and renewable energy resources and power projects of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "thermal_power",
+                "level": "topic",
+                "nameEn": "Thermal Power",
+                "nameHi": "तापीय विद्युत",
+                "aliases": ["suratgarh", "kota thermal", "chhabra", "tapiya vidyut"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hydro_power",
+                "level": "topic",
+                "nameEn": "Hydroelectric Power",
+                "nameHi": "जलविद्युत",
+                "aliases": ["jal vidyut", "rana pratap sagar", "mahi hydel", "jawahar sagar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "nuclear_power",
+                "level": "topic",
+                "nameEn": "Nuclear Power",
+                "nameHi": "परमाणु विद्युत",
+                "aliases": ["rawatbhata", "parmanu urja", "RAPP", "mahi banswara nuclear"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "solar_energy",
+                "level": "topic",
+                "nameEn": "Solar Energy",
+                "nameHi": "सौर ऊर्जा",
+                "aliases": ["bhadla solar park", "saur urja", "solar policy", "PM kusum"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wind_biomass_energy",
+                "level": "topic",
+                "nameEn": "Wind, Biomass and Other Renewable Energy",
+                "nameHi": "पवन, बायोमास एवं अन्य नवीकरणीय ऊर्जा",
+                "aliases": ["pawan urja", "biomass", "green hydrogen", "navikarniya urja"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "power_institutions_policy",
+                "level": "topic",
+                "nameEn": "Energy Policy and Power Institutions",
+                "nameHi": "ऊर्जा नीति एवं विद्युत संस्थाएँ",
+                "aliases": ["RVUNL", "vidyut nigam", "urja niti", "renewable energy policy"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "industries",
+            "level": "chapter",
+            "nameEn": "Industries",
+            "nameHi": "उद्योग",
+            "aliases": ["udyog", "audyogik vikas", "industries of rajasthan", "RIICO"],
+            "objectives": ["Describe the major industries, industrial areas and institutions of Rajasthan"],
+            "children": [
+              {
+                "code": "agro_based_industries",
+                "level": "topic",
+                "nameEn": "Agro-based Industries (Textile, Sugar, Vegetable Oil)",
+                "nameHi": "कृषि आधारित उद्योग (सूती वस्त्र, चीनी, वनस्पति तेल)",
+                "aliases": ["suti vastra udyog", "chini udyog", "bhilwara textile", "krishi adharit udyog"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mineral_based_industries",
+                "level": "topic",
+                "nameEn": "Mineral-based Industries (Cement, Marble, Glass, Zinc)",
+                "nameHi": "खनिज आधारित उद्योग (सीमेंट, संगमरमर, काँच, जस्ता)",
+                "aliases": ["cement udyog", "hindustan zinc", "khanij adharit udyog", "marble udyog"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cottage_msme",
+                "level": "topic",
+                "nameEn": "Cottage, Small and MSME Industries",
+                "nameHi": "कुटीर, लघु एवं एमएसएमई उद्योग",
+                "aliases": ["laghu udyog", "kutir udyog", "MSME", "khadi gramodyog"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "industrial_areas_institutions",
+                "level": "topic",
+                "nameEn": "Industrial Areas and Promotional Institutions",
+                "nameHi": "औद्योगिक क्षेत्र एवं प्रोत्साहन संस्थाएँ",
+                "aliases": ["RIICO", "RFC", "SEZ", "DMIC"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "tourism",
+            "level": "chapter",
+            "nameEn": "Tourism",
+            "nameHi": "पर्यटन",
+            "aliases": ["paryatan", "paryatan sthal", "rajasthan tourism", "tourist places"],
+            "objectives": ["Identify the major tourist centres, circuits and tourism policy of Rajasthan"],
+            "children": [
+              {
+                "code": "tourist_centres",
+                "level": "topic",
+                "nameEn": "Major Tourist Centres",
+                "nameHi": "प्रमुख पर्यटन स्थल",
+                "aliases": ["paryatan kendra", "pink city", "golden city", "lake city"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tourist_circuits",
+                "level": "topic",
+                "nameEn": "Tourist Circuits",
+                "nameHi": "पर्यटन परिपथ",
+                "aliases": ["tourist circuit", "golden triangle", "paryatan paripath", "desert circuit"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "heritage_eco_tourism",
+                "level": "topic",
+                "nameEn": "Heritage, Rural and Eco-tourism",
+                "nameHi": "विरासत, ग्रामीण एवं इको पर्यटन",
+                "aliases": ["heritage hotels", "palace on wheels", "virasat paryatan", "eco tourism"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tourism_policy",
+                "level": "topic",
+                "nameEn": "Tourism Policy and Institutions",
+                "nameHi": "पर्यटन नीति एवं संस्थाएँ",
+                "aliases": ["RTDC", "paryatan niti", "tourism policy", "paying guest scheme"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "transport_trade",
+            "level": "chapter",
+            "nameEn": "Transport and Trade",
+            "nameHi": "परिवहन एवं व्यापार",
+            "aliases": ["parivahan", "transport of rajasthan", "vyapar", "sadak rail"],
+            "objectives": ["Describe road, rail and air transport and the trade of Rajasthan"],
+            "children": [
+              {
+                "code": "road_transport",
+                "level": "topic",
+                "nameEn": "Road Transport",
+                "nameHi": "सड़क परिवहन",
+                "aliases": ["rashtriya rajmarg", "national highway", "RSRTC", "expressway"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rail_transport",
+                "level": "topic",
+                "nameEn": "Rail Transport",
+                "nameHi": "रेल परिवहन",
+                "aliases": ["north western railway", "jaipur metro", "rail parivahan", "DFC"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "air_transport",
+                "level": "topic",
+                "nameEn": "Air Transport",
+                "nameHi": "वायु परिवहन",
+                "aliases": ["airport", "hawai adda", "vayu parivahan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "trade_exports",
+                "level": "topic",
+                "nameEn": "Trade and Exports",
+                "nameHi": "व्यापार एवं निर्यात",
+                "aliases": ["niryat", "vyapar", "dry port", "exports of rajasthan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "population",
+            "level": "chapter",
+            "nameEn": "Population and Demographic Characteristics",
+            "nameHi": "जनसंख्या एवं जनांकिकीय विशेषताएँ",
+            "aliases": ["jansankhya", "janganana 2011", "census", "demography"],
+            "objectives": [
+              "Analyse the size, growth, density, sex ratio, literacy and urbanisation of Rajasthan's population"
+            ],
+            "children": [
+              {
+                "code": "size_distribution_density",
+                "level": "topic",
+                "nameEn": "Population Size, Distribution and Density",
+                "nameHi": "जनसंख्या आकार, वितरण एवं घनत्व",
+                "aliases": ["jansankhya ghanatva", "population density", "jansankhya vitaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "population_growth",
+                "level": "topic",
+                "nameEn": "Population Growth",
+                "nameHi": "जनसंख्या वृद्धि",
+                "aliases": ["jansankhya vriddhi", "decadal growth", "dashkiya vriddhi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sex_ratio",
+                "level": "topic",
+                "nameEn": "Sex Ratio and Child Sex Ratio",
+                "nameHi": "लिंगानुपात एवं शिशु लिंगानुपात",
+                "aliases": ["linganupat", "sex ratio", "shishu linganupat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "literacy",
+                "level": "topic",
+                "nameEn": "Literacy",
+                "nameHi": "साक्षरता",
+                "aliases": ["sakshrata", "literacy rate", "mahila sakshrata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "urbanisation_sc_st",
+                "level": "topic",
+                "nameEn": "Urbanisation and SC/ST Population",
+                "nameHi": "नगरीकरण एवं अनुसूचित जाति/जनजाति जनसंख्या",
+                "aliases": ["nagarikaran", "shahri jansankhya", "anusuchit jati jansankhya"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "tribes",
+            "level": "chapter",
+            "nameEn": "Tribes",
+            "nameHi": "जनजातियाँ",
+            "aliases": ["janjati", "adivasi", "tribes of rajasthan", "janjatiyan"],
+            "objectives": ["Describe the distribution, society and culture of the tribes of Rajasthan"],
+            "children": [
+              {
+                "code": "bhil",
+                "level": "topic",
+                "nameEn": "Bhil",
+                "nameHi": "भील",
+                "aliases": ["bheel", "bhil janjati", "pal", "phala"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "meena",
+                "level": "topic",
+                "nameEn": "Meena",
+                "nameHi": "मीणा",
+                "aliases": ["mina", "meena janjati", "chaukidar meena"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "garasia",
+                "level": "topic",
+                "nameEn": "Garasia",
+                "nameHi": "गरासिया",
+                "aliases": ["girasia", "garasia janjati", "mor bandhiya vivah"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sahariya",
+                "level": "topic",
+                "nameEn": "Sahariya",
+                "nameHi": "सहरिया",
+                "aliases": ["saharia", "PVTG", "sahariya janjati"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_tribes",
+                "level": "topic",
+                "nameEn": "Other Tribes (Damor, Kathodi, Kanjar, Sansi)",
+                "nameHi": "अन्य जनजातियाँ (डामोर, कथौड़ी, कंजर, सांसी)",
+                "aliases": ["damor", "kathodi", "kanjar", "sansi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tribal_area_development",
+                "level": "topic",
+                "nameEn": "Tribal Areas and Development",
+                "nameHi": "जनजाति क्षेत्र एवं विकास",
+                "aliases": ["TSP kshetra", "anusuchit kshetra", "janjati upyojana", "MADA"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "history",
+        "level": "unit",
+        "nameEn": "History of Rajasthan (Ancient to 18th Century)",
+        "nameHi": "राजस्थान का इतिहास (प्राचीन से 18वीं शताब्दी तक)",
+        "aliases": ["rajasthan ka itihas", "rajasthan history", "raj itihas"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "sources_of_history",
+            "level": "chapter",
+            "nameEn": "Sources of History",
+            "nameHi": "इतिहास के स्रोत",
+            "aliases": ["itihas ke strot", "sources of rajasthan history", "puratatvik strot"],
+            "objectives": [
+              "Identify the archaeological, literary and archival sources of Rajasthan's history"
+            ],
+            "children": [
+              {
+                "code": "inscriptions",
+                "level": "topic",
+                "nameEn": "Inscriptions",
+                "nameHi": "अभिलेख एवं शिलालेख",
+                "aliases": ["shilalekh", "abhilekh", "prashasti", "bijolia shilalekh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "coins",
+                "level": "topic",
+                "nameEn": "Coins",
+                "nameHi": "सिक्के",
+                "aliases": ["sikke", "mudra", "jhadshahi", "aahat sikke"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "literary_sources",
+                "level": "topic",
+                "nameEn": "Literary Sources",
+                "nameHi": "साहित्यिक स्रोत",
+                "aliases": ["khyat", "raso", "nainsi ri khyat", "prithviraj raso"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "archival_records",
+                "level": "topic",
+                "nameEn": "Archival Records and Foreign Accounts",
+                "nameHi": "पुरालेखीय स्रोत एवं विदेशी विवरण",
+                "aliases": ["bahi", "arhsatta", "james tod", "rajasthan rajya abhilekhagar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "ancient_civilisations",
+            "level": "chapter",
+            "nameEn": "Ancient Culture and Civilisation (Archaeological Sites)",
+            "nameHi": "प्राचीन संस्कृति एवं सभ्यताएँ (पुरातात्विक स्थल)",
+            "aliases": ["prachin sabhyata", "puratatvik sthal", "ancient sites of rajasthan", "sabhyataen"],
+            "objectives": [
+              "Describe the major prehistoric and protohistoric sites of Rajasthan and their importance"
+            ],
+            "children": [
+              {
+                "code": "prehistoric_sites",
+                "level": "topic",
+                "nameEn": "Prehistoric Sites (Bagor, Tilwara)",
+                "nameHi": "प्रागैतिहासिक स्थल (बागोर, तिलवाड़ा)",
+                "aliases": ["bagor", "tilwara", "pragaitihasik", "pashan kaal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kalibangan",
+                "level": "topic",
+                "nameEn": "Kalibangan",
+                "nameHi": "कालीबंगा",
+                "aliases": ["kalibanga", "kali chudiyan", "harappan site rajasthan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ahar_balathal_gilund",
+                "level": "topic",
+                "nameEn": "Ahar, Balathal and Gilund",
+                "nameHi": "आहड़, बालाथल एवं गिलूंड",
+                "aliases": ["ahar sabhyata", "ahad", "tambavati nagari", "balathal", "gilund"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ganeshwar",
+                "level": "topic",
+                "nameEn": "Ganeshwar",
+                "nameHi": "गणेश्वर",
+                "aliases": ["ganeshwar sabhyata", "tamra yugin sabhyata", "copper age"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bairath",
+                "level": "topic",
+                "nameEn": "Bairath (Viratnagar)",
+                "nameHi": "बैराठ (विराटनगर)",
+                "aliases": ["viratnagar", "bijak ki pahadi", "bhabru abhilekh", "matsya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_ancient_sites",
+                "level": "topic",
+                "nameEn": "Other Sites (Rairh, Nagari, Rangmahal, Noh, Sunari)",
+                "nameHi": "अन्य स्थल (रैढ़, नगरी, रंगमहल, नोह, सुनारी)",
+                "aliases": ["rairh", "nagari", "rangmahal", "noh", "sunari"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "early_history",
+            "level": "chapter",
+            "nameEn": "Janapadas and Early Historical Period",
+            "nameHi": "जनपद एवं प्रारंभिक ऐतिहासिक काल",
+            "aliases": ["janpad yug", "matsya janapad", "early history of rajasthan"],
+            "objectives": ["Trace the janapadas and the Mauryan, Gupta and Huna periods in Rajasthan"],
+            "children": [
+              {
+                "code": "janapadas",
+                "level": "topic",
+                "nameEn": "Janapadas of Rajasthan (Matsya, Shivi, Jangal, Malava, Yaudheya)",
+                "nameHi": "राजस्थान के जनपद (मत्स्य, शिवि, जांगल, मालव, यौधेय)",
+                "aliases": ["matsya", "shivi", "jangal desh", "malav", "yaudheya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maurya_gupta_huna",
+                "level": "topic",
+                "nameEn": "Mauryan, Gupta and Huna Periods in Rajasthan",
+                "nameHi": "राजस्थान में मौर्य, गुप्त एवं हूण काल",
+                "aliases": ["maurya kaal", "gupta kaal", "huna", "mihirkul"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "rajput_dynasties",
+            "level": "chapter",
+            "nameEn": "Rajput Dynasties of Rajasthan",
+            "nameHi": "राजस्थान के राजपूत राजवंश",
+            "aliases": ["rajput vansh", "rajput rajvansh", "rajput dynasties", "rajput utpatti"],
+            "objectives": [
+              "Explain the origin of the Rajputs and outline the major dynasties of Rajasthan from the 8th century"
+            ],
+            "children": [
+              {
+                "code": "origin_of_rajputs",
+                "level": "topic",
+                "nameEn": "Theories of the Origin of Rajputs",
+                "nameHi": "राजपूतों की उत्पत्ति के सिद्धांत",
+                "aliases": ["agnikund siddhant", "agnikul", "rajput utpatti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gurjara_pratiharas",
+                "level": "topic",
+                "nameEn": "Gurjara-Pratiharas",
+                "nameHi": "गुर्जर-प्रतिहार",
+                "aliases": ["gurjar pratihar", "nagbhatt", "mihir bhoj", "mandore"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chauhans",
+                "level": "topic",
+                "nameEn": "Chauhans of Sambhar and Ajmer",
+                "nameHi": "सांभर एवं अजमेर के चौहान",
+                "aliases": ["chauhan vansh", "ajayraj", "vigraharaj chaturth", "prithviraj chauhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "guhilas_sisodias",
+                "level": "topic",
+                "nameEn": "Guhilas and Sisodias of Mewar",
+                "nameHi": "मेवाड़ के गुहिल एवं सिसोदिया",
+                "aliases": ["guhil vansh", "bappa rawal", "sisodia", "mewar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rathores_marwar",
+                "level": "topic",
+                "nameEn": "Rathores of Marwar",
+                "nameHi": "मारवाड़ के राठौड़",
+                "aliases": ["rathore", "rao jodha", "rao maldeo", "jodhpur"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rathores_bikaner",
+                "level": "topic",
+                "nameEn": "Rathores of Bikaner",
+                "nameHi": "बीकानेर के राठौड़",
+                "aliases": ["rao bika", "bikaner rathore", "bikaner"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kachhwahas_amer",
+                "level": "topic",
+                "nameEn": "Kachhwahas of Amer",
+                "nameHi": "आमेर के कछवाहा",
+                "aliases": ["kachhwaha", "dulharai", "bharmal", "amer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bhatis_jaisalmer",
+                "level": "topic",
+                "nameEn": "Bhatis of Jaisalmer",
+                "nameHi": "जैसलमेर के भाटी",
+                "aliases": ["bhati", "rawal jaisal", "jaisalmer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hadas_hadoti",
+                "level": "topic",
+                "nameEn": "Hadas of Bundi and Kota",
+                "nameHi": "बूंदी एवं कोटा के हाड़ा",
+                "aliases": ["hada chauhan", "bundi", "kota", "hadoti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_states",
+                "level": "topic",
+                "nameEn": "Parmaras and Other States (Karauli, Bharatpur, Dholpur, Tonk, Alwar)",
+                "nameHi": "परमार एवं अन्य राज्य (करौली, भरतपुर, धौलपुर, टोंक, अलवर)",
+                "aliases": ["parmar", "abu ke parmar", "karauli", "tonk riyasat", "alwar riyasat"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sultanate_relations",
+            "level": "chapter",
+            "nameEn": "Relations with the Delhi Sultanate",
+            "nameHi": "दिल्ली सल्तनत से संबंध",
+            "aliases": ["sultanat kaal", "delhi sultanate", "saka", "jauhar"],
+            "objectives": ["Explain the resistance of Mewar, Ranthambore and Jalore to the Delhi Sultanate"],
+            "children": [
+              {
+                "code": "tarain_battles",
+                "level": "topic",
+                "nameEn": "Prithviraj Chauhan and the Battles of Tarain",
+                "nameHi": "पृथ्वीराज चौहान एवं तराइन के युद्ध",
+                "aliases": ["tarain ka yudh", "prithviraj tritiya", "muhammad ghori", "1192"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ranthambore",
+                "level": "topic",
+                "nameEn": "Ranthambore and Hammir Dev",
+                "nameHi": "रणथम्भौर एवं हम्मीरदेव",
+                "aliases": ["hammir dev", "ranthambhor saka", "hammir hath", "1301"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jalore",
+                "level": "topic",
+                "nameEn": "Jalore and Kanhad Dev",
+                "nameHi": "जालौर एवं कान्हड़देव",
+                "aliases": ["kanhad dev", "kanhadde prabandh", "jalor saka", "siwana"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mewar_chittor",
+                "level": "topic",
+                "nameEn": "Mewar: Ratan Singh and the Siege of Chittor (1303)",
+                "nameHi": "मेवाड़: रतनसिंह एवं चित्तौड़ का प्रथम साका (1303)",
+                "aliases": ["ratan singh", "rani padmini", "chittor saka", "gora badal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rana_kumbha",
+                "level": "topic",
+                "nameEn": "Rana Kumbha and Relations with Malwa and Gujarat",
+                "nameHi": "राणा कुम्भा एवं मालवा-गुजरात से संबंध",
+                "aliases": ["kumbha", "sarangpur yudh", "vijay stambh", "kumbhalgarh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "mughal_relations",
+            "level": "chapter",
+            "nameEn": "Rajasthan and the Mughals",
+            "nameHi": "राजस्थान एवं मुगल",
+            "aliases": [
+              "mughal rajput sambandh",
+              "mughal kaal",
+              "rajput mughal relations",
+              "akbar ki rajput niti"
+            ],
+            "objectives": [
+              "Explain Rajput-Mughal relations with reference to Sanga, Pratap, Man Singh, Chandrasen, Rai Singh and Raj Singh"
+            ],
+            "children": [
+              {
+                "code": "rana_sanga",
+                "level": "topic",
+                "nameEn": "Rana Sanga and the Battle of Khanwa",
+                "nameHi": "राणा सांगा एवं खानवा का युद्ध",
+                "aliases": ["sangram singh", "khanwa 1527", "babur", "khatoli"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maharana_pratap",
+                "level": "topic",
+                "nameEn": "Maharana Pratap and the Battle of Haldighati",
+                "nameHi": "महाराणा प्रताप एवं हल्दीघाटी का युद्ध",
+                "aliases": ["pratap", "haldighati 1576", "dewair", "chawand"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "man_singh_amer",
+                "level": "topic",
+                "nameEn": "Man Singh of Amer",
+                "nameHi": "आमेर के मानसिंह",
+                "aliases": ["raja mansingh", "mansingh kachhwaha", "akbar ke navratna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chandrasen_marwar",
+                "level": "topic",
+                "nameEn": "Rao Chandrasen of Marwar",
+                "nameHi": "मारवाड़ के राव चन्द्रसेन",
+                "aliases": ["chandrasen", "bhula bisra raja", "marwar ka pratap"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rai_singh_bikaner",
+                "level": "topic",
+                "nameEn": "Rai Singh of Bikaner",
+                "nameHi": "बीकानेर के रायसिंह",
+                "aliases": ["raysingh", "junagarh", "rai singh prashasti", "karmachand"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "raj_singh_mewar",
+                "level": "topic",
+                "nameEn": "Raj Singh of Mewar",
+                "nameHi": "मेवाड़ के राजसिंह",
+                "aliases": ["rajsingh", "rajsamand", "rajprashasti", "aurangzeb"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_mughal_relations",
+                "level": "topic",
+                "nameEn": "Maldeo, Jaswant Singh, Durgadas and Other Relations",
+                "nameHi": "मालदेव, जसवंतसिंह, दुर्गादास एवं अन्य संबंध",
+                "aliases": ["rao maldeo", "giri sumel", "durgadas rathore", "jaswant singh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "eighteenth_century",
+            "level": "chapter",
+            "nameEn": "Rajasthan in the 18th Century",
+            "nameHi": "18वीं शताब्दी में राजस्थान",
+            "aliases": ["atharahvi shatabdi", "maratha in rajasthan", "later mughals", "sandhi 1818"],
+            "objectives": [
+              "Describe Sawai Jai Singh, the rise of Bharatpur, Maratha intervention and the treaties of 1818"
+            ],
+            "children": [
+              {
+                "code": "sawai_jai_singh",
+                "level": "topic",
+                "nameEn": "Sawai Jai Singh II",
+                "nameHi": "सवाई जयसिंह द्वितीय",
+                "aliases": ["sawai jaisingh", "jantar mantar", "jaipur sthapana", "hurda sammelan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "rise_of_bharatpur",
+                "level": "topic",
+                "nameEn": "Jats of Bharatpur (Churaman, Suraj Mal)",
+                "nameHi": "भरतपुर के जाट (चूड़ामन, सूरजमल)",
+                "aliases": ["surajmal", "jat shasak", "lohagarh", "churaman"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maratha_intervention",
+                "level": "topic",
+                "nameEn": "Maratha Intervention in Rajasthan",
+                "nameHi": "राजस्थान में मराठा हस्तक्षेप",
+                "aliases": ["maratha hastakshep", "chauth", "bundi uttaradhikar", "pindari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "treaties_1818",
+                "level": "topic",
+                "nameEn": "Treaties of 1818 and British Paramountcy",
+                "nameHi": "1818 की संधियाँ एवं ब्रिटिश सर्वोच्चता",
+                "aliases": ["sandhi 1818", "subsidiary alliance", "charles metcalfe", "ajmer merwara"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "freedom_struggle",
+        "level": "unit",
+        "nameEn": "Freedom Struggle and Integration of Rajasthan",
+        "nameHi": "राजस्थान में स्वतंत्रता संग्राम एवं एकीकरण",
+        "aliases": ["swatantrata sangram rajasthan", "rajasthan freedom struggle", "ekikaran"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "revolt_of_1857",
+            "level": "chapter",
+            "nameEn": "Revolution of 1857 in Rajasthan",
+            "nameHi": "राजस्थान में 1857 की क्रांति",
+            "aliases": ["1857 ki kranti", "nasirabad chhavni", "auwa", "kota vidroh"],
+            "objectives": [
+              "Describe the causes, centres, leaders and results of the revolt of 1857 in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "causes_1857",
+                "level": "topic",
+                "nameEn": "Causes and Background",
+                "nameHi": "कारण एवं पृष्ठभूमि",
+                "aliases": ["kranti ke karan", "british niti", "AGG"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "centres_1857",
+                "level": "topic",
+                "nameEn": "Main Centres (Nasirabad, Neemuch, Erinpura, Auwa, Kota)",
+                "nameHi": "प्रमुख केंद्र (नसीराबाद, नीमच, एरिनपुरा, आउवा, कोटा)",
+                "aliases": ["nasirabad", "erinpura", "auwa", "kota", "neemuch"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "leaders_1857",
+                "level": "topic",
+                "nameEn": "Leaders (Kushal Singh, Jaidayal, Mehrab Khan, Tantia Tope)",
+                "nameHi": "प्रमुख नेता (ठाकुर कुशालसिंह, जयदयाल, मेहराब खान, तात्या टोपे)",
+                "aliases": ["kushal singh champawat", "jaidayal", "mehrab khan", "tantya tope"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "results_1857",
+                "level": "topic",
+                "nameEn": "Role of Princely States and Consequences",
+                "nameHi": "रियासतों की भूमिका एवं परिणाम",
+                "aliases": ["kranti ke parinam", "riyasaton ki bhumika"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "political_awakening",
+            "level": "chapter",
+            "nameEn": "Political Awakening",
+            "nameHi": "राजनीतिक जागृति",
+            "aliases": ["rajnitik jagriti", "rashtriya chetna", "political awakening rajasthan"],
+            "objectives": [
+              "Explain the factors, revolutionaries, organisations and press behind political awakening in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "factors_awakening",
+                "level": "topic",
+                "nameEn": "Factors of Political Awakening",
+                "nameHi": "राजनीतिक जागृति के कारक",
+                "aliases": ["arya samaj", "dayanand saraswati", "shiksha prasar", "jagriti ke karan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "revolutionaries",
+                "level": "topic",
+                "nameEn": "Revolutionary Activities in Rajasthan",
+                "nameHi": "राजस्थान में क्रांतिकारी गतिविधियाँ",
+                "aliases": [
+                  "arjun lal sethi",
+                  "kesari singh barahat",
+                  "rao gopal singh kharwa",
+                  "pratap singh barahat"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "political_organisations",
+                "level": "topic",
+                "nameEn": "Political Organisations (Rajasthan Seva Sangh, Rajputana Madhya Bharat Sabha)",
+                "nameHi": "राजनीतिक संगठन (राजस्थान सेवा संघ, राजपूताना मध्य भारत सभा)",
+                "aliases": ["rajasthan seva sangh", "vijay singh pathik", "rajputana madhya bharat sabha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "press_journalism",
+                "level": "topic",
+                "nameEn": "Newspapers and Journalism",
+                "nameHi": "समाचार पत्र एवं पत्रकारिता",
+                "aliases": ["tarun rajasthan", "naveen rajasthan", "rajasthan kesari", "rajputana gazette"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "prajamandal_movements",
+            "level": "chapter",
+            "nameEn": "Prajamandal Movements",
+            "nameHi": "प्रजामंडल आंदोलन",
+            "aliases": ["prajamandal", "praja mandal andolan", "riyasati andolan", "haripura adhiveshan"],
+            "objectives": [
+              "Describe the Prajamandal movements of the princely states and the Quit India movement in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "jaipur_prajamandal",
+                "level": "topic",
+                "nameEn": "Jaipur Prajamandal",
+                "nameHi": "जयपुर प्रजामंडल",
+                "aliases": ["jamnalal bajaj", "hiralal shastri", "jaipur praja mandal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "marwar",
+                "level": "topic",
+                "nameEn": "Marwar Prajamandal and Lok Parishad",
+                "nameHi": "मारवाड़ प्रजामंडल एवं लोक परिषद",
+                "aliases": ["jai narayan vyas", "marwar lok parishad", "marwar hitkarini sabha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mewar_prajamandal",
+                "level": "topic",
+                "nameEn": "Mewar Prajamandal",
+                "nameHi": "मेवाड़ प्रजामंडल",
+                "aliases": ["manikya lal verma", "balwant singh mehta", "mewar praja mandal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "bikaner_prajamandal",
+                "level": "topic",
+                "nameEn": "Bikaner Prajamandal",
+                "nameHi": "बीकानेर प्रजामंडल",
+                "aliases": ["raghuvar dayal goyal", "magharam vaidya", "bikaner shadyantra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_prajamandals",
+                "level": "topic",
+                "nameEn": "Other Prajamandals (Kota, Bharatpur, Alwar, Shekhawati and others)",
+                "nameHi": "अन्य प्रजामंडल (कोटा, भरतपुर, अलवर, शेखावाटी आदि)",
+                "aliases": [
+                  "kota prajamandal",
+                  "nayanuram sharma",
+                  "bharatpur prajamandal",
+                  "alwar prajamandal"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "quit_india_rajasthan",
+                "level": "topic",
+                "nameEn": "Quit India Movement in Rajasthan",
+                "nameHi": "राजस्थान में भारत छोड़ो आंदोलन",
+                "aliases": ["bharat chhodo andolan", "1942 rajasthan", "azad morcha"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "peasant_movements",
+            "level": "chapter",
+            "nameEn": "Peasant Movements",
+            "nameHi": "किसान आंदोलन",
+            "aliases": ["kisan andolan", "krishak andolan", "peasant movement rajasthan"],
+            "objectives": ["Describe the leaders, causes and results of the peasant movements of Rajasthan"],
+            "children": [
+              {
+                "code": "bijolia",
+                "level": "topic",
+                "nameEn": "Bijolia Peasant Movement",
+                "nameHi": "बिजौलिया किसान आंदोलन",
+                "aliases": ["bijoliya", "sitaram das", "vijay singh pathik", "manikya lal verma"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "begun",
+                "level": "topic",
+                "nameEn": "Begun Peasant Movement",
+                "nameHi": "बेगूं किसान आंदोलन",
+                "aliases": ["begu", "ramnarayan chaudhary", "trench commission"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "shekhawati",
+                "level": "topic",
+                "nameEn": "Shekhawati Peasant Movement",
+                "nameHi": "शेखावाटी किसान आंदोलन",
+                "aliases": ["shekhawati kisan", "kundan hatyakand", "jat prajapati maha yagya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "alwar_neemuchana",
+                "level": "topic",
+                "nameEn": "Alwar Movement and Neemuchana Massacre",
+                "nameHi": "अलवर आंदोलन एवं नीमूचणा हत्याकांड",
+                "aliases": ["neemuchana", "neemuchana hatyakand", "alwar kisan andolan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_peasant_movements",
+                "level": "topic",
+                "nameEn": "Other Peasant Movements (Bundi, Marwar, Bikaner, Mewat)",
+                "nameHi": "अन्य किसान आंदोलन (बूंदी, मारवाड़, बीकानेर, मेवात)",
+                "aliases": ["bundi kisan andolan", "dabra kand", "dudhwa khara", "meo kisan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "tribal_movements",
+            "level": "chapter",
+            "nameEn": "Tribal Movements",
+            "nameHi": "जनजातीय आंदोलन",
+            "aliases": ["adivasi andolan", "janjati andolan", "bhil andolan", "tribal movement rajasthan"],
+            "objectives": ["Describe the Bhagat, Eki, Meena and other tribal movements of Rajasthan"],
+            "children": [
+              {
+                "code": "bhagat_movement",
+                "level": "topic",
+                "nameEn": "Govind Guru and the Bhagat Movement (Mangarh)",
+                "nameHi": "गोविंद गुरु एवं भगत आंदोलन (मानगढ़)",
+                "aliases": ["govind guru", "mangarh dham", "samp sabha", "bhagat andolan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "eki_movement",
+                "level": "topic",
+                "nameEn": "Motilal Tejawat and the Eki Movement",
+                "nameHi": "मोतीलाल तेजावत एवं एकी आंदोलन",
+                "aliases": ["eki andolan", "motilal tejawat", "neemda hatyakand", "bhomat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "meena_movement",
+                "level": "topic",
+                "nameEn": "Meena Movement",
+                "nameHi": "मीणा आंदोलन",
+                "aliases": ["meena andolan", "jarayam pesha kanoon", "meena kshetriya mahasabha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_tribal_movements",
+                "level": "topic",
+                "nameEn": "Other Tribal Movements and Social Work among Tribals",
+                "nameHi": "अन्य जनजातीय आंदोलन एवं जनजातियों में समाज सेवा",
+                "aliases": ["bhogilal pandya", "kali bai", "dungarpur seva sangh", "mewar bhil corps"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "integration",
+            "level": "chapter",
+            "nameEn": "Integration of Rajasthan",
+            "nameHi": "राजस्थान का एकीकरण",
+            "aliases": ["ekikaran", "rajasthan ekikaran", "riyasaton ka vilay", "integration of rajasthan"],
+            "objectives": [
+              "Trace the seven stages of integration of Rajasthan (1948-1956) and the role of its leaders"
+            ],
+            "children": [
+              {
+                "code": "princely_states_1947",
+                "level": "topic",
+                "nameEn": "Princely States and Chiefships at Independence",
+                "nameHi": "स्वतंत्रता के समय रियासतें एवं ठिकाने",
+                "aliases": ["19 riyasaten", "3 thikane", "ajmer merwara", "kushalgarh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stages_of_integration",
+                "level": "topic",
+                "nameEn": "Stages of Integration (1948-1950)",
+                "nameHi": "एकीकरण के चरण (1948-1950)",
+                "aliases": ["matsya sangh", "sanyukt rajasthan", "vrihat rajasthan", "saat charan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reorganisation_1956",
+                "level": "topic",
+                "nameEn": "Final Stage: Reorganisation of 1 November 1956",
+                "nameHi": "अंतिम चरण: 1 नवंबर 1956 का पुनर्गठन",
+                "aliases": ["rajya punargathan", "abu delwara", "sunel tappa", "1 november 1956"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "leaders_of_integration",
+                "level": "topic",
+                "nameEn": "Role of Sardar Patel and Other Leaders",
+                "nameHi": "सरदार पटेल एवं अन्य नेताओं की भूमिका",
+                "aliases": ["sardar patel", "hiralal shastri", "rajpramukh", "vp menon"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "art_culture",
+        "level": "unit",
+        "nameEn": "Art and Culture of Rajasthan",
+        "nameHi": "राजस्थान की कला एवं संस्कृति",
+        "aliases": ["rajasthan ki sanskriti", "kala sanskriti", "society and religion", "samaj evam dharm"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "folk_deities",
+            "level": "chapter",
+            "nameEn": "Folk Deities (Lok Devta and Lok Deviyan)",
+            "nameHi": "लोक देवता एवं लोक देवियाँ",
+            "aliases": ["lok devta", "lok deviyan", "folk deities", "panch peer"],
+            "objectives": [
+              "Identify the folk deities and goddesses of Rajasthan, their shrines, fairs and legends"
+            ],
+            "children": [
+              {
+                "code": "panch_peer",
+                "level": "topic",
+                "nameEn": "Panch Peer (Pabuji, Harbuji, Ramdevji, Gogaji, Mehaji)",
+                "nameHi": "पंच पीर (पाबूजी, हड़बूजी, रामदेवजी, गोगाजी, मेहाजी)",
+                "aliases": ["pabuji", "ramdevji", "gogaji", "harbuji", "mehaji mangaliya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tejaji_devnarayanji",
+                "level": "topic",
+                "nameEn": "Tejaji and Devnarayanji",
+                "nameHi": "तेजाजी एवं देवनारायणजी",
+                "aliases": ["veer tejaji", "devnarayan ki phad", "kala bala ke devta", "sursura"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_lok_devta",
+                "level": "topic",
+                "nameEn": "Other Folk Deities (Mallinath, Kallaji, Bhomiyaji, Biggaji, Tallinath)",
+                "nameHi": "अन्य लोक देवता (मल्लीनाथ, कल्लाजी, भोमियाजी, बिग्गाजी, तल्लीनाथ)",
+                "aliases": ["mallinath ji", "kallaji rathore", "bhomiya ji", "biggaji", "devbaba"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lok_deviyan",
+                "level": "topic",
+                "nameEn": "Folk Goddesses (Karni Mata, Kaila Devi, Jeen Mata, Shila Devi, Sheetla Mata)",
+                "nameHi": "लोक देवियाँ (करणी माता, कैला देवी, जीण माता, शिला देवी, शीतला माता)",
+                "aliases": ["karni mata", "kaila devi", "jeen mata", "sheetla mata", "kuldevi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "saints_sects",
+            "level": "chapter",
+            "nameEn": "Saints and Sects",
+            "nameHi": "संत एवं संप्रदाय",
+            "aliases": ["sant", "sampraday", "saints of rajasthan", "panth"],
+            "objectives": [
+              "Describe the saints and religious sects of Rajasthan, their teachings and principal seats"
+            ],
+            "children": [
+              {
+                "code": "mirabai",
+                "level": "topic",
+                "nameEn": "Mirabai",
+                "nameHi": "मीराबाई",
+                "aliases": ["meera", "meerabai", "krishna bhakti", "padavali"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dadu_dayal",
+                "level": "topic",
+                "nameEn": "Dadu Dayal and the Dadu Panth",
+                "nameHi": "दादूदयाल एवं दादू पंथ",
+                "aliases": ["dadu panth", "naraina", "rajasthan ka kabir"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jambhoji_bishnoi",
+                "level": "topic",
+                "nameEn": "Jambhoji and the Bishnoi Sect",
+                "nameHi": "जाम्भोजी एवं बिश्नोई संप्रदाय",
+                "aliases": ["jambheshwar", "bishnoi", "29 niyam", "mukam", "khejarli"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jasnathji",
+                "level": "topic",
+                "nameEn": "Jasnathji and the Jasnathi Sect",
+                "nameHi": "जसनाथजी एवं जसनाथी संप्रदाय",
+                "aliases": ["jasnath ji", "katariasar", "agni nritya", "jasnathi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ramsnehi_sect",
+                "level": "topic",
+                "nameEn": "Ramsnehi Sect",
+                "nameHi": "रामस्नेही संप्रदाय",
+                "aliases": ["ramsnehi", "shahpura", "rain", "sinthal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_saints",
+                "level": "topic",
+                "nameEn": "Other Saints (Peepa, Dhanna, Laldas, Charandas, Sundardas, Ranabai)",
+                "nameHi": "अन्य संत (पीपा, धन्ना, लालदास, चरणदास, सुंदरदास, रानाबाई)",
+                "aliases": ["sant peepa", "dhanna bhagat", "laldasi", "charandasi", "ranabai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sufi_saints",
+                "level": "topic",
+                "nameEn": "Sufi Saints and Other Religious Traditions",
+                "nameHi": "सूफी संत एवं अन्य धार्मिक परंपराएँ",
+                "aliases": [
+                  "khwaja moinuddin chishti",
+                  "ajmer dargah",
+                  "hamiduddin nagauri",
+                  "nath sampraday"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "temples",
+            "level": "chapter",
+            "nameEn": "Temples and Religious Architecture",
+            "nameHi": "मंदिर एवं धार्मिक स्थापत्य",
+            "aliases": ["mandir", "mandir sthapatya", "temples of rajasthan", "sthapatya kala"],
+            "objectives": [
+              "Describe temple architecture styles and the major temples and shrines of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "temple_styles",
+                "level": "topic",
+                "nameEn": "Temple Architecture Styles (Maha-Maru, Nagara)",
+                "nameHi": "मंदिर स्थापत्य शैलियाँ (महामारू, नागर)",
+                "aliases": ["maha maru shaili", "gurjar pratihar shaili", "nagar shaili", "panchayatan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "jain_temples",
+                "level": "topic",
+                "nameEn": "Jain Temples (Dilwara, Ranakpur)",
+                "nameHi": "जैन मंदिर (दिलवाड़ा, रणकपुर)",
+                "aliases": ["dilwara", "ranakpur", "jain mandir", "lodurva"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "early_medieval_temples",
+                "level": "topic",
+                "nameEn": "Early Medieval Temples (Osian, Kiradu, Abhaneri, Baroli)",
+                "nameHi": "पूर्व मध्यकालीन मंदिर (ओसियाँ, किराडू, आभानेरी, बाड़ौली)",
+                "aliases": ["osian", "kiradu", "harshat mata", "baroli"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pilgrimage_centres",
+                "level": "topic",
+                "nameEn": "Major Pilgrimage Centres",
+                "nameHi": "प्रमुख तीर्थ स्थल",
+                "aliases": ["pushkar brahma mandir", "nathdwara", "eklingji", "galta ji"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "mosques_dargahs",
+                "level": "topic",
+                "nameEn": "Mosques and Dargahs",
+                "nameHi": "मस्जिदें एवं दरगाहें",
+                "aliases": ["adhai din ka jhonpra", "ajmer sharif", "dargah", "masjid"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "forts_palaces",
+            "level": "chapter",
+            "nameEn": "Forts, Palaces and Monuments",
+            "nameHi": "दुर्ग, महल एवं स्मारक",
+            "aliases": ["kile", "durg", "mahal", "forts of rajasthan"],
+            "objectives": [
+              "Classify the forts of Rajasthan and identify its major forts, palaces, havelis and monuments"
+            ],
+            "children": [
+              {
+                "code": "fort_classification",
+                "level": "topic",
+                "nameEn": "Classification of Forts",
+                "nameHi": "दुर्गों का वर्गीकरण",
+                "aliases": ["giri durg", "jal durg", "dhanva durg", "shukraniti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hill_forts_heritage",
+                "level": "topic",
+                "nameEn": "Hill Forts of Rajasthan (World Heritage)",
+                "nameHi": "राजस्थान के पहाड़ी दुर्ग (विश्व धरोहर)",
+                "aliases": ["chittorgarh", "kumbhalgarh", "gagron", "sonar kila", "amer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_forts",
+                "level": "topic",
+                "nameEn": "Other Major Forts",
+                "nameHi": "अन्य प्रमुख दुर्ग",
+                "aliases": ["mehrangarh", "junagarh", "taragarh", "nahargarh", "lohagarh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "palaces",
+                "level": "topic",
+                "nameEn": "Palaces",
+                "nameHi": "महल एवं प्रासाद",
+                "aliases": ["hawa mahal", "city palace", "umaid bhawan", "lalgarh", "jal mahal"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "havelis",
+                "level": "topic",
+                "nameEn": "Havelis",
+                "nameHi": "हवेलियाँ",
+                "aliases": [
+                  "patwon ki haveli",
+                  "shekhawati haveli",
+                  "nathmal ki haveli",
+                  "salim singh ki haveli"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chhatris_monuments",
+                "level": "topic",
+                "nameEn": "Chhatris, Towers and Other Monuments",
+                "nameHi": "छतरियाँ, स्तंभ एवं अन्य स्मारक",
+                "aliases": ["vijay stambh", "kirti stambh", "jaswant thada", "chhatri", "jantar mantar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stepwells",
+                "level": "topic",
+                "nameEn": "Stepwells and Water Structures",
+                "nameHi": "बावड़ियाँ एवं जल स्थापत्य",
+                "aliases": ["baori", "chand baori", "raniji ki baori", "kund"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "paintings",
+            "level": "chapter",
+            "nameEn": "Paintings: Various Schools",
+            "nameHi": "चित्रकला: विभिन्न शैलियाँ",
+            "aliases": ["chitrakala", "rajasthani chitrakala", "rajasthani painting", "chitra shaili"],
+            "objectives": ["Identify the schools and sub-schools of Rajasthani painting and their features"],
+            "children": [
+              {
+                "code": "mewar_school",
+                "level": "topic",
+                "nameEn": "Mewar School (Udaipur, Nathdwara, Chawand, Deogarh)",
+                "nameHi": "मेवाड़ शैली (उदयपुर, नाथद्वारा, चावंड, देवगढ़)",
+                "aliases": ["mewar shaili", "nathdwara shaili", "chawand shaili", "deogarh shaili"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "marwar_school",
+                "level": "topic",
+                "nameEn": "Marwar School (Jodhpur, Bikaner, Kishangarh, Nagaur)",
+                "nameHi": "मारवाड़ शैली (जोधपुर, बीकानेर, किशनगढ़, नागौर)",
+                "aliases": ["kishangarh shaili", "bani thani", "bikaner shaili", "jodhpur shaili"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dhundhar_school",
+                "level": "topic",
+                "nameEn": "Dhundhar School (Amer, Jaipur, Alwar, Shekhawati)",
+                "nameHi": "ढूँढाड़ शैली (आमेर, जयपुर, अलवर, शेखावाटी)",
+                "aliases": ["jaipur shaili", "alwar shaili", "dhundhar shaili", "amer shaili"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "hadoti_school",
+                "level": "topic",
+                "nameEn": "Hadoti School (Bundi, Kota)",
+                "nameHi": "हाड़ौती शैली (बूंदी, कोटा)",
+                "aliases": ["bundi shaili", "kota shaili", "shikar drishya", "hadoti shaili"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "folk_paintings",
+                "level": "topic",
+                "nameEn": "Folk Paintings (Phad, Pichhwai, Mandana, Sanjhi, Kavad)",
+                "nameHi": "लोक चित्रकला (फड़, पिछवाई, मांडणा, सांझी, कावड़)",
+                "aliases": ["phad", "pichhwai", "mandana", "sanjhi", "kavad"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wall_paintings_modern",
+                "level": "topic",
+                "nameEn": "Wall Paintings and Modern Painters",
+                "nameHi": "भित्ति चित्र एवं आधुनिक चित्रकार",
+                "aliases": ["aaraish", "fresco", "bhitti chitra", "shekhawati bhitti chitra"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "fairs_festivals",
+            "level": "chapter",
+            "nameEn": "Fairs and Festivals",
+            "nameHi": "मेले एवं त्योहार",
+            "aliases": ["mele", "tyohar", "utsav", "fairs and festivals"],
+            "objectives": [
+              "Identify the religious, cattle, tribal and tourism fairs and the festivals of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "religious_fairs",
+                "level": "topic",
+                "nameEn": "Religious Fairs",
+                "nameHi": "धार्मिक मेले",
+                "aliases": ["pushkar mela", "ramdevra mela", "kaila devi mela", "ajmer urs"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cattle_fairs",
+                "level": "topic",
+                "nameEn": "Cattle Fairs",
+                "nameHi": "पशु मेले",
+                "aliases": [
+                  "pashu mela",
+                  "tejaji pashu mela",
+                  "ramdev pashu mela nagaur",
+                  "pushkar pashu mela"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tribal_fairs",
+                "level": "topic",
+                "nameEn": "Tribal Fairs",
+                "nameHi": "जनजातीय मेले",
+                "aliases": ["beneshwar mela", "adivasiyon ka kumbh", "gautameshwar", "sitabari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "festivals",
+                "level": "topic",
+                "nameEn": "Festivals (Gangaur, Teej, Sheetla Ashtami)",
+                "nameHi": "त्योहार (गणगौर, तीज, शीतलाष्टमी)",
+                "aliases": ["gangaur", "teej", "akha teej", "sheetla ashtami"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tourism_festivals",
+                "level": "topic",
+                "nameEn": "Tourism Festivals",
+                "nameHi": "पर्यटन उत्सव",
+                "aliases": ["maru mahotsav", "desert festival", "camel festival", "kite festival"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "customs_traditions",
+            "level": "chapter",
+            "nameEn": "Customs and Traditions",
+            "nameHi": "रीति-रिवाज एवं परंपराएँ",
+            "aliases": ["riti riwaj", "pratha", "sanskar", "customs of rajasthan"],
+            "objectives": [
+              "Describe the life-cycle rituals, social customs and reform of social evils in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "sanskaras",
+                "level": "topic",
+                "nameEn": "Sanskaras and Life-cycle Rituals",
+                "nameHi": "संस्कार एवं जीवन-चक्र अनुष्ठान",
+                "aliases": ["sanskar", "vivah ke riti riwaj", "jadula", "mayra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "social_customs",
+                "level": "topic",
+                "nameEn": "Social Customs and Practices",
+                "nameHi": "सामाजिक प्रथाएँ",
+                "aliases": ["mausar", "nata pratha", "bandholiya", "tika"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "social_reforms",
+                "level": "topic",
+                "nameEn": "Social Evils and Reform Measures",
+                "nameHi": "सामाजिक कुप्रथाएँ एवं सुधार",
+                "aliases": [
+                  "sati pratha",
+                  "dakan pratha",
+                  "samadhi pratha",
+                  "walterkrit rajputra hitkarini sabha"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cuisine_lifestyle",
+                "level": "topic",
+                "nameEn": "Cuisine, Folk Beliefs and Lifestyle",
+                "nameHi": "खान-पान, लोक विश्वास एवं जीवनशैली",
+                "aliases": ["dal bati churma", "ghevar", "khanpan", "lok vishwas"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "dress_ornaments",
+            "level": "chapter",
+            "nameEn": "Dresses and Ornaments",
+            "nameHi": "वेशभूषा एवं आभूषण",
+            "aliases": ["veshbhusha", "abhushan", "gahne", "costumes and jewellery"],
+            "objectives": [
+              "Identify the traditional male, female and tribal dresses and ornaments of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "male_attire",
+                "level": "topic",
+                "nameEn": "Male Attire (Pagdi, Angarkhi, Dhoti)",
+                "nameHi": "पुरुष परिधान (पगड़ी, अंगरखी, धोती)",
+                "aliases": ["pagdi", "safa", "angarkhi", "jama"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "female_attire",
+                "level": "topic",
+                "nameEn": "Female Attire (Odhni, Ghaghra, Kanchli)",
+                "nameHi": "स्त्री परिधान (ओढ़नी, घाघरा, कांचली)",
+                "aliases": ["odhni", "lahariya", "pomcha", "peela", "ghaghra"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tribal_attire",
+                "level": "topic",
+                "nameEn": "Tribal Dresses",
+                "nameHi": "जनजातीय वेशभूषा",
+                "aliases": ["ludi", "jhulki", "tribal dress"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ornaments",
+                "level": "topic",
+                "nameEn": "Ornaments",
+                "nameHi": "आभूषण",
+                "aliases": ["borla", "rakhdi", "timaniya", "hansli", "bajuband"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "handicrafts",
+            "level": "chapter",
+            "nameEn": "Handicrafts",
+            "nameHi": "हस्तशिल्प",
+            "aliases": ["hastshilp", "dastkari", "handicrafts of rajasthan", "GI tag rajasthan"],
+            "objectives": ["Identify the handicrafts of Rajasthan and their centres"],
+            "children": [
+              {
+                "code": "textile_crafts",
+                "level": "topic",
+                "nameEn": "Textile Printing, Dyeing and Weaving (Bandhej, Sanganeri, Bagru, Dabu)",
+                "nameHi": "वस्त्र छपाई, रंगाई एवं बुनाई (बंधेज, सांगानेरी, बगरू, दाबू)",
+                "aliases": ["bandhej", "bagru print", "sanganeri print", "ajrakh", "dabu"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "pottery_terracotta",
+                "level": "topic",
+                "nameEn": "Pottery and Terracotta (Blue Pottery, Molela)",
+                "nameHi": "मृद्भांड एवं टेराकोटा (ब्लू पॉटरी, मोलेला)",
+                "aliases": ["blue pottery", "molela", "terracotta", "kagzi pottery"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "metal_jewellery_crafts",
+                "level": "topic",
+                "nameEn": "Metal and Jewellery Crafts (Meenakari, Thewa, Kundan, Koftgari)",
+                "nameHi": "धातु एवं आभूषण शिल्प (मीनाकारी, थेवा, कुंदन, कोफ्तगिरी)",
+                "aliases": ["thewa kala", "meenakari", "koftgari", "kundan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "wood_lac_crafts",
+                "level": "topic",
+                "nameEn": "Wood, Lac and Toy Crafts",
+                "nameHi": "काष्ठ, लाख एवं खिलौना शिल्प",
+                "aliases": ["lakh ka kaam", "kavad", "bassi", "kathputli banana"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "leather_stone_crafts",
+                "level": "topic",
+                "nameEn": "Leather, Usta and Stone Crafts",
+                "nameHi": "चमड़ा, उस्ता एवं पत्थर शिल्प",
+                "aliases": ["usta kala", "mojari", "jootiyan", "stone carving"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "folk_music",
+            "level": "chapter",
+            "nameEn": "Folk Music and Musical Instruments",
+            "nameHi": "लोक संगीत एवं लोक वाद्य",
+            "aliases": ["lok sangeet", "lok geet", "lok vadya", "folk music"],
+            "objectives": [
+              "Identify the folk songs, singing communities, instruments and music traditions of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "folk_songs",
+                "level": "topic",
+                "nameEn": "Folk Songs",
+                "nameHi": "लोक गीत",
+                "aliases": ["panihari", "moomal", "kurjan", "gorband", "maand"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "singing_communities",
+                "level": "topic",
+                "nameEn": "Professional Singing Communities (Langa, Manganiyar, Dholi, Mirasi)",
+                "nameHi": "पेशेवर गायक जातियाँ (लंगा, मांगणियार, ढोली, मिरासी)",
+                "aliases": ["langa", "manganiyar", "mirasi", "dholi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "musical_instruments",
+                "level": "topic",
+                "nameEn": "Folk Musical Instruments",
+                "nameHi": "लोक वाद्य यंत्र",
+                "aliases": ["ravanhattha", "kamaycha", "algoza", "morchang", "nagada"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "classical_music",
+                "level": "topic",
+                "nameEn": "Classical Music Traditions and Gharanas",
+                "nameHi": "शास्त्रीय संगीत परंपरा एवं घराने",
+                "aliases": ["jaipur gharana", "sangeet raj", "dhrupad", "maand gayan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "folk_dance_performing_arts",
+            "level": "chapter",
+            "nameEn": "Folk Dance and Performing Arts",
+            "nameHi": "लोक नृत्य एवं प्रदर्शनकारी कलाएँ",
+            "aliases": ["lok nritya", "lok natya", "folk dance", "performing arts"],
+            "objectives": [
+              "Identify the regional, professional and tribal dances, folk dramas and puppetry of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "regional_dances",
+                "level": "topic",
+                "nameEn": "Regional Folk Dances (Ghoomar, Gair, Kachhi Ghodi, Chang)",
+                "nameHi": "क्षेत्रीय लोक नृत्य (घूमर, गैर, कच्छी घोड़ी, चंग)",
+                "aliases": ["ghoomar", "gair", "kachhi ghodi", "chang nritya", "dhol nritya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "professional_dances",
+                "level": "topic",
+                "nameEn": "Professional Dances (Kalbeliya, Bhavai, Terah Taali, Chari)",
+                "nameHi": "व्यावसायिक लोक नृत्य (कालबेलिया, भवाई, तेरहताली, चरी)",
+                "aliases": ["kalbeliya", "bhavai", "terah taali", "chari nritya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "tribal_dances",
+                "level": "topic",
+                "nameEn": "Tribal Dances",
+                "nameHi": "जनजातीय नृत्य",
+                "aliases": ["valar", "ghoomra", "lur", "gauri nritya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "folk_drama",
+                "level": "topic",
+                "nameEn": "Folk Drama (Khyal, Rammat, Tamasha, Swang, Gavari)",
+                "nameHi": "लोक नाट्य (ख्याल, रम्मत, तमाशा, स्वांग, गवरी)",
+                "aliases": ["khyal", "rammat", "tamasha", "swang", "gavari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "puppetry_narrative_arts",
+                "level": "topic",
+                "nameEn": "Puppetry and Narrative Arts (Kathputli, Phad Vachan)",
+                "nameHi": "कठपुतली एवं कथा-वाचन कलाएँ (फड़ वाचन)",
+                "aliases": ["kathputli", "phad vachan", "kavad vachan", "bhopa"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "language_literature",
+            "level": "chapter",
+            "nameEn": "Language and Literature",
+            "nameHi": "भाषा एवं साहित्य",
+            "aliases": ["rajasthani bhasha", "boliyan", "rajasthani sahitya", "rajasthani literature"],
+            "objectives": [
+              "Describe the Rajasthani language and dialects and the major forms, works and writers of its literature"
+            ],
+            "children": [
+              {
+                "code": "rajasthani_dialects",
+                "level": "topic",
+                "nameEn": "Rajasthani Language and Dialects",
+                "nameHi": "राजस्थानी भाषा एवं बोलियाँ",
+                "aliases": ["marwari", "dhundhari", "mewati", "hadoti boli", "wagdi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "dingal_pingal",
+                "level": "topic",
+                "nameEn": "Dingal and Pingal",
+                "nameHi": "डिंगल एवं पिंगल",
+                "aliases": ["dingal", "pingal", "charan sahitya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "raso_literature",
+                "level": "topic",
+                "nameEn": "Raso Literature",
+                "nameHi": "रासो साहित्य",
+                "aliases": ["prithviraj raso", "bisaldev raso", "khuman raso", "hammir raso"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "prose_forms",
+                "level": "topic",
+                "nameEn": "Prose Forms (Khyat, Vat, Vachanika, Vigat)",
+                "nameHi": "गद्य विधाएँ (ख्यात, वात, वचनिका, विगत)",
+                "aliases": ["khyat", "vat", "vachanika", "vigat", "davavait"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "writers_works",
+                "level": "topic",
+                "nameEn": "Major Writers and Works",
+                "nameHi": "प्रमुख साहित्यकार एवं कृतियाँ",
+                "aliases": ["suryamal mishran", "vansh bhaskar", "kanhaiyalal sethia", "vijaydan detha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "modern_literature",
+                "level": "topic",
+                "nameEn": "Modern Literature and Literary Institutions",
+                "nameHi": "आधुनिक साहित्य एवं साहित्यिक संस्थाएँ",
+                "aliases": [
+                  "rajasthan sahitya akademi",
+                  "rajasthani bhasha manyata",
+                  "aadhunik rajasthani sahitya"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "leading_personalities",
+            "level": "chapter",
+            "nameEn": "Leading Personalities of Rajasthan",
+            "nameHi": "राजस्थान के प्रमुख व्यक्तित्व",
+            "aliases": ["pramukh vyaktitva", "famous personalities of rajasthan", "vibhutiyan"],
+            "objectives": ["Identify the leading personalities of Rajasthan and their contributions"],
+            "children": [
+              {
+                "code": "freedom_fighters_reformers",
+                "level": "topic",
+                "nameEn": "Freedom Fighters and Social Reformers",
+                "nameHi": "स्वतंत्रता सेनानी एवं समाज सुधारक",
+                "aliases": ["swatantrata senani", "samaj sudharak", "gokulbhai bhatt", "haribhau upadhyay"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "women_personalities",
+                "level": "topic",
+                "nameEn": "Women Personalities",
+                "nameHi": "प्रमुख महिला व्यक्तित्व",
+                "aliases": ["panna dhay", "hadi rani", "amrita devi bishnoi", "kali bai"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "political_public_figures",
+                "level": "topic",
+                "nameEn": "Political and Public Figures",
+                "nameHi": "राजनीतिक एवं सार्वजनिक व्यक्तित्व",
+                "aliases": ["mohanlal sukhadia", "bhairon singh shekhawat", "aadhunik rajasthan ke nirmata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "artists_performers",
+                "level": "topic",
+                "nameEn": "Artists, Musicians and Performers",
+                "nameHi": "कलाकार, संगीतज्ञ एवं प्रस्तुतकर्ता",
+                "aliases": ["kalakar", "gulabo sapera", "allah jilai bai", "sangeetagya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "writers_scholars",
+                "level": "topic",
+                "nameEn": "Writers, Scholars and Scientists",
+                "nameHi": "साहित्यकार, विद्वान एवं वैज्ञानिक",
+                "aliases": ["sahityakar", "vidwan", "komal kothari", "vaigyanik"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "polity_administration",
+        "level": "unit",
+        "nameEn": "Political and Administrative System of Rajasthan",
+        "nameHi": "राजस्थान की राजनीतिक एवं प्रशासनिक व्यवस्था",
+        "aliases": ["rajasthan polity", "rajya prashasan", "rajasthan rajvyavastha"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "governor",
+            "level": "chapter",
+            "nameEn": "Governor",
+            "nameHi": "राज्यपाल",
+            "aliases": ["rajyapal", "governor of rajasthan", "rajyapal ki shaktiyan"],
+            "objectives": ["Explain the appointment, powers and role of the Governor"],
+            "children": [
+              {
+                "code": "appointment_tenure",
+                "level": "topic",
+                "nameEn": "Appointment, Qualifications and Tenure",
+                "nameHi": "नियुक्ति, योग्यता एवं कार्यकाल",
+                "aliases": ["rajyapal niyukti", "anuchchhed 155", "article 156"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "powers_functions",
+                "level": "topic",
+                "nameEn": "Powers and Functions",
+                "nameHi": "शक्तियाँ एवं कार्य",
+                "aliases": ["rajyapal ki shaktiyan", "adhyadesh", "kshamadan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "discretionary_role",
+                "level": "topic",
+                "nameEn": "Discretionary Powers and Role",
+                "nameHi": "विवेकाधीन शक्तियाँ एवं भूमिका",
+                "aliases": ["vivekadhikar", "article 356", "rashtrapati shasan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "cm_council",
+            "level": "chapter",
+            "nameEn": "Chief Minister and Council of Ministers",
+            "nameHi": "मुख्यमंत्री एवं मंत्रिपरिषद",
+            "aliases": ["mukhyamantri", "mantriparishad", "cabinet", "CM of rajasthan"],
+            "objectives": [
+              "Explain the position, powers and functions of the Chief Minister and the Council of Ministers"
+            ],
+            "children": [
+              {
+                "code": "chief_minister",
+                "level": "topic",
+                "nameEn": "Chief Minister: Appointment, Powers and Role",
+                "nameHi": "मुख्यमंत्री: नियुक्ति, शक्तियाँ एवं भूमिका",
+                "aliases": ["mukhyamantri ki shaktiyan", "pratham mukhyamantri", "CM"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "council_of_ministers",
+                "level": "topic",
+                "nameEn": "Council of Ministers and Cabinet",
+                "nameHi": "मंत्रिपरिषद एवं मंत्रिमंडल",
+                "aliases": ["mantriparishad", "mantrimandal", "samuhik uttardayitva"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cm_governor_relations",
+                "level": "topic",
+                "nameEn": "Chief Minister's Office and Relations with the Governor",
+                "nameHi": "मुख्यमंत्री कार्यालय एवं राज्यपाल से संबंध",
+                "aliases": ["CMO", "article 167", "rajyapal mukhyamantri sambandh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "legislative_assembly",
+            "level": "chapter",
+            "nameEn": "State Legislative Assembly",
+            "nameHi": "राज्य विधानसभा",
+            "aliases": ["vidhan sabha", "rajasthan vidhan sabha", "vidhayak", "MLA"],
+            "objectives": [
+              "Describe the composition, presiding officers, functions and committees of the Rajasthan Legislative Assembly"
+            ],
+            "children": [
+              {
+                "code": "composition",
+                "level": "topic",
+                "nameEn": "Composition and Elections",
+                "nameHi": "गठन एवं निर्वाचन",
+                "aliases": ["200 seats", "vidhan sabha gathan", "aarakshit seat"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "speaker",
+                "level": "topic",
+                "nameEn": "Speaker and Deputy Speaker",
+                "nameHi": "अध्यक्ष एवं उपाध्यक्ष",
+                "aliases": ["vidhan sabha adhyaksh", "speaker", "upadhyaksh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "powers_procedure",
+                "level": "topic",
+                "nameEn": "Powers, Sessions and Legislative Procedure",
+                "nameHi": "शक्तियाँ, सत्र एवं विधायी प्रक्रिया",
+                "aliases": ["vidheyak", "bill", "satra", "budget"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "assembly_committees",
+                "level": "topic",
+                "nameEn": "Assembly Committees",
+                "nameHi": "विधानसभा समितियाँ",
+                "aliases": ["lok lekha samiti", "PAC", "samitiyan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "judiciary",
+            "level": "chapter",
+            "nameEn": "High Court and Subordinate Courts",
+            "nameHi": "उच्च न्यायालय एवं अधीनस्थ न्यायालय",
+            "aliases": ["uchch nyayalay", "rajasthan high court", "nyaypalika", "jodhpur high court"],
+            "objectives": ["Describe the Rajasthan High Court, subordinate courts and legal services"],
+            "children": [
+              {
+                "code": "high_court",
+                "level": "topic",
+                "nameEn": "Rajasthan High Court",
+                "nameHi": "राजस्थान उच्च न्यायालय",
+                "aliases": ["jodhpur", "jaipur bench", "high court 1949"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "subordinate_courts",
+                "level": "topic",
+                "nameEn": "Subordinate Courts",
+                "nameHi": "अधीनस्थ न्यायालय",
+                "aliases": ["jila nyayalay", "district court", "adhinasth nyayalay"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "legal_services",
+                "level": "topic",
+                "nameEn": "Rajasthan State Legal Services Authority and Lok Adalats",
+                "nameHi": "राजस्थान राज्य विधिक सेवा प्राधिकरण एवं लोक अदालत",
+                "aliases": ["RSLSA", "lok adalat", "nishulk vidhik sahayata", "free legal aid"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "state_administration",
+            "level": "chapter",
+            "nameEn": "State Secretariat and District Administration",
+            "nameHi": "राज्य सचिवालय एवं जिला प्रशासन",
+            "aliases": ["rajya prashasan", "sachivalay", "jila prashasan", "district administration"],
+            "objectives": [
+              "Describe the organisation of the State Secretariat, the Chief Secretary, the Divisional Commissioner and district administration"
+            ],
+            "children": [
+              {
+                "code": "state_secretariat",
+                "level": "topic",
+                "nameEn": "State Secretariat",
+                "nameHi": "राज्य सचिवालय",
+                "aliases": ["sachivalay", "secretariat", "vibhag"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "chief_secretary",
+                "level": "topic",
+                "nameEn": "Chief Secretary",
+                "nameHi": "मुख्य सचिव",
+                "aliases": ["mukhya sachiv", "chief secretary"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "divisional_commissioner",
+                "level": "topic",
+                "nameEn": "Divisional Commissioner",
+                "nameHi": "संभागीय आयुक्त",
+                "aliases": ["sambhagiya ayukt", "divisional commissioner"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "district_administration",
+                "level": "topic",
+                "nameEn": "District Collector and District Administration",
+                "nameHi": "जिला कलेक्टर एवं जिला प्रशासन",
+                "aliases": ["jila collector", "zila prashasan", "SDO", "tehsildar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "panchayati_raj",
+            "level": "chapter",
+            "nameEn": "Panchayati Raj",
+            "nameHi": "पंचायती राज",
+            "aliases": ["panchayati raj", "gram panchayat", "sthaniya swashasan", "rural local government"],
+            "objectives": [
+              "Explain the evolution, structure, functions and finances of Panchayati Raj in Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "evolution",
+                "level": "topic",
+                "nameEn": "Evolution and Committees (Nagaur, 1959)",
+                "nameHi": "विकास एवं समितियाँ (नागौर, 1959)",
+                "aliases": [
+                  "nagaur 1959",
+                  "balwant rai mehta",
+                  "sadiq ali samiti",
+                  "girdhari lal vyas samiti"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "act_1994",
+                "level": "topic",
+                "nameEn": "73rd Amendment and Rajasthan Panchayati Raj Act, 1994",
+                "nameHi": "73वाँ संविधान संशोधन एवं राजस्थान पंचायती राज अधिनियम, 1994",
+                "aliases": ["73va sanshodhan", "panchayati raj adhiniyam 1994", "aarakshan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "three_tiers",
+                "level": "topic",
+                "nameEn": "Gram Panchayat, Panchayat Samiti and Zila Parishad",
+                "nameHi": "ग्राम पंचायत, पंचायत समिति एवं जिला परिषद",
+                "aliases": ["sarpanch", "panchayat samiti", "zila parishad", "pradhan", "zila pramukh"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gram_sabha",
+                "level": "topic",
+                "nameEn": "Gram Sabha and Ward Sabha",
+                "nameHi": "ग्राम सभा एवं वार्ड सभा",
+                "aliases": ["gram sabha", "ward sabha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "administration_finance",
+                "level": "topic",
+                "nameEn": "Panchayat Administration and Finance",
+                "nameHi": "पंचायती राज प्रशासन एवं वित्त",
+                "aliases": ["vikas adhikari", "BDO", "CEO zila parishad", "panchayat finance"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "urban_local_government",
+            "level": "chapter",
+            "nameEn": "Urban Local Self-Government",
+            "nameHi": "नगरीय स्थानीय स्वशासन",
+            "aliases": ["nagar nigam", "nagar palika", "urban local bodies", "shahri swashasan"],
+            "objectives": ["Describe the structure and administration of urban local bodies in Rajasthan"],
+            "children": [
+              {
+                "code": "urban_bodies",
+                "level": "topic",
+                "nameEn": "Municipal Corporations, Councils and Boards",
+                "nameHi": "नगर निगम, नगर परिषद एवं नगरपालिका",
+                "aliases": ["nagar nigam", "nagar parishad", "nagar palika", "mahapaur"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "act_2009",
+                "level": "topic",
+                "nameEn": "74th Amendment and Rajasthan Municipalities Act, 2009",
+                "nameHi": "74वाँ संविधान संशोधन एवं राजस्थान नगरपालिका अधिनियम, 2009",
+                "aliases": ["74va sanshodhan", "nagarpalika adhiniyam 2009"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "development_authorities",
+                "level": "topic",
+                "nameEn": "Development Authorities and Urban Improvement Trusts",
+                "nameHi": "विकास प्राधिकरण एवं नगर विकास न्यास",
+                "aliases": ["JDA", "UIT", "nagar vikas nyas", "vikas pradhikaran"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "state_commissions",
+            "level": "chapter",
+            "nameEn": "State Commissions and Statutory Bodies",
+            "nameHi": "राज्य आयोग एवं वैधानिक संस्थाएँ",
+            "aliases": ["rajya aayog", "commissions of rajasthan", "RPSC", "lokayukta"],
+            "objectives": [
+              "Describe the composition and functions of the RPSC, state commissions and the Lokayukta"
+            ],
+            "children": [
+              {
+                "code": "rpsc",
+                "level": "topic",
+                "nameEn": "Rajasthan Public Service Commission",
+                "nameHi": "राजस्थान लोक सेवा आयोग",
+                "aliases": ["RPSC", "lok seva aayog", "ajmer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "state_election_commission",
+                "level": "topic",
+                "nameEn": "State Election Commission",
+                "nameHi": "राज्य निर्वाचन आयोग",
+                "aliases": ["rajya nirvachan aayog", "SEC", "panchayat chunav"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "state_finance_commission",
+                "level": "topic",
+                "nameEn": "State Finance Commission",
+                "nameHi": "राज्य वित्त आयोग",
+                "aliases": ["rajya vitt aayog", "SFC", "article 243I"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "women_commission",
+                "level": "topic",
+                "nameEn": "Rajasthan State Commission for Women",
+                "nameHi": "राजस्थान राज्य महिला आयोग",
+                "aliases": ["mahila aayog", "women commission"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "human_rights_commission",
+                "level": "topic",
+                "nameEn": "Rajasthan State Human Rights Commission",
+                "nameHi": "राजस्थान राज्य मानवाधिकार आयोग",
+                "aliases": ["manavadhikar aayog", "SHRC", "RSHRC"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "lokayukta",
+                "level": "topic",
+                "nameEn": "Lokayukta",
+                "nameHi": "लोकायुक्त",
+                "aliases": ["lokayukt", "lokayukta adhiniyam 1973", "bhrashtachar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "other_commissions",
+                "level": "topic",
+                "nameEn": "Other Commissions (Information, Child Rights, SC/ST)",
+                "nameHi": "अन्य आयोग (सूचना, बाल अधिकार, अनुसूचित जाति/जनजाति)",
+                "aliases": ["rajya suchna aayog", "bal adhikar sanrakshan aayog", "RTI"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "economy_schemes",
+        "level": "unit",
+        "nameEn": "Economy and Development Schemes of Rajasthan",
+        "nameHi": "राजस्थान की अर्थव्यवस्था एवं विकास योजनाएँ",
+        "aliases": ["rajasthan economy", "rajasthan ki yojanaen", "arthvyavastha"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "economy_overview",
+            "level": "chapter",
+            "nameEn": "Economy of Rajasthan: Overview and Indicators",
+            "nameHi": "राजस्थान की अर्थव्यवस्था: परिदृश्य एवं संकेतक",
+            "aliases": ["arthvyavastha", "GSDP", "aarthik samiksha", "rajasthan budget"],
+            "objectives": [
+              "Summarise the state domestic product, budget and social and economic indicators of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "gsdp_sectors",
+                "level": "topic",
+                "nameEn": "State Domestic Product and Sectoral Composition",
+                "nameHi": "राज्य घरेलू उत्पाद एवं क्षेत्रवार संरचना",
+                "aliases": ["GSDP", "sakal rajya gharelu utpad", "prati vyakti aay"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "state_budget",
+                "level": "topic",
+                "nameEn": "State Budget and Finances",
+                "nameHi": "राज्य बजट एवं वित्त",
+                "aliases": ["rajya budget", "rajasthan budget", "rajkoshiya ghata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "indicators",
+                "level": "topic",
+                "nameEn": "Social and Economic Indicators",
+                "nameHi": "सामाजिक एवं आर्थिक संकेतक",
+                "aliases": ["aarthik sanketak", "HDI", "garibi", "berojgari"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "economic_review",
+                "level": "topic",
+                "nameEn": "Economic Review of Rajasthan",
+                "nameHi": "राजस्थान आर्थिक समीक्षा",
+                "aliases": ["aarthik samiksha", "economic review", "economic survey"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "welfare_schemes",
+            "level": "chapter",
+            "nameEn": "Welfare and Development Schemes",
+            "nameHi": "कल्याणकारी एवं विकास योजनाएँ",
+            "aliases": ["yojanaen", "sarkari yojana", "flagship schemes", "rajasthan ki yojanaen"],
+            "objectives": [
+              "Identify the state's flagship welfare and development schemes and their target groups"
+            ],
+            "children": [
+              {
+                "code": "health_schemes",
+                "level": "topic",
+                "nameEn": "Health and Hygiene Schemes",
+                "nameHi": "स्वास्थ्य एवं स्वच्छता योजनाएँ",
+                "aliases": ["MAA yojana", "nishulk dawa yojana", "swasthya bima", "swachhata"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "education_youth_schemes",
+                "level": "topic",
+                "nameEn": "Education and Youth Schemes",
+                "nameHi": "शिक्षा एवं युवा योजनाएँ",
+                "aliases": ["chhatravritti", "scooty yojana", "shiksha yojana", "laptop yojana"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "women_child_schemes",
+                "level": "topic",
+                "nameEn": "Women Empowerment and Child Development Schemes",
+                "nameHi": "महिला सशक्तीकरण एवं बाल विकास योजनाएँ",
+                "aliases": ["lado protsahan", "mahila sashaktikaran", "rajshri yojana", "anganwadi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "social_security_schemes",
+                "level": "topic",
+                "nameEn": "Social Security and Pension Schemes",
+                "nameHi": "सामाजिक सुरक्षा एवं पेंशन योजनाएँ",
+                "aliases": ["pension yojana", "palanhar yojana", "jan aadhaar", "samajik suraksha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "farmer_rural_schemes",
+                "level": "topic",
+                "nameEn": "Farmer and Rural Development Schemes",
+                "nameHi": "किसान एवं ग्रामीण विकास योजनाएँ",
+                "aliases": ["kisan yojana", "gramin vikas", "MGNREGA", "krishi yojana"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "urban_employment_schemes",
+                "level": "topic",
+                "nameEn": "Urban Development, Food and Employment Schemes",
+                "nameHi": "शहरी विकास, खाद्य एवं रोजगार योजनाएँ",
+                "aliases": ["shahri rozgar", "annapurna rasoi", "awas yojana", "khadya suraksha"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "skill_startup_investment",
+            "level": "chapter",
+            "nameEn": "Skill Development, Startups and Investment",
+            "nameHi": "कौशल विकास, स्टार्टअप एवं निवेश",
+            "aliases": ["kaushal vikas", "startup", "nivesh", "skill development rajasthan"],
+            "objectives": [
+              "Describe skill development, startup and investment promotion initiatives of Rajasthan"
+            ],
+            "children": [
+              {
+                "code": "skill_development",
+                "level": "topic",
+                "nameEn": "Skill Development Programmes",
+                "nameHi": "कौशल विकास कार्यक्रम",
+                "aliases": ["RSLDC", "kaushal vikas", "skill university"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "startup_innovation",
+                "level": "topic",
+                "nameEn": "Startup and Innovation Initiatives",
+                "nameHi": "स्टार्टअप एवं नवाचार पहल",
+                "aliases": ["iStart", "startup niti", "techno hub", "navachar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "investment_promotion",
+                "level": "topic",
+                "nameEn": "Investment Promotion and Industrial Policies",
+                "nameHi": "निवेश प्रोत्साहन एवं औद्योगिक नीतियाँ",
+                "aliases": ["RIPS", "rising rajasthan", "audyogik niti", "investment summit"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "current_affairs",
+        "level": "unit",
+        "nameEn": "Current Affairs of Rajasthan",
+        "nameHi": "राजस्थान की समसामयिकी",
+        "aliases": ["rajasthan current affairs", "samsamayiki", "rajasthan ki samsamayik ghatnayen"],
+        "objectives": [],
+        "children": [
+          {
+            "code": "persons_places_events",
+            "level": "chapter",
+            "nameEn": "Persons, Places and Events in News",
+            "nameHi": "चर्चित व्यक्ति, स्थान एवं घटनाएँ",
+            "aliases": [
+              "charchit vyakti",
+              "charchit sthal",
+              "current events rajasthan",
+              "samsamayik ghatnayen"
+            ],
+            "objectives": ["Recall recent persons, places, events and issues of state-level importance"],
+            "children": [
+              {
+                "code": "persons_in_news",
+                "level": "topic",
+                "nameEn": "Persons in News and Appointments",
+                "nameHi": "चर्चित व्यक्ति एवं नियुक्तियाँ",
+                "aliases": ["charchit vyakti", "niyuktiyan", "appointments"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "places_in_news",
+                "level": "topic",
+                "nameEn": "Places in News",
+                "nameHi": "चर्चित स्थल",
+                "aliases": ["charchit sthal", "places in news"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "events_issues",
+                "level": "topic",
+                "nameEn": "Current Events and Issues",
+                "nameHi": "समसामयिक घटनाएँ एवं मुद्दे",
+                "aliases": ["ghatnayen", "mudde", "current issues"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "science_environment_news",
+                "level": "topic",
+                "nameEn": "Science, Technology and Environment in News",
+                "nameHi": "विज्ञान, प्रौद्योगिकी एवं पर्यावरण संबंधी समसामयिकी",
+                "aliases": ["vigyan samachar", "paryavaran samachar", "science news rajasthan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "political_economic_developments",
+            "level": "chapter",
+            "nameEn": "Economic and Political Developments",
+            "nameHi": "आर्थिक एवं राजनीतिक घटनाक्रम",
+            "aliases": ["aarthik rajnitik ghatnakram", "economic political dynamics", "rajasthan news"],
+            "objectives": ["Recall recent political, administrative and economic developments in Rajasthan"],
+            "children": [
+              {
+                "code": "political_developments",
+                "level": "topic",
+                "nameEn": "Political and Administrative Developments",
+                "nameHi": "राजनीतिक एवं प्रशासनिक घटनाक्रम",
+                "aliases": ["chunav", "naye jile", "rajnitik ghatnakram", "elections"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "economic_developments",
+                "level": "topic",
+                "nameEn": "Economic Developments",
+                "nameHi": "आर्थिक घटनाक्रम",
+                "aliases": ["budget ghoshnayen", "nivesh", "aarthik ghatnakram"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "new_laws_policies",
+                "level": "topic",
+                "nameEn": "New Laws, Policies and Initiatives",
+                "nameHi": "नए कानून, नीतियाँ एवं पहल",
+                "aliases": ["naye kanoon", "nai niti", "state policy"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "sports",
+            "level": "chapter",
+            "nameEn": "Sports and Games",
+            "nameHi": "खेलकूद",
+            "aliases": ["khel", "sports rajasthan", "khiladi", "khelkud"],
+            "objectives": ["Recall the sportspersons, sporting events and sports institutions of Rajasthan"],
+            "children": [
+              {
+                "code": "sportspersons",
+                "level": "topic",
+                "nameEn": "Sportspersons of Rajasthan",
+                "nameHi": "राजस्थान के खिलाड़ी",
+                "aliases": ["khiladi", "athletes", "paralympians"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sports_events",
+                "level": "topic",
+                "nameEn": "Sports Events and Achievements",
+                "nameHi": "खेल आयोजन एवं उपलब्धियाँ",
+                "aliases": ["khel aayojan", "khelo india", "rajasthan games"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "sports_institutions",
+                "level": "topic",
+                "nameEn": "Sports Policy, Awards and Institutions",
+                "nameHi": "खेल नीति, पुरस्कार एवं संस्थाएँ",
+                "aliases": ["rajasthan rajya krida parishad", "sports council", "khel puraskar"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "awards_books",
+            "level": "chapter",
+            "nameEn": "Awards, Books and Authors",
+            "nameHi": "पुरस्कार, पुस्तकें एवं लेखक",
+            "aliases": ["puraskar", "samman", "pustak lekhak", "awards rajasthan"],
+            "objectives": [
+              "Recall recent awards and honours to persons of Rajasthan, and recent books and authors"
+            ],
+            "children": [
+              {
+                "code": "state_awards",
+                "level": "topic",
+                "nameEn": "State Awards and Honours",
+                "nameHi": "राज्य स्तरीय पुरस्कार एवं सम्मान",
+                "aliases": ["rajasthan ratna", "rajya puraskar", "samman"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "national_honours",
+                "level": "topic",
+                "nameEn": "National Honours to People of Rajasthan",
+                "nameHi": "राजस्थान के व्यक्तियों को राष्ट्रीय सम्मान",
+                "aliases": ["padma puraskar", "padma shri", "rashtriya puraskar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "books_authors",
+                "level": "topic",
+                "nameEn": "Books and Authors",
+                "nameHi": "पुस्तकें एवं लेखक",
+                "aliases": ["pustaken", "lekhak", "books and authors"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

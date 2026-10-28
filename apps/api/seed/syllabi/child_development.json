@@ -1,0 +1,1202 @@
+{
+  "subject": {
+    "code": "child_development",
+    "level": "subject",
+    "nameEn": "Child Development and Pedagogy",
+    "nameHi": "बाल विकास एवं शिक्षण विधियाँ",
+    "aliases": [
+      "CDP",
+      "bal vikas",
+      "bal vikas evam shikshan vidhiyan",
+      "child development and pedagogy",
+      "bal manovigyan"
+    ],
+    "objectives": [],
+    "children": [
+      {
+        "code": "development",
+        "level": "unit",
+        "nameEn": "Child Development",
+        "nameHi": "बाल विकास",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "growth_and_development",
+            "level": "chapter",
+            "nameEn": "Growth and Development",
+            "nameHi": "वृद्धि एवं विकास",
+            "aliases": ["vriddhi evam vikas", "growth and development", "vikas ki sankalpana"],
+            "objectives": [
+              "Explain the concept, dimensions and principles of development and how development relates to learning"
+            ],
+            "children": [
+              {
+                "code": "concept_of_development",
+                "level": "topic",
+                "nameEn": "Concept of Growth and Development",
+                "nameHi": "वृद्धि एवं विकास की संकल्पना",
+                "aliases": ["vriddhi aur vikas mein antar", "growth vs development"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "principles_of_development",
+                "level": "topic",
+                "nameEn": "Principles of Development",
+                "nameHi": "विकास के सिद्धान्त",
+                "aliases": ["vikas ke siddhant", "cephalocaudal", "proximodistal", "continuity principle"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "stages_of_development",
+                "level": "topic",
+                "nameEn": "Stages of Development",
+                "nameHi": "विकास की अवस्थाएँ",
+                "aliases": [
+                  "shaishavavastha",
+                  "balyavastha",
+                  "kishoravastha",
+                  "infancy childhood adolescence"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factors_affecting_development",
+                "level": "topic",
+                "nameEn": "Factors Affecting Development: Family and School",
+                "nameHi": "विकास को प्रभावित करने वाले कारक: परिवार एवं विद्यालय",
+                "aliases": ["vikas ko prabhavit karne wale karak", "role of family and school"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "development_and_learning",
+                "level": "topic",
+                "nameEn": "Relationship between Development and Learning",
+                "nameHi": "विकास एवं अधिगम का सम्बन्ध",
+                "aliases": ["vikas aur adhigam", "development and learning"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "heredity_and_environment",
+            "level": "chapter",
+            "nameEn": "Heredity and Environment",
+            "nameHi": "वंशानुक्रम एवं वातावरण",
+            "aliases": ["vanshanukram evam vatavaran", "nature and nurture", "anuvanshikta"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "heredity",
+                "level": "topic",
+                "nameEn": "Heredity: Concept and Principles",
+                "nameHi": "वंशानुक्रम: संकल्पना एवं नियम",
+                "aliases": ["vanshanukram", "mendel", "genes", "anuvanshikta"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "environment",
+                "level": "topic",
+                "nameEn": "Environment: Concept and Types",
+                "nameHi": "वातावरण: संकल्पना एवं प्रकार",
+                "aliases": ["vatavaran", "social environment", "samajik vatavaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "relative_role",
+                "level": "topic",
+                "nameEn": "Relative Role of Heredity and Environment",
+                "nameHi": "वंशानुक्रम एवं वातावरण की सापेक्ष भूमिका",
+                "aliases": ["nature vs nurture", "twin studies", "prakriti banam palan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "educational_implications",
+                "level": "topic",
+                "nameEn": "Educational Implications of Heredity and Environment",
+                "nameHi": "वंशानुक्रम एवं वातावरण के शैक्षिक निहितार्थ",
+                "aliases": ["shaikshik nihitarth", "role of teacher"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "dimensions_of_development",
+            "level": "chapter",
+            "nameEn": "Dimensions of Development",
+            "nameHi": "विकास के आयाम",
+            "aliases": ["vikas ke aayam", "aspects of development", "dimensions of development"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "physical_development",
+                "level": "topic",
+                "nameEn": "Physical and Motor Development",
+                "nameHi": "शारीरिक एवं गामक विकास",
+                "aliases": ["sharirik vikas", "gamak vikas", "motor development"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cognitive_development",
+                "level": "topic",
+                "nameEn": "Cognitive Development",
+                "nameHi": "संज्ञानात्मक विकास",
+                "aliases": ["sangyanatmak vikas", "mansik vikas", "mental development"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "social_development",
+                "level": "topic",
+                "nameEn": "Social Development",
+                "nameHi": "सामाजिक विकास",
+                "aliases": ["samajik vikas", "socialisation", "samajikaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "emotional_development",
+                "level": "topic",
+                "nameEn": "Emotional Development",
+                "nameHi": "संवेगात्मक विकास",
+                "aliases": ["samvegatmak vikas", "sanveg", "emotions"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "moral_development",
+                "level": "topic",
+                "nameEn": "Moral Development",
+                "nameHi": "नैतिक विकास",
+                "aliases": ["naitik vikas", "moral development"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "language_development",
+                "level": "topic",
+                "nameEn": "Language Development",
+                "nameHi": "भाषा विकास",
+                "aliases": ["bhasha vikas", "language acquisition", "chomsky LAD"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "development_theories",
+            "level": "chapter",
+            "nameEn": "Theories of Child Development",
+            "nameHi": "बाल विकास के सिद्धान्त",
+            "aliases": ["piaget kohlberg vygotsky", "bal vikas ke siddhant", "developmental theories"],
+            "objectives": [
+              "Apply Piaget's, Vygotsky's, Kohlberg's and Erikson's theories to classroom situations"
+            ],
+            "children": [
+              {
+                "code": "piaget_cognitive_theory",
+                "level": "topic",
+                "nameEn": "Piaget's Theory of Cognitive Development",
+                "nameHi": "पियाजे का संज्ञानात्मक विकास सिद्धान्त",
+                "aliases": [
+                  "piaget",
+                  "piyaje",
+                  "schema assimilation accommodation",
+                  "sensorimotor stage",
+                  "concrete operational"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "vygotsky_sociocultural_theory",
+                "level": "topic",
+                "nameEn": "Vygotsky's Sociocultural Theory",
+                "nameHi": "वाइगोत्स्की का सामाजिक-सांस्कृतिक सिद्धान्त",
+                "aliases": [
+                  "vygotsky",
+                  "ZPD",
+                  "zone of proximal development",
+                  "scaffolding",
+                  "private speech"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "kohlberg_moral_theory",
+                "level": "topic",
+                "nameEn": "Kohlberg's Theory of Moral Development",
+                "nameHi": "कोहलबर्ग का नैतिक विकास सिद्धान्त",
+                "aliases": ["kohlberg", "naitik vikas ke star", "heinz dilemma"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "erikson_psychosocial_theory",
+                "level": "topic",
+                "nameEn": "Erikson's Psychosocial Theory",
+                "nameHi": "एरिक्सन का मनोसामाजिक विकास सिद्धान्त",
+                "aliases": ["erikson", "manosamajik vikas", "trust vs mistrust"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "freud_psychosexual_theory",
+                "level": "topic",
+                "nameEn": "Freud's Psychosexual Theory",
+                "nameHi": "फ्रायड का मनोलैंगिक विकास सिद्धान्त",
+                "aliases": ["freud", "manolaingik vikas", "id ego superego"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "individual_differences",
+        "level": "unit",
+        "nameEn": "Individual Differences, Personality and Intelligence",
+        "nameHi": "व्यक्तिगत विभिन्नताएँ, व्यक्तित्व एवं बुद्धि",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "individual_differences",
+            "level": "chapter",
+            "nameEn": "Individual Differences",
+            "nameHi": "व्यक्तिगत विभिन्नताएँ",
+            "aliases": ["vyaktigat vibhinnata", "vyaktigat bhinnata", "individual differences"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "meaning_and_types",
+                "level": "topic",
+                "nameEn": "Meaning and Types of Individual Differences",
+                "nameHi": "व्यक्तिगत विभिन्नताओं का अर्थ एवं प्रकार",
+                "aliases": ["vyaktigat bhinnata ka arth", "types of individual differences"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factors",
+                "level": "topic",
+                "nameEn": "Factors Affecting Individual Differences",
+                "nameHi": "व्यक्तिगत विभिन्नताओं को प्रभावित करने वाले कारक",
+                "aliases": ["vyaktigat bhinnata ke karan", "causes of individual differences"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "understanding_differences",
+                "level": "topic",
+                "nameEn": "Understanding and Addressing Individual Differences",
+                "nameHi": "व्यक्तिगत विभिन्नताओं की समझ एवं शैक्षिक प्रावधान",
+                "aliases": ["differentiated teaching", "ability grouping", "shaikshik pravdhan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "personality",
+            "level": "chapter",
+            "nameEn": "Personality",
+            "nameHi": "व्यक्तित्व",
+            "aliases": ["vyaktitva", "personality", "vyaktitva ke prakar"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "concept_of_personality",
+                "level": "topic",
+                "nameEn": "Concept of Personality",
+                "nameHi": "व्यक्तित्व की संकल्पना",
+                "aliases": ["vyaktitva ka arth", "persona"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "types_of_personality",
+                "level": "topic",
+                "nameEn": "Types of Personality",
+                "nameHi": "व्यक्तित्व के प्रकार",
+                "aliases": ["jung", "introvert extrovert", "antarmukhi bahirmukhi", "sheldon", "kretschmer"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "trait_and_psychoanalytic_theories",
+                "level": "topic",
+                "nameEn": "Trait and Psychoanalytic Theories",
+                "nameHi": "शीलगुण एवं मनोविश्लेषणात्मक सिद्धान्त",
+                "aliases": ["allport", "cattell", "big five", "freud id ego superego"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factors_shaping_personality",
+                "level": "topic",
+                "nameEn": "Factors Shaping Personality",
+                "nameHi": "व्यक्तित्व को प्रभावित करने वाले कारक",
+                "aliases": ["vyaktitva ko prabhavit karne wale karak", "determinants of personality"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "measurement_of_personality",
+                "level": "topic",
+                "nameEn": "Measurement of Personality",
+                "nameHi": "व्यक्तित्व का मापन",
+                "aliases": ["projective tests", "TAT", "CAT", "rorschach", "prakshepi parikshan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "intelligence",
+            "level": "chapter",
+            "nameEn": "Intelligence",
+            "nameHi": "बुद्धि",
+            "aliases": ["buddhi", "intelligence", "IQ"],
+            "objectives": [
+              "Explain theories and measurement of intelligence and the classroom implications of multiple intelligences"
+            ],
+            "children": [
+              {
+                "code": "concept_of_intelligence",
+                "level": "topic",
+                "nameEn": "Concept of Intelligence",
+                "nameHi": "बुद्धि की संकल्पना",
+                "aliases": ["buddhi ka arth", "definition of intelligence"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "theories_of_intelligence",
+                "level": "topic",
+                "nameEn": "Theories of Intelligence",
+                "nameHi": "बुद्धि के सिद्धान्त",
+                "aliases": ["spearman two factor", "thurstone", "guilford", "sternberg"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "multiple_intelligences",
+                "level": "topic",
+                "nameEn": "Multiple Intelligences and Implications",
+                "nameHi": "बहुबुद्धि सिद्धान्त एवं इसके निहितार्थ",
+                "aliases": [
+                  "gardner",
+                  "bahubuddhi",
+                  "multiple intelligence",
+                  "multidimensional intelligence"
+                ],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "measurement_of_intelligence",
+                "level": "topic",
+                "nameEn": "Measurement of Intelligence and IQ",
+                "nameHi": "बुद्धि का मापन एवं बुद्धिलब्धि",
+                "aliases": ["buddhi labdhi", "IQ", "binet", "intelligence tests"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "emotional_intelligence",
+                "level": "topic",
+                "nameEn": "Emotional Intelligence",
+                "nameHi": "संवेगात्मक बुद्धि",
+                "aliases": ["EQ", "goleman", "samvegatmak buddhi"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "diverse_learners",
+        "level": "unit",
+        "nameEn": "Diverse Learners, Inclusion and Adjustment",
+        "nameHi": "विविध अधिगमकर्ता, समावेशन एवं समायोजन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "understanding_diverse_learners",
+            "level": "chapter",
+            "nameEn": "Understanding Diverse Learners",
+            "nameHi": "विविध अधिगमकर्ताओं की समझ",
+            "aliases": ["vividh adhigamkarta", "diverse learners", "vishisht balak", "exceptional children"],
+            "objectives": ["Identify the needs of diverse learners and plan suitable classroom support"],
+            "children": [
+              {
+                "code": "backward_children",
+                "level": "topic",
+                "nameEn": "Backward Children and Slow Learners",
+                "nameHi": "पिछड़े बालक एवं मंद अधिगमकर्ता",
+                "aliases": ["pichhde balak", "slow learners", "mand adhigamkarta"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "intellectual_disability",
+                "level": "topic",
+                "nameEn": "Children with Intellectual Disability",
+                "nameHi": "मानसिक रूप से विमंदित बालक",
+                "aliases": ["vimandit", "mentally retarded", "mansik mandta", "intellectual disability"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gifted_children",
+                "level": "topic",
+                "nameEn": "Gifted Children",
+                "nameHi": "प्रतिभाशाली बालक",
+                "aliases": ["pratibhashali", "gifted", "talented"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "creative_children",
+                "level": "topic",
+                "nameEn": "Creative Children",
+                "nameHi": "सृजनशील बालक",
+                "aliases": ["srijanshil", "creativity", "srijanatmakta"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "disadvantaged_deprived",
+                "level": "topic",
+                "nameEn": "Disadvantaged and Deprived Children",
+                "nameHi": "अलाभान्वित एवं वंचित बालक",
+                "aliases": ["alabhanvit", "vanchit varg", "disadvantaged", "deprived"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cwsn",
+                "level": "topic",
+                "nameEn": "Children with Special Needs (CWSN)",
+                "nameHi": "विशेष आवश्यकता वाले बच्चे",
+                "aliases": ["CWSN", "divyang", "specially abled", "vishesh aavashyakta"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "learning_difficulties",
+            "level": "chapter",
+            "nameEn": "Learning Disabilities and Difficulties",
+            "nameHi": "अधिगम अक्षमता एवं अधिगम कठिनाइयाँ",
+            "aliases": ["adhigam kathinaiyan", "learning difficulties", "adhigam akshamata"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "learning_disabilities",
+                "level": "topic",
+                "nameEn": "Learning Disabilities: Dyslexia, Dysgraphia, Dyscalculia",
+                "nameHi": "अधिगम अक्षमताएँ: डिस्लेक्सिया, डिस्ग्राफिया, डिस्कैलकुलिया",
+                "aliases": ["dyslexia", "dysgraphia", "dyscalculia", "learning disability"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "causes_of_difficulties",
+                "level": "topic",
+                "nameEn": "Causes of Learning Difficulties",
+                "nameHi": "अधिगम कठिनाइयों के कारण",
+                "aliases": ["adhigam kathinai ke karan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "identification_and_remediation",
+                "level": "topic",
+                "nameEn": "Identification, Diagnosis and Remedial Teaching",
+                "nameHi": "पहचान, निदान एवं उपचारात्मक शिक्षण",
+                "aliases": [
+                  "nidanatmak parikshan",
+                  "upcharatmak shikshan",
+                  "remedial teaching",
+                  "diagnostic test"
+                ],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "inclusive_education",
+            "level": "chapter",
+            "nameEn": "Inclusive Education",
+            "nameHi": "समावेशी शिक्षा",
+            "aliases": ["samaveshi shiksha", "inclusion", "inclusive classroom"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "concept_of_inclusion",
+                "level": "topic",
+                "nameEn": "Concept and Principles of Inclusive Education",
+                "nameHi": "समावेशी शिक्षा की संकल्पना एवं सिद्धान्त",
+                "aliases": ["samaveshi shiksha ka arth", "integrated vs inclusive"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "inclusive_practices",
+                "level": "topic",
+                "nameEn": "Inclusive Classroom Practices",
+                "nameHi": "समावेशी कक्षा-कक्ष प्रथाएँ",
+                "aliases": ["IEP", "UDL", "peer tutoring", "differentiated instruction"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "legal_provisions",
+                "level": "topic",
+                "nameEn": "Legal Provisions for Children with Disabilities",
+                "nameHi": "दिव्यांग बच्चों हेतु वैधानिक प्रावधान",
+                "aliases": ["RPwD act 2016", "21 disabilities", "divyangjan adhikar adhiniyam"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "adjustment",
+            "level": "chapter",
+            "nameEn": "Adjustment",
+            "nameHi": "समायोजन",
+            "aliases": ["samayojan", "adjustment", "kusamayojan"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "concept_of_adjustment",
+                "level": "topic",
+                "nameEn": "Concept of Adjustment",
+                "nameHi": "समायोजन की संकल्पना",
+                "aliases": ["samayojan ka arth", "well adjusted child"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ways_of_adjustment",
+                "level": "topic",
+                "nameEn": "Ways of Adjustment and Defence Mechanisms",
+                "nameHi": "समायोजन के तरीके एवं रक्षा युक्तियाँ",
+                "aliases": ["raksha yuktiyan", "defence mechanisms", "rationalisation", "projection"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "maladjustment",
+                "level": "topic",
+                "nameEn": "Maladjustment: Causes and Symptoms",
+                "nameHi": "कुसमायोजन: कारण एवं लक्षण",
+                "aliases": ["kusamayojan", "maladjustment", "conflict frustration"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teacher_role_in_adjustment",
+                "level": "topic",
+                "nameEn": "Role of the Teacher in Adjustment",
+                "nameHi": "समायोजन में अध्यापक की भूमिका",
+                "aliases": ["adhyapak ki bhumika", "teacher role adjustment"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "learning",
+        "level": "unit",
+        "nameEn": "Learning and Motivation",
+        "nameHi": "अधिगम एवं अभिप्रेरणा",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "learning_concept",
+            "level": "chapter",
+            "nameEn": "Learning: Meaning, Process and Factors",
+            "nameHi": "अधिगम: अर्थ, प्रक्रिया एवं प्रभावित करने वाले कारक",
+            "aliases": ["adhigam", "seekhna", "meaning of learning"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "meaning_of_learning",
+                "level": "topic",
+                "nameEn": "Meaning and Concept of Learning",
+                "nameHi": "अधिगम का अर्थ एवं संकल्पना",
+                "aliases": ["adhigam ka arth", "definition of learning"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "learning_process",
+                "level": "topic",
+                "nameEn": "Learning Process",
+                "nameHi": "अधिगम की प्रक्रिया",
+                "aliases": ["adhigam prakriya", "learning process"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "factors_affecting_learning",
+                "level": "topic",
+                "nameEn": "Factors Affecting Learning",
+                "nameHi": "अधिगम को प्रभावित करने वाले कारक",
+                "aliases": ["adhigam ko prabhavit karne wale karak", "factors of learning"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "learning_curve_and_transfer",
+                "level": "topic",
+                "nameEn": "Learning Curve and Transfer of Learning",
+                "nameHi": "अधिगम वक्र एवं अधिगम स्थानान्तरण",
+                "aliases": ["adhigam vakra", "pathar", "transfer of learning"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "learning_theories",
+            "level": "chapter",
+            "nameEn": "Theories of Learning",
+            "nameHi": "अधिगम के सिद्धान्त",
+            "aliases": [
+              "adhigam ke siddhant",
+              "learning theories",
+              "vyavaharvad gestaltvad sangyanvad nirmitivad"
+            ],
+            "objectives": [
+              "Explain behaviourist, Gestalt, cognitivist and constructivist theories and their classroom implications"
+            ],
+            "children": [
+              {
+                "code": "thorndike_trial_and_error",
+                "level": "topic",
+                "nameEn": "Thorndike's Trial and Error Theory",
+                "nameHi": "थॉर्नडाइक का प्रयास एवं त्रुटि सिद्धान्त",
+                "aliases": ["thorndike", "prayas evam truti", "connectionism", "law of effect"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "classical_conditioning",
+                "level": "topic",
+                "nameEn": "Pavlov's Classical Conditioning",
+                "nameHi": "पावलॉव का शास्त्रीय अनुबन्धन सिद्धान्त",
+                "aliases": ["pavlov", "anukulit anukriya", "shastriya anubandhan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "operant_conditioning",
+                "level": "topic",
+                "nameEn": "Skinner's Operant Conditioning",
+                "nameHi": "स्किनर का क्रियाप्रसूत अनुबन्धन सिद्धान्त",
+                "aliases": ["skinner", "kriyaprasut anubandhan", "reinforcement", "prabalan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "gestalt_insight",
+                "level": "topic",
+                "nameEn": "Gestalt Theory and Insight Learning",
+                "nameHi": "गेस्टाल्ट सिद्धान्त एवं सूझ द्वारा अधिगम",
+                "aliases": ["gestaltvad", "kohler", "antardrishti", "insight"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "social_learning",
+                "level": "topic",
+                "nameEn": "Bandura's Social Learning Theory",
+                "nameHi": "बण्डूरा का सामाजिक अधिगम सिद्धान्त",
+                "aliases": ["bandura", "observational learning", "avlokan adhigam", "anukaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cognitivism",
+                "level": "topic",
+                "nameEn": "Cognitivism: Bruner and Ausubel",
+                "nameHi": "संज्ञानवाद: ब्रूनर एवं ऑसुबेल",
+                "aliases": ["sangyanvad", "bruner discovery learning", "ausubel"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "constructivism",
+                "level": "topic",
+                "nameEn": "Constructivism: Piaget and Vygotsky",
+                "nameHi": "निर्मितिवाद: पियाजे एवं वाइगोत्स्की",
+                "aliases": ["nirmitivad", "rachnavad", "constructivism"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "implications_of_theories",
+                "level": "topic",
+                "nameEn": "Classroom Implications of Learning Theories",
+                "nameHi": "अधिगम सिद्धान्तों के शैक्षिक निहितार्थ",
+                "aliases": ["shaikshik nihitarth", "classroom implications"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "how_children_learn",
+            "level": "chapter",
+            "nameEn": "How Children Learn",
+            "nameHi": "बच्चे कैसे सीखते हैं",
+            "aliases": ["bachche kaise seekhte hain", "learning processes", "how children learn"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "reflection",
+                "level": "topic",
+                "nameEn": "Reflection and Thinking",
+                "nameHi": "चिन्तन",
+                "aliases": ["chintan", "reflective thinking"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "imagination",
+                "level": "topic",
+                "nameEn": "Imagination",
+                "nameHi": "कल्पना",
+                "aliases": ["kalpana", "imagination"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "reasoning_and_argument",
+                "level": "topic",
+                "nameEn": "Reasoning and Argument",
+                "nameHi": "तर्क",
+                "aliases": ["tark", "argument", "reasoning"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "experiential_learning",
+                "level": "topic",
+                "nameEn": "Experiential Learning",
+                "nameHi": "आनुभविक अधिगम",
+                "aliases": ["anubhavik adhigam", "learning by doing", "kar ke seekhna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "concept_mapping",
+                "level": "topic",
+                "nameEn": "Concept Mapping",
+                "nameHi": "संकल्पना मानचित्रण",
+                "aliases": ["sankalpana manchitran", "concept map"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "investigatory_approach",
+                "level": "topic",
+                "nameEn": "Investigatory Approach",
+                "nameHi": "अन्वेषण उपागम",
+                "aliases": ["anveshan", "inquiry", "investigation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "problem_solving",
+                "level": "topic",
+                "nameEn": "Problem Solving",
+                "nameHi": "समस्या समाधान",
+                "aliases": ["samasya samadhan", "problem solving method"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "motivation",
+            "level": "chapter",
+            "nameEn": "Motivation and Learning",
+            "nameHi": "अभिप्रेरणा एवं अधिगम",
+            "aliases": ["abhiprerna", "prerna", "motivation"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "meaning_and_types",
+                "level": "topic",
+                "nameEn": "Meaning and Types of Motivation",
+                "nameHi": "अभिप्रेरणा का अर्थ एवं प्रकार",
+                "aliases": ["abhiprerna ka arth", "intrinsic extrinsic", "antarik bahya abhiprerna"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "theories_of_motivation",
+                "level": "topic",
+                "nameEn": "Theories of Motivation",
+                "nameHi": "अभिप्रेरणा के सिद्धान्त",
+                "aliases": ["maslow", "mcclelland", "need hierarchy", "achievement motivation"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "motivation_and_learning",
+                "level": "topic",
+                "nameEn": "Implications of Motivation for Learning",
+                "nameHi": "अभिप्रेरणा के अधिगम हेतु निहितार्थ",
+                "aliases": ["reward and punishment", "praise", "classroom motivation"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "pedagogy",
+        "level": "unit",
+        "nameEn": "Teaching-Learning and Assessment",
+        "nameHi": "शिक्षण-अधिगम एवं आकलन",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "teaching_learning_process",
+            "level": "chapter",
+            "nameEn": "Teaching-Learning Process",
+            "nameHi": "शिक्षण अधिगम की प्रक्रियाएँ",
+            "aliases": ["shikshan adhigam prakriya", "teaching learning process", "shikshan vidhiyan"],
+            "objectives": ["Choose teaching-learning strategies and methods consistent with NCF 2005"],
+            "children": [
+              {
+                "code": "teaching_concept_and_maxims",
+                "level": "topic",
+                "nameEn": "Teaching: Concept, Principles and Maxims",
+                "nameHi": "शिक्षण: संकल्पना, सिद्धान्त एवं सूत्र",
+                "aliases": ["shikshan sutra", "maxims of teaching", "known to unknown"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "ncf_2005",
+                "level": "topic",
+                "nameEn": "National Curriculum Framework 2005",
+                "nameHi": "राष्ट्रीय पाठ्यचर्या रूपरेखा 2005",
+                "aliases": ["NCF 2005", "rashtriya pathyacharya ruprekha"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teaching_strategies",
+                "level": "topic",
+                "nameEn": "Teaching-Learning Strategies",
+                "nameHi": "शिक्षण अधिगम की व्यूह रचनाएँ",
+                "aliases": ["vyuh rachna", "teaching strategies", "group work"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "child_centred_methods",
+                "level": "topic",
+                "nameEn": "Child-Centred Teaching Methods",
+                "nameHi": "बाल-केन्द्रित शिक्षण विधियाँ",
+                "aliases": ["play way method", "khel vidhi", "project method", "activity based learning"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "assessment_and_evaluation",
+            "level": "chapter",
+            "nameEn": "Assessment, Measurement and Evaluation",
+            "nameHi": "आकलन, मापन एवं मूल्यांकन",
+            "aliases": ["aakalan", "mulyankan", "maapan", "assessment and evaluation"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "concepts_and_purposes",
+                "level": "topic",
+                "nameEn": "Meaning and Purposes of Assessment, Measurement and Evaluation",
+                "nameHi": "आकलन, मापन एवं मूल्यांकन का अर्थ एवं उद्देश्य",
+                "aliases": ["aakalan mapan mulyankan mein antar"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "types_of_assessment",
+                "level": "topic",
+                "nameEn": "Formative and Summative Assessment",
+                "nameHi": "रचनात्मक एवं योगात्मक आकलन",
+                "aliases": ["formative", "summative", "assessment for learning", "rachnatmak yogatmak"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "cce",
+                "level": "topic",
+                "nameEn": "Continuous and Comprehensive Evaluation",
+                "nameHi": "सतत एवं व्यापक मूल्यांकन",
+                "aliases": ["CCE", "samagra evam satat mulyankan", "satat vyapak mulyankan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "achievement_test",
+                "level": "topic",
+                "nameEn": "Construction of Achievement Tests",
+                "nameHi": "उपलब्धि परीक्षण का निर्माण",
+                "aliases": ["uplabdhi parikshan", "blueprint", "achievement test"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "learning_outcomes",
+                "level": "topic",
+                "nameEn": "Learning Outcomes",
+                "nameHi": "सीखने के प्रतिफल",
+                "aliases": ["learning outcomes", "adhigam pratifal", "seekhne ke pratifal"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "action_research",
+            "level": "chapter",
+            "nameEn": "Action Research",
+            "nameHi": "क्रियात्मक अनुसन्धान",
+            "aliases": ["kriyatmak anusandhan", "action research", "stephen corey"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "meaning_and_characteristics",
+                "level": "topic",
+                "nameEn": "Meaning and Characteristics of Action Research",
+                "nameHi": "क्रियात्मक अनुसन्धान का अर्थ एवं विशेषताएँ",
+                "aliases": ["action research meaning", "kriyatmak anusandhan ka arth"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "steps",
+                "level": "topic",
+                "nameEn": "Steps of Action Research",
+                "nameHi": "क्रियात्मक अनुसन्धान के चरण",
+                "aliases": ["sopan", "steps of action research"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "uses_for_teachers",
+                "level": "topic",
+                "nameEn": "Uses of Action Research for Teachers",
+                "nameHi": "शिक्षकों हेतु क्रियात्मक अनुसन्धान की उपयोगिता",
+                "aliases": ["classroom problems", "upyogita"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "code": "education_policy",
+        "level": "unit",
+        "nameEn": "Right to Education, NEP 2020 and Welfare Schemes",
+        "nameHi": "शिक्षा का अधिकार, राष्ट्रीय शिक्षा नीति 2020 एवं कल्याणकारी योजनाएँ",
+        "aliases": [],
+        "objectives": [],
+        "children": [
+          {
+            "code": "rte_act_2009",
+            "level": "chapter",
+            "nameEn": "Right to Education Act, 2009",
+            "nameHi": "शिक्षा का अधिकार अधिनियम, 2009",
+            "aliases": ["RTE", "RTE act", "shiksha ka adhikar", "nishulk evam anivarya bal shiksha"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "key_provisions",
+                "level": "topic",
+                "nameEn": "Key Provisions of the RTE Act",
+                "nameHi": "शिक्षा का अधिकार अधिनियम के प्रमुख प्रावधान",
+                "aliases": ["article 21A", "6 to 14 years", "free and compulsory education"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teacher_roles",
+                "level": "topic",
+                "nameEn": "Role and Responsibilities of Teachers",
+                "nameHi": "अध्यापकों की भूमिका एवं दायित्व",
+                "aliases": ["section 24", "teacher duties", "shikshak ke kartavya"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "school_norms_and_smc",
+                "level": "topic",
+                "nameEn": "School Norms, 25% Reservation and SMC",
+                "nameHi": "विद्यालय मानक, 25% आरक्षण एवं विद्यालय प्रबन्धन समिति",
+                "aliases": ["SMC", "25 percent quota", "vidyalaya prabandhan samiti"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "protection_of_rights",
+                "level": "topic",
+                "nameEn": "Protection of Children's Rights",
+                "nameHi": "बाल अधिकारों का संरक्षण",
+                "aliases": ["no corporal punishment", "NCPCR", "no screening", "no detention"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "nep_2020",
+            "level": "chapter",
+            "nameEn": "National Education Policy 2020",
+            "nameHi": "राष्ट्रीय शिक्षा नीति 2020",
+            "aliases": ["NEP 2020", "nai shiksha niti", "rashtriya shiksha niti"],
+            "objectives": [
+              "Summarise NEP 2020's school education provisions on ECCE, FLN, curriculum, teachers, equity and standards"
+            ],
+            "children": [
+              {
+                "code": "ecce",
+                "level": "topic",
+                "nameEn": "Early Childhood Care and Education",
+                "nameHi": "प्रारम्भिक बाल्यावस्था देखभाल एवं शिक्षा",
+                "aliases": ["ECCE", "balvatika", "anganwadi"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "foundational_literacy_numeracy",
+                "level": "topic",
+                "nameEn": "Foundational Literacy and Numeracy",
+                "nameHi": "बुनियादी साक्षरता एवं संख्या ज्ञान",
+                "aliases": ["FLN", "NIPUN bharat", "buniyadi saksharta"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "curriculum_and_pedagogy",
+                "level": "topic",
+                "nameEn": "Curriculum and Pedagogy in Schools",
+                "nameHi": "स्कूलों में पाठ्यक्रम एवं शिक्षणशास्त्र",
+                "aliases": ["5+3+3+4", "experiential learning", "mother tongue"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "teachers",
+                "level": "topic",
+                "nameEn": "Teachers",
+                "nameHi": "शिक्षक",
+                "aliases": ["NPST", "teacher education", "CPD"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "equitable_inclusive_education",
+                "level": "topic",
+                "nameEn": "Equitable and Inclusive Education",
+                "nameHi": "समतामूलक एवं समावेशी शिक्षा",
+                "aliases": ["SEDGs", "gender inclusion fund", "special education zones"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "standard_setting_accreditation",
+                "level": "topic",
+                "nameEn": "Standard-setting and Accreditation for School Education",
+                "nameHi": "स्कूल शिक्षा के लिए मानक निर्धारण एवं प्रत्यायन",
+                "aliases": ["SSSA", "accreditation", "pratyayan"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          },
+          {
+            "code": "rajasthan_welfare_schemes",
+            "level": "chapter",
+            "nameEn": "Contemporary Child Welfare Educational Schemes of Rajasthan",
+            "nameHi": "राजस्थान की समसामयिक बाल कल्याणकारी शैक्षिक योजनाएँ",
+            "aliases": ["rajasthan yojana", "bal kalyan yojana", "shaikshik yojanayen"],
+            "objectives": [],
+            "children": [
+              {
+                "code": "nutrition_and_health",
+                "level": "topic",
+                "nameEn": "Nutrition and Health Schemes",
+                "nameHi": "पोषण एवं स्वास्थ्य योजनाएँ",
+                "aliases": ["PM POSHAN", "mid day meal", "bal gopal yojana", "madhyahn bhojan"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "girls_education_incentives",
+                "level": "topic",
+                "nameEn": "Incentive Schemes for Girls' Education",
+                "nameHi": "बालिका शिक्षा प्रोत्साहन योजनाएँ",
+                "aliases": ["gargi puraskar", "kali bai scooty yojana", "nishulk cycle vitaran"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "scholarships_and_support",
+                "level": "topic",
+                "nameEn": "Scholarships and Financial Support",
+                "nameHi": "छात्रवृत्ति एवं आर्थिक सहायता योजनाएँ",
+                "aliases": ["palanhar yojana", "scholarship", "chhatravritti", "transport voucher"],
+                "objectives": [],
+                "children": []
+              },
+              {
+                "code": "free_facilities",
+                "level": "topic",
+                "nameEn": "Free Textbooks, Uniforms and Other Facilities",
+                "nameHi": "निःशुल्क पाठ्यपुस्तक, गणवेश एवं अन्य सुविधाएँ",
+                "aliases": ["nishulk pathyapustak", "free uniform", "ganvesh"],
+                "objectives": [],
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
