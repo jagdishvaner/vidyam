@@ -107,10 +107,7 @@ class AuditEntry(BaseModel):
         populate_by_name=True,
     )
     id: UUID
-    at: AwareDatetime = Field(
-        ...,
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
+    at: AwareDatetime
     actor: Actor | None
     action: str
     entity_type: str = Field(..., alias="entityType")
@@ -191,13 +188,6 @@ class ChatBlock4(BaseModel):
     summary: str
 
 
-class ConfirmedAt(RootModel[AwareDatetime]):
-    root: AwareDatetime = Field(
-        ...,
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
-
-
 class ChatBlock6(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -258,11 +248,7 @@ class ChatSessionSummary(BaseModel):
     archived: bool
     document_id: UUID | None = Field(..., alias="documentId")
     model_id: str | None = Field(..., alias="modelId")
-    updated_at: AwareDatetime = Field(
-        ...,
-        alias="updatedAt",
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
+    updated_at: AwareDatetime = Field(..., alias="updatedAt")
 
 
 class ChatStreamEvent1(BaseModel):
@@ -636,6 +622,28 @@ class Liveness(BaseModel):
     ok: bool
 
 
+class LlmBatchInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+    batch_id: UUID = Field(..., alias="batchId")
+
+
+class LlmBatchResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    batch_id: UUID = Field(..., alias="batchId")
+    succeeded: int = Field(..., ge=0, le=9007199254740991)
+    failed: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+
+
 class LlmProvider(StrEnum):
     anthropic = "anthropic"
     openai = "openai"
@@ -909,11 +917,7 @@ class PromptVersion(BaseModel):
     is_active: bool = Field(..., alias="isActive")
     source: Source
     created_by_name: str | None = Field(..., alias="createdByName")
-    created_at: AwareDatetime = Field(
-        ...,
-        alias="createdAt",
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
+    created_at: AwareDatetime = Field(..., alias="createdAt")
 
 
 class Provider(StrEnum):
@@ -1472,10 +1476,7 @@ class ByDayItem(BaseModel):
     )
     calls: int = Field(..., ge=0, le=9007199254740991)
     cost_usd: float = Field(..., alias="costUsd", ge=0.0)
-    date: date_aliased = Field(
-        ...,
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))$",
-    )
+    date: date_aliased
 
 
 class UsageReport(BaseModel):
@@ -1505,6 +1506,7 @@ class WorkflowEnvelope(BaseModel):
 class WorkflowType(StrEnum):
     ping = "Ping"
     ingest_source = "IngestSource"
+    llm_batch = "LlmBatch"
 
 
 class AddMemberRequest(BaseModel):
@@ -1728,11 +1730,7 @@ class LibrarySource(BaseModel):
     ocr_pages: int = Field(..., alias="ocrPages", ge=0, le=9007199254740991)
     meta: dict[str, str]
     error: str | None
-    added_at: AwareDatetime = Field(
-        ...,
-        alias="addedAt",
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
+    added_at: AwareDatetime = Field(..., alias="addedAt")
 
 
 class PageReading(BaseModel):
@@ -1879,11 +1877,7 @@ class StaffMember(BaseModel):
     subjects: list[StaffSubject]
     monthly_budget_usd: float | None = Field(..., alias="monthlyBudgetUsd")
     spent_this_month_usd: float = Field(..., alias="spentThisMonthUsd")
-    joined_at: AwareDatetime = Field(
-        ...,
-        alias="joinedAt",
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
+    joined_at: AwareDatetime = Field(..., alias="joinedAt")
 
 
 class SyllabusImport(BaseModel):
@@ -1930,7 +1924,7 @@ class ChatBlock5(BaseModel):
     spec: TaskSpec
     availability: list[TopicAvailability]
     estimate: CostEstimate
-    confirmed_at: ConfirmedAt | None = Field(..., alias="confirmedAt")
+    confirmed_at: AwareDatetime | None = Field(..., alias="confirmedAt")
 
 
 class DraftSpec(BaseModel):
@@ -2109,11 +2103,7 @@ class ChatMessage(BaseModel):
     role: Role
     blocks: list[ChatBlock]
     model_id: str | None = Field(..., alias="modelId")
-    created_at: AwareDatetime = Field(
-        ...,
-        alias="createdAt",
-        pattern="^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$",
-    )
+    created_at: AwareDatetime = Field(..., alias="createdAt")
 
 
 class ChatStreamEvent3(BaseModel):

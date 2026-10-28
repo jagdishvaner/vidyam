@@ -35,7 +35,7 @@ export const AiTaskQueue = contract(
 );
 
 /** Workflow type names: started from TypeScript (the API), implemented in Python (the AI engine). */
-export const WORKFLOWS = { ping: "Ping", ingestSource: "IngestSource" } as const;
+export const WORKFLOWS = { ping: "Ping", ingestSource: "IngestSource", llmBatch: "LlmBatch" } as const;
 export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
 export const WorkflowType = contract(
   "WorkflowType",
@@ -82,6 +82,26 @@ export const IngestSourceResult = contract(
   "What ingesting one file produced.",
 );
 export type IngestSourceResult = z.infer<typeof IngestSourceResult>;
+
+export const LlmBatchInput = contract(
+  "LlmBatchInput",
+  WorkflowEnvelope.extend({ batchId: Uuid }),
+  "Wait for a batch already submitted to a provider's Batch API (llm_batches), then collect its results.",
+);
+export type LlmBatchInput = z.infer<typeof LlmBatchInput>;
+
+export const LlmBatchResult = contract(
+  "LlmBatchResult",
+  z.object({
+    batchId: Uuid,
+    succeeded: count,
+    failed: count,
+    /** At the Batch API's half price. */
+    costUsd: z.number().nonnegative(),
+  }),
+  "What collecting a batch produced.",
+);
+export type LlmBatchResult = z.infer<typeof LlmBatchResult>;
 
 export const PingInput = contract(
   "PingInput",

@@ -3,7 +3,8 @@ the shared contract, then calls a use case. Inputs and results stay contract-sha
 TypeScript starters and the Temporal UI see the same documents."""
 
 import asyncio
-from collections.abc import Awaitable
+from collections.abc import Awaitable, Generator, Mapping, Sequence
+from contextlib import contextmanager
 from typing import Any
 
 from pydantic import BaseModel, ValidationError
@@ -17,8 +18,17 @@ from vidyam_ai.application.ingestion import (
     Sources,
     UnreadableFile,
 )
+from vidyam_ai.application.llm_gateway import (
+    BatchHandler,
+    BatchNotFound,
+    BatchOutcome,
+    BatchRecord,
+    LlmError,
+    LlmGateway,
+    ProviderError,
+)
 from vidyam_ai.application.ping import handle_ping
-from vidyam_ai.generated.contracts import IngestSourceInput, PingInput
+from vidyam_ai.generated.contracts import IngestSourceInput, LlmBatchInput, LlmBatchResult, PingInput
 from vidyam_ai.infrastructure.temporal.cpu import CpuPool
 
 
@@ -97,3 +107,53 @@ class IngestionActivities:
     async def mark_source_failed(self, payload: dict[str, Any], reason: str) -> None:
         request = parse(IngestSourceInput, payload)
         await self._sources.mark_failed(request.org_id, request.source_id, run_id=_run_id(), error=reason)
+
+
+class LlmActivities:
+    """The steps of LlmBatchWorkflow. Each kind of batch registers the handler that stores its results."""
+
+    def __init__(self, gateway: LlmGateway, handlers: Mapping[str, BatchHandler]) -> None:
+        self._gateway = gateway
+        self._handlers = handlers
+
+    @activity.defn(name="llm_batch_ended")
+    async def batch_ended(self, payload: dict[str, Any]) -> bool:
+        request = parse(LlmBatchInput, payload)
+        with _llm_failures():
+            return await self._gateway.batch_ended(request.org_id, request.batch_id)
+
+    @activity.defn(name="collect_llm_batch")
+    async def collect_batch(self, payload: dict[str, Any]) -> dict[str, Any]:
+        request = parse(LlmBatchInput, payload)
+        with _llm_failures():
+            summary = await self._gateway.collect_batch(request.org_id, request.batch_id, self._handle)
+        result = LlmBatchResult(
+            batchId=summary.batch_id,
+            succeeded=summary.succeeded,
+            failed=summary.failed,
+            costUsd=float(summary.cost_usd),
+        )
+        return result.model_dump(mode="json", by_alias=True)
+
+    async def _handle(self, batch: BatchRecord, outcomes: Sequence[BatchOutcome]) -> None:
+        handler = self._handlers.get(batch.task)
+        if handler is None:
+            raise ApplicationError(
+                f"nothing stores {batch.task} batch results", type="NoBatchHandler", non_retryable=True
+            )
+        await handler(batch, outcomes)
+
+
+@contextmanager
+def _llm_failures() -> Generator[None]:
+    """Provider outages are retried by Temporal; anything a retry can't fix fails the workflow at once."""
+    try:
+        yield
+    except BatchNotFound as error:
+        raise ApplicationError(str(error), type="BatchNotFound", non_retryable=True) from error
+    except ProviderError as error:
+        if error.retryable:
+            raise
+        raise ApplicationError(str(error), type="ProviderRejected", non_retryable=True) from error
+    except LlmError as error:
+        raise ApplicationError(str(error), type=type(error).__name__, non_retryable=True) from error

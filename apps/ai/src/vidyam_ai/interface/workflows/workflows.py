@@ -13,10 +13,11 @@ with workflow.unsafe.imports_passed_through():
         AiTaskQueue,
         IngestSourceInput,
         IngestSourceResult,
+        LlmBatchInput,
         PingInput,
         WorkflowType,
     )
-    from vidyam_ai.interface.workflows.activities import Activities, IngestionActivities, parse
+    from vidyam_ai.interface.workflows.activities import Activities, IngestionActivities, LlmActivities, parse
 
 
 def _queue(kind: AiTaskQueue) -> str:
@@ -68,4 +69,32 @@ class IngestSourceWorkflow:
         return result.model_dump(mode="json", by_alias=True)
 
 
-WORKFLOWS = [PingWorkflow, IngestSourceWorkflow]
+@workflow.defn(name=WorkflowType.llm_batch)
+class LlmBatchWorkflow:
+    """Waits on durable timers for a provider batch to finish (minutes, at most 24 hours), then collects it.
+    Checks start a minute apart and slow to every ten minutes."""
+
+    @workflow.run
+    async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
+        parse(LlmBatchInput, payload)
+        llm = _queue(AiTaskQueue.ai_llm)
+        wait = timedelta(minutes=1)
+        while not await workflow.execute_activity_method(
+            LlmActivities.batch_ended,
+            payload,
+            task_queue=llm,
+            start_to_close_timeout=timedelta(minutes=2),
+            retry_policy=RetryPolicy(maximum_interval=timedelta(minutes=5)),
+        ):
+            await workflow.sleep(wait)
+            wait = min(wait * 2, timedelta(minutes=10))
+        return await workflow.execute_activity_method(
+            LlmActivities.collect_batch,
+            payload,
+            task_queue=llm,
+            start_to_close_timeout=timedelta(minutes=30),
+            retry_policy=RetryPolicy(maximum_attempts=10, maximum_interval=timedelta(minutes=5)),
+        )
+
+
+WORKFLOWS = [PingWorkflow, IngestSourceWorkflow, LlmBatchWorkflow]

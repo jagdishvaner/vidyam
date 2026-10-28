@@ -1,10 +1,11 @@
 """Settings for the AI engine. Validated at startup; the process refuses to start if one is missing."""
 
+import tempfile
 from functools import lru_cache
 from pathlib import Path
-from typing import Literal
+from typing import Literal, Self
 
-from pydantic import AliasChoices, Field, SecretStr
+from pydantic import AliasChoices, Field, SecretStr, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
@@ -13,6 +14,9 @@ REPO_ROOT = Path(__file__).resolve().parents[4]
 class Settings(BaseSettings):
     # Real environment variables win over the repo-root .env (used for local runs only).
     model_config = SettingsConfigDict(env_prefix="VIDYAM_", env_file=REPO_ROOT / ".env", extra="ignore")
+
+    # "production" turns a missing provider key into an error instead of falling back to the stub model.
+    environment: Literal["development", "test", "production"] = "development"
 
     ai_host: str = "127.0.0.1"
     ai_port: int = 38120
@@ -52,8 +56,23 @@ class Settings(BaseSettings):
     anthropic_aws_workspace_id: str | None = Field(
         default=None, validation_alias=AliasChoices("ANTHROPIC_AWS_WORKSPACE_ID")
     )
+    claude_aws_region: str | None = Field(
+        default=None, validation_alias=AliasChoices("VIDYAM_CLAUDE_AWS_REGION", "AWS_REGION")
+    )
     openai_api_key: SecretStr | None = Field(default=None, validation_alias=AliasChoices("OPENAI_API_KEY"))
     ai_stub: bool = False
+    # Where the stub model keeps its finished batches until they are collected.
+    ai_stub_dir: Path = Path(tempfile.gettempdir()) / "vidyam-stub-batches"
+
+    @model_validator(mode="after")
+    def _no_stub_in_production(self) -> Self:
+        if self.environment == "production" and self.ai_stub:
+            raise ValueError("VIDYAM_AI_STUB can't be on in production")
+        return self
+
+    @property
+    def is_production(self) -> bool:
+        return self.environment == "production"
 
     @property
     def async_database_url(self) -> str:

@@ -38,3 +38,20 @@ silently lose cache hits.
 - One place to tune caching, routing and spend; one usage ledger.
 - The API depends on the AI engine for anything AI-related. Interactive chat streams from it over private HTTP;
   long work goes through BullMQ.
+
+## Update 2026-10-28: as built (plan v3 steps 14–15)
+
+- `LlmGateway` (`apps/ai/.../application/llm_gateway.py`) is the one entry point: route (center's own, else the
+  platform default) → the teacher's model only for `chat_qa`, `generate`, `notes_write`, `edit_agent`, and only
+  if the AI policy allows it → active prompt version (model family, else `any`) → budget check (center and
+  teacher, IST month) → provider → usage ledger. Failed calls are recorded too, at zero cost.
+- Fallback is the route's `fallback_model_id`, tried once after a retryable provider failure (rate limit,
+  overload, outage), and for streams only before the first text. Claude's server-side `fallbacks` is not used
+  yet.
+- Built-in **stub model** when a provider has no key or `VIDYAM_AI_STUB=1`: schema-valid structured replies,
+  per-task responders, streaming, file-backed batches, ledger rows filed under model `stub` at zero cost. With
+  `VIDYAM_ENVIRONMENT=production` there is no stub and a missing key is an error.
+- Structured-output schemas come from Pydantic contracts and are adapted per provider
+  (`infrastructure/llm/schemas.py`); a unit test checks every contract against both providers' rules offline.
+- Batches run through the `LlmBatch` Temporal workflow (ADR 0013 replaced BullMQ): submit in the caller's
+  activity, poll on durable timers, then collect once into the ledger at half price.

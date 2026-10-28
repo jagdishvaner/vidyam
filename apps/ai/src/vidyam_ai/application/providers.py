@@ -21,5 +21,5 @@ def provider_status(settings: Settings) -> AiEngineStatus:
             ProviderStatus(provider=Provider.anthropic, configured=claude, endpoint=settings.claude_endpoint),
             ProviderStatus(provider=Provider.openai, configured=openai, endpoint=None),
         ],
-        stubActive=settings.ai_stub or not (claude or openai),
+        stubActive=settings.ai_stub or (not settings.is_production and not (claude or openai)),
     )

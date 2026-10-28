@@ -14,8 +14,10 @@ export function buildContractsDocument(): Record<string, unknown> {
     uri: (id) => `#/$defs/${id}`,
     target: "draft-2020-12",
     override: ({ jsonSchema }) => {
-      // `format: uuid` is enough; the extra regex makes Pydantic reject the field (no pattern on UUID types).
-      if (jsonSchema.format === "uuid") delete jsonSchema.pattern;
+      // The format is enough; the extra regex makes Pydantic reject the field (no pattern on UUID or datetime
+      // types), so a payload with a timestamp could never be validated in Python.
+      if (["uuid", "date-time", "date", "time"].includes(String(jsonSchema.format)))
+        delete jsonSchema.pattern;
     },
   });
   const defs = Object.fromEntries(
