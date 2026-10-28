@@ -34,6 +34,7 @@
     "bootstrap": "turbo run bootstrap",
     "ingest": "pnpm --silent --filter @vidyam/api ingest",
     "backlog": "pnpm --silent --filter @vidyam/api backlog",
+    "search": "pnpm --silent --filter @vidyam/ai search",
     "models:setup": "pnpm --silent --filter @vidyam/models setup --",
     "models:up": "pnpm --silent --filter @vidyam/models dev --",
     "local:init": "pnpm infra:up && pnpm db:seed && pnpm bootstrap",

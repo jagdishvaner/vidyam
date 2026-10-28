@@ -47,6 +47,11 @@ class Settings(BaseSettings):
     # llama-server reports Qwen3-Reranker's probability (checked by infra/models/verify_reranker.py); "logit"
     # is for servers that return raw scores.
     rerank_scores: Literal["logit", "probability"] = "probability"
+    # How many search candidates the reranker reads, and the most tokens it reads of each. Whole passages
+    # (1100 covers a 1024-token chunk and its headings): cut short, a Hindi passage loses its answer. The M5
+    # reads about 700 tokens/s, so 10 take about 12 s; an L4 GPU on AWS is 10-20 times faster (use 30-50).
+    rerank_candidates: int = Field(default=10, ge=0)
+    rerank_tokens: int = Field(default=1100, ge=64)
 
     worker_cpu_processes: int = Field(default=2, ge=1)
 

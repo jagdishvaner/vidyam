@@ -110,7 +110,8 @@ ledger, because it costs nothing per call.
   | 20         | first 200 tokens | 9.8 s  |
 
   An L4 on AWS is roughly 10–20 times faster. Step 20 makes the number of candidates and their length
-  settings.
+  settings. Cutting passages short turned out to lose answers; retrieval reranks 10 whole passages
+  instead ([0020](0020-hybrid-retrieval.md)).
 
 - **Embedding the demo pack** (about 70 chunks) takes about 2 minutes. A few thousand pages of the center's
   content will take hours locally, once; on AWS much less.

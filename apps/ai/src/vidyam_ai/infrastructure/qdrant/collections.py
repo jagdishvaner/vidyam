@@ -45,9 +45,9 @@ HINGLISH_STOPWORDS = sorted(
 
 _KEYWORD_FIELDS = [
     "exam_codes", "taxonomy_node_ids", "language", "licence", "status",
-    "source_kind", "source_id", "parallel_group_id",
+    "source_kind", "source_id", "parallel_group_id", "chunk_kind",
 ]  # fmt: skip
-_INTEGER_FIELDS = ["difficulty", "year"]
+_INTEGER_FIELDS = ["difficulty", "year", "position"]  # position: a passage's neighbours (retrieval)
 
 
 def physical_name(name: str, profile: EmbeddingProfile) -> str:

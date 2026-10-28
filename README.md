@@ -95,6 +95,23 @@ pnpm ingest ~/Desktop/rpsc-polity --kind notes --licence own --meta exam=rpsc --
 - Work that needs an AI model (reading scans, splitting papers into questions, picking topics) waits in
   backlogs: Admin → Content, or `pnpm backlog` to see what each would cost and run it.
 
+### Searching content
+
+The chat and paper generation find passages the way this command does, so it is the quickest way to see
+what the library can answer. It needs the search models (`pnpm dev` or `pnpm models:up`).
+
+```bash
+pnpm search --org vidyam-demo-coaching "newton ka teesra niyam"              # Hindi, English or Hinglish
+pnpm search --org vidyam-demo-coaching --node work_and_energy "power ka unit"  # within a chapter or topic
+```
+
+- Search reads by meaning and by keywords at once, so an English question finds a Hindi passage, and a
+  Hinglish spelling finds the Hindi word. The best candidates are then re-read by the rerank model, which
+  scores how well each answers the question; passages that don't are left out.
+- A passage in both editions of a book (Hindi and English) is shown once, in the query's language, or the
+  one asked for with `--language hi|en`.
+- Reranking takes about 12 s on the Mac; `--no-rerank` skips it. A repeated query is answered from the cache.
+
 ### Run everything in Docker
 
 The same images that will run on AWS can run locally, behind the same Caddy entry point:
@@ -134,6 +151,7 @@ Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reac
 | `pnpm dev`                         | run all apps with hot reload (turbo)                   |
 | `pnpm models:setup` / `models:up`  | fetch and check the search models / run them alone     |
 | `pnpm ingest` / `pnpm backlog`     | add content / run its paid AI backlogs                 |
+| `pnpm search --org <slug> "…"`     | search a center's content as the chat will             |
 | `pnpm lint` / `typecheck` / `test` | checks across TypeScript and Python, cached by turbo   |
 | `pnpm test:integration`            | tests against local infrastructure                     |
 | `pnpm test:e2e`                    | browser tests against the running app (`pnpm dev`)     |

@@ -8,6 +8,7 @@
     "start": "uv run --frozen vidyam-ai serve",
     "worker": "uv run --frozen vidyam-ai worker",
     "bootstrap": "uv run --frozen vidyam-ai bootstrap",
+    "search": "uv run --frozen vidyam-ai search",
     "lint": "uv run --frozen ruff check . && uv run --frozen ruff format --check . && uv run --frozen lint-imports",
     "format": "uv run --frozen ruff format . && uv run --frozen ruff check --fix .",
     "typecheck": "uv run --frozen pyright",

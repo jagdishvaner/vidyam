@@ -24,6 +24,7 @@ changes an old one gets a new record that supersedes it; old records are not rew
 | [0017](0017-api-temporal-worker-single-writer.md)    | API Temporal worker; single writer of chat and documents              | Accepted           |
 | [0018](0018-outbox-for-vector-index-changes.md)      | Index changes reach Qdrant through an outbox                          | Accepted           |
 | [0019](0019-admin-panel-as-its-own-app.md)           | The admin panel is its own app on its own subdomain                   | Accepted           |
+| [0020](0020-hybrid-retrieval.md)                     | Retrieval: hybrid search, one copy per passage, whole-passage rerank  | Accepted           |
 
 The plan these decisions come from: [`../master-plan.md`](../master-plan.md) (v3; v2 is kept as
 [`../master-plan-v2.md`](../master-plan-v2.md)).

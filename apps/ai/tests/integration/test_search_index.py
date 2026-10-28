@@ -4,16 +4,12 @@ point in Qdrant that filters by chapter, matches Hindi and Hinglish keywords, an
 is counted per syllabus node; a removed file leaves search through the outbox; and a file left behind is
 indexed by the keeper. Runs in a throwaway organization, and removes everything it created."""
 
-import shutil
-from contextlib import AsyncExitStack
 from pathlib import Path
-from uuid import uuid4
 
 import httpx
 import pytest
 from qdrant_client import models
 from sqlalchemy import select, text
-from sqlalchemy.ext.asyncio import create_async_engine
 from vidyam_ai.config import get_settings
 from vidyam_ai.domain.embeddings import RETRIEVE_PASSAGES, query_text
 from vidyam_ai.domain.lexical import normalize, romanized
@@ -22,13 +18,10 @@ from vidyam_ai.infrastructure.db.generated.tables import t_chunks, t_sources, t_
 from vidyam_ai.infrastructure.models import create_embedder
 from vidyam_ai.infrastructure.qdrant.collections import DENSE
 from vidyam_ai.infrastructure.resources import create_qdrant
-from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.interface.workflows.upkeep import IndexKeeper
-from vidyam_ai.interface.workflows.worker import create_workers, open_activities
 
-from tests.integration.cleanup import remove_org
-from tests.integration.test_manifest_ingestion import PACK, _ingest, _seed_catalog, embedder_ready
-from tests.integration.test_rls import _admin_url
+from tests.integration.demo import demo_org
+from tests.integration.test_manifest_ingestion import embedder_ready
 
 
 def _org(org_id: object) -> models.FieldCondition:
@@ -39,27 +32,11 @@ async def test_the_demo_pack_is_searchable_by_chapter_keyword_and_meaning(tmp_pa
     settings = get_settings()
     if not await embedder_ready(settings):
         pytest.skip("the model servers aren't running (pnpm models:up)")
-    shutil.copytree(PACK / "files", tmp_path / "files")
-    (tmp_path / "manifest.csv").write_text((PACK / "manifest.csv").read_text())
-    owner = create_async_engine(_admin_url())
-    org_id, slug = uuid4(), f"index-test-{uuid4().hex[:8]}"
-    async with owner.begin() as conn:
-        await conn.execute(
-            text("insert into organizations (id, name, slug, created_at) values (:id, 'Test', :s, now())"),
-            {"id": org_id, "s": slug},
-        )
-        await _seed_catalog(conn, org_id)
     qdrant = create_qdrant(settings)
-    client = await connect(settings)
-    await wait_for_namespace(client)
-    prefix = f"index-test-{uuid4().hex[:8]}-"
     try:
-        async with open_activities(settings) as activities, AsyncExitStack() as running:
-            for worker in create_workers(client, activities, task_queue_prefix=prefix):
-                await running.enter_async_context(worker)
-            code, output, errors = await _ingest(tmp_path / "manifest.csv", slug, f"{prefix}ai")
-            assert code == 0, errors + output
-            assert "searchable" in output
+        async with demo_org(tmp_path, "index-test") as demo:
+            org_id, owner, activities, client = demo.org_id, demo.owner, demo.activities, demo.client
+            assert "searchable" in demo.output
 
             async with owner.connect() as conn:
                 chunks = (await conn.execute(select(t_chunks).where(t_chunks.c.org_id == org_id))).all()
@@ -158,14 +135,11 @@ async def test_the_demo_pack_is_searchable_by_chapter_keyword_and_meaning(tmp_pa
                     {"s": behind},
                 )
             keeper = IndexKeeper(
-                activities.outbox, activities.waiting, activities.embedder, client, f"{prefix}ai"
+                activities.outbox, activities.waiting, activities.embedder, client, demo.task_queue
             )
-            await (
-                keeper.catch_up()
-            )  # or the dev workers' keeper got there first: the workflow id is the file's
+            # Or the dev workers' keeper got there first: the workflow id is the file's.
+            await keeper.catch_up()
             result = await client.get_workflow_handle(f"IndexSource:{behind}").result()
             assert result["indexedChunks"] > 0
     finally:
         await qdrant.close()
-        await remove_org(settings, owner, org_id)
-        await owner.dispose()
