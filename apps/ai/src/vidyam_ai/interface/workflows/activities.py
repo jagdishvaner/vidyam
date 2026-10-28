@@ -12,10 +12,11 @@ from temporalio import activity
 from temporalio.exceptions import ApplicationError
 
 from vidyam_ai.application.ingestion import (
-    ChunkSource,
     ExtractSource,
     SourceNotFound,
     Sources,
+    StructureSource,
+    TagSource,
     UnreadableFile,
 )
 from vidyam_ai.application.llm_gateway import (
@@ -75,11 +76,14 @@ def _run_id() -> str:
 
 
 class IngestionActivities:
-    """The steps of IngestSourceWorkflow (ADR 0014)."""
+    """The steps of IngestSourceWorkflow (ADR 0014, plan v3 §5)."""
 
-    def __init__(self, extract: ExtractSource, chunk: ChunkSource, sources: Sources) -> None:
+    def __init__(
+        self, extract: ExtractSource, structure: StructureSource, tag: TagSource, sources: Sources
+    ) -> None:
         self._extract = extract
-        self._chunk = chunk
+        self._structure = structure
+        self._tag = tag
         self._sources = sources
 
     @activity.defn(name="extract_source")
@@ -98,10 +102,30 @@ class IngestionActivities:
             "ocrPages": summary.ocr_pages,
         }
 
-    @activity.defn(name="chunk_source")
-    async def chunk_source(self, payload: dict[str, Any]) -> int:
+    @activity.defn(name="structure_source")
+    async def structure_source(self, payload: dict[str, Any]) -> dict[str, int]:
+        """Sections and chunks, from the stored pages."""
         request = parse(IngestSourceInput, payload)
-        return await self._chunk.execute(request.org_id, request.source_id, run_id=_run_id())
+        try:
+            summary = await self._structure.execute(request.org_id, request.source_id, run_id=_run_id())
+        except SourceNotFound as error:
+            raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
+        return {
+            "pages": summary.pages,
+            "textPages": summary.text_pages,
+            "legacyFontPages": summary.legacy_font_pages,
+            "ocrPages": summary.ocr_pages,
+            "sections": summary.sections,
+            "chunks": summary.chunks,
+        }
+
+    @activity.defn(name="tag_source")
+    async def tag_source(self, payload: dict[str, Any]) -> int:
+        request = parse(IngestSourceInput, payload)
+        try:
+            return await self._tag.execute(request.org_id, request.source_id, run_id=_run_id())
+        except SourceNotFound as error:
+            raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
 
     @activity.defn(name="mark_source_failed")
     async def mark_source_failed(self, payload: dict[str, Any], reason: str) -> None:

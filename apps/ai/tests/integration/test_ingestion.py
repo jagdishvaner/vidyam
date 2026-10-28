@@ -64,8 +64,8 @@ async def test_ingest_command_reads_files_into_the_organizations_library(tmp_pat
             stdout, stderr = await asyncio.wait_for(command.communicate(), timeout=180)
         output = stdout.decode()
         assert command.returncode == 0, stderr.decode() + output
-        assert "done             polity/notes.pdf: 1 page (0 text, 1 Kruti Dev) → 1 section" in output
-        assert "done             scan.pdf: 1 page (0 text, 1 waiting for OCR) → 0 sections" in output
+        assert "polity/notes.pdf: 1 page (0 text, 1 Kruti Dev) → 1 passage in 1 section, 0 tagged" in output
+        assert "scan.pdf: 1 page (0 text, 1 waiting for OCR) → 0 passages, 0 tagged" in output
 
         async with owner.connect() as conn:
             sources = {
@@ -76,10 +76,12 @@ async def test_ingest_command_reads_files_into_the_organizations_library(tmp_pat
             [ocr_page] = (
                 await conn.execute(select(t_pages).where(t_pages.c.source_id == sources["scan.pdf"].id))
             ).all()
-        assert (sources["notes.pdf"].stage, sources["notes.pdf"].status) == ("chunked", "done")
+        assert (sources["notes.pdf"].stage, sources["notes.pdf"].status) == ("tagged", "done")
         assert sources["notes.pdf"].meta == {"exam": "rpsc"}
-        assert (sources["scan.pdf"].stage, sources["scan.pdf"].status) == ("chunked", "pending")
-        assert chunk.text == "Chapter 1\nभारत का संविधान 26 जनवरी 1950 को लागू हुआ था"
+        assert (sources["scan.pdf"].stage, sources["scan.pdf"].status) == ("tagged", "pending")
+        # "Chapter 1" is a heading: it leads the chunk's heading path instead of its text.
+        assert chunk.text == "भारत का संविधान 26 जनवरी 1950 को लागू हुआ था"
+        assert (chunk.heading_path, chunk.kind) == ("Chapter 1", "prose")
         assert chunk.source_id == sources["notes.pdf"].id
         assert ocr_page.meta["awaitingOcr"] is True
 

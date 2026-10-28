@@ -10,17 +10,19 @@ from dataclasses import dataclass
 from temporalio.client import Client
 from temporalio.worker import Worker
 
-from vidyam_ai.application.ingestion import ChunkSource, ExtractSource
+from vidyam_ai.application.ingestion import ExtractSource, StructureSource, TagSource
 from vidyam_ai.application.llm_gateway import BatchHandler
 from vidyam_ai.application.providers import provider_status
 from vidyam_ai.config import Settings, get_settings
 from vidyam_ai.domain.documents import PageReading
 from vidyam_ai.generated.contracts import AiTaskQueue
 from vidyam_ai.infrastructure.db.sources import SqlSources
-from vidyam_ai.infrastructure.extraction import extract
+from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
+from vidyam_ai.infrastructure.extraction import extract, render_pages
 from vidyam_ai.infrastructure.llm import create_llm_gateway
 from vidyam_ai.infrastructure.resources import Resources
 from vidyam_ai.infrastructure.s3.files import S3Files
+from vidyam_ai.infrastructure.s3.page_images import S3PageImages
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.infrastructure.temporal.cpu import CpuPool
 from vidyam_ai.interface.workflows.activities import Activities, IngestionActivities, LlmActivities
@@ -52,12 +54,22 @@ async def open_activities(
     async def read(path: str, mime_type: str) -> list[PageReading]:
         return await cpu.run(extract, path, mime_type)
 
+    async def render(path: str, mime_type: str, out_dir: str) -> dict[int, str]:
+        return await cpu.run(render_pages, path, mime_type, out_dir)
+
     sources = SqlSources(resources.engine)
     files = S3Files(resources.s3, settings.bucket("raw"))
+    images = S3PageImages(resources.s3, settings.bucket("derived"))
+    extract_source = ExtractSource(sources, files, read, render, images)
     try:
         yield AllActivities(
             core=Activities(cpu=cpu),
-            ingestion=IngestionActivities(ExtractSource(sources, files, read), ChunkSource(sources), sources),
+            ingestion=IngestionActivities(
+                extract_source,
+                StructureSource(sources, SqlSyllabus(resources.engine)),
+                TagSource(sources),
+                sources,
+            ),
             llm=LlmActivities(create_llm_gateway(settings, resources.engine), batch_handlers),
             cpu_slots=settings.worker_cpu_processes,
         )
@@ -79,7 +91,12 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
             client,
             task_queue=queue(AiTaskQueue.ai),
             workflows=WORKFLOWS,
-            activities=[core.ping, ingestion.chunk_source, ingestion.mark_source_failed],
+            activities=[
+                core.ping,
+                ingestion.structure_source,
+                ingestion.tag_source,
+                ingestion.mark_source_failed,
+            ],
         ),
         Worker(
             client,

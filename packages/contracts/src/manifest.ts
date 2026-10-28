@@ -91,6 +91,8 @@ export interface ManifestProblem {
 
 export interface ParsedManifest {
   rows: SourceManifestRow[];
+  /** Each row's line in the CSV, for problems found later (unknown syllabus or exam codes). */
+  lines: number[];
   problems: ManifestProblem[];
 }
 
@@ -102,13 +104,13 @@ export interface ParsedManifest {
 export function parseManifestCsv(text: string): ParsedManifest {
   const [header, ...records] = parseCsv(text);
   const problems: ManifestProblem[] = [];
-  if (!header) return { rows: [], problems: [{ line: 1, message: "the manifest is empty" }] };
+  if (!header) return { rows: [], lines: [], problems: [{ line: 1, message: "the manifest is empty" }] };
   const names = header.values.map((name) => name.trim());
   for (const name of names) {
     if (!COLUMNS.has(name)) problems.push({ line: 1, message: `unknown column "${name}"` });
   }
   if (!names.includes("file"))
-    return { rows: [], problems: [{ line: 1, message: 'a "file" column is required' }] };
+    return { rows: [], lines: [], problems: [{ line: 1, message: 'a "file" column is required' }] };
 
   const folders = new Map<string, Record<string, unknown>>();
   const files: { line: number; cells: Record<string, unknown> }[] = [];
@@ -129,6 +131,7 @@ export function parseManifestCsv(text: string): ParsedManifest {
   }
 
   const rows: SourceManifestRow[] = [];
+  const lines: number[] = [];
   const seen = new Set<string>();
   for (const { line, cells } of files) {
     const file = String(cells.file ?? "");
@@ -140,14 +143,16 @@ export function parseManifestCsv(text: string): ParsedManifest {
       .map((folder) => folders.get(folder));
     const merged = Object.assign({}, ...defaults, cells, { file }) as Record<string, unknown>;
     const parsed = SourceManifestRow.safeParse(merged);
-    if (parsed.success) rows.push(parsed.data);
-    else {
+    if (parsed.success) {
+      rows.push(parsed.data);
+      lines.push(line);
+    } else {
       for (const issue of parsed.error.issues) {
         problems.push({ line, file, message: `${issue.path.join(".") || "row"}: ${issue.message}` });
       }
     }
   }
-  return { rows, problems };
+  return { rows, lines, problems };
 }
 
 function splitList(value: string): string[] {

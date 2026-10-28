@@ -12,3 +12,6 @@ extend-exclude = ["**/generated/**"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP", "SIM", "ASYNC", "RUF"]
+# Hindi text handling uses these on purpose: the heading-path separator, en dashes in chapter titles, and
+# Devanagari digits in page and chapter numbers.
+allowed-confusables = ["›", "–", "०"]

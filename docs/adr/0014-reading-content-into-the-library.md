@@ -77,3 +77,70 @@ repaired.
   especially the ligature keys and the `pkS` fix.
 - Chanakya and other legacy fonts go to OCR until their tables are added.
 - Token counts are estimates; the embedding model's tokenizer gives exact ones at indexing time.
+
+## Update 2026-10-28: ingestion v2 (plan v3 step 16)
+
+**Manifests.** `pnpm ingest --manifest <folder>/manifest.csv` runs the API's `ImportManifest` use case.
+
+- The whole manifest is checked before anything is stored:
+  - subject, exam paper and chapter codes against the center's syllabus and exams;
+  - the files themselves;
+  - page ranges;
+  - answer keys against their paper (same booklet set);
+  - parallel editions, in the manifest or already in the library.
+
+  Every problem is reported with its CSV line.
+
+- Typed columns are filled from the manifest. `meta.manifest` keeps the row as written; `meta.structure` holds
+  the chapter and page sections resolved to syllabus ids.
+- One `ingest_batches` row and a copy of the CSV in S3 are kept per import.
+- Importing again updates descriptions in place: nothing is uploaded twice. A changed description restarts the
+  workflow with `stages: structure`, which keeps the stored pages and redoes sections, chunks and tags.
+- Parallel editions share a group id. It is derived from their contents, so a re-import doesn't count as a
+  change.
+
+**Reading:**
+
+- **Headings.** PDF text carries font size and weight. A heading is a short line:
+  - at least 12% larger than the body text, at one level per size; or
+  - entirely bold; or
+  - one that starts like a chapter ("अध्याय 8", "Chapter 3", "इकाई 2").
+
+  Running headers and page numbers are excluded. Word heading styles and Markdown `#` are trusted as they are.
+
+- **Page text** is stored as Markdown with `#`/`##`/`###` headings.
+- **Page images**: every PDF page as a PNG with a 1,568-pixel long edge, in the derived bucket at
+  `org/<org>/pages/<source>/<n>.png`. They are used for vision OCR, figures and citations.
+- **Page labels** come from the PDF's own labels, else from the manifest's `pageOffset`.
+- **Versions**: each page records the reader version that produced it (`pdf-2`, `+krutidev-1`, …).
+- Reading a file again keeps pages that were read by OCR or corrected by hand.
+
+**Sections** (`source_sections`), in order of trust:
+
+1. the manifest's page ranges or chapter;
+2. a table of contents near the front;
+3. the top-level headings.
+
+Titles are matched to syllabus names and aliases, in Hindi or English. A match needs a word-overlap score of at
+least 0.6; below that, the section is kept without a node.
+
+**Chunks:**
+
+- never span two headings, and never mix questions with explanatory text;
+- record their heading path. The context header (title › headings) is embedded with them, with no LLM call;
+- have a kind: prose, question, solution, definition or table;
+- carry a hash of what is embedded. A chunk unchanged at its position keeps its row, so its tags (and later its
+  vectors) survive a re-run.
+
+**Rule tags.** The manifest's chapter applies to the whole file; otherwise a chunk takes its section's chapter;
+otherwise the subject. Method and confidence are recorded. A tag below 0.6 is kept for review and is not used as
+the chunk's primary tag. If a chunk's chapter changes, its model-picked topics are dropped too.
+
+**Workflow**, in order:
+
+1. `extract_source` on ai-cpu (skipped for `stages: structure`);
+2. `structure_source`;
+3. `tag_source`.
+
+The library counts a file as ready from `chunked` onwards (`tagged`, and later `embedded` and `indexed`).
+Removing a file also deletes its page images.

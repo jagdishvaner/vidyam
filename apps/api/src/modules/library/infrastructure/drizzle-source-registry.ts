@@ -1,8 +1,37 @@
 import { schema, withOrgContext, type DatabaseHandle } from "@vidyam/db";
 import { eq } from "drizzle-orm";
 
-import type { SourceRecord, SourceRegistry } from "../application/import-source.js";
+import type { SourceDescription, SourceRecord, SourceRegistry } from "../application/import-source.js";
 import type { SourceRemover } from "../application/remove-source.js";
+
+const { sources } = schema;
+
+/** The columns a description covers, read back in the same shape to see whether anything changed. */
+const DESCRIPTION = {
+  kind: sources.kind,
+  licence: sources.licence,
+  language: sources.language,
+  title: sources.title,
+  subjectNodeId: sources.subjectNodeId,
+  examCodes: sources.examCodes,
+  classLevel: sources.classLevel,
+  year: sources.year,
+  setCode: sources.setCode,
+  answerKeyForSourceId: sources.answerKeyForSourceId,
+  parallelGroupId: sources.parallelGroupId,
+  pageOffset: sources.pageOffset,
+  fontHint: sources.fontHint,
+  meta: sources.meta,
+};
+
+/** JSON with object keys sorted: Postgres returns jsonb keys in its own order. */
+function canonical(value: unknown): string {
+  return JSON.stringify(value, (_, v: unknown) =>
+    v && typeof v === "object" && !Array.isArray(v)
+      ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b)))
+      : v,
+  );
+}
 
 /** No explicit org filter on reads: row-level security scopes them to the organization. */
 export class DrizzleSourceRegistry implements SourceRegistry, SourceRemover {
@@ -15,6 +44,19 @@ export class DrizzleSourceRegistry implements SourceRegistry, SourceRemover {
         .from(schema.sources)
         .where(eq(schema.sources.sha256, sha256));
       return row ?? null;
+    });
+  }
+
+  async describe(orgId: string, sourceId: string, description: SourceDescription): Promise<boolean> {
+    const { manifestBatchId: _batch, ...wanted } = description;
+    return withOrgContext(this.database.db, orgId, async (tx) => {
+      const [current] = await tx.select(DESCRIPTION).from(sources).where(eq(sources.id, sourceId));
+      if (!current || canonical(current) === canonical({ ...current, ...wanted })) return false;
+      await tx
+        .update(sources)
+        .set({ ...wanted, manifestBatchId: description.manifestBatchId, updatedAt: new Date() })
+        .where(eq(sources.id, sourceId));
+      return true;
     });
   }
 

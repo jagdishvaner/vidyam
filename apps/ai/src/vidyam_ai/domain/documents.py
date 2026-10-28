@@ -24,11 +24,24 @@ ParseMethod = Literal["text_layer", "legacy_font"]
 MIN_TEXT_CHARS = 20  # fewer visible characters than this and a page has no usable text layer
 MIN_HINDI_QUALITY = 0.85  # below this share of well-formed Hindi words, OCR the page instead
 
+# Which reader produced a page's text, recorded per page (plan v3 §5): a fix to one reader or converter
+# re-reads only the pages it produced. Bump a number whenever its output changes.
+EXTRACTORS = {"pdf": "pdf-2", "docx": "docx-2", "text": "text-2", "image": "image-1"}
+KRUTIDEV_CONVERTER = "krutidev-1"
+
 
 @dataclass(frozen=True)
 class TextRun:
     text: str
     font: str | None  # None for characters the extractor inserted itself (spaces, line breaks)
+    size: float | None = None  # in points, where the format has sizes
+    bold: bool = False
+
+
+@dataclass(frozen=True)
+class Heading:
+    level: int  # 1 for a chapter, 2 and 3 below it
+    text: str  # clean Unicode, as the line appears in the page text
 
 
 @dataclass(frozen=True)
@@ -39,6 +52,9 @@ class PageReading:
     needs_ocr: bool
     confidence: float | None
     note: str | None = None
+    headings: tuple[Heading, ...] = ()
+    label: str | None = None  # the page number printed in the file's own page labels, if it has them
+    extractor: str | None = None  # EXTRACTORS entry, plus the converter for legacy fonts
 
 
 def font_family(font: str) -> str:
@@ -61,6 +77,26 @@ def classify_fonts(samples: Mapping[str, str]) -> dict[str, LegacyEncoding | Non
 _BROKEN = re.compile(f"[\N{REPLACEMENT CHARACTER}{chr(0xE000)}-{chr(0xF8FF)}]")
 
 
+def unicode_runs(
+    runs: Sequence[TextRun], encodings: Mapping[str, LegacyEncoding | None]
+) -> tuple[list[TextRun], bool, set[str]]:
+    """Runs with Kruti Dev text converted to Unicode; whether any was converted; and the legacy fonts that
+    have no converter."""
+    converted: list[TextRun] = []
+    legacy = False
+    unconvertible: set[str] = set()
+    for run in runs:
+        encoding = encodings.get(run.font) if run.font else None
+        if encoding == "krutidev":
+            converted.append(TextRun(krutidev_to_unicode(run.text), run.font, run.size, run.bold))
+            legacy = True
+            continue
+        if encoding == "unsupported" and run.font:
+            unconvertible.add(font_family(run.font))
+        converted.append(run)
+    return converted, legacy, unconvertible
+
+
 def read_page(
     page_no: int | None,
     runs: Sequence[TextRun],
@@ -69,19 +105,8 @@ def read_page(
     scanned: bool = False,
 ) -> PageReading:
     """`scanned`: most of the page is one picture, so any text layer came from the scanner's own OCR."""
-    parts: list[str] = []
-    legacy = False
-    unconvertible: set[str] = set()
-    for run in runs:
-        encoding = encodings.get(run.font) if run.font else None
-        if encoding == "krutidev":
-            parts.append(krutidev_to_unicode(run.text))
-            legacy = True
-        else:
-            if encoding == "unsupported" and run.font:
-                unconvertible.add(font_family(run.font))
-            parts.append(run.text)
-    text = clean_text("".join(parts))
+    converted, legacy, unconvertible = unicode_runs(runs, encodings)
+    text = clean_text("".join(run.text for run in converted))
     method: ParseMethod = "legacy_font" if legacy else "text_layer"
     visible = len(re.sub(r"\s", "", text))
 

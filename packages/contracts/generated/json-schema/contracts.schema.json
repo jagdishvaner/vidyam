@@ -2084,13 +2084,22 @@
         "sourceId": {
           "type": "string",
           "format": "uuid"
+        },
+        "stages": {
+          "default": "all",
+          "type": "string",
+          "enum": [
+            "all",
+            "structure"
+          ]
         }
       },
       "required": [
         "v",
         "orgId",
         "requestedBy",
-        "sourceId"
+        "sourceId",
+        "stages"
       ],
       "additionalProperties": false
     },
@@ -2122,7 +2131,17 @@
           "minimum": 0,
           "maximum": 9007199254740991
         },
+        "sections": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
         "chunks": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "taggedChunks": {
           "type": "integer",
           "minimum": 0,
           "maximum": 9007199254740991
@@ -2134,7 +2153,9 @@
         "textPages",
         "legacyFontPages",
         "ocrPages",
-        "chunks"
+        "sections",
+        "chunks",
+        "taggedChunks"
       ],
       "additionalProperties": false
     },

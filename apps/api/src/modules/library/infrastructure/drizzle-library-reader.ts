@@ -1,10 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import type { LibraryQuery, LibrarySummary } from "@vidyam/contracts";
 import { schema } from "@vidyam/db";
-import { and, asc, count, desc, eq, ilike, sql, type SQL } from "drizzle-orm";
+import { and, asc, count, desc, eq, ilike, inArray, sql, type SQL } from "drizzle-orm";
 
 import { OrgDatabase } from "../../../shared/database/org-database.js";
 import type { LibraryReader, PageRow, SectionRow, SourceRow } from "../application/browse-library.js";
+import { READ_STAGES } from "../domain/source-state.js";
 
 const { sources, pages, chunks } = schema;
 
@@ -18,12 +19,13 @@ const ocrPages = sql<number>`(select count(*)::int from ${pages}
 
 // The same rules as domain/source-state.ts, as SQL, so filtering and paging happen in the database.
 const failed = sql`${sources.status} = 'failed'`;
-const inProgress = sql`${sources.status} <> 'failed' and (${sources.stage} <> 'chunked' or ${sources.status} = 'running')`;
+const read = inArray(sources.stage, [...READ_STAGES] as (typeof sources.stage._.data)[]);
+const inProgress = sql`${sources.status} <> 'failed' and (not ${read} or ${sources.status} = 'running')`;
 const FILTERS: Record<LibraryQuery["show"], SQL | undefined> = {
   all: undefined,
   failed,
   in_progress: inProgress,
-  ready: sql`${sources.status} not in ('failed', 'running') and ${sources.stage} = 'chunked'
+  ready: sql`${sources.status} not in ('failed', 'running') and ${read}
     and not (${sections} = 0 and ${ocrPages} > 0)`,
   needs_ocr: sql`${ocrPages} > 0`,
 };

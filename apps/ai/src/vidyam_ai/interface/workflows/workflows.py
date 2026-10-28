@@ -15,6 +15,7 @@ with workflow.unsafe.imports_passed_through():
         IngestSourceResult,
         LlmBatchInput,
         PingInput,
+        Stages,
         WorkflowType,
     )
     from vidyam_ai.interface.workflows.activities import Activities, IngestionActivities, LlmActivities, parse
@@ -37,22 +38,31 @@ class PingWorkflow:
 
 @workflow.defn(name=WorkflowType.ingest_source)
 class IngestSourceWorkflow:
-    """Read one uploaded file into pages of clean Unicode, then chunk the usable text (ADR 0014)."""
+    """Read one uploaded file into pages of clean Unicode with page images; find its sections and chunk the
+    usable text; tag the chunks with the syllabus by rules (ADR 0014, plan v3 §5). With `stages: structure`
+    the stored pages are kept and only sections, chunks and tags are worked out again."""
 
     @workflow.run
     async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
         request = parse(IngestSourceInput, payload)
         try:
-            pages: dict[str, int] = await workflow.execute_activity_method(
-                IngestionActivities.extract_source,
+            if request.stages == Stages.all:
+                await workflow.execute_activity_method(
+                    IngestionActivities.extract_source,
+                    payload,
+                    task_queue=_queue(AiTaskQueue.ai_cpu),
+                    start_to_close_timeout=timedelta(hours=2),  # a 1,000-page book
+                    heartbeat_timeout=timedelta(minutes=2),
+                    retry_policy=RetryPolicy(maximum_attempts=3),
+                )
+            structure: dict[str, int] = await workflow.execute_activity_method(
+                IngestionActivities.structure_source,
                 payload,
-                task_queue=_queue(AiTaskQueue.ai_cpu),
-                start_to_close_timeout=timedelta(hours=2),  # a 1,000-page book
-                heartbeat_timeout=timedelta(minutes=2),
-                retry_policy=RetryPolicy(maximum_attempts=3),
+                start_to_close_timeout=timedelta(minutes=10),
+                retry_policy=RetryPolicy(maximum_attempts=5),
             )
-            chunks = await workflow.execute_activity_method(
-                IngestionActivities.chunk_source,
+            tagged = await workflow.execute_activity_method(
+                IngestionActivities.tag_source,
                 payload,
                 start_to_close_timeout=timedelta(minutes=10),
                 retry_policy=RetryPolicy(maximum_attempts=5),
@@ -65,7 +75,7 @@ class IngestSourceWorkflow:
                 start_to_close_timeout=timedelta(minutes=1),
             )
             raise ApplicationError(f"ingestion failed: {reason}", type="IngestionFailed") from error
-        result = IngestSourceResult(sourceId=request.source_id, chunks=chunks, **pages)
+        result = IngestSourceResult(sourceId=request.source_id, taggedChunks=tagged, **structure)
         return result.model_dump(mode="json", by_alias=True)
 
 

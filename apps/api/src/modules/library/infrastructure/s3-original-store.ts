@@ -10,12 +10,15 @@ export class S3OriginalStore implements OriginalStore {
     private readonly bucket: string,
   ) {}
 
-  async put(key: string, file: { path: string; mimeType: string; sizeBytes: number }): Promise<void> {
+  async put(
+    key: string,
+    file: ({ path: string } | { body: Buffer }) & { mimeType: string; sizeBytes: number },
+  ): Promise<void> {
     await this.s3.send(
       new PutObjectCommand({
         Bucket: this.bucket,
         Key: key,
-        Body: createReadStream(file.path),
+        Body: "path" in file ? createReadStream(file.path) : file.body,
         ContentType: file.mimeType,
         ContentLength: file.sizeBytes,
       }),

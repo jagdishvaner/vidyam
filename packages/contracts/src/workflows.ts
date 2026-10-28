@@ -59,8 +59,15 @@ export type WorkflowEnvelope = z.infer<typeof WorkflowEnvelope>;
 
 export const IngestSourceInput = contract(
   "IngestSourceInput",
-  WorkflowEnvelope.extend({ sourceId: Uuid }),
-  "Ingest one file: parse, OCR, tag and index it (Phase 2).",
+  WorkflowEnvelope.extend({
+    sourceId: Uuid,
+    /**
+     * `all` reads the file again; `structure` keeps the stored pages and redoes sections, chunks and tags
+     * (after its manifest metadata changed, or OCR filled in pages).
+     */
+    stages: z.enum(["all", "structure"]).default("all"),
+  }),
+  "Ingest one file: read its pages, find its sections, chunk and tag it (plan v3 §5).",
 );
 export type IngestSourceInput = z.infer<typeof IngestSourceInput>;
 
@@ -77,7 +84,11 @@ export const IngestSourceResult = contract(
     legacyFontPages: count,
     /** Scans, damaged text or unconvertible fonts: these wait for vision OCR. */
     ocrPages: count,
+    /** Parts of the file mapped to the syllabus (from the manifest, the table of contents or headings). */
+    sections: count,
     chunks: count,
+    /** Chunks tagged with a syllabus chapter or subject by the rules (manifest, sections). */
+    taggedChunks: count,
   }),
   "What ingesting one file produced.",
 );

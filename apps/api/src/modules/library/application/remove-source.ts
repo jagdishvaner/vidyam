@@ -11,6 +11,12 @@ export interface SourceRemover {
 }
 export const SOURCE_REMOVER = Symbol("SOURCE_REMOVER");
 
+/** Port: the page images the AI engine rendered from a source (S3). */
+export interface PageImageStore {
+  deleteAll(orgId: string, sourceId: string): Promise<void>;
+}
+export const PAGE_IMAGE_STORE = Symbol("PAGE_IMAGE_STORE");
+
 /** Takes a file out of the library: its text leaves search and the stored original is deleted. */
 @Injectable()
 export class RemoveSource {
@@ -18,6 +24,7 @@ export class RemoveSource {
     @Inject(LIBRARY_READER) private readonly library: LibraryReader,
     @Inject(SOURCE_REMOVER) private readonly sources: SourceRemover,
     @Inject(ORIGINAL_STORE) private readonly originals: OriginalStore,
+    @Inject(PAGE_IMAGE_STORE) private readonly pageImages: PageImageStore,
   ) {}
 
   async execute(orgId: string, sourceId: string): Promise<void> {
@@ -29,5 +36,6 @@ export class RemoveSource {
     }
     await this.sources.remove(orgId, sourceId);
     await this.originals.delete(row.s3Key);
+    await this.pageImages.deleteAll(orgId, sourceId);
   }
 }

@@ -8,6 +8,9 @@ export interface SourceProgress {
 
 export type SourceStateName = "queued" | "reading" | "ready" | "waiting_for_ocr" | "failed";
 
+/** Stages a file reaches once its text has been read and chunked (plan v3 §5: chunk, tag, embed, index). */
+export const READ_STAGES: readonly string[] = ["chunked", "tagged", "embedded", "indexed"];
+
 /**
  * Collapses the pipeline's stages into what a center can act on. Must agree with the SQL filters in
  * infrastructure/drizzle-library-reader.ts.
@@ -15,7 +18,7 @@ export type SourceStateName = "queued" | "reading" | "ready" | "waiting_for_ocr"
 export function sourceState({ stage, status, sections, ocrPages }: SourceProgress): SourceStateName {
   if (status === "failed") return "failed";
   if (stage === "uploaded") return "queued";
-  if (status === "running" || stage !== "chunked") return "reading";
+  if (status === "running" || !READ_STAGES.includes(stage)) return "reading";
   if (sections === 0 && ocrPages > 0) return "waiting_for_ocr";
   return "ready";
 }

@@ -535,6 +535,11 @@ class ImportSummary(BaseModel):
     unchanged: int = Field(..., ge=0, le=9007199254740991)
 
 
+class Stages(StrEnum):
+    all = "all"
+    structure = "structure"
+
+
 class IngestSourceInput(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -544,6 +549,7 @@ class IngestSourceInput(BaseModel):
     org_id: UUID = Field(..., alias="orgId")
     requested_by: UUID | None = Field(..., alias="requestedBy")
     source_id: UUID = Field(..., alias="sourceId")
+    stages: Stages
 
 
 class IngestSourceResult(BaseModel):
@@ -558,7 +564,9 @@ class IngestSourceResult(BaseModel):
         ..., alias="legacyFontPages", ge=0, le=9007199254740991
     )
     ocr_pages: int = Field(..., alias="ocrPages", ge=0, le=9007199254740991)
+    sections: int = Field(..., ge=0, le=9007199254740991)
     chunks: int = Field(..., ge=0, le=9007199254740991)
+    tagged_chunks: int = Field(..., alias="taggedChunks", ge=0, le=9007199254740991)
 
 
 class Language(StrEnum):

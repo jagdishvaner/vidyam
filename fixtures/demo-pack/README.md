@@ -44,7 +44,12 @@ The files cover the cases real content brings:
 pnpm demo:build                 # rebuild files/ from texts/ and questions/, then read each file back
 pnpm demo:build --only light    # just the files whose name contains "light"
 pnpm demo:check                 # questions and queries against the contracts and the pack's rules
+pnpm ingest --manifest fixtures/demo-pack/manifest.csv --wait   # load the pack into the library
 ```
+
+`pnpm ingest --manifest` checks the manifest against the center's syllabus and exam papers first, so load the
+syllabus and exam paper (Admin → Exams & syllabus, or `pnpm db:seed`, whose official seed includes every code the
+pack uses) before the files.
 
 `demo:build` reads every file back with the AI engine's own extractor and fails if the text differs from what
 it drew, so `texts/` stays the exact ground truth. The scan is rendered with headless Google Chrome (it shapes
