@@ -20,6 +20,38 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/me/settings": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MeController_settings"];
+        put: operations["MeController_updateSettings"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/me/profile": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put: operations["MeController_updateProfile"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/members": {
         parameters: {
             query?: never;
@@ -622,6 +654,108 @@ export interface operations {
                         orgRole: "admin" | "reviewer" | "teacher" | "content_operator" | null;
                     };
                 };
+            };
+        };
+    };
+    MeController_settings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        settings: {
+                            /** @enum {string} */
+                            uiLocale: "en" | "hi";
+                            /** @enum {string} */
+                            contentLanguage: "hi" | "en" | "bilingual";
+                            defaultModelId: string | null;
+                            /** Format: uuid */
+                            defaultExamId: string | null;
+                        };
+                        models: {
+                            id: string;
+                            displayName: string;
+                            /** @enum {string} */
+                            provider: "anthropic" | "openai" | "stub";
+                        }[];
+                        exams: {
+                            /** Format: uuid */
+                            id: string;
+                            code: string;
+                            nameEn: string;
+                            nameHi: string | null;
+                        }[];
+                        subjects: {
+                            /** Format: uuid */
+                            nodeId: string;
+                            code: string;
+                            nameEn: string;
+                            nameHi: string | null;
+                            isHead: boolean;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    MeController_updateSettings: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    uiLocale: "en" | "hi";
+                    /** @enum {string} */
+                    contentLanguage: "hi" | "en" | "bilingual";
+                    defaultModelId: string | null;
+                    /** Format: uuid */
+                    defaultExamId: string | null;
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    MeController_updateProfile: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    name: string;
+                };
+            };
+        };
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

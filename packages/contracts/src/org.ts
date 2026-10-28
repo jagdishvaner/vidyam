@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { Uuid, type OrgRole } from "./common.js";
 import { contract } from "./registry.js";
+import { StaffSubject } from "./staff.js";
 import { LocalizedText, Sourcing } from "./tasks.js";
 
 /**
@@ -116,3 +117,25 @@ export type UpdateBrandingRequest = z.infer<typeof UpdateBrandingRequest>;
 
 export const LOGO_TYPES = ["image/png", "image/jpeg", "image/webp"] as const;
 export const LOGO_MAX_BYTES = 1_000_000;
+
+/** The Settings page: the person's own defaults and what they can choose from. */
+export const MySettings = contract(
+  "MySettings",
+  z.object({
+    settings: MemberSettings,
+    /** Models this center lets teachers pick (its AI rules), from the platform's teacher-selectable list. */
+    models: z.array(SelectableModel),
+    exams: z.array(
+      z.object({ id: Uuid, code: z.string(), nameEn: z.string(), nameHi: z.string().nullable() }),
+    ),
+    /** Assigned by an admin under Staff. */
+    subjects: z.array(StaffSubject),
+  }),
+);
+export type MySettings = z.infer<typeof MySettings>;
+
+export const UpdateProfileRequest = contract(
+  "UpdateProfileRequest",
+  z.object({ name: z.string().trim().min(1).max(120) }),
+);
+export type UpdateProfileRequest = z.infer<typeof UpdateProfileRequest>;

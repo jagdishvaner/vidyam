@@ -86,6 +86,254 @@
         ]
       }
     },
+    "/api/me/settings": {
+      "get": {
+        "operationId": "MeController_settings",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "settings": {
+                      "type": "object",
+                      "properties": {
+                        "uiLocale": {
+                          "type": "string",
+                          "enum": [
+                            "en",
+                            "hi"
+                          ]
+                        },
+                        "contentLanguage": {
+                          "type": "string",
+                          "enum": [
+                            "hi",
+                            "en",
+                            "bilingual"
+                          ]
+                        },
+                        "defaultModelId": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "defaultExamId": {
+                          "nullable": true,
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        }
+                      },
+                      "required": [
+                        "uiLocale",
+                        "contentLanguage",
+                        "defaultModelId",
+                        "defaultExamId"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "models": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          },
+                          "provider": {
+                            "type": "string",
+                            "enum": [
+                              "anthropic",
+                              "openai",
+                              "stub"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "displayName",
+                          "provider"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "exams": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "nameEn": {
+                            "type": "string"
+                          },
+                          "nameHi": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "code",
+                          "nameEn",
+                          "nameHi"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "subjects": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "nodeId": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "nameEn": {
+                            "type": "string"
+                          },
+                          "nameHi": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "isHead": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "nodeId",
+                          "code",
+                          "nameEn",
+                          "nameHi",
+                          "isHead"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "settings",
+                    "models",
+                    "exams",
+                    "subjects"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "identity"
+        ]
+      },
+      "put": {
+        "operationId": "MeController_updateSettings",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "uiLocale": {
+                    "type": "string",
+                    "enum": [
+                      "en",
+                      "hi"
+                    ]
+                  },
+                  "contentLanguage": {
+                    "type": "string",
+                    "enum": [
+                      "hi",
+                      "en",
+                      "bilingual"
+                    ]
+                  },
+                  "defaultModelId": {
+                    "nullable": true,
+                    "type": "string"
+                  },
+                  "defaultExamId": {
+                    "nullable": true,
+                    "type": "string",
+                    "format": "uuid",
+                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                  }
+                },
+                "required": [
+                  "uiLocale",
+                  "contentLanguage",
+                  "defaultModelId",
+                  "defaultExamId"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identity"
+        ]
+      }
+    },
+    "/api/me/profile": {
+      "put": {
+        "operationId": "MeController_updateProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  }
+                },
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "identity"
+        ]
+      }
+    },
     "/api/members": {
       "post": {
         "operationId": "MembersController_add",

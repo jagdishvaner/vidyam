@@ -696,6 +696,17 @@ class MemberSettings(BaseModel):
     default_exam_id: UUID | None = Field(..., alias="defaultExamId")
 
 
+class Exam(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    code: str
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+
+
 class Kind(StrEnum):
     notes = "notes"
     revision_sheet = "revision_sheet"
@@ -1080,7 +1091,7 @@ class Language1(StrEnum):
     bilingual = "bilingual"
 
 
-class Exam(RootModel[str]):
+class Exam1(RootModel[str]):
     root: str = Field(..., min_length=1)
 
 
@@ -1106,7 +1117,7 @@ class SourceManifestRow(BaseModel):
     licence: Licence
     subject: str = Field(..., min_length=1)
     language: Language1
-    exams: list[Exam] = Field(..., min_length=1)
+    exams: list[Exam1] = Field(..., min_length=1)
     title: str | None = None
     class_level: str | None = Field(None, alias="classLevel")
     paper_code: str | None = Field(None, alias="paperCode")
@@ -1331,6 +1342,14 @@ class UpdateBrandingRequest(BaseModel):
     header_lines: LocalizedText | None = Field(..., alias="headerLines")
     footer: LocalizedText | None
     default_instructions: LocalizedText | None = Field(..., alias="defaultInstructions")
+
+
+class UpdateProfileRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    name: str = Field(..., max_length=120, min_length=1)
 
 
 class Subject1(BaseModel):
@@ -1746,6 +1765,17 @@ class LibrarySourceDetail(BaseModel):
     source: LibrarySource
     page_readings: list[PageReading] = Field(..., alias="pageReadings")
     section_preview: list[SectionPreviewItem] = Field(..., alias="sectionPreview")
+
+
+class MySettings(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    settings: MemberSettings
+    models: list[SelectableModel]
+    exams: list[Exam]
+    subjects: list[StaffSubject]
 
 
 class PaperSection(BaseModel):

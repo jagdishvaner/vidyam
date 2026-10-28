@@ -9,9 +9,11 @@ import { DATABASE } from "../../shared/database/tokens.js";
 import { GetCurrentUser, MEMBERSHIP_READER } from "./application/get-current-user.js";
 import { AddMember, MEMBER_ACCOUNTS, RemoveMember, SetMemberPassword } from "./application/manage-members.js";
 import { ListStaff, STAFF_STORE, UpdateStaffMember } from "./application/manage-staff.js";
+import { MY_SETTINGS_STORE, MySettingsService } from "./application/my-settings.js";
 import { createAuth } from "./infrastructure/better-auth.js";
 import { BetterAuthMemberAccounts } from "./infrastructure/better-auth-member-accounts.js";
 import { DrizzleMembershipReader } from "./infrastructure/drizzle-membership-reader.js";
+import { DrizzleMySettingsStore } from "./infrastructure/drizzle-my-settings-store.js";
 import { DrizzleStaffStore } from "./infrastructure/drizzle-staff-store.js";
 import { valkeySecondaryStorage } from "./infrastructure/valkey-secondary-storage.js";
 import { MeController } from "./interface/me.controller.js";
@@ -37,6 +39,8 @@ import { StaffController } from "./interface/staff.controller.js";
     ListStaff,
     UpdateStaffMember,
     { provide: STAFF_STORE, useClass: DrizzleStaffStore },
+    MySettingsService,
+    { provide: MY_SETTINGS_STORE, useClass: DrizzleMySettingsStore },
     { provide: MEMBERSHIP_READER, useClass: DrizzleMembershipReader },
     { provide: MEMBER_ACCOUNTS, useClass: BetterAuthMemberAccounts },
   ],

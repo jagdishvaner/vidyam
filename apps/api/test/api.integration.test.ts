@@ -783,6 +783,39 @@ describe("API", () => {
     await request(server).get("/api/usage?month=2026-13").set("Cookie", admin).expect(400);
   });
 
+  it("keeps each person's own settings, limited to what the center allows", async () => {
+    const server = app.getHttpServer();
+    const teacher = await sessionFor();
+    const mine = (await request(server).get("/api/me/settings").set("Cookie", teacher).expect(200)).body;
+    expect(mine.settings).toEqual({
+      uiLocale: "en",
+      contentLanguage: "bilingual",
+      defaultModelId: null,
+      defaultExamId: null,
+    });
+    const exam = mine.exams.find((e: { code: string }) => e.code === "rpsc_2g_p2_science");
+    expect(exam).toBeDefined();
+
+    const settings = { uiLocale: "hi", contentLanguage: "hi", defaultModelId: null, defaultExamId: exam.id };
+    await request(server).put("/api/me/settings").set("Cookie", teacher).send(settings).expect(204);
+    expect((await request(server).get("/api/me/settings").set("Cookie", teacher)).body.settings).toEqual(
+      settings,
+    );
+    await request(server)
+      .put("/api/me/settings")
+      .set("Cookie", teacher)
+      .send({ ...settings, defaultModelId: "a-model-the-center-does-not-offer" })
+      .expect(422);
+
+    await request(server).put("/api/me/profile").set("Cookie", teacher).send({ name: "Asha S." }).expect(204);
+    expect((await request(server).get("/api/me").set("Cookie", teacher)).body.name).toBe("Asha S.");
+    await request(server)
+      .put("/api/me/profile")
+      .set("Cookie", teacher)
+      .send({ name: "Test Teacher" })
+      .expect(204);
+  });
+
   // Runs last: the admin actions of the tests above are what it reads back.
   it("records every admin change in the audit log, without secrets, for admins to read", async () => {
     const server = app.getHttpServer();

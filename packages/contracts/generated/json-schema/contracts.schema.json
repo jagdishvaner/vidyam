@@ -2577,6 +2577,65 @@
       ],
       "additionalProperties": false
     },
+    "MySettings": {
+      "title": "MySettings",
+      "type": "object",
+      "properties": {
+        "settings": {
+          "$ref": "#/$defs/MemberSettings"
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SelectableModel"
+          }
+        },
+        "exams": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "format": "uuid"
+              },
+              "code": {
+                "type": "string"
+              },
+              "nameEn": {
+                "type": "string"
+              },
+              "nameHi": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "code",
+              "nameEn",
+              "nameHi"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/StaffSubject"
+          }
+        }
+      },
+      "required": [
+        "settings",
+        "models",
+        "exams",
+        "subjects"
+      ],
+      "additionalProperties": false
+    },
     "NotesSpec": {
       "title": "NotesSpec",
       "type": "object",
@@ -4628,6 +4687,21 @@
         "headerLines",
         "footer",
         "defaultInstructions"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateProfileRequest": {
+      "title": "UpdateProfileRequest",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        }
+      },
+      "required": [
+        "name"
       ],
       "additionalProperties": false
     },
