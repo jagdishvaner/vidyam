@@ -196,6 +196,10 @@ services:
       VIDYAM_S3_ENDPOINT: http://seaweedfs:8333
       VIDYAM_AI_INTERNAL_URL: http://ai:38120
       VIDYAM_API_INTERNAL_URL: http://api:38110
+      # The Qwen3 model servers run on the Mac itself (`pnpm models:up`), on its GPU: the Docker VM has
+      # neither the GPU nor the memory for them.
+      VIDYAM_EMBEDDING_URL: http://host.docker.internal:38180
+      VIDYAM_RERANK_URL: http://host.docker.internal:38181
     depends_on: &app-depends
       postgres: { condition: service_healthy }
       temporal-namespace: { condition: service_completed_successfully }
@@ -220,6 +224,8 @@ services:
     image: vidyam/ai:local
     env_file: ../../.env
     environment: *app-network-env
+    extra_hosts: &model-host
+      - "host.docker.internal:host-gateway"
     depends_on: *app-depends
     healthcheck:
       test:
@@ -239,6 +245,7 @@ services:
     command: ["vidyam-ai", "worker"]
     env_file: ../../.env
     environment: *app-network-env
+    extra_hosts: *model-host
     depends_on:
       ai: { condition: service_healthy }
 

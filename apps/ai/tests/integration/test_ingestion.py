@@ -76,9 +76,10 @@ async def test_ingest_command_reads_files_into_the_organizations_library(tmp_pat
             [ocr_page] = (
                 await conn.execute(select(t_pages).where(t_pages.c.source_id == sources["scan.pdf"].id))
             ).all()
-        assert (sources["notes.pdf"].stage, sources["notes.pdf"].status) == ("tagged", "done")
+        # "embedded" too when the model servers are running (pnpm models:up).
+        assert sources["notes.pdf"].stage in ("tagged", "embedded") and sources["notes.pdf"].status == "done"
         assert sources["notes.pdf"].meta == {"exam": "rpsc"}
-        assert (sources["scan.pdf"].stage, sources["scan.pdf"].status) == ("tagged", "pending")
+        assert sources["scan.pdf"].stage in ("tagged", "embedded") and sources["scan.pdf"].status == "pending"
         # "Chapter 1" is a heading: it leads the chunk's heading path instead of its text.
         assert chunk.text == "भारत का संविधान 26 जनवरी 1950 को लागू हुआ था"
         assert (chunk.heading_path, chunk.kind) == ("Chapter 1", "prose")
@@ -95,10 +96,11 @@ async def test_ingest_command_reads_files_into_the_organizations_library(tmp_pat
         assert (await again.communicate())[0].decode().count("already imported") == 2
     finally:
         s3 = create_s3(settings)
-        listed = s3.list_objects_v2(Bucket=settings.bucket("raw"), Prefix=f"org/{org_id}/")
-        keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
-        if keys:
-            s3.delete_objects(Bucket=settings.bucket("raw"), Delete={"Objects": keys})
+        for bucket in (settings.bucket(kind) for kind in ("raw", "derived", "embeddings")):
+            listed = s3.list_objects_v2(Bucket=bucket, Prefix=f"org/{org_id}/")
+            keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
+            if keys:
+                s3.delete_objects(Bucket=bucket, Delete={"Objects": keys})
         async with owner.begin() as conn:
             await conn.execute(text("delete from organizations where id = :id"), {"id": org_id})
         await owner.dispose()

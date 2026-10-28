@@ -238,7 +238,9 @@ try {
       if (r.legacyFontPages) parts.push(`${r.legacyFontPages} Kruti Dev`);
       if (r.ocrPages) parts.push(`${r.ocrPages} waiting for OCR`);
       const chapters = r.sections ? ` in ${plural(r.sections, "section")}` : "";
-      return `${plural(r.pages, "page")} (${parts.join(", ")}) → ${plural(r.chunks, "passage")}${chapters}, ${r.taggedChunks} tagged`;
+      const search =
+        r.chunks && !r.embeddedChunks ? "search waits for the model server" : `${r.embeddedChunks} embedded`;
+      return `${plural(r.pages, "page")} (${parts.join(", ")}) → ${plural(r.chunks, "passage")}${chapters}, ${r.taggedChunks} tagged, ${search}`;
     };
     for (const { name, outcome } of waiting) {
       try {

@@ -1,6 +1,7 @@
 packages:
   - "apps/*"
   - "packages/*"
+  - "infra/models"
 
 # pnpm 10 blocks dependency install scripts by default. lefthook's own postinstall isn't needed:
 # the root `prepare` script installs the git hooks.

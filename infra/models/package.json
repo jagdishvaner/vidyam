@@ -1,0 +1,10 @@
+{
+  "name": "@vidyam/models",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Self-hosted Qwen3 embedding and rerank models (llama.cpp): setup, and the servers `pnpm dev` starts.",
+  "scripts": {
+    "dev": "uv run --no-project --python 3.12 serve.py",
+    "setup": "uv run --no-project --python 3.12 setup.py"
+  }
+}

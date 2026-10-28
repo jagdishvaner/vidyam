@@ -44,6 +44,9 @@ class Settings(BaseSettings):
     embedding_dims: int = Field(default=2560, ge=32)
     rerank_url: str = "http://127.0.0.1:38181"
     rerank_model: str = "qwen3-reranker-4b"
+    # llama-server reports Qwen3-Reranker's probability (checked by infra/models/verify_reranker.py); "logit"
+    # is for servers that return raw scores.
+    rerank_scores: Literal["logit", "probability"] = "probability"
 
     worker_cpu_processes: int = Field(default=2, ge=1)
 

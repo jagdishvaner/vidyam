@@ -94,6 +94,8 @@ export const IngestSourceResult = contract(
     chunks: count,
     /** Chunks tagged with a syllabus chapter or subject by the rules (manifest, sections). */
     taggedChunks: count,
+    /** Chunks with vectors; 0 while the embedding model server isn't running (they wait for it). */
+    embeddedChunks: count,
   }),
   "What ingesting one file produced.",
 );

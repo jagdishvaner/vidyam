@@ -11,6 +11,7 @@ from temporalio.client import Client
 from temporalio.worker import Worker
 
 from vidyam_ai.application.backlogs import Backlogs
+from vidyam_ai.application.embedding import EmbedSource
 from vidyam_ai.application.ingestion import ExtractSource, ReadAnswerKey, StructureSource, TagSource
 from vidyam_ai.application.llm_gateway import BatchHandler
 from vidyam_ai.application.providers import provider_status
@@ -18,13 +19,16 @@ from vidyam_ai.config import Settings, get_settings
 from vidyam_ai.domain.documents import PageReading
 from vidyam_ai.generated.contracts import AiTaskQueue
 from vidyam_ai.infrastructure.db.backlogs import SqlBacklogStore
+from vidyam_ai.infrastructure.db.embeddings import SqlEmbeddingStore
 from vidyam_ai.infrastructure.db.sources import SqlSources
 from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
 from vidyam_ai.infrastructure.extraction import extract, render_pages
 from vidyam_ai.infrastructure.llm import create_llm_gateway
+from vidyam_ai.infrastructure.models import create_embedder
 from vidyam_ai.infrastructure.resources import Resources
 from vidyam_ai.infrastructure.s3.files import S3Files
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
+from vidyam_ai.infrastructure.s3.vectors import S3VectorFiles
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.infrastructure.temporal.cpu import CpuPool
 from vidyam_ai.interface.workflows.activities import (
@@ -84,6 +88,12 @@ async def open_activities(
                 StructureSource(sources, syllabus),
                 TagSource(sources),
                 ReadAnswerKey(sources, store),
+                EmbedSource(
+                    sources,
+                    SqlEmbeddingStore(resources.engine),
+                    S3VectorFiles(resources.s3, settings.bucket("embeddings")),
+                    create_embedder(settings, resources.http),
+                ),
                 sources,
             ),
             llm=LlmActivities(gateway, handlers),
@@ -126,7 +136,12 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
         Worker(
             client,
             task_queue=queue(AiTaskQueue.ai_llm),
-            activities=[llm.batch_ended, llm.collect_batch, activities.backlog.submit_backlog],
+            activities=[
+                llm.batch_ended,
+                llm.collect_batch,
+                activities.backlog.submit_backlog,
+                ingestion.embed_source,
+            ],
         ),
     ]
 

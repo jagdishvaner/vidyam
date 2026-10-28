@@ -165,7 +165,7 @@ async def test_backlogs_estimate_and_run_on_the_stub(tmp_path: Path) -> None:
             assert [estimate.items for estimate in after] == [3, 0, 0]
     finally:
         s3 = create_s3(settings)
-        for bucket in (settings.bucket("raw"), settings.bucket("derived")):
+        for bucket in (settings.bucket(kind) for kind in ("raw", "derived", "embeddings")):
             listed = s3.list_objects_v2(Bucket=bucket, Prefix=f"org/{org_id}/")
             keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
             if keys:

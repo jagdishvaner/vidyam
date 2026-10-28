@@ -20,9 +20,13 @@ from vidyam_ai.domain.headings import parse_heading
 Language = Literal["hi", "en", "mixed"]
 ChunkKind = Literal["prose", "question", "solution", "definition", "table"]
 
-CHUNKER_VERSION = "chunker-2"  # bump whenever chunk boundaries or texts change
-TARGET_TOKENS = 450  # a chunk closes once it reaches this size...
-MAX_TOKENS = 800  # ...and never grows past this (a longer block is split at sentence ends)
+CHUNKER_VERSION = "chunker-3"  # bump whenever chunk boundaries or texts change
+TARGET_TOKENS = 512  # a chunk closes once it reaches this size, in embedding-model tokens...
+MAX_TOKENS = 1024  # ...and never grows past this (a longer block is split at sentence ends)
+# Qwen3's tokenizer, measured on the demo pack: ~1.3 tokens per Devanagari character, ~2.8 other characters
+# per token. Hindi costs about three times what its length suggests, so chunks are sized in tokens, not words.
+TOKENS_PER_DEVANAGARI = 1.3
+CHARS_PER_TOKEN = 2.8
 HEADING_SEPARATOR = " › "
 
 
@@ -44,11 +48,10 @@ class Chunk:
 
 
 def estimate_tokens(text: str) -> int:
-    """Approximate embedding-model tokens: Devanagari packs fewer characters per token than Latin script.
-    The exact count comes from the embedding model's tokenizer at indexing time."""
+    """Embedding-model tokens, estimated without the tokenizer (within ~10% on the demo pack)."""
     hindi, _ = script_mix(text)
     other = len(re.sub(r"\s", "", text)) - hindi
-    return max(1, math.ceil(hindi / 2.5 + other / 4))
+    return max(1, math.ceil(hindi * TOKENS_PER_DEVANAGARI + other / CHARS_PER_TOKEN))
 
 
 def detect_language(text: str) -> Language:

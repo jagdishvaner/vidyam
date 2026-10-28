@@ -599,6 +599,7 @@ class IngestSourceResult(BaseModel):
     sections: int = Field(..., ge=0, le=9007199254740991)
     chunks: int = Field(..., ge=0, le=9007199254740991)
     tagged_chunks: int = Field(..., alias="taggedChunks", ge=0, le=9007199254740991)
+    embedded_chunks: int = Field(..., alias="embeddedChunks", ge=0, le=9007199254740991)
 
 
 class Language(StrEnum):

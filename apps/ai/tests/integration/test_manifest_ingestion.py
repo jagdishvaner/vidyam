@@ -12,6 +12,7 @@ from pathlib import Path
 from typing import Any
 from uuid import UUID, uuid4
 
+import httpx
 from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncConnection, create_async_engine
 from vidyam_ai.config import REPO_ROOT, get_settings
@@ -23,13 +24,20 @@ from vidyam_ai.infrastructure.db.generated.tables import (
     t_sources,
     t_taxonomy_nodes,
 )
+from vidyam_ai.infrastructure.models import create_embedder, embedding_version
 from vidyam_ai.infrastructure.resources import create_s3
+from vidyam_ai.infrastructure.s3.vectors import S3VectorFiles
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.interface.workflows.worker import create_workers, open_activities
 
 from tests.integration.test_rls import _admin_url
 
 PACK = REPO_ROOT / "fixtures" / "demo-pack"
+
+
+async def embedder_ready(settings: Any) -> bool:
+    async with httpx.AsyncClient() as client:
+        return await create_embedder(settings, client).ready()
 
 
 async def _seed_catalog(conn: AsyncConnection, org_id: UUID) -> None:
@@ -180,8 +188,9 @@ async def test_manifest_import_reads_tags_and_retags_the_demo_pack(tmp_path: Pat
             assert en.parallel_group_id is not None and en.parallel_group_id == hi.parallel_group_id
             assert nodes[motion_force.subject_node_id] == "science" and motion_force.language == "hi"
             assert motion_force.manifest_batch_id is not None
-            assert (motion_force.stage, motion_force.status) == ("tagged", "done")
-            assert (sources["chemistry-acids-bases-salts-scan.pdf"].stage,) == ("tagged",)
+            # "embedded" too when the model servers are running (pnpm models:up).
+            assert motion_force.stage in ("tagged", "embedded") and motion_force.status == "done"
+            assert sources["chemistry-acids-bases-salts-scan.pdf"].stage in ("tagged", "embedded")
 
             # Sections from the manifest's page ranges; every chunk tagged with the chapter its pages cover.
             assert [(s.page_start, s.page_end, nodes[s.node_id], s.origin) for s in sections] == [
@@ -203,6 +212,24 @@ async def test_manifest_import_reads_tags_and_retags_the_demo_pack(tmp_path: Pat
             assert [(p.page_no, p.page_label) for p in book_pages][:2] == [(1, "41"), (2, "42")]
             book = sources["biology-cell-life-processes-hi.pdf"]
             assert all(p.image_s_3_key == f"org/{org_id}/pages/{book.id}/{p.page_no}.png" for p in book_pages)
+
+            # With the model servers running (pnpm models:up), every chunk also has a vector, kept as Parquet.
+            if await embedder_ready(settings):
+                version = embedding_version(settings)
+                vectors = await S3VectorFiles(create_s3(settings), settings.bucket("embeddings")).read(
+                    org_id, motion_force.id, version
+                )
+                async with owner.connect() as conn:
+                    chunk_versions = {
+                        row.embedding_version_id
+                        for row in await conn.execute(
+                            select(t_chunks.c.embedding_version_id).where(
+                                t_chunks.c.source_id == motion_force.id
+                            )
+                        )
+                    }
+                assert motion_force.stage == "embedded" and chunk_versions == {version.id}
+                assert len(vectors) == len(tagged) and all(len(v.vector) == version.dims for v in vectors)
 
             # The same manifest again: nothing to do.
             code, output, _ = await _ingest(manifest, slug, f"{prefix}ai")
@@ -231,7 +258,7 @@ async def test_manifest_import_reads_tags_and_retags_the_demo_pack(tmp_path: Pat
             assert retagged == {"work_and_energy"}
     finally:
         s3 = create_s3(settings)
-        for bucket in (settings.bucket("raw"), settings.bucket("derived")):
+        for bucket in (settings.bucket(kind) for kind in ("raw", "derived", "embeddings")):
             listed = s3.list_objects_v2(Bucket=bucket, Prefix=f"org/{org_id}/")
             keys = [{"Key": item["Key"]} for item in listed.get("Contents", [])]
             if keys:

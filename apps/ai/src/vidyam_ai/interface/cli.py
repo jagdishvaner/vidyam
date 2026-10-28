@@ -8,6 +8,9 @@ import sys
 import uvicorn
 
 from vidyam_ai.config import get_settings
+from vidyam_ai.infrastructure.db.embeddings import register_version
+from vidyam_ai.infrastructure.db.engine import create_engine
+from vidyam_ai.infrastructure.models import embedding_version
 from vidyam_ai.infrastructure.qdrant.collections import EmbeddingProfile, bootstrap
 from vidyam_ai.infrastructure.resources import create_qdrant
 from vidyam_ai.interface.workflows.worker import main as run_workers
@@ -41,14 +44,20 @@ def dev() -> None:
 
 
 async def _bootstrap_qdrant() -> None:
+    """Qdrant collections for the configured embedding model, and that model as the active version."""
     settings = get_settings()
     client = create_qdrant(settings)
+    engine = create_engine(settings.async_database_url)
     try:
         profile = EmbeddingProfile(settings.embedding_model, settings.embedding_dims)
         for line in await bootstrap(client, profile):
             print(f"qdrant: {line}")
+        version = embedding_version(settings)
+        await register_version(engine, version)
+        print(f"embedding version: {version.id} is active")
     finally:
         await client.close()
+        await engine.dispose()
 
 
 def main() -> None:

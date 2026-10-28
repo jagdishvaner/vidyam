@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING
 from urllib.parse import urlparse
 
 import boto3
+import httpx
 from botocore.config import Config
 from qdrant_client import AsyncQdrantClient
 from redis.asyncio import Redis
@@ -15,7 +16,14 @@ from temporalio.client import Client
 from vidyam_ai.application.health import DependencyProbe
 from vidyam_ai.config import Settings
 from vidyam_ai.infrastructure.db.engine import create_engine
-from vidyam_ai.infrastructure.probes import PostgresProbe, QdrantProbe, S3Probe, TemporalProbe, ValkeyProbe
+from vidyam_ai.infrastructure.probes import (
+    ModelServerProbe,
+    PostgresProbe,
+    QdrantProbe,
+    S3Probe,
+    TemporalProbe,
+    ValkeyProbe,
+)
 from vidyam_ai.infrastructure.temporal.client import connect
 
 if TYPE_CHECKING:
@@ -49,6 +57,7 @@ class Resources:
     temporal: Client
     cache_redis: Redis
     s3: "S3Client"
+    http: httpx.AsyncClient  # the model servers (embeddings, rerank)
     settings: Settings
 
     @classmethod
@@ -59,6 +68,7 @@ class Resources:
             temporal=await connect(settings, lazy=True),
             cache_redis=Redis.from_url(settings.cache_redis_url),
             s3=create_s3(settings),
+            http=httpx.AsyncClient(limits=httpx.Limits(max_connections=16)),
             settings=settings,
         )
 
@@ -69,9 +79,14 @@ class Resources:
             TemporalProbe(self.temporal),
             ValkeyProbe("valkey-cache", self.cache_redis),
             S3Probe(self.s3, self.settings.bucket("raw")),
+            ModelServerProbe(
+                "embedding-model", self.http, self.settings.embedding_url, self.settings.embedding_model
+            ),
+            ModelServerProbe("rerank-model", self.http, self.settings.rerank_url, self.settings.rerank_model),
         ]
 
     async def close(self) -> None:
         await self.engine.dispose()
         await self.qdrant.close()
         await self.cache_redis.aclose()
+        await self.http.aclose()

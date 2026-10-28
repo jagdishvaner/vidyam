@@ -28,7 +28,7 @@ from vidyam_ai.domain.sections import (
 )
 from vidyam_ai.domain.tagging import Tag, rule_tags
 
-Stage = Literal["parsed", "chunked", "tagged", "segmented"]
+Stage = Literal["parsed", "chunked", "tagged", "segmented", "embedded", "indexed"]
 Status = Literal["running", "done", "pending", "needs_review", "failed"]
 
 

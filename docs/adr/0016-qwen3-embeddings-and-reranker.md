@@ -47,3 +47,78 @@ The owner chose the Qwen3 pair:
   llama.cpp is a new runtime on the developer's Mac and is confirmed with the owner first.
 - Reranking 50 candidates should take 1–2 s on the M5 and under 1 s on an L4; it is measured in step 17.
 - Embedding calls are logged in the same usage ledger as LLM calls, at zero provider cost.
+
+## Update 2026-10-28: as built (plan v3 step 17)
+
+**Setup.** `pnpm models:setup` (`infra/models/setup.py`) puts the models in `~/.vidyam/models`, outside git.
+
+- **Qwen3-Embedding-4B** is Qwen's own GGUF build at Q8_0 (4.3 GB). Its revision is pinned, and the file is
+  checked against its published SHA-256.
+- **Qwen3-Reranker-4B** has no official GGUF, and many community conversions lack the classifier tensor, which
+  makes every score meaningless. So it is converted from Qwen's official weights (pinned revision) to Q8_0:
+  - with llama.cpp's own `convert_hf_to_gguf.py`, taken from the commit the installed `llama-server` was built
+    from;
+  - in a throwaway uv environment.
+
+  `cls.output.weight` is then checked, and `verify_reranker.py` compares the scores with Qwen's reference
+  implementation (transformers, bfloat16) on Hindi, English and Hinglish pairs. The ranking must be the same,
+  and the scores within 0.08. The original weights are deleted afterwards.
+
+- Downloads resume after interruptions. `--small` sets up the 0.6B pair instead.
+
+**Serving.** `pnpm models:up` (`infra/models/serve.py`) runs one llama-server per model on Metal:
+
+- each with 8k context, two parallel slots and 4k tokens per request;
+- embeddings on `:38180` with `--pooling last`;
+- rerank on `:38181` with `--pooling rank`.
+
+`pnpm dev` starts them too, through the `@vidyam/models` workspace package. Until setup has run, it says so
+and the rest of the stack runs without search. The Docker `full` profile uses the same host servers through
+`host.docker.internal`, instead of the planned CPU container. The Docker VM (7.75 GB) has neither the memory
+for two 4B models nor a GPU. A CPU container with the 0.6B pair comes with the CI retrieval evaluation
+(step 21).
+
+**AI engine:**
+
+- `HttpEmbedder` and `HttpReranker` (`infrastructure/models/qwen.py`) check what comes back: the vector count,
+  the dimensions and the normalization.
+- llama-server reports the reranker's probability; the check confirmed it. `VIDYAM_RERANK_SCORES=logit` is
+  for servers that return raw scores. The client is told which, instead of guessing from the value.
+- Query instructions are fixed per kind of search (`domain/embeddings.py`). Documents are embedded with their
+  context header.
+- `EmbedSource` is the `embedded` stage, run after tagging on the ai-llm queue:
+  - it writes each file's vectors as Parquet (zstd, `fixed_size_list<float32>[dims]`) to the embeddings bucket
+    at `org/<org>/<model_dims>/<source>.parquet`;
+  - it reuses a vector whenever the content hash is unchanged, so re-chunking re-embeds only new text;
+  - without a running server, the file waits at this stage instead of failing.
+- `vidyam-ai bootstrap` registers the configured model as the active row in `embedding_versions`.
+- System health shows both model servers, and which model each serves.
+
+Embedding is recorded per file in `pipeline_runs` (chunks embedded and reused). It is not in the AI usage
+ledger, because it costs nothing per call.
+
+**Measured on the M5 (2026-10-28)**, Q8_0 on Metal, with flash attention on:
+
+- **Throughput.** llama.cpp manages about 650–750 tokens/s with a 4B model (`llama-bench`, prompt processing).
+  The plan's estimate of 1–2 s to rerank 50 candidates does not hold here.
+- **Reranking 50 whole chunks** (about 570 tokens each) takes 49.5 s. Shortened and trimmed:
+
+  | Candidates | Size of each     | Time   |
+  | ---------- | ---------------- | ------ |
+  | 30         | first 300 tokens | 16.5 s |
+  | 20         | first 300 tokens | 11.4 s |
+  | 20         | first 200 tokens | 9.8 s  |
+
+  An L4 on AWS is roughly 10–20 times faster. Step 20 makes the number of candidates and their length
+  settings.
+
+- **Embedding the demo pack** (about 70 chunks) takes about 2 minutes. A few thousand pages of the center's
+  content will take hours locally, once; on AWS much less.
+- **Retrieval quality.** Embeddings put the answering passage first for English, Hindi, Hinglish and
+  cross-language queries.
+- **Reference check.** The converted reranker matches Qwen's reference implementation within 0.002, with
+  the same ranking for every query.
+
+**Chunk sizes, recalibrated.** Qwen3's tokenizer spends about 1.3 tokens per Devanagari character, and about
+one per 2.8 other characters. The earlier estimate undercounted Hindi about 3 times. Chunks are now sized in
+these tokens: about 512, never more than 1,024 (`chunker-3`).

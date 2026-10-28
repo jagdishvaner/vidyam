@@ -13,6 +13,7 @@ from temporalio import activity
 from temporalio.exceptions import ApplicationError
 
 from vidyam_ai.application.backlogs import Backlogs
+from vidyam_ai.application.embedding import EmbedSource, ModelServerError
 from vidyam_ai.application.ingestion import (
     ExtractSource,
     ReadAnswerKey,
@@ -94,12 +95,14 @@ class IngestionActivities:
         structure: StructureSource,
         tag: TagSource,
         answer_key: ReadAnswerKey,
+        embed: EmbedSource,
         sources: Sources,
     ) -> None:
         self._extract = extract
         self._structure = structure
         self._tag = tag
         self._answer_key = answer_key
+        self._embed = embed
         self._sources = sources
 
     @activity.defn(name="extract_source")
@@ -152,6 +155,22 @@ class IngestionActivities:
         except SourceNotFound as error:
             raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
 
+    @activity.defn(name="embed_source")
+    async def embed_source(self, payload: dict[str, Any]) -> int:
+        """Vectors for the file's chunks; 0 when the model server isn't running (they wait for it)."""
+        request = parse(IngestSourceInput, payload)
+        try:
+            summary = await _heartbeating(
+                self._embed.execute(request.org_id, request.source_id, run_id=_run_id())
+            )
+        except SourceNotFound as error:
+            raise ApplicationError(str(error), type="SourceNotFound", non_retryable=True) from error
+        except ModelServerError as error:
+            if error.retryable:
+                raise
+            raise ApplicationError(str(error), type="ModelServerError", non_retryable=True) from error
+        return 0 if summary.waiting else summary.chunks
+
     @activity.defn(name="refresh_sources")
     async def refresh_sources(self, payload: dict[str, Any], source_ids: list[str]) -> int:
         """After OCR filled in pages: sections, chunks, tags and answer keys again, from the stored pages."""
@@ -162,6 +181,7 @@ class IngestionActivities:
                 await self._structure.execute(request.org_id, source, run_id=_run_id())
                 await self._tag.execute(request.org_id, source, run_id=_run_id())
                 await self._answer_key.execute(request.org_id, source, run_id=_run_id())
+                await self._embed.execute(request.org_id, source, run_id=_run_id())
             except SourceNotFound:
                 continue  # removed from the library meanwhile
             activity.heartbeat(n)

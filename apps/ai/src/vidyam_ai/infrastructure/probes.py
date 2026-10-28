@@ -3,6 +3,7 @@
 import asyncio
 from typing import TYPE_CHECKING
 
+import httpx
 from qdrant_client import AsyncQdrantClient
 from redis.asyncio import Redis
 from sqlalchemy import text
@@ -74,3 +75,24 @@ class S3Probe:
     async def check(self) -> str | None:
         await asyncio.to_thread(self._client.head_bucket, Bucket=self._bucket)
         return f"bucket {self._bucket} reachable"
+
+
+class ModelServerProbe:
+    """A Qwen3 model server (llama-server locally, vLLM on AWS): up, and serving the expected model."""
+
+    def __init__(self, name: str, client: httpx.AsyncClient, url: str, model: str) -> None:
+        self.name = name
+        self._client = client
+        self._url = url.rstrip("/")
+        self._model = model
+
+    async def check(self) -> str | None:
+        try:
+            response = await self._client.get(f"{self._url}/v1/models", timeout=2)
+            response.raise_for_status()
+        except httpx.HTTPError as error:
+            raise RuntimeError(f"not running at {self._url} (pnpm models:up)") from error
+        served = [str(model.get("id")) for model in response.json().get("data", [])]
+        if self._model not in served:
+            raise RuntimeError(f"serving {', '.join(served) or 'nothing'}, not {self._model}")
+        return f"serving {self._model}"

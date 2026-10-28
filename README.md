@@ -36,6 +36,8 @@ ESLint (TypeScript) and import-linter (Python).
 - **Node** with Corepack. The repo pins pnpm 10 and Node 24 and downloads them for this folder only;
   nothing is installed globally.
 - **uv** (installs Python 3.12 automatically)
+- For search: **llama.cpp** (`brew install llama.cpp`), which runs the Qwen3 embedding and rerank models on
+  the Mac's GPU. Without it everything else still runs; search waits for it.
 
 ## First run
 
@@ -46,7 +48,8 @@ cp .env.example .env
 pnpm install            # also installs git hooks
 uv sync --all-packages
 pnpm local:init         # start infrastructure, migrate, seed, create S3 buckets + Qdrant collections
-pnpm dev                # web + admin + API + AI engine (with queue workers), hot reload
+pnpm models:setup       # once: the Qwen3 search models (~9 GB in ~/.vidyam/models, ~1 hour)
+pnpm dev                # web + admin + API + AI engine (with queue workers) + model servers, hot reload
 ```
 
 Open **http://localhost:38000** (the app) or **http://localhost:38001** (the admin panel) and sign in. `pnpm db:seed` creates these local logins (values from `.env`):
@@ -77,14 +80,20 @@ Files go into the library with one command, run from the repository root while t
 (`pnpm dev` or `pnpm stack:up`). Folders are searched recursively.
 
 ```bash
-pnpm ingest ~/Desktop/rpsc-polity --kind notes --licence own --meta exam=rpsc --meta subject=polity --wait
+pnpm ingest --manifest ~/Desktop/content/manifest.csv --wait   # the normal way: one row per file
+pnpm ingest ~/Desktop/rpsc-polity --kind notes --licence own --meta exam=rpsc --wait   # quick, no manifest
 ```
 
+- The manifest (template: `fixtures/demo-pack/manifest.csv`) says for each file what it is, its licence,
+  subject, language, exams, and chapter or page ranges; it is checked against the syllabus before anything
+  is imported. Running it again after an edit updates the files without uploading them twice.
 - `--kind`: `book`, `notes`, `question_paper`, `answer_key`, `booklet`, `image` or `other`
 - `--licence`: `own` (the center's material), `third_party` (published books) or `pyq` (past papers)
 - Reads PDF, Word (.docx), text/Markdown and images. Kruti Dev text is converted to Unicode Hindi. Scanned
   pages wait for OCR, which needs the AI keys.
 - Running it again skips files already imported. Progress is visible in the Temporal UI.
+- Work that needs an AI model (reading scans, splitting papers into questions, picking topics) waits in
+  backlogs: Admin → Content, or `pnpm backlog` to see what each would cost and run it.
 
 ### Run everything in Docker
 
@@ -112,6 +121,7 @@ Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reac
 | 38152         | Temporal UI                                      |
 | 38160 / 38161 | SeaweedFS S3 API / admin UI                      |
 | 38170         | render worker health                             |
+| 38180 / 38181 | Qwen3 embeddings / rerank (llama-server, Metal)  |
 | 38190         | Drizzle Studio                                   |
 
 ## Everyday commands
@@ -122,6 +132,8 @@ Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reac
 | `pnpm infra:up` / `infra:down`     | start / stop local infrastructure (data is kept)       |
 | `pnpm infra:ps` / `infra:logs`     | status / logs                                          |
 | `pnpm dev`                         | run all apps with hot reload (turbo)                   |
+| `pnpm models:setup` / `models:up`  | fetch and check the search models / run them alone     |
+| `pnpm ingest` / `pnpm backlog`     | add content / run its paid AI backlogs                 |
 | `pnpm lint` / `typecheck` / `test` | checks across TypeScript and Python, cached by turbo   |
 | `pnpm test:integration`            | tests against local infrastructure                     |
 | `pnpm test:e2e`                    | browser tests against the running app (`pnpm dev`)     |

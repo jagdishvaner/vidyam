@@ -50,8 +50,8 @@ class PingWorkflow:
 @workflow.defn(name=WorkflowType.ingest_source)
 class IngestSourceWorkflow:
     """Read one uploaded file into pages of clean Unicode with page images; find its sections and chunk the
-    usable text; tag the chunks with the syllabus by rules (ADR 0014, plan v3 §5). With `stages: structure`
-    the stored pages are kept and only sections, chunks and tags are worked out again."""
+    usable text; tag the chunks with the syllabus by rules; embed them (ADR 0014, plan v3 §5). With
+    `stages: structure` the stored pages are kept and only sections, chunks, tags and vectors are redone."""
 
     @workflow.run
     async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
@@ -84,6 +84,14 @@ class IngestSourceWorkflow:
                 start_to_close_timeout=timedelta(minutes=5),
                 retry_policy=RetryPolicy(maximum_attempts=5),
             )
+            embedded = await workflow.execute_activity_method(
+                IngestionActivities.embed_source,
+                payload,
+                task_queue=_queue(AiTaskQueue.ai_llm),
+                start_to_close_timeout=timedelta(hours=1),  # a 1,000-page book is a few thousand chunks
+                heartbeat_timeout=timedelta(minutes=2),
+                retry_policy=RetryPolicy(maximum_attempts=5, maximum_interval=timedelta(minutes=2)),
+            )
         except ActivityError as error:
             reason = str(error.cause or error)
             await workflow.execute_activity_method(
@@ -92,7 +100,9 @@ class IngestSourceWorkflow:
                 start_to_close_timeout=timedelta(minutes=1),
             )
             raise ApplicationError(f"ingestion failed: {reason}", type="IngestionFailed") from error
-        result = IngestSourceResult(sourceId=request.source_id, taggedChunks=tagged, **structure)
+        result = IngestSourceResult(
+            sourceId=request.source_id, taggedChunks=tagged, embeddedChunks=embedded, **structure
+        )
         return result.model_dump(mode="json", by_alias=True)
 
 
