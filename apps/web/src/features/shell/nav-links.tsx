@@ -21,7 +21,7 @@ const ITEMS = [
   { key: "library", href: "/library", icon: BookOpenText },
   { key: "questionBank", href: null, icon: FileQuestion },
   { key: "review", href: null, icon: ClipboardCheck },
-  { key: "settings", href: null, icon: Settings },
+  { key: "settings", href: "/settings", icon: Settings },
 ] as const;
 
 const ADMIN = { key: "admin", href: "/admin", icon: ShieldCheck } as const;

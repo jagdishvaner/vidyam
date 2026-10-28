@@ -624,5 +624,45 @@
         "set": "Changed the center budget"
       }
     }
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Your profile, password and the defaults your chats start from.",
+    "profile": "Profile",
+    "name": "Your name",
+    "email": "Email (login ID)",
+    "emailHint": "Ask your admin to change your login email.",
+    "role": "Role",
+    "save": "Save",
+    "saving": "Saving…",
+    "saved": "Saved",
+    "password": "Password",
+    "currentPassword": "Current password",
+    "newPassword": "New password (at least 10 characters)",
+    "confirmPassword": "New password again",
+    "changePassword": "Change password",
+    "passwordChanged": "Password changed. Other devices are signed out.",
+    "mismatch": "The two new passwords don't match.",
+    "wrongPassword": "Your current password isn't right.",
+    "defaults": "Defaults",
+    "uiLocale": "Language of the app",
+    "contentLanguage": "Language of papers and notes",
+    "contentLanguages": {
+      "hi": "Hindi",
+      "en": "English",
+      "bilingual": "Hindi and English"
+    },
+    "locales": {
+      "en": "English",
+      "hi": "हिन्दी"
+    },
+    "defaultModel": "AI model to start with",
+    "centerDefault": "Center's default",
+    "defaultExam": "Exam paper you work on most",
+    "noExam": "None",
+    "subjects": "Your subjects",
+    "subjectsHint": "Set by your admin under Staff. Your papers and searches start from these.",
+    "noSubjects": "No subjects assigned yet.",
+    "head": "Head of department"
   }
 }

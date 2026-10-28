@@ -79,6 +79,7 @@ test("admin imports a syllabus, edits a topic, and imports then deletes an exam 
 
   // Retire the test subject so it stays out of the staff and chat pickers (the next run imports it again).
   await page.getByRole("tab", { name: "Syllabus" }).click();
+  await page.getByRole("button", { name: /^E2E Test Subject/ }).click();
   await page.getByRole("button", { name: "Edit: E2E Test Subject" }).click();
   const inUse = page.getByRole("dialog").getByRole("switch", { name: /In use/ });
   if ((await inUse.getAttribute("aria-checked")) === "true") await inUse.click();
