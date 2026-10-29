@@ -281,7 +281,8 @@
       "enum": [
         "save_document_version",
         "update_generation_run",
-        "append_chat_blocks"
+        "append_chat_blocks",
+        "apply_document_edits"
       ]
     },
     "AppendChatBlocksInput": {
@@ -336,6 +337,100 @@
       "required": [
         "messageId",
         "created"
+      ],
+      "additionalProperties": false
+    },
+    "ApplyDocumentEditsInput": {
+      "title": "ApplyDocumentEditsInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "baseVersion": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ops": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EditOp"
+          }
+        },
+        "summary": {
+          "type": "string"
+        },
+        "sessionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "messageId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "documentId",
+        "runId",
+        "baseVersion",
+        "ops",
+        "summary",
+        "sessionId",
+        "messageId"
+      ],
+      "additionalProperties": false
+    },
+    "ApplyDocumentEditsResult": {
+      "title": "ApplyDocumentEditsResult",
+      "type": "object",
+      "properties": {
+        "version": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outcome": {
+          "type": "string",
+          "enum": [
+            "saved",
+            "nothing",
+            "moved_on"
+          ]
+        }
+      },
+      "required": [
+        "version",
+        "outcome"
       ],
       "additionalProperties": false
     },
@@ -1213,6 +1308,73 @@
           "required": [
             "event",
             "draftSpec"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "document_edit"
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "baseVersion": {
+              "type": "integer",
+              "exclusiveMinimum": 0,
+              "maximum": 9007199254740991
+            },
+            "ops": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/EditOp"
+              }
+            },
+            "summary": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event",
+            "documentId",
+            "baseVersion",
+            "ops",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string",
+              "const": "document_rewrite"
+            },
+            "documentId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "requests": {
+              "minItems": 1,
+              "maxItems": 50,
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/RewriteRequest"
+              }
+            },
+            "summary": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "event",
+            "documentId",
+            "requests",
+            "summary"
           ],
           "additionalProperties": false
         },
@@ -2602,6 +2764,84 @@
       },
       "additionalProperties": false
     },
+    "EditDocumentInput": {
+      "title": "EditDocumentInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sessionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "baseVersion": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "requests": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/RewriteRequest"
+          }
+        },
+        "summary": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "documentId",
+        "runId",
+        "sessionId",
+        "modelId",
+        "baseVersion",
+        "requests",
+        "summary"
+      ],
+      "additionalProperties": false
+    },
     "EditOp": {
       "title": "EditOp",
       "oneOf": [
@@ -2826,6 +3066,23 @@
           "required": [
             "op",
             "nodeIds"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "replace_section"
+            },
+            "section": {
+              "$ref": "#/$defs/NotesSection"
+            }
+          },
+          "required": [
+            "op",
+            "section"
           ],
           "additionalProperties": false
         }
@@ -5160,6 +5417,38 @@
         "long_answer"
       ]
     },
+    "RewriteRequest": {
+      "title": "RewriteRequest",
+      "type": "object",
+      "properties": {
+        "itemId": {
+          "type": "string"
+        },
+        "instruction": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "itemId",
+        "instruction",
+        "difficulty"
+      ],
+      "additionalProperties": false
+    },
     "RunBacklogInput": {
       "title": "RunBacklogInput",
       "type": "object",
@@ -6869,7 +7158,8 @@
         "RunBacklog",
         "IndexSource",
         "GeneratePaper",
-        "GenerateNotes"
+        "GenerateNotes",
+        "EditDocument"
       ]
     }
   }

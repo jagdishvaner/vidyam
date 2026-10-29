@@ -9,6 +9,7 @@ import type {
 } from "@vidyam/contracts";
 
 import { DomainError } from "../../../shared/kernel/errors.js";
+import { ManageDocuments } from "../../studio/application/manage-documents.js";
 import { assistantMessageId, cardRefs, failedAnswer, TURN_TIMEOUT_MS, userBlocks } from "../domain/turns.js";
 import { ManageChats } from "./manage-chats.js";
 import {
@@ -53,6 +54,7 @@ export class SendTurn implements OnApplicationShutdown {
     @Inject(TURN_EVENTS) private readonly events: TurnEvents,
     @Inject(GENERATION_STARTER) private readonly generation: GenerationStarter,
     private readonly chats: ManageChats,
+    private readonly documents: ManageDocuments,
   ) {}
 
   async execute(
@@ -71,6 +73,9 @@ export class SendTurn implements OnApplicationShutdown {
     if (retried) return accepted(retried);
     if (input.kind === "action" && input.action === "confirm_spec") {
       return this.confirm(orgId, userId, sessionId, request, blocks);
+    }
+    if (input.kind === "action" && input.action === "undo") {
+      return this.undo(orgId, userId, sessionId, request, blocks);
     }
 
     const modelId = request.modelId ?? null;
@@ -142,6 +147,148 @@ export class SendTurn implements OnApplicationShutdown {
     return accepted(turn);
   }
 
+  /**
+   * Undo on the chat's latest edit (plan v3 §6.9): the version before it comes back as the newest. No model is
+   * asked. If the document changed since, nothing is undone and the canvas's history is the way back.
+   */
+  private async undo(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    request: ChatTurnRequest,
+    blocks: ChatBlock[],
+  ): Promise<ChatTurnAccepted> {
+    const staleBefore = new Date(Date.now() - TURN_TIMEOUT_MS);
+    const latest = await this.store.latestEdit(orgId, userId, sessionId, staleBefore);
+    if (!latest) throw new DomainError("That chat doesn't exist.", "not_found");
+    if (latest.kind === "busy") {
+      throw new DomainError("Wait for the answer to your last message to finish.", "conflict");
+    }
+    let answer: ChatBlock[];
+    if (latest.kind === "none") {
+      answer = [
+        { type: "text", text: "There's nothing to undo here: only the chat's latest change can be." },
+      ];
+    } else {
+      try {
+        const restored = await this.documents.restore(orgId, userId, latest.documentId, {
+          baseVersion: latest.toVersion,
+          version: latest.fromVersion,
+        });
+        answer = [
+          {
+            type: "edit_summary",
+            documentId: latest.documentId,
+            fromVersion: latest.toVersion,
+            toVersion: restored.document.currentVersion,
+            summary: `Undone: it is as it was at version ${latest.fromVersion}.`,
+            ops: [],
+          },
+        ];
+      } catch (error) {
+        if (!(error instanceof DomainError)) throw error;
+        const message =
+          error.kind === "conflict"
+            ? "It has changed since, so I can't undo just that. Use History on the canvas to go back."
+            : error.message;
+        answer = [{ type: "error", code: "not_undone", message }];
+      }
+    }
+    const turn = await this.store.recordAnswer(
+      orgId,
+      userId,
+      sessionId,
+      {
+        clientTurnId: request.clientTurnId,
+        blocks,
+        staleBefore,
+      },
+      answer,
+    );
+    if (!turn) throw new DomainError("That chat doesn't exist.", "not_found");
+    const messageId = assistantMessageId(turn.id);
+    await this.events.publish(turn.id, { event: "turn_started", turnId: turn.id, messageId });
+    for (const block of answer) await this.events.publish(turn.id, { event: "block", block });
+    await this.events.publish(turn.id, { event: "message_complete", messageId });
+    await this.events.close(turn.id);
+    return accepted(turn);
+  }
+
+  /** The edit agent's changes, applied on the version it read; what happened is a block of the answer. */
+  private async applyEdit(
+    orgId: string,
+    userId: string,
+    edit: Extract<ChatEngineEvent, { event: "document_edit" }>,
+  ): Promise<ChatBlock> {
+    const outcome = await this.documents.editByAgent(
+      orgId,
+      userId,
+      edit.documentId,
+      edit.baseVersion,
+      edit.ops,
+    );
+    if (outcome?.kind === "saved") {
+      return {
+        type: "edit_summary",
+        documentId: edit.documentId,
+        fromVersion: edit.baseVersion,
+        toVersion: outcome.version,
+        summary: edit.summary,
+        ops: edit.ops,
+      };
+    }
+    const message = !outcome
+      ? "That document is gone."
+      : outcome.kind === "conflict"
+        ? "The paper changed while I was reading it, so I changed nothing. Ask again."
+        : outcome.kind === "making"
+          ? "It is still being made; ask again once it is."
+          : `I couldn't make that change: ${outcome.reason}`;
+    return { type: "error", code: "edit_refused", message };
+  }
+
+  /** Questions or sections to write again: the run on the newest version, then the EditDocument workflow. */
+  private async startRewrite(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    modelId: string | null,
+    rewrite: Extract<ChatEngineEvent, { event: "document_rewrite" }>,
+  ): Promise<ChatBlock | null> {
+    const begun = await this.store.beginRewrite(
+      orgId,
+      userId,
+      sessionId,
+      rewrite.documentId,
+      rewrite.requests,
+    );
+    if (!begun)
+      return { type: "error", code: "not_started", message: "That document isn't ready to rewrite." };
+    try {
+      await this.generation.startEdit({
+        v: 1,
+        orgId,
+        requestedBy: userId,
+        documentId: rewrite.documentId,
+        runId: begun.runId,
+        sessionId,
+        modelId,
+        baseVersion: begun.baseVersion,
+        requests: rewrite.requests,
+        summary: rewrite.summary,
+      });
+      return null;
+    } catch (error) {
+      this.logger.error(`rewrite ${begun.runId} didn't start: ${String(error)}`);
+      await this.store.failRun(orgId, begun.runId, sessionId, `didn't start: ${String(error)}`);
+      return {
+        type: "error",
+        code: "not_started",
+        message: "Rewriting couldn't start. Ask again in a moment.",
+      };
+    }
+  }
+
   /** Resolves once every answer under way has ended (tests, and shutdown). */
   async settled(): Promise<void> {
     while (this.answering.size) await Promise.allSettled([...this.answering]);
@@ -179,6 +326,9 @@ export class SendTurn implements OnApplicationShutdown {
       return queue;
     };
     const blocks: ChatBlock[] = [];
+    // Blocks the API adds to the answer: what happened to the edit agent's changes.
+    const ownBlocks: ChatBlock[] = [];
+    let rewrite: Extract<ChatEngineEvent, { event: "document_rewrite" }> | null = null;
     let draftSpec: DraftSpec | null = null;
     let done: Extract<ChatEngineEvent, { event: "done" }> | null = null;
     let failure: { code: string; message: string } | null = null;
@@ -209,6 +359,12 @@ export class SendTurn implements OnApplicationShutdown {
           } else if (event.event === "draft_spec") {
             draftSpec = event.draftSpec;
             await publish(event);
+          } else if (event.event === "document_edit") {
+            const block = await this.applyEdit(orgId, userId, event);
+            ownBlocks.push(block);
+            await publish({ event: "block", block });
+          } else if (event.event === "document_rewrite") {
+            rewrite = event;
           } else if (event.event === "done") {
             done = event;
           } else {
@@ -230,15 +386,32 @@ export class SendTurn implements OnApplicationShutdown {
         turnId: turn.id,
         sessionId: turn.sessionId,
         assistantMessageId: messageId,
-        blocks: done && !failure ? done.blocks : failedAnswer(text, blocks, failure!.code, failure!.message),
+        blocks:
+          done && !failure
+            ? [...done.blocks, ...ownBlocks]
+            : failedAnswer(text, [...blocks, ...ownBlocks], failure!.code, failure!.message),
         modelId: done?.modelId ?? null,
         status: failure ? "failed" : "done",
         error: failure ? `${failure.code}: ${failure.message}` : null,
         title: done?.title ?? null,
-        sessionStatus: done?.sessionStatus ?? "idle",
+        sessionStatus: rewrite && !failure ? "generating" : (done?.sessionStatus ?? "idle"),
         draftSpec,
       });
       if (failure) await publish({ event: "error", ...failure });
+      // Started only once the answer is stored, so the workflow's own message comes after it.
+      if (rewrite && !failure) {
+        const problem = await this.startRewrite(orgId, userId, turn.sessionId, modelId, rewrite);
+        if (problem) {
+          await this.chats.appendFromWorkflow({
+            v: 1,
+            orgId,
+            sessionId: turn.sessionId,
+            messageId: crypto.randomUUID(),
+            blocks: [problem],
+          });
+          await publish({ event: "block", block: problem });
+        }
+      }
       await publish({ event: "message_complete", messageId });
     } catch (error) {
       // Storing or relaying failed: the turn is marked failed when next looked at (TURN_TIMEOUT_MS).

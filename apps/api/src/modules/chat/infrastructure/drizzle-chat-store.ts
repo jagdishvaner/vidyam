@@ -12,6 +12,7 @@ import {
   type ChatSessionSummary,
   type ChatSessionUpdate,
   type DraftSpec,
+  type RewriteRequest,
 } from "@vidyam/contracts";
 import { schema, type Transaction } from "@vidyam/db";
 import { and, asc, desc, eq, gt, ilike, inArray, isNotNull, isNull, or, sql, type SQL } from "drizzle-orm";
@@ -20,9 +21,11 @@ import { OrgDatabase } from "../../../shared/database/org-database.js";
 import { latestRun } from "../../studio/infrastructure/generation-progress.js";
 import type {
   BeginTurn,
+  BegunRewrite,
   ChatStore,
   ConfirmSpec,
   FinishedTurn,
+  LatestEdit,
   NewTurn,
   TurnRecord,
 } from "../application/ports.js";
@@ -481,6 +484,125 @@ export class DrizzleChatStore implements ChatStore {
         .set({ status: "failed", error, finishedAt: new Date() })
         .where(eq(generationRuns.id, runId));
       await tx.update(s).set({ status: "idle" }).where(eq(s.id, sessionId));
+    });
+  }
+
+  latestEdit(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    staleBefore: Date,
+  ): Promise<LatestEdit | null> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const [session] = await tx
+        .select({ id: s.id })
+        .from(s)
+        .where(and(eq(s.id, sessionId), eq(s.userId, userId)));
+      if (!session) return null;
+      const unanswered = await tx
+        .select({ createdAt: t.createdAt })
+        .from(t)
+        .where(and(eq(t.sessionId, sessionId), inArray(t.status, [...UNANSWERED])));
+      if (unanswered.some((other) => other.createdAt >= staleBefore)) return { kind: "busy" };
+      const [latest] = await tx
+        .select({ role: m.role, content: m.content })
+        .from(m)
+        .where(eq(m.sessionId, sessionId))
+        .orderBy(desc(m.seq))
+        .limit(1);
+      const edit =
+        latest?.role === "assistant"
+          ? (latest.content as ChatBlock[]).find(
+              (block): block is Extract<ChatBlock, { type: "edit_summary" }> => block.type === "edit_summary",
+            )
+          : undefined;
+      return edit
+        ? {
+            kind: "edit",
+            documentId: edit.documentId,
+            fromVersion: edit.fromVersion,
+            toVersion: edit.toVersion,
+          }
+        : { kind: "none" };
+    });
+  }
+
+  recordAnswer(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    turn: NewTurn,
+    answer: ChatBlock[],
+  ): Promise<TurnRecord | null> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const [session] = await tx
+        .select({ id: s.id })
+        .from(s)
+        .where(and(eq(s.id, sessionId), eq(s.userId, userId)))
+        .for("update");
+      if (!session) return null;
+      const [existing] = await tx
+        .select(turnColumns)
+        .from(t)
+        .where(and(eq(t.sessionId, sessionId), eq(t.clientTurnId, turn.clientTurnId)));
+      if (existing) return existing;
+      const [message] = await tx
+        .insert(m)
+        .values({ orgId, sessionId, seq: await nextSeq(tx, sessionId), role: "user", content: turn.blocks })
+        .returning({ id: m.id });
+      const turnId = crypto.randomUUID();
+      const reply = assistantMessageId(turnId);
+      await tx.insert(m).values({
+        id: reply,
+        orgId,
+        sessionId,
+        seq: await nextSeq(tx, sessionId),
+        role: "assistant",
+        content: answer,
+      });
+      const [created] = await tx
+        .insert(t)
+        .values({
+          id: turnId,
+          orgId,
+          sessionId,
+          clientTurnId: turn.clientTurnId,
+          userMessageId: message!.id,
+          assistantMessageId: reply,
+          status: "done",
+          finishedAt: new Date(),
+        })
+        .returning(turnColumns);
+      await tx.update(s).set({ status: "idle", archivedAt: null }).where(eq(s.id, sessionId));
+      return created!;
+    });
+  }
+
+  beginRewrite(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    documentId: string,
+    requests: RewriteRequest[],
+  ): Promise<BegunRewrite | null> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const [doc] = await tx
+        .select({ version: documents.currentVersion, spec: documents.spec })
+        .from(documents)
+        .where(and(eq(documents.id, documentId), eq(documents.ownerId, userId)));
+      if (!doc || doc.version === 0) return null;
+      const runId = crypto.randomUUID();
+      await tx.insert(generationRuns).values({
+        id: runId,
+        orgId,
+        documentId,
+        sessionId,
+        workflowId: workflowId(WORKFLOWS.editDocument, runId),
+        // The document's spec, with what was asked: the workflow plans the slots it rewrites.
+        spec: { ...doc.spec, rewrite: requests },
+      });
+      await tx.update(s).set({ status: "generating" }).where(eq(s.id, sessionId));
+      return { runId, baseVersion: doc.version };
     });
   }
 

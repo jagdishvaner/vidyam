@@ -96,6 +96,8 @@ export function Conversation({
         }),
       () => {
         void client.invalidateQueries({ queryKey: chatKeys.sessions });
+        // The chat may have changed its document: the canvas shows the newest version.
+        void client.invalidateQueries({ queryKey: ["document"] });
         void client.refetchQueries({ queryKey: chatKeys.session(id) }).then(() => setStreaming(null));
       },
     );

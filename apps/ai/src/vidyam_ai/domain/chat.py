@@ -95,15 +95,20 @@ REPLIES = {
         "There's nothing to confirm yet. Tell me what you'd like to make.",
         "अभी पुष्टि के लिए कुछ नहीं है। बताइए, क्या बनाना है।",
     ),
-    "generation_off": (
-        "Your spec is saved. Making papers and notes isn't switched on yet; it comes in the next update.",
-        "आपकी योजना सहेज ली गई है। प्रश्न-पत्र और नोट्स बनाना अभी शुरू नहीं हुआ है; यह अगले अपडेट में आएगा।",
+    "no_document": (
+        "This chat has no paper or notes to change yet.",
+        "इस चैट में अभी बदलने के लिए कोई प्रश्न-पत्र या नोट्स नहीं है।",
     ),
-    "edit_later": (
-        "Editing a document by chat isn't switched on yet. You can still change the spec here.",
-        "चैट से दस्तावेज़ बदलना अभी शुरू नहीं हुआ है। योजना यहीं बदली जा सकती है।",
+    "still_making": (
+        "It is still being made. Ask again once it is ready.",
+        "यह अभी बन रहा है। तैयार होने पर फिर कहिए।",
     ),
-    "nothing_to_undo": ("There's nothing to undo yet.", "अभी पूर्ववत करने के लिए कुछ नहीं है।"),
+    "edit_unclear": (
+        'Which question should I change, and how? For example: "make Q3 harder" or "remove Q5".',
+        'कौन-सा प्रश्न और कैसे बदलूँ? जैसे: "प्रश्न 3 को कठिन करो" या "प्रश्न 5 हटाओ"।',
+    ),
+    "editing": ("Done.", "हो गया।"),
+    "edit_problems": ("I left some of it out:", "कुछ बदलाव नहीं हो सके:"),
 }
 
 

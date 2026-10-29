@@ -21,6 +21,7 @@ from vidyam_ai.application.generation import (
     Job,
     PlanNotes,
     PlanPaper,
+    PlanRewrite,
     Run,
     WriteNotesSection,
     WriteQuestions,
@@ -48,6 +49,7 @@ from vidyam_ai.application.llm_gateway import (
 )
 from vidyam_ai.application.ping import handle_ping
 from vidyam_ai.generated.contracts import (
+    EditDocumentInput,
     GenerateDocumentInput,
     IndexSourceInput,
     IngestSourceInput,
@@ -304,6 +306,7 @@ class GenerationActivities:
         assemble_paper: AssemblePaper,
         plan_notes: PlanNotes,
         write_notes: WriteNotesSection,
+        plan_rewrite: PlanRewrite,
     ) -> None:
         self._store = store
         self._plan_paper = plan_paper
@@ -312,6 +315,7 @@ class GenerationActivities:
         self._assemble_paper = assemble_paper
         self._plan_notes = plan_notes
         self._write_notes = write_notes
+        self._plan_rewrite = plan_rewrite
 
     async def _run(self, request: GenerateDocumentInput) -> Run:
         run = await self._store.run(request.org_id, request.run_id)
@@ -339,11 +343,13 @@ class GenerationActivities:
         used: list[str],
         feedback: dict[str, list[str]],
         final: bool,
+        requests: dict[str, str],
     ) -> dict[str, Any]:
+        """`requests`: the teacher's changes by slot, when questions are written again from the chat."""
         request = parse(GenerateDocumentInput, payload)
         with _llm_failures():
             written = await self._write_questions.execute(
-                _job(request), slots, used=used, feedback=feedback, final=final
+                _job(request), slots, used=used, feedback=feedback, final=final, requests=requests
             )
         return {"slots": written.slots, "chunkIds": written.chunk_ids, "modelId": written.model_id}
 
@@ -374,11 +380,13 @@ class GenerationActivities:
         used: list[str],
         feedback: list[str],
         final: bool,
+        asked: str | None,
     ) -> dict[str, Any]:
+        """`asked`: the teacher's change, when the section is written again from the chat."""
         request = parse(GenerateDocumentInput, payload)
         with _llm_failures():
             written = await self._write_notes.execute(
-                _job(request), section, used=used, feedback=feedback, final=final
+                _job(request), section, used=used, feedback=feedback, final=final, request=asked
             )
         return {"section": written.section, "chunkIds": written.chunk_ids}
 
@@ -386,6 +394,19 @@ class GenerationActivities:
     async def assemble_notes(self, payload: dict[str, Any], sections: list[dict[str, Any]]) -> dict[str, Any]:
         run = await self._run(parse(GenerateDocumentInput, payload))
         return assemble_notes(run.spec, sections)
+
+    @activity.defn(name="plan_rewrite")
+    async def plan_rewrite(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """The items EditDocument writes again, as they stand in the document."""
+        request = parse(EditDocumentInput, payload)
+        try:
+            return await self._plan_rewrite.execute(
+                request.org_id,
+                request.document_id,
+                [r.model_dump(mode="json", by_alias=True) for r in request.requests],
+            )
+        except LookupError as error:
+            raise ApplicationError(str(error), type="NotFound", non_retryable=True) from error
 
     @activity.defn(name="generation_cost")
     async def cost(self, payload: dict[str, Any]) -> float:

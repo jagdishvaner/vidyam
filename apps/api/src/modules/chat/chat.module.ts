@@ -5,6 +5,7 @@ import type { Redis } from "ioredis";
 import { ENV, type Env } from "../../config/env.js";
 import { CACHE_REDIS } from "../../shared/cache/cache.module.js";
 import { TEMPORAL_CLIENT } from "../../shared/temporal/temporal.module.js";
+import { StudioModule } from "../studio/studio.module.js";
 import { FollowTurn } from "./application/follow-turn.js";
 import { ManageChats } from "./application/manage-chats.js";
 import {
@@ -24,6 +25,7 @@ import { ChatController } from "./interface/chat.controller.js";
 
 /** Composition root for the chat (plan v3 §6, ADR 0015). The AI engine answers; this module stores. */
 @Module({
+  imports: [StudioModule],
   controllers: [ChatController],
   providers: [
     ManageChats,

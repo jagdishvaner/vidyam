@@ -18,6 +18,6 @@ import { DocumentsController } from "./interface/documents.controller.js";
     { provide: STUDIO_STORE, useClass: DrizzleStudioStore },
     { provide: DOCUMENT_STORE, useClass: DrizzleDocumentStore },
   ],
-  exports: [CommitResults],
+  exports: [CommitResults, ManageDocuments],
 })
 export class StudioModule {}

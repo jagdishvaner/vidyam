@@ -25,6 +25,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { AppModule } from "../src/app.module.js";
 import { loadEnv } from "../src/config/env.js";
 import type { Auth } from "../src/modules/identity/infrastructure/better-auth.js";
+import { ManageDocuments } from "../src/modules/studio/application/manage-documents.js";
 
 const base = loadEnv();
 const testDbUrl = process.env.VIDYAM_TEST_DATABASE_URL!;
@@ -241,6 +242,73 @@ describe("documents", () => {
       .from(schema.questions)
       .where(inArray(schema.questions.id, [mine.id, ...paper.questions]));
     expect(left.map((row) => row.id).sort()).toEqual([...paper.questions].sort());
+  });
+
+  it("saves a workflow's rewrite with its chat message once, and leaves a paper that moved on alone", async () => {
+    const paper = await madePaper();
+    const replacement = await question();
+    const [chat] = await owner.db
+      .insert(schema.chatSessions)
+      .values({ orgId, userId: teacherAId, status: "generating", documentId: paper.id })
+      .returning({ id: schema.chatSessions.id });
+    const run = async () => {
+      const [row] = await owner.db
+        .insert(schema.generationRuns)
+        .values({
+          orgId, documentId: paper.id, sessionId: chat!.id, workflowId: `EditDocument:${crypto.randomUUID()}`,
+          spec: {}, status: "running", slotPlan: [{ slotId: "s1-2", state: "pending" }],
+        })
+        .returning({ id: schema.generationRuns.id }); // prettier-ignore
+      return row!.id;
+    };
+    const runId = await run();
+    // While it runs, the canvas shows question 2 as being written.
+    const during = (await get(teacherA, paper.id).expect(200)).body as DocumentDetail;
+    expect((during.content as PaperDocument).slots.map((s) => s.state)).toEqual(["verified", "pending"]);
+
+    const documents = app.get(ManageDocuments);
+    const input = {
+      v: 1 as const, orgId, documentId: paper.id, runId, baseVersion: 1, sessionId: chat!.id,
+      messageId: crypto.randomUUID(), summary: "Made question 2 harder.",
+      ops: [{ op: "replace_item" as const, slotId: "s1-2", questionId: replacement }],
+    }; // prettier-ignore
+    expect(await documents.applyFromWorkflow(input)).toEqual({ version: 2, outcome: "saved" });
+    expect(await documents.applyFromWorkflow(input)).toEqual({ version: 2, outcome: "saved" }); // a retry
+    const after = (await get(teacherA, paper.id).expect(200)).body as DocumentDetail;
+    expect(after.document.currentVersion).toBe(2);
+    expect((after.content as PaperDocument).slots[1]).toMatchObject({
+      questionId: replacement,
+      state: "verified",
+    });
+    const [message] = await owner.db
+      .select()
+      .from(schema.chatMessages)
+      .where(eq(schema.chatMessages.id, input.messageId));
+    expect(message!.content).toEqual([
+      { type: "edit_summary", documentId: paper.id, fromVersion: 1, toVersion: 2, summary: "Made question 2 harder.",
+        ops: input.ops },
+    ]); // prettier-ignore
+    const [session] = await owner.db
+      .select()
+      .from(schema.chatSessions)
+      .where(eq(schema.chatSessions.id, chat!.id));
+    expect(session!.status).toBe("idle");
+    const versions = (await get(teacherA, `${paper.id}/versions`).expect(200)).body;
+    expect(versions[0]).toMatchObject({ version: 2, authorKind: "agent", changes: ["replace_item"] });
+
+    // Written for version 1, but the paper is at 2 now: nothing changes, and the chat hears why.
+    const late = { ...input, runId: await run(), messageId: crypto.randomUUID() };
+    expect(await documents.applyFromWorkflow(late)).toEqual({ version: null, outcome: "moved_on" });
+    const [refusal] = await owner.db
+      .select()
+      .from(schema.chatMessages)
+      .where(eq(schema.chatMessages.id, late.messageId));
+    expect(refusal!.content).toEqual([expect.objectContaining({ type: "error", code: "moved_on" })]);
+    const [failed] = await owner.db
+      .select()
+      .from(schema.generationRuns)
+      .where(eq(schema.generationRuns.id, late.runId));
+    expect(failed!.status).toBe("failed");
   });
 
   it("shows a paper being made slot by slot, and deletes it only once made", async () => {

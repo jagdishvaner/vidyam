@@ -12,7 +12,9 @@ import type {
   ChatStreamEvent,
   ChatTurnStatus,
   DraftSpec,
+  EditDocumentInput,
   GenerateDocumentInput,
+  RewriteRequest,
   TaskKind,
 } from "@vidyam/contracts";
 
@@ -76,6 +78,20 @@ export type ConfirmSpec =
 /** Port: starts a generation workflow (Temporal; the AI engine runs it). */
 export interface GenerationStarter {
   start(input: GenerateDocumentInput, kind: TaskKind): Promise<void>;
+  /** EditDocument: some of a document's questions or sections written again, as asked in the chat. */
+  startEdit(input: EditDocumentInput): Promise<void>;
+}
+
+/** What the chat's latest word says about undoing (only an edit the chat just made can be undone). */
+export type LatestEdit =
+  | { kind: "edit"; documentId: string; fromVersion: number; toVersion: number }
+  | { kind: "none" }
+  | { kind: "busy" };
+
+/** A rewrite the chat asked for, ready to start: its run, and the version it rewrites. */
+export interface BegunRewrite {
+  runId: string;
+  baseVersion: number;
 }
 export const GENERATION_STARTER = Symbol("GENERATION_STARTER");
 
@@ -122,6 +138,27 @@ export interface ChatStore {
   confirmSpec(orgId: string, userId: string, sessionId: string, turn: NewTurn): Promise<ConfirmSpec | null>;
   /** A run that couldn't start: failed, and the chat back to idle. */
   failRun(orgId: string, runId: string, sessionId: string, error: string): Promise<void>;
+  /** Whether the chat's latest message is an edit summary (and of what), or the chat is busy answering. */
+  latestEdit(orgId: string, userId: string, sessionId: string, staleBefore: Date): Promise<LatestEdit | null>;
+  /**
+   * In one transaction: the teacher's press and the API's own answer to it (no model involved), or the turn
+   * already made for clientTurnId.
+   */
+  recordAnswer(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    turn: NewTurn,
+    answer: ChatBlock[],
+  ): Promise<TurnRecord | null>;
+  /** The run for rewriting the chat's document, on its newest version; null if it isn't made yet. */
+  beginRewrite(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    documentId: string,
+    requests: RewriteRequest[],
+  ): Promise<BegunRewrite | null>;
   /** In one transaction: the assistant's message, the turn's outcome, and the chat's title and status. */
   finishTurn(orgId: string, finished: FinishedTurn): Promise<void>;
   turn(orgId: string, userId: string, turnId: string): Promise<TurnRecord | null>;

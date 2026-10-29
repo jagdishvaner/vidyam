@@ -4,7 +4,7 @@ import type { ChatBlock, GenerationProgress } from "@vidyam/contracts";
 import { Alert, AlertDescription } from "@vidyam/ui/components/alert";
 import { Badge } from "@vidyam/ui/components/badge";
 import { Button } from "@vidyam/ui/components/button";
-import { AlertTriangle, BookOpen, FileText, Info, Loader2, Undo2 } from "lucide-react";
+import { AlertTriangle, BookOpen, FileText, Info, Loader2, PenLine, Undo2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { createContext, useContext } from "react";
 
@@ -62,7 +62,7 @@ export function AssistantBlock({
     case "document_ref":
       return <DocumentRef block={block} />;
     case "edit_summary":
-      return <EditSummary block={block} />;
+      return <EditSummary block={block} live={live} send={send} />;
     default:
       return null; // card answers and button presses are the teacher's side
   }
@@ -146,11 +146,37 @@ function DocumentRef({ block }: { block: Block<"document_ref"> }) {
   );
 }
 
-function EditSummary({ block }: { block: Block<"edit_summary"> }) {
+/** A change the chat made to its document: what, the version it made, and (while it is the latest) Undo. */
+function EditSummary({
+  block,
+  live,
+  send,
+}: {
+  block: Block<"edit_summary">;
+  live: boolean;
+  send: (input: ChatInput) => void;
+}) {
+  const t = useTranslations("chat.document");
+  const { open } = useContext(DocumentContext);
   return (
-    <div className="flex items-start gap-2 rounded-lg border p-3 text-sm">
-      <Undo2 className="mt-0.5 size-4" />
-      <span>{block.summary}</span>
+    <div className="flex flex-wrap items-center gap-2 rounded-lg border p-3 text-sm">
+      <PenLine className="size-4 shrink-0" />
+      <span className="min-w-0 flex-1">{block.summary}</span>
+      <Badge variant="secondary">{t("version", { version: block.toVersion })}</Badge>
+      <Button variant="outline" size="sm" onClick={() => open(block.documentId)}>
+        {t("open")}
+      </Button>
+      {live && block.ops.length > 0 && (
+        <Button
+          variant="outline"
+          size="sm"
+          aria-label={t("undoChange")}
+          onClick={() => send({ kind: "action", action: "undo", targetId: block.documentId })}
+        >
+          <Undo2 />
+          {t("undo")}
+        </Button>
+      )}
     </div>
   );
 }

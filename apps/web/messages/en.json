@@ -316,7 +316,9 @@
       "failed": "Stopped",
       "cancelled": "Cancelled",
       "progress": "Questions and sections done",
-      "open": "Open"
+      "open": "Open",
+      "undo": "Undo",
+      "undoChange": "Undo this change"
     }
   },
   "canvas": {

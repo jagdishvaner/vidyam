@@ -76,6 +76,7 @@ class ApiActivity(StrEnum):
     save_document_version = "save_document_version"
     update_generation_run = "update_generation_run"
     append_chat_blocks = "append_chat_blocks"
+    apply_document_edits = "apply_document_edits"
 
 
 class AppendChatBlocksResult(BaseModel):
@@ -85,6 +86,25 @@ class AppendChatBlocksResult(BaseModel):
     )
     message_id: UUID = Field(..., alias="messageId")
     created: bool
+
+
+class Version(RootModel[int]):
+    root: int = Field(..., gt=0, le=9007199254740991)
+
+
+class Outcome(StrEnum):
+    saved = "saved"
+    nothing = "nothing"
+    moved_on = "moved_on"
+
+
+class ApplyDocumentEditsResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    version: Version | None
+    outcome: Outcome
 
 
 class AuditAction(StrEnum):
@@ -302,7 +322,7 @@ class ChatEngineEvent1(BaseModel):
     text: str
 
 
-class ChatEngineEvent5(BaseModel):
+class ChatEngineEvent7(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -729,7 +749,7 @@ class GenerateDocumentInput(BaseModel):
     model_id: str | None = Field(..., alias="modelId")
 
 
-class Outcome(RootModel[int]):
+class Outcome1(RootModel[int]):
     root: int = Field(..., ge=0, le=9007199254740991)
 
 
@@ -740,7 +760,7 @@ class GenerateDocumentResult(BaseModel):
     )
     document_id: UUID = Field(..., alias="documentId")
     version: int = Field(..., gt=0, le=9007199254740991)
-    outcome: dict[str, Outcome]
+    outcome: dict[str, Outcome1]
     cost_usd: float = Field(..., alias="costUsd", ge=0.0)
 
 
@@ -1296,6 +1316,16 @@ class QuestionType(StrEnum):
     passage = "passage"
     short_answer = "short_answer"
     long_answer = "long_answer"
+
+
+class RewriteRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    item_id: str = Field(..., alias="itemId")
+    instruction: str = Field(..., max_length=500, min_length=1)
+    difficulty: Difficulty | None
 
 
 class Limit(RootModel[int]):
@@ -1936,6 +1966,7 @@ class WorkflowType(StrEnum):
     index_source = "IndexSource"
     generate_paper = "GeneratePaper"
     generate_notes = "GenerateNotes"
+    edit_document = "EditDocument"
 
 
 class AddMemberRequest(BaseModel):
@@ -2089,6 +2120,17 @@ class ChatBlock8(BaseModel):
     version: int = Field(..., ge=0, le=9007199254740991)
 
 
+class ChatEngineEvent5(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    event: Literal["document_rewrite"]
+    document_id: UUID = Field(..., alias="documentId")
+    requests: list[RewriteRequest] = Field(..., max_length=50, min_length=1)
+    summary: str
+
+
 class ChatScope(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2167,6 +2209,23 @@ class DocumentSummary(BaseModel):
     title: str
     current_version: int = Field(..., alias="currentVersion", ge=0, le=9007199254740991)
     updated_at: AwareDatetime = Field(..., alias="updatedAt")
+
+
+class EditDocumentInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+    document_id: UUID = Field(..., alias="documentId")
+    run_id: UUID = Field(..., alias="runId")
+    session_id: UUID | None = Field(..., alias="sessionId")
+    model_id: str | None = Field(..., alias="modelId")
+    base_version: int = Field(..., alias="baseVersion", gt=0, le=9007199254740991)
+    requests: list[RewriteRequest] = Field(..., min_length=1)
+    summary: str
 
 
 class EditOp6(BaseModel):
@@ -2519,6 +2578,15 @@ class EditOp8(BaseModel):
     answer: Answer
 
 
+class EditOp11(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    op: Literal["replace_section"]
+    section: NotesSection
+
+
 class EditOp(
     RootModel[
         EditOp1
@@ -2531,6 +2599,7 @@ class EditOp(
         | EditOp8
         | EditOp9
         | EditOp10
+        | EditOp11
     ]
 ):
     root: (
@@ -2544,6 +2613,7 @@ class EditOp(
         | EditOp8
         | EditOp9
         | EditOp10
+        | EditOp11
     ) = Field(..., title="EditOp")
 
 
@@ -2641,6 +2711,22 @@ class StaffDirectory(BaseModel):
     subjects: list[SubjectRef]
 
 
+class ApplyDocumentEditsInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    document_id: UUID = Field(..., alias="documentId")
+    run_id: UUID = Field(..., alias="runId")
+    base_version: int = Field(..., alias="baseVersion", gt=0, le=9007199254740991)
+    ops: list[EditOp]
+    summary: str
+    session_id: UUID | None = Field(..., alias="sessionId")
+    message_id: UUID = Field(..., alias="messageId")
+
+
 class ChatBlock9(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2707,6 +2793,18 @@ class ChatEngineEvent4(BaseModel):
         extra="forbid",
         populate_by_name=True,
     )
+    event: Literal["document_edit"]
+    document_id: UUID = Field(..., alias="documentId")
+    base_version: int = Field(..., alias="baseVersion", gt=0, le=9007199254740991)
+    ops: list[EditOp] = Field(..., min_length=1)
+    summary: str
+
+
+class ChatEngineEvent6(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
     event: Literal["done"]
     blocks: list[ChatBlock]
     model_id: str | None = Field(..., alias="modelId")
@@ -2721,6 +2819,8 @@ class ChatEngineEvent(
         | ChatEngineEvent3
         | ChatEngineEvent4
         | ChatEngineEvent5
+        | ChatEngineEvent6
+        | ChatEngineEvent7
     ]
 ):
     root: (
@@ -2729,6 +2829,8 @@ class ChatEngineEvent(
         | ChatEngineEvent3
         | ChatEngineEvent4
         | ChatEngineEvent5
+        | ChatEngineEvent6
+        | ChatEngineEvent7
     ) = Field(..., title="ChatEngineEvent")
 
 

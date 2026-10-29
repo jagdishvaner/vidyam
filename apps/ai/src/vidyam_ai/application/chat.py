@@ -12,10 +12,13 @@ What the teacher sent decides the work:
     missing (at most two cards) or show the review card with what the bank has and a cost estimate.
   - *ask*: search the center's material (step 20) and answer from it with numbered citations; with nothing
     found, say so instead of guessing.
-  - *edit*: editing documents by chat comes with the document editor (step 28).
+  - *edit*: the chat's document, changed by the edit agent (`edit_agent`, step 28): it reads an outline of the
+    document and answers with changes. Simple ones (remove, move, marks, title) go to the API as edit
+    operations on the version it read; questions or sections to write again go to the EditDocument
+    workflow. Undo is the API's own.
   - *chat*: anything else, answered briefly.
 - **An answered card** merges into the draft with no model call.
-- **A button**: Confirm (generation starts in step 26), Cancel (the draft is cleared), Undo.
+- **A button**: Cancel clears the draft. Confirm and Undo are the API's own (they start or restore documents).
 """
 
 import asyncio
@@ -54,8 +57,13 @@ from vidyam_ai.domain.chat import (
     message_text,
     reply,
 )
+from vidyam_ai.domain.editing import outline
+from vidyam_ai.domain.editing import plan as plan_changes
 from vidyam_ai.domain.llm import Segment, Usage
 from vidyam_ai.domain.mentions import NodeName, resolve
+from vidyam_ai.domain.specs import (
+    NOTES as NOTES_KINDS,
+)
 from vidyam_ai.domain.specs import (
     PAPERS,
     Draft,
@@ -101,6 +109,18 @@ class Teacher:
 
 
 @dataclass(frozen=True)
+class DocumentView:
+    """The chat's document as the edit agent reads it."""
+
+    id: UUID
+    kind: str
+    version: int  # 0 while it is being made
+    content: Mapping[str, Any]  # PaperDocument or NotesDocument
+    questions: Mapping[str, Mapping[str, Any]]  # by id: qtype, content, status
+    names: Mapping[str, str]  # syllabus node names, by id
+
+
+@dataclass(frozen=True)
 class Exam:
     code: str
     name_en: str
@@ -130,6 +150,7 @@ class ChatContext(Protocol):
         ...
 
     async def file_names(self, org_id: UUID, source_ids: Sequence[UUID]) -> dict[UUID, str]: ...
+    async def document(self, org_id: UUID, document_id: UUID) -> DocumentView | None: ...
 
 
 class ChatModels(Protocol):
@@ -176,6 +197,29 @@ class Understanding(BaseModel):
     question: str | None  # for "ask": the doubt as a standalone search query
 
 
+class PlannedChange(BaseModel):
+    """One change the edit agent wants: to which items (ids from the outline), and how."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    action: Literal["remove", "move", "marks", "rename", "instructions", "rewrite"]
+    items: list[str]
+    position: int | None  # move: the new place in its section, from 1
+    marks: float | None
+    # rename: the new title; instructions: their text; rewrite: what to change, in the teacher's words
+    text: str | None
+    difficulty: int | None  # rewrite: the difficulty to aim at, 1–5
+
+
+class EditPlan(BaseModel):
+    """The `edit_agent` task's structured output: what to tell the teacher, and the changes."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    reply: str
+    changes: list[PlannedChange]
+
+
 @dataclass(frozen=True)
 class TurnRef:
     org_id: UUID
@@ -192,7 +236,7 @@ class _Answer:
 
     text: list[str] = field(default_factory=list[str])
     blocks: list[dict[str, Any]] = field(default_factory=list[dict[str, Any]])
-    status: Literal["idle", "awaiting_input"] = "idle"
+    status: Literal["idle", "awaiting_input", "generating"] = "idle"
     model_id: str | None = None
 
     def say(self, text: str) -> Event:
@@ -335,8 +379,9 @@ class ChatAgent:
                 query = understood.question or message_text(transcript.messages[-1].blocks)
                 events = self._ask(caller, turn, transcript, teacher, query, language, model_id, answer)
             case "edit" if transcript.document_id:
-                yield answer.say(reply("edit_later", language))
-                return
+                events = self._edit(
+                    caller, turn, transcript, transcript.document_id, language, model_id, answer
+                )
             case _:
                 events = self._chat(caller, transcript, model_id, answer)
         async for event in events:
@@ -513,17 +558,76 @@ class ChatAgent:
     async def _action(
         self, transcript: Transcript, block: Mapping[str, Any], language: str, answer: _Answer
     ) -> AsyncIterator[Event]:
-        draft = transcript.draft_spec or {}
-        match block.get("action"):
-            case "confirm_spec":
-                ready = bool(draft) and not any(missing(draft))
-                yield answer.say(reply("generation_off" if ready else "nothing_to_confirm", language))
-                answer.status = "awaiting_input" if ready else "idle"
-            case "cancel":
-                yield {"event": "draft_spec", "draftSpec": {}}
-                yield answer.say(reply("cancelled", language))
-            case _:
-                yield answer.say(reply("nothing_to_undo", language))
+        """Cancel clears the draft. Confirm and Undo never reach the engine: the API answers them itself (they
+        start or restore documents, which no model decides)."""
+        if block.get("action") == "cancel":
+            yield {"event": "draft_spec", "draftSpec": {}}
+            yield answer.say(reply("cancelled", language))
+        else:
+            yield answer.say(reply("nothing_to_confirm", language))
+
+    # --- Editing the chat's document (plan v3 §6.9) -------------------------------------------------------
+
+    async def _edit(
+        self,
+        caller: Caller,
+        turn: TurnRef,
+        transcript: Transcript,
+        document_id: UUID,
+        language: str,
+        model_id: str | None,
+        answer: _Answer,
+    ) -> AsyncIterator[Event]:
+        view = await self._context.document(turn.org_id, document_id)
+        if view is None:
+            yield answer.say(reply("no_document", language))
+            return
+        if view.version == 0:
+            yield answer.say(reply("still_making", language))
+            return
+        request = LlmRequest(
+            caller=caller,
+            task="edit_agent",
+            variables={
+                "kind": "notes" if view.kind in NOTES_KINDS else "question paper",
+                "outline": outline(view.content, view.questions, view.names),
+            },
+            turns=conversation(transcript.messages)[-CONTEXT_TURNS:],
+            model_id=model_id,
+        )
+        made = await self._models.complete_structured(request, EditPlan)
+        answer.model_id = made.reply.model_id
+        changes = plan_changes([change.model_dump() for change in made.value.changes], view.content)
+        said = made.value.reply.strip()
+        if not changes.ops and not changes.rewrites:
+            yield answer.say(said or reply("edit_unclear", language))
+            if changes.problems:
+                yield answer.say(
+                    "\n\n" + reply("edit_problems", language) + " " + "; ".join(changes.problems) + "."
+                )
+            return
+        yield answer.say(said or reply("editing", language))
+        if changes.problems:
+            yield answer.say(
+                "\n\n" + reply("edit_problems", language) + " " + "; ".join(changes.problems) + "."
+            )
+        summary = said or reply("editing", language)
+        if changes.ops:
+            yield {
+                "event": "document_edit",
+                "documentId": str(view.id),
+                "baseVersion": view.version,
+                "ops": changes.ops,
+                "summary": summary,
+            }
+        if changes.rewrites:
+            yield {
+                "event": "document_rewrite",
+                "documentId": str(view.id),
+                "requests": changes.rewrites,
+                "summary": summary,
+            }
+            answer.status = "generating"
 
     # --- Doubts and conversation ----------------------------------------------------------------------------
 

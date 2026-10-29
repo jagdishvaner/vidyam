@@ -17,6 +17,7 @@ from vidyam_ai.application.generation import (
     CheckAnswers,
     PlanNotes,
     PlanPaper,
+    PlanRewrite,
     WriteNotesSection,
     WriteQuestions,
 )
@@ -129,6 +130,7 @@ async def open_activities(
                 AssemblePaper(making),
                 PlanNotes(making),
                 WriteNotesSection(making, gateway, search),
+                PlanRewrite(making),
             ),
             cpu_slots=settings.worker_cpu_processes,
             outbox=ApplyOutbox(SqlOutbox(resources.engine), search_index),
@@ -173,6 +175,7 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
                 making.plan_notes,
                 making.assemble_notes,
                 making.cost,
+                making.plan_rewrite,
             ],
         ),
         Worker(

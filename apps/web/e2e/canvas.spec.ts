@@ -85,3 +85,34 @@ test("a paper opens on the canvas, is edited by hand, undone and taken back to a
   await page.getByRole("button", { name: "Open" }).first().click();
   await expect(canvas.getByText("Version 5")).toBeVisible();
 });
+
+test("the chat changes the paper, Undo in the chat takes it back, and a rewrite says how it went", async ({
+  page,
+}) => {
+  await makePaper(page);
+  const canvas = page.getByRole("complementary", { name: "Document" });
+  await expect(canvas.getByText("Version 1")).toBeVisible({ timeout: 90_000 });
+  const items = canvas.getByRole("listitem", { name: /^Question \d+$/ });
+  await expect(items).toHaveCount(4);
+
+  await page.getByLabel("Message").fill("remove Q2");
+  await page.getByRole("button", { name: "Send" }).click();
+  await expect(page.getByText("Removing question 2.").last()).toBeVisible({ timeout: 30_000 });
+  await expect(canvas.getByText("Version 2")).toBeVisible();
+  await expect(items).toHaveCount(3);
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/chat-edit.png`, fullPage: true });
+
+  await page.getByRole("button", { name: "Undo this change" }).click();
+  await expect(page.getByText("Undone: it is as it was at version 1.")).toBeVisible({ timeout: 30_000 });
+  await expect(canvas.getByText("Version 3")).toBeVisible();
+  await expect(items).toHaveCount(4);
+
+  // Writing a question again needs material: with none, the paper stays as it was, and the chat says why.
+  await page.getByLabel("Message").fill("make question 1 harder");
+  await page.getByRole("button", { name: "Send" }).click();
+  await expect(page.getByText("Making question 1 harder.").first()).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText("so the paper is as it was", { exact: false })).toBeVisible({
+    timeout: 90_000,
+  });
+  await expect(canvas.getByText("Version 3")).toBeVisible();
+});

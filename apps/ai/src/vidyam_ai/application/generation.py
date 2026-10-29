@@ -25,6 +25,7 @@ from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from decimal import Decimal
 from pathlib import PurePosixPath
+from textwrap import indent
 from typing import Any, Protocol
 from uuid import UUID
 
@@ -161,6 +162,10 @@ class GenerationStore(Protocol):
         ...
 
     async def file_names(self, org_id: UUID, source_ids: Sequence[UUID]) -> dict[UUID, str]: ...
+    async def current(self, org_id: UUID, document_id: UUID) -> tuple[int, dict[str, Any]] | None:
+        """A document's current version and content."""
+        ...
+
     async def passages(self, org_id: UUID, chunk_ids: Sequence[str]) -> list[str]:
         """The chunks' text with their headings, in the order asked for."""
         ...
@@ -421,9 +426,11 @@ class WriteQuestions:
         used: Sequence[str],
         feedback: Mapping[str, Sequence[str]],
         final: bool,
+        requests: Mapping[str, str] | None = None,
     ) -> Written:
         """Writes one group (one chapter and type). `used`: evidence the paper already used; `feedback`: what
-        was wrong with each slot's last question; `final`: the last try, after which failures stay flagged."""
+        was wrong with each slot's last question; `final`: the last try, after which failures stay flagged;
+        `requests`: what the teacher asked to change, for slots written again from the chat (EditDocument)."""
         run = await _run(self._store, job.org_id, job.run_id)
         spec, languages = run.spec, _languages(run.spec)
         node_id, qtype = slots[0]["taxonomyNodeId"], slots[0]["qtype"]
@@ -449,6 +456,8 @@ class WriteQuestions:
         ]
         if problems:
             ask += ["", "Your last questions for these slots were rejected. Avoid these problems:", *problems]
+        if requests:
+            ask += await self._asked(job.org_id, slots, requests)
         request = LlmRequest(
             caller=caller,
             task="generate",
@@ -534,6 +543,19 @@ class WriteQuestions:
             state = "generated" if passed else "flagged"
             out.append({**slot, "state": state, "questionId": str(question_id), "flags": problems_found})
         return Written(out, chunk_ids, reply.reply.model_id)
+
+    async def _asked(self, org_id: UUID, slots: Sequence[Slot], requests: Mapping[str, str]) -> list[str]:
+        """The teacher's changes, each with the question as it stands, so the new one keeps what was fine."""
+        asked = [slot for slot in slots if slot["slotId"] in requests]
+        ids = [UUID(slot["questionId"]) for slot in asked if slot.get("questionId")]
+        current = await self._store.questions(org_id, ids)
+        lines = ["", "The teacher asked for these questions to be changed. Write each one again as asked:"]
+        for slot in asked:
+            lines.append(f'- slot "{slot["slotId"]}": {requests[slot["slotId"]]}')
+            now = current.get(str(slot.get("questionId")))
+            if now:
+                lines.append("  It is now:\n" + indent(_printed(now["content"], now["answer"]), "    "))
+        return lines
 
     async def _ground(
         self,
@@ -627,6 +649,35 @@ class CheckAnswers:
         return problems
 
 
+class PlanRewrite:
+    def __init__(self, store: GenerationStore) -> None:
+        self._store = store
+
+    async def execute(
+        self, org_id: UUID, document_id: UUID, requests: Sequence[Mapping[str, Any]]
+    ) -> dict[str, Any]:
+        """The items the teacher asked to change (EditDocument), as they stand, ready to be written again:
+        `{"kind": "paper" | "notes", "items": [...]}`. Items no longer in the document are left out."""
+        current = await self._store.current(org_id, document_id)
+        if current is None:
+            raise LookupError(f"no document {document_id}")
+        _, content = current
+        asked = {request["itemId"]: request for request in requests}
+        if "slots" in content:
+            items: list[dict[str, Any]] = [
+                {**slot, "state": "pending", "flags": [],
+                 "difficulty": asked[slot["slotId"]].get("difficulty") or slot["difficulty"]}
+                for slot in content["slots"]
+                if slot["slotId"] in asked
+            ]  # fmt: skip
+            return {"kind": "paper", "items": items}
+        sections: list[dict[str, Any]] = content["sections"]
+        items = [
+            {**section, "state": "pending", "flags": []} for section in sections if section["nodeId"] in asked
+        ]
+        return {"kind": "notes", "items": items}
+
+
 class AssemblePaper:
     def __init__(self, store: GenerationStore) -> None:
         self._store = store
@@ -690,7 +741,10 @@ class WriteNotesSection:
         used: Sequence[str],
         feedback: Sequence[str],
         final: bool,
+        request: str | None = None,
     ) -> WrittenSection:
+        """Writes one section. `request`: what the teacher asked to change, when it is written again from the
+        chat (EditDocument)."""
         run = await _run(self._store, job.org_id, job.run_id)
         spec, languages = run.spec, _languages(run.spec)
         node = (await self._store.nodes(job.org_id, [section["nodeId"]]))[section["nodeId"]]
@@ -713,6 +767,12 @@ class WriteNotesSection:
                 "Your last version was rejected. Avoid these problems:",
                 *(f"- {p}" for p in feedback),
             ]
+        if request:
+            body: Mapping[str, str] = section.get("body") or {}
+            now = body.get("en") or body.get("hi") or ""
+            ask += ["", f"The teacher asked for this section to be changed: {request}"]
+            if now:
+                ask += ["It is now:", now]
         try:
             reply = await self._models.complete_structured(
                 LlmRequest(

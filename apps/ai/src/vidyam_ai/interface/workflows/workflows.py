@@ -11,11 +11,13 @@ from temporalio.common import RetryPolicy
 from temporalio.exceptions import ActivityError, ApplicationError
 
 with workflow.unsafe.imports_passed_through():
+    from vidyam_ai.domain.editing import rewrite_summary
     from vidyam_ai.domain.generation import OPEN, groups, message_id, outcome, summary
     from vidyam_ai.generated.contracts import (
         AiTaskQueue,
         ApiActivity,
         BacklogKind,
+        EditDocumentInput,
         GenerateDocumentInput,
         GenerateDocumentResult,
         IndexSourceInput,
@@ -269,8 +271,8 @@ class _Generation:
     """What making a paper and making notes share: the run's progress, the finished document, the chat's
     message, and failing cleanly."""
 
-    request: GenerateDocumentInput
-    payload: dict[str, Any]
+    request: GenerateDocumentInput | EditDocumentInput
+    payload: dict[str, Any]  # a document's ids, as the writing steps take them
 
     def _ids(self) -> dict[str, Any]:
         return {"v": 1, "orgId": str(self.request.org_id), "runId": str(self.request.run_id)}
@@ -330,6 +332,83 @@ class _Generation:
         )
         return result.model_dump(mode="json", by_alias=True)
 
+    async def _write_slots(self, slots: list[dict[str, Any]], asked: dict[str, str]) -> list[dict[str, Any]]:
+        """Fills the open slots a group at a time (a few at once): write, check each new answer on the other
+        provider, and write failures again with what was wrong. `asked`: the teacher's changes, by slot."""
+        by_id = {slot["slotId"]: slot for slot in slots}
+        used: list[str] = []
+        gate = asyncio.Semaphore(PARALLEL_CALLS)
+
+        async def fill(group: list[dict[str, Any]], final: bool) -> None:
+            async with gate:
+                feedback = {s["slotId"]: s["flags"] for s in group if s["state"] == "flagged"}
+                requests = {s["slotId"]: asked[s["slotId"]] for s in group if s["slotId"] in asked}
+                written: dict[str, Any] = await workflow.execute_activity_method(
+                    GenerationActivities.write_questions,
+                    args=[self.payload, group, list(used), feedback, final, requests],
+                    task_queue=_queue(AiTaskQueue.ai_llm),
+                    start_to_close_timeout=timedelta(minutes=10),
+                    retry_policy=_WRITING,
+                )
+                used.extend(written["chunkIds"])
+                done: list[dict[str, Any]] = written["slots"]
+                new = [s for s in done if s["state"] == "generated"]
+                if new:
+                    checked: list[dict[str, Any]] = await workflow.execute_activity_method(
+                        GenerationActivities.check_answers,
+                        args=[self.payload, new, written["modelId"]],
+                        task_queue=_queue(AiTaskQueue.ai_llm),
+                        start_to_close_timeout=timedelta(minutes=10),
+                        retry_policy=_WRITING,
+                    )
+                    done = [next((c for c in checked if c["slotId"] == s["slotId"]), s) for s in done]
+                by_id.update({s["slotId"]: s for s in done})
+                await self._progress(slotStates=_states(done, "slotId"))
+
+        for attempt in range(ATTEMPTS):
+            todo = groups([by_id[slot["slotId"]] for slot in slots])
+            if not todo:
+                break
+            await asyncio.gather(*(fill(group, attempt == ATTEMPTS - 1) for group in todo))
+        return [by_id[slot["slotId"]] for slot in slots]
+
+    async def _write_sections(
+        self, sections: list[dict[str, Any]], asked: dict[str, str]
+    ) -> list[dict[str, Any]]:
+        """Writes the open sections (a few at once), each checked for grounding, failures again with what was
+        wrong. `asked`: the teacher's changes, by section."""
+        sections = list(sections)
+        used: list[str] = []
+        gate = asyncio.Semaphore(PARALLEL_CALLS)
+
+        async def write(index: int, final: bool) -> None:
+            async with gate:
+                section = sections[index]
+                written: dict[str, Any] = await workflow.execute_activity_method(
+                    GenerationActivities.write_notes_section,
+                    args=[
+                        self.payload,
+                        section,
+                        list(used),
+                        section["flags"],
+                        final,
+                        asked.get(section["nodeId"]),
+                    ],
+                    task_queue=_queue(AiTaskQueue.ai_llm),
+                    start_to_close_timeout=timedelta(minutes=10),
+                    retry_policy=_WRITING,
+                )
+                used.extend(written["chunkIds"])
+                sections[index] = written["section"]
+                await self._progress(slotStates=_states([sections[index]], "nodeId"))
+
+        for attempt in range(ATTEMPTS):
+            todo = [n for n, section in enumerate(sections) if section["state"] in OPEN]
+            if not todo:
+                break
+            await asyncio.gather(*(write(n, attempt == ATTEMPTS - 1) for n in todo))
+        return sections
+
     async def _fail(self, error: ActivityError) -> ApplicationError:
         """The run failed and the chat says so (which also frees the chat for new work)."""
         reason = str(error.cause or error)
@@ -370,41 +449,7 @@ class GeneratePaperWorkflow(_Generation):
                 retry_policy=RetryPolicy(maximum_attempts=5),
             )
             await self._progress(status="running", slotPlan=slots, slotStates=_states(slots, "slotId"))
-            by_id = {slot["slotId"]: slot for slot in slots}
-            used: list[str] = []
-            gate = asyncio.Semaphore(PARALLEL_CALLS)
-
-            async def fill(group: list[dict[str, Any]], final: bool) -> None:
-                async with gate:
-                    feedback = {s["slotId"]: s["flags"] for s in group if s["state"] == "flagged"}
-                    written: dict[str, Any] = await workflow.execute_activity_method(
-                        GenerationActivities.write_questions,
-                        args=[payload, group, list(used), feedback, final],
-                        task_queue=_queue(AiTaskQueue.ai_llm),
-                        start_to_close_timeout=timedelta(minutes=10),
-                        retry_policy=_WRITING,
-                    )
-                    used.extend(written["chunkIds"])
-                    done: list[dict[str, Any]] = written["slots"]
-                    new = [s for s in done if s["state"] == "generated"]
-                    if new:
-                        checked: list[dict[str, Any]] = await workflow.execute_activity_method(
-                            GenerationActivities.check_answers,
-                            args=[payload, new, written["modelId"]],
-                            task_queue=_queue(AiTaskQueue.ai_llm),
-                            start_to_close_timeout=timedelta(minutes=10),
-                            retry_policy=_WRITING,
-                        )
-                        done = [next((c for c in checked if c["slotId"] == s["slotId"]), s) for s in done]
-                    by_id.update({s["slotId"]: s for s in done})
-                    await self._progress(slotStates=_states(done, "slotId"))
-
-            for attempt in range(ATTEMPTS):
-                todo = groups([by_id[slot["slotId"]] for slot in slots])
-                if not todo:
-                    break
-                await asyncio.gather(*(fill(group, attempt == ATTEMPTS - 1) for group in todo))
-            slots = [by_id[slot["slotId"]] for slot in slots]
+            slots = await self._write_slots(slots, {})
             content: dict[str, Any] = await workflow.execute_activity_method(
                 GenerationActivities.assemble_paper,
                 args=[payload, slots],
@@ -433,28 +478,7 @@ class GenerateNotesWorkflow(_Generation):
                 retry_policy=RetryPolicy(maximum_attempts=5),
             )
             await self._progress(status="running", slotPlan=sections, slotStates=_states(sections, "nodeId"))
-            used: list[str] = []
-            gate = asyncio.Semaphore(PARALLEL_CALLS)
-
-            async def write(index: int, final: bool) -> None:
-                async with gate:
-                    section = sections[index]
-                    written: dict[str, Any] = await workflow.execute_activity_method(
-                        GenerationActivities.write_notes_section,
-                        args=[payload, section, list(used), section["flags"], final],
-                        task_queue=_queue(AiTaskQueue.ai_llm),
-                        start_to_close_timeout=timedelta(minutes=10),
-                        retry_policy=_WRITING,
-                    )
-                    used.extend(written["chunkIds"])
-                    sections[index] = written["section"]
-                    await self._progress(slotStates=_states([sections[index]], "nodeId"))
-
-            for attempt in range(ATTEMPTS):
-                todo = [n for n, section in enumerate(sections) if section["state"] in OPEN]
-                if not todo:
-                    break
-                await asyncio.gather(*(write(n, attempt == ATTEMPTS - 1) for n in todo))
+            sections = await self._write_sections(sections, {})
             content: dict[str, Any] = await workflow.execute_activity_method(
                 GenerationActivities.assemble_notes,
                 args=[payload, sections],
@@ -462,6 +486,75 @@ class GenerateNotesWorkflow(_Generation):
                 retry_policy=RetryPolicy(maximum_attempts=5),
             )
             return await self._finish(content, [section["state"] for section in sections], sections)
+        except ActivityError as error:
+            raise await self._fail(error) from error
+
+
+REWRITTEN = ("generated", "verified")  # a question good enough to take its slot
+DOCUMENT_IDS = ("v", "orgId", "requestedBy", "documentId", "runId", "sessionId", "modelId")
+
+
+@workflow.defn(name=WorkflowType.edit_document)
+class EditDocumentWorkflow(_Generation):
+    """Questions or sections of a document written again, as the teacher asked in the chat (plan v3 §6.9):
+    the same writing and checks as making it, each with the teacher's words and the item as it stands. Only
+    items that pass replace the old ones; the edit is saved as the next version, together with the chat's
+    message, only if nobody changed the document meanwhile."""
+
+    @workflow.run
+    async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
+        edit = parse(EditDocumentInput, payload)
+        self.request = edit
+        # The writing steps take a document's ids, as when it was made.
+        self.payload = {key: payload[key] for key in DOCUMENT_IDS}
+        asked = {r.item_id: r.instruction for r in edit.requests}
+        try:
+            planned: dict[str, Any] = await workflow.execute_activity_method(
+                GenerationActivities.plan_rewrite,
+                payload,
+                start_to_close_timeout=timedelta(minutes=1),
+                retry_policy=RetryPolicy(maximum_attempts=5),
+            )
+            items: list[dict[str, Any]] = planned["items"]
+            paper = planned["kind"] == "paper"
+            key = "slotId" if paper else "nodeId"
+            before = {item[key]: item for item in items}
+            await self._progress(status="running", slotPlan=items, slotStates=_states(items, key))
+            after = await (self._write_slots(items, asked) if paper else self._write_sections(items, asked))
+            ops: list[dict[str, Any]] = []
+            kept: list[str] = []
+            for item in after:
+                if (
+                    paper
+                    and item["state"] in REWRITTEN
+                    and item["questionId"] != before[item[key]]["questionId"]
+                ):
+                    ops.append({"op": "replace_item", "slotId": item[key], "questionId": item["questionId"]})
+                elif not paper and item["state"] == "verified":
+                    ops.append({"op": "replace_section", "section": item})
+                else:
+                    kept.append((item.get("flags") or [item["state"]])[0])
+            info: dict[str, Any] = await workflow.execute_activity_method(
+                GenerationActivities.run_info, self.payload, start_to_close_timeout=timedelta(seconds=30)
+            )
+            cost: float = await workflow.execute_activity_method(
+                GenerationActivities.cost, self.payload, start_to_close_timeout=timedelta(seconds=30)
+            )
+            await self._progress(actualCostUsd=cost)
+            return await _commit(
+                ApiActivity.apply_document_edits,
+                {
+                    "v": 1,
+                    "orgId": str(edit.org_id),
+                    "documentId": str(edit.document_id),
+                    "runId": str(edit.run_id),
+                    "baseVersion": edit.base_version,
+                    "ops": ops,
+                    "summary": rewrite_summary(edit.summary, len(ops), kept, info["locale"]),
+                    "sessionId": str(edit.session_id) if edit.session_id else None,
+                    "messageId": message_id(edit.run_id, "edited"),
+                },
+            )
         except ActivityError as error:
             raise await self._fail(error) from error
 
@@ -474,4 +567,5 @@ WORKFLOWS = [
     IndexSourceWorkflow,
     GeneratePaperWorkflow,
     GenerateNotesWorkflow,
+    EditDocumentWorkflow,
 ]

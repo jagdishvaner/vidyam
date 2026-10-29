@@ -139,7 +139,15 @@ def _spec(call: ModelCall) -> str:
     low = text.casefold()
     kind = next((kind for kind, pattern in _KINDS if re.search(pattern, low)), None)
     asks = bool(re.search(_ASK, low))
-    intent = "create" if kind or re.search(_MAKE, low) else "ask" if asks else "chat"
+    # "remove Q2", "make question 3 harder", "rename it to …": changing the document the chat made.
+    edits = bool(
+        (
+            _REFS.search(low)
+            and (any(re.search(p, low) for _, p in _EDITS) or re.search(r"marks?|अंक|\bmove\b", low))
+        )
+        or re.search(r"\b(?:rename|title)\b", low)
+    )
+    intent = "edit" if edits else "create" if kind or re.search(_MAKE, low) else "ask" if asks else "chat"
     # The exam whose name shares most words with the message, both ways (Dice), so a short name doesn't win
     # on a couple of common words.
     said = _words(text)
@@ -267,6 +275,8 @@ def _generate(call: ModelCall) -> str:
     if "hi" in languages:
         passages.sort(key=lambda p: not _hindi(p[1]))  # Hindi passages first, in their order
     pool = list(dict.fromkeys(word for _, text in passages for word in _terms(text)))
+    # Written again at the teacher's request: a different sentence than the first one that fits.
+    skip = 1 if "asked for these questions to be changed" in asked else 0
     questions: list[dict[str, object]] = []
     for i, (slot, qtype, _difficulty) in enumerate(_SLOT.findall(asked)):
         kind = (
@@ -278,7 +288,9 @@ def _generate(call: ModelCall) -> str:
                 if len(sentence) > 300 or not _balanced(sentence):
                     continue
                 blanked = _cloze(sentence, kind) if kind != "text" else (sentence, sentence)
-                if blanked:
+                if blanked and skip:
+                    skip -= 1
+                elif blanked:
                     made = (n, sentence, *blanked)
                     break
             if made:
@@ -381,6 +393,75 @@ def _notes_write(call: ModelCall) -> str:
     return json.dumps({**bodies, "cites": [n for n, _ in passages]}, ensure_ascii=False)
 
 
+_ITEM_LINE = re.compile(r"^Q(\d+) \[([^\]]+)\].*?difficulty (\d)", re.MULTILINE)
+_SECTION_LINE = re.compile(r"^Section \[([^\]]+)\]", re.MULTILINE)
+_REFS = re.compile(
+    r"(?:\bq\.?|\bquestions?|प्रश्न|\bsawal|सवाल|\bsections?|खंड)\s*(?:no\.?\s*)?"
+    r"(\d+(?:\s*(?:,|&|and|aur|और)\s*\d+)*)"
+)
+_EDITS = [
+    ("remove", r"remove|delete|drop|hata|हटा|nikal|निकाल"),
+    ("harder", r"harder|tough|kathin|कठिन|difficult"),
+    ("easier", r"easier|aasan|आसान|saral|सरल"),
+    ("rewrite", r"rewrite|replace|change|badl|बदल|new question|translate|bilingual"),
+]
+
+
+def _edit_agent(call: ModelCall) -> str:
+    """Reads "remove Q2", "make question 3 harder", "Q4 ko 3 marks do", "move Q5 to the top" and "rename it
+    to "…"" the way a careful script would, against the outline's numbering."""
+    text = _last_user_text(call)
+    low = text.casefold()
+    outline = call.variables.get("outline", "")
+    items = {int(m.group(1)): (m.group(2), int(m.group(3))) for m in _ITEM_LINE.finditer(outline)}
+    if not items:
+        items = {n: (m.group(1), 3) for n, m in enumerate(_SECTION_LINE.finditer(outline), 1)}
+    numbers = [int(n) for ref in _REFS.findall(low) for n in re.findall(r"\d+", ref) if int(n) in items]
+    ids = [items[n][0] for n in numbers]
+    changes: list[dict[str, object]] = []
+    said: list[str] = []
+    blank: dict[str, object] = {"position": None, "marks": None, "text": None, "difficulty": None}
+    renamed = re.search(r"(?:rename|title|naam)[^\"“']*[\"“'](.+?)[\"”']", text, re.IGNORECASE)
+    marks = re.search(r"(\d+(?:\.\d+)?)\s*(?:marks?|अंक)", low)
+    moved = re.search(r"\bmove\b.*?\bto\b\s*(?:the\s*)?(top|first|start|end|last|position\s*(\d+))", low)
+    action = next((name for name, pattern in _EDITS if re.search(pattern, low)), None)
+    if renamed:
+        changes.append({**blank, "action": "rename", "items": [], "text": renamed.group(1)})
+        said.append(f'Renaming it "{renamed.group(1)}".')
+    if ids and moved:
+        where = moved.group(1)
+        position = 1 if where in ("top", "first", "start") else int(moved.group(2) or 99)
+        changes.append({**blank, "action": "move", "items": ids[:1], "position": position})
+        said.append(f"Moving question {numbers[0]}.")
+    elif ids and marks:
+        changes.append({**blank, "action": "marks", "items": ids, "marks": float(marks.group(1))})
+        said.append(f"Giving {_listed(numbers)} {marks.group(1)} marks.")
+    elif ids and action == "remove":
+        changes.append({**blank, "action": "remove", "items": ids})
+        said.append(f"Removing {_listed(numbers)}.")
+    elif ids and action in ("harder", "easier"):
+        step = 1 if action == "harder" else -1
+        for n, item in zip(numbers, ids, strict=True):
+            difficulty = max(1, min(5, items[n][1] + step))
+            changes.append(
+                {**blank, "action": "rewrite", "items": [item], "text": action, "difficulty": difficulty}
+            )
+        said.append(f"Making {_listed(numbers)} {action}.")
+    elif ids and action == "rewrite":
+        changes.append({**blank, "action": "rewrite", "items": ids, "text": text[:500]})
+        said.append(f"Rewriting {_listed(numbers)}.")
+    if not changes:
+        reply = 'Which question should I change, and how? For example: "make Q3 harder" or "remove Q5".'
+        return json.dumps({"reply": reply, "changes": []}, ensure_ascii=False)
+    return json.dumps({"reply": " ".join(said), "changes": changes}, ensure_ascii=False)
+
+
+def _listed(numbers: Sequence[int]) -> str:
+    if len(numbers) == 1:
+        return f"question {numbers[0]}"
+    return "questions " + ", ".join(map(str, numbers[:-1])) + f" and {numbers[-1]}"
+
+
 RESPONDERS: dict[str, Responder] = {
     "chat_title": _chat_title,
     "chat_qa": _chat_qa,
@@ -388,6 +469,7 @@ RESPONDERS: dict[str, Responder] = {
     "verify_grounding": _verify_grounding,
     "verify_solve": _verify_solve,
     "notes_write": _notes_write,
+    "edit_agent": _edit_agent,
     "ocr_text": _ocr,
     "segment": _segment,
     "spec": _spec,

@@ -6963,6 +6963,134 @@
                                               "nodeIds"
                                             ],
                                             "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "replace_section"
+                                                ]
+                                              },
+                                              "section": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "nodeId": {
+                                                    "type": "string",
+                                                    "format": "uuid",
+                                                    "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                                  },
+                                                  "title": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "en": {
+                                                        "type": "string"
+                                                      },
+                                                      "hi": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "additionalProperties": false
+                                                  },
+                                                  "body": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "en": {
+                                                        "type": "string"
+                                                      },
+                                                      "hi": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "additionalProperties": false
+                                                  },
+                                                  "citations": {
+                                                    "default": [],
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "chunkId": {
+                                                          "type": "string",
+                                                          "format": "uuid",
+                                                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                                        },
+                                                        "sourceId": {
+                                                          "type": "string",
+                                                          "format": "uuid",
+                                                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                                        },
+                                                        "filename": {
+                                                          "type": "string"
+                                                        },
+                                                        "pageStart": {
+                                                          "nullable": true,
+                                                          "type": "integer",
+                                                          "minimum": -9007199254740991,
+                                                          "maximum": 9007199254740991
+                                                        },
+                                                        "pageEnd": {
+                                                          "nullable": true,
+                                                          "type": "integer",
+                                                          "minimum": -9007199254740991,
+                                                          "maximum": 9007199254740991
+                                                        },
+                                                        "pageLabel": {
+                                                          "nullable": true,
+                                                          "type": "string"
+                                                        },
+                                                        "quote": {
+                                                          "type": "string"
+                                                        }
+                                                      },
+                                                      "required": [
+                                                        "chunkId",
+                                                        "sourceId",
+                                                        "filename",
+                                                        "pageStart",
+                                                        "pageEnd",
+                                                        "pageLabel",
+                                                        "quote"
+                                                      ],
+                                                      "additionalProperties": false
+                                                    }
+                                                  },
+                                                  "state": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "pending",
+                                                      "written",
+                                                      "verified",
+                                                      "flagged",
+                                                      "insufficient_evidence",
+                                                      "edited"
+                                                    ]
+                                                  },
+                                                  "flags": {
+                                                    "default": [],
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "nodeId",
+                                                  "title",
+                                                  "body",
+                                                  "citations",
+                                                  "state",
+                                                  "flags"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "section"
+                                            ],
+                                            "additionalProperties": false
                                           }
                                         ]
                                       }
@@ -9673,6 +9801,127 @@
                           "required": [
                             "op",
                             "nodeIds"
+                          ]
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "op": {
+                              "type": "string",
+                              "enum": [
+                                "replace_section"
+                              ]
+                            },
+                            "section": {
+                              "type": "object",
+                              "properties": {
+                                "nodeId": {
+                                  "type": "string",
+                                  "format": "uuid",
+                                  "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                },
+                                "title": {
+                                  "type": "object",
+                                  "properties": {
+                                    "en": {
+                                      "type": "string"
+                                    },
+                                    "hi": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "body": {
+                                  "type": "object",
+                                  "properties": {
+                                    "en": {
+                                      "type": "string"
+                                    },
+                                    "hi": {
+                                      "type": "string"
+                                    }
+                                  }
+                                },
+                                "citations": {
+                                  "default": [],
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "chunkId": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                      },
+                                      "sourceId": {
+                                        "type": "string",
+                                        "format": "uuid",
+                                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                      },
+                                      "filename": {
+                                        "type": "string"
+                                      },
+                                      "pageStart": {
+                                        "nullable": true,
+                                        "type": "integer",
+                                        "minimum": -9007199254740991,
+                                        "maximum": 9007199254740991
+                                      },
+                                      "pageEnd": {
+                                        "nullable": true,
+                                        "type": "integer",
+                                        "minimum": -9007199254740991,
+                                        "maximum": 9007199254740991
+                                      },
+                                      "pageLabel": {
+                                        "nullable": true,
+                                        "type": "string"
+                                      },
+                                      "quote": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "required": [
+                                      "chunkId",
+                                      "sourceId",
+                                      "filename",
+                                      "pageStart",
+                                      "pageEnd",
+                                      "pageLabel",
+                                      "quote"
+                                    ]
+                                  }
+                                },
+                                "state": {
+                                  "type": "string",
+                                  "enum": [
+                                    "pending",
+                                    "written",
+                                    "verified",
+                                    "flagged",
+                                    "insufficient_evidence",
+                                    "edited"
+                                  ]
+                                },
+                                "flags": {
+                                  "default": [],
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string"
+                                  }
+                                }
+                              },
+                              "required": [
+                                "nodeId",
+                                "title",
+                                "body",
+                                "state"
+                              ]
+                            }
+                          },
+                          "required": [
+                            "op",
+                            "section"
                           ]
                         }
                       ]

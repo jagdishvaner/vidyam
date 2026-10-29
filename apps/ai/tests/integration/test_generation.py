@@ -127,15 +127,42 @@ async def test_a_confirmed_paper_and_notes_are_made_from_the_material(tmp_path: 
                 id=f"{WorkflowType.generate_notes.value}:{notes_input['runId']}",
                 task_queue=demo.task_queue,
             )
+            # Asked in the chat to make one checked question harder: EditDocument writes it again.
+            async with demo.owner.connect() as conn:
+                content = await conn.scalar(
+                    text("select content from documents where id = :d"), {"d": paper_input["documentId"]}
+                )
+            target = next(slot for slot in content["slots"] if slot["state"] == "verified")
+            edit_run = uuid4()
+            async with demo.owner.begin() as conn:
+                await conn.execute(
+                    text(  # as the API's beginRewrite makes it: the document's spec
+                        "insert into generation_runs (id, org_id, document_id, session_id, workflow_id, spec)"
+                        " select :r, :o, :d, :s, :w, spec from documents where id = :d"
+                    ),
+                    {"r": edit_run, "o": demo.org_id, "d": paper_input["documentId"],
+                     "s": paper_input["sessionId"], "w": f"EditDocument:{edit_run}"},
+                )  # fmt: skip
+            edited = await demo.client.execute_workflow(
+                WorkflowType.edit_document.value,
+                {**paper_input, "runId": str(edit_run), "baseVersion": 1,
+                 "summary": "Making question 1 harder.",
+                 "requests": [{"itemId": target["slotId"], "instruction": "harder", "difficulty": 4}]},
+                id=f"{WorkflowType.edit_document.value}:{edit_run}",
+                task_queue=demo.task_queue,
+            )  # fmt: skip
 
         # The paper: the bank's question first, the rest written from the material and checked.
         assert made["version"] == 1 and sum(made["outcome"].values()) == 8
         assert made["outcome"].get("bank") == 1 and made["outcome"].get("verified", 0) >= 4
         assert "pending" not in made["outcome"]
         async with demo.owner.connect() as conn:
-            doc = (
+            doc = (  # the paper as made (version 2 is the rewrite, checked below)
                 await conn.execute(
-                    text("select current_version, content from documents where id = :d"),
+                    text(
+                        "select version as current_version, content from document_versions"
+                        " where document_id = :d and version = 1"
+                    ),
                     {"d": paper_input["documentId"]},
                 )
             ).one()
@@ -173,6 +200,30 @@ async def test_a_confirmed_paper_and_notes_are_made_from_the_material(tmp_path: 
         assert status == "idle"  # the chat is free again
         assert tags and {row.method for row in tags} == {"generation"}
         assert any(row.status == "verified" and row.verification["solve"] == "agreed" for row in tags)
+
+        # The rewrite: a new, checked question in that slot as version 2, told in the chat; the old one stays
+        # in the bank (version 1 still points at it).
+        assert edited == {"version": 2, "outcome": "saved"}
+        async with demo.owner.connect() as conn:
+            now = (
+                await conn.execute(
+                    text("select current_version, content from documents where id = :d"),
+                    {"d": paper_input["documentId"]},
+                )
+            ).one()
+            said = await conn.scalar(
+                text("select content from chat_messages where id = :m"),
+                {"m": message_id(edit_run, "edited")},
+            )
+            old_status = await conn.scalar(
+                text("select status from questions where id = :q"), {"q": target["questionId"]}
+            )
+        slot = next(s for s in now.content["slots"] if s["slotId"] == target["slotId"])
+        assert now.current_version == 2 and slot["questionId"] != target["questionId"]
+        assert slot["state"] in ("verified", "generated") and slot["difficulty"] == target["difficulty"]
+        assert said[0]["type"] == "edit_summary" and said[0]["toVersion"] == 2
+        assert said[0]["summary"].startswith("Making question 1 harder. (1 rewritten")
+        assert old_status == "verified"
 
         # The notes: one section for the chapter, with its sources.
         assert written["version"] == 1 and written["outcome"] == {"verified": 1}

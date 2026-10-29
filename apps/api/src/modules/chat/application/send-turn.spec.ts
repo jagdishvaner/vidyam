@@ -3,11 +3,14 @@ import type {
   ChatEngineTurn,
   ChatStreamEvent,
   ChatTurnRequest,
+  EditDocumentInput,
+  EditOp,
   GenerateDocumentInput,
 } from "@vidyam/contracts";
 import { describe, expect, it } from "vitest";
 
 import { DomainError } from "../../../shared/kernel/errors.js";
+import type { ManageDocuments, SaveOutcome } from "../../studio/application/manage-documents.js";
 import { assistantMessageId } from "../domain/turns.js";
 import { ManageChats } from "./manage-chats.js";
 import type {
@@ -18,6 +21,7 @@ import type {
   ConfirmSpec,
   FinishedTurn,
   GenerationStarter,
+  LatestEdit,
   TurnEvents,
   TurnRecord,
 } from "./ports.js";
@@ -46,6 +50,9 @@ function setup(
     engine?: ChatEngineEvent[] | Error;
     confirm?: ConfirmSpec;
     startFails?: boolean;
+    edit?: SaveOutcome;
+    latestEdit?: LatestEdit;
+    restoreFails?: DomainError;
   } = {},
 ) {
   const finished: FinishedTurn[] = [];
@@ -78,20 +85,54 @@ function setup(
   };
   const started: [GenerateDocumentInput, string][] = [];
   const failedRuns: string[] = [];
+  const edits: EditDocumentInput[] = [];
   const generation: GenerationStarter = {
     start: async (input, kind) => {
       if (options.startFails) throw new Error("temporal is down");
       started.push([input, kind]);
     },
+    startEdit: async (input) => {
+      if (options.startFails) throw new Error("temporal is down");
+      edits.push(input);
+    },
   };
+  const recorded: unknown[][] = [];
+  const order: string[] = [];
   Object.assign(store, {
     confirmSpec: async () => options.confirm ?? { kind: "nothing" },
     failRun: async (_org: string, runId: string) => {
       failedRuns.push(runId);
     },
+    latestEdit: async () => options.latestEdit ?? { kind: "none" },
+    recordAnswer: async (...args: unknown[]) => {
+      recorded.push(args);
+      return { ...TURN, status: "done" };
+    },
+    beginRewrite: async () => {
+      order.push("rewrite run");
+      return { runId: "0b6f2c1e-0000-4000-8000-0000000000c1", baseVersion: 4 };
+    },
   });
-  const send = new SendTurn(store, budget, engine, events, generation, new ManageChats(store));
-  return { send, finished, published, asked, started, failedRuns };
+  const finishTurn = store.finishTurn.bind(store);
+  store.finishTurn = async (org, turn) => {
+    order.push("answer stored");
+    await finishTurn(org, turn);
+  };
+  const applied: [string, number, readonly EditOp[]][] = [];
+  const restored: unknown[] = [];
+  const documents = {
+    editByAgent: async (_o: string, _u: string, documentId: string, base: number, ops: readonly EditOp[]) => {
+      applied.push([documentId, base, ops]);
+      return options.edit ?? { kind: "saved", version: base + 1 };
+    },
+    restore: async (_o: string, _u: string, _d: string, body: unknown) => {
+      if (options.restoreFails) throw options.restoreFails;
+      restored.push(body);
+      return { document: { currentVersion: 6 } };
+    },
+  } as unknown as ManageDocuments;
+  const send = new SendTurn(store, budget, engine, events, generation, new ManageChats(store), documents);
+  return { send, finished, published, asked, started, failedRuns, edits, recorded, order, applied, restored };
 }
 
 describe("SendTurn", () => {
@@ -251,5 +292,84 @@ describe("SendTurn", () => {
     await expect(setup().send.execute(ORG, TEACHER, CHAT, confirm)).rejects.toMatchObject({
       kind: "invalid",
     });
+  });
+
+  const DOC = "0b6f2c1e-0000-4000-8000-0000000000d1";
+
+  it("applies the edit agent's changes on the version it read, and says what happened", async () => {
+    const remove: EditOp[] = [{ op: "delete_items", slotIds: ["s1-2"] }];
+    const engine: ChatEngineEvent[] = [
+      { event: "text_delta", text: "Removed question 2." },
+      { event: "document_edit", documentId: DOC, baseVersion: 3, ops: remove, summary: "Removed question 2." },
+      { event: "done", blocks: [{ type: "text", text: "Removed question 2." }], modelId: null, title: null,
+        sessionStatus: "idle" },
+    ]; // prettier-ignore
+    const { send, finished, applied, published } = setup({ engine });
+    await send.execute(ORG, TEACHER, CHAT, {
+      clientTurnId: "t-edit",
+      input: { kind: "text", text: "remove Q2" },
+    });
+    await send.settled();
+    expect(applied).toEqual([[DOC, 3, remove]]);
+    expect(finished[0]!.blocks).toEqual([
+      { type: "text", text: "Removed question 2." },
+      { type: "edit_summary", documentId: DOC, fromVersion: 3, toVersion: 4, summary: "Removed question 2.",
+        ops: remove },
+    ]); // prettier-ignore
+    expect(published.some((e) => e.event === "block" && e.block.type === "edit_summary")).toBe(true);
+
+    // The paper moved on meanwhile: nothing changes, and the answer says so.
+    const stale = setup({ engine, edit: { kind: "conflict", current: 5 } });
+    await stale.send.execute(ORG, TEACHER, CHAT, { clientTurnId: "t-2", input: { kind: "text", text: "x" } });
+    await stale.send.settled();
+    expect(stale.finished[0]!.blocks[1]).toMatchObject({ type: "error", code: "edit_refused" });
+  });
+
+  it("starts rewriting questions only once the answer is stored, and keeps the chat busy until it ends", async () => {
+    const requests = [{ itemId: "s1-3", instruction: "harder", difficulty: 4 }];
+    const engine: ChatEngineEvent[] = [
+      { event: "document_rewrite", documentId: DOC, requests, summary: "Make question 3 harder." },
+      { event: "done", blocks: [{ type: "text", text: "Rewriting question 3…" }], modelId: null, title: null,
+        sessionStatus: "idle" },
+    ]; // prettier-ignore
+    const { send, finished, edits, order } = setup({ engine });
+    await send.execute(ORG, TEACHER, CHAT, {
+      clientTurnId: "t-re",
+      input: { kind: "text", text: "Q3 harder" },
+    });
+    await send.settled();
+    expect(order).toEqual(["answer stored", "rewrite run"]);
+    expect(finished[0]!.sessionStatus).toBe("generating");
+    expect(edits).toEqual([
+      { v: 1, orgId: ORG, requestedBy: TEACHER, documentId: DOC, runId: "0b6f2c1e-0000-4000-8000-0000000000c1",
+        sessionId: CHAT, modelId: null, baseVersion: 4, requests, summary: "Make question 3 harder." },
+    ]); // prettier-ignore
+  });
+
+  it("undoes the chat's latest edit with no model, and explains when it can't", async () => {
+    const latestEdit: LatestEdit = { kind: "edit", documentId: DOC, fromVersion: 3, toVersion: 5 };
+    const undo: ChatTurnRequest = { clientTurnId: "t-undo", input: { kind: "action", action: "undo" } };
+    const { send, recorded, restored, asked, published } = setup({ latestEdit });
+    await send.execute(ORG, TEACHER, CHAT, undo);
+    expect(asked).toEqual([]);
+    expect(restored).toEqual([{ baseVersion: 5, version: 3 }]);
+    expect(recorded[0]![4]).toEqual([
+      { type: "edit_summary", documentId: DOC, fromVersion: 5, toVersion: 6,
+        summary: "Undone: it is as it was at version 3.", ops: [] },
+    ]); // prettier-ignore
+    expect(published.map((e) => e.event)).toEqual(["turn_started", "block", "message_complete"]);
+
+    const moved = setup({ latestEdit, restoreFails: new DomainError("moved on", "conflict") });
+    await moved.send.execute(ORG, TEACHER, CHAT, undo);
+    expect(moved.recorded[0]![4]).toEqual([
+      expect.objectContaining({
+        type: "error",
+        code: "not_undone",
+        message: expect.stringContaining("History"),
+      }),
+    ]);
+    const nothing = setup({ latestEdit: { kind: "none" } });
+    await nothing.send.execute(ORG, TEACHER, CHAT, undo);
+    expect(nothing.recorded[0]![4]).toEqual([expect.objectContaining({ type: "text" })]);
   });
 });

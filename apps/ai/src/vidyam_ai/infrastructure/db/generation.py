@@ -248,6 +248,14 @@ class SqlGenerationStore:
             rows = await conn.execute(select(s.c.id, s.c.filename).where(s.c.id.in_(list(source_ids))))
             return {row.id: row.filename for row in rows}
 
+    async def current(self, org_id: UUID, document_id: UUID) -> tuple[int, dict[str, Any]] | None:
+        d = t_documents
+        async with org_transaction(self._engine, org_id) as conn:
+            row = (
+                await conn.execute(select(d.c.current_version, d.c.content).where(d.c.id == document_id))
+            ).first()
+        return (row.current_version, cast(dict[str, Any], row.content)) if row else None
+
     async def passages(self, org_id: UUID, chunk_ids: Sequence[str]) -> list[str]:
         if not chunk_ids:
             return []

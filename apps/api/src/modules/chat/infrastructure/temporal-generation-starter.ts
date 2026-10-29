@@ -3,13 +3,14 @@ import {
   AiTaskQueue,
   WORKFLOWS,
   workflowId,
+  type EditDocumentInput,
   type GenerateDocumentInput,
   type TaskKind,
 } from "@vidyam/contracts";
 
 import type { GenerationStarter } from "../application/ports.js";
 
-/** Starts GeneratePaper or GenerateNotes on the AI engine's queue; the run's id names the workflow. */
+/** Starts GeneratePaper, GenerateNotes or EditDocument on the AI engine's queue; the run's id names the workflow. */
 export class TemporalGenerationStarter implements GenerationStarter {
   constructor(
     private readonly client: Client,
@@ -24,6 +25,18 @@ export class TemporalGenerationStarter implements GenerationStarter {
       await this.client.workflow.start(type, {
         taskQueue: this.taskQueue,
         workflowId: workflowId(type, input.runId),
+        args: [input],
+      });
+    } catch (error) {
+      if (!(error instanceof WorkflowExecutionAlreadyStartedError)) throw error;
+    }
+  }
+
+  async startEdit(input: EditDocumentInput): Promise<void> {
+    try {
+      await this.client.workflow.start(WORKFLOWS.editDocument, {
+        taskQueue: this.taskQueue,
+        workflowId: workflowId(WORKFLOWS.editDocument, input.runId),
         args: [input],
       });
     } catch (error) {

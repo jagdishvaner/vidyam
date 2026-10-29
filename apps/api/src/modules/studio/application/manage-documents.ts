@@ -1,5 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import type {
+  ApplyDocumentEditsInput,
+  ApplyDocumentEditsResult,
   DocumentContent,
   DocumentDetail,
   DocumentEditRequest,
@@ -10,11 +12,15 @@ import type {
 } from "@vidyam/contracts";
 
 import { DomainError } from "../../../shared/kernel/errors.js";
-import type { ResolvedOp } from "../domain/edits.js";
+import { applyEdits, type ResolvedOp } from "../domain/edits.js";
 
 /** How saving a new version went: saved, the document moved on meanwhile, or it isn't made yet. */
 export type SaveOutcome =
-  { kind: "saved"; version: number } | { kind: "conflict"; current: number } | { kind: "making" };
+  | { kind: "saved"; version: number }
+  | { kind: "conflict"; current: number }
+  | { kind: "making" }
+  /** The changes don't fit the document (an item that isn't there): only the agent's edits say so. */
+  | { kind: "invalid"; reason: string };
 
 /** Port: a teacher's documents and their versions (Postgres, under the center's row-level security). */
 export interface DocumentStore {
@@ -39,7 +45,16 @@ export interface DocumentStore {
     baseVersion: number,
     ops: readonly EditOp[],
     apply: (content: DocumentContent, ops: readonly ResolvedOp[]) => DocumentContent,
+    author?: "user" | "agent",
   ): Promise<SaveOutcome | null>;
+  /**
+   * A workflow's edit (ADR 0017) and the chat's message about it, in one transaction: saved only if the document
+   * is still at the base version. A retry finds it done by its message id and answers the same.
+   */
+  applyFromWorkflow(
+    input: ApplyDocumentEditsInput,
+    apply: (content: DocumentContent, ops: readonly ResolvedOp[]) => DocumentContent,
+  ): Promise<ApplyDocumentEditsResult | null>;
   /** In one transaction: an earlier version's content saved as the next version. */
   restore(
     orgId: string,
@@ -105,6 +120,30 @@ export class ManageDocuments {
     return this.detail(orgId, userId, documentId);
   }
 
+  /**
+   * The chat's edit agent, for the teacher whose chat it is (plan v3 §6.9): its changes, made on the version
+   * it read. The outcome is told in the chat, not thrown.
+   */
+  async editByAgent(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    baseVersion: number,
+    ops: readonly EditOp[],
+  ): Promise<SaveOutcome | null> {
+    try {
+      return await this.store.edit(orgId, userId, documentId, baseVersion, ops, applyEdits, "agent");
+    } catch (error) {
+      if (error instanceof DomainError && error.kind === "invalid")
+        return { kind: "invalid", reason: error.message };
+      throw error;
+    }
+  }
+
+  async applyFromWorkflow(input: ApplyDocumentEditsInput): Promise<ApplyDocumentEditsResult> {
+    return found(await this.store.applyFromWorkflow(input, applyEdits));
+  }
+
   async remove(orgId: string, userId: string, documentId: string): Promise<void> {
     if (!found(await this.store.remove(orgId, userId, documentId))) {
       throw new DomainError("Wait until it is made before deleting it.", "conflict");
@@ -118,6 +157,7 @@ function found<T>(value: T | null): T {
 }
 
 function saved(outcome: SaveOutcome): void {
+  if (outcome.kind === "invalid") throw new DomainError(outcome.reason, "invalid");
   if (outcome.kind === "making")
     throw new DomainError("It is still being made; edit it once it is.", "conflict");
   if (outcome.kind === "conflict") {

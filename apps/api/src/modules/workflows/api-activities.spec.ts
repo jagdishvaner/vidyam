@@ -5,6 +5,7 @@ import { describe, expect, it } from "vitest";
 import { DomainError } from "../../shared/kernel/errors.js";
 import type { ManageChats } from "../chat/application/manage-chats.js";
 import type { CommitResults } from "../studio/application/commit-results.js";
+import type { ManageDocuments } from "../studio/application/manage-documents.js";
 import { ApiActivities } from "./api-activities.js";
 
 const ORG = "0b6f2c1e-0000-4000-8000-000000000001";
@@ -18,7 +19,10 @@ function activities(saveVersion: (input: SaveDocumentVersionInput) => Promise<un
       created: true,
     }),
   } as unknown as ManageChats;
-  return new ApiActivities(results, chats).handlers();
+  const documents = {
+    applyFromWorkflow: async () => ({ version: 2, outcome: "saved" }),
+  } as unknown as ManageDocuments;
+  return new ApiActivities(results, chats, documents).handlers();
 }
 
 const version = { v: 1, orgId: ORG, documentId: DOC, baseVersion: 0, content: {}, authorKind: "agent" };

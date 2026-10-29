@@ -3066,6 +3066,37 @@ export interface operations {
                                     /** @enum {string} */
                                     op: "delete_sections";
                                     nodeIds: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    op: "replace_section";
+                                    section: {
+                                        /** Format: uuid */
+                                        nodeId: string;
+                                        title: {
+                                            en?: string;
+                                            hi?: string;
+                                        };
+                                        body: {
+                                            en?: string;
+                                            hi?: string;
+                                        };
+                                        /** @default [] */
+                                        citations: {
+                                            /** Format: uuid */
+                                            chunkId: string;
+                                            /** Format: uuid */
+                                            sourceId: string;
+                                            filename: string;
+                                            pageStart: number | null;
+                                            pageEnd: number | null;
+                                            pageLabel: string | null;
+                                            quote: string;
+                                        }[];
+                                        /** @enum {string} */
+                                        state: "pending" | "written" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                        /** @default [] */
+                                        flags: string[];
+                                    };
                                 })[];
                             } | {
                                 /** @enum {string} */
@@ -3768,6 +3799,37 @@ export interface operations {
                         /** @enum {string} */
                         op: "delete_sections";
                         nodeIds: string[];
+                    } | {
+                        /** @enum {string} */
+                        op: "replace_section";
+                        section: {
+                            /** Format: uuid */
+                            nodeId: string;
+                            title: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            body: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            /** @default [] */
+                            citations?: {
+                                /** Format: uuid */
+                                chunkId: string;
+                                /** Format: uuid */
+                                sourceId: string;
+                                filename: string;
+                                pageStart: number | null;
+                                pageEnd: number | null;
+                                pageLabel: string | null;
+                                quote: string;
+                            }[];
+                            /** @enum {string} */
+                            state: "pending" | "written" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                            /** @default [] */
+                            flags?: string[];
+                        };
                     })[];
                 };
             };

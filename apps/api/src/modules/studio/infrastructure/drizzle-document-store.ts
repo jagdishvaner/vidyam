@@ -1,6 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import type {
+  ApplyDocumentEditsInput,
+  ApplyDocumentEditsResult,
   CanvasQuestion,
+  ChatBlock,
   CitationRef,
   DocumentContent,
   DocumentDetail,
@@ -24,7 +27,13 @@ import type { DocumentStore, SaveOutcome } from "../application/manage-documents
 import { isPaper, questionIds, type ResolvedOp } from "../domain/edits.js";
 import { latestRun, type LatestRun } from "./generation-progress.js";
 
+const MOVED_ON =
+  "The paper changed while I was rewriting, so I left it as it was. Ask again to change the newest version.";
+const FINISHED = ["done", "failed", "cancelled"];
+
 const {
+  chatMessages: m,
+  chatSessions: sessions,
   documents: d,
   documentVersions: v,
   generationRuns: r,
@@ -66,6 +75,26 @@ function live(doc: DocumentRow, run: LatestRun): DocumentContent {
   return { spec, sections };
 }
 
+/** While some items are being written again (EditDocument), they show as being written. */
+function rewriting(content: DocumentContent, run: LatestRun): DocumentContent {
+  const ids = new Set(run.plan.map((item) => String(item.slotId ?? item.nodeId)));
+  if (isPaper(content)) {
+    return {
+      ...content,
+      slots: content.slots.map((slot) =>
+        ids.has(slot.slotId) ? { ...slot, state: "pending" as const } : slot,
+      ),
+    };
+  }
+  const notes: NotesDocument = content;
+  return {
+    ...notes,
+    sections: notes.sections.map((section) =>
+      ids.has(section.nodeId) ? { ...section, state: "pending" as const } : section,
+    ),
+  };
+}
+
 /** A replacing question's badge: from the bank (imported, a teacher's, approved), checked, flagged or new. */
 function stateOf(question: { origin: string; status: string }): SlotState {
   if (question.status === "flagged") return "flagged";
@@ -85,8 +114,13 @@ export class DrizzleDocumentStore implements DocumentStore {
         .where(and(eq(d.id, documentId), eq(d.ownerId, userId)));
       if (!doc) return null;
       const run = await latestRun(tx, eq(r.documentId, documentId));
+      const saved = doc.content as unknown as DocumentContent;
       const content =
-        doc.currentVersion === 0 && run ? live(doc, run) : (doc.content as unknown as DocumentContent);
+        doc.currentVersion === 0 && run
+          ? live(doc, run)
+          : run && MAKING.includes(run.progress.status)
+            ? rewriting(saved, run)
+            : saved;
       const nodeIds = isPaper(content)
         ? [...content.spec.taxonomyNodeIds, ...content.slots.map((slot) => slot.taxonomyNodeId)]
         : [...content.spec.taxonomyNodeIds, ...content.sections.map((section) => section.nodeId)];
@@ -154,6 +188,7 @@ export class DrizzleDocumentStore implements DocumentStore {
     baseVersion: number,
     ops: readonly EditOp[],
     apply: (content: DocumentContent, ops: readonly ResolvedOp[]) => DocumentContent,
+    author: "user" | "agent" = "user",
   ): Promise<SaveOutcome | null> {
     return this.orgDb.run(orgId, async (tx) => {
       const doc = await this.locked(tx, userId, documentId);
@@ -161,24 +196,79 @@ export class DrizzleDocumentStore implements DocumentStore {
       const refused = this.refusal(doc, baseVersion);
       if (refused) return refused;
       const content = doc.content as unknown as DocumentContent;
-      const resolved: ResolvedOp[] = [];
-      for (const op of ops) {
-        if (op.op === "edit_item") {
-          resolved.push({ ...op, questionId: await this.rewrite(tx, orgId, userId, doc, content, op) });
-        } else if (op.op === "replace_item") {
-          const [question] = await tx
-            .select({ origin: q.origin, status: q.status })
-            .from(q)
-            .where(eq(q.id, op.questionId));
-          if (!question || question.status === "retired") {
-            throw new DomainError("That question isn't in the bank.", "invalid");
-          }
-          resolved.push({ ...op, state: stateOf(question) });
-        } else {
-          resolved.push(op);
-        }
+      const resolved = await this.resolve(tx, orgId, userId, doc, content, ops);
+      return this.save(tx, orgId, doc, apply(content, resolved), resolved, {
+        kind: author,
+        id: author === "user" ? userId : null,
+      });
+    });
+  }
+
+  applyFromWorkflow(
+    input: ApplyDocumentEditsInput,
+    apply: (content: DocumentContent, ops: readonly ResolvedOp[]) => DocumentContent,
+  ): Promise<ApplyDocumentEditsResult | null> {
+    return this.orgDb.run(input.orgId, async (tx) => {
+      // A retry finds its message (or its run finished) and answers as the first try did.
+      const [said] = await tx.select({ id: m.id }).from(m).where(eq(m.id, input.messageId));
+      const [run] = await tx.select({ status: r.status }).from(r).where(eq(r.id, input.runId)).for("update");
+      if (!run) return null;
+      if (said || FINISHED.includes(run.status)) {
+        const [saved] = await tx
+          .select({ version: v.version })
+          .from(v)
+          .where(and(eq(v.documentId, input.documentId), eq(v.chatMessageId, input.messageId)));
+        return saved ? { version: saved.version, outcome: "saved" } : { version: null, outcome: "nothing" };
       }
-      return this.save(tx, orgId, userId, doc, apply(content, resolved), resolved);
+      const [doc] = await tx.select().from(d).where(eq(d.id, input.documentId)).for("update");
+      if (!doc) return null;
+      let result: ApplyDocumentEditsResult;
+      let next: { content: DocumentContent; ops: readonly ResolvedOp[] } | null = null;
+      if (doc.currentVersion !== input.baseVersion) {
+        result = { version: null, outcome: "moved_on" };
+      } else if (!input.ops.length) {
+        result = { version: null, outcome: "nothing" };
+      } else {
+        const content = doc.content as unknown as DocumentContent;
+        const ops = await this.resolve(tx, input.orgId, doc.ownerId, doc, content, input.ops);
+        next = { content: apply(content, ops), ops };
+        result = { version: doc.currentVersion + 1, outcome: "saved" };
+      }
+      // The chat's message first: the version names it as what made it.
+      if (input.sessionId) {
+        const blocks: ChatBlock[] =
+          result.outcome === "saved"
+            ? [
+                {
+                  type: "edit_summary",
+                  documentId: doc.id,
+                  fromVersion: input.baseVersion,
+                  toVersion: result.version!,
+                  summary: input.summary,
+                  ops: input.ops,
+                },
+              ]
+            : result.outcome === "nothing"
+              ? [{ type: "notice", level: "warning", text: input.summary }]
+              : [{ type: "error", code: "moved_on", message: MOVED_ON }];
+        await this.say(tx, input.orgId, input.sessionId, input.messageId, blocks);
+      }
+      if (next) {
+        await this.save(tx, input.orgId, doc, next.content, next.ops, {
+          kind: "agent",
+          id: null,
+          chatMessageId: input.sessionId ? input.messageId : null,
+        });
+      }
+      await tx
+        .update(r)
+        .set({
+          status: result.outcome === "moved_on" ? "failed" : "done",
+          error: result.outcome === "moved_on" ? MOVED_ON : null,
+          finishedAt: new Date(),
+        })
+        .where(eq(r.id, input.runId));
+      return result;
     });
   }
 
@@ -200,7 +290,7 @@ export class DrizzleDocumentStore implements DocumentStore {
         .where(and(eq(v.documentId, documentId), eq(v.version, version)));
       if (!old) return "no_version";
       const content = old.content as unknown as DocumentContent;
-      return this.save(tx, orgId, userId, doc, content, [{ op: "restore", version }]);
+      return this.save(tx, orgId, doc, content, [{ op: "restore", version }], { kind: "user", id: userId });
     });
   }
 
@@ -250,13 +340,71 @@ export class DrizzleDocumentStore implements DocumentStore {
     return null;
   }
 
-  private async save(
+  /** What edit operations become once the API has done its part (ResolvedOp). */
+  private async resolve(
     tx: Transaction,
     orgId: string,
     userId: string,
     doc: DocumentRow,
     content: DocumentContent,
+    ops: readonly EditOp[],
+  ): Promise<ResolvedOp[]> {
+    const resolved: ResolvedOp[] = [];
+    for (const op of ops) {
+      if (op.op === "edit_item") {
+        resolved.push({ ...op, questionId: await this.rewrite(tx, orgId, userId, doc, content, op) });
+      } else if (op.op === "replace_item") {
+        const [question] = await tx
+          .select({ origin: q.origin, status: q.status })
+          .from(q)
+          .where(eq(q.id, op.questionId));
+        if (!question || question.status === "retired") {
+          throw new DomainError("That question isn't in the bank.", "invalid");
+        }
+        resolved.push({ ...op, state: stateOf(question) });
+      } else {
+        resolved.push(op);
+      }
+    }
+    return resolved;
+  }
+
+  /** An assistant message in the chat, after its latest; the chat is free again. */
+  private async say(
+    tx: Transaction,
+    orgId: string,
+    sessionId: string,
+    messageId: string,
+    blocks: ChatBlock[],
+  ): Promise<void> {
+    const [session] = await tx
+      .select({ id: sessions.id })
+      .from(sessions)
+      .where(eq(sessions.id, sessionId))
+      .for("update");
+    if (!session) return;
+    const [last] = await tx
+      .select({ seq: sql<number>`coalesce(max(${m.seq}), 0)` })
+      .from(m)
+      .where(eq(m.sessionId, sessionId));
+    await tx.insert(m).values({
+      id: messageId,
+      orgId,
+      sessionId,
+      seq: Number(last?.seq ?? 0) + 1,
+      role: "assistant",
+      content: blocks,
+    });
+    await tx.update(sessions).set({ status: "idle" }).where(eq(sessions.id, sessionId));
+  }
+
+  private async save(
+    tx: Transaction,
+    orgId: string,
+    doc: DocumentRow,
+    content: DocumentContent,
     ops: readonly unknown[],
+    author: { kind: "user" | "agent"; id: string | null; chatMessageId?: string | null },
   ): Promise<SaveOutcome> {
     const version = doc.currentVersion + 1;
     await tx.insert(v).values({
@@ -265,8 +413,9 @@ export class DrizzleDocumentStore implements DocumentStore {
       version,
       content: content as unknown as Record<string, unknown>,
       ops: [...ops],
-      authorKind: "user",
-      authorId: userId,
+      authorKind: author.kind,
+      authorId: author.id,
+      chatMessageId: author.chatMessageId ?? null,
     });
     await tx
       .update(d)

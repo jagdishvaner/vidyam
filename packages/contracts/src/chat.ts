@@ -3,6 +3,7 @@ import { z } from "zod";
 import { Uuid } from "./common.js";
 import { EditOp } from "./paper.js";
 import { contract } from "./registry.js";
+import { CitationRef } from "./sources.js";
 import { DraftSpec, TaskKind, TaskSpec } from "./tasks.js";
 
 /**
@@ -45,21 +46,6 @@ export const CardField = contract(
   }),
 );
 export type CardField = z.infer<typeof CardField>;
-
-export const CitationRef = contract(
-  "CitationRef",
-  z.object({
-    chunkId: Uuid,
-    sourceId: Uuid,
-    filename: z.string(),
-    pageStart: z.number().int().nullable(),
-    pageEnd: z.number().int().nullable(),
-    /** The page number as printed in the book. */
-    pageLabel: z.string().nullable(),
-    quote: z.string(),
-  }),
-);
-export type CitationRef = z.infer<typeof CitationRef>;
 
 /** How much of a requested topic the bank already covers, shown before generation is confirmed. */
 export const TopicAvailability = contract(
@@ -344,12 +330,41 @@ export type ChatEngineTurn = z.infer<typeof ChatEngineTurn>;
  * Internal: what the AI engine streams back, one JSON object per line. Text, blocks and the draft spec are
  * relayed to the browser as they come; `done` carries the whole answer for the API to store.
  */
+/** One question (or notes section) the edit agent wants written again, and how. */
+export const RewriteRequest = contract(
+  "RewriteRequest",
+  z.object({
+    /** A paper's slot id, or a notes section's node id. */
+    itemId: z.string(),
+    /** What the teacher wants changed, in their words ("harder", "about friction", "in Hindi and English"). */
+    instruction: z.string().min(1).max(500),
+    /** The difficulty to aim at (1–5), when the change is about difficulty. */
+    difficulty: z.number().int().min(1).max(5).nullable(),
+  }),
+);
+export type RewriteRequest = z.infer<typeof RewriteRequest>;
+
 export const ChatEngineEvent = contract(
   "ChatEngineEvent",
   z.discriminatedUnion("event", [
     z.object({ event: z.literal("text_delta"), text: z.string() }),
     z.object({ event: z.literal("block"), block: ChatBlock }),
     z.object({ event: z.literal("draft_spec"), draftSpec: DraftSpec }),
+    /** The edit agent's changes to the chat's document, made on the version it read: the API applies them. */
+    z.object({
+      event: z.literal("document_edit"),
+      documentId: Uuid,
+      baseVersion: z.number().int().positive(),
+      ops: z.array(EditOp).min(1),
+      summary: z.string(),
+    }),
+    /** Questions or sections to write again: the API starts EditDocument for them, on the newest version. */
+    z.object({
+      event: z.literal("document_rewrite"),
+      documentId: Uuid,
+      requests: z.array(RewriteRequest).min(1).max(50),
+      summary: z.string(),
+    }),
     z.object({
       event: z.literal("done"),
       blocks: z.array(ChatBlock),

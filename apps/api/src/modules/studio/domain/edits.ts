@@ -28,7 +28,7 @@ const PAPER_OPS = new Set([
   "set_title",
   "edit_item",
 ]);
-const NOTES_OPS = new Set(["edit_section", "delete_sections", "set_title"]);
+const NOTES_OPS = new Set(["edit_section", "replace_section", "delete_sections", "set_title"]);
 
 export function isPaper(content: DocumentContent): content is PaperDocument {
   return "slots" in content;
@@ -149,6 +149,12 @@ function applyToNotes(notes: NotesDocument, op: ResolvedOp): NotesDocument {
       section.body = op.body;
       section.state = "edited";
       section.flags = [];
+      return notes;
+    }
+    case "replace_section": {
+      const at = notes.sections.findIndex((s) => s.nodeId === op.section.nodeId);
+      if (at < 0) invalid("There is no such section.");
+      notes.sections[at] = structuredClone(op.section);
       return notes;
     }
     case "delete_sections": {

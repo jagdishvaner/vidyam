@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { Uuid } from "./common.js";
+import { NotesSection } from "./notes.js";
 import { Answer, QuestionContent, QuestionType } from "./question.js";
 import { contract } from "./registry.js";
 import { DifficultyMix, LocalizedText, PaperSection, PaperSpec } from "./tasks.js";
@@ -92,6 +93,8 @@ export const EditOp = contract(
     /** Notes: a section's text in the teacher's words. */
     z.object({ op: z.literal("edit_section"), nodeId: Uuid, body: LocalizedText }),
     z.object({ op: z.literal("delete_sections"), nodeIds: z.array(Uuid).min(1) }),
+    /** Notes: a section written again (by the chat's agent), sources and all. */
+    z.object({ op: z.literal("replace_section"), section: NotesSection }),
   ]),
 );
 export type EditOp = z.infer<typeof EditOp>;

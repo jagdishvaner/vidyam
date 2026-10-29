@@ -3,6 +3,7 @@ import { ApplicationFailure } from "@temporalio/common";
 import {
   API_ACTIVITIES,
   AppendChatBlocksInput,
+  ApplyDocumentEditsInput,
   SaveDocumentVersionInput,
   UpdateGenerationRunInput,
 } from "@vidyam/contracts";
@@ -11,6 +12,7 @@ import type { z } from "zod";
 import { DomainError } from "../../shared/kernel/errors.js";
 import { ManageChats } from "../chat/application/manage-chats.js";
 import { CommitResults } from "../studio/application/commit-results.js";
+import { ManageDocuments } from "../studio/application/manage-documents.js";
 
 type Activity = (input: unknown) => Promise<unknown>;
 
@@ -55,6 +57,7 @@ export class ApiActivities {
   constructor(
     private readonly results: CommitResults,
     private readonly chats: ManageChats,
+    private readonly documents: ManageDocuments,
   ) {}
 
   handlers(): Record<string, Activity> {
@@ -73,6 +76,11 @@ export class ApiActivities {
         API_ACTIVITIES.appendChatBlocks,
         AppendChatBlocksInput,
         (input) => this.chats.appendFromWorkflow(input),
+      ),
+      [API_ACTIVITIES.applyDocumentEdits]: activity(
+        API_ACTIVITIES.applyDocumentEdits,
+        ApplyDocumentEditsInput,
+        (input) => this.documents.applyFromWorkflow(input),
       ),
     };
   }

@@ -53,6 +53,7 @@ const starter: GenerationStarter = {
     if (startFails) throw new Error("temporal is down");
     started.push(input);
   },
+  startEdit: async () => undefined,
 };
 let engineServer: Server;
 let app: INestApplication;

@@ -1,7 +1,8 @@
 import { z } from "zod";
 
-import { ChatBlock } from "./chat.js";
+import { ChatBlock, RewriteRequest } from "./chat.js";
 import { Uuid } from "./common.js";
+import { EditOp } from "./paper.js";
 import { contract } from "./registry.js";
 
 /**
@@ -46,6 +47,7 @@ export const WORKFLOWS = {
   indexSource: "IndexSource",
   generatePaper: "GeneratePaper",
   generateNotes: "GenerateNotes",
+  editDocument: "EditDocument",
 } as const;
 export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
 export const WorkflowType = contract(
@@ -166,6 +168,7 @@ export const API_ACTIVITIES = {
   saveDocumentVersion: "save_document_version",
   updateGenerationRun: "update_generation_run",
   appendChatBlocks: "append_chat_blocks",
+  applyDocumentEdits: "apply_document_edits",
 } as const;
 export type ApiActivity = (typeof API_ACTIVITIES)[keyof typeof API_ACTIVITIES];
 export const ApiActivity = contract(
@@ -276,3 +279,50 @@ export const GenerateDocumentResult = contract(
   "What making a document produced.",
 );
 export type GenerateDocumentResult = z.infer<typeof GenerateDocumentResult>;
+
+export const EditDocumentInput = contract(
+  "EditDocumentInput",
+  WorkflowEnvelope.extend({
+    documentId: Uuid,
+    runId: Uuid,
+    sessionId: Uuid.nullable(),
+    modelId: z.string().nullable(),
+    /** The version the rewritten questions go into; the edit is refused if the document moved on. */
+    baseVersion: z.number().int().positive(),
+    requests: z.array(RewriteRequest).min(1),
+    /** What the teacher asked for, in a line, for the chat's message. */
+    summary: z.string(),
+  }),
+  "Write some of a document's questions or sections again, as asked in the chat (plan v3 §6.9).",
+);
+export type EditDocumentInput = z.infer<typeof EditDocumentInput>;
+
+/**
+ * An edit a workflow made, saved as the next version only if the document is still at `baseVersion`, and
+ * told in the chat. One transaction; a retry finds it done by its message id.
+ */
+export const ApplyDocumentEditsInput = contract(
+  "ApplyDocumentEditsInput",
+  z.object({
+    v: z.literal(1),
+    orgId: Uuid,
+    documentId: Uuid,
+    runId: Uuid,
+    baseVersion: z.number().int().positive(),
+    ops: z.array(EditOp),
+    summary: z.string(),
+    sessionId: Uuid.nullable(),
+    messageId: Uuid,
+  }),
+);
+export type ApplyDocumentEditsInput = z.infer<typeof ApplyDocumentEditsInput>;
+
+export const ApplyDocumentEditsResult = contract(
+  "ApplyDocumentEditsResult",
+  z.object({
+    /** The version saved; null when nothing was (no changes, or the document had moved on). */
+    version: z.number().int().positive().nullable(),
+    outcome: z.enum(["saved", "nothing", "moved_on"]),
+  }),
+);
+export type ApplyDocumentEditsResult = z.infer<typeof ApplyDocumentEditsResult>;

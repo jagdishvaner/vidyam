@@ -12,6 +12,7 @@ from fastapi.testclient import TestClient
 from pydantic import BaseModel
 from vidyam_ai.application.chat import (
     ChatAgent,
+    DocumentView,
     Exam,
     Teacher,
     Transcript,
@@ -98,6 +99,7 @@ class FakeModels:
         self.answer = answer
         self.requests: list[LlmRequest] = []
         self.fail: Exception | None = None
+        self.plan: dict[str, Any] | None = None
 
     async def stream(self, request: LlmRequest) -> AsyncIterator[str | LlmReply]:
         self.requests.append(request)
@@ -115,6 +117,8 @@ class FakeModels:
         self, request: LlmRequest, output: type[M]
     ) -> StructuredReply[M]:
         self.requests.append(request)
+        if request.task == "edit_agent" and self.plan is not None:
+            return StructuredReply(output.model_validate(self.plan), reply("{}"))
         return StructuredReply(output.model_validate(self.understood.model_dump()), reply("{}"))
 
     async def quote(
@@ -127,6 +131,7 @@ class FakeContext:
     def __init__(self, transcript: Transcript, teacher: Teacher | None = None) -> None:
         self.the_transcript = transcript
         self.the_teacher = teacher or Teacher(None, None, None)
+        self.the_document: DocumentView | None = None
 
     async def transcript(self, org_id: UUID, session_id: UUID, up_to_message: UUID) -> Transcript | None:
         return self.the_transcript
@@ -158,6 +163,9 @@ class FakeContext:
 
     async def file_names(self, org_id: UUID, source_ids: Sequence[UUID]) -> dict[UUID, str]:
         return {NOTES: "files/physics-motion-force-hi.pdf"}
+
+    async def document(self, org_id: UUID, document_id: UUID) -> DocumentView | None:
+        return self.the_document
 
 
 class FakeSearch:
@@ -286,7 +294,7 @@ async def test_a_doubt_the_material_doesnt_cover_is_not_guessed() -> None:
     assert "chat_qa" not in [r.task for r in models.requests]
 
 
-async def test_buttons_confirm_cancel_and_undo() -> None:
+async def test_cancel_clears_the_draft_and_other_buttons_are_the_apis() -> None:
     def press(action: str) -> StoredMessage:
         return StoredMessage(
             "user", [{"type": "action", "action": action, "targetId": None, "summary": action}]
@@ -296,22 +304,15 @@ async def test_buttons_confirm_cancel_and_undo() -> None:
         "kind": "notes", "taxonomyNodeIds": [str(MOTION)], "languages": ["en"], "depth": "standard",
         "includeExamples": True, "includePractice": False,
     }  # fmt: skip
-    confirmed = done(
-        await run(
-            ChatAgent(
-                FakeContext(chat(said("notes"), press("confirm_spec"), draft=ready)), FakeModels(), None
-            )
-        )
-    )
-    assert "isn't switched on yet" in confirmed["blocks"][0]["text"]
-    nothing = done(
-        await run(ChatAgent(FakeContext(chat(said("hi"), press("confirm_spec"))), FakeModels(), None))
-    )
-    assert nothing["blocks"][0]["text"].startswith("There's nothing to confirm")
     events = await run(
         ChatAgent(FakeContext(chat(said("notes"), press("cancel"), draft=ready)), FakeModels(), None)
     )
     assert {"event": "draft_spec", "draftSpec": {}} in events and done(events)["sessionStatus"] == "idle"
+    # Confirm is answered by the API (it starts the document); one reaching the engine finds nothing to do.
+    nothing = done(
+        await run(ChatAgent(FakeContext(chat(said("hi"), press("confirm_spec"))), FakeModels(), None))
+    )
+    assert nothing["blocks"][0]["text"].startswith("There's nothing to confirm")
 
 
 async def test_failures_end_the_answer_with_an_error_the_teacher_can_read() -> None:
@@ -355,3 +356,50 @@ def test_the_internal_endpoint_streams_contract_events_as_lines() -> None:
         "sections" not in draft and "setCodes" not in draft and draft["examCode"] is None
     )  # null where allowed
     assert lines[2]["block"]["type"] == "spec_review" and lines[-1]["sessionStatus"] == "awaiting_input"
+
+
+async def test_an_edit_goes_to_the_api_as_operations_and_rewrites_as_a_workflow() -> None:
+    document = DocumentView(
+        uuid4(), "question_paper", 3,
+        {
+            "spec": {"title": "Force test", "languages": ["hi"]},
+            "sections": [{"name": {"en": "MCQ"}, "instructions": None, "slotIds": ["s1-1", "s1-2"]}],
+            "slots": [
+                {"slotId": f"s1-{n}", "sectionIndex": 0, "qtype": "mcq_single", "taxonomyNodeId": str(MOTION),
+                 "difficulty": 3, "marks": 2, "state": "verified", "questionId": None, "flags": []}
+                for n in (1, 2)
+            ],
+            "sets": [],
+        },
+        {}, {str(MOTION): "Motion"},
+    )  # fmt: skip
+    context = FakeContext(Transcript("Force", None, None, document.id, [said("remove Q1, make Q2 harder")]))
+    context.the_document = document
+    models = FakeModels(understanding(intent="edit"))
+    models.plan = {
+        "reply": "Removing question 1 and making question 2 harder.",
+        "changes": [
+            {"action": "remove", "items": ["s1-1"], "position": None, "marks": None, "text": None,
+             "difficulty": None},
+            {"action": "rewrite", "items": ["s1-2"], "position": None, "marks": None, "text": "harder",
+             "difficulty": 4},
+        ],
+    }  # fmt: skip
+    events = await run(ChatAgent(context, models, None))
+    edit = next(e for e in events if e["event"] == "document_edit")
+    rewrite = next(e for e in events if e["event"] == "document_rewrite")
+    assert edit == {
+        "event": "document_edit", "documentId": str(document.id), "baseVersion": 3,
+        "ops": [{"op": "delete_items", "slotIds": ["s1-1"]}],
+        "summary": "Removing question 1 and making question 2 harder.",
+    }  # fmt: skip
+    assert rewrite["requests"] == [{"itemId": "s1-2", "instruction": "harder", "difficulty": 4}]
+    assert done(events)["sessionStatus"] == "generating"  # busy until the rewrite ends
+    asked = next(r for r in models.requests if r.task == "edit_agent")
+    assert "Q2 [s1-2]" in asked.variables["outline"]
+
+    # Still being made: nothing is asked of the model.
+    making = FakeContext(Transcript("Force", None, None, document.id, [said("remove Q1")]))
+    making.the_document = DocumentView(document.id, "question_paper", 0, document.content, {}, {})
+    reply_text = done(await run(ChatAgent(making, FakeModels(understanding(intent="edit")), None)))
+    assert reply_text["blocks"][0]["text"].startswith("It is still being made")

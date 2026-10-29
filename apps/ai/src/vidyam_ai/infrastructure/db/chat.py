@@ -9,7 +9,7 @@ from uuid import UUID
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from vidyam_ai.application.chat import Exam, Teacher, Transcript
+from vidyam_ai.application.chat import DocumentView, Exam, Teacher, Transcript
 from vidyam_ai.domain.chat import StoredMessage
 from vidyam_ai.domain.mentions import NodeName
 from vidyam_ai.domain.specs import Pattern
@@ -18,11 +18,13 @@ from vidyam_ai.infrastructure.db.generated.tables import (
     t_chat_messages,
     t_chat_sessions,
     t_coverage_stats,
+    t_documents,
     t_exam_blueprints,
     t_exam_syllabus,
     t_exams,
     t_member_settings,
     t_member_subjects,
+    t_questions,
     t_sources,
     t_taxonomy_nodes,
 )
@@ -197,3 +199,41 @@ class SqlChatContext:
         async with org_transaction(self._engine, org_id) as conn:
             rows = await conn.execute(select(s.c.id, s.c.filename).where(s.c.id.in_(list(source_ids))))
             return {row.id: row.filename for row in rows}
+
+    async def document(self, org_id: UUID, document_id: UUID) -> DocumentView | None:
+        d, q, n = t_documents, t_questions, t_taxonomy_nodes
+        async with org_transaction(self._engine, org_id) as conn:
+            row = (
+                await conn.execute(
+                    select(d.c.id, d.c.kind, d.c.current_version, d.c.content).where(d.c.id == document_id)
+                )
+            ).first()
+            if row is None:
+                return None
+            content = cast(dict[str, Any], row.content)
+            slots: list[dict[str, Any]] = content.get("slots", [])
+            ids = [UUID(slot["questionId"]) for slot in slots if slot.get("questionId")]
+            questions = (
+                {
+                    str(r.id): {"qtype": r.qtype, "content": r.content, "status": r.status}
+                    for r in await conn.execute(
+                        select(q.c.id, q.c.qtype, q.c.content, q.c.status).where(q.c.id.in_(ids))
+                    )
+                }
+                if ids
+                else {}
+            )
+            nodes = {slot["taxonomyNodeId"] for slot in slots} | {
+                section["nodeId"] for section in content.get("sections", []) if "nodeId" in section
+            }
+            names = (
+                {
+                    str(r.id): r.name_en
+                    for r in await conn.execute(
+                        select(n.c.id, n.c.name_en).where(n.c.id.in_([UUID(i) for i in nodes]))
+                    )
+                }
+                if nodes
+                else {}
+            )
+        return DocumentView(row.id, row.kind, row.current_version, content, questions, names)
