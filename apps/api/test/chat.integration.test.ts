@@ -2,7 +2,7 @@
  * The chat backend (plan v3 step 22, ADR 0015) against the test database and Valkey, with a stand-in AI engine
  * whose answers each test sets: chats and their history, turns recorded once however often they are sent,
  * answers relayed as Server-Sent Events that resume after a dropped connection, and the answer stored when it
- * ends, also when it fails.
+ * ends, also when it fails. Confirm (step 26) makes the document and its run and starts a stand-in workflow.
  */
 import "reflect-metadata";
 
@@ -10,9 +10,9 @@ import { createServer, type Server } from "node:http";
 import type { AddressInfo } from "node:net";
 
 import type { INestApplication } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
+import { Test } from "@nestjs/testing";
 import { AuthService } from "@thallesp/nestjs-better-auth";
-import type { ChatEngineEvent, ChatEngineTurn } from "@vidyam/contracts";
+import type { ChatBlock, ChatEngineEvent, ChatEngineTurn, GenerateDocumentInput } from "@vidyam/contracts";
 import {
   createDatabase,
   runMigrations,
@@ -20,13 +20,14 @@ import {
   syncLocalAppRolePassword,
   type DatabaseHandle,
 } from "@vidyam/db";
-import { inArray } from "drizzle-orm";
+import { eq, inArray } from "drizzle-orm";
 import { Redis } from "ioredis";
 import request from "supertest";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 
 import { AppModule } from "../src/app.module.js";
 import { loadEnv } from "../src/config/env.js";
+import { GENERATION_STARTER, type GenerationStarter } from "../src/modules/chat/application/ports.js";
 import { SendTurn } from "../src/modules/chat/application/send-turn.js";
 import type { Auth } from "../src/modules/identity/infrastructure/better-auth.js";
 
@@ -43,6 +44,15 @@ const engine = {
   asked: [] as ChatEngineTurn[],
   tokens: [] as string[],
   script: [] as (ChatEngineEvent | { wait: number } | { hangUp: true })[],
+};
+/** The stand-in for starting a generation workflow: what it was asked to start, and whether it fails. */
+const started: GenerateDocumentInput[] = [];
+let startFails = false;
+const starter: GenerationStarter = {
+  start: async (input) => {
+    if (startFails) throw new Error("temporal is down");
+    started.push(input);
+  },
 };
 let engineServer: Server;
 let app: INestApplication;
@@ -144,7 +154,11 @@ beforeAll(async () => {
   owner = createDatabase(testAdminUrl, { max: 2 });
 
   const env = { ...base, VIDYAM_DATABASE_URL: testDbUrl, VIDYAM_AI_INTERNAL_URL: await startEngine() };
-  app = await NestFactory.create(AppModule.forRoot(env), { bodyParser: false, logger: false });
+  const moduleRef = await Test.createTestingModule({ imports: [AppModule.forRoot(env)] })
+    .overrideProvider(GENERATION_STARTER)
+    .useValue(starter)
+    .compile();
+  app = moduleRef.createNestApplication({ bodyParser: false, logger: false });
   app.setGlobalPrefix("api");
   await app.init();
 
@@ -174,6 +188,7 @@ afterAll(async () => {
 });
 
 beforeEach(() => {
+  started.length = 0;
   engine.asked = [];
   engine.tokens = [];
   engine.script = answer("Ohm's law: V = IR, at constant temperature.");
@@ -361,6 +376,110 @@ describe("chat", () => {
     expect(asked.body.nodes.map((n: { id: string }) => n.id).sort()).toEqual(
       [subject, chapter, topic].sort(),
     );
+  });
+
+  it("starts making the document when the review card is confirmed", async () => {
+    const review: ChatBlock = {
+      type: "spec_review",
+      spec: {
+        kind: "question_paper", title: "Ohm's law test", examCode: null, blueprintId: null,
+        taxonomyNodeIds: [crypto.randomUUID()],
+        sections: [{ name: { en: "MCQ" }, qtype: "mcq_single", count: 10, marksEach: 1, negativeMarks: 0,
+                     attemptAny: null, difficultyMix: { easy: 0.3, medium: 0.5, hard: 0.2 }, scope: [] }],
+        languages: ["hi", "en"], layout: "hindi_then_english", durationMinutes: 20, sourcing: "bank_first",
+        studentBatchId: null, setCodes: [],
+      },
+      availability: [],
+      estimate: { usdLow: 0.1, usdHigh: 0.3, minutes: 2 },
+      confirmedAt: null,
+    }; // prettier-ignore
+    const chatId = await newChat(teacherA);
+    engine.script = [
+      { event: "block", block: review },
+      {
+        event: "done",
+        blocks: [review],
+        modelId: null,
+        title: "Ohm's law test",
+        sessionStatus: "awaiting_input",
+      },
+    ];
+    const asked = await send(teacherA, chatId, "ohm's law paper, 10 questions").expect(202);
+    await follow(teacherA, asked.body.turnId as string);
+    const confirm = (clientTurnId = crypto.randomUUID()) =>
+      request(app.getHttpServer())
+        .post(`/api/chat/sessions/${chatId}/turns`)
+        .set("Cookie", teacherA)
+        .send({ clientTurnId, input: { kind: "action", action: "confirm_spec" } });
+
+    const confirmed = await confirm().expect(202);
+    const events = await follow(teacherA, confirmed.body.turnId as string);
+    expect(events.map((e) => e.event)).toEqual(["turn_started", "block", "message_complete"]);
+    expect(engine.asked).toHaveLength(1); // Confirm needs no model: the API makes the document itself
+    expect(started).toHaveLength(1);
+    const input = started[0]!;
+    expect(input).toMatchObject({ v: 1, orgId, requestedBy: teacherAId, sessionId: chatId, modelId: null });
+
+    const [run] = await owner.db
+      .select()
+      .from(schema.generationRuns)
+      .where(eq(schema.generationRuns.id, input.runId));
+    expect(run).toMatchObject({ documentId: input.documentId, workflowId: `GeneratePaper:${input.runId}` });
+    expect(run!.estimatedCostUsd).toBe("0.300000");
+    const detail = await request(app.getHttpServer())
+      .get(`/api/chat/sessions/${chatId}`)
+      .set("Cookie", teacherA)
+      .expect(200);
+    expect(detail.body.session.status).toBe("generating");
+    expect(detail.body.generation).toEqual({
+      runId: input.runId, documentId: input.documentId, status: "planning", done: 0, total: 0,
+    }); // prettier-ignore
+    const blocks = detail.body.messages.map((message: { blocks: ChatBlock[] }) => message.blocks[0]!.type);
+    expect(blocks).toEqual(["text", "spec_review", "action", "document_ref"]);
+    expect(detail.body.messages[1].blocks[0].confirmedAt).toEqual(expect.any(String)); // the card says so
+
+    // The card is no longer the chat's latest word: confirming again makes nothing more.
+    expect((await confirm().expect(422)).body.message).toBe("There's nothing to confirm yet.");
+    expect(started).toHaveLength(1);
+  });
+
+  it("frees the chat and says so when making the document can't start", async () => {
+    const chatId = await newChat(teacherA);
+    const review = {
+      type: "spec_review",
+      spec: {
+        kind: "notes", title: "Ohm's law notes", examCode: null, taxonomyNodeIds: [crypto.randomUUID()],
+        languages: ["en"], depth: "brief", includeExamples: false, includePractice: false,
+      },
+      availability: [],
+      estimate: { usdLow: 0.05, usdHigh: 0.1, minutes: 1 },
+      confirmedAt: null,
+    } satisfies ChatBlock; // prettier-ignore
+    engine.script = [
+      { event: "done", blocks: [review], modelId: null, title: "Notes", sessionStatus: "awaiting_input" },
+    ];
+    await follow(
+      teacherA,
+      (await send(teacherA, chatId, "ohm's law notes").expect(202)).body.turnId as string,
+    );
+    startFails = true;
+    try {
+      const confirmed = await request(app.getHttpServer())
+        .post(`/api/chat/sessions/${chatId}/turns`)
+        .set("Cookie", teacherA)
+        .send({ clientTurnId: crypto.randomUUID(), input: { kind: "action", action: "confirm_spec" } })
+        .expect(202);
+      const events = await follow(teacherA, confirmed.body.turnId as string);
+      expect(events.find((e) => e.event === "error")).toMatchObject({ code: "not_started" });
+    } finally {
+      startFails = false;
+    }
+    const detail = await request(app.getHttpServer())
+      .get(`/api/chat/sessions/${chatId}`)
+      .set("Cookie", teacherA)
+      .expect(200);
+    expect(detail.body.session.status).toBe("idle");
+    expect(detail.body.generation.status).toBe("failed");
   });
 
   it("refuses a turn once the teacher's monthly budget is used up", async () => {

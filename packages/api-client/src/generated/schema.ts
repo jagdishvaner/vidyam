@@ -2953,6 +2953,16 @@ export interface operations {
                         }[];
                         /** Format: uuid */
                         activeTurnId: string | null;
+                        generation: {
+                            /** Format: uuid */
+                            runId: string;
+                            /** Format: uuid */
+                            documentId: string;
+                            /** @enum {string} */
+                            status: "planning" | "running" | "done" | "failed" | "cancelled";
+                            done: number;
+                            total: number;
+                        } | null;
                     };
                 };
             };

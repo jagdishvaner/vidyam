@@ -210,6 +210,9 @@ class Route:
     effort: Effort | None
     max_tokens: int
     fallback_model_id: str | None = None
+    # Checking routes (a blind re-solve) run on the other provider than the one that wrote the content: this
+    # model when the routed one comes from the writer's provider.
+    other_provider_model_id: str | None = None
 
 
 def teacher_may_use(model: Model, allowed_ids: Collection[str]) -> bool:

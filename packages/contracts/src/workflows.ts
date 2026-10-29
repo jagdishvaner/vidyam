@@ -44,6 +44,8 @@ export const WORKFLOWS = {
   llmBatch: "LlmBatch",
   runBacklog: "RunBacklog",
   indexSource: "IndexSource",
+  generatePaper: "GeneratePaper",
+  generateNotes: "GenerateNotes",
 } as const;
 export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
 export const WorkflowType = contract(
@@ -247,3 +249,30 @@ export const AppendChatBlocksResult = contract(
   z.object({ messageId: Uuid, created: z.boolean() }),
 );
 export type AppendChatBlocksResult = z.infer<typeof AppendChatBlocksResult>;
+
+export const GenerateDocumentInput = contract(
+  "GenerateDocumentInput",
+  WorkflowEnvelope.extend({
+    documentId: Uuid,
+    runId: Uuid,
+    /** The chat it was asked for in: told there when the document is ready. */
+    sessionId: Uuid.nullable(),
+    /** The teacher's chosen model for writing; the task's route otherwise. */
+    modelId: z.string().nullable(),
+  }),
+  "Make a confirmed paper, worksheet, notes or revision sheet (plan v3 §7).",
+);
+export type GenerateDocumentInput = z.infer<typeof GenerateDocumentInput>;
+
+export const GenerateDocumentResult = contract(
+  "GenerateDocumentResult",
+  z.object({
+    documentId: Uuid,
+    version: z.number().int().positive(),
+    /** Slots (papers) or sections (notes), by how they ended: bank, verified, flagged, … */
+    outcome: z.record(z.string(), count),
+    costUsd: z.number().nonnegative(),
+  }),
+  "What making a document produced.",
+);
+export type GenerateDocumentResult = z.infer<typeof GenerateDocumentResult>;

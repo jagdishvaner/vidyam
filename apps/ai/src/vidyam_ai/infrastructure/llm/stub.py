@@ -6,6 +6,7 @@ Batches finish at once; their results are kept in files so a restarted worker ca
 """
 
 import asyncio
+import hashlib
 import json
 import math
 import re
@@ -15,6 +16,8 @@ from dataclasses import asdict
 from pathlib import Path
 
 from vidyam_ai.application.llm_gateway import BatchStatus, ProviderError
+from vidyam_ai.domain.devanagari import script_mix
+from vidyam_ai.domain.generation import OPTION_TYPES as _OPTION_TYPES
 from vidyam_ai.domain.llm import BatchResult, Completion, ModelCall, Usage
 from vidyam_ai.domain.papers import rule_split
 from vidyam_ai.domain.sections import match_tokens
@@ -199,9 +202,192 @@ def _chat_qa(call: ModelCall) -> str:
     return f"[Stub answer from your material, until an AI key is added] {answer} [{number}]"
 
 
+def _passages(call: ModelCall) -> list[tuple[int, str]]:
+    """The numbered passages in the system prompt, each as one line of text (its heading line dropped)."""
+    out: list[tuple[int, str]] = []
+    for segment in call.system:
+        for match in _PASSAGE.finditer(segment.text):
+            lines = [line for line in match.group(2).split("\n") if line.strip()]
+            out.append(
+                (int(match.group(1)), " ".join(" ".join(lines[1:] if len(lines) > 1 else lines).split()))
+            )
+    return out
+
+
+def _hindi(text: str) -> bool:
+    hindi, latin = script_mix(text)
+    return hindi > latin
+
+
+def _balanced(text: str) -> bool:
+    return text.count("$") % 2 == 0 and text.count("{") == text.count("}")
+
+
+_TOKEN = re.compile(r"[^\s.,;:!?।()\[\]\"'\u201c\u201d\u2018\u2019/\-\u2013\u2014$\\{}]{3,}")
+_NUMBER = re.compile(r"(?<![\w.])\d+(?:\.\d+)?(?![\w.])")
+_SLOT = re.compile(r'slot "([^"]+)": .*?\((\w+)\), difficulty (\d)')
+_BLANK = "____"
+_PROMPTS = {
+    "option": ("Fill in the blank: ", "रिक्त स्थान भरिए: "),
+    "number": ("Fill in the number: ", "संख्या भरिए: "),
+    "text": ("Explain, in your own words: ", "अपने शब्दों में समझाइए: "),
+}
+
+
+def _terms(text: str) -> list[str]:
+    """Words a blank can stand for: no digits, no mathematics."""
+    return [word for word in _TOKEN.findall(text) if not any(char.isdigit() for char in word)]
+
+
+def _cloze(sentence: str, kind: str) -> tuple[str, str] | None:
+    """The sentence with its longest word (or its first number) blanked out, and what was blanked."""
+    if kind == "number":
+        found = _NUMBER.search(sentence)
+        return (
+            (sentence[: found.start()] + _BLANK + sentence[found.end() :], found.group()) if found else None
+        )
+    words = _terms(sentence)
+    if not words:
+        return None
+    word = max(words, key=len)
+    return sentence.replace(word, _BLANK, 1), word
+
+
+def _generate(call: ModelCall) -> str:
+    """Fill-in-the-blank questions from the evidence, one per slot, the way a careful script would: a word of
+    a passage's sentence blanked out, with words from other sentences as the wrong options (a number, for
+    numeric slots). The stub can't translate: with Hindi asked for, Hindi passages are used first."""
+    asked = _last_user_text(call)
+    languages = [
+        lang
+        for lang, name in (("hi", "Hindi"), ("en", "English"))
+        if name in asked.split("Languages:")[-1].split("\n")[0]
+    ]
+    passages = _passages(call)
+    if "hi" in languages:
+        passages.sort(key=lambda p: not _hindi(p[1]))  # Hindi passages first, in their order
+    pool = list(dict.fromkeys(word for _, text in passages for word in _terms(text)))
+    questions: list[dict[str, object]] = []
+    for i, (slot, qtype, _difficulty) in enumerate(_SLOT.findall(asked)):
+        kind = (
+            "option" if qtype in _OPTION_TYPES else "number" if qtype in ("numerical", "integer") else "text"
+        )
+        made = None
+        for n, text in passages[i % max(1, len(passages)) :] + passages[: i % max(1, len(passages))]:
+            for sentence in _SENTENCE.split(text):
+                if len(sentence) > 300 or not _balanced(sentence):
+                    continue
+                blanked = _cloze(sentence, kind) if kind != "text" else (sentence, sentence)
+                if blanked:
+                    made = (n, sentence, *blanked)
+                    break
+            if made:
+                break
+        if made is None:
+            questions.append({"slot": slot, "hi": None, "en": None, "correct": [], "value": None,
+                              "model_answer": None, "cites": []})  # fmt: skip
+            continue
+        n, sentence, stem, filled = made
+        keys, correct = ["A", "B", "C", "D"], None
+        options: list[dict[str, str]] = []
+        if kind == "option":
+            wrong = [word for word in pool if word != filled][i * 3 : i * 3 + 3] or [
+                w for w in pool if w != filled
+            ][:3]
+            correct = keys[int(hashlib.sha256(slot.encode()).hexdigest(), 16) % (len(wrong) + 1)]
+            texts = iter(wrong)
+            options = [
+                {"key": key, "text": filled if key == correct else next(texts)}
+                for key in keys[: len(wrong) + 1]
+            ]
+        shown = stem if kind != "text" else " ".join(_WORD.findall(sentence)[:8]) + " …"
+        versions = {
+            lang: {"stem": prompt + shown, "options": options, "solution": f"{label} {sentence}"}
+            for lang, prompt, label in (
+                ("en", _PROMPTS[kind][0], "From your material:"),
+                ("hi", _PROMPTS[kind][1], "आपकी सामग्री के अनुसार:"),
+            )
+        }
+        questions.append(
+            {
+                "slot": slot,
+                "hi": versions["hi"] if "hi" in languages else None,
+                "en": versions["en"] if "en" in languages else None,
+                "correct": [correct] if correct else [],
+                "value": float(filled) if kind == "number" else None,
+                "model_answer": sentence if kind == "text" else None,
+                "cites": [n],
+            }
+        )
+    return json.dumps({"questions": questions}, ensure_ascii=False)
+
+
+_ITEM = re.compile(r'<item id="([^"]+)">(.*?)</item>', re.DOTALL)
+
+
+def _verify_grounding(call: ModelCall) -> str:
+    """Supported when a question cites a passage; notes always are. The stub can't judge meaning."""
+    verdicts = []
+    for item, body in _ITEM.findall(call.variables.get("items", "")):
+        cites = re.search(r"Cites passages: (\d)", body) if "Cites passages:" in body else True
+        verdicts.append(
+            {"item": item, "supported": bool(cites), "problem": None if cites else "cites nothing"}
+        )
+    return json.dumps({"verdicts": verdicts}, ensure_ascii=False)
+
+
+def _verify_solve(call: ModelCall) -> str:
+    """Solves a fill-in-the-blank question by finding its sentence in the passages."""
+    question = call.variables.get("question", "")
+    stem = next(
+        (line.removeprefix("Question: ") for line in question.split("\n") if line.startswith("Question: ")),
+        "",
+    )
+    options = dict(re.findall(r"^([A-Z])\) (.*)$", question, re.MULTILINE))
+    rest = stem.split(": ", 1)[-1]
+    keys: list[str] = []
+    value: float | None = None
+    if _BLANK in rest:
+        # The blank stands for one word or number.
+        pattern = re.compile(re.escape(" ".join(rest.split())).replace(_BLANK, r"(\S+)", 1))
+        for segment in call.system:
+            found = pattern.search(" ".join(segment.text.split()))
+            if found:
+                filled = found.group(1)
+                keys = [key for key, option in options.items() if option.strip() == filled.strip()]
+                value = float(filled) if _NUMBER.fullmatch(filled.strip()) else None
+                break
+    working = "Found the sentence in the material." if keys or value is not None else "Couldn't find it."
+    return json.dumps({"keys": keys, "value": value, "working": working}, ensure_ascii=False)
+
+
+def _notes_write(call: ModelCall) -> str:
+    """Notes made of the passages' first sentences, each citing its passage."""
+    asked = _last_user_text(call)
+    topic = next(
+        (line.removeprefix("Topic: ") for line in asked.split("\n") if line.startswith("Topic: ")), ""
+    )
+    passages = _passages(call)[:4]
+    wanted = asked.split("Languages:")[-1].split("\n")[0]
+    bodies: dict[str, str | None] = {"hi": None, "en": None}
+    for lang, name in (("hi", "Hindi"), ("en", "English")):
+        if name not in wanted:
+            continue
+        mine = sorted(passages, key=lambda p: _hindi(p[1]) != (lang == "hi"))
+        points = [f"- {' '.join(_SENTENCE.split(text)[:2])} [{n}]" for n, text in mine]
+        heading = "मुख्य बिंदु" if lang == "hi" else "Key points"
+        stub = "[Stub notes until an AI key is added]"
+        bodies[lang] = f"{stub}\n\n### {topic}\n\n#### {heading}\n\n" + "\n".join(points)
+    return json.dumps({**bodies, "cites": [n for n, _ in passages]}, ensure_ascii=False)
+
+
 RESPONDERS: dict[str, Responder] = {
     "chat_title": _chat_title,
     "chat_qa": _chat_qa,
+    "generate": _generate,
+    "verify_grounding": _verify_grounding,
+    "verify_solve": _verify_solve,
+    "notes_write": _notes_write,
     "ocr_text": _ocr,
     "segment": _segment,
     "spec": _spec,

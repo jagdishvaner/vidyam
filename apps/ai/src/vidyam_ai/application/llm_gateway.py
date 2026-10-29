@@ -131,6 +131,8 @@ class LlmRequest:
     output: OutputSchema | None = None
     # The teacher's pick from the chat's model picker; honoured only for tasks teachers choose models for.
     model_id: str | None = None
+    # The model that wrote what this call checks: a cross-provider route then runs on the other provider.
+    written_by: str | None = None
     cache_key: str | None = None
 
 
@@ -530,6 +532,8 @@ class LlmGateway:
         return route
 
     async def _chosen_model(self, request: LlmRequest, route: Route) -> str:
+        if request.written_by is not None and route.other_provider_model_id is not None:
+            return await self._other_provider(request.written_by, route)
         if request.model_id is None or request.model_id == route.model_id:
             return route.model_id
         if request.task not in TEACHER_CHOICE_TASKS:
@@ -539,6 +543,13 @@ class LlmGateway:
         if model is None or not teacher_may_use(model, allowed):
             raise ModelNotAllowed(f"{request.model_id} is not one of the center's models for teachers")
         return model.id
+
+    async def _other_provider(self, writer_id: str, route: Route) -> str:
+        writer = await self._catalog.model(writer_id)
+        routed = await self._catalog.model(route.model_id)
+        if writer is None or routed is None or routed.provider != writer.provider:
+            return route.model_id
+        return route.other_provider_model_id or route.model_id
 
     async def _target(self, request: LlmRequest, route: Route, model_id: str) -> _Target:
         model = await self._catalog.model(model_id)

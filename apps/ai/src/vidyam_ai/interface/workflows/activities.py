@@ -14,6 +14,18 @@ from temporalio.exceptions import ApplicationError
 
 from vidyam_ai.application.backlogs import Backlogs
 from vidyam_ai.application.embedding import EmbedSource, ModelServerError
+from vidyam_ai.application.generation import (
+    AssemblePaper,
+    CheckAnswers,
+    GenerationStore,
+    Job,
+    PlanNotes,
+    PlanPaper,
+    Run,
+    WriteNotesSection,
+    WriteQuestions,
+    assemble_notes,
+)
 from vidyam_ai.application.indexing import IndexSource
 from vidyam_ai.application.ingestion import (
     ExtractSource,
@@ -36,6 +48,7 @@ from vidyam_ai.application.llm_gateway import (
 )
 from vidyam_ai.application.ping import handle_ping
 from vidyam_ai.generated.contracts import (
+    GenerateDocumentInput,
     IndexSourceInput,
     IngestSourceInput,
     LlmBatchInput,
@@ -273,6 +286,113 @@ class BacklogActivities:
             "batches": [str(batch) for batch in submitted.batch_ids],
             "sources": [str(source) for source in submitted.sources],
         }
+
+
+def _job(request: GenerateDocumentInput) -> Job:
+    return Job(request.org_id, request.run_id, request.requested_by, request.model_id)
+
+
+class GenerationActivities:
+    """The steps of GeneratePaperWorkflow and GenerateNotesWorkflow (plan v3 §7)."""
+
+    def __init__(
+        self,
+        store: GenerationStore,
+        plan_paper: PlanPaper,
+        write_questions: WriteQuestions,
+        check_answers: CheckAnswers,
+        assemble_paper: AssemblePaper,
+        plan_notes: PlanNotes,
+        write_notes: WriteNotesSection,
+    ) -> None:
+        self._store = store
+        self._plan_paper = plan_paper
+        self._write_questions = write_questions
+        self._check_answers = check_answers
+        self._assemble_paper = assemble_paper
+        self._plan_notes = plan_notes
+        self._write_notes = write_notes
+
+    async def _run(self, request: GenerateDocumentInput) -> Run:
+        run = await self._store.run(request.org_id, request.run_id)
+        if run is None:
+            raise ApplicationError(f"no generation run {request.run_id}", type="NotFound", non_retryable=True)
+        return run
+
+    @activity.defn(name="generation_run")
+    async def run_info(self, payload: dict[str, Any]) -> dict[str, Any]:
+        """What the workflow says in the chat: the document's kind and title, in the teacher's language."""
+        run = await self._run(parse(GenerateDocumentInput, payload))
+        return {"kind": run.kind, "title": run.title, "locale": run.locale}
+
+    @activity.defn(name="plan_paper")
+    async def plan_paper(self, payload: dict[str, Any]) -> list[dict[str, Any]]:
+        request = parse(GenerateDocumentInput, payload)
+        await self._run(request)
+        return await self._plan_paper.execute(request.org_id, request.run_id)
+
+    @activity.defn(name="write_questions")
+    async def write_questions(
+        self,
+        payload: dict[str, Any],
+        slots: list[dict[str, Any]],
+        used: list[str],
+        feedback: dict[str, list[str]],
+        final: bool,
+    ) -> dict[str, Any]:
+        request = parse(GenerateDocumentInput, payload)
+        with _llm_failures():
+            written = await self._write_questions.execute(
+                _job(request), slots, used=used, feedback=feedback, final=final
+            )
+        return {"slots": written.slots, "chunkIds": written.chunk_ids, "modelId": written.model_id}
+
+    @activity.defn(name="check_answers")
+    async def check_answers(
+        self, payload: dict[str, Any], slots: list[dict[str, Any]], written_by: str | None
+    ) -> list[dict[str, Any]]:
+        request = parse(GenerateDocumentInput, payload)
+        with _llm_failures():
+            return await self._check_answers.execute(_job(request), slots, written_by)
+
+    @activity.defn(name="assemble_paper")
+    async def assemble_paper(self, payload: dict[str, Any], slots: list[dict[str, Any]]) -> dict[str, Any]:
+        request = parse(GenerateDocumentInput, payload)
+        return await self._assemble_paper.execute(request.org_id, request.run_id, slots)
+
+    @activity.defn(name="plan_notes")
+    async def plan_notes(self, payload: dict[str, Any]) -> list[dict[str, Any]]:
+        request = parse(GenerateDocumentInput, payload)
+        await self._run(request)
+        return await self._plan_notes.execute(request.org_id, request.run_id)
+
+    @activity.defn(name="write_notes_section")
+    async def write_notes_section(
+        self,
+        payload: dict[str, Any],
+        section: dict[str, Any],
+        used: list[str],
+        feedback: list[str],
+        final: bool,
+    ) -> dict[str, Any]:
+        request = parse(GenerateDocumentInput, payload)
+        with _llm_failures():
+            written = await self._write_notes.execute(
+                _job(request), section, used=used, feedback=feedback, final=final
+            )
+        return {"section": written.section, "chunkIds": written.chunk_ids}
+
+    @activity.defn(name="assemble_notes")
+    async def assemble_notes(self, payload: dict[str, Any], sections: list[dict[str, Any]]) -> dict[str, Any]:
+        run = await self._run(parse(GenerateDocumentInput, payload))
+        return assemble_notes(run.spec, sections)
+
+    @activity.defn(name="generation_cost")
+    async def cost(self, payload: dict[str, Any]) -> float:
+        """What the run's model calls cost, from the usage ledger."""
+        request = parse(GenerateDocumentInput, payload)
+        run = await self._run(request)
+        return float(await self._store.cost(request.org_id, run.workflow_id))
 
 
 @contextmanager

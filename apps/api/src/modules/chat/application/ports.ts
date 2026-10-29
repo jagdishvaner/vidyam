@@ -12,6 +12,8 @@ import type {
   ChatStreamEvent,
   ChatTurnStatus,
   DraftSpec,
+  GenerateDocumentInput,
+  TaskKind,
 } from "@vidyam/contracts";
 
 import type { CardNames } from "../domain/turns.js";
@@ -55,6 +57,28 @@ export interface FinishedTurn {
   draftSpec: DraftSpec | null;
 }
 
+/** What pressing Confirm on a review card made (plan v3 §6.7). */
+export interface ConfirmedSpec {
+  turn: TurnRecord;
+  documentId: string;
+  runId: string;
+  kind: TaskKind;
+  title: string;
+}
+
+export type ConfirmSpec =
+  | { kind: "confirmed"; confirmed: ConfirmedSpec }
+  | { kind: "existing"; turn: TurnRecord }
+  | { kind: "busy" }
+  /** The chat's latest word isn't a review card: there is nothing to confirm. */
+  | { kind: "nothing" };
+
+/** Port: starts a generation workflow (Temporal; the AI engine runs it). */
+export interface GenerationStarter {
+  start(input: GenerateDocumentInput, kind: TaskKind): Promise<void>;
+}
+export const GENERATION_STARTER = Symbol("GENERATION_STARTER");
+
 /** Port: chats, messages and turns (Postgres, under the center's row-level security). */
 export interface ChatStore {
   list(
@@ -91,6 +115,13 @@ export interface ChatStore {
   scope(orgId: string, examCode: string | null, ids: string[]): Promise<ChatScopeNode[]>;
   /** In one transaction: the teacher's message and the turn, or the turn already made for clientTurnId. */
   beginTurn(orgId: string, userId: string, sessionId: string, turn: NewTurn): Promise<BeginTurn | null>;
+  /**
+   * In one transaction: the teacher's press, the document (version 0) and its generation run from the spec on
+   * the chat's latest review card, and the assistant's message pointing at the document.
+   */
+  confirmSpec(orgId: string, userId: string, sessionId: string, turn: NewTurn): Promise<ConfirmSpec | null>;
+  /** A run that couldn't start: failed, and the chat back to idle. */
+  failRun(orgId: string, runId: string, sessionId: string, error: string): Promise<void>;
   /** In one transaction: the assistant's message, the turn's outcome, and the chat's title and status. */
   finishTurn(orgId: string, finished: FinishedTurn): Promise<void>;
   turn(orgId: string, userId: string, turnId: string): Promise<TurnRecord | null>;

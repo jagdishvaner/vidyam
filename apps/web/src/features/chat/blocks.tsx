@@ -1,10 +1,11 @@
 "use client";
 
-import type { ChatBlock } from "@vidyam/contracts";
+import type { ChatBlock, GenerationProgress } from "@vidyam/contracts";
 import { Alert, AlertDescription } from "@vidyam/ui/components/alert";
 import { Badge } from "@vidyam/ui/components/badge";
-import { AlertTriangle, BookOpen, FileText, Info, Undo2 } from "lucide-react";
+import { AlertTriangle, BookOpen, FileText, Info, Loader2, Undo2 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { createContext, useContext } from "react";
 
 import { ClarificationCard } from "./clarification-card";
 import { Markdown } from "./markdown";
@@ -12,6 +13,9 @@ import { SpecReview } from "./spec-review";
 import type { ChatInput } from "./conversation";
 
 type Block<T extends ChatBlock["type"]> = Extract<ChatBlock, { type: T }>;
+
+/** The chat's latest generation run, for the document it is making to show how far it has got. */
+export const GenerationContext = createContext<GenerationProgress | null>(null);
 
 /**
  * One block of an assistant message (ADR 0015). Cards and the review card can only be answered while they are
@@ -38,7 +42,7 @@ export function AssistantBlock({
     case "notice":
       return (
         <Alert>
-          <Info />
+          {block.level === "warning" ? <AlertTriangle /> : <Info />}
           <AlertDescription>{block.text}</AlertDescription>
         </Alert>
       );
@@ -91,14 +95,14 @@ function Citations({ block }: { block: Block<"citations"> }) {
   );
 }
 
-function Progress({ block }: { block: Block<"progress"> }) {
-  const share = block.total ? Math.round((block.done / block.total) * 100) : 0;
+function Bar({ label, done, total }: { label: string; done: number; total: number }) {
+  const share = total ? Math.round((done / total) * 100) : 0;
   return (
     <div className="space-y-1 text-sm">
       <div className="flex justify-between text-muted-foreground">
-        <span>{block.stage}</span>
+        <span>{label}</span>
         <span className="tabular-nums">
-          {block.done} / {block.total}
+          {done} / {total}
         </span>
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-muted">
@@ -108,14 +112,29 @@ function Progress({ block }: { block: Block<"progress"> }) {
   );
 }
 
+function Progress({ block }: { block: Block<"progress"> }) {
+  return <Bar label={block.stage} done={block.done} total={block.total} />;
+}
+
+/**
+ * A document the chat made or is making. While its run is going, it shows how many questions (or sections)
+ * are done; the finished document arrives as a newer message.
+ */
 function DocumentRef({ block }: { block: Block<"document_ref"> }) {
+  const t = useTranslations("chat.document");
+  const generation = useContext(GenerationContext);
+  const run = block.version === 0 && generation?.documentId === block.documentId ? generation : null;
+  const making = run && (run.status === "planning" || run.status === "running");
   return (
-    <div className="flex items-center gap-2 rounded-lg border p-3 text-sm">
-      <FileText className="size-4" />
-      <span className="font-medium">{block.title}</span>
-      <Badge variant="secondary" className="ml-auto">
-        v{block.version}
-      </Badge>
+    <div className="space-y-3 rounded-lg border p-3 text-sm">
+      <div className="flex items-center gap-2">
+        {making ? <Loader2 className="size-4 animate-spin" /> : <FileText className="size-4" />}
+        <span className="font-medium">{block.title}</span>
+        <Badge variant={run?.status === "failed" ? "destructive" : "secondary"} className="ml-auto">
+          {run ? t(run.status) : t("version", { version: block.version })}
+        </Badge>
+      </div>
+      {making && <Bar label={t(run.total ? "progress" : "planning")} done={run.done} total={run.total} />}
     </div>
   );
 }

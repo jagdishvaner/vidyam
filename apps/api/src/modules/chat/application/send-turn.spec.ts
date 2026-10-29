@@ -1,4 +1,10 @@
-import type { ChatEngineEvent, ChatEngineTurn, ChatStreamEvent, ChatTurnRequest } from "@vidyam/contracts";
+import type {
+  ChatEngineEvent,
+  ChatEngineTurn,
+  ChatStreamEvent,
+  ChatTurnRequest,
+  GenerateDocumentInput,
+} from "@vidyam/contracts";
 import { describe, expect, it } from "vitest";
 
 import { DomainError } from "../../../shared/kernel/errors.js";
@@ -9,7 +15,9 @@ import type {
   BudgetGate,
   ChatEngine,
   ChatStore,
+  ConfirmSpec,
   FinishedTurn,
+  GenerationStarter,
   TurnEvents,
   TurnRecord,
 } from "./ports.js";
@@ -31,7 +39,15 @@ const request: ChatTurnRequest = {
   input: { kind: "text", text: "What is Ohm's law?" },
 };
 
-function setup(options: { begin?: BeginTurn; budget?: string; engine?: ChatEngineEvent[] | Error } = {}) {
+function setup(
+  options: {
+    begin?: BeginTurn;
+    budget?: string;
+    engine?: ChatEngineEvent[] | Error;
+    confirm?: ConfirmSpec;
+    startFails?: boolean;
+  } = {},
+) {
   const finished: FinishedTurn[] = [];
   const published: ChatStreamEvent[] = [];
   const asked: ChatEngineTurn[] = [];
@@ -60,8 +76,22 @@ function setup(options: { begin?: BeginTurn; budget?: string; engine?: ChatEngin
     close: async () => undefined,
     reader: () => ({ next: async () => [], close: () => undefined }),
   };
-  const send = new SendTurn(store, budget, engine, events, new ManageChats(store));
-  return { send, finished, published, asked };
+  const started: [GenerateDocumentInput, string][] = [];
+  const failedRuns: string[] = [];
+  const generation: GenerationStarter = {
+    start: async (input, kind) => {
+      if (options.startFails) throw new Error("temporal is down");
+      started.push([input, kind]);
+    },
+  };
+  Object.assign(store, {
+    confirmSpec: async () => options.confirm ?? { kind: "nothing" },
+    failRun: async (_org: string, runId: string) => {
+      failedRuns.push(runId);
+    },
+  });
+  const send = new SendTurn(store, budget, engine, events, generation, new ManageChats(store));
+  return { send, finished, published, asked, started, failedRuns };
 }
 
 describe("SendTurn", () => {
@@ -168,6 +198,57 @@ describe("SendTurn", () => {
     await expect(broke.send.execute(ORG, TEACHER, CHAT, request)).rejects.toThrow(DomainError);
     const { send } = setup();
     await expect(send.execute(ORG, TEACHER, CHAT, { ...request, modelId: "gpt-0" })).rejects.toMatchObject({
+      kind: "invalid",
+    });
+  });
+
+  it("starts making the document when the teacher confirms a review card, and asks no model", async () => {
+    const DOC = "0b6f2c1e-0000-4000-8000-0000000000d1";
+    const RUN = "0b6f2c1e-0000-4000-8000-0000000000e1";
+    const confirmed: ConfirmSpec = {
+      kind: "confirmed",
+      confirmed: {
+        turn: { ...TURN, status: "done" },
+        documentId: DOC,
+        runId: RUN,
+        kind: "worksheet",
+        title: "Motion",
+      },
+    };
+    const confirm: ChatTurnRequest = {
+      clientTurnId: "browser-confirm",
+      input: { kind: "action", action: "confirm_spec" },
+    };
+    const { send, started, published, asked } = setup({ confirm: confirmed });
+    expect((await send.execute(ORG, TEACHER, CHAT, confirm)).status).toBe("done");
+    expect(started).toEqual([
+      [
+        {
+          v: 1,
+          orgId: ORG,
+          requestedBy: TEACHER,
+          documentId: DOC,
+          runId: RUN,
+          sessionId: CHAT,
+          modelId: null,
+        },
+        "worksheet",
+      ],
+    ]);
+    expect(published.map((e) => e.event)).toEqual(["turn_started", "block", "message_complete"]);
+    expect(asked).toEqual([]);
+
+    const down = setup({ confirm: confirmed, startFails: true });
+    await down.send.execute(ORG, TEACHER, CHAT, confirm);
+    expect(down.failedRuns).toEqual([RUN]);
+    expect(down.published.map((e) => e.event)).toEqual([
+      "turn_started",
+      "block",
+      "error",
+      "message_complete",
+    ]);
+
+    await expect(setup().send.execute(ORG, TEACHER, CHAT, confirm)).rejects.toMatchObject({
       kind: "invalid",
     });
   });

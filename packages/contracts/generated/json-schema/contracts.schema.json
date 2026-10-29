@@ -1441,13 +1441,24 @@
               "type": "null"
             }
           ]
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GenerationProgress"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
         "session",
         "draftSpec",
         "messages",
-        "activeTurnId"
+        "activeTurnId",
+        "generation"
       ],
       "additionalProperties": false
     },
@@ -2651,6 +2662,145 @@
       ],
       "additionalProperties": false
     },
+    "GenerateDocumentInput": {
+      "title": "GenerateDocumentInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sessionId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "modelId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "documentId",
+        "runId",
+        "sessionId",
+        "modelId"
+      ],
+      "additionalProperties": false
+    },
+    "GenerateDocumentResult": {
+      "title": "GenerateDocumentResult",
+      "type": "object",
+      "properties": {
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "outcome": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "costUsd": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "documentId",
+        "version",
+        "outcome",
+        "costUsd"
+      ],
+      "additionalProperties": false
+    },
+    "GenerationProgress": {
+      "title": "GenerationProgress",
+      "type": "object",
+      "properties": {
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "planning",
+            "running",
+            "done",
+            "failed",
+            "cancelled"
+          ]
+        },
+        "done": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "total": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "runId",
+        "documentId",
+        "status",
+        "done",
+        "total"
+      ],
+      "additionalProperties": false
+    },
     "GenerationStatus": {
       "title": "GenerationStatus",
       "type": "string",
@@ -3483,6 +3633,79 @@
         "subjects"
       ],
       "additionalProperties": false
+    },
+    "NotesDocument": {
+      "title": "NotesDocument",
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "#/$defs/NotesSpec"
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NotesSection"
+          }
+        }
+      },
+      "required": [
+        "spec",
+        "sections"
+      ],
+      "additionalProperties": false
+    },
+    "NotesSection": {
+      "title": "NotesSection",
+      "type": "object",
+      "properties": {
+        "nodeId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "title": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "body": {
+          "$ref": "#/$defs/LocalizedText"
+        },
+        "citations": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CitationRef"
+          }
+        },
+        "state": {
+          "$ref": "#/$defs/NotesSectionState"
+        },
+        "flags": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "nodeId",
+        "title",
+        "body",
+        "citations",
+        "state",
+        "flags"
+      ],
+      "additionalProperties": false
+    },
+    "NotesSectionState": {
+      "title": "NotesSectionState",
+      "type": "string",
+      "enum": [
+        "pending",
+        "written",
+        "verified",
+        "flagged",
+        "insufficient_evidence"
+      ]
     },
     "NotesSpec": {
       "title": "NotesSpec",
@@ -6311,7 +6534,9 @@
         "IngestSource",
         "LlmBatch",
         "RunBacklog",
-        "IndexSource"
+        "IndexSource",
+        "GeneratePaper",
+        "GenerateNotes"
       ]
     }
   }

@@ -275,6 +275,19 @@ export const ChatSessionUpdate = contract(
 export type ChatSessionUpdate = z.infer<typeof ChatSessionUpdate>;
 
 /** One chat with its messages, oldest first. */
+/** How making the chat's latest document is getting on: slots (papers) or sections (notes) finished. */
+export const GenerationProgress = contract(
+  "GenerationProgress",
+  z.object({
+    runId: Uuid,
+    documentId: Uuid,
+    status: z.enum(["planning", "running", "done", "failed", "cancelled"]),
+    done: z.number().int().nonnegative(),
+    total: z.number().int().nonnegative(),
+  }),
+);
+export type GenerationProgress = z.infer<typeof GenerationProgress>;
+
 export const ChatSessionDetail = contract(
   "ChatSessionDetail",
   z.object({
@@ -283,6 +296,8 @@ export const ChatSessionDetail = contract(
     messages: z.array(ChatMessage),
     /** The turn still being answered, whose events the browser should follow; null when none is. */
     activeTurnId: Uuid.nullable(),
+    /** The chat's latest generation run; null when it never made a document. */
+    generation: GenerationProgress.nullable(),
   }),
 );
 export type ChatSessionDetail = z.infer<typeof ChatSessionDetail>;

@@ -43,6 +43,14 @@ def _model(row: Row[Any]) -> Model:
     )
 
 
+def _other_provider_model(options: object) -> str | None:
+    if not isinstance(options, dict):
+        return None
+    options = cast(dict[str, object], options)
+    alt = options.get("altModelId")
+    return alt if options.get("crossProvider") is True and isinstance(alt, str) else None
+
+
 class SqlLlmCatalog:
     def __init__(self, engine: AsyncEngine) -> None:
         self._engine = engine
@@ -64,6 +72,7 @@ class SqlLlmCatalog:
             effort=cast(Effort, row.effort) if row.effort in _EFFORTS else None,
             max_tokens=row.max_tokens,
             fallback_model_id=row.fallback_model_id,
+            other_provider_model_id=_other_provider_model(row.options),
         )
 
     async def model(self, model_id: str) -> Model | None:

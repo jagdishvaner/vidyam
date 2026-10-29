@@ -6,11 +6,7 @@ slot states merge, and inputs that can't succeed fail at once instead of retryin
 Needs the API built (`pnpm --filter @vidyam/api build`); the test starts the API's worker on a queue of its
 own, so a running `pnpm dev` doesn't interfere."""
 
-import asyncio
-import os
-import signal
 from contextlib import AsyncExitStack
-from pathlib import Path
 from uuid import uuid4
 
 from sqlalchemy import text
@@ -20,17 +16,9 @@ from vidyam_ai.config import get_settings
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 
 from tests.integration.api_roundtrip import ApiRoundTrip
+from tests.integration.api_worker import api_worker
 from tests.integration.cleanup import remove_org
 from tests.integration.test_rls import _admin_url
-
-REPO = Path(__file__).resolve().parents[4]
-
-
-async def _until_ready(output: asyncio.StreamReader, line: str) -> None:
-    """Temporal's own log lines come first; the script prints `line` once it polls."""
-    while (read := await output.readline()) and read.decode().strip() != line:
-        pass
-    assert read, "the API worker stopped before it was ready"
 
 
 async def test_python_workflows_commit_through_the_apis_worker() -> None:
@@ -64,26 +52,8 @@ async def test_python_workflows_commit_through_the_apis_worker() -> None:
     client = await connect(settings)
     await wait_for_namespace(client)
     prefix = f"api-worker-test-{uuid4().hex[:8]}-"
-    api_worker = await asyncio.create_subprocess_exec(
-        *(
-            "pnpm",
-            "--silent",
-            "--filter",
-            "@vidyam/api",
-            "exec",
-            "tsx",
-            "scripts/api-worker.ts",
-            f"{prefix}api",
-        ),
-        cwd=REPO,
-        stdout=asyncio.subprocess.PIPE,
-        stderr=asyncio.subprocess.PIPE,
-        start_new_session=True,  # so the whole pnpm → node tree can be stopped
-    )
     try:
-        assert api_worker.stdout
-        await asyncio.wait_for(_until_ready(api_worker.stdout, f"ready {prefix}api"), timeout=90)
-        async with AsyncExitStack() as running:
+        async with api_worker(f"{prefix}api"), AsyncExitStack() as running:
             await running.enter_async_context(
                 Worker(client, task_queue=f"{prefix}ai", workflows=[ApiRoundTrip])
             )
@@ -129,8 +99,5 @@ async def test_python_workflows_commit_through_the_apis_worker() -> None:
         assert (doc.current_version, doc.content) == (1, {"title": "Test paper"})
         assert states == {"s1": {"state": "generated"}, "s2": {"state": "bank"}} and finished is not None
     finally:
-        if api_worker.returncode is None:
-            os.killpg(api_worker.pid, signal.SIGTERM)
-            await api_worker.wait()
         await remove_org(settings, owner, org_id)
         await owner.dispose()

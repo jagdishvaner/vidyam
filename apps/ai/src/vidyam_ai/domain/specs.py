@@ -43,6 +43,14 @@ _TYPE_NAMES = {
     "short_answer": ("Short answer", "लघु उत्तरीय"),
     "long_answer": ("Long answer", "दीर्घ उत्तरीय"),
 }
+
+
+def type_name(qtype: str, language: str) -> str:
+    """A question type as teachers call it ("Multiple choice", "बहुविकल्पीय")."""
+    en, hi = _TYPE_NAMES.get(qtype, (qtype, qtype))
+    return hi if language == "hi" else en
+
+
 _KIND_NAMES = {
     "question_paper": ("Question paper", "प्रश्न-पत्र"),
     "worksheet": ("Worksheet", "अभ्यास पत्रक"),

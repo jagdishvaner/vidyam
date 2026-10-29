@@ -2,6 +2,7 @@
 budgets, fallbacks, the stub, structured replies, streaming and batches."""
 
 from collections.abc import AsyncIterator, Sequence
+from dataclasses import replace
 from datetime import UTC, datetime
 from decimal import Decimal
 from pathlib import Path
@@ -248,6 +249,22 @@ async def test_teachers_pick_among_the_models_the_center_allows() -> None:
         )
 
 
+async def test_a_check_runs_on_the_other_provider_than_the_writer() -> None:
+    catalog = Catalog()
+    catalog.routes["verify_solve"] = Route(
+        "verify_solve", "gpt-6-astra", "high", 8_000, other_provider_model_id="claude-opus-5-5"
+    )
+    catalog.prompts["verify_solve", "any"] = PromptTemplate("verify_solve", "any", 1, "Solve it.")
+    claude, gpt = Scripted("by claude"), Scripted("by gpt", "by gpt")
+    llm = gateway({"anthropic": claude, "openai": gpt}, catalog=catalog)
+    request = LlmRequest(Caller(ORG), "verify_solve")
+
+    # Written by GPT: checked by Claude. Written by Claude, or by nobody known: the route's own model.
+    assert (await llm.complete(replace(request, written_by="gpt-6-astra"))).model_id == "claude-opus-5-5"
+    assert (await llm.complete(replace(request, written_by="claude-opus-5-5"))).model_id == "gpt-6-astra"
+    assert (await llm.complete(request)).model_id == "gpt-6-astra"
+
+
 async def test_a_used_up_budget_stops_the_call_before_it_is_made() -> None:
     claude, ledger = Scripted("a", "b"), Ledger()
     ledger.limits = [("center", Decimal("100")), ("user", Decimal("0.006"))]
@@ -324,8 +341,11 @@ class Draft(BaseModel):
 
 
 async def test_structured_replies_are_validated_into_the_model(tmp_path: Path) -> None:
-    llm = gateway({}, stub=StubProvider(tmp_path))
-    result = await llm.complete_structured(generate(), Draft)
+    catalog = Catalog()  # a task the stub has no responder for: it answers with the schema's example
+    catalog.routes["lint"] = Route("lint", "claude-opus-5-5", None, 1_000)
+    catalog.prompts["lint", "any"] = PromptTemplate("lint", "any", 1, "Check it.")
+    llm = gateway({}, stub=StubProvider(tmp_path), catalog=catalog)
+    result = await llm.complete_structured(LlmRequest(Caller(ORG), "lint"), Draft)
     assert result.value == Draft(stem="stub", options=["stub"], answer=0, hint="stub", marks=0)
 
     # OpenAI's strict mode sends optional fields back as null: they fall back to their defaults.

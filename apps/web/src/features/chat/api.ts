@@ -38,6 +38,8 @@ export function useSession(id: string | null) {
     queryKey: chatKeys.session(id ?? "new"),
     enabled: id !== null,
     queryFn: () => must(api.GET("/api/chat/sessions/{sessionId}", { params: { path: { sessionId: id! } } })),
+    // While a document is being made, its progress and the message it ends with come in by themselves.
+    refetchInterval: (query) => (query.state.data?.session.status === "generating" ? 2_000 : false),
   });
 }
 

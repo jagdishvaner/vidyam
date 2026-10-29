@@ -21,7 +21,7 @@ import {
   useSession,
   useUpdateSession,
 } from "./api";
-import { AssistantBlock, UserBlocks } from "./blocks";
+import { AssistantBlock, GenerationContext, UserBlocks } from "./blocks";
 
 export type ChatInput = ChatTurnInput;
 
@@ -168,14 +168,16 @@ export function Conversation({
           ) : messages.length === 0 && !streaming ? (
             <Welcome send={send} />
           ) : (
-            messages.map((message) => (
-              <Message
-                key={message.id}
-                message={message}
-                live={message.id === lastAssistant?.id}
-                send={send}
-              />
-            ))
+            <GenerationContext.Provider value={detail.data?.generation ?? null}>
+              {messages.map((message) => (
+                <Message
+                  key={message.id}
+                  message={message}
+                  live={message.id === lastAssistant?.id}
+                  send={send}
+                />
+              ))}
+            </GenerationContext.Provider>
           )}
           {streaming && <StreamingMessage streaming={streaming} />}
           <div ref={end} />

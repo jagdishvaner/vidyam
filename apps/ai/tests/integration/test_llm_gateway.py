@@ -5,6 +5,7 @@ everything it created."""
 
 from collections.abc import Sequence
 from contextlib import AsyncExitStack
+from dataclasses import replace
 from decimal import Decimal
 from uuid import uuid4
 
@@ -58,6 +59,12 @@ async def test_calls_batches_and_budgets_on_the_stub_model() -> None:
             "chat_title.any.v1",
         )
 
+        # The answer check runs on the provider that didn't write the question (crossProvider route option).
+        solve = LlmRequest(Caller(org_id), "verify_solve", variables={"question": "Question: 2 + 2 = ____"})
+        by_gpt = await llm.complete(replace(solve, written_by="gpt-6-astra"))
+        by_claude = await llm.complete(replace(solve, written_by="claude-opus-5-5"))
+        assert (by_gpt.model_id, by_claude.model_id) == ("claude-opus-5-5", "gpt-6-astra")
+
         # A batch through the workflow: submitted, waited on, collected once, at no cost on the stub.
         stored: list[BatchOutcome] = []
 
@@ -90,7 +97,13 @@ async def test_calls_batches_and_budgets_on_the_stub_model() -> None:
 
         async with owner.connect() as conn:
             [batch] = (await conn.execute(select(t_llm_batches).where(t_llm_batches.c.id == batch_id))).all()
-            calls = (await conn.execute(select(t_llm_calls).where(t_llm_calls.c.org_id == org_id))).all()
+            calls = (
+                await conn.execute(
+                    select(t_llm_calls).where(
+                        t_llm_calls.c.org_id == org_id, t_llm_calls.c.task == "chat_title"
+                    )
+                )
+            ).all()
         assert (batch.status, batch.provider, batch.request_count) == ("collected", "stub", 2)
         assert batch.collected_at is not None and batch.meta["modelId"] == "claude-haiku-5-5"
         assert len(calls) == 3

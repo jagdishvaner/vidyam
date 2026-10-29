@@ -39,7 +39,7 @@ export const exams = pgTable(
 ).enableRLS();
 
 export const CHUNK_KINDS = ["prose", "question", "solution", "definition", "table"] as const;
-export const TAG_METHODS = ["manifest", "section", "llm", "human"] as const;
+export const TAG_METHODS = ["manifest", "section", "llm", "human", "generation"] as const;
 
 export const TAXONOMY_LEVELS = ["subject", "unit", "chapter", "topic", "subtopic"] as const;
 

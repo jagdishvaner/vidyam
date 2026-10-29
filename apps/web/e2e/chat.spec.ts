@@ -30,7 +30,7 @@ test.afterAll(async ({ request }) => {
   for (const id of made) await request.delete(`/api/chat/sessions/${id}`);
 });
 
-test("a paper request goes to the review card, and Confirm saves it", async ({ page }) => {
+test("a paper request goes to the review card, and Confirm makes it", async ({ page }) => {
   await newChat(page);
   await expect(page.getByText("What shall we work on?")).toBeVisible();
   await send(page, "RPSC 2nd grade science paper on gati ke niyam, 30 questions");
@@ -42,9 +42,17 @@ test("a paper request goes to the review card, and Confirm saves it", async ({ p
   await chatId(page);
   if (SHOTS) await page.screenshot({ path: `${SHOTS}/chat-review.png`, fullPage: true });
 
+  // Confirm makes the paper (step 26). The dev library is empty, so every question is marked as wanting
+  // material instead of being invented, and the chat says so when the run ends, without a reload.
   await page.getByRole("button", { name: "Confirm" }).click();
-  await expect(page.getByText("Your spec is saved", { exact: false })).toBeVisible({ timeout: 30_000 });
+  await expect(page.getByText("Confirmed")).toBeVisible({ timeout: 30_000 });
   await expect(page.getByRole("button", { name: "Confirm" })).toHaveCount(0); // the old card is no longer live
+  await expect(page.getByText("I couldn't make any of it", { exact: false })).toBeVisible({
+    timeout: 90_000,
+  });
+  await expect(page.getByText("v1")).toBeVisible();
+  await expect(page.getByText("Finished")).toBeVisible();
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/chat-made.png`, fullPage: true });
 });
 
 test("a vague request asks on a card, and the answer completes it", async ({ page }) => {

@@ -12,6 +12,14 @@ from temporalio.worker import Worker
 
 from vidyam_ai.application.backlogs import Backlogs
 from vidyam_ai.application.embedding import Embedder, EmbedSource
+from vidyam_ai.application.generation import (
+    AssemblePaper,
+    CheckAnswers,
+    PlanNotes,
+    PlanPaper,
+    WriteNotesSection,
+    WriteQuestions,
+)
 from vidyam_ai.application.indexing import ApplyOutbox, IndexSource, WaitingSources
 from vidyam_ai.application.ingestion import ExtractSource, ReadAnswerKey, StructureSource, TagSource
 from vidyam_ai.application.llm_gateway import BatchHandler
@@ -21,6 +29,7 @@ from vidyam_ai.domain.documents import PageReading
 from vidyam_ai.generated.contracts import AiTaskQueue
 from vidyam_ai.infrastructure.db.backlogs import SqlBacklogStore
 from vidyam_ai.infrastructure.db.embeddings import SqlEmbeddingStore
+from vidyam_ai.infrastructure.db.generation import SqlGenerationStore
 from vidyam_ai.infrastructure.db.indexing import SqlIndexStore, SqlOutbox, SqlWaitingSources
 from vidyam_ai.infrastructure.db.sources import SqlSources
 from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
@@ -29,6 +38,7 @@ from vidyam_ai.infrastructure.llm import create_llm_gateway
 from vidyam_ai.infrastructure.models import create_embedder
 from vidyam_ai.infrastructure.qdrant.index import QdrantSearchIndex
 from vidyam_ai.infrastructure.resources import Resources
+from vidyam_ai.infrastructure.retrieval import create_retrieve
 from vidyam_ai.infrastructure.s3.files import S3Files
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
 from vidyam_ai.infrastructure.s3.vectors import S3VectorFiles
@@ -37,6 +47,7 @@ from vidyam_ai.infrastructure.temporal.cpu import CpuPool
 from vidyam_ai.interface.workflows.activities import (
     Activities,
     BacklogActivities,
+    GenerationActivities,
     IngestionActivities,
     LlmActivities,
 )
@@ -52,6 +63,7 @@ class AllActivities:
     ingestion: IngestionActivities
     llm: LlmActivities
     backlog: BacklogActivities
+    generation: GenerationActivities
     cpu_slots: int
     # For the index keeper, which runs beside the workers (it needs the Temporal client to start workflows).
     outbox: ApplyOutbox
@@ -84,6 +96,8 @@ async def open_activities(
     embedder = create_embedder(settings, resources.http)
     search_index = QdrantSearchIndex(resources.qdrant)
     backlogs = Backlogs(gateway, store, syllabus, images)
+    making = SqlGenerationStore(resources.engine, syllabus)
+    search = create_retrieve(settings, resources.qdrant, resources.http, resources.cache_redis)
     # What stores each kind of batch's results, by task.
     handlers: dict[str, BatchHandler] = {
         "ocr_text": backlogs.store_ocr,
@@ -107,6 +121,15 @@ async def open_activities(
             ),
             llm=LlmActivities(gateway, handlers),
             backlog=BacklogActivities(backlogs),
+            generation=GenerationActivities(
+                making,
+                PlanPaper(making),
+                WriteQuestions(making, gateway, search),
+                CheckAnswers(making, gateway),
+                AssemblePaper(making),
+                PlanNotes(making),
+                WriteNotesSection(making, gateway, search),
+            ),
             cpu_slots=settings.worker_cpu_processes,
             outbox=ApplyOutbox(SqlOutbox(resources.engine), search_index),
             waiting=SqlWaitingSources(resources.engine),
@@ -124,7 +147,12 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
     def queue(kind: AiTaskQueue) -> str:
         return task_queue_prefix + kind.value
 
-    core, ingestion, llm = activities.core, activities.ingestion, activities.llm
+    core, ingestion, llm, making = (
+        activities.core,
+        activities.ingestion,
+        activities.llm,
+        activities.generation,
+    )
     return [
         Worker(
             client,
@@ -139,6 +167,12 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
                 ingestion.reindex_sources,
                 ingestion.refresh_sources,
                 ingestion.mark_source_failed,
+                making.run_info,
+                making.plan_paper,
+                making.assemble_paper,
+                making.plan_notes,
+                making.assemble_notes,
+                making.cost,
             ],
         ),
         Worker(
@@ -155,6 +189,9 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
                 llm.collect_batch,
                 activities.backlog.submit_backlog,
                 ingestion.embed_source,
+                making.write_questions,
+                making.check_answers,
+                making.write_notes_section,
             ],
         ),
     ]

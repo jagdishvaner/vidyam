@@ -307,6 +307,15 @@
         "en": "अंग्रेज़ी"
       }
     },
-    "history": "चैट इतिहास"
+    "history": "चैट इतिहास",
+    "document": {
+      "version": "v{version}",
+      "planning": "योजना बन रही है",
+      "running": "बन रहा है",
+      "done": "पूरा हुआ",
+      "failed": "रुक गया",
+      "cancelled": "रद्द",
+      "progress": "पूरे हुए प्रश्न और खंड"
+    }
   }
 }

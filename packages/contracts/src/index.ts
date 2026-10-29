@@ -5,6 +5,7 @@ export * from "./chat.js";
 export * from "./common.js";
 export * from "./events.js";
 export * from "./dashboard.js";
+export * from "./documents.js";
 export * from "./health.js";
 export * from "./identity.js";
 export * from "./library.js";

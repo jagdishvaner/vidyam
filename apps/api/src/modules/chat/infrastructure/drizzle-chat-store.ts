@@ -1,6 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import {
   AiPolicy,
+  TaskSpec,
+  WORKFLOWS,
+  workflowId,
   type AppendChatBlocksInput,
   type AppendChatBlocksResult,
   type ChatBlock,
@@ -14,8 +17,21 @@ import { schema, type Transaction } from "@vidyam/db";
 import { and, asc, desc, eq, gt, ilike, inArray, isNotNull, isNull, or, sql, type SQL } from "drizzle-orm";
 
 import { OrgDatabase } from "../../../shared/database/org-database.js";
-import type { BeginTurn, ChatStore, FinishedTurn, NewTurn, TurnRecord } from "../application/ports.js";
-import { containsPattern, streamKey, TURN_TIMEOUT_MS, type CardNames } from "../domain/turns.js";
+import type {
+  BeginTurn,
+  ChatStore,
+  ConfirmSpec,
+  FinishedTurn,
+  NewTurn,
+  TurnRecord,
+} from "../application/ports.js";
+import {
+  assistantMessageId,
+  containsPattern,
+  streamKey,
+  TURN_TIMEOUT_MS,
+  type CardNames,
+} from "../domain/turns.js";
 
 const {
   chatSessions: s,
@@ -26,6 +42,9 @@ const {
   exams: examsTable,
   examBlueprints,
   taxonomyNodes,
+  documents,
+  generationRuns,
+  generationRuns: r,
 } = schema;
 const UNANSWERED = ["pending", "streaming"] as const;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -137,6 +156,19 @@ export class DrizzleChatStore implements ChatStore {
         )
         .orderBy(desc(t.createdAt))
         .limit(1);
+      const [run] = await tx
+        .select({
+          id: r.id,
+          documentId: r.documentId,
+          status: r.status,
+          total: sql<number>`jsonb_array_length(${r.slotPlan})`,
+          // Slots (or sections) past "pending": filled from the bank, written, checked, flagged or without material.
+          done: sql<number>`(select count(*) from jsonb_each(${r.slotStates}) e where e.value->>'state' <> 'pending')`,
+        })
+        .from(r)
+        .where(eq(r.sessionId, sessionId))
+        .orderBy(desc(r.startedAt))
+        .limit(1);
       return {
         session: summary(session),
         draftSpec: (session.draftSpec as DraftSpec | null) ?? null,
@@ -149,6 +181,15 @@ export class DrizzleChatStore implements ChatStore {
           createdAt: row.createdAt.toISOString(),
         })),
         activeTurnId: active?.id ?? null,
+        generation: run
+          ? {
+              runId: run.id,
+              documentId: run.documentId,
+              status: run.status,
+              done: Number(run.done),
+              total: Number(run.total),
+            }
+          : null,
       };
     });
   }
@@ -343,6 +384,123 @@ export class DrizzleChatStore implements ChatStore {
       // Activity: the chat moves to the top of the history, and out of the archive.
       await tx.update(s).set({ archivedAt: null }).where(eq(s.id, sessionId));
       return { kind: "created", turn: created! };
+    });
+  }
+
+  confirmSpec(orgId: string, userId: string, sessionId: string, turn: NewTurn): Promise<ConfirmSpec | null> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const [session] = await tx
+        .select({ id: s.id })
+        .from(s)
+        .where(and(eq(s.id, sessionId), eq(s.userId, userId)))
+        .for("update");
+      if (!session) return null;
+      const [existing] = await tx
+        .select(turnColumns)
+        .from(t)
+        .where(and(eq(t.sessionId, sessionId), eq(t.clientTurnId, turn.clientTurnId)));
+      if (existing) return { kind: "existing", turn: existing };
+      const unanswered = await tx
+        .select({ createdAt: t.createdAt })
+        .from(t)
+        .where(and(eq(t.sessionId, sessionId), inArray(t.status, [...UNANSWERED])));
+      if (unanswered.some((other) => other.createdAt >= turn.staleBefore)) return { kind: "busy" };
+
+      // Only the chat's latest word can be confirmed: a review card no newer message has superseded.
+      const [latest] = await tx
+        .select({ id: m.id, role: m.role, content: m.content })
+        .from(m)
+        .where(eq(m.sessionId, sessionId))
+        .orderBy(desc(m.seq))
+        .limit(1);
+      const review =
+        latest?.role === "assistant"
+          ? (latest.content as ChatBlock[]).find((block) => block.type === "spec_review")
+          : undefined;
+      const parsed = review ? TaskSpec.safeParse(review.spec) : null;
+      if (!review || !parsed?.success) return { kind: "nothing" };
+      const spec = parsed.data;
+      // The card shows it was confirmed, and when.
+      const confirmedAt = new Date().toISOString();
+      await tx
+        .update(m)
+        .set({
+          content: (latest!.content as ChatBlock[]).map((block) =>
+            block.type === "spec_review" ? { ...block, confirmedAt } : block,
+          ),
+        })
+        .where(eq(m.id, latest!.id));
+
+      const [message] = await tx
+        .insert(m)
+        .values({ orgId, sessionId, seq: await nextSeq(tx, sessionId), role: "user", content: turn.blocks })
+        .returning({ id: m.id });
+      const turnId = crypto.randomUUID();
+      const documentId = crypto.randomUUID();
+      const runId = crypto.randomUUID();
+      const [exam] = spec.examCode
+        ? await tx.select({ id: examsTable.id }).from(examsTable).where(eq(examsTable.code, spec.examCode))
+        : [];
+      const paper = spec.kind === "question_paper" || spec.kind === "worksheet";
+      await tx.insert(documents).values({
+        id: documentId,
+        orgId,
+        kind: spec.kind,
+        title: spec.title,
+        spec,
+        content: paper ? { spec, sections: [], slots: [], sets: [] } : { spec, sections: [] },
+        ownerId: userId,
+        examId: exam?.id ?? null,
+      });
+      await tx.insert(generationRuns).values({
+        id: runId,
+        orgId,
+        documentId,
+        sessionId,
+        workflowId: workflowId(paper ? WORKFLOWS.generatePaper : WORKFLOWS.generateNotes, runId),
+        spec,
+        estimatedCostUsd: review.estimate.usdHigh.toFixed(6),
+      });
+      const answer = assistantMessageId(turnId);
+      await tx.insert(m).values({
+        id: answer,
+        orgId,
+        sessionId,
+        seq: await nextSeq(tx, sessionId),
+        role: "assistant",
+        content: [{ type: "document_ref", documentId, title: spec.title, kind: spec.kind, version: 0 }],
+      });
+      const [created] = await tx
+        .insert(t)
+        .values({
+          id: turnId,
+          orgId,
+          sessionId,
+          clientTurnId: turn.clientTurnId,
+          userMessageId: message!.id,
+          assistantMessageId: answer,
+          status: "done",
+          finishedAt: new Date(),
+        })
+        .returning(turnColumns);
+      await tx
+        .update(s)
+        .set({ status: "generating", documentId, archivedAt: null })
+        .where(eq(s.id, sessionId));
+      return {
+        kind: "confirmed",
+        confirmed: { turn: created!, documentId, runId, kind: spec.kind, title: spec.title },
+      };
+    });
+  }
+
+  failRun(orgId: string, runId: string, sessionId: string, error: string): Promise<void> {
+    return this.orgDb.run(orgId, async (tx) => {
+      await tx
+        .update(generationRuns)
+        .set({ status: "failed", error, finishedAt: new Date() })
+        .where(eq(generationRuns.id, runId));
+      await tx.update(s).set({ status: "idle" }).where(eq(s.id, sessionId));
     });
   }
 

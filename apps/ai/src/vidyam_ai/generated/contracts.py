@@ -675,6 +675,55 @@ class Syllabu1(BaseModel):
     weightage: float | None = Field(None, ge=0.0, le=1.0)
 
 
+class GenerateDocumentInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+    document_id: UUID = Field(..., alias="documentId")
+    run_id: UUID = Field(..., alias="runId")
+    session_id: UUID | None = Field(..., alias="sessionId")
+    model_id: str | None = Field(..., alias="modelId")
+
+
+class Outcome(RootModel[int]):
+    root: int = Field(..., ge=0, le=9007199254740991)
+
+
+class GenerateDocumentResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    document_id: UUID = Field(..., alias="documentId")
+    version: int = Field(..., gt=0, le=9007199254740991)
+    outcome: dict[str, Outcome]
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+
+
+class Status1(StrEnum):
+    planning = "planning"
+    running = "running"
+    done = "done"
+    failed = "failed"
+    cancelled = "cancelled"
+
+
+class GenerationProgress(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    run_id: UUID = Field(..., alias="runId")
+    document_id: UUID = Field(..., alias="documentId")
+    status: Status1
+    done: int = Field(..., ge=0, le=9007199254740991)
+    total: int = Field(..., ge=0, le=9007199254740991)
+
+
 class GenerationStatus(StrEnum):
     planning = "planning"
     running = "running"
@@ -912,6 +961,14 @@ class Exam(BaseModel):
     code: str
     name_en: str = Field(..., alias="nameEn")
     name_hi: str | None = Field(..., alias="nameHi")
+
+
+class NotesSectionState(StrEnum):
+    pending = "pending"
+    written = "written"
+    verified = "verified"
+    flagged = "flagged"
+    insufficient_evidence = "insufficient_evidence"
 
 
 class Kind(StrEnum):
@@ -1844,6 +1901,8 @@ class WorkflowType(StrEnum):
     llm_batch = "LlmBatch"
     run_backlog = "RunBacklog"
     index_source = "IndexSource"
+    generate_paper = "GeneratePaper"
+    generate_notes = "GenerateNotes"
 
 
 class AddMemberRequest(BaseModel):
@@ -2174,6 +2233,19 @@ class MySettings(BaseModel):
     subjects: list[StaffSubject]
 
 
+class NotesSection(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node_id: UUID = Field(..., alias="nodeId")
+    title: LocalizedText
+    body: LocalizedText
+    citations: list[CitationRef]
+    state: NotesSectionState
+    flags: list[str]
+
+
 class PaperSection(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2391,6 +2463,15 @@ class LibraryPage(BaseModel):
     page_size: int = Field(..., alias="pageSize", ge=0, le=9007199254740991)
 
 
+class NotesDocument(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    spec: NotesSpec
+    sections: list[NotesSection]
+
+
 class PaperDocument(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2571,6 +2652,7 @@ class ChatSessionDetail(BaseModel):
     draft_spec: DraftSpec | None = Field(..., alias="draftSpec")
     messages: list[ChatMessage]
     active_turn_id: UUID | None = Field(..., alias="activeTurnId")
+    generation: GenerationProgress | None
 
 
 class ChatStreamEvent3(BaseModel):

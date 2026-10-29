@@ -15,10 +15,12 @@ import {
   BUDGET_GATE,
   CHAT_ENGINE,
   CHAT_STORE,
+  GENERATION_STARTER,
   TURN_EVENTS,
   type BudgetGate,
   type ChatEngine,
   type ChatStore,
+  type GenerationStarter,
   type TurnEvents,
   type TurnRecord,
 } from "./ports.js";
@@ -49,6 +51,7 @@ export class SendTurn implements OnApplicationShutdown {
     @Inject(BUDGET_GATE) private readonly budget: BudgetGate,
     @Inject(CHAT_ENGINE) private readonly engine: ChatEngine,
     @Inject(TURN_EVENTS) private readonly events: TurnEvents,
+    @Inject(GENERATION_STARTER) private readonly generation: GenerationStarter,
     private readonly chats: ManageChats,
   ) {}
 
@@ -66,6 +69,9 @@ export class SendTurn implements OnApplicationShutdown {
     const blocks = userBlocks(input, names);
     const retried = await this.store.existingTurn(orgId, userId, sessionId, request.clientTurnId);
     if (retried) return accepted(retried);
+    if (input.kind === "action" && input.action === "confirm_spec") {
+      return this.confirm(orgId, userId, sessionId, request, blocks);
+    }
 
     const modelId = request.modelId ?? null;
     await this.chats.checkModel(orgId, modelId);
@@ -84,6 +90,56 @@ export class SendTurn implements OnApplicationShutdown {
     }
     if (begun.kind === "created") this.track(this.answer({ orgId, userId, turn: begun.turn, modelId }));
     return accepted(begun.turn);
+  }
+
+  /**
+   * Confirm on a review card (plan v3 §6.7): the document and its generation run are made from the card's
+   * spec and the workflow starts. No model is asked; this is the one place paid generation begins.
+   */
+  private async confirm(
+    orgId: string,
+    userId: string,
+    sessionId: string,
+    request: ChatTurnRequest,
+    blocks: ChatBlock[],
+  ): Promise<ChatTurnAccepted> {
+    const reason = await this.budget.exhausted(orgId, userId, new Date());
+    if (reason) throw new DomainError(reason, "forbidden");
+    const outcome = await this.store.confirmSpec(orgId, userId, sessionId, {
+      clientTurnId: request.clientTurnId,
+      blocks,
+      staleBefore: new Date(Date.now() - TURN_TIMEOUT_MS),
+    });
+    if (!outcome) throw new DomainError("That chat doesn't exist.", "not_found");
+    if (outcome.kind === "existing") return accepted(outcome.turn);
+    if (outcome.kind === "busy") {
+      throw new DomainError("Wait for the answer to your last message to finish.", "conflict");
+    }
+    if (outcome.kind === "nothing") throw new DomainError("There's nothing to confirm yet.", "invalid");
+
+    const { turn, documentId, runId, kind, title } = outcome.confirmed;
+    const messageId = assistantMessageId(turn.id);
+    const publish = (event: ChatStreamEvent) => this.events.publish(turn.id, event);
+    await publish({ event: "turn_started", turnId: turn.id, messageId });
+    await publish({ event: "block", block: { type: "document_ref", documentId, title, kind, version: 0 } });
+    try {
+      const modelId = request.modelId ?? null;
+      await this.generation.start(
+        { v: 1, orgId, requestedBy: userId, documentId, runId, sessionId, modelId },
+        kind,
+      );
+    } catch (error) {
+      this.logger.error(`run ${runId} didn't start: ${String(error)}`);
+      await this.store.failRun(orgId, runId, sessionId, `didn't start: ${String(error)}`);
+      await publish({
+        event: "error",
+        code: "not_started",
+        message: "Making it couldn't start. Ask for it again in a moment.",
+      });
+    }
+    await publish({ event: "message_complete", messageId });
+    await this.events.close(turn.id);
+    return accepted(turn);
   }
 
   /** Resolves once every answer under way has ended (tests, and shutdown). */
