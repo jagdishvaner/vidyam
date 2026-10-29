@@ -23,6 +23,7 @@ Nothing here is copied from a book. Science content follows the class 9–10 / R
 | `catalog/blueprints.json`            | Paper patterns: full paper (150 × 2 marks, ⅓ negative), chapter test, practice worksheet         |
 | `catalog/glossary.csv`               | ~100 approved English ↔ Hindi science terms                                                      |
 | `eval/retrieval.json`                | 50 teacher queries (Hindi, English, Hinglish) with the passage each should find                  |
+| `eval/unanswerable.json`             | 6 questions the material doesn't answer; search should come back empty                           |
 | `fonts/`                             | Noto Sans fonts (SIL Open Font License, `fonts/OFL.txt`) used to draw the files                  |
 
 The files cover the cases real content brings:
@@ -68,3 +69,5 @@ These are the same import formats admins will use (`packages/contracts/src/catal
   between pages.
 - **Retrieval queries**: `{id, query, lang: hi|en|hinglish, node, expect: [{file, phrase}]}`. A retrieved chunk
   counts as a hit when it comes from `file` and contains `phrase`, which appears verbatim in that file's text.
+- **Questions the material doesn't answer** (`eval/unanswerable.json`): `{id, query, lang}`. Retrieval should
+  return nothing for them.

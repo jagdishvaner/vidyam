@@ -13,9 +13,14 @@ from vidyam_ai.infrastructure.qdrant.search import QdrantPassageIndex
 
 
 def create_retrieve(
-    settings: Settings, qdrant: AsyncQdrantClient, http: httpx.AsyncClient, cache_redis: Redis
+    settings: Settings,
+    qdrant: AsyncQdrantClient,
+    http: httpx.AsyncClient,
+    cache_redis: Redis,
+    *,
+    cache_prefix: str = "vidyam:ai:",  # tests and the eval use their own, to time the models for real
 ) -> Retrieve:
-    cache = ValkeyCache(cache_redis)
+    cache = ValkeyCache(cache_redis, prefix=cache_prefix)
     return Retrieve(
         QdrantPassageIndex(qdrant),
         CachedEmbedder(create_embedder(settings, http), cache),

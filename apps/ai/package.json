@@ -14,6 +14,7 @@
     "typecheck": "uv run --frozen pyright",
     "test": "uv run --frozen pytest tests/unit",
     "test:integration": "uv run --frozen pytest tests/integration",
+    "eval:retrieval": "uv run --frozen pytest tests/integration/test_retrieval_eval.py -m eval -s -q",
     "codegen": "uv run --frozen datamodel-codegen --input ../../packages/contracts/generated/json-schema/contracts.schema.json --input-file-type jsonschema --output src/vidyam_ai/generated/contracts.py --output-model-type pydantic_v2.BaseModel --target-python-version 3.12 --use-standard-collections --use-union-operator --use-double-quotes --field-constraints --snake-case-field --allow-population-by-field-name --use-schema-description --disable-timestamp --custom-file-header-path codegen-header.txt",
     "codegen:db": "uv run --frozen python scripts/generate_tables.py"
   },

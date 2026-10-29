@@ -112,6 +112,15 @@ pnpm search --org vidyam-demo-coaching --node work_and_energy "power ka unit"  #
   one asked for with `--language hi|en`.
 - Reranking takes about 12 s on the Mac; `--no-rerank` skips it. A repeated query is answered from the cache.
 
+Search quality is measured on the demo pack's 50 teacher questions with known answers, plus 6 it can't
+answer; the report goes to `apps/ai/reports/retrieval-eval.md`. The same check runs in CI with the small
+models whenever search code changes.
+
+```bash
+pnpm eval:retrieval    # the demo pack in a throwaway center (about 15 minutes with the 4B models)
+cd apps/ai && uv run vidyam-ai eval-retrieval --org <slug> --queries questions.json   # any center's library
+```
+
 ### Run everything in Docker
 
 The same images that will run on AWS can run locally, behind the same Caddy entry point:
@@ -152,6 +161,7 @@ Everything uses the **38000–38190** block, bound to `127.0.0.1` only (not reac
 | `pnpm models:setup` / `models:up`  | fetch and check the search models / run them alone     |
 | `pnpm ingest` / `pnpm backlog`     | add content / run its paid AI backlogs                 |
 | `pnpm search --org <slug> "…"`     | search a center's content as the chat will             |
+| `pnpm eval:retrieval`              | measure search quality on the demo pack                |
 | `pnpm lint` / `typecheck` / `test` | checks across TypeScript and Python, cached by turbo   |
 | `pnpm test:integration`            | tests against local infrastructure                     |
 | `pnpm test:e2e`                    | browser tests against the running app (`pnpm dev`)     |

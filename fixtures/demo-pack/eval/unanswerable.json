@@ -1,0 +1,8 @@
+[
+  { "id": "unanswerable-01", "query": "मुगल साम्राज्य की स्थापना किसने और कब की", "lang": "hi" },
+  { "id": "unanswerable-02", "query": "भारतीय संविधान में कितने मौलिक अधिकार हैं", "lang": "hi" },
+  { "id": "unanswerable-03", "query": "who won the first cricket world cup", "lang": "en" },
+  { "id": "unanswerable-04", "query": "explain the causes of the French Revolution", "lang": "en" },
+  { "id": "unanswerable-05", "query": "panipat ki pehli ladai kab hui thi", "lang": "hinglish" },
+  { "id": "unanswerable-06", "query": "rajasthan ki sabse lambi nadi kaun si hai", "lang": "hinglish" }
+]

@@ -85,6 +85,9 @@ class Retrieved:
     candidates: int  # found by hybrid search, before copies were dropped
     dense: bool  # searched by meaning as well as keywords
     reranked: bool
+    # Hybrid search's candidates after copies were dropped, best first: what the reranker reads from. For
+    # measuring search (step 21) and for seeing why a passage wasn't picked.
+    ranked: tuple[Passage, ...] = ()
     notes: tuple[str, ...] = ()  # what was skipped, and why
     timings_ms: dict[str, float] = field(default_factory=dict[str, float])
 
@@ -122,7 +125,8 @@ class Retrieve:
             tuning.fusion,
             tuning.candidates,
         )
-        pool = drop_duplicates(found, request.language or query_language(request.query))
+        unique = drop_duplicates(found, request.language or query_language(request.query))
+        pool = unique
         lap("search")
 
         scores: list[float] | None = None
@@ -156,6 +160,7 @@ class Retrieve:
         return Retrieved(
             hits=hits,
             candidates=len(found),
+            ranked=tuple(candidate.passage for candidate in unique),
             dense=vector is not None,
             reranked=scores is not None,
             notes=tuple(notes),

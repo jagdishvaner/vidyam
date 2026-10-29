@@ -46,7 +46,7 @@ class Pair:
 PAIRS = {
     "4b": Pair(
         "Qwen/Qwen3-Embedding-4B-GGUF",
-        "main",
+        "f4602530db1d980e16da9d7d3a70294cf5c190be",
         "Qwen3-Embedding-4B-Q8_0.gguf",
         "Qwen/Qwen3-Reranker-4B",
         "22e683669bc0f0bd69640a1354a6d0aebcfeede5",
@@ -54,10 +54,10 @@ PAIRS = {
     ),
     "0.6b": Pair(
         "Qwen/Qwen3-Embedding-0.6B-GGUF",
-        "main",
+        "370f27d7550e0def9b39c1f16d3fbaa13aa67728",
         "Qwen3-Embedding-0.6B-Q8_0.gguf",
         "Qwen/Qwen3-Reranker-0.6B",
-        "main",
+        "e61197ed45024b0ed8a2d74b80b4d909f1255473",
         "qwen3-reranker-0.6b-q8_0.gguf",
     ),
 }

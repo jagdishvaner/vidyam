@@ -19,11 +19,11 @@ from vidyam_ai.application.retrieval import RetrievalRequest, Retrieve
 from vidyam_ai.config import get_settings
 from vidyam_ai.domain.embeddings import EmbeddingVersion
 from vidyam_ai.domain.retrieval import Scope, Tuning
-from vidyam_ai.infrastructure.cache import CachedEmbedder, CachedReranker, ValkeyCache
-from vidyam_ai.infrastructure.models import create_embedder, create_reranker
+from vidyam_ai.infrastructure.models import create_reranker
 from vidyam_ai.infrastructure.models.qwen import HttpEmbedder
 from vidyam_ai.infrastructure.qdrant.search import QdrantPassageIndex
 from vidyam_ai.infrastructure.resources import create_qdrant
+from vidyam_ai.infrastructure.retrieval import create_retrieve
 
 from tests.integration.demo import demo_org
 from tests.integration.test_manifest_ingestion import PACK, embedder_ready
@@ -48,15 +48,8 @@ async def test_retrieval_finds_answers_across_languages_editions_and_scopes(tmp_
     cache_prefix = f"test:{uuid4().hex}:"
     try:
         async with httpx.AsyncClient() as http, demo_org(tmp_path, "retrieval-test") as demo:
-            # As `create_retrieve` wires it, with a cache of its own: scores from earlier runs would hide the
-            # first, slow one.
-            cache = ValkeyCache(redis, prefix=cache_prefix)
-            retrieve = Retrieve(
-                QdrantPassageIndex(qdrant),
-                CachedEmbedder(create_embedder(settings, http), cache),
-                CachedReranker(create_reranker(settings, http), cache, settings.rerank_model),
-                Tuning(rerank=settings.rerank_candidates, rerank_tokens=settings.rerank_tokens),
-            )
+            # A cache of its own: scores from earlier runs would hide the first, slow one.
+            retrieve = create_retrieve(settings, qdrant, http, redis, cache_prefix=cache_prefix)
             sources = {
                 row.id: Path(row.filename).name
                 for row in await _rows(demo.owner, "select id, filename from sources where org_id = :o", demo)

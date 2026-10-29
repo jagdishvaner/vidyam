@@ -132,6 +132,21 @@ def check_queries(path: Path, paths: dict[str, str]) -> list[str]:
     return errors
 
 
+def check_unanswerable(path: Path) -> list[str]:
+    """Questions the material doesn't answer: `{id, query, lang}`, nothing expected."""
+    errors: list[str] = []
+    for query in json.loads(path.read_text()):
+        qid = query.get("id", "?")
+        missing = {"id", "query", "lang"} - query.keys()
+        if missing:
+            errors.append(f"{qid}: missing {sorted(missing)}")
+        elif query["lang"] not in {"hi", "en", "hinglish"}:
+            errors.append(f"{qid}: lang is hi, en or hinglish")
+        if query.get("expect"):
+            errors.append(f"{qid}: a question the material doesn't answer expects nothing")
+    return errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
@@ -146,6 +161,9 @@ def main() -> int:
     for path in sorted((PACK / "eval").glob("retrieval*.json")):
         if args.only is None or args.only in path.name:
             errors += check_queries(path, paths)
+    unanswerable = PACK / "eval" / "unanswerable.json"
+    if args.only is None or args.only in unanswerable.name:
+        errors += check_unanswerable(unanswerable)
     for error in errors:
         print(error, file=sys.stderr)
     print("ok" if not errors else f"{len(errors)} problem(s)")

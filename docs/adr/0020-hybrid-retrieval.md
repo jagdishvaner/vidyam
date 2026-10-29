@@ -86,3 +86,52 @@ questions about the scanned notes, and questions from outside the syllabus, scor
 - The thresholds (0.80, 0.95, 0.05) and the fusion weights come from a small synthetic pack. The retrieval eval
   (step 21) checks them on every change, and the center's real content (phase C) will tune them.
 - Bank questions are not searched yet: the `questions` collection is filled with generation (step 26).
+
+## Update 2026-10-29: the retrieval eval (plan v3 step 21)
+
+**What it measures.** `EvaluateRetrieval` (`application/evaluation.py`, measures in `domain/evaluation.py`)
+sends each query through retrieval exactly as the chat will, and records where its answer landed. A passage
+is the answer when it comes from the named file and contains the named phrase.
+
+- **recall@1/5/10/20** of the fused candidates, the list the reranker reads from. The plan's target is
+  recall@20 ≥ 0.9: what search never finds, reranking can't fix.
+- **@20 in chapter**: the same query limited to the answer's chapter, as a teacher who picked it would ask.
+  It also checks that the passage was tagged to the right chapter.
+- **Found / First / MRR**: whether the answer is among the passages returned, after reranking and the
+  cut-off, and at what position.
+- **Questions the material doesn't answer** (`fixtures/demo-pack/eval/unanswerable.json`, 6 of them) should
+  come back empty.
+- Time per stage, with a cold cache so the models are timed for real.
+- A query whose file has nothing searchable yet is reported apart and not counted. Today that is the 5 about
+  the scanned notes, until OCR reads them (phase B).
+
+**Where it runs.**
+
+- `pnpm eval:retrieval` loads the demo pack into a throwaway center, runs the eval and writes
+  `apps/ai/reports/retrieval-eval.md`. It is an integration test marked `eval`, left out of
+  `pnpm test:integration`.
+- `vidyam-ai eval-retrieval --org <slug> --queries <file>` runs it against any center's library, for the
+  teachers' golden sets in phase D.
+- CI (`.github/workflows/retrieval-eval.yml`) runs it with the 0.6B pair on CPU whenever search code, reading
+  code, the models or the demo pack change, and on demand. llama.cpp is the same build as on the Mac
+  (b11669, its CPU release), and the converted models are cached between runs.
+
+**Results on the demo pack** (45 answerable queries, 6 unanswerable):
+
+| Models           | recall@1 | @5  | @10  | @20  | @20 in chapter | Found | First | MRR  | Unanswerable left empty | Rerank per query          |
+| ---------------- | -------- | --- | ---- | ---- | -------------- | ----- | ----- | ---- | ----------------------- | ------------------------- |
+| 4B (M5, Metal)   | 64%      | 98% | 100% | 100% | 100%           | 100%  | 93%   | 0.97 | 6 of 6                  | 14.1 s median, 18.6 s p95 |
+| 0.6B (M5, Metal) | 62%      | 89% | 100% | 100% | 100%           | 93%   | 76%   | 0.84 | 6 of 6                  | 1.2 s median, 2.9 s p95   |
+
+By language with the 4B pair, the answer came first for 94% of Hindi queries, 93% of Hinglish and 92% of
+English ones. The 0.6B pair loses most on Hinglish (60% first) and English (67%). It stays as CI's smoke check
+and isn't a fallback for real use. On CPU it reads about 490 tokens/s with 4 threads, so CI reranks for about
+15 s a query.
+
+CI's thresholds sit just under what the 0.6B pair measured: recall@20 ≥ 0.9, Found ≥ 0.85, and at least 80%
+of unanswerable questions left empty (`VIDYAM_EVAL_MIN_*`). The local default is the plan's target, with Found
+≥ 0.9.
+
+**Fixed along the way.** `pnpm models:setup` called pnpm's own built-in `setup` command instead of the
+script, and `models:up` passed a stray `--`. All four model revisions are now pinned to commits, so CI and
+every Mac fetch the same weights.

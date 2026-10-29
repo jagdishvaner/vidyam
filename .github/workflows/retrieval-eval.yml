@@ -1,0 +1,112 @@
+name: Retrieval eval
+
+# Plan v3 step 21: the demo pack's 50 queries (and 6 it doesn't answer) through ingestion and retrieval, with
+# the small Qwen3 pair (0.6B) on CPU. A smoke check of search quality, not the 4B target: that one is run
+# locally (`pnpm eval:retrieval`) and recorded in docs/adr/0020-hybrid-retrieval.md. It runs when search,
+# reading, the models or the demo pack change, and on demand.
+
+on:
+  pull_request:
+    paths:
+      - apps/ai/src/**
+      - apps/ai/tests/integration/demo.py
+      - apps/ai/tests/integration/test_retrieval_eval.py
+      - apps/api/scripts/ingest.ts
+      - infra/models/**
+      - fixtures/demo-pack/**
+      - .github/workflows/retrieval-eval.yml
+  push:
+    branches: [main]
+    paths:
+      - apps/ai/src/**
+      - apps/ai/tests/integration/demo.py
+      - apps/ai/tests/integration/test_retrieval_eval.py
+      - apps/api/scripts/ingest.ts
+      - infra/models/**
+      - fixtures/demo-pack/**
+      - .github/workflows/retrieval-eval.yml
+  workflow_dispatch:
+
+concurrency:
+  group: retrieval-eval-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  # The llama.cpp build the reranker is converted with and served by (same as `brew install llama.cpp` locally).
+  LLAMA_BUILD: b11669
+  VIDYAM_EMBEDDING_MODEL: qwen3-embedding-0.6b
+  VIDYAM_EMBEDDING_DIMS: "1024"
+  VIDYAM_RERANK_MODEL: qwen3-reranker-0.6b
+  # The 0.6B pair measured 100% recall@20, the answer returned for 93%, and 6 of 6 unanswerable questions
+  # left empty (ADR 0020). Below these is a regression; the margin allows for CPU arithmetic.
+  VIDYAM_EVAL_MIN_RECALL: "0.9"
+  VIDYAM_EVAL_MIN_FOUND: "0.85"
+  VIDYAM_EVAL_MIN_REJECTED: "0.8"
+
+jobs:
+  eval:
+    name: Retrieval eval (Qwen3 0.6B, CPU)
+    runs-on: ubuntu-24.04
+    # Reranking on CPU takes ~15 s a query (56 queries); the first run also fetches and converts the models.
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+      - run: pnpm install --frozen-lockfile
+      - run: uv sync --all-packages --frozen
+      - run: cp .env.example .env
+
+      - name: llama.cpp (CPU build)
+        run: |
+          curl -fsSL -o "$RUNNER_TEMP/llama.tar.gz" \
+            "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMA_BUILD/llama-$LLAMA_BUILD-bin-ubuntu-x64.tar.gz"
+          tar -xzf "$RUNNER_TEMP/llama.tar.gz" -C "$HOME"
+          echo "$HOME/llama-$LLAMA_BUILD" >> "$GITHUB_PATH"
+          echo "LD_LIBRARY_PATH=$HOME/llama-$LLAMA_BUILD" >> "$GITHUB_ENV"
+      - run: llama-server --version
+      - name: Models from the cache, or fetched, converted and checked against Qwen's reference
+        uses: actions/cache@v6
+        with:
+          path: ~/.vidyam/models
+          key: qwen3-0.6b-${{ env.LLAMA_BUILD }}-${{ hashFiles('infra/models/setup.py', 'infra/models/verify_reranker.py') }}
+      - run: pnpm models:setup --small
+      - name: Start the model servers
+        run: |
+          nohup pnpm models:up --small > "$RUNNER_TEMP/models.log" 2>&1 &
+          for _ in $(seq 1 120); do
+            curl -sf http://127.0.0.1:38180/health && curl -sf http://127.0.0.1:38181/health && exit 0
+            sleep 2
+          done
+          cat "$RUNNER_TEMP/models.log"
+          exit 1
+
+      - name: Start local infrastructure (same compose file as development)
+        run: pnpm infra:up
+      - name: Build workspace packages
+        run: pnpm turbo run build
+      - run: pnpm db:migrate
+      - name: Create S3 buckets and Qdrant collections (for the 0.6B model's 1,024 dimensions)
+        run: pnpm bootstrap
+      - name: Retrieval eval
+        run: pnpm eval:retrieval
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: retrieval-eval
+          path: apps/ai/reports/retrieval-eval.md
+          if-no-files-found: ignore
+      - name: Logs on failure
+        if: failure()
+        run: |
+          cat "$RUNNER_TEMP/models.log" || true
+          pnpm infra:ps && docker compose -f infra/docker/compose.yml logs --tail=200

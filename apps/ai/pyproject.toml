@@ -99,6 +99,9 @@ asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "session"
 asyncio_default_test_loop_scope = "session"
 testpaths = ["tests"]
+# The retrieval eval (step 21) takes minutes: only `pnpm eval:retrieval` runs it.
+addopts = "-m 'not eval'"
+markers = ["eval: the retrieval eval on the demo pack (pnpm eval:retrieval)"]
 filterwarnings = [
     # Unit tests start the app without a Qdrant server; the client's version probe is expected to fail there.
     "ignore:Failed to obtain server version:UserWarning",
