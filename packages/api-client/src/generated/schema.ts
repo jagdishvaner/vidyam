@@ -2733,6 +2733,13 @@ export interface operations {
                                 summary: string;
                             } | {
                                 /** @enum {string} */
+                                type: "action";
+                                /** @enum {string} */
+                                action: "confirm_spec" | "cancel" | "undo";
+                                targetId: string | null;
+                                summary: string;
+                            } | {
+                                /** @enum {string} */
                                 type: "spec_review";
                                 spec: {
                                     /** @enum {string} */

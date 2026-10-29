@@ -12,9 +12,18 @@ import { and, asc, desc, eq, gt, ilike, inArray, isNotNull, isNull, or, sql, typ
 
 import { OrgDatabase } from "../../../shared/database/org-database.js";
 import type { BeginTurn, ChatStore, FinishedTurn, NewTurn, TurnRecord } from "../application/ports.js";
-import { containsPattern, streamKey, TURN_TIMEOUT_MS } from "../domain/turns.js";
+import { containsPattern, streamKey, TURN_TIMEOUT_MS, type CardNames } from "../domain/turns.js";
 
-const { chatSessions: s, chatMessages: m, chatTurns: t, llmModels, orgSettings } = schema;
+const {
+  chatSessions: s,
+  chatMessages: m,
+  chatTurns: t,
+  llmModels,
+  orgSettings,
+  exams: examsTable,
+  examBlueprints,
+  taxonomyNodes,
+} = schema;
 const UNANSWERED = ["pending", "streaming"] as const;
 
 const turnColumns = {
@@ -164,6 +173,35 @@ export class DrizzleChatStore implements ChatStore {
         .where(and(eq(llmModels.enabled, true), eq(llmModels.teacherSelectable, true)));
       const ids = models.map((model) => model.id);
       return policy.allowedModelIds.length ? ids.filter((id) => policy.allowedModelIds.includes(id)) : ids;
+    });
+  }
+
+  names(
+    orgId: string,
+    refs: { examCodes: string[]; nodeIds: string[]; blueprintIds: string[] },
+  ): Promise<CardNames> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const exams = refs.examCodes.length
+        ? await tx
+            .select({ key: examsTable.code, name: examsTable.nameEn })
+            .from(examsTable)
+            .where(inArray(examsTable.code, refs.examCodes))
+        : [];
+      const nodes = refs.nodeIds.length
+        ? await tx
+            .select({ key: taxonomyNodes.id, name: taxonomyNodes.nameEn })
+            .from(taxonomyNodes)
+            .where(inArray(taxonomyNodes.id, refs.nodeIds))
+        : [];
+      const blueprints = refs.blueprintIds.length
+        ? await tx
+            .select({ key: examBlueprints.id, name: examBlueprints.name })
+            .from(examBlueprints)
+            .where(inArray(examBlueprints.id, refs.blueprintIds))
+        : [];
+      const byKey = (rows: { key: string; name: string }[]) =>
+        Object.fromEntries(rows.map((r) => [r.key, r.name]));
+      return { exams: byKey(exams), nodes: byKey(nodes), blueprints: byKey(blueprints) };
     });
   }
 

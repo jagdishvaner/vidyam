@@ -5857,6 +5857,39 @@
                                     "type": {
                                       "type": "string",
                                       "enum": [
+                                        "action"
+                                      ]
+                                    },
+                                    "action": {
+                                      "type": "string",
+                                      "enum": [
+                                        "confirm_spec",
+                                        "cancel",
+                                        "undo"
+                                      ]
+                                    },
+                                    "targetId": {
+                                      "nullable": true,
+                                      "type": "string"
+                                    },
+                                    "summary": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "action",
+                                    "targetId",
+                                    "summary"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
                                         "spec_review"
                                       ]
                                     },

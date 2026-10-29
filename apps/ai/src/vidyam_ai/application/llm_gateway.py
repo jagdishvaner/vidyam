@@ -450,6 +450,21 @@ class LlmGateway:
         total = sum((cost_usd(usage, prices, batch=batch) for usage in usages), Decimal(0))
         return CostEstimate(model.id, provider, total)
 
+    async def quote(
+        self, org_id: UUID, task: str, usages: Sequence[Usage], *, model_id: str | None = None
+    ) -> CostEstimate:
+        """What interactive requests of these sizes would cost on the task's route, or on the teacher's chosen
+        model: a figure to show before anything is asked for (the spec review card), not a promise. Unlike
+        `estimate`, nothing else is checked."""
+        route = await self._route(org_id, task)
+        model = await self._catalog.model(model_id or route.model_id)
+        if model is None or not model.enabled:
+            raise ModelUnavailable(f"{model_id or route.model_id} is unknown or switched off")
+        provider, _ = self._provider_for(model)
+        prices = FREE if provider == "stub" else model.prices
+        total = sum((cost_usd(usage, prices, batch=False) for usage in usages), Decimal(0))
+        return CostEstimate(model.id, provider, total)
+
     async def batch_ended(self, org_id: UUID, batch_id: UUID) -> bool:
         batch = await self._batch(org_id, batch_id)
         if batch.status != "running":

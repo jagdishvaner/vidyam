@@ -31,7 +31,7 @@ def message_text(blocks: Sequence[Mapping[str, Any]]) -> str:
         match block.get("type"):
             case "text":
                 parts.append(str(block["text"]))
-            case "card_response" | "edit_summary":
+            case "card_response" | "action" | "edit_summary":
                 parts.append(str(block["summary"]))
             case "citations":
                 parts.append("Sources: " + "; ".join(_source(item) for item in block["items"]))
@@ -68,3 +68,45 @@ def language_of(text: str) -> str:
     """The language to answer and title in: Hindi when written mostly in Devanagari."""
     hindi, latin = script_mix(text)
     return "Hindi" if hindi > latin else "English"
+
+
+# What the chat says in its own words: written here, not by a model, so it is free, instant and the same every
+# time. Keyed by what happened; Hindi for teachers who write or work in Hindi.
+REPLIES = {
+    "need_details": (
+        "A few details first, then I'll show you the plan before anything is made.",
+        "पहले कुछ जानकारी दे दीजिए, फिर बनाने से पहले पूरी योजना दिखाऊँगा।",
+    ),
+    "review": (
+        "Here is what I'll make. Check it, and press Confirm when it's right. Nothing is spent before that.",
+        "यह बनेगा। जाँच लीजिए और सही हो तो Confirm दबाइए। उससे पहले कोई खर्च नहीं होगा।",
+    ),
+    "not_found": (
+        "I couldn't find this in your center's material, so I won't guess. Try other words, or add notes on "
+        "this topic to the library.",
+        "यह आपके संस्थान की सामग्री में नहीं मिला, इसलिए अनुमान से उत्तर नहीं दूँगा। दूसरे शब्दों में पूछिए, या "
+        "इस विषय के नोट्स लाइब्रेरी में जोड़िए।",
+    ),
+    "cancelled": (
+        "Cancelled. Tell me what you'd like to make instead.",
+        "रद्द कर दिया। बताइए, इसके बदले क्या बनाना है।",
+    ),
+    "nothing_to_confirm": (
+        "There's nothing to confirm yet. Tell me what you'd like to make.",
+        "अभी पुष्टि के लिए कुछ नहीं है। बताइए, क्या बनाना है।",
+    ),
+    "generation_off": (
+        "Your spec is saved. Making papers and notes isn't switched on yet; it comes in the next update.",
+        "आपकी योजना सहेज ली गई है। प्रश्न-पत्र और नोट्स बनाना अभी शुरू नहीं हुआ है; यह अगले अपडेट में आएगा।",
+    ),
+    "edit_later": (
+        "Editing a document by chat isn't switched on yet. You can still change the spec here.",
+        "चैट से दस्तावेज़ बदलना अभी शुरू नहीं हुआ है। योजना यहीं बदली जा सकती है।",
+    ),
+    "nothing_to_undo": ("There's nothing to undo yet.", "अभी पूर्ववत करने के लिए कुछ नहीं है।"),
+}
+
+
+def reply(key: str, language: str) -> str:
+    english, hindi = REPLIES[key]
+    return hindi if language == "hi" else english

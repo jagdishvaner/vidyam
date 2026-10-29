@@ -105,3 +105,61 @@ writes it.
 
 **Deferred to the chat agent (step 23):** card submissions and button presses (the API answers 422 for
 now), intents, the draft spec, and search with citations.
+
+## Update 2026-10-29: the chat agent (plan v3 step 23)
+
+`ChatAgent` (`apps/ai/src/vidyam_ai/application/chat.py`) replaces the plain answer. What the teacher sent
+decides the work.
+
+**Typed text** gets one structured call: the `spec` task, routed to a cheap model. The prompt lists the
+center's exam papers, and the reply is a fixed form:
+
+- the intent, which is `create`, `ask`, `edit` or `chat`;
+- what to make and the exam, by its code;
+- chapter and topic names exactly as typed;
+- the number of questions, question types, difficulty, languages, duration and sourcing;
+- for a doubt, the question restated so it stands alone for search.
+
+**Topics are matched by code** (`domain/mentions.py`). Every name and alias of the exam's syllabus nodes is
+reduced to the same Hinglish sound key as keyword search, and compared word by word.
+
+- "gati ke niyam", "Newton ke niyam" and "गति के नियम" all find _Force and Laws of Motion_.
+- A clear best match is taken. Otherwise the closest nodes are offered on the scope card.
+
+**The draft spec follows rules** (`domain/specs.py`):
+
+- **Pattern.** It fits the request: the pattern nearest the number of questions asked for; without a number,
+  the chapter test for a worksheet or three chapters or fewer, and the full paper for a whole subject. The
+  pattern is scaled to the count, keeping only the question types asked for. Time scales with it.
+- **Defaults.** Languages come from the teacher's setting, sourcing is bank first, and a worksheet is 20
+  MCQs.
+- **Missing fields** become at most two cards, scope and then shape, each opening with what was understood.
+- **Complete drafts** show the review card: the full spec, each chapter's bank questions against those to
+  generate, and a cost range and time. Costs are quoted at the route's prices (the teacher's chosen model
+  for generation), with and without caching and retries. On the stub they show $0, because it is free.
+- **Title.** It stays automatic, from the exam and chapter names, until the teacher sets one.
+
+**Doubts** are answered from the center's material only:
+
+- Retrieval (step 20) supplies up to six passages, numbered.
+- `chat_qa` answers from them and cites them as `[n]`. Each cited passage becomes a citation: the file, its
+  pages, and a short quote.
+- With nothing found, the chat says so in the teacher's language, and no model is asked.
+
+**Cards, buttons and the rest:**
+
+- **Cards and buttons** need no model:
+  - an answered card merges into the draft;
+  - Cancel clears the draft;
+  - Confirm says generation isn't switched on yet (step 26);
+  - Undo has nothing to undo yet.
+- **The API stores card answers and button presses as blocks.** A card answer becomes a sentence written by
+  code, with exam, chapter and pattern names looked up. A button press becomes a new `action` block. Any
+  model can read the transcript.
+- **The chat's own sentences** ("A few details first…", "Here is what I'll make…") are written in code, in
+  Hindi or English, so they are free, instant and consistent.
+- **The stub model** reads requests with rules and answers doubts from the first passage, so the whole flow
+  works without keys.
+
+**Contract detail:** the AI engine sends only the fields an event sets. Python fills an optional field it
+wasn't given with null, but the TypeScript contracts read optional as absent.

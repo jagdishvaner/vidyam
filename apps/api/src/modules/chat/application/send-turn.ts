@@ -9,7 +9,7 @@ import type {
 } from "@vidyam/contracts";
 
 import { DomainError } from "../../../shared/kernel/errors.js";
-import { assistantMessageId, failedAnswer, TURN_TIMEOUT_MS, userBlocks } from "../domain/turns.js";
+import { assistantMessageId, cardRefs, failedAnswer, TURN_TIMEOUT_MS, userBlocks } from "../domain/turns.js";
 import { ManageChats } from "./manage-chats.js";
 import {
   BUDGET_GATE,
@@ -58,7 +58,12 @@ export class SendTurn implements OnApplicationShutdown {
     sessionId: string,
     request: ChatTurnRequest,
   ): Promise<ChatTurnAccepted> {
-    const blocks = userBlocks(request.input);
+    const input = request.input;
+    const names =
+      input.kind === "card_submit"
+        ? await this.store.names(orgId, cardRefs(input.values))
+        : { exams: {}, nodes: {}, blueprints: {} };
+    const blocks = userBlocks(input, names);
     const retried = await this.store.existingTurn(orgId, userId, sessionId, request.clientTurnId);
     if (retried) return accepted(retried);
 

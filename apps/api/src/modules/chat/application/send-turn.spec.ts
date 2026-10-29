@@ -42,6 +42,7 @@ function setup(options: { begin?: BeginTurn; budget?: string; engine?: ChatEngin
       finished.push(turn);
     },
     selectableModels: async () => ["claude-opus-5-5"],
+    names: async () => ({ exams: {}, nodes: {}, blueprints: {} }),
   } as unknown as ChatStore;
   const budget: BudgetGate = { exhausted: async () => options.budget ?? null };
   const engine: ChatEngine = {
@@ -160,7 +161,7 @@ describe("SendTurn", () => {
     expect(asked).toEqual([]);
   });
 
-  it("refuses a chat that is still answering, an exhausted budget, a model the center doesn't offer, and cards", async () => {
+  it("refuses a chat that is still answering, an exhausted budget, and a model the center doesn't offer", async () => {
     const busy = setup({ begin: { kind: "busy" } });
     await expect(busy.send.execute(ORG, TEACHER, CHAT, request)).rejects.toMatchObject({ kind: "conflict" });
     const broke = setup({ budget: "Your monthly AI budget of US$5.00 is used up." });
@@ -169,11 +170,5 @@ describe("SendTurn", () => {
     await expect(send.execute(ORG, TEACHER, CHAT, { ...request, modelId: "gpt-0" })).rejects.toMatchObject({
       kind: "invalid",
     });
-    await expect(
-      send.execute(ORG, TEACHER, CHAT, {
-        ...request,
-        input: { kind: "card_submit", cardId: "c", values: {} },
-      }),
-    ).rejects.toMatchObject({ kind: "invalid" });
   });
 });

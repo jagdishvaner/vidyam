@@ -220,7 +220,24 @@ class ChatBlock4(BaseModel):
     summary: str
 
 
-class ChatBlock6(BaseModel):
+class Action(StrEnum):
+    confirm_spec = "confirm_spec"
+    cancel = "cancel"
+    undo = "undo"
+
+
+class ChatBlock5(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    type: Literal["action"]
+    action: Action
+    target_id: str | None = Field(..., alias="targetId")
+    summary: str
+
+
+class ChatBlock7(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -237,7 +254,7 @@ class Level(StrEnum):
     warning = "warning"
 
 
-class ChatBlock9(BaseModel):
+class ChatBlock10(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -247,7 +264,7 @@ class ChatBlock9(BaseModel):
     text: str
 
 
-class ChatBlock10(BaseModel):
+class ChatBlock11(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -408,12 +425,6 @@ class ChatTurnInput2(BaseModel):
     kind: Literal["card_submit"]
     card_id: str = Field(..., alias="cardId")
     values: dict[str, Any]
-
-
-class Action(StrEnum):
-    confirm_spec = "confirm_spec"
-    cancel = "cancel"
-    undo = "undo"
 
 
 class ChatTurnInput3(BaseModel):
@@ -1871,7 +1882,7 @@ class ChatBlock3(BaseModel):
     fields: list[CardField] = Field(..., min_length=1)
 
 
-class ChatBlock7(BaseModel):
+class ChatBlock8(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -2199,7 +2210,7 @@ class BlueprintImport(BaseModel):
     blueprint: Blueprint
 
 
-class ChatBlock5(BaseModel):
+class ChatBlock6(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -2336,7 +2347,7 @@ class StaffDirectory(BaseModel):
     subjects: list[SubjectRef]
 
 
-class ChatBlock8(BaseModel):
+class ChatBlock9(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         populate_by_name=True,
@@ -2361,6 +2372,7 @@ class ChatBlock(
         | ChatBlock8
         | ChatBlock9
         | ChatBlock10
+        | ChatBlock11
     ]
 ):
     root: (
@@ -2374,6 +2386,7 @@ class ChatBlock(
         | ChatBlock8
         | ChatBlock9
         | ChatBlock10
+        | ChatBlock11
     ) = Field(..., title="ChatBlock")
 
 

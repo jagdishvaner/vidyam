@@ -807,6 +807,39 @@
           "properties": {
             "type": {
               "type": "string",
+              "const": "action"
+            },
+            "action": {
+              "type": "string",
+              "enum": [
+                "confirm_spec",
+                "cancel",
+                "undo"
+              ]
+            },
+            "targetId": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "summary": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "action",
+            "targetId",
+            "summary"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
               "const": "spec_review"
             },
             "spec": {

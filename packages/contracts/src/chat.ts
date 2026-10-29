@@ -100,6 +100,14 @@ export const ChatBlock = contract(
       /** The same answer in words, so a different model can read the transcript after a switch. */
       summary: z.string(),
     }),
+    /** A button the teacher pressed (Confirm, Cancel, Undo), with what it was pressed on. */
+    z.object({
+      type: z.literal("action"),
+      action: z.enum(["confirm_spec", "cancel", "undo"]),
+      targetId: z.string().nullable(),
+      /** The press in words, for the transcript. */
+      summary: z.string(),
+    }),
     z.object({
       type: z.literal("spec_review"),
       spec: TaskSpec,

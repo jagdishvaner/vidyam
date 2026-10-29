@@ -96,10 +96,115 @@ def _tag(call: ModelCall) -> str:
     return json.dumps({"tags": tags}, ensure_ascii=False)
 
 
+_KINDS = [
+    ("revision_sheet", r"revision|quick notes|short notes|पुनरावृत्ति"),
+    ("worksheet", r"worksheet|practice set|\bdpp\b|अभ्यास"),
+    ("notes", r"\bnotes\b|नोट्स"),
+    ("question_paper", r"\bpaper\b|\btest\b|\bmock\b|प्रश्न-?\s?पत्र|पेपर|टेस्ट"),
+]
+_MAKE = r"\b(banao|bana do|banaiye|make|create|generate|prepare)\b|बनाओ|बनाइए|बना दो|तैयार"
+_ASK = r"\?|\b(what|why|how|explain|kya|kyon|kyu|kaise|define)\b|समझाइए|क्या|क्यों|कैसे"
+_AFTER = re.compile(r"\b(?:on|about|chapter)\s+(.+)$", re.IGNORECASE)  # "a paper on motion"
+_BEFORE = re.compile(r"^(.*?)\s+(?:par|pe|पर)\b", re.IGNORECASE)  # "gati par paper", "प्रकाश पर नोट्स"
+_AND = re.compile(r"\s*(?:,|\band\b|\baur\b|और|तथा)\s*", re.IGNORECASE)
+_NOT_A_TOPIC = re.compile(r"\d|easy|hard|medium|आसान|कठिन|hindi|english|हिंदी", re.IGNORECASE)
+
+
+def _topics(text: str) -> list[str]:
+    found = _AFTER.search(text) or _BEFORE.search(text)
+    parts = _AND.split(found.group(1)) if found else []
+    return [part.strip(" .?!।") for part in parts if part.strip(" .?!।") and not _NOT_A_TOPIC.search(part)]
+
+
+def _words(text: str) -> frozenset[str]:
+    return frozenset(re.findall(r"[^\W_]+", text.casefold())) - {
+        "on",
+        "of",
+        "and",
+        "par",
+        "ka",
+        "ki",
+        "ke",
+        "the",
+    }
+
+
+def _spec(call: ModelCall) -> str:
+    """Reads the message the way a careful script would: keywords for the intent and kind, the exam whose name
+    the message shares most words with, and the names after "on" / "par" / "पर" as topics."""
+    text = _last_user_text(call)
+    low = text.casefold()
+    kind = next((kind for kind, pattern in _KINDS if re.search(pattern, low)), None)
+    asks = bool(re.search(_ASK, low))
+    intent = "create" if kind or re.search(_MAKE, low) else "ask" if asks else "chat"
+    # The exam whose name shares most words with the message, both ways (Dice), so a short name doesn't win
+    # on a couple of common words.
+    said = _words(text)
+    exams: list[tuple[float, str]] = []
+    for line in call.variables.get("exams", "").split("\n"):
+        code, *names = (part.strip() for part in line.split("|"))
+        overlap = [2 * len(said & _words(name)) / (len(said) + len(_words(name))) for name in names if name]
+        exams.append((max(overlap, default=0.0), code))
+    exams.sort(reverse=True)
+    exam = (
+        exams[0][1]
+        if exams and exams[0][0] >= 0.3 and (len(exams) < 2 or exams[0][0] > exams[1][0])
+        else None
+    )
+    topics = _topics(text) if intent == "create" else []
+    count = re.search(r"(\d+)\s*(?:questions?|q\b|प्रश्न|sawal|सवाल|mcqs?)", low)
+    minutes = re.search(r"(\d+)\s*(?:min|minutes|मिनट)", low)
+    difficulty = next(
+        (level for level, pattern in [("easy", r"easy|आसान|saral"), ("hard", r"hard|tough|कठिन|kathin"),
+                                      ("medium", r"medium|मध्यम")] if re.search(pattern, low)),
+        None,
+    )  # fmt: skip
+    languages = (
+        ["hi"] if re.search(r"hindi only|only hindi|केवल हिंदी|sirf hindi", low)
+        else ["en"] if re.search(r"english only|only english|केवल अंग्रेज़ी|sirf english", low)
+        else ["hi", "en"] if re.search(r"bilingual|dono|दोनों", low)
+        else []
+    )  # fmt: skip
+    understood: dict[str, object] = {
+        "intent": intent,
+        "kind": kind,
+        "exam_code": exam,
+        "topics": topics,
+        "question_count": int(count.group(1)) if count else None,
+        "question_types": ["mcq_single"] if "mcq" in low else [],
+        "difficulty": difficulty,
+        "languages": languages,
+        "duration_minutes": int(minutes.group(1)) if minutes else None,
+        "sourcing": "fresh_only" if re.search(r"fresh|new questions|नए प्रश्न", low) else None,
+        "title": None,
+        "question": text if intent == "ask" else None,
+    }
+    return json.dumps(understood, ensure_ascii=False)
+
+
+_PASSAGE = re.compile(r'<passage n="(\d+)"[^>]*>\n(.*?)\n</passage>', re.DOTALL)
+_SENTENCE = re.compile(r"(?<=[.?!।])\s+")
+
+
+def _chat_qa(call: ModelCall) -> str:
+    """With passages, answers from the first one and cites it, as the real model is asked to; without, says
+    what the stub is."""
+    passages = [match for segment in call.system for match in _PASSAGE.finditer(segment.text)]
+    if not passages:
+        return _generic(call)
+    number, body = passages[0].group(1), passages[0].group(2)
+    lines = [line for line in body.split("\n") if line.strip()]
+    text = " ".join(lines[1:] if len(lines) > 1 else lines)
+    answer = " ".join(_SENTENCE.split(" ".join(text.split()))[:2])
+    return f"[Stub answer from your material, until an AI key is added] {answer} [{number}]"
+
+
 RESPONDERS: dict[str, Responder] = {
     "chat_title": _chat_title,
+    "chat_qa": _chat_qa,
     "ocr_text": _ocr,
     "segment": _segment,
+    "spec": _spec,
     "tag": _tag,
 }
 

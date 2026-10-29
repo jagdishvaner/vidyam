@@ -11,6 +11,8 @@ import type {
   DraftSpec,
 } from "@vidyam/contracts";
 
+import type { CardNames } from "../domain/turns.js";
+
 /** A turn as stored; every read is limited to the signed-in teacher's own chats. */
 export interface TurnRecord {
   id: string;
@@ -67,6 +69,11 @@ export interface ChatStore {
   ): Promise<ChatSessionSummary | null>;
   /** Models teachers may pick, as the center allows them. */
   selectableModels(orgId: string): Promise<string[]>;
+  /** English names of exams (by code), syllabus nodes and paper patterns (by id) a card's answer refers to. */
+  names(
+    orgId: string,
+    refs: { examCodes: string[]; nodeIds: string[]; blueprintIds: string[] },
+  ): Promise<CardNames>;
 
   /** The turn already made for this clientTurnId, if any (a retried request). */
   existingTurn(

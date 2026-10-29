@@ -12,7 +12,7 @@ from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, sta
 from fastapi.responses import StreamingResponse
 
 from vidyam_ai.application.backlogs import BacklogKind, Backlogs
-from vidyam_ai.application.chat import AnswerTurn, TurnRef, error
+from vidyam_ai.application.chat import ChatAgent, TurnRef, error
 from vidyam_ai.application.health import CheckHealth
 from vidyam_ai.application.providers import provider_status
 from vidyam_ai.config import Settings, get_settings
@@ -28,11 +28,12 @@ from vidyam_ai.generated.contracts import (
 )
 from vidyam_ai.generated.contracts import BacklogKind as BacklogKindContract
 from vidyam_ai.infrastructure.db.backlogs import SqlBacklogStore
-from vidyam_ai.infrastructure.db.chat import SqlChatTranscripts
+from vidyam_ai.infrastructure.db.chat import SqlChatContext
 from vidyam_ai.infrastructure.db.sources import SqlSources
 from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
 from vidyam_ai.infrastructure.llm import create_llm_gateway
 from vidyam_ai.infrastructure.resources import Resources
+from vidyam_ai.infrastructure.retrieval import create_retrieve
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
 
 
@@ -52,7 +53,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             syllabus,
             S3PageImages(resources.s3, settings.bucket("derived")),
         )
-        app.state.answer_turn = AnswerTurn(SqlChatTranscripts(resources.engine), gateway)
+        search = create_retrieve(settings, resources.qdrant, resources.http, resources.cache_redis)
+        app.state.chat_agent = ChatAgent(SqlChatContext(resources.engine), gateway, search)
         try:
             yield
         finally:
@@ -103,11 +105,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     async def chat_turn(request: Request, turn: ChatEngineTurn) -> StreamingResponse:
         """Answers a chat turn the API has recorded, as ChatEngineEvent lines (NDJSON) ending with `done` or
         `error`. Reads the chat; the API stores the answer."""
-        answer: AnswerTurn = request.app.state.answer_turn
+        agent: ChatAgent = request.app.state.chat_agent
         ref = TurnRef(
             turn.org_id, turn.user_id, turn.session_id, turn.turn_id, turn.user_message_id, turn.model_id
         )
-        return StreamingResponse(_ndjson(answer.execute(ref)), media_type="application/x-ndjson")
+        return StreamingResponse(_ndjson(agent.execute(ref)), media_type="application/x-ndjson")
 
     return app
 
@@ -126,4 +128,6 @@ async def _ndjson(events: AsyncIterator[dict[str, object]]) -> AsyncIterator[str
 
 
 def _line(event: dict[str, object]) -> str:
-    return json.dumps(ChatEngineEvent.model_validate(event).model_dump(by_alias=True, mode="json")) + "\n"
+    # Only the fields the event has: a field left out stays absent, not null, as the API's contract reads it.
+    checked = ChatEngineEvent.model_validate(event)
+    return json.dumps(checked.model_dump(by_alias=True, mode="json", exclude_unset=True)) + "\n"
