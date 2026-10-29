@@ -181,6 +181,10 @@ class BacklogRun(BaseModel):
     started_at: AwareDatetime = Field(..., alias="startedAt")
 
 
+class Difficulty(RootModel[int]):
+    root: int = Field(..., ge=1, le=5)
+
+
 class CardFieldKey(StrEnum):
     kind = "kind"
     exam = "exam"
@@ -589,6 +593,33 @@ class DifficultyMix(BaseModel):
     hard: float = Field(..., ge=0.0, le=1.0)
 
 
+class DocumentRestoreRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    base_version: int = Field(..., alias="baseVersion", gt=0, le=9007199254740991)
+    version: int = Field(..., gt=0, le=9007199254740991)
+
+
+class AuthorKind(StrEnum):
+    user = "user"
+    agent = "agent"
+    system = "system"
+
+
+class DocumentVersionSummary(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    version: int = Field(..., gt=0, le=9007199254740991)
+    author_kind: AuthorKind = Field(..., alias="authorKind")
+    author_name: str | None = Field(..., alias="authorName")
+    changes: list[str]
+    created_at: AwareDatetime = Field(..., alias="createdAt")
+
+
 class DurationMinutes(RootModel[int]):
     root: int = Field(..., gt=0, le=9007199254740991)
 
@@ -644,6 +675,15 @@ class EditOp7(BaseModel):
     )
     op: Literal["set_title"]
     title: str = Field(..., min_length=1)
+
+
+class EditOp10(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    op: Literal["delete_sections"]
+    node_ids: list[UUID] = Field(..., alias="nodeIds", min_length=1)
 
 
 class Effort(StrEnum):
@@ -969,6 +1009,7 @@ class NotesSectionState(StrEnum):
     verified = "verified"
     flagged = "flagged"
     insufficient_evidence = "insufficient_evidence"
+    edited = "edited"
 
 
 class Kind(StrEnum):
@@ -1201,10 +1242,6 @@ class ProviderStatus(BaseModel):
     endpoint: str | None
 
 
-class Difficulty(RootModel[int]):
-    root: int = Field(..., ge=1, le=5)
-
-
 class Marks(RootModel[float]):
     root: float = Field(..., gt=0.0)
 
@@ -1226,6 +1263,7 @@ class QuestionOrigin(StrEnum):
     imported = "imported"
     generated = "generated"
     pool = "pool"
+    teacher = "teacher"
 
 
 class QuestionStatus(StrEnum):
@@ -1299,12 +1337,6 @@ class RunBacklogResult(BaseModel):
     succeeded: int = Field(..., ge=0, le=9007199254740991)
     failed: int = Field(..., ge=0, le=9007199254740991)
     cost_usd: float = Field(..., alias="costUsd", ge=0.0)
-
-
-class AuthorKind(StrEnum):
-    user = "user"
-    agent = "agent"
-    system = "system"
 
 
 class SaveDocumentVersionInput(BaseModel):
@@ -1421,6 +1453,7 @@ class SlotState(StrEnum):
     verified = "verified"
     flagged = "flagged"
     insufficient_evidence = "insufficient_evidence"
+    edited = "edited"
 
 
 class SourceKind(StrEnum):
@@ -2124,6 +2157,18 @@ class CurrentUser(BaseModel):
     org_role: OrgRole | None = Field(..., alias="orgRole")
 
 
+class DocumentSummary(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    kind: TaskKind
+    title: str
+    current_version: int = Field(..., alias="currentVersion", ge=0, le=9007199254740991)
+    updated_at: AwareDatetime = Field(..., alias="updatedAt")
+
+
 class EditOp6(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2132,6 +2177,16 @@ class EditOp6(BaseModel):
     op: Literal["set_instructions"]
     section_index: int = Field(..., alias="sectionIndex", ge=0, le=9007199254740991)
     instructions: LocalizedText
+
+
+class EditOp9(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    op: Literal["edit_section"]
+    node_id: UUID = Field(..., alias="nodeId")
+    body: LocalizedText
 
 
 class ExamPaper(BaseModel):
@@ -2393,6 +2448,22 @@ class BlueprintImport(BaseModel):
     blueprint: Blueprint
 
 
+class CanvasQuestion(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    qtype: QuestionType
+    origin: QuestionOrigin
+    status: QuestionStatus
+    content: QuestionContent
+    answer: Answer
+    difficulty: Difficulty | None
+    verification: dict[str, Any]
+    sources: list[CitationRef]
+
+
 class ChatBlock6(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2437,12 +2508,43 @@ class EditOp3(BaseModel):
     slots: list[PaperSlot] = Field(..., min_length=1)
 
 
-class EditOp(
-    RootModel[EditOp1 | EditOp2 | EditOp3 | EditOp4 | EditOp5 | EditOp6 | EditOp7]
-):
-    root: EditOp1 | EditOp2 | EditOp3 | EditOp4 | EditOp5 | EditOp6 | EditOp7 = Field(
-        ..., title="EditOp"
+class EditOp8(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
     )
+    op: Literal["edit_item"]
+    slot_id: str = Field(..., alias="slotId")
+    content: QuestionContent
+    answer: Answer
+
+
+class EditOp(
+    RootModel[
+        EditOp1
+        | EditOp2
+        | EditOp3
+        | EditOp4
+        | EditOp5
+        | EditOp6
+        | EditOp7
+        | EditOp8
+        | EditOp9
+        | EditOp10
+    ]
+):
+    root: (
+        EditOp1
+        | EditOp2
+        | EditOp3
+        | EditOp4
+        | EditOp5
+        | EditOp6
+        | EditOp7
+        | EditOp8
+        | EditOp9
+        | EditOp10
+    ) = Field(..., title="EditOp")
 
 
 class ImportPaperPatternsRequest(BaseModel):
@@ -2693,6 +2795,22 @@ class ChatStreamEvent(
     ) = Field(..., title="ChatStreamEvent")
 
 
+class DocumentContent(RootModel[PaperDocument | NotesDocument]):
+    root: PaperDocument | NotesDocument = Field(..., title="DocumentContent")
+
+
+class DocumentDetail(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    document: DocumentSummary
+    content: DocumentContent
+    questions: dict[str, CanvasQuestion]
+    node_names: dict[str, LocalizedText] = Field(..., alias="nodeNames")
+    generation: GenerationProgress | None
+
+
 class DocumentEdit(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2701,6 +2819,24 @@ class DocumentEdit(BaseModel):
     document_id: UUID = Field(..., alias="documentId")
     base_version: int = Field(..., alias="baseVersion", ge=0, le=9007199254740991)
     ops: list[EditOp] = Field(..., min_length=1)
+
+
+class DocumentEditRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    base_version: int = Field(..., alias="baseVersion", gt=0, le=9007199254740991)
+    ops: list[EditOp] = Field(..., max_length=100, min_length=1)
+
+
+class DocumentVersion(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    version: int = Field(..., gt=0, le=9007199254740991)
+    content: DocumentContent
 
 
 class AppendChatBlocksInput(BaseModel):

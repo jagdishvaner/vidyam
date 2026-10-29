@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { Uuid } from "./common.js";
-import { QuestionType } from "./question.js";
+import { Answer, QuestionContent, QuestionType } from "./question.js";
 import { contract } from "./registry.js";
 import { DifficultyMix, LocalizedText, PaperSection, PaperSpec } from "./tasks.js";
 
@@ -20,7 +20,7 @@ export type Blueprint = z.infer<typeof Blueprint>;
 /** Where one position in a paper stands while it is being filled. */
 export const SlotState = contract(
   "SlotState",
-  z.enum(["pending", "bank", "generated", "verified", "flagged", "insufficient_evidence"]),
+  z.enum(["pending", "bank", "generated", "verified", "flagged", "insufficient_evidence", "edited"]),
 );
 export type SlotState = z.infer<typeof SlotState>;
 
@@ -87,6 +87,11 @@ export const EditOp = contract(
       instructions: LocalizedText,
     }),
     z.object({ op: z.literal("set_title"), title: z.string().min(1) }),
+    /** The teacher's own wording of a question: saved as a new question in the bank, put in the slot. */
+    z.object({ op: z.literal("edit_item"), slotId: z.string(), content: QuestionContent, answer: Answer }),
+    /** Notes: a section's text in the teacher's words. */
+    z.object({ op: z.literal("edit_section"), nodeId: Uuid, body: LocalizedText }),
+    z.object({ op: z.literal("delete_sections"), nodeIds: z.array(Uuid).min(1) }),
   ]),
 );
 export type EditOp = z.infer<typeof EditOp>;

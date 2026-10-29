@@ -708,6 +708,86 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/documents/{documentId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DocumentsController_detail"];
+        put?: never;
+        post?: never;
+        delete: operations["DocumentsController_remove"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/documents/{documentId}/versions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DocumentsController_versions"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/documents/{documentId}/versions/{version}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DocumentsController_version"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/documents/{documentId}/edits": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["DocumentsController_edit"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/documents/{documentId}/restore": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["DocumentsController_restore"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -2907,7 +2987,7 @@ export interface operations {
                                         difficulty: number;
                                         marks: number;
                                         /** @enum {string} */
-                                        state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence";
+                                        state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence" | "edited";
                                         /** Format: uuid */
                                         questionId: string | null;
                                         /** @default [] */
@@ -2934,6 +3014,58 @@ export interface operations {
                                     /** @enum {string} */
                                     op: "set_title";
                                     title: string;
+                                } | {
+                                    /** @enum {string} */
+                                    op: "edit_item";
+                                    slotId: string;
+                                    content: {
+                                        hi: {
+                                            stem: string;
+                                            options: {
+                                                key: string;
+                                                text: string;
+                                            }[];
+                                            solution: string | null;
+                                        } | null;
+                                        en: {
+                                            stem: string;
+                                            options: {
+                                                key: string;
+                                                text: string;
+                                            }[];
+                                            solution: string | null;
+                                        } | null;
+                                    };
+                                    answer: {
+                                        /** @enum {string} */
+                                        kind: "options";
+                                        keys: string[];
+                                    } | {
+                                        /** @enum {string} */
+                                        kind: "numeric";
+                                        value: number;
+                                        tolerance: number;
+                                    } | {
+                                        /** @enum {string} */
+                                        kind: "text";
+                                        modelAnswer: string;
+                                    } | {
+                                        /** @enum {string} */
+                                        kind: "unknown";
+                                    };
+                                } | {
+                                    /** @enum {string} */
+                                    op: "edit_section";
+                                    /** Format: uuid */
+                                    nodeId: string;
+                                    body: {
+                                        en?: string;
+                                        hi?: string;
+                                    };
+                                } | {
+                                    /** @enum {string} */
+                                    op: "delete_sections";
+                                    nodeIds: string[];
                                 })[];
                             } | {
                                 /** @enum {string} */
@@ -3101,6 +3233,993 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    DocumentsController_detail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        document: {
+                            /** Format: uuid */
+                            id: string;
+                            /** @enum {string} */
+                            kind: "question_paper" | "worksheet" | "notes" | "revision_sheet";
+                            title: string;
+                            currentVersion: number;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        content: {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "question_paper" | "worksheet";
+                                title: string;
+                                examCode: string | null;
+                                /** Format: uuid */
+                                blueprintId: string | null;
+                                taxonomyNodeIds: string[];
+                                sections: {
+                                    name: {
+                                        en?: string;
+                                        hi?: string;
+                                    };
+                                    /** @enum {string} */
+                                    qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                    count: number;
+                                    marksEach: number;
+                                    /** @default 0 */
+                                    negativeMarks: number;
+                                    /** @default null */
+                                    attemptAny: number | null;
+                                    difficultyMix: {
+                                        easy: number;
+                                        medium: number;
+                                        hard: number;
+                                    };
+                                    /** @default [] */
+                                    scope: string[];
+                                }[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                layout: "hindi_then_english" | "side_by_side" | "single_language";
+                                durationMinutes: number | null;
+                                /** @enum {string} */
+                                sourcing: "bank_first" | "fresh_only" | "bank_only";
+                                /** Format: uuid */
+                                studentBatchId: string | null;
+                                /** @default [] */
+                                setCodes: string[];
+                            };
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                instructions: {
+                                    en?: string;
+                                    hi?: string;
+                                } | null;
+                                slotIds: string[];
+                            }[];
+                            slots: {
+                                slotId: string;
+                                sectionIndex: number;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** Format: uuid */
+                                taxonomyNodeId: string;
+                                difficulty: number;
+                                marks: number;
+                                /** @enum {string} */
+                                state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** Format: uuid */
+                                questionId: string | null;
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                            sets: {
+                                code: string;
+                                slotOrder: string[];
+                                optionOrder: {
+                                    [key: string]: string[];
+                                };
+                            }[];
+                        } | {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "notes" | "revision_sheet";
+                                title: string;
+                                examCode: string | null;
+                                taxonomyNodeIds: string[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                depth: "brief" | "standard" | "detailed";
+                                includeExamples: boolean;
+                                includePractice: boolean;
+                            };
+                            sections: {
+                                /** Format: uuid */
+                                nodeId: string;
+                                title: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                body: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @default [] */
+                                citations: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                                /** @enum {string} */
+                                state: "pending" | "written" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                        };
+                        questions: {
+                            [key: string]: {
+                                /** Format: uuid */
+                                id: string;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** @enum {string} */
+                                origin: "imported" | "generated" | "pool" | "teacher";
+                                /** @enum {string} */
+                                status: "draft" | "verified" | "flagged" | "approved" | "published" | "retired";
+                                content: {
+                                    hi: {
+                                        stem: string;
+                                        options: {
+                                            key: string;
+                                            text: string;
+                                        }[];
+                                        solution: string | null;
+                                    } | null;
+                                    en: {
+                                        stem: string;
+                                        options: {
+                                            key: string;
+                                            text: string;
+                                        }[];
+                                        solution: string | null;
+                                    } | null;
+                                };
+                                answer: {
+                                    /** @enum {string} */
+                                    kind: "options";
+                                    keys: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "numeric";
+                                    value: number;
+                                    tolerance: number;
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "text";
+                                    modelAnswer: string;
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "unknown";
+                                };
+                                difficulty: number | null;
+                                verification: {
+                                    [key: string]: unknown;
+                                };
+                                sources: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                            };
+                        };
+                        nodeNames: {
+                            [key: string]: {
+                                en?: string;
+                                hi?: string;
+                            };
+                        };
+                        generation: {
+                            /** Format: uuid */
+                            runId: string;
+                            /** Format: uuid */
+                            documentId: string;
+                            /** @enum {string} */
+                            status: "planning" | "running" | "done" | "failed" | "cancelled";
+                            done: number;
+                            total: number;
+                        } | null;
+                    };
+                };
+            };
+        };
+    };
+    DocumentsController_remove: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    DocumentsController_versions: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        version: number;
+                        /** @enum {string} */
+                        authorKind: "user" | "agent" | "system";
+                        authorName: string | null;
+                        changes: string[];
+                        /** Format: date-time */
+                        createdAt: string;
+                    }[];
+                };
+            };
+        };
+    };
+    DocumentsController_version: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+                version: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        version: number;
+                        content: {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "question_paper" | "worksheet";
+                                title: string;
+                                examCode: string | null;
+                                /** Format: uuid */
+                                blueprintId: string | null;
+                                taxonomyNodeIds: string[];
+                                sections: {
+                                    name: {
+                                        en?: string;
+                                        hi?: string;
+                                    };
+                                    /** @enum {string} */
+                                    qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                    count: number;
+                                    marksEach: number;
+                                    /** @default 0 */
+                                    negativeMarks: number;
+                                    /** @default null */
+                                    attemptAny: number | null;
+                                    difficultyMix: {
+                                        easy: number;
+                                        medium: number;
+                                        hard: number;
+                                    };
+                                    /** @default [] */
+                                    scope: string[];
+                                }[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                layout: "hindi_then_english" | "side_by_side" | "single_language";
+                                durationMinutes: number | null;
+                                /** @enum {string} */
+                                sourcing: "bank_first" | "fresh_only" | "bank_only";
+                                /** Format: uuid */
+                                studentBatchId: string | null;
+                                /** @default [] */
+                                setCodes: string[];
+                            };
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                instructions: {
+                                    en?: string;
+                                    hi?: string;
+                                } | null;
+                                slotIds: string[];
+                            }[];
+                            slots: {
+                                slotId: string;
+                                sectionIndex: number;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** Format: uuid */
+                                taxonomyNodeId: string;
+                                difficulty: number;
+                                marks: number;
+                                /** @enum {string} */
+                                state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** Format: uuid */
+                                questionId: string | null;
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                            sets: {
+                                code: string;
+                                slotOrder: string[];
+                                optionOrder: {
+                                    [key: string]: string[];
+                                };
+                            }[];
+                        } | {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "notes" | "revision_sheet";
+                                title: string;
+                                examCode: string | null;
+                                taxonomyNodeIds: string[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                depth: "brief" | "standard" | "detailed";
+                                includeExamples: boolean;
+                                includePractice: boolean;
+                            };
+                            sections: {
+                                /** Format: uuid */
+                                nodeId: string;
+                                title: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                body: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @default [] */
+                                citations: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                                /** @enum {string} */
+                                state: "pending" | "written" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                        };
+                    };
+                };
+            };
+        };
+    };
+    DocumentsController_edit: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    baseVersion: number;
+                    ops: ({
+                        /** @enum {string} */
+                        op: "replace_item";
+                        slotId: string;
+                        /** Format: uuid */
+                        questionId: string;
+                    } | {
+                        /** @enum {string} */
+                        op: "delete_items";
+                        slotIds: string[];
+                    } | {
+                        /** @enum {string} */
+                        op: "add_items";
+                        afterSlotId: string | null;
+                        slots: {
+                            slotId: string;
+                            sectionIndex: number;
+                            /** @enum {string} */
+                            qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                            /** Format: uuid */
+                            taxonomyNodeId: string;
+                            difficulty: number;
+                            marks: number;
+                            /** @enum {string} */
+                            state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                            /** Format: uuid */
+                            questionId: string | null;
+                            /** @default [] */
+                            flags?: string[];
+                        }[];
+                    } | {
+                        /** @enum {string} */
+                        op: "reorder";
+                        slotIds: string[];
+                    } | {
+                        /** @enum {string} */
+                        op: "set_marks";
+                        slotId: string;
+                        marks: number;
+                    } | {
+                        /** @enum {string} */
+                        op: "set_instructions";
+                        sectionIndex: number;
+                        instructions: {
+                            en?: string;
+                            hi?: string;
+                        };
+                    } | {
+                        /** @enum {string} */
+                        op: "set_title";
+                        title: string;
+                    } | {
+                        /** @enum {string} */
+                        op: "edit_item";
+                        slotId: string;
+                        content: {
+                            hi: {
+                                stem: string;
+                                options: {
+                                    key: string;
+                                    text: string;
+                                }[];
+                                solution: string | null;
+                            } | null;
+                            en: {
+                                stem: string;
+                                options: {
+                                    key: string;
+                                    text: string;
+                                }[];
+                                solution: string | null;
+                            } | null;
+                        };
+                        answer: {
+                            /** @enum {string} */
+                            kind: "options";
+                            keys: string[];
+                        } | {
+                            /** @enum {string} */
+                            kind: "numeric";
+                            value: number;
+                            tolerance: number;
+                        } | {
+                            /** @enum {string} */
+                            kind: "text";
+                            modelAnswer: string;
+                        } | {
+                            /** @enum {string} */
+                            kind: "unknown";
+                        };
+                    } | {
+                        /** @enum {string} */
+                        op: "edit_section";
+                        /** Format: uuid */
+                        nodeId: string;
+                        body: {
+                            en?: string;
+                            hi?: string;
+                        };
+                    } | {
+                        /** @enum {string} */
+                        op: "delete_sections";
+                        nodeIds: string[];
+                    })[];
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        document: {
+                            /** Format: uuid */
+                            id: string;
+                            /** @enum {string} */
+                            kind: "question_paper" | "worksheet" | "notes" | "revision_sheet";
+                            title: string;
+                            currentVersion: number;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        content: {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "question_paper" | "worksheet";
+                                title: string;
+                                examCode: string | null;
+                                /** Format: uuid */
+                                blueprintId: string | null;
+                                taxonomyNodeIds: string[];
+                                sections: {
+                                    name: {
+                                        en?: string;
+                                        hi?: string;
+                                    };
+                                    /** @enum {string} */
+                                    qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                    count: number;
+                                    marksEach: number;
+                                    /** @default 0 */
+                                    negativeMarks: number;
+                                    /** @default null */
+                                    attemptAny: number | null;
+                                    difficultyMix: {
+                                        easy: number;
+                                        medium: number;
+                                        hard: number;
+                                    };
+                                    /** @default [] */
+                                    scope: string[];
+                                }[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                layout: "hindi_then_english" | "side_by_side" | "single_language";
+                                durationMinutes: number | null;
+                                /** @enum {string} */
+                                sourcing: "bank_first" | "fresh_only" | "bank_only";
+                                /** Format: uuid */
+                                studentBatchId: string | null;
+                                /** @default [] */
+                                setCodes: string[];
+                            };
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                instructions: {
+                                    en?: string;
+                                    hi?: string;
+                                } | null;
+                                slotIds: string[];
+                            }[];
+                            slots: {
+                                slotId: string;
+                                sectionIndex: number;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** Format: uuid */
+                                taxonomyNodeId: string;
+                                difficulty: number;
+                                marks: number;
+                                /** @enum {string} */
+                                state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** Format: uuid */
+                                questionId: string | null;
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                            sets: {
+                                code: string;
+                                slotOrder: string[];
+                                optionOrder: {
+                                    [key: string]: string[];
+                                };
+                            }[];
+                        } | {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "notes" | "revision_sheet";
+                                title: string;
+                                examCode: string | null;
+                                taxonomyNodeIds: string[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                depth: "brief" | "standard" | "detailed";
+                                includeExamples: boolean;
+                                includePractice: boolean;
+                            };
+                            sections: {
+                                /** Format: uuid */
+                                nodeId: string;
+                                title: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                body: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @default [] */
+                                citations: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                                /** @enum {string} */
+                                state: "pending" | "written" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                        };
+                        questions: {
+                            [key: string]: {
+                                /** Format: uuid */
+                                id: string;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** @enum {string} */
+                                origin: "imported" | "generated" | "pool" | "teacher";
+                                /** @enum {string} */
+                                status: "draft" | "verified" | "flagged" | "approved" | "published" | "retired";
+                                content: {
+                                    hi: {
+                                        stem: string;
+                                        options: {
+                                            key: string;
+                                            text: string;
+                                        }[];
+                                        solution: string | null;
+                                    } | null;
+                                    en: {
+                                        stem: string;
+                                        options: {
+                                            key: string;
+                                            text: string;
+                                        }[];
+                                        solution: string | null;
+                                    } | null;
+                                };
+                                answer: {
+                                    /** @enum {string} */
+                                    kind: "options";
+                                    keys: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "numeric";
+                                    value: number;
+                                    tolerance: number;
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "text";
+                                    modelAnswer: string;
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "unknown";
+                                };
+                                difficulty: number | null;
+                                verification: {
+                                    [key: string]: unknown;
+                                };
+                                sources: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                            };
+                        };
+                        nodeNames: {
+                            [key: string]: {
+                                en?: string;
+                                hi?: string;
+                            };
+                        };
+                        generation: {
+                            /** Format: uuid */
+                            runId: string;
+                            /** Format: uuid */
+                            documentId: string;
+                            /** @enum {string} */
+                            status: "planning" | "running" | "done" | "failed" | "cancelled";
+                            done: number;
+                            total: number;
+                        } | null;
+                    };
+                };
+            };
+        };
+    };
+    DocumentsController_restore: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    baseVersion: number;
+                    version: number;
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        document: {
+                            /** Format: uuid */
+                            id: string;
+                            /** @enum {string} */
+                            kind: "question_paper" | "worksheet" | "notes" | "revision_sheet";
+                            title: string;
+                            currentVersion: number;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        content: {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "question_paper" | "worksheet";
+                                title: string;
+                                examCode: string | null;
+                                /** Format: uuid */
+                                blueprintId: string | null;
+                                taxonomyNodeIds: string[];
+                                sections: {
+                                    name: {
+                                        en?: string;
+                                        hi?: string;
+                                    };
+                                    /** @enum {string} */
+                                    qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                    count: number;
+                                    marksEach: number;
+                                    /** @default 0 */
+                                    negativeMarks: number;
+                                    /** @default null */
+                                    attemptAny: number | null;
+                                    difficultyMix: {
+                                        easy: number;
+                                        medium: number;
+                                        hard: number;
+                                    };
+                                    /** @default [] */
+                                    scope: string[];
+                                }[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                layout: "hindi_then_english" | "side_by_side" | "single_language";
+                                durationMinutes: number | null;
+                                /** @enum {string} */
+                                sourcing: "bank_first" | "fresh_only" | "bank_only";
+                                /** Format: uuid */
+                                studentBatchId: string | null;
+                                /** @default [] */
+                                setCodes: string[];
+                            };
+                            sections: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                instructions: {
+                                    en?: string;
+                                    hi?: string;
+                                } | null;
+                                slotIds: string[];
+                            }[];
+                            slots: {
+                                slotId: string;
+                                sectionIndex: number;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** Format: uuid */
+                                taxonomyNodeId: string;
+                                difficulty: number;
+                                marks: number;
+                                /** @enum {string} */
+                                state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** Format: uuid */
+                                questionId: string | null;
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                            sets: {
+                                code: string;
+                                slotOrder: string[];
+                                optionOrder: {
+                                    [key: string]: string[];
+                                };
+                            }[];
+                        } | {
+                            spec: {
+                                /** @enum {string} */
+                                kind: "notes" | "revision_sheet";
+                                title: string;
+                                examCode: string | null;
+                                taxonomyNodeIds: string[];
+                                languages: ("hi" | "en")[];
+                                /** @enum {string} */
+                                depth: "brief" | "standard" | "detailed";
+                                includeExamples: boolean;
+                                includePractice: boolean;
+                            };
+                            sections: {
+                                /** Format: uuid */
+                                nodeId: string;
+                                title: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                body: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @default [] */
+                                citations: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                                /** @enum {string} */
+                                state: "pending" | "written" | "verified" | "flagged" | "insufficient_evidence" | "edited";
+                                /** @default [] */
+                                flags: string[];
+                            }[];
+                        };
+                        questions: {
+                            [key: string]: {
+                                /** Format: uuid */
+                                id: string;
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                /** @enum {string} */
+                                origin: "imported" | "generated" | "pool" | "teacher";
+                                /** @enum {string} */
+                                status: "draft" | "verified" | "flagged" | "approved" | "published" | "retired";
+                                content: {
+                                    hi: {
+                                        stem: string;
+                                        options: {
+                                            key: string;
+                                            text: string;
+                                        }[];
+                                        solution: string | null;
+                                    } | null;
+                                    en: {
+                                        stem: string;
+                                        options: {
+                                            key: string;
+                                            text: string;
+                                        }[];
+                                        solution: string | null;
+                                    } | null;
+                                };
+                                answer: {
+                                    /** @enum {string} */
+                                    kind: "options";
+                                    keys: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "numeric";
+                                    value: number;
+                                    tolerance: number;
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "text";
+                                    modelAnswer: string;
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "unknown";
+                                };
+                                difficulty: number | null;
+                                verification: {
+                                    [key: string]: unknown;
+                                };
+                                sources: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                            };
+                        };
+                        nodeNames: {
+                            [key: string]: {
+                                en?: string;
+                                hi?: string;
+                            };
+                        };
+                        generation: {
+                            /** Format: uuid */
+                            runId: string;
+                            /** Format: uuid */
+                            documentId: string;
+                            /** @enum {string} */
+                            status: "planning" | "running" | "done" | "failed" | "cancelled";
+                            done: number;
+                            total: number;
+                        } | null;
+                    };
+                };
             };
         };
     };

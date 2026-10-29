@@ -3,6 +3,7 @@
 import type { ChatBlock, GenerationProgress } from "@vidyam/contracts";
 import { Alert, AlertDescription } from "@vidyam/ui/components/alert";
 import { Badge } from "@vidyam/ui/components/badge";
+import { Button } from "@vidyam/ui/components/button";
 import { AlertTriangle, BookOpen, FileText, Info, Loader2, Undo2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { createContext, useContext } from "react";
@@ -14,8 +15,11 @@ import type { ChatInput } from "./conversation";
 
 type Block<T extends ChatBlock["type"]> = Extract<ChatBlock, { type: T }>;
 
-/** The chat's latest generation run, for the document it is making to show how far it has got. */
-export const GenerationContext = createContext<GenerationProgress | null>(null);
+/** The chat's latest generation run (how far its document has got), and opening a document on the canvas. */
+export const DocumentContext = createContext<{
+  generation: GenerationProgress | null;
+  open: (documentId: string) => void;
+}>({ generation: null, open: () => undefined });
 
 /**
  * One block of an assistant message (ADR 0015). Cards and the review card can only be answered while they are
@@ -122,7 +126,7 @@ function Progress({ block }: { block: Block<"progress"> }) {
  */
 function DocumentRef({ block }: { block: Block<"document_ref"> }) {
   const t = useTranslations("chat.document");
-  const generation = useContext(GenerationContext);
+  const { generation, open } = useContext(DocumentContext);
   const run = block.version === 0 && generation?.documentId === block.documentId ? generation : null;
   const making = run && (run.status === "planning" || run.status === "running");
   return (
@@ -133,6 +137,9 @@ function DocumentRef({ block }: { block: Block<"document_ref"> }) {
         <Badge variant={run?.status === "failed" ? "destructive" : "secondary"} className="ml-auto">
           {run ? t(run.status) : t("version", { version: block.version })}
         </Badge>
+        <Button variant="outline" size="sm" onClick={() => open(block.documentId)}>
+          {t("open")}
+        </Button>
       </div>
       {making && <Bar label={t(run.total ? "progress" : "planning")} done={run.done} total={run.total} />}
     </div>

@@ -21,7 +21,7 @@ import {
   useSession,
   useUpdateSession,
 } from "./api";
-import { AssistantBlock, GenerationContext, UserBlocks } from "./blocks";
+import { AssistantBlock, DocumentContext, UserBlocks } from "./blocks";
 
 export type ChatInput = ChatTurnInput;
 
@@ -44,9 +44,14 @@ interface Streaming {
 export function Conversation({
   sessionId,
   onCreated,
+  onDocument,
+  onOpenDocument,
 }: {
   sessionId: string | null;
   onCreated: (id: string) => void;
+  /** The chat's latest document, once it has one. */
+  onDocument: (documentId: string | null) => void;
+  onOpenDocument: (documentId: string) => void;
 }) {
   const t = useTranslations("chat");
   const client = useQueryClient();
@@ -95,6 +100,9 @@ export function Conversation({
       },
     );
   }
+
+  const documentId = detail.data?.session.documentId ?? null;
+  useEffect(() => onDocument(documentId), [documentId, onDocument]);
 
   // Opening a chat whose answer is still coming: follow it.
   const active = detail.data?.activeTurnId ?? null;
@@ -168,7 +176,9 @@ export function Conversation({
           ) : messages.length === 0 && !streaming ? (
             <Welcome send={send} />
           ) : (
-            <GenerationContext.Provider value={detail.data?.generation ?? null}>
+            <DocumentContext.Provider
+              value={{ generation: detail.data?.generation ?? null, open: onOpenDocument }}
+            >
               {messages.map((message) => (
                 <Message
                   key={message.id}
@@ -177,7 +187,7 @@ export function Conversation({
                   send={send}
                 />
               ))}
-            </GenerationContext.Provider>
+            </DocumentContext.Provider>
           )}
           {streaming && <StreamingMessage streaming={streaming} />}
           <div ref={end} />

@@ -671,6 +671,68 @@
       ],
       "additionalProperties": false
     },
+    "CanvasQuestion": {
+      "title": "CanvasQuestion",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "qtype": {
+          "$ref": "#/$defs/QuestionType"
+        },
+        "origin": {
+          "$ref": "#/$defs/QuestionOrigin"
+        },
+        "status": {
+          "$ref": "#/$defs/QuestionStatus"
+        },
+        "content": {
+          "$ref": "#/$defs/QuestionContent"
+        },
+        "answer": {
+          "$ref": "#/$defs/Answer"
+        },
+        "difficulty": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 5
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verification": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/CitationRef"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "qtype",
+        "origin",
+        "status",
+        "content",
+        "answer",
+        "difficulty",
+        "verification",
+        "sources"
+      ],
+      "additionalProperties": false
+    },
     "CardField": {
       "title": "CardField",
       "type": "object",
@@ -2215,6 +2277,65 @@
       ],
       "additionalProperties": false
     },
+    "DocumentContent": {
+      "title": "DocumentContent",
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PaperDocument"
+        },
+        {
+          "$ref": "#/$defs/NotesDocument"
+        }
+      ]
+    },
+    "DocumentDetail": {
+      "title": "DocumentDetail",
+      "type": "object",
+      "properties": {
+        "document": {
+          "$ref": "#/$defs/DocumentSummary"
+        },
+        "content": {
+          "$ref": "#/$defs/DocumentContent"
+        },
+        "questions": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/CanvasQuestion"
+          }
+        },
+        "nodeNames": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/LocalizedText"
+          }
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GenerationProgress"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "document",
+        "content",
+        "questions",
+        "nodeNames",
+        "generation"
+      ],
+      "additionalProperties": false
+    },
     "DocumentEdit": {
       "title": "DocumentEdit",
       "type": "object",
@@ -2240,6 +2361,146 @@
         "documentId",
         "baseVersion",
         "ops"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentEditRequest": {
+      "title": "DocumentEditRequest",
+      "type": "object",
+      "properties": {
+        "baseVersion": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "ops": {
+          "minItems": 1,
+          "maxItems": 100,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/EditOp"
+          }
+        }
+      },
+      "required": [
+        "baseVersion",
+        "ops"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentRestoreRequest": {
+      "title": "DocumentRestoreRequest",
+      "type": "object",
+      "properties": {
+        "baseVersion": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "baseVersion",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentSummary": {
+      "title": "DocumentSummary",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "kind": {
+          "$ref": "#/$defs/TaskKind"
+        },
+        "title": {
+          "type": "string"
+        },
+        "currentVersion": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "title",
+        "currentVersion",
+        "updatedAt"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentVersion": {
+      "title": "DocumentVersion",
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "content": {
+          "$ref": "#/$defs/DocumentContent"
+        }
+      },
+      "required": [
+        "version",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "DocumentVersionSummary": {
+      "title": "DocumentVersionSummary",
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "authorKind": {
+          "type": "string",
+          "enum": [
+            "user",
+            "agent",
+            "system"
+          ]
+        },
+        "authorName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "changes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "version",
+        "authorKind",
+        "authorName",
+        "changes",
+        "createdAt"
       ],
       "additionalProperties": false
     },
@@ -2496,6 +2757,75 @@
           "required": [
             "op",
             "title"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "edit_item"
+            },
+            "slotId": {
+              "type": "string"
+            },
+            "content": {
+              "$ref": "#/$defs/QuestionContent"
+            },
+            "answer": {
+              "$ref": "#/$defs/Answer"
+            }
+          },
+          "required": [
+            "op",
+            "slotId",
+            "content",
+            "answer"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "edit_section"
+            },
+            "nodeId": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "body": {
+              "$ref": "#/$defs/LocalizedText"
+            }
+          },
+          "required": [
+            "op",
+            "nodeId",
+            "body"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "type": "string",
+              "const": "delete_sections"
+            },
+            "nodeIds": {
+              "minItems": 1,
+              "type": "array",
+              "items": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          },
+          "required": [
+            "op",
+            "nodeIds"
           ],
           "additionalProperties": false
         }
@@ -3704,7 +4034,8 @@
         "written",
         "verified",
         "flagged",
-        "insufficient_evidence"
+        "insufficient_evidence",
+        "edited"
       ]
     },
     "NotesSpec": {
@@ -4769,7 +5100,8 @@
       "enum": [
         "imported",
         "generated",
-        "pool"
+        "pool",
+        "teacher"
       ]
     },
     "QuestionStatus": {
@@ -5285,7 +5617,8 @@
         "generated",
         "verified",
         "flagged",
-        "insufficient_evidence"
+        "insufficient_evidence",
+        "edited"
       ]
     },
     "SourceKind": {

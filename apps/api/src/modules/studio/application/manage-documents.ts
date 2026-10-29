@@ -1,0 +1,129 @@
+import { Inject, Injectable } from "@nestjs/common";
+import type {
+  DocumentContent,
+  DocumentDetail,
+  DocumentEditRequest,
+  DocumentRestoreRequest,
+  DocumentVersion,
+  DocumentVersionSummary,
+  EditOp,
+} from "@vidyam/contracts";
+
+import { DomainError } from "../../../shared/kernel/errors.js";
+import type { ResolvedOp } from "../domain/edits.js";
+
+/** How saving a new version went: saved, the document moved on meanwhile, or it isn't made yet. */
+export type SaveOutcome =
+  { kind: "saved"; version: number } | { kind: "conflict"; current: number } | { kind: "making" };
+
+/** Port: a teacher's documents and their versions (Postgres, under the center's row-level security). */
+export interface DocumentStore {
+  /** The current version (or the live slots while the first is made), with its questions; null if not theirs. */
+  detail(orgId: string, userId: string, documentId: string): Promise<DocumentDetail | null>;
+  versions(orgId: string, userId: string, documentId: string): Promise<DocumentVersionSummary[] | null>;
+  version(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    version: number,
+  ): Promise<DocumentVersion | null>;
+  /**
+   * In one transaction, on the locked document: checks it is still at `baseVersion`, saves each edited question
+   * as a new one in the bank, works out what replacing questions are, then saves `apply`'s result as the next
+   * version. Null if the document isn't theirs.
+   */
+  edit(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    baseVersion: number,
+    ops: readonly EditOp[],
+    apply: (content: DocumentContent, ops: readonly ResolvedOp[]) => DocumentContent,
+  ): Promise<SaveOutcome | null>;
+  /** In one transaction: an earlier version's content saved as the next version. */
+  restore(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    baseVersion: number,
+    version: number,
+  ): Promise<SaveOutcome | "no_version" | null>;
+  /** False while it is still being made; null if it isn't theirs. */
+  remove(orgId: string, userId: string, documentId: string): Promise<boolean | null>;
+}
+export const DOCUMENT_STORE = Symbol("DOCUMENT_STORE");
+
+/**
+ * The canvas (plan v3 §2, step 27): a teacher's document, edited by hand. Every change is a new version made
+ * against the version it was made on, so an edit never overwrites another (from the chat's agent, say);
+ * undo restores an earlier version as a new one, so history is never lost.
+ */
+@Injectable()
+export class ManageDocuments {
+  constructor(@Inject(DOCUMENT_STORE) private readonly store: DocumentStore) {}
+
+  async detail(orgId: string, userId: string, documentId: string): Promise<DocumentDetail> {
+    return found(await this.store.detail(orgId, userId, documentId));
+  }
+
+  async versions(orgId: string, userId: string, documentId: string): Promise<DocumentVersionSummary[]> {
+    return found(await this.store.versions(orgId, userId, documentId));
+  }
+
+  async version(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    version: number,
+  ): Promise<DocumentVersion> {
+    return found(await this.store.version(orgId, userId, documentId, version));
+  }
+
+  async edit(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    request: DocumentEditRequest,
+    apply: (content: DocumentContent, ops: readonly ResolvedOp[]) => DocumentContent,
+  ): Promise<DocumentDetail> {
+    const outcome = await this.store.edit(orgId, userId, documentId, request.baseVersion, request.ops, apply);
+    saved(found(outcome));
+    return this.detail(orgId, userId, documentId);
+  }
+
+  async restore(
+    orgId: string,
+    userId: string,
+    documentId: string,
+    request: DocumentRestoreRequest,
+  ): Promise<DocumentDetail> {
+    const outcome = found(
+      await this.store.restore(orgId, userId, documentId, request.baseVersion, request.version),
+    );
+    if (outcome === "no_version") throw new DomainError(`There is no version ${request.version}.`, "invalid");
+    saved(outcome);
+    return this.detail(orgId, userId, documentId);
+  }
+
+  async remove(orgId: string, userId: string, documentId: string): Promise<void> {
+    if (!found(await this.store.remove(orgId, userId, documentId))) {
+      throw new DomainError("Wait until it is made before deleting it.", "conflict");
+    }
+  }
+}
+
+function found<T>(value: T | null): T {
+  if (value === null) throw new DomainError("That document doesn't exist.", "not_found");
+  return value;
+}
+
+function saved(outcome: SaveOutcome): void {
+  if (outcome.kind === "making")
+    throw new DomainError("It is still being made; edit it once it is.", "conflict");
+  if (outcome.kind === "conflict") {
+    throw new DomainError(
+      `It changed meanwhile (it is at version ${outcome.current}): your edit was made on an older one.`,
+      "conflict",
+    );
+  }
+}

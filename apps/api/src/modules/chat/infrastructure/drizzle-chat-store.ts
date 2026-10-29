@@ -17,6 +17,7 @@ import { schema, type Transaction } from "@vidyam/db";
 import { and, asc, desc, eq, gt, ilike, inArray, isNotNull, isNull, or, sql, type SQL } from "drizzle-orm";
 
 import { OrgDatabase } from "../../../shared/database/org-database.js";
+import { latestRun } from "../../studio/infrastructure/generation-progress.js";
 import type {
   BeginTurn,
   ChatStore,
@@ -44,7 +45,6 @@ const {
   taxonomyNodes,
   documents,
   generationRuns,
-  generationRuns: r,
 } = schema;
 const UNANSWERED = ["pending", "streaming"] as const;
 const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -156,19 +156,7 @@ export class DrizzleChatStore implements ChatStore {
         )
         .orderBy(desc(t.createdAt))
         .limit(1);
-      const [run] = await tx
-        .select({
-          id: r.id,
-          documentId: r.documentId,
-          status: r.status,
-          total: sql<number>`jsonb_array_length(${r.slotPlan})`,
-          // Slots (or sections) past "pending": filled from the bank, written, checked, flagged or without material.
-          done: sql<number>`(select count(*) from jsonb_each(${r.slotStates}) e where e.value->>'state' <> 'pending')`,
-        })
-        .from(r)
-        .where(eq(r.sessionId, sessionId))
-        .orderBy(desc(r.startedAt))
-        .limit(1);
+      const run = await latestRun(tx, eq(generationRuns.sessionId, sessionId));
       return {
         session: summary(session),
         draftSpec: (session.draftSpec as DraftSpec | null) ?? null,
@@ -181,15 +169,7 @@ export class DrizzleChatStore implements ChatStore {
           createdAt: row.createdAt.toISOString(),
         })),
         activeTurnId: active?.id ?? null,
-        generation: run
-          ? {
-              runId: run.id,
-              documentId: run.documentId,
-              status: run.status,
-              done: Number(run.done),
-              total: Number(run.total),
-            }
-          : null,
+        generation: run?.progress ?? null,
       };
     });
   }

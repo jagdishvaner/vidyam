@@ -315,7 +315,100 @@
       "done": "Finished",
       "failed": "Stopped",
       "cancelled": "Cancelled",
-      "progress": "Questions and sections done"
+      "progress": "Questions and sections done",
+      "open": "Open"
+    }
+  },
+  "canvas": {
+    "label": "Document",
+    "close": "Close",
+    "version": "Version {version}",
+    "making": "Being made: {done} of {total}",
+    "undo": "Undo",
+    "answers": "Show answers",
+    "set": "Booklet set",
+    "paperOrder": "Paper order",
+    "setCode": "Set {code}",
+    "setHint": "Each set prints its own order of questions and options. Edit in paper order.",
+    "section": "Section {n}",
+    "sectionMarks": "{marks, plural, one {# mark} other {# marks}} each · negative {negative}",
+    "item": "Question {number}",
+    "marks": "{marks, plural, one {# mark} other {# marks}}",
+    "answer": "Answer: {answer}",
+    "noAnswer": "no key yet",
+    "solution": "Solution",
+    "source": "From {file}, p. {page}",
+    "sources": "Sources",
+    "empty": {
+      "material": "Nothing in your center's material covers this yet. Add material, or write it yourself (Edit).",
+      "none": "No question here yet. Write one yourself (Edit)."
+    },
+    "state": {
+      "pending": "Being written",
+      "bank": "From the bank",
+      "generated": "New",
+      "verified": "Checked",
+      "flagged": "Needs a look",
+      "insufficient_evidence": "No material",
+      "edited": "Edited by you",
+      "written": "Written"
+    },
+    "actions": {
+      "menu": "Item options",
+      "edit": "Edit",
+      "remove": "Remove",
+      "moveUp": "Move up",
+      "moveDown": "Move down"
+    },
+    "editor": {
+      "title": "Edit question",
+      "newTitle": "Write the question",
+      "hint": "Your wording is saved as a new question in the bank. The earlier one stays in this paper's history.",
+      "sectionHint": "Markdown, with mathematics between $…$. The earlier text stays in the history.",
+      "hindi": "Hindi",
+      "english": "English",
+      "stem": "Question",
+      "option": "Option {key}",
+      "correct": "Correct option",
+      "value": "Answer (a number)",
+      "modelAnswer": "Model answer",
+      "solution": "Solution",
+      "noText": "Write the question in at least one language.",
+      "save": "Save",
+      "cancel": "Cancel"
+    },
+    "history": "History",
+    "versions": {
+      "title": "Versions",
+      "hint": "Every change is kept. Pick a version to see what going back to it would change.",
+      "version": "Version {version}",
+      "current": "Current",
+      "byVidyam": "Made by Vidyam",
+      "byYou": "You",
+      "changes": {
+        "edit_item": "edited a question",
+        "replace_item": "replaced a question",
+        "delete_items": "removed items",
+        "add_items": "added items",
+        "reorder": "changed the order",
+        "set_marks": "changed marks",
+        "set_instructions": "changed instructions",
+        "set_title": "renamed it",
+        "edit_section": "edited a section",
+        "delete_sections": "removed sections",
+        "restore": "went back to an earlier version"
+      },
+      "diffTitle": "Going back to this version would:",
+      "diff": {
+        "title": "change the title back",
+        "added": "bring back {count, plural, one {# item} other {# items}}",
+        "removed": "remove {count, plural, one {# item} other {# items}}",
+        "changed": "change {count, plural, one {# item} other {# items}}",
+        "details": "change marks or instructions",
+        "reordered": "change the order",
+        "none": "change nothing: it is the same as the current version"
+      },
+      "restore": "Go back to this version"
     }
   }
 }

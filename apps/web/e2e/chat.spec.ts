@@ -3,7 +3,7 @@ import { expect, test, type Page } from "@playwright/test";
 /**
  * The chat (plan v3 step 24) on the running stack, with the built-in stub model: a paper request goes to the
  * review card and Confirm, a vague one asks on a card, a doubt the library can't answer says so, and chats can
- * be renamed and deleted. Every chat made here is deleted at the end.
+ * be renamed and deleted. Every chat made here, and the paper it made, is deleted at the end.
  */
 
 const SHOTS = process.env.VIDYAM_E2E_SHOTS;
@@ -27,7 +27,13 @@ async function chatId(page: Page): Promise<string> {
 }
 
 test.afterAll(async ({ request }) => {
-  for (const id of made) await request.delete(`/api/chat/sessions/${id}`);
+  for (const id of made) {
+    // A paper the chat made goes too (its document outlives the chat otherwise).
+    const detail = await request.get(`/api/chat/sessions/${id}`);
+    const documentId = detail.ok() ? ((await detail.json()).session.documentId as string | null) : null;
+    if (documentId) await request.delete(`/api/documents/${documentId}`);
+    await request.delete(`/api/chat/sessions/${id}`);
+  }
 });
 
 test("a paper request goes to the review card, and Confirm makes it", async ({ page }) => {

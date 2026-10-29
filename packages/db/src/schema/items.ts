@@ -33,7 +33,7 @@ export const QUESTION_TYPES = [
   "short_answer",
   "long_answer",
 ] as const;
-export const QUESTION_ORIGINS = ["imported", "generated", "pool"] as const;
+export const QUESTION_ORIGINS = ["imported", "generated", "pool", "teacher"] as const;
 export const QUESTION_STATUSES = [
   "draft",
   "verified",

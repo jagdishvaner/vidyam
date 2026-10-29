@@ -26,7 +26,11 @@ export const QuestionStatus = contract(
 );
 export type QuestionStatus = z.infer<typeof QuestionStatus>;
 
-export const QuestionOrigin = contract("QuestionOrigin", z.enum(["imported", "generated", "pool"]));
+/** Imported from a paper, generated from the material, a pool top-up, or written (or reworded) by a teacher. */
+export const QuestionOrigin = contract(
+  "QuestionOrigin",
+  z.enum(["imported", "generated", "pool", "teacher"]),
+);
 export type QuestionOrigin = z.infer<typeof QuestionOrigin>;
 
 export const QuestionOption = contract(
