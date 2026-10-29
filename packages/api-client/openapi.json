@@ -5371,6 +5371,105 @@
         ]
       }
     },
+    "/api/chat/scope": {
+      "get": {
+        "operationId": "ChatController_scope",
+        "parameters": [
+          {
+            "name": "examCode",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 80
+            }
+          },
+          {
+            "name": "ids",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 4000
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "nodes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "parentId": {
+                            "nullable": true,
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "level": {
+                            "type": "string"
+                          },
+                          "code": {
+                            "type": "string"
+                          },
+                          "nameEn": {
+                            "type": "string"
+                          },
+                          "nameHi": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "passages": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "questions": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "parentId",
+                          "level",
+                          "code",
+                          "nameEn",
+                          "nameHi",
+                          "passages",
+                          "questions"
+                        ],
+                        "additionalProperties": false
+                      }
+                    }
+                  },
+                  "required": [
+                    "nodes"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      }
+    },
     "/api/chat/sessions/{sessionId}": {
       "get": {
         "operationId": "ChatController_detail",
@@ -5805,7 +5904,13 @@
                                           "required": {
                                             "type": "boolean"
                                           },
-                                          "suggested": {}
+                                          "suggested": {},
+                                          "options": {
+                                            "type": "array",
+                                            "items": {
+                                              "type": "string"
+                                            }
+                                          }
                                         },
                                         "required": [
                                           "key",
@@ -6811,6 +6916,27 @@
                 }
               }
             }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      },
+      "delete": {
+        "operationId": "ChatController_remove",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": ""
           }
         },
         "tags": [

@@ -1,6 +1,8 @@
 import { Inject, Injectable } from "@nestjs/common";
 import {
   CHAT_SESSION_PAGE_SIZE,
+  type ChatScope,
+  type ChatScopeQuery,
   type ChatSessionCreate,
   type ChatSessionDetail,
   type ChatSessionPage,
@@ -53,6 +55,20 @@ export class ManageChats {
     const session = await this.store.update(orgId, userId, sessionId, update);
     if (!session) throw new DomainError(NOT_FOUND, "not_found");
     return session;
+  }
+
+  async remove(orgId: string, userId: string, sessionId: string): Promise<void> {
+    if (!(await this.store.remove(orgId, userId, sessionId))) throw new DomainError(NOT_FOUND, "not_found");
+  }
+
+  /** The scope card's syllabus, with how much material and how many bank questions each node has. */
+  async scope(orgId: string, query: ChatScopeQuery): Promise<ChatScope> {
+    const ids = (query.ids ?? "")
+      .split(",")
+      .map((id) => id.trim())
+      .filter(Boolean)
+      .slice(0, 200);
+    return { nodes: await this.store.scope(orgId, query.examCode || null, ids) };
   }
 
   /** A chosen model must be one the center lets teachers pick (Admin → AI models). */

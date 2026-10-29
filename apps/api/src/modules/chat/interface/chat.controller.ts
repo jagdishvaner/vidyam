@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Headers,
   HttpCode,
@@ -19,6 +20,8 @@ import {
   type UserSession,
 } from "@thallesp/nestjs-better-auth";
 import {
+  ChatScope,
+  ChatScopeQuery,
   ChatSessionCreate,
   ChatSessionDetail,
   ChatSessionPage,
@@ -72,6 +75,17 @@ export class ChatController {
     return this.chats.create(activeOrg(session), session.user.id, body);
   }
 
+  /** The scope card's syllabus tree with content counts, fetched live (ADR 0015). */
+  @Get("scope")
+  @MemberHasPermission(CHAT)
+  @ApiResponse({ status: 200, standardSchema: ChatScope })
+  scope(
+    @Session() session: UserSession,
+    @Query({ schema: ChatScopeQuery }) query: ChatScopeQuery,
+  ): Promise<ChatScope> {
+    return this.chats.scope(activeOrg(session), query);
+  }
+
   @Get("sessions/:sessionId")
   @MemberHasPermission(CHAT)
   @ApiResponse({ status: 200, standardSchema: ChatSessionDetail })
@@ -92,6 +106,17 @@ export class ChatController {
     @Body({ schema: ChatSessionUpdate }) body: ChatSessionUpdate,
   ): Promise<ChatSessionSummary> {
     return this.chats.update(activeOrg(session), session.user.id, sessionId, body);
+  }
+
+  /** Deletes the chat and its messages. What it cost stays in the usage report. */
+  @Delete("sessions/:sessionId")
+  @HttpCode(204)
+  @MemberHasPermission(CHAT)
+  async remove(
+    @Session() session: UserSession,
+    @Param("sessionId", new ParseUUIDPipe()) sessionId: string,
+  ): Promise<void> {
+    await this.chats.remove(activeOrg(session), session.user.id, sessionId);
   }
 
   /** Records the teacher's message and starts the answer; follow it at /chat/turns/:turnId/events. */

@@ -142,5 +142,171 @@
     "subjectsHint": "Set by your admin under Staff. Your papers and searches start from these.",
     "noSubjects": "No subjects assigned yet.",
     "head": "Head of department"
+  },
+  "chat": {
+    "newChat": "New chat",
+    "untitled": "New chat",
+    "searchChats": "Search chats",
+    "chats": "Chats",
+    "archived": "Archived",
+    "noMatches": "No chats match.",
+    "noChats": "No chats yet.",
+    "more": "Show more",
+    "chatActions": "Chat options",
+    "rename": "Rename",
+    "pin": "Pin",
+    "unpin": "Unpin",
+    "archive": "Archive",
+    "unarchive": "Restore",
+    "delete": "Delete",
+    "renameTitle": "Rename chat",
+    "chatName": "Chat name",
+    "cancel": "Cancel",
+    "save": "Save",
+    "deleteTitle": "Delete this chat?",
+    "deleteHint": "“{title}” and its messages will be deleted. What it cost stays in the usage report.",
+    "model": "Model",
+    "defaultModel": "Default model",
+    "message": "Message",
+    "send": "Send",
+    "placeholder": "Ask a doubt, or say what to make: “RPSC 2nd grade science paper on motion, 50 questions”",
+    "disclaimer": "Answers come from your center's material. Nothing is spent until you press Confirm.",
+    "thinking": "Thinking…",
+    "failed": "The message wasn't sent. Try again.",
+    "cardAnswered": "Answered the card",
+    "actions": {
+      "confirm_spec": "Confirm",
+      "cancel": "Cancel",
+      "undo": "Undo"
+    },
+    "welcome": "What shall we work on?",
+    "welcomeHint": "Make papers, worksheets and notes from your material, or ask a doubt.",
+    "examplePaper": "RPSC 2nd grade science paper on gati ke niyam, 30 questions",
+    "exampleDoubt": "Newton ka teesra niyam kya hai?",
+    "exampleNotes": "प्रकाश पर नोट्स बनाइए",
+    "sources": "Sources",
+    "page": "p. {page}",
+    "scope": {
+      "remove": "Remove",
+      "didYouMean": "Did you mean:",
+      "search": "Search chapters and topics",
+      "noMatch": "Nothing matches.",
+      "counts": "{passages} passages · {questions} questions"
+    },
+    "card": {
+      "scopeTitle": "What should it cover?",
+      "scopeHint": "Pick the exam and the chapters or topics.",
+      "shapeTitle": "How should the paper look?",
+      "shapeHint": "Sections, difficulty and language. Change anything you like.",
+      "continue": "Continue",
+      "none": "None",
+      "noLimit": "No limit",
+      "pattern": "{name} · {questions} questions",
+      "set": "Set {code}",
+      "type": "Question type",
+      "count": "Questions",
+      "marksEach": "Marks each",
+      "negative": "Negative",
+      "removeSection": "Remove section",
+      "addSection": "Add section",
+      "preset": {
+        "easy": "Easy",
+        "medium": "Balanced",
+        "hard": "Hard"
+      },
+      "level": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard"
+      },
+      "fields": {
+        "kind": "What to make",
+        "exam": "Exam",
+        "blueprint": "Paper pattern",
+        "taxonomy_nodes": "Chapters and topics",
+        "sections": "Sections",
+        "difficulty_mix": "Difficulty",
+        "languages": "Languages",
+        "layout": "Layout",
+        "duration": "Time (minutes)",
+        "sourcing": "Questions from",
+        "student_batch": "Student batch",
+        "set_codes": "Booklet sets",
+        "depth": "Depth",
+        "include_examples": "Worked examples",
+        "include_practice": "Practice questions",
+        "title": "Title"
+      }
+    },
+    "review": {
+      "kind": "Making",
+      "exam": "Exam",
+      "chapters": "Chapters",
+      "languages": "Languages",
+      "questions": "Questions",
+      "questionsValue": "{questions} questions, {marks} marks",
+      "duration": "Time",
+      "minutes": "{minutes} minutes",
+      "noLimit": "No limit",
+      "layout": "Layout",
+      "sourcing": "Questions from",
+      "sets": "Sets",
+      "depth": "Depth",
+      "examples": "Worked examples",
+      "practice": "Practice questions",
+      "yes": "Yes",
+      "no": "No",
+      "confirmed": "Confirmed",
+      "estimate": "About {cost} · about {minutes} min",
+      "section": "Section",
+      "count": "Questions",
+      "marksEach": "Marks each",
+      "negative": "Negative",
+      "chapter": "Chapter",
+      "fromBank": "From the bank",
+      "toGenerate": "To make",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
+    },
+    "values": {
+      "kind": {
+        "question_paper": "Question paper",
+        "worksheet": "Worksheet",
+        "notes": "Notes",
+        "revision_sheet": "Revision sheet"
+      },
+      "qtype": {
+        "mcq_single": "Multiple choice",
+        "mcq_multi": "Multiple correct",
+        "numerical": "Numerical",
+        "integer": "Integer answer",
+        "assertion_reason": "Assertion and reason",
+        "match_columns": "Match the columns",
+        "statement": "Statements",
+        "passage": "Passage based",
+        "short_answer": "Short answer",
+        "long_answer": "Long answer"
+      },
+      "layout": {
+        "hindi_then_english": "Hindi, then English",
+        "side_by_side": "Side by side",
+        "single_language": "One language"
+      },
+      "sourcing": {
+        "bank_first": "The bank first, then new",
+        "fresh_only": "New questions only",
+        "bank_only": "The bank only"
+      },
+      "depth": {
+        "brief": "Brief",
+        "standard": "Standard",
+        "detailed": "Detailed"
+      },
+      "language": {
+        "hi": "Hindi",
+        "en": "English"
+      }
+    },
+    "history": "Chat history"
   }
 }

@@ -95,6 +95,18 @@ pnpm ingest ~/Desktop/rpsc-polity --kind notes --licence own --meta exam=rpsc --
 - Work that needs an AI model (reading scans, splitting papers into questions, picking topics) waits in
   backlogs: Admin → Content, or `pnpm backlog` to see what each would cost and run it.
 
+### The chat
+
+http://localhost:38000/en/chat (or `/hi/chat` in Hindi), as any staff login, e.g. teacher@vidyam.local.
+
+- **Make something:** "RPSC 2nd grade science paper on gati ke niyam, 30 questions". What's missing is asked on
+  cards; when nothing is, a review card shows the paper, what the bank already has, and the cost. Nothing is
+  spent before Confirm (generation itself comes with step 26).
+- **Ask a doubt:** answered only from your library, with the file and page of each source; when the library
+  doesn't cover it, the chat says so.
+- Chats can be searched, pinned, renamed, archived and deleted. Without AI keys the built-in test model
+  answers, so everything works but the answers are placeholders.
+
 ### Searching content
 
 The chat and paper generation find passages the way this command does, so it is the quickest way to see

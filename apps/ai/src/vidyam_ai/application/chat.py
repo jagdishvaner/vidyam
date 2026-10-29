@@ -242,6 +242,17 @@ def cited(text: str, count: int) -> list[int]:
     return list(found)
 
 
+def renumber(text: str, order: Sequence[int]) -> str:
+    """Citation markers renumbered 1, 2, 3… in the order first cited, to match the list of sources."""
+    new = {old: n for n, old in enumerate(order, 1)}
+
+    def swap(match: re.Match[str]) -> str:
+        numbers = [new.get(int(number), int(number)) for number in match.group(1).split(",")]
+        return "[" + ", ".join(str(number) for number in numbers) + "]"
+
+    return _CITATION.sub(swap, text)
+
+
 def evidence(hits: Sequence[Hit]) -> str:
     """The passages a doubt is answered from, numbered for citing."""
     parts: list[str] = []
@@ -548,6 +559,8 @@ class ChatAgent:
             yield event
         numbers = cited("".join(answer.text), len(hits))
         if numbers:
+            # The stored answer cites its sources 1, 2, 3… in the order of the list below it.
+            answer.text = [renumber("".join(answer.text), numbers)]
             names = await self._context.file_names(
                 turn.org_id, [hits[n - 1].passage.source_id for n in numbers]
             )

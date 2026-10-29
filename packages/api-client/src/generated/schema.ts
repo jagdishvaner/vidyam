@@ -644,6 +644,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/chat/scope": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ChatController_scope"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/chat/sessions/{sessionId}": {
         parameters: {
             query?: never;
@@ -654,7 +670,7 @@ export interface paths {
         get: operations["ChatController_detail"];
         put?: never;
         post?: never;
-        delete?: never;
+        delete: operations["ChatController_remove"];
         options?: never;
         head?: never;
         patch: operations["ChatController_update"];
@@ -2613,6 +2629,41 @@ export interface operations {
             };
         };
     };
+    ChatController_scope: {
+        parameters: {
+            query?: {
+                examCode?: string;
+                ids?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        nodes: {
+                            /** Format: uuid */
+                            id: string;
+                            /** Format: uuid */
+                            parentId: string | null;
+                            level: string;
+                            code: string;
+                            nameEn: string;
+                            nameHi: string | null;
+                            passages: number;
+                            questions: number;
+                        }[];
+                    };
+                };
+            };
+        };
+    };
     ChatController_detail: {
         parameters: {
             query?: never;
@@ -2722,6 +2773,7 @@ export interface operations {
                                     key: "kind" | "exam" | "blueprint" | "taxonomy_nodes" | "sections" | "difficulty_mix" | "languages" | "layout" | "duration" | "sourcing" | "student_batch" | "set_codes" | "depth" | "include_examples" | "include_practice" | "title";
                                     required: boolean;
                                     suggested?: unknown;
+                                    options?: string[];
                                 }[];
                             } | {
                                 /** @enum {string} */
@@ -2903,6 +2955,25 @@ export interface operations {
                         activeTurnId: string | null;
                     };
                 };
+            };
+        };
+    };
+    ChatController_remove: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                sessionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            204: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

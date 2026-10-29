@@ -311,6 +311,30 @@ class Role(StrEnum):
     assistant = "assistant"
 
 
+class ChatScopeNode(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    parent_id: UUID | None = Field(..., alias="parentId")
+    level: str
+    code: str
+    name_en: str = Field(..., alias="nameEn")
+    name_hi: str | None = Field(..., alias="nameHi")
+    passages: int = Field(..., ge=0, le=9007199254740991)
+    questions: int = Field(..., ge=0, le=9007199254740991)
+
+
+class ChatScopeQuery(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    exam_code: str | None = Field(None, alias="examCode", max_length=80)
+    ids: str | None = Field(None, max_length=4000)
+
+
 class ChatSessionCreate(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1848,6 +1872,7 @@ class CardField(BaseModel):
     key: CardFieldKey
     required: bool
     suggested: Any | None = None
+    options: list[str] | None = None
 
 
 class CenterProfile(BaseModel):
@@ -1892,6 +1917,14 @@ class ChatBlock8(BaseModel):
     title: str
     kind: TaskKind
     version: int = Field(..., ge=0, le=9007199254740991)
+
+
+class ChatScope(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    nodes: list[ChatScopeNode]
 
 
 class ChatSessionPage(BaseModel):

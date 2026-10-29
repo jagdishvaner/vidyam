@@ -283,8 +283,14 @@ def cards(
         if not kind:
             fields.append({"key": "kind", "required": True})
         fields.append({"key": "exam", "required": False, "suggested": draft.get("examCode")})
-        nodes = draft.get("taxonomyNodeIds") or [str(node) for node in node_suggestions]
-        fields.append({"key": "taxonomy_nodes", "required": True, "suggested": nodes})
+        nodes: dict[str, Any] = {
+            "key": "taxonomy_nodes",
+            "required": True,
+            "suggested": draft.get("taxonomyNodeIds") or [],
+        }
+        if node_suggestions:  # what a typed name could mean: offered, not chosen
+            nodes["options"] = [str(node) for node in node_suggestions]
+        fields.append(nodes)
         out.append(
             {"type": "clarification", "cardId": f"scope:{card_id}", "purpose": "scope", "fields": fields}
         )

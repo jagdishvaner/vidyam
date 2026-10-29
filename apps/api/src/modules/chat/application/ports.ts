@@ -2,6 +2,7 @@ import type {
   ChatBlock,
   ChatEngineEvent,
   ChatEngineTurn,
+  ChatScopeNode,
   ChatSessionDetail,
   ChatSessionStatus,
   ChatSessionSummary,
@@ -67,6 +68,8 @@ export interface ChatStore {
     sessionId: string,
     update: ChatSessionUpdate,
   ): Promise<ChatSessionSummary | null>;
+  /** Deletes a chat with its messages; false when it isn't the teacher's. Usage stays in the ledger. */
+  remove(orgId: string, userId: string, sessionId: string): Promise<boolean>;
   /** Models teachers may pick, as the center allows them. */
   selectableModels(orgId: string): Promise<string[]>;
   /** English names of exams (by code), syllabus nodes and paper patterns (by id) a card's answer refers to. */
@@ -82,6 +85,8 @@ export interface ChatStore {
     sessionId: string,
     clientTurnId: string,
   ): Promise<TurnRecord | null>;
+  /** The scope card's syllabus: the exam's subtree (or every subject's chapters) and the given nodes. */
+  scope(orgId: string, examCode: string | null, ids: string[]): Promise<ChatScopeNode[]>;
   /** In one transaction: the teacher's message and the turn, or the turn already made for clientTurnId. */
   beginTurn(orgId: string, userId: string, sessionId: string, turn: NewTurn): Promise<BeginTurn | null>;
   /** In one transaction: the assistant's message, the turn's outcome, and the chat's title and status. */

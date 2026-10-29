@@ -324,6 +324,43 @@ describe("chat", () => {
       .expect(404);
     const list = await request(server).get("/api/chat/sessions").set("Cookie", teacherB).expect(200);
     expect(list.body.items).toEqual([]);
+    await request(server).delete(`/api/chat/sessions/${chatId}`).set("Cookie", teacherB).expect(404);
+    await request(server).delete(`/api/chat/sessions/${chatId}`).set("Cookie", teacherA).expect(204);
+    await request(server).get(`/api/chat/sessions/${chatId}`).set("Cookie", teacherA).expect(404);
+  });
+
+  it("offers the scope card's syllabus with what each chapter has", async () => {
+    const [subject, chapter, topic] = [crypto.randomUUID(), crypto.randomUUID(), crypto.randomUUID()];
+    await owner.db.insert(schema.taxonomyNodes).values([
+      { id: subject, orgId, parentId: null, level: "subject", code: "science", nameEn: "Science" },
+      {
+        id: chapter,
+        orgId,
+        parentId: subject,
+        level: "chapter",
+        code: "light",
+        nameEn: "Light",
+        nameHi: "प्रकाश",
+      },
+      { id: topic, orgId, parentId: chapter, level: "topic", code: "refraction", nameEn: "Refraction" },
+    ]);
+    const all = await request(app.getHttpServer()).get("/api/chat/scope").set("Cookie", teacherA).expect(200);
+    // Without an exam: subjects, units and chapters only.
+    expect(all.body.nodes).toHaveLength(2);
+    expect(all.body.nodes).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({ id: subject, parentId: null, level: "subject", passages: 0, questions: 0 }),
+        expect.objectContaining({ id: chapter, parentId: subject, nameHi: "प्रकाश" }),
+      ]),
+    );
+    // A suggested topic comes with what is above it.
+    const asked = await request(app.getHttpServer())
+      .get(`/api/chat/scope?ids=${topic},not-an-id`)
+      .set("Cookie", teacherA)
+      .expect(200);
+    expect(asked.body.nodes.map((n: { id: string }) => n.id).sort()).toEqual(
+      [subject, chapter, topic].sort(),
+    );
   });
 
   it("refuses a turn once the teacher's monthly budget is used up", async () => {

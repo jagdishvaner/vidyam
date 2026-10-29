@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import {
   AiPolicy,
   type ChatBlock,
+  type ChatScopeNode,
   type ChatSessionDetail,
   type ChatSessionSummary,
   type ChatSessionUpdate,
@@ -25,6 +26,18 @@ const {
   taxonomyNodes,
 } = schema;
 const UNANSWERED = ["pending", "streaming"] as const;
+const UUID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+interface ScopeRow extends Record<string, unknown> {
+  id: string;
+  parent_id: string | null;
+  level: string;
+  code: string;
+  name_en: string;
+  name_hi: string | null;
+  passages: number;
+  questions: number;
+}
 
 const turnColumns = {
   id: t.id,
@@ -163,6 +176,16 @@ export class DrizzleChatStore implements ChatStore {
     });
   }
 
+  remove(orgId: string, userId: string, sessionId: string): Promise<boolean> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const gone = await tx
+        .delete(s)
+        .where(and(eq(s.id, sessionId), eq(s.userId, userId)))
+        .returning({ id: s.id });
+      return gone.length > 0;
+    });
+  }
+
   selectableModels(orgId: string): Promise<string[]> {
     return this.orgDb.run(orgId, async (tx) => {
       const [center] = await tx.select({ aiPolicy: orgSettings.aiPolicy }).from(orgSettings);
@@ -202,6 +225,52 @@ export class DrizzleChatStore implements ChatStore {
       const byKey = (rows: { key: string; name: string }[]) =>
         Object.fromEntries(rows.map((r) => [r.key, r.name]));
       return { exams: byKey(exams), nodes: byKey(nodes), blueprints: byKey(blueprints) };
+    });
+  }
+
+  scope(orgId: string, examCode: string | null, ids: string[]): Promise<ChatScopeNode[]> {
+    return this.orgDb.run(orgId, async (tx) => {
+      // One array literal parameter (Drizzle would spread a JS array into a list); every id is a checked UUID.
+      const asked = ids.filter((id) => UUID_PATTERN.test(id));
+      // The exam's syllabus to its topics (or every subject's chapters), plus the asked-for nodes and what
+      // is above them; counts include everything below a node (coverage_stats).
+      const rows = await tx.execute<ScopeRow>(sql`
+        with recursive below as (
+          select n.id from taxonomy_nodes n
+          where ${examCode}::text is not null and n.id in (
+            select es.node_id from exam_syllabus es join exams e on e.id = es.exam_id where e.code = ${examCode})
+          union
+          select c.id from taxonomy_nodes c join below on c.parent_id = below.id
+        ),
+        above as (
+          select n.id, n.parent_id from taxonomy_nodes n where n.id = any(${`{${asked.join(",")}}`}::uuid[])
+          union
+          select p.id, p.parent_id from taxonomy_nodes p join above on p.id = above.parent_id
+        ),
+        counts as (
+          select node_id,
+            coalesce(sum(items) filter (where item = 'chunk'), 0)::int as passages,
+            coalesce(sum(items) filter (where item = 'question' and status in ('approved', 'verified')), 0)::int
+              as questions
+          from coverage_stats group by node_id
+        )
+        select n.id, n.parent_id, n.level, n.code, n.name_en, n.name_hi,
+          coalesce(c.passages, 0) as passages, coalesce(c.questions, 0) as questions
+        from taxonomy_nodes n left join counts c on c.node_id = n.id
+        where n.is_active and (
+          n.id in (select id from below) or n.id in (select id from above)
+          or (${examCode}::text is null and n.level in ('subject', 'unit', 'chapter')))
+        order by n.sort_order, n.name_en`);
+      return rows.rows.map((row) => ({
+        id: row.id,
+        parentId: row.parent_id,
+        level: row.level,
+        code: row.code,
+        nameEn: row.name_en,
+        nameHi: row.name_hi,
+        passages: Number(row.passages),
+        questions: Number(row.questions),
+      }));
     });
   }
 

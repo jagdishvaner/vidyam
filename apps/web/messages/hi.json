@@ -142,5 +142,171 @@
     "subjectsHint": "एडमिन ने स्टाफ़ में तय किए हैं। आपके प्रश्न-पत्र और खोज इन्हीं से शुरू होते हैं।",
     "noSubjects": "अभी कोई विषय तय नहीं।",
     "head": "विभागाध्यक्ष"
+  },
+  "chat": {
+    "newChat": "नई चैट",
+    "untitled": "नई चैट",
+    "searchChats": "चैट खोजें",
+    "chats": "चैट",
+    "archived": "संग्रहित",
+    "noMatches": "कोई चैट नहीं मिली।",
+    "noChats": "अभी कोई चैट नहीं है।",
+    "more": "और दिखाएँ",
+    "chatActions": "चैट विकल्प",
+    "rename": "नाम बदलें",
+    "pin": "पिन करें",
+    "unpin": "पिन हटाएँ",
+    "archive": "संग्रहित करें",
+    "unarchive": "वापस लाएँ",
+    "delete": "हटाएँ",
+    "renameTitle": "चैट का नाम बदलें",
+    "chatName": "चैट का नाम",
+    "cancel": "रद्द करें",
+    "save": "सहेजें",
+    "deleteTitle": "यह चैट हटाएँ?",
+    "deleteHint": "“{title}” और इसके संदेश हटा दिए जाएँगे। इसका खर्च उपयोग रिपोर्ट में बना रहेगा।",
+    "model": "मॉडल",
+    "defaultModel": "डिफ़ॉल्ट मॉडल",
+    "message": "संदेश",
+    "send": "भेजें",
+    "placeholder": "शंका पूछिए, या बताइए क्या बनाना है: “गति पर RPSC द्वितीय श्रेणी विज्ञान का पेपर, 50 प्रश्न”",
+    "disclaimer": "उत्तर आपके संस्थान की सामग्री से आते हैं। Confirm दबाने तक कोई खर्च नहीं होता।",
+    "thinking": "सोच रहा है…",
+    "failed": "संदेश नहीं भेजा गया। फिर से कोशिश करें।",
+    "cardAnswered": "कार्ड भरा",
+    "actions": {
+      "confirm_spec": "पुष्टि",
+      "cancel": "रद्द",
+      "undo": "पूर्ववत"
+    },
+    "welcome": "आज क्या बनाएँ?",
+    "welcomeHint": "अपनी सामग्री से प्रश्न-पत्र, अभ्यास पत्रक और नोट्स बनाइए, या कोई शंका पूछिए।",
+    "examplePaper": "गति के नियम पर RPSC द्वितीय श्रेणी विज्ञान का पेपर, 30 प्रश्न",
+    "exampleDoubt": "न्यूटन का तीसरा नियम क्या है?",
+    "exampleNotes": "प्रकाश पर नोट्स बनाइए",
+    "sources": "स्रोत",
+    "page": "पृष्ठ {page}",
+    "scope": {
+      "remove": "हटाएँ",
+      "didYouMean": "क्या आपका मतलब था:",
+      "search": "अध्याय और विषय खोजें",
+      "noMatch": "कुछ नहीं मिला।",
+      "counts": "{passages} अंश · {questions} प्रश्न"
+    },
+    "card": {
+      "scopeTitle": "किन अध्यायों से?",
+      "scopeHint": "परीक्षा और अध्याय या विषय चुनिए।",
+      "shapeTitle": "पेपर कैसा हो?",
+      "shapeHint": "खंड, कठिनाई और भाषा। जो चाहें बदलिए।",
+      "continue": "आगे बढ़ें",
+      "none": "कोई नहीं",
+      "noLimit": "कोई सीमा नहीं",
+      "pattern": "{name} · {questions} प्रश्न",
+      "set": "सेट {code}",
+      "type": "प्रश्न का प्रकार",
+      "count": "प्रश्न",
+      "marksEach": "प्रति प्रश्न अंक",
+      "negative": "ऋणात्मक",
+      "removeSection": "खंड हटाएँ",
+      "addSection": "खंड जोड़ें",
+      "preset": {
+        "easy": "आसान",
+        "medium": "संतुलित",
+        "hard": "कठिन"
+      },
+      "level": {
+        "easy": "आसान",
+        "medium": "मध्यम",
+        "hard": "कठिन"
+      },
+      "fields": {
+        "kind": "क्या बनाना है",
+        "exam": "परीक्षा",
+        "blueprint": "प्रश्न-पत्र का प्रारूप",
+        "taxonomy_nodes": "अध्याय और विषय",
+        "sections": "खंड",
+        "difficulty_mix": "कठिनाई",
+        "languages": "भाषाएँ",
+        "layout": "विन्यास",
+        "duration": "समय (मिनट)",
+        "sourcing": "प्रश्न कहाँ से",
+        "student_batch": "विद्यार्थी बैच",
+        "set_codes": "पुस्तिका सेट",
+        "depth": "विस्तार",
+        "include_examples": "हल किए उदाहरण",
+        "include_practice": "अभ्यास प्रश्न",
+        "title": "शीर्षक"
+      }
+    },
+    "review": {
+      "kind": "बनेगा",
+      "exam": "परीक्षा",
+      "chapters": "अध्याय",
+      "languages": "भाषाएँ",
+      "questions": "प्रश्न",
+      "questionsValue": "{questions} प्रश्न, {marks} अंक",
+      "duration": "समय",
+      "minutes": "{minutes} मिनट",
+      "noLimit": "कोई सीमा नहीं",
+      "layout": "विन्यास",
+      "sourcing": "प्रश्न कहाँ से",
+      "sets": "सेट",
+      "depth": "विस्तार",
+      "examples": "हल किए उदाहरण",
+      "practice": "अभ्यास प्रश्न",
+      "yes": "हाँ",
+      "no": "नहीं",
+      "confirmed": "पुष्टि हुई",
+      "estimate": "लगभग {cost} · लगभग {minutes} मिनट",
+      "section": "खंड",
+      "count": "प्रश्न",
+      "marksEach": "प्रति प्रश्न अंक",
+      "negative": "ऋणात्मक",
+      "chapter": "अध्याय",
+      "fromBank": "बैंक से",
+      "toGenerate": "नए बनेंगे",
+      "cancel": "रद्द करें",
+      "confirm": "पुष्टि करें"
+    },
+    "values": {
+      "kind": {
+        "question_paper": "प्रश्न-पत्र",
+        "worksheet": "अभ्यास पत्रक",
+        "notes": "नोट्स",
+        "revision_sheet": "पुनरावृत्ति पत्रक"
+      },
+      "qtype": {
+        "mcq_single": "बहुविकल्पीय",
+        "mcq_multi": "बहु-सही विकल्प",
+        "numerical": "आंकिक",
+        "integer": "पूर्णांक उत्तर",
+        "assertion_reason": "अभिकथन एवं कारण",
+        "match_columns": "स्तंभ मिलान",
+        "statement": "कथन",
+        "passage": "गद्यांश आधारित",
+        "short_answer": "लघु उत्तरीय",
+        "long_answer": "दीर्घ उत्तरीय"
+      },
+      "layout": {
+        "hindi_then_english": "पहले हिंदी, फिर अंग्रेज़ी",
+        "side_by_side": "साथ-साथ",
+        "single_language": "एक भाषा"
+      },
+      "sourcing": {
+        "bank_first": "पहले बैंक से, फिर नए",
+        "fresh_only": "केवल नए प्रश्न",
+        "bank_only": "केवल बैंक से"
+      },
+      "depth": {
+        "brief": "संक्षिप्त",
+        "standard": "सामान्य",
+        "detailed": "विस्तृत"
+      },
+      "language": {
+        "hi": "हिंदी",
+        "en": "अंग्रेज़ी"
+      }
+    },
+    "history": "चैट इतिहास"
   }
 }

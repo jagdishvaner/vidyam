@@ -82,9 +82,13 @@ def test_what_is_missing_is_asked_on_at_most_two_cards() -> None:
     assert missing(draft) == (True, True)
     scope, shape = cards(draft, "t1", scope=True, shape=True, node_suggestions=[MOTION, LIGHT])
     assert scope["purpose"] == "scope" and scope["cardId"] == "scope:t1"
-    assert {"key": "taxonomy_nodes", "required": True, "suggested": [str(MOTION), str(LIGHT)]} in scope[
-        "fields"
-    ]
+    nodes = next(field for field in scope["fields"] if field["key"] == "taxonomy_nodes")
+    assert nodes == {
+        "key": "taxonomy_nodes",
+        "required": True,
+        "suggested": [],
+        "options": [str(MOTION), str(LIGHT)],
+    }
     assert shape["purpose"] == "shape" and [f["key"] for f in shape["fields"]][:2] == [
         "blueprint",
         "sections",

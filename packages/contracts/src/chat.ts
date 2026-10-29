@@ -40,6 +40,8 @@ export const CardField = contract(
     required: z.boolean(),
     /** The value the card opens with: the blueprint's, the teacher's own default, or what the chat understood. */
     suggested: z.unknown().optional(),
+    /** Choices the chat offers without choosing them: the chapters a typed name could mean. */
+    options: z.array(z.string()).optional(),
   }),
 );
 export type CardField = z.infer<typeof CardField>;
@@ -346,3 +348,35 @@ export const ChatEngineEvent = contract(
   ]),
 );
 export type ChatEngineEvent = z.infer<typeof ChatEngineEvent>;
+
+/** What the scope card offers: an exam's syllabus (or every subject's chapters), with how much each covers. */
+export const ChatScopeQuery = contract(
+  "ChatScopeQuery",
+  z.object({
+    /** The exam's syllabus down to topics; without one, subjects, units and chapters. */
+    examCode: z.string().max(80).optional(),
+    /** Nodes to include as well, with what is above them (the chat's suggestions), comma-separated. */
+    ids: z.string().max(4000).optional(),
+  }),
+);
+export type ChatScopeQuery = z.infer<typeof ChatScopeQuery>;
+
+export const ChatScopeNode = contract(
+  "ChatScopeNode",
+  z.object({
+    id: Uuid,
+    parentId: Uuid.nullable(),
+    level: z.string(),
+    code: z.string(),
+    nameEn: z.string(),
+    nameHi: z.string().nullable(),
+    /** Searchable passages tagged here or below. */
+    passages: z.number().int().nonnegative(),
+    /** Approved or verified bank questions here or below. */
+    questions: z.number().int().nonnegative(),
+  }),
+);
+export type ChatScopeNode = z.infer<typeof ChatScopeNode>;
+
+export const ChatScope = contract("ChatScope", z.object({ nodes: z.array(ChatScopeNode) }));
+export type ChatScope = z.infer<typeof ChatScope>;

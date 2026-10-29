@@ -18,6 +18,7 @@ from vidyam_ai.application.chat import (
     TurnRef,
     Understanding,
     cited,
+    renumber,
 )
 from vidyam_ai.application.llm_gateway import (
     BudgetExceeded,
@@ -73,6 +74,7 @@ def test_a_message_reads_as_its_words_answers_and_sources() -> None:
     assert first_question(messages) == "hello"
     assert (language_of("न्यूटन का तीसरा नियम"), language_of("newton ka teesra niyam")) == ("Hindi", "English")
     assert cited("Force is ma [2]. Also [1, 3] and [9].", 3) == [2, 1, 3]
+    assert renumber("Force is ma [2]. Also [1, 3].", [2, 1, 3]) == "Force is ma [1]. Also [2, 3]."
 
 
 def understanding(**fields: Any) -> Understanding:
@@ -235,7 +237,10 @@ async def test_what_is_missing_is_asked_on_cards_and_an_answer_completes_it() ->
     _, scope, shape = end["blocks"]
     assert (scope["purpose"], shape["purpose"]) == ("scope", "shape")
     nodes_field = next(f for f in scope["fields"] if f["key"] == "taxonomy_nodes")
-    assert set(nodes_field["suggested"]) == {str(MOTION), str(LINE)}  # "motion" could mean either
+    assert nodes_field["suggested"] == [] and set(nodes_field["options"]) == {
+        str(MOTION),
+        str(LINE),
+    }  # either
 
     draft = {"kind": "question_paper", "languages": ["hi", "en"], "layout": "hindi_then_english"}
     answer = StoredMessage(

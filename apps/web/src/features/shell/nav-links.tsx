@@ -17,7 +17,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 const ITEMS = [
   { key: "dashboard", href: "/", icon: LayoutDashboard },
-  { key: "chat", href: null, icon: MessagesSquare },
+  { key: "chat", href: "/chat", icon: MessagesSquare },
   { key: "library", href: "/library", icon: BookOpenText },
   { key: "questionBank", href: null, icon: FileQuestion },
   { key: "review", href: null, icon: ClipboardCheck },

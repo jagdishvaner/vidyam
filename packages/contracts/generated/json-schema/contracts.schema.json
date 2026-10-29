@@ -617,7 +617,13 @@
         "required": {
           "type": "boolean"
         },
-        "suggested": {}
+        "suggested": {},
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
       "required": [
         "key",
@@ -1231,6 +1237,94 @@
         "modelId",
         "createdAt"
       ],
+      "additionalProperties": false
+    },
+    "ChatScope": {
+      "title": "ChatScope",
+      "type": "object",
+      "properties": {
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChatScopeNode"
+          }
+        }
+      },
+      "required": [
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    "ChatScopeNode": {
+      "title": "ChatScopeNode",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "parentId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "level": {
+          "type": "string"
+        },
+        "code": {
+          "type": "string"
+        },
+        "nameEn": {
+          "type": "string"
+        },
+        "nameHi": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "passages": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "questions": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "id",
+        "parentId",
+        "level",
+        "code",
+        "nameEn",
+        "nameHi",
+        "passages",
+        "questions"
+      ],
+      "additionalProperties": false
+    },
+    "ChatScopeQuery": {
+      "title": "ChatScopeQuery",
+      "type": "object",
+      "properties": {
+        "examCode": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "ids": {
+          "type": "string",
+          "maxLength": 4000
+        }
+      },
       "additionalProperties": false
     },
     "ChatSessionCreate": {
