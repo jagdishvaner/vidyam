@@ -1,14 +1,18 @@
 """Internal HTTP API of the AI engine. Only the NestJS API calls it (service token); never the browser."""
 
 import hmac
-from collections.abc import AsyncGenerator
+import json
+import logging
+from collections.abc import AsyncGenerator, AsyncIterator
 from contextlib import asynccontextmanager
 from typing import Annotated, get_args
 from uuid import UUID
 
 from fastapi import Depends, FastAPI, Header, HTTPException, Query, Request, status
+from fastapi.responses import StreamingResponse
 
 from vidyam_ai.application.backlogs import BacklogKind, Backlogs
+from vidyam_ai.application.chat import AnswerTurn, TurnRef, error
 from vidyam_ai.application.health import CheckHealth
 from vidyam_ai.application.providers import provider_status
 from vidyam_ai.config import Settings, get_settings
@@ -16,12 +20,15 @@ from vidyam_ai.generated.contracts import (
     AiEngineStatus,
     BacklogEstimate,
     BacklogEstimates,
+    ChatEngineEvent,
+    ChatEngineTurn,
     Liveness,
     LlmProvider,
     ServiceHealth,
 )
 from vidyam_ai.generated.contracts import BacklogKind as BacklogKindContract
 from vidyam_ai.infrastructure.db.backlogs import SqlBacklogStore
+from vidyam_ai.infrastructure.db.chat import SqlChatTranscripts
 from vidyam_ai.infrastructure.db.sources import SqlSources
 from vidyam_ai.infrastructure.db.syllabus import SqlSyllabus
 from vidyam_ai.infrastructure.llm import create_llm_gateway
@@ -38,12 +45,14 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         resources = await Resources.open(settings)
         app.state.check_health = CheckHealth(resources.probes())
         syllabus = SqlSyllabus(resources.engine)
+        gateway = create_llm_gateway(settings, resources.engine)
         app.state.backlogs = Backlogs(
-            create_llm_gateway(settings, resources.engine),
+            gateway,
             SqlBacklogStore(resources.engine, SqlSources(resources.engine), syllabus),
             syllabus,
             S3PageImages(resources.s3, settings.bucket("derived")),
         )
+        app.state.answer_turn = AnswerTurn(SqlChatTranscripts(resources.engine), gateway)
         try:
             yield
         finally:
@@ -90,4 +99,31 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             )
         return BacklogEstimates(backlogs=estimates)
 
+    @app.post("/chat/turns", dependencies=[Depends(require_service_token)])
+    async def chat_turn(request: Request, turn: ChatEngineTurn) -> StreamingResponse:
+        """Answers a chat turn the API has recorded, as ChatEngineEvent lines (NDJSON) ending with `done` or
+        `error`. Reads the chat; the API stores the answer."""
+        answer: AnswerTurn = request.app.state.answer_turn
+        ref = TurnRef(
+            turn.org_id, turn.user_id, turn.session_id, turn.turn_id, turn.user_message_id, turn.model_id
+        )
+        return StreamingResponse(_ndjson(answer.execute(ref)), media_type="application/x-ndjson")
+
     return app
+
+
+log = logging.getLogger(__name__)
+
+
+async def _ndjson(events: AsyncIterator[dict[str, object]]) -> AsyncIterator[str]:
+    """Each event checked against the contract, one per line; a failure ends the stream with an error."""
+    try:
+        async for event in events:
+            yield _line(event)
+    except Exception:
+        log.exception("chat turn failed")
+        yield _line(error("internal", "Something went wrong while answering. Try again."))
+
+
+def _line(event: dict[str, object]) -> str:
+    return json.dumps(ChatEngineEvent.model_validate(event).model_dump(by_alias=True, mode="json")) + "\n"

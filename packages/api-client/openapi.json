@@ -5160,6 +5160,1815 @@
           "syllabus"
         ]
       }
+    },
+    "/api/chat/sessions": {
+      "get": {
+        "operationId": "ChatController_list",
+        "parameters": [
+          {
+            "name": "q",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "name": "show",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": "active",
+              "type": "string",
+              "enum": [
+                "active",
+                "archived"
+              ]
+            }
+          },
+          {
+            "name": "offset",
+            "required": false,
+            "in": "query",
+            "schema": {
+              "default": 0,
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "title": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string",
+                            "enum": [
+                              "idle",
+                              "awaiting_input",
+                              "generating"
+                            ]
+                          },
+                          "pinned": {
+                            "type": "boolean"
+                          },
+                          "archived": {
+                            "type": "boolean"
+                          },
+                          "documentId": {
+                            "nullable": true,
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "modelId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "updatedAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "title",
+                          "status",
+                          "pinned",
+                          "archived",
+                          "documentId",
+                          "modelId",
+                          "updatedAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "nextOffset": {
+                      "nullable": true,
+                      "type": "integer",
+                      "minimum": 0,
+                      "maximum": 9007199254740991
+                    }
+                  },
+                  "required": [
+                    "items",
+                    "nextOffset"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      },
+      "post": {
+        "operationId": "ChatController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "modelId": {
+                    "default": null,
+                    "nullable": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "idle",
+                        "awaiting_input",
+                        "generating"
+                      ]
+                    },
+                    "pinned": {
+                      "type": "boolean"
+                    },
+                    "archived": {
+                      "type": "boolean"
+                    },
+                    "documentId": {
+                      "nullable": true,
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "modelId": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "status",
+                    "pinned",
+                    "archived",
+                    "documentId",
+                    "modelId",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      }
+    },
+    "/api/chat/sessions/{sessionId}": {
+      "get": {
+        "operationId": "ChatController_detail",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "session": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "status": {
+                          "type": "string",
+                          "enum": [
+                            "idle",
+                            "awaiting_input",
+                            "generating"
+                          ]
+                        },
+                        "pinned": {
+                          "type": "boolean"
+                        },
+                        "archived": {
+                          "type": "boolean"
+                        },
+                        "documentId": {
+                          "nullable": true,
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "modelId": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "title",
+                        "status",
+                        "pinned",
+                        "archived",
+                        "documentId",
+                        "modelId",
+                        "updatedAt"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "draftSpec": {
+                      "nullable": true,
+                      "type": "object",
+                      "properties": {
+                        "kind": {
+                          "type": "string",
+                          "enum": [
+                            "question_paper",
+                            "worksheet",
+                            "notes",
+                            "revision_sheet"
+                          ]
+                        },
+                        "title": {
+                          "type": "string"
+                        },
+                        "examCode": {
+                          "nullable": true,
+                          "type": "string"
+                        },
+                        "blueprintId": {
+                          "nullable": true,
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "taxonomyNodeIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          }
+                        },
+                        "sections": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "object",
+                                "properties": {
+                                  "en": {
+                                    "type": "string"
+                                  },
+                                  "hi": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "qtype": {
+                                "type": "string",
+                                "enum": [
+                                  "mcq_single",
+                                  "mcq_multi",
+                                  "numerical",
+                                  "integer",
+                                  "assertion_reason",
+                                  "match_columns",
+                                  "statement",
+                                  "passage",
+                                  "short_answer",
+                                  "long_answer"
+                                ]
+                              },
+                              "count": {
+                                "type": "integer",
+                                "minimum": 0,
+                                "exclusiveMinimum": true,
+                                "maximum": 9007199254740991
+                              },
+                              "marksEach": {
+                                "type": "number",
+                                "minimum": 0,
+                                "exclusiveMinimum": true
+                              },
+                              "negativeMarks": {
+                                "default": 0,
+                                "type": "number",
+                                "minimum": 0
+                              },
+                              "attemptAny": {
+                                "default": null,
+                                "nullable": true,
+                                "type": "integer",
+                                "minimum": 0,
+                                "exclusiveMinimum": true,
+                                "maximum": 9007199254740991
+                              },
+                              "difficultyMix": {
+                                "type": "object",
+                                "properties": {
+                                  "easy": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "medium": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  },
+                                  "hard": {
+                                    "type": "number",
+                                    "minimum": 0,
+                                    "maximum": 1
+                                  }
+                                },
+                                "required": [
+                                  "easy",
+                                  "medium",
+                                  "hard"
+                                ],
+                                "additionalProperties": false
+                              },
+                              "scope": {
+                                "default": [],
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                                }
+                              }
+                            },
+                            "required": [
+                              "name",
+                              "qtype",
+                              "count",
+                              "marksEach",
+                              "negativeMarks",
+                              "attemptAny",
+                              "difficultyMix",
+                              "scope"
+                            ],
+                            "additionalProperties": false
+                          }
+                        },
+                        "languages": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "enum": [
+                              "hi",
+                              "en"
+                            ]
+                          }
+                        },
+                        "layout": {
+                          "type": "string",
+                          "enum": [
+                            "hindi_then_english",
+                            "side_by_side",
+                            "single_language"
+                          ]
+                        },
+                        "durationMinutes": {
+                          "nullable": true,
+                          "type": "integer",
+                          "minimum": 0,
+                          "exclusiveMinimum": true,
+                          "maximum": 9007199254740991
+                        },
+                        "sourcing": {
+                          "type": "string",
+                          "enum": [
+                            "bank_first",
+                            "fresh_only",
+                            "bank_only"
+                          ]
+                        },
+                        "studentBatchId": {
+                          "nullable": true,
+                          "type": "string",
+                          "format": "uuid",
+                          "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                        },
+                        "setCodes": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "depth": {
+                          "type": "string",
+                          "enum": [
+                            "brief",
+                            "standard",
+                            "detailed"
+                          ]
+                        },
+                        "includeExamples": {
+                          "type": "boolean"
+                        },
+                        "includePractice": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "seq": {
+                            "type": "integer",
+                            "minimum": 0,
+                            "maximum": 9007199254740991
+                          },
+                          "role": {
+                            "type": "string",
+                            "enum": [
+                              "user",
+                              "assistant"
+                            ]
+                          },
+                          "blocks": {
+                            "type": "array",
+                            "items": {
+                              "oneOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "text"
+                                      ]
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "text"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "citations"
+                                      ]
+                                    },
+                                    "items": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "chunkId": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                          },
+                                          "sourceId": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                          },
+                                          "filename": {
+                                            "type": "string"
+                                          },
+                                          "pageStart": {
+                                            "nullable": true,
+                                            "type": "integer",
+                                            "minimum": -9007199254740991,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "pageEnd": {
+                                            "nullable": true,
+                                            "type": "integer",
+                                            "minimum": -9007199254740991,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "pageLabel": {
+                                            "nullable": true,
+                                            "type": "string"
+                                          },
+                                          "quote": {
+                                            "type": "string"
+                                          }
+                                        },
+                                        "required": [
+                                          "chunkId",
+                                          "sourceId",
+                                          "filename",
+                                          "pageStart",
+                                          "pageEnd",
+                                          "pageLabel",
+                                          "quote"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "items"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "clarification"
+                                      ]
+                                    },
+                                    "cardId": {
+                                      "type": "string"
+                                    },
+                                    "purpose": {
+                                      "type": "string",
+                                      "enum": [
+                                        "scope",
+                                        "shape"
+                                      ]
+                                    },
+                                    "fields": {
+                                      "minItems": 1,
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "key": {
+                                            "type": "string",
+                                            "enum": [
+                                              "kind",
+                                              "exam",
+                                              "blueprint",
+                                              "taxonomy_nodes",
+                                              "sections",
+                                              "difficulty_mix",
+                                              "languages",
+                                              "layout",
+                                              "duration",
+                                              "sourcing",
+                                              "student_batch",
+                                              "set_codes",
+                                              "depth",
+                                              "include_examples",
+                                              "include_practice",
+                                              "title"
+                                            ]
+                                          },
+                                          "required": {
+                                            "type": "boolean"
+                                          },
+                                          "suggested": {}
+                                        },
+                                        "required": [
+                                          "key",
+                                          "required"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "cardId",
+                                    "purpose",
+                                    "fields"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "card_response"
+                                      ]
+                                    },
+                                    "cardId": {
+                                      "type": "string"
+                                    },
+                                    "values": {
+                                      "type": "object",
+                                      "additionalProperties": {}
+                                    },
+                                    "summary": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "cardId",
+                                    "values",
+                                    "summary"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "spec_review"
+                                      ]
+                                    },
+                                    "spec": {
+                                      "anyOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "type": "string",
+                                              "enum": [
+                                                "question_paper",
+                                                "worksheet"
+                                              ]
+                                            },
+                                            "title": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "examCode": {
+                                              "nullable": true,
+                                              "type": "string"
+                                            },
+                                            "blueprintId": {
+                                              "nullable": true,
+                                              "type": "string",
+                                              "format": "uuid",
+                                              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                            },
+                                            "taxonomyNodeIds": {
+                                              "minItems": 1,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                              }
+                                            },
+                                            "sections": {
+                                              "minItems": 1,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "name": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "en": {
+                                                        "type": "string"
+                                                      },
+                                                      "hi": {
+                                                        "type": "string"
+                                                      }
+                                                    },
+                                                    "additionalProperties": false
+                                                  },
+                                                  "qtype": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                      "mcq_single",
+                                                      "mcq_multi",
+                                                      "numerical",
+                                                      "integer",
+                                                      "assertion_reason",
+                                                      "match_columns",
+                                                      "statement",
+                                                      "passage",
+                                                      "short_answer",
+                                                      "long_answer"
+                                                    ]
+                                                  },
+                                                  "count": {
+                                                    "type": "integer",
+                                                    "minimum": 0,
+                                                    "exclusiveMinimum": true,
+                                                    "maximum": 9007199254740991
+                                                  },
+                                                  "marksEach": {
+                                                    "type": "number",
+                                                    "minimum": 0,
+                                                    "exclusiveMinimum": true
+                                                  },
+                                                  "negativeMarks": {
+                                                    "default": 0,
+                                                    "type": "number",
+                                                    "minimum": 0
+                                                  },
+                                                  "attemptAny": {
+                                                    "default": null,
+                                                    "nullable": true,
+                                                    "type": "integer",
+                                                    "minimum": 0,
+                                                    "exclusiveMinimum": true,
+                                                    "maximum": 9007199254740991
+                                                  },
+                                                  "difficultyMix": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                      "easy": {
+                                                        "type": "number",
+                                                        "minimum": 0,
+                                                        "maximum": 1
+                                                      },
+                                                      "medium": {
+                                                        "type": "number",
+                                                        "minimum": 0,
+                                                        "maximum": 1
+                                                      },
+                                                      "hard": {
+                                                        "type": "number",
+                                                        "minimum": 0,
+                                                        "maximum": 1
+                                                      }
+                                                    },
+                                                    "required": [
+                                                      "easy",
+                                                      "medium",
+                                                      "hard"
+                                                    ],
+                                                    "additionalProperties": false
+                                                  },
+                                                  "scope": {
+                                                    "default": [],
+                                                    "type": "array",
+                                                    "items": {
+                                                      "type": "string",
+                                                      "pattern": "^[a-z0-9_]+(\\/[a-z0-9_]+)*$"
+                                                    }
+                                                  }
+                                                },
+                                                "required": [
+                                                  "name",
+                                                  "qtype",
+                                                  "count",
+                                                  "marksEach",
+                                                  "negativeMarks",
+                                                  "attemptAny",
+                                                  "difficultyMix",
+                                                  "scope"
+                                                ],
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "languages": {
+                                              "minItems": 1,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "hi",
+                                                  "en"
+                                                ]
+                                              }
+                                            },
+                                            "layout": {
+                                              "type": "string",
+                                              "enum": [
+                                                "hindi_then_english",
+                                                "side_by_side",
+                                                "single_language"
+                                              ]
+                                            },
+                                            "durationMinutes": {
+                                              "nullable": true,
+                                              "type": "integer",
+                                              "minimum": 0,
+                                              "exclusiveMinimum": true,
+                                              "maximum": 9007199254740991
+                                            },
+                                            "sourcing": {
+                                              "type": "string",
+                                              "enum": [
+                                                "bank_first",
+                                                "fresh_only",
+                                                "bank_only"
+                                              ]
+                                            },
+                                            "studentBatchId": {
+                                              "nullable": true,
+                                              "type": "string",
+                                              "format": "uuid",
+                                              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                            },
+                                            "setCodes": {
+                                              "default": [],
+                                              "maxItems": 8,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "pattern": "^[A-Z]$"
+                                              }
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "title",
+                                            "examCode",
+                                            "blueprintId",
+                                            "taxonomyNodeIds",
+                                            "sections",
+                                            "languages",
+                                            "layout",
+                                            "durationMinutes",
+                                            "sourcing",
+                                            "studentBatchId",
+                                            "setCodes"
+                                          ],
+                                          "additionalProperties": false
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "kind": {
+                                              "type": "string",
+                                              "enum": [
+                                                "notes",
+                                                "revision_sheet"
+                                              ]
+                                            },
+                                            "title": {
+                                              "type": "string",
+                                              "minLength": 1
+                                            },
+                                            "examCode": {
+                                              "nullable": true,
+                                              "type": "string"
+                                            },
+                                            "taxonomyNodeIds": {
+                                              "minItems": 1,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                              }
+                                            },
+                                            "languages": {
+                                              "minItems": 1,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "hi",
+                                                  "en"
+                                                ]
+                                              }
+                                            },
+                                            "depth": {
+                                              "type": "string",
+                                              "enum": [
+                                                "brief",
+                                                "standard",
+                                                "detailed"
+                                              ]
+                                            },
+                                            "includeExamples": {
+                                              "type": "boolean"
+                                            },
+                                            "includePractice": {
+                                              "type": "boolean"
+                                            }
+                                          },
+                                          "required": [
+                                            "kind",
+                                            "title",
+                                            "examCode",
+                                            "taxonomyNodeIds",
+                                            "languages",
+                                            "depth",
+                                            "includeExamples",
+                                            "includePractice"
+                                          ],
+                                          "additionalProperties": false
+                                        }
+                                      ]
+                                    },
+                                    "availability": {
+                                      "type": "array",
+                                      "items": {
+                                        "type": "object",
+                                        "properties": {
+                                          "nodeId": {
+                                            "type": "string",
+                                            "format": "uuid",
+                                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                          },
+                                          "name": {
+                                            "type": "string"
+                                          },
+                                          "fromBank": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 9007199254740991
+                                          },
+                                          "toGenerate": {
+                                            "type": "integer",
+                                            "minimum": 0,
+                                            "maximum": 9007199254740991
+                                          }
+                                        },
+                                        "required": [
+                                          "nodeId",
+                                          "name",
+                                          "fromBank",
+                                          "toGenerate"
+                                        ],
+                                        "additionalProperties": false
+                                      }
+                                    },
+                                    "estimate": {
+                                      "type": "object",
+                                      "properties": {
+                                        "usdLow": {
+                                          "type": "number",
+                                          "minimum": 0
+                                        },
+                                        "usdHigh": {
+                                          "type": "number",
+                                          "minimum": 0
+                                        },
+                                        "minutes": {
+                                          "type": "number",
+                                          "minimum": 0
+                                        }
+                                      },
+                                      "required": [
+                                        "usdLow",
+                                        "usdHigh",
+                                        "minutes"
+                                      ],
+                                      "additionalProperties": false
+                                    },
+                                    "confirmedAt": {
+                                      "nullable": true,
+                                      "type": "string",
+                                      "format": "date-time",
+                                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "spec",
+                                    "availability",
+                                    "estimate",
+                                    "confirmedAt"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "progress"
+                                      ]
+                                    },
+                                    "runId": {
+                                      "type": "string",
+                                      "format": "uuid",
+                                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                    },
+                                    "stage": {
+                                      "type": "string"
+                                    },
+                                    "done": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "total": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "runId",
+                                    "stage",
+                                    "done",
+                                    "total"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "document_ref"
+                                      ]
+                                    },
+                                    "documentId": {
+                                      "type": "string",
+                                      "format": "uuid",
+                                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                    },
+                                    "title": {
+                                      "type": "string"
+                                    },
+                                    "kind": {
+                                      "type": "string",
+                                      "enum": [
+                                        "question_paper",
+                                        "worksheet",
+                                        "notes",
+                                        "revision_sheet"
+                                      ]
+                                    },
+                                    "version": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "documentId",
+                                    "title",
+                                    "kind",
+                                    "version"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "edit_summary"
+                                      ]
+                                    },
+                                    "documentId": {
+                                      "type": "string",
+                                      "format": "uuid",
+                                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                    },
+                                    "fromVersion": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "toVersion": {
+                                      "type": "integer",
+                                      "minimum": 0,
+                                      "maximum": 9007199254740991
+                                    },
+                                    "summary": {
+                                      "type": "string"
+                                    },
+                                    "ops": {
+                                      "type": "array",
+                                      "items": {
+                                        "oneOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "replace_item"
+                                                ]
+                                              },
+                                              "slotId": {
+                                                "type": "string"
+                                              },
+                                              "questionId": {
+                                                "type": "string",
+                                                "format": "uuid",
+                                                "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "slotId",
+                                              "questionId"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "delete_items"
+                                                ]
+                                              },
+                                              "slotIds": {
+                                                "minItems": 1,
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "slotIds"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "add_items"
+                                                ]
+                                              },
+                                              "afterSlotId": {
+                                                "nullable": true,
+                                                "type": "string"
+                                              },
+                                              "slots": {
+                                                "minItems": 1,
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "slotId": {
+                                                      "type": "string"
+                                                    },
+                                                    "sectionIndex": {
+                                                      "type": "integer",
+                                                      "minimum": 0,
+                                                      "maximum": 9007199254740991
+                                                    },
+                                                    "qtype": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "mcq_single",
+                                                        "mcq_multi",
+                                                        "numerical",
+                                                        "integer",
+                                                        "assertion_reason",
+                                                        "match_columns",
+                                                        "statement",
+                                                        "passage",
+                                                        "short_answer",
+                                                        "long_answer"
+                                                      ]
+                                                    },
+                                                    "taxonomyNodeId": {
+                                                      "type": "string",
+                                                      "format": "uuid",
+                                                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                                    },
+                                                    "difficulty": {
+                                                      "type": "integer",
+                                                      "minimum": 1,
+                                                      "maximum": 5
+                                                    },
+                                                    "marks": {
+                                                      "type": "number",
+                                                      "minimum": 0,
+                                                      "exclusiveMinimum": true
+                                                    },
+                                                    "state": {
+                                                      "type": "string",
+                                                      "enum": [
+                                                        "pending",
+                                                        "bank",
+                                                        "generated",
+                                                        "verified",
+                                                        "flagged",
+                                                        "insufficient_evidence"
+                                                      ]
+                                                    },
+                                                    "questionId": {
+                                                      "nullable": true,
+                                                      "type": "string",
+                                                      "format": "uuid",
+                                                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                                                    },
+                                                    "flags": {
+                                                      "default": [],
+                                                      "type": "array",
+                                                      "items": {
+                                                        "type": "string"
+                                                      }
+                                                    }
+                                                  },
+                                                  "required": [
+                                                    "slotId",
+                                                    "sectionIndex",
+                                                    "qtype",
+                                                    "taxonomyNodeId",
+                                                    "difficulty",
+                                                    "marks",
+                                                    "state",
+                                                    "questionId",
+                                                    "flags"
+                                                  ],
+                                                  "additionalProperties": false
+                                                }
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "afterSlotId",
+                                              "slots"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "reorder"
+                                                ]
+                                              },
+                                              "slotIds": {
+                                                "minItems": 1,
+                                                "type": "array",
+                                                "items": {
+                                                  "type": "string"
+                                                }
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "slotIds"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "set_marks"
+                                                ]
+                                              },
+                                              "slotId": {
+                                                "type": "string"
+                                              },
+                                              "marks": {
+                                                "type": "number",
+                                                "minimum": 0,
+                                                "exclusiveMinimum": true
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "slotId",
+                                              "marks"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "set_instructions"
+                                                ]
+                                              },
+                                              "sectionIndex": {
+                                                "type": "integer",
+                                                "minimum": 0,
+                                                "maximum": 9007199254740991
+                                              },
+                                              "instructions": {
+                                                "type": "object",
+                                                "properties": {
+                                                  "en": {
+                                                    "type": "string"
+                                                  },
+                                                  "hi": {
+                                                    "type": "string"
+                                                  }
+                                                },
+                                                "additionalProperties": false
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "sectionIndex",
+                                              "instructions"
+                                            ],
+                                            "additionalProperties": false
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "op": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "set_title"
+                                                ]
+                                              },
+                                              "title": {
+                                                "type": "string",
+                                                "minLength": 1
+                                              }
+                                            },
+                                            "required": [
+                                              "op",
+                                              "title"
+                                            ],
+                                            "additionalProperties": false
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "documentId",
+                                    "fromVersion",
+                                    "toVersion",
+                                    "summary",
+                                    "ops"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "notice"
+                                      ]
+                                    },
+                                    "level": {
+                                      "type": "string",
+                                      "enum": [
+                                        "info",
+                                        "warning"
+                                      ]
+                                    },
+                                    "text": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "level",
+                                    "text"
+                                  ],
+                                  "additionalProperties": false
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "error"
+                                      ]
+                                    },
+                                    "code": {
+                                      "type": "string"
+                                    },
+                                    "message": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "required": [
+                                    "type",
+                                    "code",
+                                    "message"
+                                  ],
+                                  "additionalProperties": false
+                                }
+                              ]
+                            }
+                          },
+                          "modelId": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "createdAt": {
+                            "type": "string",
+                            "format": "date-time",
+                            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "seq",
+                          "role",
+                          "blocks",
+                          "modelId",
+                          "createdAt"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "activeTurnId": {
+                      "nullable": true,
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    }
+                  },
+                  "required": [
+                    "session",
+                    "draftSpec",
+                    "messages",
+                    "activeTurnId"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      },
+      "patch": {
+        "operationId": "ChatController_update",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "pinned": {
+                    "type": "boolean"
+                  },
+                  "archived": {
+                    "type": "boolean"
+                  },
+                  "modelId": {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "idle",
+                        "awaiting_input",
+                        "generating"
+                      ]
+                    },
+                    "pinned": {
+                      "type": "boolean"
+                    },
+                    "archived": {
+                      "type": "boolean"
+                    },
+                    "documentId": {
+                      "nullable": true,
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "modelId": {
+                      "nullable": true,
+                      "type": "string"
+                    },
+                    "updatedAt": {
+                      "type": "string",
+                      "format": "date-time",
+                      "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "title",
+                    "status",
+                    "pinned",
+                    "archived",
+                    "documentId",
+                    "modelId",
+                    "updatedAt"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      }
+    },
+    "/api/chat/sessions/{sessionId}/turns": {
+      "post": {
+        "operationId": "ChatController_turn",
+        "parameters": [
+          {
+            "name": "sessionId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientTurnId": {
+                    "type": "string",
+                    "minLength": 8,
+                    "maxLength": 64
+                  },
+                  "input": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "text"
+                            ]
+                          },
+                          "text": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 8000
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "text"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "card_submit"
+                            ]
+                          },
+                          "cardId": {
+                            "type": "string"
+                          },
+                          "values": {
+                            "type": "object",
+                            "additionalProperties": {}
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "cardId",
+                          "values"
+                        ]
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string",
+                            "enum": [
+                              "action"
+                            ]
+                          },
+                          "action": {
+                            "type": "string",
+                            "enum": [
+                              "confirm_spec",
+                              "cancel",
+                              "undo"
+                            ]
+                          },
+                          "targetId": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "kind",
+                          "action"
+                        ]
+                      }
+                    ]
+                  },
+                  "modelId": {
+                    "nullable": true,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "clientTurnId",
+                  "input"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "turnId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "userMessageId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "assistantMessageId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "status": {
+                      "type": "string",
+                      "enum": [
+                        "pending",
+                        "streaming",
+                        "done",
+                        "failed",
+                        "cancelled"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "turnId",
+                    "userMessageId",
+                    "assistantMessageId",
+                    "status"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      }
+    },
+    "/api/chat/turns/{turnId}/events": {
+      "get": {
+        "operationId": "ChatController_events",
+        "parameters": [
+          {
+            "name": "turnId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "chat"
+        ]
+      }
     }
   },
   "info": {

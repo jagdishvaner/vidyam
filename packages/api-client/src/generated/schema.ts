@@ -628,6 +628,70 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/chat/sessions": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ChatController_list"];
+        put?: never;
+        post: operations["ChatController_create"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/chat/sessions/{sessionId}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ChatController_detail"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch: operations["ChatController_update"];
+        trace?: never;
+    };
+    "/api/chat/sessions/{sessionId}/turns": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post: operations["ChatController_turn"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/chat/turns/{turnId}/events": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["ChatController_events"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -2468,6 +2532,487 @@ export interface operations {
                         unchanged: number;
                     };
                 };
+            };
+        };
+    };
+    ChatController_list: {
+        parameters: {
+            query?: {
+                q?: string;
+                show?: "active" | "archived";
+                offset?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        items: {
+                            /** Format: uuid */
+                            id: string;
+                            title: string;
+                            /** @enum {string} */
+                            status: "idle" | "awaiting_input" | "generating";
+                            pinned: boolean;
+                            archived: boolean;
+                            /** Format: uuid */
+                            documentId: string | null;
+                            modelId: string | null;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        }[];
+                        nextOffset: number | null;
+                    };
+                };
+            };
+        };
+    };
+    ChatController_create: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @default null */
+                    modelId?: string | null;
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        title: string;
+                        /** @enum {string} */
+                        status: "idle" | "awaiting_input" | "generating";
+                        pinned: boolean;
+                        archived: boolean;
+                        /** Format: uuid */
+                        documentId: string | null;
+                        modelId: string | null;
+                        /** Format: date-time */
+                        updatedAt: string;
+                    };
+                };
+            };
+        };
+    };
+    ChatController_detail: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                sessionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        session: {
+                            /** Format: uuid */
+                            id: string;
+                            title: string;
+                            /** @enum {string} */
+                            status: "idle" | "awaiting_input" | "generating";
+                            pinned: boolean;
+                            archived: boolean;
+                            /** Format: uuid */
+                            documentId: string | null;
+                            modelId: string | null;
+                            /** Format: date-time */
+                            updatedAt: string;
+                        };
+                        draftSpec: {
+                            /** @enum {string} */
+                            kind?: "question_paper" | "worksheet" | "notes" | "revision_sheet";
+                            title?: string;
+                            examCode?: string | null;
+                            /** Format: uuid */
+                            blueprintId?: string | null;
+                            taxonomyNodeIds?: string[];
+                            sections?: {
+                                name: {
+                                    en?: string;
+                                    hi?: string;
+                                };
+                                /** @enum {string} */
+                                qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                count: number;
+                                marksEach: number;
+                                /** @default 0 */
+                                negativeMarks: number;
+                                /** @default null */
+                                attemptAny: number | null;
+                                difficultyMix: {
+                                    easy: number;
+                                    medium: number;
+                                    hard: number;
+                                };
+                                /** @default [] */
+                                scope: string[];
+                            }[];
+                            languages?: ("hi" | "en")[];
+                            /** @enum {string} */
+                            layout?: "hindi_then_english" | "side_by_side" | "single_language";
+                            durationMinutes?: number | null;
+                            /** @enum {string} */
+                            sourcing?: "bank_first" | "fresh_only" | "bank_only";
+                            /** Format: uuid */
+                            studentBatchId?: string | null;
+                            setCodes?: string[];
+                            /** @enum {string} */
+                            depth?: "brief" | "standard" | "detailed";
+                            includeExamples?: boolean;
+                            includePractice?: boolean;
+                        } | null;
+                        messages: {
+                            /** Format: uuid */
+                            id: string;
+                            seq: number;
+                            /** @enum {string} */
+                            role: "user" | "assistant";
+                            blocks: ({
+                                /** @enum {string} */
+                                type: "text";
+                                text: string;
+                            } | {
+                                /** @enum {string} */
+                                type: "citations";
+                                items: {
+                                    /** Format: uuid */
+                                    chunkId: string;
+                                    /** Format: uuid */
+                                    sourceId: string;
+                                    filename: string;
+                                    pageStart: number | null;
+                                    pageEnd: number | null;
+                                    pageLabel: string | null;
+                                    quote: string;
+                                }[];
+                            } | {
+                                /** @enum {string} */
+                                type: "clarification";
+                                cardId: string;
+                                /** @enum {string} */
+                                purpose: "scope" | "shape";
+                                fields: {
+                                    /** @enum {string} */
+                                    key: "kind" | "exam" | "blueprint" | "taxonomy_nodes" | "sections" | "difficulty_mix" | "languages" | "layout" | "duration" | "sourcing" | "student_batch" | "set_codes" | "depth" | "include_examples" | "include_practice" | "title";
+                                    required: boolean;
+                                    suggested?: unknown;
+                                }[];
+                            } | {
+                                /** @enum {string} */
+                                type: "card_response";
+                                cardId: string;
+                                values: {
+                                    [key: string]: unknown;
+                                };
+                                summary: string;
+                            } | {
+                                /** @enum {string} */
+                                type: "spec_review";
+                                spec: {
+                                    /** @enum {string} */
+                                    kind: "question_paper" | "worksheet";
+                                    title: string;
+                                    examCode: string | null;
+                                    /** Format: uuid */
+                                    blueprintId: string | null;
+                                    taxonomyNodeIds: string[];
+                                    sections: {
+                                        name: {
+                                            en?: string;
+                                            hi?: string;
+                                        };
+                                        /** @enum {string} */
+                                        qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                        count: number;
+                                        marksEach: number;
+                                        /** @default 0 */
+                                        negativeMarks: number;
+                                        /** @default null */
+                                        attemptAny: number | null;
+                                        difficultyMix: {
+                                            easy: number;
+                                            medium: number;
+                                            hard: number;
+                                        };
+                                        /** @default [] */
+                                        scope: string[];
+                                    }[];
+                                    languages: ("hi" | "en")[];
+                                    /** @enum {string} */
+                                    layout: "hindi_then_english" | "side_by_side" | "single_language";
+                                    durationMinutes: number | null;
+                                    /** @enum {string} */
+                                    sourcing: "bank_first" | "fresh_only" | "bank_only";
+                                    /** Format: uuid */
+                                    studentBatchId: string | null;
+                                    /** @default [] */
+                                    setCodes: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    kind: "notes" | "revision_sheet";
+                                    title: string;
+                                    examCode: string | null;
+                                    taxonomyNodeIds: string[];
+                                    languages: ("hi" | "en")[];
+                                    /** @enum {string} */
+                                    depth: "brief" | "standard" | "detailed";
+                                    includeExamples: boolean;
+                                    includePractice: boolean;
+                                };
+                                availability: {
+                                    /** Format: uuid */
+                                    nodeId: string;
+                                    name: string;
+                                    fromBank: number;
+                                    toGenerate: number;
+                                }[];
+                                estimate: {
+                                    usdLow: number;
+                                    usdHigh: number;
+                                    minutes: number;
+                                };
+                                /** Format: date-time */
+                                confirmedAt: string | null;
+                            } | {
+                                /** @enum {string} */
+                                type: "progress";
+                                /** Format: uuid */
+                                runId: string;
+                                stage: string;
+                                done: number;
+                                total: number;
+                            } | {
+                                /** @enum {string} */
+                                type: "document_ref";
+                                /** Format: uuid */
+                                documentId: string;
+                                title: string;
+                                /** @enum {string} */
+                                kind: "question_paper" | "worksheet" | "notes" | "revision_sheet";
+                                version: number;
+                            } | {
+                                /** @enum {string} */
+                                type: "edit_summary";
+                                /** Format: uuid */
+                                documentId: string;
+                                fromVersion: number;
+                                toVersion: number;
+                                summary: string;
+                                ops: ({
+                                    /** @enum {string} */
+                                    op: "replace_item";
+                                    slotId: string;
+                                    /** Format: uuid */
+                                    questionId: string;
+                                } | {
+                                    /** @enum {string} */
+                                    op: "delete_items";
+                                    slotIds: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    op: "add_items";
+                                    afterSlotId: string | null;
+                                    slots: {
+                                        slotId: string;
+                                        sectionIndex: number;
+                                        /** @enum {string} */
+                                        qtype: "mcq_single" | "mcq_multi" | "numerical" | "integer" | "assertion_reason" | "match_columns" | "statement" | "passage" | "short_answer" | "long_answer";
+                                        /** Format: uuid */
+                                        taxonomyNodeId: string;
+                                        difficulty: number;
+                                        marks: number;
+                                        /** @enum {string} */
+                                        state: "pending" | "bank" | "generated" | "verified" | "flagged" | "insufficient_evidence";
+                                        /** Format: uuid */
+                                        questionId: string | null;
+                                        /** @default [] */
+                                        flags: string[];
+                                    }[];
+                                } | {
+                                    /** @enum {string} */
+                                    op: "reorder";
+                                    slotIds: string[];
+                                } | {
+                                    /** @enum {string} */
+                                    op: "set_marks";
+                                    slotId: string;
+                                    marks: number;
+                                } | {
+                                    /** @enum {string} */
+                                    op: "set_instructions";
+                                    sectionIndex: number;
+                                    instructions: {
+                                        en?: string;
+                                        hi?: string;
+                                    };
+                                } | {
+                                    /** @enum {string} */
+                                    op: "set_title";
+                                    title: string;
+                                })[];
+                            } | {
+                                /** @enum {string} */
+                                type: "notice";
+                                /** @enum {string} */
+                                level: "info" | "warning";
+                                text: string;
+                            } | {
+                                /** @enum {string} */
+                                type: "error";
+                                code: string;
+                                message: string;
+                            })[];
+                            modelId: string | null;
+                            /** Format: date-time */
+                            createdAt: string;
+                        }[];
+                        /** Format: uuid */
+                        activeTurnId: string | null;
+                    };
+                };
+            };
+        };
+    };
+    ChatController_update: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                sessionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    title?: string;
+                    pinned?: boolean;
+                    archived?: boolean;
+                    modelId?: string | null;
+                };
+            };
+        };
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        title: string;
+                        /** @enum {string} */
+                        status: "idle" | "awaiting_input" | "generating";
+                        pinned: boolean;
+                        archived: boolean;
+                        /** Format: uuid */
+                        documentId: string | null;
+                        modelId: string | null;
+                        /** Format: date-time */
+                        updatedAt: string;
+                    };
+                };
+            };
+        };
+    };
+    ChatController_turn: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                sessionId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    clientTurnId: string;
+                    input: {
+                        /** @enum {string} */
+                        kind: "text";
+                        text: string;
+                    } | {
+                        /** @enum {string} */
+                        kind: "card_submit";
+                        cardId: string;
+                        values: {
+                            [key: string]: unknown;
+                        };
+                    } | {
+                        /** @enum {string} */
+                        kind: "action";
+                        /** @enum {string} */
+                        action: "confirm_spec" | "cancel" | "undo";
+                        targetId?: string;
+                    };
+                    modelId?: string | null;
+                };
+            };
+        };
+        responses: {
+            202: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        turnId: string;
+                        /** Format: uuid */
+                        userMessageId: string;
+                        /** Format: uuid */
+                        assistantMessageId: string;
+                        /** @enum {string} */
+                        status: "pending" | "streaming" | "done" | "failed" | "cancelled";
+                    };
+                };
+            };
+        };
+    };
+    ChatController_events: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                turnId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

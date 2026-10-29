@@ -217,3 +217,124 @@ export const ChatStreamEvent = contract(
   ]),
 );
 export type ChatStreamEvent = z.infer<typeof ChatStreamEvent>;
+
+/** Chat history, newest first with pinned chats on top; `q` searches titles and what was said. */
+export const ChatSessionQuery = contract(
+  "ChatSessionQuery",
+  z.object({
+    q: z.string().trim().max(200).optional(),
+    show: z.enum(["active", "archived"]).default("active"),
+    offset: z.coerce.number().int().nonnegative().default(0),
+  }),
+);
+export type ChatSessionQuery = z.infer<typeof ChatSessionQuery>;
+
+export const CHAT_SESSION_PAGE_SIZE = 30;
+
+export const ChatSessionPage = contract(
+  "ChatSessionPage",
+  z.object({
+    items: z.array(ChatSessionSummary),
+    /** Where the next page starts, or null on the last page. */
+    nextOffset: z.number().int().nonnegative().nullable(),
+  }),
+);
+export type ChatSessionPage = z.infer<typeof ChatSessionPage>;
+
+export const ChatSessionCreate = contract(
+  "ChatSessionCreate",
+  z.object({
+    /** A model from the center's allowed list; the route's default when null. */
+    modelId: z.string().nullable().default(null),
+  }),
+);
+export type ChatSessionCreate = z.infer<typeof ChatSessionCreate>;
+
+export const ChatSessionUpdate = contract(
+  "ChatSessionUpdate",
+  z
+    .object({
+      title: z.string().trim().min(1).max(120),
+      pinned: z.boolean(),
+      archived: z.boolean(),
+      modelId: z.string().nullable(),
+    })
+    .partial()
+    .refine((update) => Object.keys(update).length > 0, "nothing to change"),
+);
+export type ChatSessionUpdate = z.infer<typeof ChatSessionUpdate>;
+
+/** One chat with its messages, oldest first. */
+export const ChatSessionDetail = contract(
+  "ChatSessionDetail",
+  z.object({
+    session: ChatSessionSummary,
+    draftSpec: DraftSpec.nullable(),
+    messages: z.array(ChatMessage),
+    /** The turn still being answered, whose events the browser should follow; null when none is. */
+    activeTurnId: Uuid.nullable(),
+  }),
+);
+export type ChatSessionDetail = z.infer<typeof ChatSessionDetail>;
+
+export const ChatTurnStatus = contract(
+  "ChatTurnStatus",
+  z.enum(["pending", "streaming", "done", "failed", "cancelled"]),
+);
+export type ChatTurnStatus = z.infer<typeof ChatTurnStatus>;
+
+/** The answer to sending a turn: where its answer streams (GET /api/chat/turns/:turnId/events). */
+export const ChatTurnAccepted = contract(
+  "ChatTurnAccepted",
+  z.object({
+    turnId: Uuid,
+    userMessageId: Uuid,
+    /** The assistant message's id, known before it is written. */
+    assistantMessageId: Uuid,
+    status: ChatTurnStatus,
+  }),
+);
+export type ChatTurnAccepted = z.infer<typeof ChatTurnAccepted>;
+
+/**
+ * Internal: the API asks the AI engine to answer a turn, by ids only (ADR 0015). The engine reads the
+ * conversation itself and never writes it; the API, the single writer, stores the answer.
+ */
+export const ChatEngineTurn = contract(
+  "ChatEngineTurn",
+  z.object({
+    orgId: Uuid,
+    userId: Uuid,
+    sessionId: Uuid,
+    turnId: Uuid,
+    /** The teacher's message this turn answers; the transcript is read up to it. */
+    userMessageId: Uuid,
+    /** The model the teacher picked for this turn, or the chat's; null for the route's default. */
+    modelId: z.string().nullable(),
+  }),
+);
+export type ChatEngineTurn = z.infer<typeof ChatEngineTurn>;
+
+/**
+ * Internal: what the AI engine streams back, one JSON object per line. Text, blocks and the draft spec are
+ * relayed to the browser as they come; `done` carries the whole answer for the API to store.
+ */
+export const ChatEngineEvent = contract(
+  "ChatEngineEvent",
+  z.discriminatedUnion("event", [
+    z.object({ event: z.literal("text_delta"), text: z.string() }),
+    z.object({ event: z.literal("block"), block: ChatBlock }),
+    z.object({ event: z.literal("draft_spec"), draftSpec: DraftSpec }),
+    z.object({
+      event: z.literal("done"),
+      blocks: z.array(ChatBlock),
+      /** The model that answered (its calls are in the usage ledger under this turn's id). */
+      modelId: z.string().nullable(),
+      /** A title for a chat that has none yet. */
+      title: z.string().nullable(),
+      sessionStatus: ChatSessionStatus,
+    }),
+    z.object({ event: z.literal("error"), code: z.string(), message: z.string() }),
+  ]),
+);
+export type ChatEngineEvent = z.infer<typeof ChatEngineEvent>;

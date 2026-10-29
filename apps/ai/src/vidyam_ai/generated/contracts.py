@@ -257,9 +257,68 @@ class ChatBlock10(BaseModel):
     message: str
 
 
+class ChatEngineEvent1(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    event: Literal["text_delta"]
+    text: str
+
+
+class ChatEngineEvent5(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    event: Literal["error"]
+    code: str
+    message: str
+
+
+class ChatEngineTurn(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    org_id: UUID = Field(..., alias="orgId")
+    user_id: UUID = Field(..., alias="userId")
+    session_id: UUID = Field(..., alias="sessionId")
+    turn_id: UUID = Field(..., alias="turnId")
+    user_message_id: UUID = Field(..., alias="userMessageId")
+    model_id: str | None = Field(..., alias="modelId")
+
+
 class Role(StrEnum):
     user = "user"
     assistant = "assistant"
+
+
+class ChatSessionCreate(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    model_id: str | None = Field(..., alias="modelId")
+
+
+class NextOffset(RootModel[int]):
+    root: int = Field(..., ge=0, le=9007199254740991)
+
+
+class Show(StrEnum):
+    active = "active"
+    archived = "archived"
+
+
+class ChatSessionQuery(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    q: str | None = Field(None, max_length=200)
+    show: Show
+    offset: int = Field(..., ge=0, le=9007199254740991)
 
 
 class ChatSessionStatus(StrEnum):
@@ -281,6 +340,17 @@ class ChatSessionSummary(BaseModel):
     document_id: UUID | None = Field(..., alias="documentId")
     model_id: str | None = Field(..., alias="modelId")
     updated_at: AwareDatetime = Field(..., alias="updatedAt")
+
+
+class ChatSessionUpdate(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    title: str | None = Field(None, max_length=120, min_length=1)
+    pinned: bool | None = None
+    archived: bool | None = None
+    model_id: str | None = Field(None, alias="modelId")
 
 
 class ChatStreamEvent1(BaseModel):
@@ -370,6 +440,14 @@ class ChatTurnRequest(BaseModel):
     client_turn_id: str = Field(..., alias="clientTurnId", max_length=64, min_length=8)
     input: ChatTurnInput
     model_id: str | None = Field(None, alias="modelId")
+
+
+class ChatTurnStatus(StrEnum):
+    pending = "pending"
+    streaming = "streaming"
+    done = "done"
+    failed = "failed"
+    cancelled = "cancelled"
 
 
 class PageStart(RootModel[int]):
@@ -1805,6 +1883,26 @@ class ChatBlock7(BaseModel):
     version: int = Field(..., ge=0, le=9007199254740991)
 
 
+class ChatSessionPage(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    items: list[ChatSessionSummary]
+    next_offset: NextOffset | None = Field(..., alias="nextOffset")
+
+
+class ChatTurnAccepted(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    turn_id: UUID = Field(..., alias="turnId")
+    user_message_id: UUID = Field(..., alias="userMessageId")
+    assistant_message_id: UUID = Field(..., alias="assistantMessageId")
+    status: ChatTurnStatus
+
+
 class CreatePromptVersionRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2279,6 +2377,54 @@ class ChatBlock(
     ) = Field(..., title="ChatBlock")
 
 
+class ChatEngineEvent2(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    event: Literal["block"]
+    block: ChatBlock
+
+
+class ChatEngineEvent3(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    event: Literal["draft_spec"]
+    draft_spec: DraftSpec = Field(..., alias="draftSpec")
+
+
+class ChatEngineEvent4(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    event: Literal["done"]
+    blocks: list[ChatBlock]
+    model_id: str | None = Field(..., alias="modelId")
+    title: str | None
+    session_status: ChatSessionStatus = Field(..., alias="sessionStatus")
+
+
+class ChatEngineEvent(
+    RootModel[
+        ChatEngineEvent1
+        | ChatEngineEvent2
+        | ChatEngineEvent3
+        | ChatEngineEvent4
+        | ChatEngineEvent5
+    ]
+):
+    root: (
+        ChatEngineEvent1
+        | ChatEngineEvent2
+        | ChatEngineEvent3
+        | ChatEngineEvent4
+        | ChatEngineEvent5
+    ) = Field(..., title="ChatEngineEvent")
+
+
 class ChatMessage(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2290,6 +2436,17 @@ class ChatMessage(BaseModel):
     blocks: list[ChatBlock]
     model_id: str | None = Field(..., alias="modelId")
     created_at: AwareDatetime = Field(..., alias="createdAt")
+
+
+class ChatSessionDetail(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    session: ChatSessionSummary
+    draft_spec: DraftSpec | None = Field(..., alias="draftSpec")
+    messages: list[ChatMessage]
+    active_turn_id: UUID | None = Field(..., alias="activeTurnId")
 
 
 class ChatStreamEvent3(BaseModel):

@@ -8,6 +8,7 @@ import { IdentityModule } from "./modules/identity/identity.module.js";
 import { AiModelsModule } from "./modules/ai-models/ai-models.module.js";
 import { AuditModule } from "./modules/audit/audit.module.js";
 import { CenterModule } from "./modules/center/center.module.js";
+import { ChatModule } from "./modules/chat/chat.module.js";
 import { LibraryModule } from "./modules/library/library.module.js";
 import { SyllabusModule } from "./modules/syllabus/syllabus.module.js";
 import { UsageModule } from "./modules/usage/usage.module.js";
@@ -36,6 +37,7 @@ export class AppModule {
         UsageModule,
         AuditModule,
         SyllabusModule,
+        ChatModule,
       ],
       providers: [
         // Request bodies/queries are validated against the zod schema given in @Body({ schema }) etc.

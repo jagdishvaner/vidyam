@@ -54,3 +54,54 @@ sessions, permissions and budgets ([0003](0003-service-boundaries.md)).
 - The API holds a stream open per active turn. Turns are short, so this is well within one instance's
   capacity at 100–200 staff.
 - Valkey streams for SSE need trimming; each turn's stream expires after it completes.
+
+## Update 2026-10-29: the chat backend as built (plan v3 step 22)
+
+**API** (`apps/api/src/modules/chat`), everything behind `chat:use`. A chat is only ever its owner's; another
+teacher gets 404.
+
+| Endpoint                                  | What it does                                                                                                                       |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `GET /api/chat/sessions?q=&show=&offset=` | History: pinned first, then most recent. `q` searches titles and what was said, Hindi included. `show=archived` lists the archive. |
+| `POST /api/chat/sessions`                 | A new chat, optionally with a model from the center's allowed list.                                                                |
+| `GET /api/chat/sessions/:id`              | The chat, its messages, its draft spec, and the turn still being answered.                                                         |
+| `PATCH /api/chat/sessions/:id`            | Rename, pin, archive, or change model. None of these moves the chat up the history.                                                |
+| `POST /api/chat/sessions/:id/turns`       | 202: the teacher's message is recorded and answered in the background.                                                             |
+| `GET /api/chat/turns/:turnId/events`      | The answer as Server-Sent Events, from the start or after `Last-Event-ID`.                                                         |
+
+**A turn:**
+
+1. **Checks first.** The same `clientTurnId` returns the turn already made. Then the model must be one the
+   center offers, and the budget must not be used up (403, in the gateway's words).
+2. **One transaction.** The chat's row is locked; a chat still answering refuses another message (409); the
+   teacher's message and the `chat_turns` row are written.
+3. **The relay.** The API calls the AI engine (`POST /chat/turns`, service token, ids only) and copies each
+   event into the Valkey stream `vidyam:chat:turn:<id>`. Text goes out at most every 50 ms, in one piece, so
+   an answer is a few hundred stream entries.
+4. **The end.** The answer is stored as the assistant's message, under an id fixed in advance (a UUIDv8 of
+   the turn), with the title and draft spec.
+   - A failed answer keeps what arrived and adds an `error` block. The cases are the engine reporting an
+     error, the engine being unreachable, and the stream stopping early.
+   - Then `message_complete` is sent, and the stream expires 15 minutes later.
+
+**Following an answer:**
+
+- The browser reads the stream after its last event id. Comments every 15 s keep a quiet connection open.
+- When the stream has expired, a finished turn is reported complete at once, and the browser reloads the
+  chat.
+- A turn still unanswered after 5 minutes (the API restarted mid-answer, say) is marked failed and reported
+  `interrupted`. The same happens when the next message is sent.
+
+**AI engine** (`application/chat.py`): reads the conversation under the center's row-level security and never
+writes it.
+
+- Blocks become plain text for the model (`domain/chat.py`). An answered card reads as its sentence; sources
+  and documents become short notes; cards, progress and errors are left out. Turns from the same side are
+  joined.
+- The answer is the `chat_qa` task, streamed. A new chat is named by `chat_title` alongside it.
+- Gateway failures become `error` events: `budget_exceeded`, `model_unavailable`, `not_configured`,
+  `provider_error`, `model_error`.
+- Every event is checked against `ChatEngineEvent` before it is sent.
+
+**Deferred to the chat agent (step 23):** card submissions and button presses (the API answers 422 for
+now), intents, the draft spec, and search with citations.
