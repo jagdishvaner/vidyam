@@ -1,6 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import {
   AiPolicy,
+  type AppendChatBlocksInput,
+  type AppendChatBlocksResult,
   type ChatBlock,
   type ChatScopeNode,
   type ChatSessionDetail,
@@ -389,6 +391,28 @@ export class DrizzleChatStore implements ChatStore {
         .innerJoin(s, eq(s.id, t.sessionId))
         .where(and(eq(t.id, turnId), eq(s.userId, userId)));
       return row ?? null;
+    });
+  }
+
+  appendFromWorkflow(input: AppendChatBlocksInput): Promise<AppendChatBlocksResult | null> {
+    return this.orgDb.run(input.orgId, async (tx) => {
+      // The chat's row is locked, so the message's place (seq) can't clash with a turn being answered.
+      const [session] = await tx.select({ id: s.id }).from(s).where(eq(s.id, input.sessionId)).for("update");
+      if (!session) return null;
+      const written = await tx
+        .insert(m)
+        .values({
+          id: input.messageId,
+          orgId: input.orgId,
+          sessionId: input.sessionId,
+          seq: await nextSeq(tx, input.sessionId),
+          role: "assistant",
+          content: input.blocks,
+        })
+        .onConflictDoNothing({ target: m.id })
+        .returning({ id: m.id });
+      if (written.length) await tx.update(s).set({ status: "idle" }).where(eq(s.id, input.sessionId));
+      return { messageId: input.messageId, created: written.length > 0 };
     });
   }
 

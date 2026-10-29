@@ -13,6 +13,7 @@ import { LibraryModule } from "./modules/library/library.module.js";
 import { SyllabusModule } from "./modules/syllabus/syllabus.module.js";
 import { UsageModule } from "./modules/usage/usage.module.js";
 import { SystemModule } from "./modules/system/system.module.js";
+import { WorkflowsModule } from "./modules/workflows/workflows.module.js";
 import { CacheModule } from "./shared/cache/cache.module.js";
 import { DatabaseModule } from "./shared/database/database.module.js";
 import { DomainErrorFilter } from "./shared/kernel/domain-error.filter.js";
@@ -38,6 +39,7 @@ export class AppModule {
         AuditModule,
         SyllabusModule,
         ChatModule,
+        WorkflowsModule,
       ],
       providers: [
         // Request bodies/queries are validated against the zod schema given in @Body({ schema }) etc.

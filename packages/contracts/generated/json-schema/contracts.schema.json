@@ -275,6 +275,70 @@
         }
       ]
     },
+    "ApiActivity": {
+      "title": "ApiActivity",
+      "type": "string",
+      "enum": [
+        "save_document_version",
+        "update_generation_run",
+        "append_chat_blocks"
+      ]
+    },
+    "AppendChatBlocksInput": {
+      "title": "AppendChatBlocksInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "sessionId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "messageId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "blocks": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ChatBlock"
+          }
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "sessionId",
+        "messageId",
+        "blocks"
+      ],
+      "additionalProperties": false
+    },
+    "AppendChatBlocksResult": {
+      "title": "AppendChatBlocksResult",
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "created": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "messageId",
+        "created"
+      ],
+      "additionalProperties": false
+    },
     "AuditAction": {
       "title": "AuditAction",
       "type": "string",
@@ -2587,6 +2651,17 @@
       ],
       "additionalProperties": false
     },
+    "GenerationStatus": {
+      "title": "GenerationStatus",
+      "type": "string",
+      "enum": [
+        "planning",
+        "running",
+        "done",
+        "failed",
+        "cancelled"
+      ]
+    },
     "GlossaryTermImport": {
       "title": "GlossaryTermImport",
       "type": "object",
@@ -4644,6 +4719,104 @@
       ],
       "additionalProperties": false
     },
+    "SaveDocumentVersionInput": {
+      "title": "SaveDocumentVersionInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "documentId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "baseVersion": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "content": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        },
+        "ops": {
+          "default": [],
+          "type": "array",
+          "items": {}
+        },
+        "authorKind": {
+          "type": "string",
+          "enum": [
+            "user",
+            "agent",
+            "system"
+          ]
+        },
+        "authorId": {
+          "default": null,
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "chatMessageId": {
+          "default": null,
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "documentId",
+        "baseVersion",
+        "content",
+        "ops",
+        "authorKind",
+        "authorId",
+        "chatMessageId"
+      ],
+      "additionalProperties": false
+    },
+    "SaveDocumentVersionResult": {
+      "title": "SaveDocumentVersionResult",
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "created": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "version",
+        "created"
+      ],
+      "additionalProperties": false
+    },
     "SavePaperPatternRequest": {
       "title": "SavePaperPatternRequest",
       "type": "object",
@@ -5495,7 +5668,8 @@
         "ai",
         "ai-cpu",
         "ai-llm",
-        "render"
+        "render",
+        "api"
       ]
     },
     "TaskRoute": {
@@ -5697,6 +5871,67 @@
         "headerLines",
         "footer",
         "defaultInstructions"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateGenerationRunInput": {
+      "title": "UpdateGenerationRunInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "runId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "status": {
+          "$ref": "#/$defs/GenerationStatus"
+        },
+        "slotPlan": {
+          "type": "array",
+          "items": {}
+        },
+        "slotStates": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {}
+        },
+        "actualCostUsd": {
+          "type": "number",
+          "minimum": 0
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "runId"
+      ],
+      "additionalProperties": false
+    },
+    "UpdateGenerationRunResult": {
+      "title": "UpdateGenerationRunResult",
+      "type": "object",
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/GenerationStatus"
+        }
+      },
+      "required": [
+        "status"
       ],
       "additionalProperties": false
     },

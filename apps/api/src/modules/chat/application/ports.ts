@@ -1,4 +1,6 @@
 import type {
+  AppendChatBlocksInput,
+  AppendChatBlocksResult,
   ChatBlock,
   ChatEngineEvent,
   ChatEngineTurn,
@@ -92,6 +94,11 @@ export interface ChatStore {
   /** In one transaction: the assistant's message, the turn's outcome, and the chat's title and status. */
   finishTurn(orgId: string, finished: FinishedTurn): Promise<void>;
   turn(orgId: string, userId: string, turnId: string): Promise<TurnRecord | null>;
+  /**
+   * An assistant message from a workflow, under the id it fixed: created once, however often it is retried.
+   * Null when the chat doesn't exist (any more).
+   */
+  appendFromWorkflow(input: AppendChatBlocksInput): Promise<AppendChatBlocksResult | null>;
   failTurn(orgId: string, turnId: string, error: string): Promise<void>;
 }
 

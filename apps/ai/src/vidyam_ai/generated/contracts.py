@@ -72,6 +72,21 @@ class Answer(RootModel[Answer1 | Answer2 | Answer3 | Answer4]):
     root: Answer1 | Answer2 | Answer3 | Answer4 = Field(..., title="Answer")
 
 
+class ApiActivity(StrEnum):
+    save_document_version = "save_document_version"
+    update_generation_run = "update_generation_run"
+    append_chat_blocks = "append_chat_blocks"
+
+
+class AppendChatBlocksResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    message_id: UUID = Field(..., alias="messageId")
+    created: bool
+
+
 class AuditAction(StrEnum):
     member_create = "member.create"
     member_password_reset = "member.password_reset"
@@ -660,6 +675,14 @@ class Syllabu1(BaseModel):
     weightage: float | None = Field(None, ge=0.0, le=1.0)
 
 
+class GenerationStatus(StrEnum):
+    planning = "planning"
+    running = "running"
+    done = "done"
+    failed = "failed"
+    cancelled = "cancelled"
+
+
 class GlossaryTermImport(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1221,6 +1244,37 @@ class RunBacklogResult(BaseModel):
     cost_usd: float = Field(..., alias="costUsd", ge=0.0)
 
 
+class AuthorKind(StrEnum):
+    user = "user"
+    agent = "agent"
+    system = "system"
+
+
+class SaveDocumentVersionInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    document_id: UUID = Field(..., alias="documentId")
+    base_version: int = Field(..., alias="baseVersion", ge=0, le=9007199254740991)
+    content: dict[str, Any]
+    ops: list[Any]
+    author_kind: AuthorKind = Field(..., alias="authorKind")
+    author_id: UUID | None = Field(..., alias="authorId")
+    chat_message_id: UUID | None = Field(..., alias="chatMessageId")
+
+
+class SaveDocumentVersionResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    version: int = Field(..., gt=0, le=9007199254740991)
+    created: bool
+
+
 class SegmentedQuestion(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1532,6 +1586,7 @@ class TaskQueue(StrEnum):
     ai_cpu = "ai-cpu"
     ai_llm = "ai-llm"
     render = "render"
+    api = "api"
 
 
 class MaxTokens(RootModel[int]):
@@ -1603,6 +1658,29 @@ class UpdateBrandingRequest(BaseModel):
     header_lines: LocalizedText | None = Field(..., alias="headerLines")
     footer: LocalizedText | None
     default_instructions: LocalizedText | None = Field(..., alias="defaultInstructions")
+
+
+class UpdateGenerationRunInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    run_id: UUID = Field(..., alias="runId")
+    status: GenerationStatus | None = None
+    slot_plan: list[Any] | None = Field(None, alias="slotPlan")
+    slot_states: dict[str, Any] | None = Field(None, alias="slotStates")
+    actual_cost_usd: float | None = Field(None, alias="actualCostUsd", ge=0.0)
+    error: str | None = None
+
+
+class UpdateGenerationRunResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    status: GenerationStatus
 
 
 class UpdateProfileRequest(BaseModel):
@@ -2541,6 +2619,18 @@ class DocumentEdit(BaseModel):
     document_id: UUID = Field(..., alias="documentId")
     base_version: int = Field(..., alias="baseVersion", ge=0, le=9007199254740991)
     ops: list[EditOp] = Field(..., min_length=1)
+
+
+class AppendChatBlocksInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    session_id: UUID = Field(..., alias="sessionId")
+    message_id: UUID = Field(..., alias="messageId")
+    blocks: list[ChatBlock] = Field(..., min_length=1)
 
 
 SyllabusNodeImport.model_rebuild()

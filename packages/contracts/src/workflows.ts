@@ -1,5 +1,6 @@
 import { z } from "zod";
 
+import { ChatBlock } from "./chat.js";
 import { Uuid } from "./common.js";
 import { contract } from "./registry.js";
 
@@ -16,6 +17,8 @@ export const TASK_QUEUES = {
   aiLlm: { name: "ai-llm", worker: "ai" },
   /** PDF and DOCX exports (Node render worker, Phase 7). */
   render: { name: "render", worker: "render" },
+  /** Activities that commit results to the API's tables (ADR 0017): the API is their only writer. */
+  api: { name: "api", worker: "api" },
 } as const;
 export type TaskQueue = (typeof TASK_QUEUES)[keyof typeof TASK_QUEUES]["name"];
 
@@ -152,3 +155,95 @@ export type PingResult = z.infer<typeof PingResult>;
 export function workflowId(type: WorkflowType, ...parts: string[]): string {
   return [type, ...parts].join(":");
 }
+
+/**
+ * Activities the API runs on the `api` queue for workflows the AI engine runs (ADR 0017): they commit results
+ * to the tables only the API writes. Each is safe to retry: Temporal may run one more than once.
+ */
+export const API_ACTIVITIES = {
+  saveDocumentVersion: "save_document_version",
+  updateGenerationRun: "update_generation_run",
+  appendChatBlocks: "append_chat_blocks",
+} as const;
+export type ApiActivity = (typeof API_ACTIVITIES)[keyof typeof API_ACTIVITIES];
+export const ApiActivity = contract(
+  "ApiActivity",
+  z.enum(Object.values(API_ACTIVITIES) as [ApiActivity, ...ApiActivity[]]),
+);
+
+/** A new version of a document, saved only if the document is still at `baseVersion` (no lost edits). */
+export const SaveDocumentVersionInput = contract(
+  "SaveDocumentVersionInput",
+  z.object({
+    v: z.literal(1),
+    orgId: Uuid,
+    documentId: Uuid,
+    baseVersion: z.number().int().nonnegative(),
+    content: z.record(z.string(), z.unknown()),
+    /** The edit operations that made it from the base version (empty for a fresh generation). */
+    ops: z.array(z.unknown()).default([]),
+    authorKind: z.enum(["user", "agent", "system"]),
+    authorId: Uuid.nullable().default(null),
+    chatMessageId: Uuid.nullable().default(null),
+  }),
+);
+export type SaveDocumentVersionInput = z.infer<typeof SaveDocumentVersionInput>;
+
+export const SaveDocumentVersionResult = contract(
+  "SaveDocumentVersionResult",
+  z.object({
+    version: z.number().int().positive(),
+    /** False when a retry found this version already saved. */
+    created: z.boolean(),
+  }),
+);
+export type SaveDocumentVersionResult = z.infer<typeof SaveDocumentVersionResult>;
+
+export const GenerationStatus = contract(
+  "GenerationStatus",
+  z.enum(["planning", "running", "done", "failed", "cancelled"]),
+);
+export type GenerationStatus = z.infer<typeof GenerationStatus>;
+
+/** How a generation run is getting on; fields left out stay as they are, slot states are merged in. */
+export const UpdateGenerationRunInput = contract(
+  "UpdateGenerationRunInput",
+  z.object({
+    v: z.literal(1),
+    orgId: Uuid,
+    runId: Uuid,
+    status: GenerationStatus.optional(),
+    slotPlan: z.array(z.unknown()).optional(),
+    /** Per slot id: its state (pending, bank, generated, verified, flagged, …) and flags. */
+    slotStates: z.record(z.string(), z.unknown()).optional(),
+    actualCostUsd: z.number().nonnegative().optional(),
+    error: z.string().nullable().optional(),
+  }),
+);
+export type UpdateGenerationRunInput = z.infer<typeof UpdateGenerationRunInput>;
+
+export const UpdateGenerationRunResult = contract(
+  "UpdateGenerationRunResult",
+  z.object({ status: GenerationStatus }),
+);
+export type UpdateGenerationRunResult = z.infer<typeof UpdateGenerationRunResult>;
+
+/** An assistant message from a workflow (a finished document, say), under an id the workflow fixes. */
+export const AppendChatBlocksInput = contract(
+  "AppendChatBlocksInput",
+  z.object({
+    v: z.literal(1),
+    orgId: Uuid,
+    sessionId: Uuid,
+    /** Fixed by the workflow, so a retried activity writes the message once. */
+    messageId: Uuid,
+    blocks: z.array(ChatBlock).min(1),
+  }),
+);
+export type AppendChatBlocksInput = z.infer<typeof AppendChatBlocksInput>;
+
+export const AppendChatBlocksResult = contract(
+  "AppendChatBlocksResult",
+  z.object({ messageId: Uuid, created: z.boolean() }),
+);
+export type AppendChatBlocksResult = z.infer<typeof AppendChatBlocksResult>;

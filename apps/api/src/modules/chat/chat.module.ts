@@ -29,5 +29,6 @@ import { ChatController } from "./interface/chat.controller.js";
       useFactory: (redis: Redis) => new ValkeyTurnEvents(redis),
     },
   ],
+  exports: [ManageChats],
 })
 export class ChatModule {}

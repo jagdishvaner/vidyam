@@ -13,6 +13,7 @@ import {
   type DependencyProbe,
 } from "./application/check-system-status.js";
 import {
+  ApiWorkerProbe,
   HttpAiEngineHealthReader,
   PostgresProbe,
   S3Probe,
@@ -32,6 +33,7 @@ import { SystemController } from "./interface/system.controller.js";
       useFactory: (env: Env, database: DatabaseHandle, temporal: Client): DependencyProbe[] => [
         new PostgresProbe(database),
         new TemporalProbe(temporal),
+        new ApiWorkerProbe(temporal),
         new ValkeyProbe("valkey-cache", env.VIDYAM_CACHE_REDIS_URL),
         new S3Probe(createS3Client(env), env),
       ],

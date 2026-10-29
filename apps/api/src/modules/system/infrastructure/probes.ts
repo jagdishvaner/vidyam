@@ -1,6 +1,7 @@
 import { HeadBucketCommand, type S3Client } from "@aws-sdk/client-s3";
 import type { Client } from "@temporalio/client";
-import { ServiceHealth } from "@vidyam/contracts";
+import proto from "@temporalio/proto";
+import { ServiceHealth, TASK_QUEUES } from "@vidyam/contracts";
 import type { DatabaseHandle } from "@vidyam/db";
 import { Redis } from "ioredis";
 
@@ -54,6 +55,25 @@ export class TemporalProbe implements DependencyProbe {
       this.client.workflowService.describeNamespace({ namespace }),
     );
     return `namespace ${namespace} ready`;
+  }
+}
+
+/** Whether any API worker polls the `api` queue (ADR 0017): without one, finished work can't be saved. */
+export class ApiWorkerProbe implements DependencyProbe {
+  readonly name = "api-worker";
+  constructor(private readonly client: Client) {}
+
+  async check(signal: AbortSignal): Promise<string | null> {
+    const { pollers } = await this.client.connection.withAbortSignal(signal, () =>
+      this.client.workflowService.describeTaskQueue({
+        namespace: this.client.options.namespace,
+        taskQueue: { name: TASK_QUEUES.api.name },
+        // CommonJS: its namespace is the default export under ESM.
+        taskQueueType: proto.temporal.api.enums.v1.TaskQueueType.TASK_QUEUE_TYPE_ACTIVITY,
+      }),
+    );
+    if (!pollers?.length) throw new Error(`no worker polls the ${TASK_QUEUES.api.name} queue`);
+    return `${pollers.length} worker(s) polling ${TASK_QUEUES.api.name}`;
   }
 }
 

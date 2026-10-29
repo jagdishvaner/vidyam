@@ -1,5 +1,7 @@
 import { Inject, Injectable } from "@nestjs/common";
 import {
+  type AppendChatBlocksInput,
+  type AppendChatBlocksResult,
   CHAT_SESSION_PAGE_SIZE,
   type ChatScope,
   type ChatScopeQuery,
@@ -69,6 +71,13 @@ export class ManageChats {
       .filter(Boolean)
       .slice(0, 200);
     return { nodes: await this.store.scope(orgId, query.examCode || null, ids) };
+  }
+
+  /** A message a workflow adds to the chat (ADR 0017), written once however often it is retried. */
+  async appendFromWorkflow(input: AppendChatBlocksInput): Promise<AppendChatBlocksResult> {
+    const appended = await this.store.appendFromWorkflow(input);
+    if (!appended) throw new DomainError(NOT_FOUND, "not_found");
+    return appended;
   }
 
   /** A chosen model must be one the center lets teachers pick (Admin → AI models). */
