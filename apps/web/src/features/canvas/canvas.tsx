@@ -6,11 +6,12 @@ import { Button } from "@vidyam/ui/components/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@vidyam/ui/components/select";
 import { Skeleton } from "@vidyam/ui/components/skeleton";
 import { Switch } from "@vidyam/ui/components/switch";
-import { History, Loader2, Undo2, X } from "lucide-react";
+import { Download, History, Loader2, Undo2, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 import { useDocument, useEdit, useRestore } from "./api";
+import { ExportDialog } from "./export-dialog";
 import { NotesView } from "./notes-view";
 import { PaperView } from "./paper-view";
 import { VersionHistory } from "./version-history";
@@ -31,6 +32,7 @@ export function Canvas({ documentId, onClose }: { documentId: string; onClose: (
   const [setCode, setSetCode] = useState<string | null>(null);
   const [showAnswers, setShowAnswers] = useState(true);
   const [history, setHistory] = useState(false);
+  const [exporting, setExporting] = useState(false);
   const detail = document.data;
   const making = MAKING.has(detail?.generation?.status ?? "");
   const version = detail?.document.currentVersion ?? 0;
@@ -70,6 +72,10 @@ export function Canvas({ documentId, onClose }: { documentId: string; onClose: (
           >
             <Undo2 />
             {t("undo")}
+          </Button>
+          <Button variant="ghost" size="sm" disabled={!editable} onClick={() => setExporting(true)}>
+            <Download />
+            {t("export.button")}
           </Button>
           <Button variant="ghost" size="sm" disabled={version < 1} onClick={() => setHistory(true)}>
             <History />
@@ -128,6 +134,9 @@ export function Canvas({ documentId, onClose }: { documentId: string; onClose: (
         </div>
       </div>
       {history && detail && <VersionHistory detail={detail} onClose={() => setHistory(false)} />}
+      {exporting && detail && (
+        <ExportDialog detail={detail} setCode={setCode} onClose={() => setExporting(false)} />
+      )}
     </aside>
   );
 }

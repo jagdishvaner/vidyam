@@ -4,6 +4,7 @@ import {
   API_ACTIVITIES,
   AppendChatBlocksInput,
   ApplyDocumentEditsInput,
+  FinishExportInput,
   SaveDocumentVersionInput,
   UpdateGenerationRunInput,
 } from "@vidyam/contracts";
@@ -12,6 +13,7 @@ import type { z } from "zod";
 import { DomainError } from "../../shared/kernel/errors.js";
 import { ManageChats } from "../chat/application/manage-chats.js";
 import { CommitResults } from "../studio/application/commit-results.js";
+import { ExportDocuments } from "../studio/application/export-documents.js";
 import { ManageDocuments } from "../studio/application/manage-documents.js";
 
 type Activity = (input: unknown) => Promise<unknown>;
@@ -58,6 +60,7 @@ export class ApiActivities {
     private readonly results: CommitResults,
     private readonly chats: ManageChats,
     private readonly documents: ManageDocuments,
+    private readonly exports: ExportDocuments,
   ) {}
 
   handlers(): Record<string, Activity> {
@@ -76,6 +79,9 @@ export class ApiActivities {
         API_ACTIVITIES.appendChatBlocks,
         AppendChatBlocksInput,
         (input) => this.chats.appendFromWorkflow(input),
+      ),
+      [API_ACTIVITIES.finishExport]: activity(API_ACTIVITIES.finishExport, FinishExportInput, (input) =>
+        this.exports.finish(input),
       ),
       [API_ACTIVITIES.applyDocumentEdits]: activity(
         API_ACTIVITIES.applyDocumentEdits,

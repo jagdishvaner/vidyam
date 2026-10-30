@@ -1,7 +1,14 @@
 import { describe, expect, it } from "vitest";
 
 import { buildContractsDocument } from "../scripts/export-json-schema.js";
-import { ChatBlock, QuestionContent, roleCan, SourceManifestRow, workflowId } from "../src/index.js";
+import {
+  ChatBlock,
+  exportFileName,
+  QuestionContent,
+  roleCan,
+  SourceManifestRow,
+  workflowId,
+} from "../src/index.js";
 
 describe("contracts", () => {
   it("exports every contract with resolvable references", () => {
@@ -79,5 +86,16 @@ describe("contracts", () => {
     expect(roleCan("content_operator", "document", "create")).toBe(false);
     expect(roleCan("admin", "audit", "read")).toBe(true);
     expect(roleCan(null, "chat", "use")).toBe(false);
+  });
+});
+
+describe("exportFileName", () => {
+  it("names a download by title, set, variant and font, safely", () => {
+    expect(exportFileName("Force test", "answer_key", "B", "pdf")).toBe(
+      "Force test - Set B - Answer key.pdf",
+    );
+    expect(exportFileName("Q/A: motion?", "paper", null, "krutidev_docx")).toBe(
+      "Q A motion - Kruti Dev.docx",
+    );
   });
 });

@@ -411,6 +411,34 @@
         "none": "change nothing: it is the same as the current version"
       },
       "restore": "Go back to this version"
+    },
+    "export": {
+      "button": "Export",
+      "title": "Print or share",
+      "hint": "A file of version {version}, made in the background. Edits after this don't change a file already made.",
+      "format": "Format",
+      "formats": {
+        "pdf": "PDF",
+        "docx": "Word",
+        "krutidev_docx": "Word (Kruti Dev)"
+      },
+      "variant": "What",
+      "variants": {
+        "paper": "The paper",
+        "answer_key": "Answer key",
+        "solutions": "Solutions"
+      },
+      "set": "Order",
+      "paperOrder": "Paper order",
+      "setCode": "Set {code}",
+      "krutiDevHint": "Hindi is written in the Kruti Dev 010 font, so it opens like files typed in Kruti Dev. The computer needs that font installed.",
+      "make": "Make the file",
+      "files": "Files",
+      "none": "No files yet.",
+      "madeFrom": "From version {version}",
+      "making": "Making…",
+      "failed": "It couldn't be made. Try again.",
+      "download": "Download"
     }
   }
 }

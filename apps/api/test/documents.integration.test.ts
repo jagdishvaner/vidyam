@@ -7,9 +7,16 @@
 import "reflect-metadata";
 
 import type { INestApplication } from "@nestjs/common";
-import { NestFactory } from "@nestjs/core";
+import { Test } from "@nestjs/testing";
+import { GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { AuthService } from "@thallesp/nestjs-better-auth";
-import type { DocumentDetail, PaperDocument, QuestionContent } from "@vidyam/contracts";
+import type {
+  DocumentDetail,
+  DocumentExport,
+  ExportDocumentInput,
+  PaperDocument,
+  QuestionContent,
+} from "@vidyam/contracts";
 import {
   createDatabase,
   runMigrations,
@@ -23,9 +30,15 @@ import request from "supertest";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
 
 import { AppModule } from "../src/app.module.js";
-import { loadEnv } from "../src/config/env.js";
+import { bucketName, loadEnv } from "../src/config/env.js";
 import type { Auth } from "../src/modules/identity/infrastructure/better-auth.js";
+import {
+  EXPORT_STARTER,
+  ExportDocuments,
+  type ExportStarter,
+} from "../src/modules/studio/application/export-documents.js";
 import { ManageDocuments } from "../src/modules/studio/application/manage-documents.js";
+import { createS3Client } from "../src/shared/storage/s3.js";
 
 const base = loadEnv();
 const testDbUrl = process.env.VIDYAM_TEST_DATABASE_URL!;
@@ -36,6 +49,14 @@ const orgId = crypto.randomUUID();
 const emails = [`docs-a-${orgId}@vidyam.test`, `docs-b-${orgId}@vidyam.test`];
 
 let app: INestApplication;
+/** The stand-in for starting ExportDocument: what it was asked to start. */
+const started: ExportDocumentInput[] = [];
+const starter: ExportStarter = {
+  start: async (input) => {
+    started.push(input);
+  },
+};
+const s3 = createS3Client(base);
 let owner: DatabaseHandle;
 let teacherA: string[];
 let teacherB: string[];
@@ -135,10 +156,13 @@ beforeAll(async () => {
   await runMigrations(testAdminUrl);
   await syncLocalAppRolePassword(testAdminUrl, testDbUrl);
   owner = createDatabase(testAdminUrl, { max: 2 });
-  app = await NestFactory.create(AppModule.forRoot({ ...base, VIDYAM_DATABASE_URL: testDbUrl }), {
-    bodyParser: false,
-    logger: false,
-  });
+  const moduleRef = await Test.createTestingModule({
+    imports: [AppModule.forRoot({ ...base, VIDYAM_DATABASE_URL: testDbUrl })],
+  })
+    .overrideProvider(EXPORT_STARTER)
+    .useValue(starter)
+    .compile();
+  app = moduleRef.createNestApplication({ bodyParser: false, logger: false });
   app.setGlobalPrefix("api");
   await app.init();
 
@@ -365,5 +389,54 @@ describe("documents", () => {
       .set("Cookie", teacherA)
       .expect(204);
     await get(teacherA, doc!.id).expect(404);
+  });
+
+  it("exports a version as a file the teacher downloads, and the file goes with the document", async () => {
+    const paper = await madePaper();
+    const asked = await post(teacherA, `${paper.id}/exports`, { format: "pdf", variant: "answer_key", setCode: null })
+      .expect(201); // prettier-ignore
+    const file = asked.body as DocumentExport;
+    expect(file).toMatchObject({ version: 1, format: "pdf", status: "pending",
+                                 filename: "Force test - Answer key.pdf" }); // prettier-ignore
+    expect(started.at(-1)).toEqual({ v: 1, orgId, requestedBy: teacherAId, exportId: file.id });
+    await get(teacherA, `${paper.id}/exports/${file.id}/file`).expect(404); // not made yet
+
+    // The render worker stored it; the workflow tells the API (finish_export).
+    const key = `${orgId}/${paper.id}/${file.id}.pdf`;
+    await s3.send(
+      new PutObjectCommand({ Bucket: bucketName(base, "exports"), Key: key, Body: "%PDF-1.7 test" }),
+    );
+    await app.get(ExportDocuments).finish({ v: 1, orgId, exportId: file.id, s3Key: key, error: null });
+    const listed = (await get(teacherA, `${paper.id}/exports`).expect(200)).body as DocumentExport[];
+    expect(listed[0]).toMatchObject({ id: file.id, status: "done" });
+    const downloaded = await get(teacherA, `${paper.id}/exports/${file.id}/file`).expect(200);
+    expect(downloaded.headers["content-type"]).toBe("application/pdf");
+    expect(downloaded.headers["content-disposition"]).toContain(
+      "filename*=UTF-8''Force%20test%20-%20Answer%20key.pdf",
+    );
+    expect(downloaded.body.toString()).toBe("%PDF-1.7 test");
+    await get(teacherB, `${paper.id}/exports/${file.id}/file`).expect(404); // another teacher's paper
+
+    await request(app.getHttpServer())
+      .delete(`/api/documents/${paper.id}`)
+      .set("Cookie", teacherA)
+      .expect(204);
+    await expect(
+      s3.send(new GetObjectCommand({ Bucket: bucketName(base, "exports"), Key: key })),
+    ).rejects.toThrow(); // the file went with it
+  });
+
+  it("refuses an answer key for notes, and exports of a paper still being made", async () => {
+    const [notes] = await owner.db
+      .insert(schema.documents)
+      .values({ orgId, kind: "notes", title: "Force notes", ownerId: teacherAId, spec: {}, content: {},
+                currentVersion: 1 })
+      .returning({ id: schema.documents.id }); // prettier-ignore
+    await post(teacherA, `${notes!.id}/exports`, { format: "pdf", variant: "answer_key" }).expect(422);
+    const [making] = await owner.db
+      .insert(schema.documents)
+      .values({ orgId, kind: "question_paper", title: "Making", ownerId: teacherAId, spec: {}, content: {} })
+      .returning({ id: schema.documents.id });
+    await post(teacherA, `${making!.id}/exports`, { format: "docx" }).expect(409);
   });
 });

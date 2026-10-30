@@ -70,6 +70,8 @@ jobs:
         run: pnpm db:migrate
       - name: Create S3 buckets and Qdrant collections
         run: pnpm bootstrap
+      - name: Chromium for the render worker's PDFs
+        run: pnpm --filter @vidyam/render exec playwright install --with-deps chromium
       - run: pnpm test:integration
       - name: Python tables match the migrated schema (no TypeScript/Python drift)
         run: |

@@ -3,11 +3,13 @@ import {
   Controller,
   Delete,
   Get,
+  Header,
   HttpCode,
   Param,
   ParseIntPipe,
   ParseUUIDPipe,
   Post,
+  StreamableFile,
 } from "@nestjs/common";
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
 import {
@@ -19,16 +21,20 @@ import {
 import {
   DocumentDetail,
   DocumentEditRequest,
+  DocumentExport,
+  ExportRequest,
   DocumentRestoreRequest,
   DocumentVersion,
   DocumentVersionSummary,
 } from "@vidyam/contracts";
 
 import { activeOrg } from "../../../shared/auth/session.js";
+import { ExportDocuments } from "../application/export-documents.js";
 import { ManageDocuments } from "../application/manage-documents.js";
 import { applyEdits } from "../domain/edits.js";
 
 const EDIT = { permissions: { document: ["edit"] } };
+const EXPORT = { permissions: { document: ["export"] } };
 
 /**
  * The canvas (plan v3 §2, step 27): a teacher's own papers and notes, their versions, edits and undo. A
@@ -38,7 +44,10 @@ const EDIT = { permissions: { document: ["edit"] } };
 @Controller("documents")
 @RequireActiveOrg()
 export class DocumentsController {
-  constructor(private readonly documents: ManageDocuments) {}
+  constructor(
+    private readonly documents: ManageDocuments,
+    private readonly exports: ExportDocuments,
+  ) {}
 
   @Get(":documentId")
   @MemberHasPermission(EDIT)
@@ -105,5 +114,46 @@ export class DocumentsController {
     @Param("documentId", ParseUUIDPipe) documentId: string,
   ): Promise<void> {
     await this.documents.remove(activeOrg(session), session.user.id, documentId);
+  }
+
+  /** A PDF or Word file of the current version (plan v3 step 29); it is made in the background. */
+  @Post(":documentId/exports")
+  @MemberHasPermission(EXPORT)
+  @ApiResponse({ status: 201, standardSchema: DocumentExport })
+  requestExport(
+    @Session() session: UserSession,
+    @Param("documentId", ParseUUIDPipe) documentId: string,
+    @Body({ schema: ExportRequest }) body: ExportRequest,
+  ): Promise<DocumentExport> {
+    return this.exports.request(activeOrg(session), session.user.id, documentId, body);
+  }
+
+  @Get(":documentId/exports")
+  @MemberHasPermission(EXPORT)
+  @ApiResponse({ status: 200, standardSchema: DocumentExport.array() })
+  listExports(
+    @Session() session: UserSession,
+    @Param("documentId", ParseUUIDPipe) documentId: string,
+  ): Promise<DocumentExport[]> {
+    return this.exports.list(activeOrg(session), session.user.id, documentId);
+  }
+
+  @Get(":documentId/exports/:exportId/file")
+  @MemberHasPermission(EXPORT)
+  @Header("Cache-Control", "private, max-age=3600")
+  @Header("X-Content-Type-Options", "nosniff")
+  async download(
+    @Session() session: UserSession,
+    @Param("documentId", ParseUUIDPipe) documentId: string,
+    @Param("exportId", ParseUUIDPipe) exportId: string,
+  ): Promise<StreamableFile> {
+    const file = await this.exports.download(activeOrg(session), session.user.id, documentId, exportId);
+    // A plain-ASCII name for old browsers, the real one (Hindi titles and all) for the rest (RFC 6266).
+    const ascii = file.filename.replace(/[^\x20-\x7e]/g, "_").replace(/"/g, "");
+    return new StreamableFile(file.bytes, {
+      type: file.contentType,
+      length: file.bytes.byteLength,
+      disposition: `attachment; filename="${ascii}"; filename*=UTF-8''${encodeURIComponent(file.filename)}`,
+    });
   }
 }

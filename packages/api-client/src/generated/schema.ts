@@ -788,6 +788,38 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/documents/{documentId}/exports": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DocumentsController_listExports"];
+        put?: never;
+        post: operations["DocumentsController_requestExport"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/documents/{documentId}/exports/{exportId}/file": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DocumentsController_download"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -4282,6 +4314,112 @@ export interface operations {
                         } | null;
                     };
                 };
+            };
+        };
+    };
+    DocumentsController_listExports: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        version: number;
+                        /** @enum {string} */
+                        format: "pdf" | "docx" | "krutidev_docx";
+                        /** @enum {string} */
+                        variant: "paper" | "answer_key" | "solutions";
+                        setCode: string | null;
+                        /** @enum {string} */
+                        status: "pending" | "done" | "failed";
+                        error: string | null;
+                        filename: string;
+                        /** Format: date-time */
+                        createdAt: string;
+                    }[];
+                };
+            };
+        };
+    };
+    DocumentsController_requestExport: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /** @enum {string} */
+                    format: "pdf" | "docx" | "krutidev_docx";
+                    /**
+                     * @default paper
+                     * @enum {string}
+                     */
+                    variant?: "paper" | "answer_key" | "solutions";
+                    /** @default null */
+                    setCode?: string | null;
+                };
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        version: number;
+                        /** @enum {string} */
+                        format: "pdf" | "docx" | "krutidev_docx";
+                        /** @enum {string} */
+                        variant: "paper" | "answer_key" | "solutions";
+                        setCode: string | null;
+                        /** @enum {string} */
+                        status: "pending" | "done" | "failed";
+                        error: string | null;
+                        filename: string;
+                        /** Format: date-time */
+                        createdAt: string;
+                    };
+                };
+            };
+        };
+    };
+    DocumentsController_download: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                documentId: string;
+                exportId: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
             };
         };
     };

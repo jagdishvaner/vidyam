@@ -48,6 +48,7 @@ export const WORKFLOWS = {
   generatePaper: "GeneratePaper",
   generateNotes: "GenerateNotes",
   editDocument: "EditDocument",
+  exportDocument: "ExportDocument",
 } as const;
 export type WorkflowType = (typeof WORKFLOWS)[keyof typeof WORKFLOWS];
 export const WorkflowType = contract(
@@ -169,6 +170,7 @@ export const API_ACTIVITIES = {
   updateGenerationRun: "update_generation_run",
   appendChatBlocks: "append_chat_blocks",
   applyDocumentEdits: "apply_document_edits",
+  finishExport: "finish_export",
 } as const;
 export type ApiActivity = (typeof API_ACTIVITIES)[keyof typeof API_ACTIVITIES];
 export const ApiActivity = contract(
@@ -326,3 +328,44 @@ export const ApplyDocumentEditsResult = contract(
   }),
 );
 export type ApplyDocumentEditsResult = z.infer<typeof ApplyDocumentEditsResult>;
+
+export const ExportDocumentInput = contract(
+  "ExportDocumentInput",
+  WorkflowEnvelope.extend({ exportId: Uuid }),
+  "Render one export of a document (a PDF or Word file, plan v3 step 29) and record it.",
+);
+export type ExportDocumentInput = z.infer<typeof ExportDocumentInput>;
+
+/** Activities the render worker runs on the `render` queue: printable files of documents. */
+export const RENDER_ACTIVITIES = { renderExport: "render_export" } as const;
+export type RenderActivity = (typeof RENDER_ACTIVITIES)[keyof typeof RENDER_ACTIVITIES];
+export const RenderActivity = contract(
+  "RenderActivity",
+  z.enum(Object.values(RENDER_ACTIVITIES) as [RenderActivity, ...RenderActivity[]]),
+);
+
+/** Render an export from the document version it names; the file goes to the exports bucket. */
+export const RenderExportInput = contract(
+  "RenderExportInput",
+  z.object({ v: z.literal(1), orgId: Uuid, exportId: Uuid }),
+);
+export type RenderExportInput = z.infer<typeof RenderExportInput>;
+
+export const RenderExportResult = contract(
+  "RenderExportResult",
+  z.object({ s3Key: z.string(), bytes: z.number().int().nonnegative() }),
+);
+export type RenderExportResult = z.infer<typeof RenderExportResult>;
+
+/** An export rendered (its file's key) or failed (why). Safe to retry. */
+export const FinishExportInput = contract(
+  "FinishExportInput",
+  z.object({
+    v: z.literal(1),
+    orgId: Uuid,
+    exportId: Uuid,
+    s3Key: z.string().nullable(),
+    error: z.string().nullable(),
+  }),
+);
+export type FinishExportInput = z.infer<typeof FinishExportInput>;

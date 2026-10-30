@@ -100,3 +100,66 @@ export const DocumentRestoreRequest = contract(
   z.object({ baseVersion: z.number().int().positive(), version: z.number().int().positive() }),
 );
 export type DocumentRestoreRequest = z.infer<typeof DocumentRestoreRequest>;
+
+/** A printable file of a document (plan v3 step 29): PDF, Word, or Word in the Kruti Dev font. */
+export const ExportFormat = contract("ExportFormat", z.enum(["pdf", "docx", "krutidev_docx"]));
+export type ExportFormat = z.infer<typeof ExportFormat>;
+
+/** For papers: the paper itself, its answer key, or the solutions. Notes have only themselves. */
+export const ExportVariant = contract("ExportVariant", z.enum(["paper", "answer_key", "solutions"]));
+export type ExportVariant = z.infer<typeof ExportVariant>;
+
+export const ExportRequest = contract(
+  "ExportRequest",
+  z.object({
+    format: ExportFormat,
+    variant: ExportVariant.default("paper"),
+    /** A booklet set's order and key; the paper's own order when null. */
+    setCode: z
+      .string()
+      .regex(/^[A-Z]$/)
+      .nullable()
+      .default(null),
+  }),
+);
+export type ExportRequest = z.infer<typeof ExportRequest>;
+
+export const DocumentExport = contract(
+  "DocumentExport",
+  z.object({
+    id: Uuid,
+    /** The version it was made from. */
+    version: z.number().int().positive(),
+    format: ExportFormat,
+    variant: ExportVariant,
+    setCode: z.string().nullable(),
+    status: z.enum(["pending", "done", "failed"]),
+    error: z.string().nullable(),
+    /** What the download is called ("Force test - Set B - answer key.pdf"). */
+    filename: z.string(),
+    createdAt: z.iso.datetime({ offset: true }),
+  }),
+);
+export type DocumentExport = z.infer<typeof DocumentExport>;
+
+/** A download's name: "Force test - Set B - Answer key.pdf", "Force notes - Kruti Dev.docx". */
+export function exportFileName(
+  title: string,
+  variant: ExportVariant,
+  setCode: string | null,
+  format: ExportFormat,
+): string {
+  const parts = [
+    title,
+    ...(setCode ? [`Set ${setCode}`] : []),
+    ...(variant === "answer_key" ? ["Answer key"] : variant === "solutions" ? ["Solutions"] : []),
+    ...(format === "krutidev_docx" ? ["Kruti Dev"] : []),
+  ];
+  const safe = parts
+    .join(" - ")
+    .replace(/[\\/:*?"<>|]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 150);
+  return `${safe || "document"}.${format === "pdf" ? "pdf" : "docx"}`;
+}

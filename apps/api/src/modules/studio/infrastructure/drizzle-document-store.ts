@@ -35,6 +35,7 @@ const {
   chatMessages: m,
   chatSessions: sessions,
   documents: d,
+  documentExports: x,
   documentVersions: v,
   generationRuns: r,
   questions: q,
@@ -294,12 +295,13 @@ export class DrizzleDocumentStore implements DocumentStore {
     });
   }
 
-  remove(orgId: string, userId: string, documentId: string): Promise<boolean | null> {
+  remove(orgId: string, userId: string, documentId: string): Promise<string[] | false | null> {
     return this.orgDb.run(orgId, async (tx) => {
       const doc = await this.locked(tx, userId, documentId);
       if (!doc) return null;
       const run = await latestRun(tx, eq(r.documentId, documentId));
       if (run && MAKING.includes(run.progress.status)) return false;
+      const files = await tx.select({ key: x.s3Key }).from(x).where(eq(x.documentId, documentId));
       // Questions the teacher wrote in it and never got approved go too: the bank never offers drafts again.
       // Generated and approved questions stay in the bank for the next paper.
       await tx
@@ -311,8 +313,8 @@ export class DrizzleDocumentStore implements DocumentStore {
             sql`${q.provenance}->>'documentId' = ${documentId}`,
           ),
         );
-      await tx.delete(d).where(eq(d.id, documentId)); // its versions and runs go with it
-      return true;
+      await tx.delete(d).where(eq(d.id, documentId)); // its versions, runs and exports go with it
+      return files.flatMap((file) => (file.key ? [file.key] : []));
     });
   }
 

@@ -8,7 +8,7 @@ test("admin reads the live prompt for a job and opens the editor", async ({ page
   await expect(page.getByText(/Shipped with the app|Written by/)).toBeVisible();
   await expect(page.getByText("Reply with the title only.")).toBeVisible();
 
-  await page.getByRole("button", { name: "Write questions" }).click();
+  await page.getByRole("button", { name: "Check question quality" }).click(); // a job with no prompt yet
   await expect(page.getByText("No prompt yet for this job.")).toBeVisible();
 
   await page.getByRole("button", { name: "Name chats" }).click();

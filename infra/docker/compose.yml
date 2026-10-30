@@ -249,6 +249,14 @@ services:
     depends_on:
       ai: { condition: service_healthy }
 
+  render:
+    profiles: [full]
+    build: { context: ../.., dockerfile: infra/docker/render.Dockerfile }
+    image: vidyam/render:local
+    env_file: ../../.env
+    environment: *app-network-env
+    depends_on: *app-depends
+
   web:
     profiles: [full]
     build:

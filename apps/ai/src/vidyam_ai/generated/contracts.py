@@ -77,6 +77,7 @@ class ApiActivity(StrEnum):
     update_generation_run = "update_generation_run"
     append_chat_blocks = "append_chat_blocks"
     apply_document_edits = "apply_document_edits"
+    finish_export = "finish_export"
 
 
 class AppendChatBlocksResult(BaseModel):
@@ -613,6 +614,12 @@ class DifficultyMix(BaseModel):
     hard: float = Field(..., ge=0.0, le=1.0)
 
 
+class Status1(StrEnum):
+    pending = "pending"
+    done = "done"
+    failed = "failed"
+
+
 class DocumentRestoreRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -735,6 +742,45 @@ class Syllabu1(BaseModel):
     weightage: float | None = Field(None, ge=0.0, le=1.0)
 
 
+class ExportDocumentInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    requested_by: UUID | None = Field(..., alias="requestedBy")
+    export_id: UUID = Field(..., alias="exportId")
+
+
+class ExportFormat(StrEnum):
+    pdf = "pdf"
+    docx = "docx"
+    krutidev_docx = "krutidev_docx"
+
+
+class SetCode(RootModel[str]):
+    root: str = Field(None, pattern="^[A-Z]$")
+
+
+class ExportVariant(StrEnum):
+    paper = "paper"
+    answer_key = "answer_key"
+    solutions = "solutions"
+
+
+class FinishExportInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    export_id: UUID = Field(..., alias="exportId")
+    s3_key: str | None = Field(..., alias="s3Key")
+    error: str | None
+
+
 class GenerateDocumentInput(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -764,7 +810,7 @@ class GenerateDocumentResult(BaseModel):
     cost_usd: float = Field(..., alias="costUsd", ge=0.0)
 
 
-class Status1(StrEnum):
+class Status2(StrEnum):
     planning = "planning"
     running = "running"
     done = "done"
@@ -779,7 +825,7 @@ class GenerationProgress(BaseModel):
     )
     run_id: UUID = Field(..., alias="runId")
     document_id: UUID = Field(..., alias="documentId")
-    status: Status1
+    status: Status2
     done: int = Field(..., ge=0, le=9007199254740991)
     total: int = Field(..., ge=0, le=9007199254740991)
 
@@ -1127,7 +1173,7 @@ class Kind1(StrEnum):
     worksheet = "worksheet"
 
 
-class SetCode(RootModel[str]):
+class SetCode1(RootModel[str]):
     root: str = Field(..., pattern="^[A-Z]$")
 
 
@@ -1316,6 +1362,29 @@ class QuestionType(StrEnum):
     passage = "passage"
     short_answer = "short_answer"
     long_answer = "long_answer"
+
+
+class RenderActivity(StrEnum):
+    render_export = "render_export"
+
+
+class RenderExportInput(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    v: Literal[1]
+    org_id: UUID = Field(..., alias="orgId")
+    export_id: UUID = Field(..., alias="exportId")
+
+
+class RenderExportResult(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    s3_key: str = Field(..., alias="s3Key")
+    bytes: int = Field(..., ge=0, le=9007199254740991)
 
 
 class RewriteRequest(BaseModel):
@@ -1967,6 +2036,7 @@ class WorkflowType(StrEnum):
     generate_paper = "GeneratePaper"
     generate_notes = "GenerateNotes"
     edit_document = "EditDocument"
+    export_document = "ExportDocument"
 
 
 class AddMemberRequest(BaseModel):
@@ -2199,6 +2269,22 @@ class CurrentUser(BaseModel):
     org_role: OrgRole | None = Field(..., alias="orgRole")
 
 
+class DocumentExport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    version: int = Field(..., gt=0, le=9007199254740991)
+    format: ExportFormat
+    variant: ExportVariant
+    set_code: str | None = Field(..., alias="setCode")
+    status: Status1
+    error: str | None
+    filename: str
+    created_at: AwareDatetime = Field(..., alias="createdAt")
+
+
 class DocumentSummary(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2275,6 +2361,16 @@ class ExamPaperImport(BaseModel):
     name_hi: str | None = Field(..., alias="nameHi")
     authoritative_language: Language = Field(..., alias="authoritativeLanguage")
     syllabus: list[Syllabu1] = Field(..., min_length=1)
+
+
+class ExportRequest(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    format: ExportFormat
+    variant: ExportVariant
+    set_code: SetCode | None = Field(..., alias="setCode")
 
 
 class ImportExamPapersRequest(BaseModel):
@@ -2407,7 +2503,7 @@ class PaperSpec(BaseModel):
     duration_minutes: DurationMinutes | None = Field(..., alias="durationMinutes")
     sourcing: Sourcing
     student_batch_id: UUID | None = Field(..., alias="studentBatchId")
-    set_codes: list[SetCode] = Field(..., alias="setCodes", max_length=8)
+    set_codes: list[SetCode1] = Field(..., alias="setCodes", max_length=8)
 
 
 class PromptsOverview(BaseModel):

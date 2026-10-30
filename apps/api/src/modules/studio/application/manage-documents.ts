@@ -13,6 +13,7 @@ import type {
 
 import { DomainError } from "../../../shared/kernel/errors.js";
 import { applyEdits, type ResolvedOp } from "../domain/edits.js";
+import { EXPORT_FILES, type ExportFiles } from "./export-documents.js";
 
 /** How saving a new version went: saved, the document moved on meanwhile, or it isn't made yet. */
 export type SaveOutcome =
@@ -63,8 +64,11 @@ export interface DocumentStore {
     baseVersion: number,
     version: number,
   ): Promise<SaveOutcome | "no_version" | null>;
-  /** False while it is still being made; null if it isn't theirs. */
-  remove(orgId: string, userId: string, documentId: string): Promise<boolean | null>;
+  /**
+   * False while it is still being made; null if it isn't theirs. Otherwise the keys of its export files,
+   * which go with it.
+   */
+  remove(orgId: string, userId: string, documentId: string): Promise<string[] | false | null>;
 }
 export const DOCUMENT_STORE = Symbol("DOCUMENT_STORE");
 
@@ -75,7 +79,10 @@ export const DOCUMENT_STORE = Symbol("DOCUMENT_STORE");
  */
 @Injectable()
 export class ManageDocuments {
-  constructor(@Inject(DOCUMENT_STORE) private readonly store: DocumentStore) {}
+  constructor(
+    @Inject(DOCUMENT_STORE) private readonly store: DocumentStore,
+    @Inject(EXPORT_FILES) private readonly files: ExportFiles,
+  ) {}
 
   async detail(orgId: string, userId: string, documentId: string): Promise<DocumentDetail> {
     return found(await this.store.detail(orgId, userId, documentId));
@@ -145,9 +152,9 @@ export class ManageDocuments {
   }
 
   async remove(orgId: string, userId: string, documentId: string): Promise<void> {
-    if (!found(await this.store.remove(orgId, userId, documentId))) {
-      throw new DomainError("Wait until it is made before deleting it.", "conflict");
-    }
+    const files = found(await this.store.remove(orgId, userId, documentId));
+    if (files === false) throw new DomainError("Wait until it is made before deleting it.", "conflict");
+    for (const key of files) await this.files.delete(key);
   }
 }
 

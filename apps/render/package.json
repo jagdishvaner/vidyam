@@ -1,0 +1,45 @@
+{
+  "name": "@vidyam/render",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Render worker: printable PDF and Word files of papers and notes, on the Temporal `render` queue (plan v3 step 29).",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "dev": "tsx watch --clear-screen=false src/main.ts",
+    "start": "node dist/main.js",
+    "lint": "eslint .",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.1156.0",
+    "@fontsource/noto-serif": "5.3.0",
+    "@fontsource/noto-serif-devanagari": "5.3.0",
+    "@temporalio/common": "1.24.0",
+    "@temporalio/worker": "1.24.0",
+    "@vidyam/contracts": "workspace:*",
+    "@vidyam/db": "workspace:*",
+    "docx": "9.15.0",
+    "drizzle-orm": "0.45.4",
+    "katex": "0.19.1",
+    "marked": "18.1.2",
+    "mathml2omml": "0.5.0",
+    "playwright": "1.64.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "xml-js": "1.6.11",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vidyam/config": "workspace:*",
+    "eslint": "10.13.0",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "vitest": "5.0.5"
+  }
+}

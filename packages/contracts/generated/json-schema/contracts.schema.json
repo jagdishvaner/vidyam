@@ -282,7 +282,8 @@
         "save_document_version",
         "update_generation_run",
         "append_chat_blocks",
-        "apply_document_edits"
+        "apply_document_edits",
+        "finish_export"
       ]
     },
     "AppendChatBlocksInput": {
@@ -2550,6 +2551,66 @@
       ],
       "additionalProperties": false
     },
+    "DocumentExport": {
+      "title": "DocumentExport",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "version": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        },
+        "format": {
+          "$ref": "#/$defs/ExportFormat"
+        },
+        "variant": {
+          "$ref": "#/$defs/ExportVariant"
+        },
+        "setCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "done",
+            "failed"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "filename": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "format",
+        "variant",
+        "setCode",
+        "status",
+        "error",
+        "filename",
+        "createdAt"
+      ],
+      "additionalProperties": false
+    },
     "DocumentRestoreRequest": {
       "title": "DocumentRestoreRequest",
       "type": "object",
@@ -3246,6 +3307,129 @@
         "nameHi",
         "authoritativeLanguage",
         "syllabus"
+      ],
+      "additionalProperties": false
+    },
+    "ExportDocumentInput": {
+      "title": "ExportDocumentInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "requestedBy": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uuid"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "exportId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "requestedBy",
+        "exportId"
+      ],
+      "additionalProperties": false
+    },
+    "ExportFormat": {
+      "title": "ExportFormat",
+      "type": "string",
+      "enum": [
+        "pdf",
+        "docx",
+        "krutidev_docx"
+      ]
+    },
+    "ExportRequest": {
+      "title": "ExportRequest",
+      "type": "object",
+      "properties": {
+        "format": {
+          "$ref": "#/$defs/ExportFormat"
+        },
+        "variant": {
+          "default": "paper",
+          "$ref": "#/$defs/ExportVariant"
+        },
+        "setCode": {
+          "default": null,
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[A-Z]$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "format",
+        "variant",
+        "setCode"
+      ],
+      "additionalProperties": false
+    },
+    "ExportVariant": {
+      "title": "ExportVariant",
+      "type": "string",
+      "enum": [
+        "paper",
+        "answer_key",
+        "solutions"
+      ]
+    },
+    "FinishExportInput": {
+      "title": "FinishExportInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "exportId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "s3Key": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "exportId",
+        "s3Key",
+        "error"
       ],
       "additionalProperties": false
     },
@@ -5417,6 +5601,56 @@
         "long_answer"
       ]
     },
+    "RenderActivity": {
+      "title": "RenderActivity",
+      "type": "string",
+      "enum": [
+        "render_export"
+      ]
+    },
+    "RenderExportInput": {
+      "title": "RenderExportInput",
+      "type": "object",
+      "properties": {
+        "v": {
+          "type": "number",
+          "const": 1
+        },
+        "orgId": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "exportId": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "required": [
+        "v",
+        "orgId",
+        "exportId"
+      ],
+      "additionalProperties": false
+    },
+    "RenderExportResult": {
+      "title": "RenderExportResult",
+      "type": "object",
+      "properties": {
+        "s3Key": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "s3Key",
+        "bytes"
+      ],
+      "additionalProperties": false
+    },
     "RewriteRequest": {
       "title": "RewriteRequest",
       "type": "object",
@@ -7159,7 +7393,8 @@
         "IndexSource",
         "GeneratePaper",
         "GenerateNotes",
-        "EditDocument"
+        "EditDocument",
+        "ExportDocument"
       ]
     }
   }

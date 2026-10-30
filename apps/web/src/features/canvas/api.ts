@@ -1,6 +1,6 @@
 "use client";
 
-import type { DocumentDetail, EditOp } from "@vidyam/contracts";
+import type { DocumentDetail, EditOp, ExportRequest } from "@vidyam/contracts";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -20,6 +20,7 @@ export const documentKeys = {
   document: (id: string) => ["document", id] as const,
   versions: (id: string) => ["document", id, "versions"] as const,
   version: (id: string, version: number) => ["document", id, "versions", version] as const,
+  exports: (id: string) => ["document", id, "exports"] as const,
 };
 
 const MAKING = new Set(["planning", "running"]);
@@ -97,4 +98,35 @@ export function useRestore(id: string) {
       ),
     ...useSaved(id),
   });
+}
+
+/** The files made of a document, newest first; read again every two seconds while one is being made. */
+export function useExports(id: string, enabled: boolean) {
+  return useQuery({
+    queryKey: documentKeys.exports(id),
+    enabled,
+    queryFn: () =>
+      must(api.GET("/api/documents/{documentId}/exports", { params: { path: { documentId: id } } })),
+    refetchInterval: (query) => (query.state.data?.some((file) => file.status === "pending") ? 2_000 : false),
+  });
+}
+
+export function useRequestExport(id: string) {
+  const client = useQueryClient();
+  return useMutation({
+    mutationFn: (request: ExportRequest) =>
+      must(
+        api.POST("/api/documents/{documentId}/exports", {
+          params: { path: { documentId: id } },
+          body: request,
+        }),
+      ),
+    onSuccess: () => void client.invalidateQueries({ queryKey: documentKeys.exports(id) }),
+    onError: (error: Error) => toast.error(error.message),
+  });
+}
+
+/** Where a finished file downloads from (the API, same origin). */
+export function exportUrl(documentId: string, exportId: string): string {
+  return `/api/documents/${documentId}/exports/${exportId}/file`;
 }

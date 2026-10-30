@@ -18,6 +18,7 @@ with workflow.unsafe.imports_passed_through():
         ApiActivity,
         BacklogKind,
         EditDocumentInput,
+        ExportDocumentInput,
         GenerateDocumentInput,
         GenerateDocumentResult,
         IndexSourceInput,
@@ -26,6 +27,7 @@ with workflow.unsafe.imports_passed_through():
         IngestSourceResult,
         LlmBatchInput,
         PingInput,
+        RenderActivity,
         RunBacklogInput,
         RunBacklogResult,
         Stages,
@@ -559,6 +561,32 @@ class EditDocumentWorkflow(_Generation):
             raise await self._fail(error) from error
 
 
+@workflow.defn(name=WorkflowType.export_document)
+class ExportDocumentWorkflow:
+    """A printable file of a document (plan v3 step 29): the render worker draws it from the version the
+    export names and stores it; the API then records it, or why it failed, for the teacher to download."""
+
+    @workflow.run
+    async def run(self, payload: dict[str, Any]) -> dict[str, Any]:
+        request = parse(ExportDocumentInput, payload)
+        ids = {"v": 1, "orgId": str(request.org_id), "exportId": str(request.export_id)}
+        try:
+            made: dict[str, Any] = await workflow.execute_activity(
+                RenderActivity.render_export.value,
+                ids,
+                task_queue=workflow.info().task_queue.removesuffix(AiTaskQueue.ai.value)
+                + TaskQueue.render.value,
+                start_to_close_timeout=timedelta(minutes=5),
+                retry_policy=RetryPolicy(maximum_attempts=3, maximum_interval=timedelta(minutes=1)),
+            )
+            await _commit(ApiActivity.finish_export, {**ids, "s3Key": made["s3Key"], "error": None})
+            return {"exportId": ids["exportId"], "status": "done", "bytes": made["bytes"]}
+        except ActivityError as error:
+            reason = str(error.cause or error)
+            await _commit(ApiActivity.finish_export, {**ids, "s3Key": None, "error": reason[:500]})
+            raise ApplicationError(f"export failed: {reason}", type="ExportFailed") from error
+
+
 WORKFLOWS = [
     PingWorkflow,
     IngestSourceWorkflow,
@@ -568,4 +596,5 @@ WORKFLOWS = [
     GeneratePaperWorkflow,
     GenerateNotesWorkflow,
     EditDocumentWorkflow,
+    ExportDocumentWorkflow,
 ]

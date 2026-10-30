@@ -116,3 +116,34 @@ test("the chat changes the paper, Undo in the chat takes it back, and a rewrite 
   });
   await expect(canvas.getByText("Version 3")).toBeVisible();
 });
+
+test("a paper is exported as a PDF and as Word in Kruti Dev, and downloaded", async ({ page }) => {
+  await makePaper(page);
+  const canvas = page.getByRole("complementary", { name: "Document" });
+  await expect(canvas.getByText("Version 1")).toBeVisible({ timeout: 90_000 });
+  await canvas.getByRole("button", { name: "Export", exact: true }).click();
+  const dialog = page.getByRole("dialog", { name: "Print or share" });
+  await dialog.getByRole("button", { name: "Make the file" }).click();
+  const files = dialog.getByRole("list", { name: "Files" });
+  const pdf = files.getByRole("link", { name: "Download" });
+  await expect(pdf).toHaveCount(1, { timeout: 60_000 });
+
+  await dialog.getByRole("combobox", { name: "Format" }).click();
+  await page.getByRole("option", { name: "Word (Kruti Dev)" }).click();
+  await expect(dialog.getByText("Kruti Dev 010 font", { exact: false })).toBeVisible();
+  await dialog.getByRole("button", { name: "Make the file" }).click();
+  await expect(files.getByRole("link", { name: "Download" })).toHaveCount(2, { timeout: 60_000 });
+  await expect(files.getByText(/Kruti Dev\.docx$/)).toBeVisible();
+  if (SHOTS) await page.screenshot({ path: `${SHOTS}/export.png`, fullPage: true });
+
+  // The newest file is listed first: the Word file, then the PDF.
+  const [word, made] = await Promise.all(
+    [0, 1].map(async (n) =>
+      page.request.get((await files.getByRole("link", { name: "Download" }).nth(n).getAttribute("href"))!),
+    ),
+  );
+  expect(made!.headers()["content-type"]).toBe("application/pdf");
+  expect((await made!.body()).subarray(0, 4).toString()).toBe("%PDF");
+  expect(word!.headers()["content-type"]).toContain("wordprocessingml");
+  expect((await word!.body()).subarray(0, 2).toString()).toBe("PK");
+});
