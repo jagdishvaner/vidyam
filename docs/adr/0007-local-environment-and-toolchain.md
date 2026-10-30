@@ -26,7 +26,8 @@ temporary ports from 49152–65535, which a project should never claim.
 | 38150 / 38151 | Valkey queue / cache                  |
 | 38160 / 38161 | SeaweedFS S3 / admin UI               |
 | 38170         | render health                         |
-| 38180 / 38181 | Mailpit SMTP / UI                     |
+| 38175 / 38176 | Jaeger UI / OTLP (opt-in, ADR 0025)   |
+| 38180 / 38181 | Qwen3 embeddings / rerank (host)      |
 | 38190         | Drizzle Studio                        |
 
 **Container images are pinned:**
@@ -35,7 +36,7 @@ temporary ports from 49152–65535, which a project should never claim.
 - `qdrant/qdrant:v1.20.0`
 - `valkey/valkey:8.1.10-alpine`
 - `chrislusf/seaweedfs:4.48`
-- `axllent/mailpit:v1.32.0`
+- `jaegertracing/jaeger:2.22.0` (opt-in trace viewer)
 - `caddy:2.11.7-alpine`
 
 **Toolchain is pinned per repo, with no global installs:**

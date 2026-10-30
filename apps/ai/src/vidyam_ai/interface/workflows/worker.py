@@ -43,6 +43,7 @@ from vidyam_ai.infrastructure.retrieval import create_retrieve
 from vidyam_ai.infrastructure.s3.files import S3Files
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
 from vidyam_ai.infrastructure.s3.vectors import S3VectorFiles
+from vidyam_ai.infrastructure.telemetry import start_tracing, stop_tracing
 from vidyam_ai.infrastructure.temporal.client import connect, wait_for_namespace
 from vidyam_ai.infrastructure.temporal.cpu import CpuPool
 from vidyam_ai.interface.workflows.activities import (
@@ -201,6 +202,7 @@ def create_workers(client: Client, activities: AllActivities, *, task_queue_pref
 
 
 async def run_workers(settings: Settings) -> None:
+    start_tracing(settings, "vidyam-ai-worker")
     if not any(p.configured for p in provider_status(settings).providers):
         outcome = "model calls will fail" if settings.is_production else "the stub model answers every call"
         log.log(
@@ -225,6 +227,7 @@ async def run_workers(settings: Settings) -> None:
         keeping = asyncio.create_task(keeper.run(stop))
         await stop.wait()
         await keeping
+    stop_tracing()
     log.info("workers stopped")
 
 

@@ -29,6 +29,7 @@ changes an old one gets a new record that supersedes it; old records are not rew
 | [0022](0022-canvas-versions-and-edits.md)            | The canvas: append-only versions, edits against a base version                | Accepted           |
 | [0023](0023-editing-by-chat.md)                      | Editing by chat: the agent plans, the API applies, rewrites run as a workflow | Accepted           |
 | [0024](0024-render-worker-and-exports.md)            | Exports: a render worker for PDF, Word and Kruti Dev Word, without Pandoc     | Accepted           |
+| [0025](0025-tracing-and-problem-alerts.md)           | Tracing with OpenTelemetry; problems and alerts from what is recorded         | Accepted           |
 
 The plan these decisions come from: [`../master-plan.md`](../master-plan.md) (v3; v2 is kept as
 [`../master-plan-v2.md`](../master-plan-v2.md)).

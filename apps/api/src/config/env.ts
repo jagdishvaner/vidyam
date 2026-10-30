@@ -24,6 +24,8 @@ const EnvSchema = z.object({
   VIDYAM_AUTH_SECRET: z.string().min(32, "VIDYAM_AUTH_SECRET must be at least 32 characters"),
   VIDYAM_AI_INTERNAL_URL: z.url(),
   VIDYAM_AI_INTERNAL_TOKEN: z.string().min(16),
+  /** Optional chat webhook (Slack, Google Chat) that receives new problems every few minutes. */
+  VIDYAM_ALERT_WEBHOOK_URL: z.preprocess((value) => value || undefined, z.url().optional()),
 });
 export type Env = z.infer<typeof EnvSchema>;
 

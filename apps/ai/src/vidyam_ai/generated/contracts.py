@@ -1221,6 +1221,37 @@ class PingResult(BaseModel):
     org_id: UUID = Field(..., alias="orgId")
 
 
+class Kind2(StrEnum):
+    generation = "generation"
+    export = "export"
+    chat = "chat"
+    ai_call = "ai_call"
+    source = "source"
+
+
+class Problem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    kind: Kind2
+    id: str
+    at: AwareDatetime
+    subject: str
+    person: str | None
+    error: str
+    count: int = Field(..., gt=0, le=9007199254740991)
+
+
+class ProblemReport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    since: AwareDatetime
+    items: list[Problem]
+
+
 class ProgressEvent1(BaseModel):
     model_config = ConfigDict(
         extra="forbid",

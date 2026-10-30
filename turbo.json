@@ -40,7 +40,7 @@
       "dependsOn": ["^build"],
       "cache": false,
       "persistent": true,
-      "passThroughEnv": ["VIDYAM_*", "ANTHROPIC_*", "OPENAI_*", "AWS_*", "NODE_ENV"]
+      "passThroughEnv": ["VIDYAM_*", "ANTHROPIC_*", "OPENAI_*", "AWS_*", "NODE_ENV", "OTEL_*"]
     },
     "db:migrate": {
       "cache": false,

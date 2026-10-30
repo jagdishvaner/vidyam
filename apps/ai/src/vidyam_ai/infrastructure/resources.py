@@ -25,6 +25,7 @@ from vidyam_ai.infrastructure.probes import (
     TemporalProbe,
     ValkeyProbe,
 )
+from vidyam_ai.infrastructure.telemetry import instrument_engine
 from vidyam_ai.infrastructure.temporal.client import connect
 
 if TYPE_CHECKING:
@@ -63,8 +64,10 @@ class Resources:
 
     @classmethod
     async def open(cls, settings: Settings) -> "Resources":
+        engine = create_engine(settings.async_database_url)
+        instrument_engine(engine)  # queries as spans, when tracing is on
         return cls(
-            engine=create_engine(settings.async_database_url),
+            engine=engine,
             qdrant=create_qdrant(settings),
             temporal=await connect(settings, lazy=True),
             cache_redis=Redis.from_url(settings.cache_redis_url),

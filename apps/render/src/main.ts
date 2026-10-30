@@ -1,3 +1,4 @@
+import { OpenTelemetryActivityInboundInterceptor } from "@temporalio/interceptors-opentelemetry";
 import { NativeConnection, Worker } from "@temporalio/worker";
 import { TASK_QUEUES } from "@vidyam/contracts";
 import { createDatabase } from "@vidyam/db";
@@ -31,6 +32,8 @@ const worker = await Worker.create({
   taskQueue,
   activities: renderActivities(render),
   maxConcurrentActivityTaskExecutions: env.VIDYAM_RENDER_CONCURRENCY,
+  // Each render joins the trace of the workflow that asked for it (ADR 0025).
+  interceptors: { activity: [(ctx) => ({ inbound: new OpenTelemetryActivityInboundInterceptor(ctx) })] },
 });
 for (const signal of ["SIGTERM", "SIGINT"] as const) process.once(signal, () => worker.shutdown());
 const running = worker.run();

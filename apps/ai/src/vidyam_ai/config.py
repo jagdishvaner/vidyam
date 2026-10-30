@@ -30,6 +30,11 @@ class Settings(BaseSettings):
     # Durable workflows (ADR 0013): host:port of the Temporal frontend, and Vidyam's namespace on it.
     temporal_address: str
     temporal_namespace: str = "vidyam"
+    # Tracing (plan v3 step 31): where spans go over OTLP/HTTP (Jaeger locally with `pnpm traces:up`, the
+    # AWS collector on AWS). Unset: tracing is off. The standard OpenTelemetry name works too.
+    otel_endpoint: str | None = Field(
+        default=None, validation_alias=AliasChoices("VIDYAM_OTEL_ENDPOINT", "OTEL_EXPORTER_OTLP_ENDPOINT")
+    )
 
     s3_endpoint: str | None = None  # unset on AWS: real S3 with the task's IAM role
     s3_region: str

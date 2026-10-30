@@ -16,6 +16,8 @@ from time import monotonic
 from typing import Literal, Protocol
 from uuid import UUID
 
+from opentelemetry import trace
+from opentelemetry.trace import StatusCode
 from pydantic import BaseModel, ValidationError
 
 from vidyam_ai.domain.json_schema import drop_disallowed_nulls
@@ -304,6 +306,19 @@ def _elapsed_ms(started: float) -> int:
     return round((monotonic() - started) * 1000)
 
 
+_tracer = trace.get_tracer("vidyam.llm")
+
+
+def _span_attributes(request: LlmRequest) -> dict[str, str]:
+    """What every model call's span carries (no prompt text: it can hold students' and teachers' content)."""
+    attributes = {"gen_ai.operation.name": "chat", "vidyam.task": request.task}
+    if request.caller.workflow_id:
+        attributes["vidyam.workflow_id"] = request.caller.workflow_id
+    if request.caller.turn_id:
+        attributes["vidyam.turn_id"] = str(request.caller.turn_id)
+    return attributes
+
+
 class LlmGateway:
     def __init__(
         self,
@@ -329,6 +344,10 @@ class LlmGateway:
         self._now = now
 
     async def complete(self, request: LlmRequest) -> LlmReply:
+        with _tracer.start_as_current_span(f"llm {request.task}", attributes=_span_attributes(request)):
+            return await self._complete(request)
+
+    async def _complete(self, request: LlmRequest) -> LlmReply:
         route = await self._route(request.caller.org_id, request.task)
         target = await self._target(request, route, await self._chosen_model(request, route))
         await self._check_budgets(request.caller)
@@ -356,6 +375,11 @@ class LlmGateway:
 
     async def stream(self, request: LlmRequest) -> AsyncIterator[str | LlmReply]:
         """Text as it arrives, then the LlmReply. Falls back to another model only before the first text."""
+        with _tracer.start_as_current_span(f"llm {request.task}", attributes=_span_attributes(request)):
+            async for item in self._stream(request):
+                yield item
+
+    async def _stream(self, request: LlmRequest) -> AsyncIterator[str | LlmReply]:
         route = await self._route(request.caller.org_id, request.task)
         target = await self._target(request, route, await self._chosen_model(request, route))
         await self._check_budgets(request.caller)
@@ -644,6 +668,17 @@ class LlmGateway:
     ) -> LlmReply:
         prices = FREE if target.provider == "stub" else target.model.prices
         cost = cost_usd(done.usage, prices)
+        trace.get_current_span().set_attributes(
+            {
+                "gen_ai.request.model": target.model.api_model,
+                "gen_ai.provider.name": target.provider,
+                "gen_ai.usage.input_tokens": done.usage.input_tokens,
+                "gen_ai.usage.output_tokens": done.usage.output_tokens,
+                "vidyam.cache_read_tokens": done.usage.cache_read_tokens,
+                "vidyam.cost_usd": float(cost),
+                "vidyam.prompt_version": target.prompt.label,
+            }
+        )
         await self._ledger.record(
             LedgerEntry(
                 caller=request.caller,
@@ -665,6 +700,9 @@ class LlmGateway:
     async def _record_failure(
         self, request: LlmRequest, target: _Target, error: ProviderError, started: float
     ) -> None:
+        span = trace.get_current_span()
+        span.record_exception(error)
+        span.set_status(StatusCode.ERROR, f"{target.provider}: {error}"[:200])
         await self._ledger.record(
             LedgerEntry(
                 caller=request.caller,

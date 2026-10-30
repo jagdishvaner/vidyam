@@ -164,6 +164,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/system/problems": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["SystemController_problems"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/dashboard/summary": {
         parameters: {
             query?: never;
@@ -1237,6 +1253,39 @@ export interface operations {
                                 latencyMs: number;
                                 detail: string | null;
                             }[];
+                        }[];
+                    };
+                };
+            };
+        };
+    };
+    SystemController_problems: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: date-time */
+                        since: string;
+                        items: {
+                            /** @enum {string} */
+                            kind: "generation" | "export" | "chat" | "ai_call" | "source";
+                            id: string;
+                            /** Format: date-time */
+                            at: string;
+                            subject: string;
+                            person: string | null;
+                            error: string;
+                            count: number;
                         }[];
                     };
                 };

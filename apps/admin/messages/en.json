@@ -530,5 +530,18 @@
     "confirm": "Run for about {cost}",
     "cancel": "Cancel",
     "started": "{name}: started"
+  },
+  "problems": {
+    "title": "Recent problems",
+    "description": "What failed in the last 24 hours. Checked every minute.",
+    "none": "Nothing failed in the last day.",
+    "times": "{count}×",
+    "kinds": {
+      "generation": "Paper or notes failed",
+      "export": "Export failed",
+      "chat": "Chat answer failed",
+      "ai_call": "AI calls failed",
+      "source": "File failed to read in"
+    }
   }
 }

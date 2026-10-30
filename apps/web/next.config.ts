@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   transpilePackages: ["@vidyam/ui", "@vidyam/app-shell"],
+  // Loaded by Node itself, not bundled: the OpenTelemetry SDK patches modules as Node loads them.
+  serverExternalPackages: ["@vidyam/telemetry"],
   // Container image: a minimal server.js with only the files it needs. Trace from the monorepo root so the
   // workspace packages (@vidyam/ui, app-shell, api-client, contracts) are included. Builds run with cwd = apps/web.
   output: "standalone",

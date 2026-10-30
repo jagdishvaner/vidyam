@@ -24,9 +24,9 @@ RUN cd /out/node_modules/.pnpm && rm -rf next@* @next+swc-* @playwright+test@* p
     @img+sharp-* sharp@* typescript@*
 
 FROM ${NODE_IMAGE} AS runtime
-ENV NODE_ENV=production VIDYAM_API_HOST=0.0.0.0 VIDYAM_API_PORT=38110
+ENV NODE_ENV=production VIDYAM_API_HOST=0.0.0.0 VIDYAM_API_PORT=38110 OTEL_SERVICE_NAME=vidyam-api
 WORKDIR /app
 COPY --from=builder --chown=node:node /out .
 USER node
 EXPOSE 38110
-CMD ["node", "dist/main.js"]
+CMD ["node", "--import", "@vidyam/telemetry/register", "dist/main.js"]

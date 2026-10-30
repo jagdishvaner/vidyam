@@ -4,6 +4,7 @@ import { NestFactory } from "@nestjs/core";
 
 import { AppModule } from "./app.module.js";
 import { loadEnv } from "./config/env.js";
+import { ProblemAlerts } from "./modules/system/application/problem-alerts.js";
 import { ApiWorker } from "./modules/workflows/api-worker.js";
 import { serveOpenApi } from "./openapi.js";
 
@@ -16,4 +17,6 @@ if (env.NODE_ENV !== "production") serveOpenApi(app);
 await app.listen(env.VIDYAM_API_PORT, env.VIDYAM_API_HOST);
 // Commits workflow results (ADR 0017); only the server process polls, not scripts.
 app.get(ApiWorker).start();
+// Posts new problems to the alert webhook, when one is configured.
+app.get(ProblemAlerts).start();
 console.log(`Vidyam API listening on http://${env.VIDYAM_API_HOST}:${env.VIDYAM_API_PORT}/api`);

@@ -111,6 +111,18 @@ services:
     ports:
       - "127.0.0.1:38152:8080"
 
+  # Opt-in trace viewer (ADR 0025), off unless asked for: `pnpm traces:up`, then set
+  # OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:38176 in .env and restart `pnpm dev`. Keeps traces in memory only.
+  jaeger:
+    profiles: [traces]
+    image: jaegertracing/jaeger:2.22.0
+    container_name: vidyam-jaeger
+    command: ["--set=extensions.jaeger_storage.backends.some_storage.memory.max_traces=20000"]
+    mem_limit: 768m
+    ports:
+      - "127.0.0.1:38175:16686" # UI
+      - "127.0.0.1:38176:4318" # OTLP over HTTP
+
   valkey-cache:
     image: valkey/valkey:8.1.10-alpine
     container_name: vidyam-valkey-cache

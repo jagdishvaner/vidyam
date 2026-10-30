@@ -1,4 +1,5 @@
 import { Inject, Injectable, Logger, type OnApplicationShutdown } from "@nestjs/common";
+import { OpenTelemetryActivityInboundInterceptor } from "@temporalio/interceptors-opentelemetry";
 import { NativeConnection, Worker } from "@temporalio/worker";
 import { TASK_QUEUES } from "@vidyam/contracts";
 
@@ -54,6 +55,9 @@ export class ApiWorker implements OnApplicationShutdown {
             namespace: this.env.VIDYAM_TEMPORAL_NAMESPACE,
             taskQueue,
             activities: this.activities.handlers(),
+            interceptors: {
+              activity: [(ctx) => ({ inbound: new OpenTelemetryActivityInboundInterceptor(ctx) })],
+            },
           });
           this.logger.log(`polling the ${taskQueue} task queue`);
           await this.worker.run(); // until shutdown

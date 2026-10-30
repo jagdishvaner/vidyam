@@ -5198,6 +5198,77 @@
       ],
       "additionalProperties": false
     },
+    "Problem": {
+      "title": "Problem",
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "generation",
+            "export",
+            "chat",
+            "ai_call",
+            "source"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "person": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "error": {
+          "type": "string"
+        },
+        "count": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "at",
+        "subject",
+        "person",
+        "error",
+        "count"
+      ],
+      "additionalProperties": false
+    },
+    "ProblemReport": {
+      "title": "ProblemReport",
+      "type": "object",
+      "properties": {
+        "since": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Problem"
+          }
+        }
+      },
+      "required": [
+        "since",
+        "items"
+      ],
+      "additionalProperties": false
+    },
     "ProgressEvent": {
       "title": "ProgressEvent",
       "oneOf": [

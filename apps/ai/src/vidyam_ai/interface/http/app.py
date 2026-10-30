@@ -35,11 +35,13 @@ from vidyam_ai.infrastructure.llm import create_llm_gateway
 from vidyam_ai.infrastructure.resources import Resources
 from vidyam_ai.infrastructure.retrieval import create_retrieve
 from vidyam_ai.infrastructure.s3.page_images import S3PageImages
+from vidyam_ai.infrastructure.telemetry import instrument_app, start_tracing, stop_tracing
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
     settings = settings or get_settings()
     token = settings.ai_internal_token.get_secret_value()
+    start_tracing(settings, "vidyam-ai")
 
     @asynccontextmanager
     async def lifespan(app: FastAPI) -> AsyncGenerator[None]:
@@ -59,6 +61,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             yield
         finally:
             await resources.close()
+            stop_tracing()
 
     def require_service_token(
         x_vidyam_service_token: Annotated[str | None, Header()] = None,
@@ -67,6 +70,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             raise HTTPException(status.HTTP_401_UNAUTHORIZED, "missing or invalid service token")
 
     app = FastAPI(title="Vidyam AI engine (internal)", version="0.1.0", lifespan=lifespan)
+    instrument_app(app)
 
     @app.get("/livez")
     async def livez() -> Liveness:

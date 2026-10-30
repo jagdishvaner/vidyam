@@ -31,6 +31,8 @@
     "infra:down": "docker compose -f infra/docker/compose.yml down",
     "infra:ps": "docker compose -f infra/docker/compose.yml ps",
     "infra:logs": "docker compose -f infra/docker/compose.yml logs -f --tail=100",
+    "traces:up": "docker compose -f infra/docker/compose.yml --profile traces up -d jaeger",
+    "traces:down": "docker compose -f infra/docker/compose.yml --profile traces stop jaeger",
     "bootstrap": "turbo run bootstrap",
     "ingest": "pnpm --silent --filter @vidyam/api ingest",
     "backlog": "pnpm --silent --filter @vidyam/api backlog",

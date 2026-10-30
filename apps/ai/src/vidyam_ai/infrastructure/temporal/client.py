@@ -8,6 +8,7 @@ from temporalio.client import Client
 from temporalio.service import RPCError
 
 from vidyam_ai.config import Settings
+from vidyam_ai.infrastructure.telemetry import temporal_interceptors
 
 log = logging.getLogger(__name__)
 
@@ -15,7 +16,12 @@ log = logging.getLogger(__name__)
 async def connect(settings: Settings, *, lazy: bool = False) -> Client:
     """`lazy` defers the network connection to the first call, so the HTTP app starts (and reports Temporal as
     down in its health check) even while Temporal is unavailable."""
-    return await Client.connect(settings.temporal_address, namespace=settings.temporal_namespace, lazy=lazy)
+    return await Client.connect(
+        settings.temporal_address,
+        namespace=settings.temporal_namespace,
+        lazy=lazy,
+        interceptors=temporal_interceptors(),  # traces go on through workflows (none when tracing is off)
+    )
 
 
 async def describe_namespace(client: Client) -> None:
