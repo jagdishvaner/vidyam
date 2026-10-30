@@ -5,6 +5,7 @@ import type {
   DocumentContent,
   DocumentDetail,
   DocumentEditRequest,
+  DocumentListItem,
   DocumentRestoreRequest,
   DocumentVersion,
   DocumentVersionSummary,
@@ -25,6 +26,8 @@ export type SaveOutcome =
 
 /** Port: a teacher's documents and their versions (Postgres, under the center's row-level security). */
 export interface DocumentStore {
+  /** A teacher's documents, most recently changed first. */
+  list(orgId: string, userId: string, limit: number): Promise<DocumentListItem[]>;
   /** The current version (or the live slots while the first is made), with its questions; null if not theirs. */
   detail(orgId: string, userId: string, documentId: string): Promise<DocumentDetail | null>;
   versions(orgId: string, userId: string, documentId: string): Promise<DocumentVersionSummary[] | null>;
@@ -83,6 +86,10 @@ export class ManageDocuments {
     @Inject(DOCUMENT_STORE) private readonly store: DocumentStore,
     @Inject(EXPORT_FILES) private readonly files: ExportFiles,
   ) {}
+
+  list(orgId: string, userId: string, limit: number): Promise<DocumentListItem[]> {
+    return this.store.list(orgId, userId, limit);
+  }
 
   async detail(orgId: string, userId: string, documentId: string): Promise<DocumentDetail> {
     return found(await this.store.detail(orgId, userId, documentId));

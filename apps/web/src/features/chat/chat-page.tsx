@@ -1,5 +1,6 @@
 "use client";
 
+import { useSearchParams } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useCallback, useRef, useState } from "react";
 
@@ -15,6 +16,8 @@ import { History } from "./history";
  */
 export function ChatPage({ sessionId }: { sessionId: string | null }) {
   const locale = useLocale();
+  // The dashboard's quick actions open a new chat with the request half-written.
+  const prompt = useSearchParams().get("prompt");
   const [created, setCreated] = useState<{ from: string | null; id: string } | null>(null);
   // A chat made on this page keeps showing until the teacher opens another one.
   const id = created && created.from === sessionId ? created.id : sessionId;
@@ -43,6 +46,7 @@ export function ChatPage({ sessionId }: { sessionId: string | null }) {
         }}
         onDocument={onDocument}
         onOpenDocument={open}
+        prompt={id ? null : prompt}
       />
       {documentId && <Canvas key={documentId} documentId={documentId} onClose={() => setCanvas(null)} />}
     </div>

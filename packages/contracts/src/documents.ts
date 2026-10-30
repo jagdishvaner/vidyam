@@ -33,6 +33,19 @@ export const DocumentSummary = contract(
 );
 export type DocumentSummary = z.infer<typeof DocumentSummary>;
 
+/** A teacher's document in a list, with the chat it was made in (where it opens). */
+export const DocumentListItem = contract(
+  "DocumentListItem",
+  DocumentSummary.extend({ chatId: Uuid.nullable() }),
+);
+export type DocumentListItem = z.infer<typeof DocumentListItem>;
+
+export const DocumentListQuery = contract(
+  "DocumentListQuery",
+  z.object({ limit: z.coerce.number().int().min(1).max(100).default(20) }),
+);
+export type DocumentListQuery = z.infer<typeof DocumentListQuery>;
+
 /** A question as the canvas shows it: its text and key, where it stands in the bank, and what it rests on. */
 export const CanvasQuestion = contract(
   "CanvasQuestion",

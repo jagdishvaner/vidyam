@@ -46,12 +46,15 @@ export function Conversation({
   onCreated,
   onDocument,
   onOpenDocument,
+  prompt = null,
 }: {
   sessionId: string | null;
   onCreated: (id: string) => void;
   /** The chat's latest document, once it has one. */
   onDocument: (documentId: string | null) => void;
   onOpenDocument: (documentId: string) => void;
+  /** Text to start the message box with (a new chat from the dashboard's quick actions). */
+  prompt?: string | null;
 }) {
   const t = useTranslations("chat");
   const client = useQueryClient();
@@ -195,7 +198,11 @@ export function Conversation({
           <div ref={end} />
         </div>
       </div>
-      <Composer busy={streaming !== null} send={(text) => send({ kind: "text", text })} />
+      <Composer
+        busy={streaming !== null}
+        send={(text) => send({ kind: "text", text })}
+        initial={prompt ?? ""}
+      />
     </div>
   );
 }
@@ -288,9 +295,9 @@ function Welcome({ send }: { send: (input: ChatInput) => void }) {
   );
 }
 
-function Composer({ busy, send }: { busy: boolean; send: (text: string) => void }) {
+function Composer({ busy, send, initial }: { busy: boolean; send: (text: string) => void; initial: string }) {
   const t = useTranslations("chat");
-  const [text, setText] = useState("");
+  const [text, setText] = useState(initial);
   const submit = () => {
     const message = text.trim();
     if (!message || busy) return;

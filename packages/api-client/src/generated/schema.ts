@@ -180,6 +180,22 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/dashboard/coverage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DashboardController_coverage"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/library/summary": {
         parameters: {
             query?: never;
@@ -429,6 +445,22 @@ export interface paths {
         };
         get?: never;
         put: operations["UsageController_setBudget"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/me/usage": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["MyUsageController_mine"];
+        put?: never;
         post?: never;
         delete?: never;
         options?: never;
@@ -700,6 +732,22 @@ export interface paths {
             cookie?: never;
         };
         get: operations["ChatController_events"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/documents": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get: operations["DocumentsController_list"];
         put?: never;
         post?: never;
         delete?: never;
@@ -1213,6 +1261,38 @@ export interface operations {
                         sources: number;
                         questions: number;
                         documents: number;
+                    };
+                };
+            };
+        };
+    };
+    DashboardController_coverage: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        subjects: {
+                            /** Format: uuid */
+                            nodeId: string;
+                            name: {
+                                en?: string;
+                                hi?: string;
+                            };
+                            chapters: number;
+                            chaptersWithMaterial: number;
+                            passages: number;
+                            questions: number;
+                        }[];
                     };
                 };
             };
@@ -1950,6 +2030,31 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    MyUsageController_mine: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        month: string;
+                        calls: number;
+                        costUsd: number;
+                        budgetUsd: number | null;
+                        centerExhausted: boolean;
+                    };
+                };
             };
         };
     };
@@ -3296,6 +3401,38 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    DocumentsController_list: {
+        parameters: {
+            query?: {
+                limit?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** Format: uuid */
+                        id: string;
+                        /** @enum {string} */
+                        kind: "question_paper" | "worksheet" | "notes" | "revision_sheet";
+                        title: string;
+                        currentVersion: number;
+                        /** Format: date-time */
+                        updatedAt: string;
+                        /** Format: uuid */
+                        chatId: string | null;
+                    }[];
+                };
             };
         };
     };

@@ -7,6 +7,7 @@ import type {
   CitationRef,
   DocumentContent,
   DocumentDetail,
+  DocumentListItem,
   DocumentVersion,
   DocumentVersionSummary,
   EditOp,
@@ -106,6 +107,40 @@ function stateOf(question: { origin: string; status: string }): SlotState {
 @Injectable()
 export class DrizzleDocumentStore implements DocumentStore {
   constructor(private readonly orgDb: OrgDatabase) {}
+
+  list(orgId: string, userId: string, limit: number): Promise<DocumentListItem[]> {
+    return this.orgDb.run(orgId, async (tx) => {
+      // Where it opens: the teacher's chat that holds it, else the chat its first run was asked in.
+      // Plain SQL with aliases: in a select list Drizzle prints columns unqualified, which would make these
+      // subqueries compare their own ids.
+      const chat = sql<string | null>`coalesce(
+        (select s.id from chat_sessions s where s.document_id = documents.id and s.user_id = ${userId}
+          order by s.updated_at desc limit 1),
+        (select r.session_id from generation_runs r where r.document_id = documents.id
+          and r.session_id is not null order by r.started_at limit 1))`;
+      const rows = await tx
+        .select({
+          id: d.id,
+          kind: d.kind,
+          title: d.title,
+          currentVersion: d.currentVersion,
+          updatedAt: d.updatedAt,
+          chatId: chat,
+        })
+        .from(d)
+        .where(eq(d.ownerId, userId))
+        .orderBy(desc(d.updatedAt))
+        .limit(limit);
+      return rows.map((row) => ({
+        id: row.id,
+        kind: row.kind as TaskKind,
+        title: row.title,
+        currentVersion: row.currentVersion,
+        updatedAt: row.updatedAt.toISOString(),
+        chatId: row.chatId,
+      }));
+    });
+  }
 
   detail(orgId: string, userId: string, documentId: string): Promise<DocumentDetail | null> {
     return this.orgDb.run(orgId, async (tx) => {

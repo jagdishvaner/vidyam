@@ -16,8 +16,70 @@
     "sources": "Uploaded files",
     "questions": "Questions in the bank",
     "documents": "Papers and documents",
-    "nextUp": "What's next",
-    "nextUpBody": "Next, your books and past papers go into the knowledge base; question-paper generation and chat editing follow."
+    "actions": {
+      "paper": "Make a paper",
+      "paperPrompt": "Make a question paper on ",
+      "doubt": "Ask a doubt",
+      "doubtPrompt": "",
+      "notes": "Make notes",
+      "notesPrompt": "Make notes on "
+    },
+    "recentChats": "Recent chats",
+    "noChats": "No chats yet. Start one above.",
+    "untitledChat": "New chat",
+    "recentDocuments": "Papers and notes",
+    "noDocuments": "Nothing made yet.",
+    "version": "v{version}",
+    "beingMade": "Being made",
+    "usage": {
+      "mine": "My AI use this month",
+      "ofBudget": "of your {budget} monthly budget",
+      "noBudget": "No monthly limit set for you.",
+      "calls": "{calls, plural, one {# request} other {# requests}} to the AI",
+      "centerExhausted": "The center's monthly AI budget is used up. Ask your admin."
+    },
+    "center": {
+      "spend": "Center's AI spend this month",
+      "details": "Details",
+      "ofBudget": "of the center's {budget} monthly budget",
+      "noBudget": "No center budget set.",
+      "byTeacher": "Top teachers",
+      "byTask": "Top uses",
+      "noOne": "Automatic work",
+      "nothingYet": "Nothing yet."
+    },
+    "tasks": {
+      "generate": "Writing questions",
+      "verify_solve": "Checking answers",
+      "verify_grounding": "Checking sources",
+      "chat_qa": "Answering doubts",
+      "spec": "Understanding requests",
+      "chat_title": "Naming chats",
+      "notes_write": "Writing notes",
+      "edit_agent": "Editing by chat",
+      "ocr_text": "Reading scans",
+      "ocr_math": "Reading scanned maths",
+      "segment": "Splitting papers",
+      "tag": "Tagging topics"
+    },
+    "content": {
+      "title": "Content coverage",
+      "covered": "{count} of {total} subjects have material",
+      "empty": "No material yet: add your books and papers in Admin → Content.",
+      "details": "Details",
+      "subject": "Subject",
+      "chapters": "Chapters with material",
+      "passages": "Passages",
+      "questions": "Questions",
+      "chaptersCovered": "{covered} of {total}",
+      "waiting": "Waiting to be processed",
+      "unreachable": "The AI engine isn't answering, so the backlogs can't be counted.",
+      "backlog": {
+        "ocr": "{items} scanned pages to read",
+        "segment": "{items} papers to split into questions",
+        "tag": "{items} items to tag with topics"
+      }
+    }
   },
   "library": {
     "title": "Library",

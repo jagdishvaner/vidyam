@@ -9,6 +9,7 @@ import {
   ParseIntPipe,
   ParseUUIDPipe,
   Post,
+  Query,
   StreamableFile,
 } from "@nestjs/common";
 import { ApiResponse, ApiTags } from "@nestjs/swagger";
@@ -22,6 +23,8 @@ import {
   DocumentDetail,
   DocumentEditRequest,
   DocumentExport,
+  DocumentListItem,
+  DocumentListQuery,
   ExportRequest,
   DocumentRestoreRequest,
   DocumentVersion,
@@ -48,6 +51,17 @@ export class DocumentsController {
     private readonly documents: ManageDocuments,
     private readonly exports: ExportDocuments,
   ) {}
+
+  /** The teacher's documents, most recently changed first (the dashboard). */
+  @Get()
+  @MemberHasPermission(EDIT)
+  @ApiResponse({ status: 200, standardSchema: DocumentListItem.array() })
+  list(
+    @Session() session: UserSession,
+    @Query({ schema: DocumentListQuery }) query: DocumentListQuery,
+  ): Promise<DocumentListItem[]> {
+    return this.documents.list(activeOrg(session), session.user.id, query.limit);
+  }
 
   @Get(":documentId")
   @MemberHasPermission(EDIT)

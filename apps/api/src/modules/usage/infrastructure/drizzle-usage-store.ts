@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import type { SetCenterBudgetRequest, UsageReport } from "@vidyam/contracts";
+import type { MyUsage, SetCenterBudgetRequest, UsageReport } from "@vidyam/contracts";
 import { schema } from "@vidyam/db";
 import { and, count, desc, eq, gte, isNotNull, isNull, lt, sql, sum } from "drizzle-orm";
 
@@ -106,6 +106,30 @@ export class DrizzleUsageStore implements UsageStore {
           target: [quotas.orgId, quotas.userId],
           set: { ...values, updatedAt: new Date() },
         });
+    });
+  }
+
+  mine(orgId: string, userId: string, month: string, range: { start: Date; end: Date }): Promise<MyUsage> {
+    return this.orgDb.run(orgId, async (tx) => {
+      const inMonth = and(gte(llmCalls.createdAt, range.start), lt(llmCalls.createdAt, range.end));
+      const [own] = await tx
+        .select(spend)
+        .from(llmCalls)
+        .where(and(inMonth, eq(llmCalls.userId, userId)));
+      const [limit] = await tx.select().from(quotas).where(eq(quotas.userId, userId));
+      const [center] = await tx.select().from(quotas).where(isNull(quotas.userId));
+      let centerExhausted = false;
+      if (center) {
+        const [all] = await tx.select(spend).from(llmCalls).where(inMonth);
+        centerExhausted = money(all?.cost ?? null) >= Number(center.monthlyLimitUsd);
+      }
+      return {
+        month,
+        calls: own?.calls ?? 0,
+        costUsd: money(own?.cost ?? null),
+        budgetUsd: limit ? Number(limit.monthlyLimitUsd) : null,
+        centerExhausted,
+      };
     });
   }
 }

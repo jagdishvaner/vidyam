@@ -620,6 +620,14 @@ class Status1(StrEnum):
     failed = "failed"
 
 
+class DocumentListQuery(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    limit: int = Field(..., ge=1, le=100)
+
+
 class DocumentRestoreRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -1067,6 +1075,22 @@ class Exam(BaseModel):
     code: str
     name_en: str = Field(..., alias="nameEn")
     name_hi: str | None = Field(..., alias="nameHi")
+
+
+class BudgetUsd(RootModel[float]):
+    root: float = Field(..., ge=0.0)
+
+
+class MyUsage(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    month: str = Field(..., pattern="^\\d{4}-(0[1-9]|1[0-2])$")
+    calls: int = Field(..., ge=0, le=9007199254740991)
+    cost_usd: float = Field(..., alias="costUsd", ge=0.0)
+    budget_usd: BudgetUsd | None = Field(..., alias="budgetUsd")
+    center_exhausted: bool = Field(..., alias="centerExhausted")
 
 
 class NotesSectionState(StrEnum):
@@ -1651,6 +1675,21 @@ class StaffSubject(BaseModel):
     is_head: bool = Field(..., alias="isHead")
 
 
+class SubjectCoverage(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    node_id: UUID = Field(..., alias="nodeId")
+    name: LocalizedText
+    chapters: int = Field(..., ge=0, le=9007199254740991)
+    chapters_with_material: int = Field(
+        ..., alias="chaptersWithMaterial", ge=0, le=9007199254740991
+    )
+    passages: int = Field(..., ge=0, le=9007199254740991)
+    questions: int = Field(..., ge=0, le=9007199254740991)
+
+
 class SubjectRef(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2229,6 +2268,14 @@ class ChatTurnAccepted(BaseModel):
     status: ChatTurnStatus
 
 
+class CoverageReport(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    subjects: list[SubjectCoverage]
+
+
 class CreatePromptVersionRequest(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
@@ -2283,6 +2330,19 @@ class DocumentExport(BaseModel):
     error: str | None
     filename: str
     created_at: AwareDatetime = Field(..., alias="createdAt")
+
+
+class DocumentListItem(BaseModel):
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+    )
+    id: UUID
+    kind: TaskKind
+    title: str
+    current_version: int = Field(..., alias="currentVersion", ge=0, le=9007199254740991)
+    updated_at: AwareDatetime = Field(..., alias="updatedAt")
+    chat_id: UUID | None = Field(..., alias="chatId")
 
 
 class DocumentSummary(BaseModel):
